@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  applicationfolder: spring-boot-hello-world-example
+  applicationfolder: src
   AWS_REGION: us-east-2
   S3BUCKET: codedeploystack-webappdeploymentbucket-vbooq6rixvcr
 
