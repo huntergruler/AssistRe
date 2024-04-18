@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  applicationfolder: src
+  applicationfolder: assistre-src
   AWS_REGION: us-east-2
   S3BUCKET: codedeploystack-webappdeploymentbucket-vbooq6rixvcr
 
