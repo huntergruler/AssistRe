@@ -28,8 +28,10 @@ create table BuyerRequestDetails
     maxbedrooms    int not null,
     minbathrooms   int not null,
     maxbathrooms   int not null,
-    minarea        int not null,
-    maxarea        int not null,
+    minsqft        int not null,
+    maxsqft        int not null,
+    prequalified   boolean not null,
+    purchasetimeline varchar(255) not null,
     primary key (buyerrequestid),
     foreign key (userid) references Users(userid)
 );
