@@ -1,4 +1,4 @@
-## Integrating with GitHub Actions – CICD pipeline to Deploy a Web App to Amazon EC2
+## Integrating with GitHub Actions – CICD pipeline to Deploy a Web App to Amazon EC2.
 
 Many Organizations adopt [DevOps Practices](https://aws.amazon.com/devops/what-is-devops/) to innovate faster by automating and streamlining the software development and infrastructure management processes. Beyond cultural adoption, DevOps also suggests following certain best practices and Continuous Integration and Continuous Delivery (CI/CD) is among the important ones to start with. CI/CD practice reduces the time it takes to release new software updates by automating deployment activities. Many tools are available to implement this practice. Although AWS has a set of native tools to help achieve your CI/CD goals, it also offers flexibility and extensibility for integrating with numerous third party tools.
 
