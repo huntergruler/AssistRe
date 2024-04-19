@@ -32,11 +32,43 @@ create table BuyerRequestDetails
     maxbathrooms   int not null,
     minsqft        int not null,
     maxsqft        int not null,
+    propertydesc   varchar(255) not null,
     prequalified   boolean not null,
+    prequalifiedamount varchar(255) not null,
+    prequalletter  BLOB null,
     purchasetimeline varchar(255) not null,
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (buyerrequestid),
+    foreign key (userid) references Users(userid)
+);
+
+create table PropertyTypes
+(
+    propertytypeid int auto_increment not null,
+    propertytype   varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
+    primary key (propertytypeid)
+);
+
+create table LevelsOfService
+(
+    levelofserviceid int auto_increment not null,
+    levelofservice   varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
+    primary key (levelofserviceid)
+);
+
+create table BuyerPropertyURLs
+(
+    buyerpropertyurlid int auto_increment not null,
+    userid             int not null,
+    propertyurl        varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
+    primary key (buyerpropertyurlid),
     foreign key (userid) references Users(userid)
 );
 
