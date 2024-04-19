@@ -13,6 +13,8 @@ Create table Users
     username      varchar(255) not null,
     emailverified boolean      not null, 
     userphoto     varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
     password varchar(255) not null,
     primary key (userid)
 );
@@ -32,6 +34,8 @@ create table BuyerRequestDetails
     maxsqft        int not null,
     prequalified   boolean not null,
     purchasetimeline varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
     primary key (buyerrequestid),
     foreign key (userid) references Users(userid)
 );
@@ -43,6 +47,8 @@ create table AgentReviews
     reviewdate    date not null,
     reviewrating  int not null,
     reviewcomment varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
     primary key (agentreviewid),
     foreign key (userid) references Users(userid)
 );
@@ -54,6 +60,8 @@ create table SeekingAgentReviews
     reviewdate           date not null,
     reviewrating         int not null,
     reviewcomment        varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
     primary key (seekingagentreviewid),
     foreign key (userid) references Users(userid)
 );
@@ -64,6 +72,8 @@ create table AgentMLSs
     userid     int not null,
     mlsname    varchar(255) not null,
     mlsnumber  varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
     primary key (agentmlsid),
     foreign key (userid) references Users(userid)
 );
@@ -75,6 +85,8 @@ CREATE table AgentTransactionHistory
     transactiondate    date not null,
     transactiontype    varchar(255) not null,
     transactionamount  decimal(10,2) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
     primary key (agenttransactionid),
     foreign key (userid) references Users(userid)
 );
@@ -87,6 +99,8 @@ Create table AgentLicenseInfo
     userid         int not null,
     licensestate   varchar(255) not null,
     licensenumber  varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
     primary key (agentlicenseid),
     foreign key (userid) references Users(userid)
 );
@@ -102,15 +116,31 @@ create table AgentOffices
     state        varchar(255) not null,
     zip          varchar(255) not null,
     phonenumber  varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
     primary key (agentofficeid),
     foreign key (userid) references Users(userid)
 );
+
+Create table AgentApprovedBuyerForms
+(
+    agentapprovedbuyerformid int auto_increment not null,
+    userid                   int not null,
+    formname                 varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not not null,
+    primary key (agentapprovedbuyerformid),
+    foreign key (userid) references Users(userid)
+);
+
 
 Create table UserZipCodes
 (
     userzipcodeid int auto_increment not null,
     userid         int not null,
     zipcode        varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
     primary key (userzipcodeid),
     foreign key (userid) references Users(userid)
 );
@@ -122,6 +152,8 @@ Create table ZipCodes
     city      varchar(255) not null,
     state     varchar(255) not null,
     county    varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
     primary key (zipcodeid)
 );
 
