@@ -36,6 +36,27 @@ create table BuyerRequestDetails
     foreign key (userid) references Users(userid)
 );
 
+create table AgentReviews
+(
+    agentreviewid int auto_increment not null,
+    userid        int not null,
+    reviewdate    date not null,
+    reviewrating  int not null,
+    reviewcomment varchar(255) not null,
+    primary key (agentreviewid),
+    foreign key (userid) references Users(userid)
+);
+
+create table SeekingAgentReviews
+(
+    seekingagentreviewid int auto_increment not null,
+    userid               int not null,
+    reviewdate           date not null,
+    reviewrating         int not null,
+    reviewcomment        varchar(255) not null,
+    primary key (seekingagentreviewid),
+    foreign key (userid) references Users(userid)
+);
 
 create table AgentMLSs
 (
