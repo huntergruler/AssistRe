@@ -52,6 +52,15 @@ create table PropertyTypes
     primary key (propertytypeid)
 );
 
+Insert into PropertyTypes (propertytype, entrytimestamp, updatetimestamp) values ('Single Family', now(), now());
+Insert into PropertyTypes (propertytype, entrytimestamp, updatetimestamp) values ('Condo', now(), now());
+Insert into PropertyTypes (propertytype, entrytimestamp, updatetimestamp) values ('Townhouse', now(), now());
+Insert into PropertyTypes (propertytype, entrytimestamp, updatetimestamp) values ('Multi Family', now(), now());
+Insert into PropertyTypes (propertytype, entrytimestamp, updatetimestamp) values ('Land', now(), now());
+Insert into PropertyTypes (propertytype, entrytimestamp, updatetimestamp) values ('Commercial', now(), now());
+Insert into PropertyTypes (propertytype, entrytimestamp, updatetimestamp) values ('Rental', now(), now());
+Insert into PropertyTypes (propertytype, entrytimestamp, updatetimestamp) values ('Other', now(), now());
+
 create table LevelsOfService
 (
     levelofserviceid int auto_increment not null,
@@ -60,6 +69,14 @@ create table LevelsOfService
     updatetimestamp timestamp not null,
     primary key (levelofserviceid)
 );
+
+Insert into LevelsOfService (levelofservice, entrytimestamp, updatetimestamp) values ('Full Service - Flat Fee', now(), now());
+Insert into LevelsOfService (levelofservice, entrytimestamp, updatetimestamp) values ('Full Service - Percentage Fee', now(), now());
+Insert into LevelsOfService (levelofservice, entrytimestamp, updatetimestamp) values ('Partial Service - Flat Fee', now(), now());
+Insert into LevelsOfService (levelofservice, entrytimestamp, updatetimestamp) values ('Partial Service - Percentage Fee', now(), now());
+Insert into LevelsOfService (levelofservice, entrytimestamp, updatetimestamp) values ('Contract Assistance Only - Flat Fee', now(), now());
+Insert into LevelsOfService (levelofservice, entrytimestamp, updatetimestamp) values ('Other', now(), now());
+
 
 create table BuyerPropertyURLs
 (
