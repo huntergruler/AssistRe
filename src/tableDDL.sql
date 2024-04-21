@@ -226,7 +226,9 @@ Create table ZipCodes
 Create table AgentOffers
 (
     agentofferid int auto_increment not null,
-    userid       int not null,
+    buyerrequestid int not null,
+    buyeruserid    int not null,
+    agentuserid       int not null,
     offertype    varchar(255) not null,
     levelofservice varchar(255) not null,
     compensationtype varchar(255) not null,
@@ -234,6 +236,8 @@ Create table AgentOffers
     retainerfee decimal(10, 2) not null,
     retainercredited boolean not null,
     lengthofservice varchar(255) not null,
+    expirationcompensation decimal(10, 2) not null,
+    expirationcomptimeframe varchar(255) not null,
     offerdesc varchar(1000) not null,
     offertimestamp    timestamp not null,
     offerstatus  varchar(255) not null,
