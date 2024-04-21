@@ -32,7 +32,9 @@ create table BuyerRequestDetails
     maxbathrooms   int not null,
     minsqft        int not null,
     maxsqft        int not null,
+    onlycommisionedproperties boolean not null,
     propertydesc   varchar(255) not null,
+    levelofservice varchar(255) not null,
     prequalified   boolean not null,
     prequalifiedamount varchar(255) not null,
     prequalletter  BLOB null,
@@ -42,6 +44,21 @@ create table BuyerRequestDetails
     primary key (buyerrequestid),
     foreign key (userid) references Users(userid)
 );
+create table PurchaseTimeLineTypes
+(
+    purchasetimelineid int auto_increment not null,
+    purchasetimeline   varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
+    primary key (purchasetimelineid)
+);
+
+Insert into PurchaseTimeLineTypes (purchasetimeline, entrytimestamp, updatetimestamp) values ('Immediate', now(), now());
+Insert into PurchaseTimeLineTypes (purchasetimeline, entrytimestamp, updatetimestamp) values ('1-3 Months', now(), now());
+Insert into PurchaseTimeLineTypes (purchasetimeline, entrytimestamp, updatetimestamp) values ('3-6 Months', now(), now());
+Insert into PurchaseTimeLineTypes (purchasetimeline, entrytimestamp, updatetimestamp) values ('6-12 Months', now(), now());
+Insert into PurchaseTimeLineTypes (purchasetimeline, entrytimestamp, updatetimestamp) values ('Other', now(), now());
+
 
 create table PropertyTypes
 (
@@ -206,4 +223,63 @@ Create table ZipCodes
     primary key (zipcodeid)
 );
 
-Create table Agent
+Create table AgentOffers
+(
+    agentofferid int auto_increment not null,
+    userid       int not null,
+    offertype    varchar(255) not null,
+    levelofservice varchar(255) not null,
+    compensationtype varchar(255) not null,
+    compensationamount decimal(10, 2) not null,
+    retainerfee decimal(10, 2) not null,
+    retainercredited boolean not null,
+    lengthofservice varchar(255) not null,
+    offerdesc varchar(1000) not null,
+    offertimestamp    timestamp not null,
+    offerstatus  varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
+    primary key (agentofferid),
+    foreign key (userid) references Users(userid)
+);
+
+create table offertypes
+(
+    offertypeid int auto_increment not null,
+    offertype   varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
+    primary key (offertypeid)
+);
+
+Insert into offertypes (offertype, entrytimestamp, updatetimestamp) values ('Exclusive', now(), now());
+Insert into offertypes (offertype, entrytimestamp, updatetimestamp) values ('Non-Exclusive', now(), now());
+
+create table compensationtypes
+(
+    compensationtypeid int auto_increment not null,
+    compensationtype   varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
+    primary key (compensationtypeid)
+);
+
+insert into compensationtypes (compensationtype, entrytimestamp, updatetimestamp) values ('Flat Fee', now(), now());
+insert into compensationtypes (compensationtype, entrytimestamp, updatetimestamp) values ('Percentage of Sale Price', now(), now());
+insert into compensationtypes (compensationtype, entrytimestamp, updatetimestamp) values ('Hourly', now(), now());
+insert into compensationtypes (compensationtype, entrytimestamp, updatetimestamp) values ('Other', now(), now());
+
+create table offerstatus
+(
+    offerstatusid int auto_increment not null,
+    offerstatus   varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
+    primary key (offerstatusid)
+);
+
+insert into offerstatus (offerstatus, entrytimestamp, updatetimestamp) values ('Accepted', now(), now());
+insert into offerstatus (offerstatus, entrytimestamp, updatetimestamp) values ('Declined', now(), now());
+insert into offerstatus (offerstatus, entrytimestamp, updatetimestamp) values ('Expired', now(), now());
+insert into offerstatus (offerstatus, entrytimestamp, updatetimestamp) values ('Submitted', now(), now());
+
