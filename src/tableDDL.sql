@@ -19,6 +19,19 @@ Create table Users
     primary key (userid)
 );
 
+create table UserTypes
+(
+    usertypeid int auto_increment not null,
+    usertype   varchar(255) not null,
+    entrytimestamp timestamp not null,
+    updatetimestamp timestamp not null,
+    primary key (usertypeid)
+);
+
+insert into UserTypes (usertype, entrytimestamp, updatetimestamp) values ('Buyer', now(), now());
+insert into UserTypes (usertype, entrytimestamp, updatetimestamp) values ('Seller', now(), now());
+insert into UserTypes (usertype, entrytimestamp, updatetimestamp) values ('Agent', now(), now());
+
 create table BuyerRequestDetails
 (
     buyerrequestid int auto_increment not null,
