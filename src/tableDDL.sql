@@ -194,7 +194,7 @@ Create table AgentApprovedBuyerForms
     userid                   int not null,
     formname                 varchar(255) not null,
     entrytimestamp timestamp not null,
-    updatetimestamp timestamp not not null,
+    updatetimestamp timestamp not null,
     primary key (agentapprovedbuyerformid),
     foreign key (userid) references Users(userid)
 );
@@ -223,6 +223,7 @@ Create table ZipCodes
     primary key (zipcodeid)
 );
 
+
 Create table AgentOffers
 (
     agentofferid int auto_increment not null,
@@ -244,10 +245,11 @@ Create table AgentOffers
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (agentofferid),
-    foreign key (userid) references Users(userid)
+    foreign key (buyeruserid) references Users(userid),
+    foreign key (agentuserid) references Users(userid)
 );
 
-create table offertypes
+create table OfferTypes
 (
     offertypeid int auto_increment not null,
     offertype   varchar(255) not null,
@@ -256,10 +258,10 @@ create table offertypes
     primary key (offertypeid)
 );
 
-Insert into offertypes (offertype, entrytimestamp, updatetimestamp) values ('Exclusive', now(), now());
-Insert into offertypes (offertype, entrytimestamp, updatetimestamp) values ('Non-Exclusive', now(), now());
+Insert into OfferTypes (offertype, entrytimestamp, updatetimestamp) values ('Exclusive', now(), now());
+Insert into OfferTypes (offertype, entrytimestamp, updatetimestamp) values ('Non-Exclusive', now(), now());
 
-create table compensationtypes
+create table CompensationTypes
 (
     compensationtypeid int auto_increment not null,
     compensationtype   varchar(255) not null,
@@ -268,12 +270,12 @@ create table compensationtypes
     primary key (compensationtypeid)
 );
 
-insert into compensationtypes (compensationtype, entrytimestamp, updatetimestamp) values ('Flat Fee', now(), now());
-insert into compensationtypes (compensationtype, entrytimestamp, updatetimestamp) values ('Percentage of Sale Price', now(), now());
-insert into compensationtypes (compensationtype, entrytimestamp, updatetimestamp) values ('Hourly', now(), now());
-insert into compensationtypes (compensationtype, entrytimestamp, updatetimestamp) values ('Other', now(), now());
+insert into CompensationTypes (compensationtype, entrytimestamp, updatetimestamp) values ('Flat Fee', now(), now());
+insert into CompensationTypes (compensationtype, entrytimestamp, updatetimestamp) values ('Percentage of Sale Price', now(), now());
+insert into CompensationTypes (compensationtype, entrytimestamp, updatetimestamp) values ('Hourly', now(), now());
+insert into CompensationTypes (compensationtype, entrytimestamp, updatetimestamp) values ('Other', now(), now());
 
-create table offerstatus
+create table OfferStatus
 (
     offerstatusid int auto_increment not null,
     offerstatus   varchar(255) not null,
@@ -282,8 +284,8 @@ create table offerstatus
     primary key (offerstatusid)
 );
 
-insert into offerstatus (offerstatus, entrytimestamp, updatetimestamp) values ('Accepted', now(), now());
-insert into offerstatus (offerstatus, entrytimestamp, updatetimestamp) values ('Declined', now(), now());
-insert into offerstatus (offerstatus, entrytimestamp, updatetimestamp) values ('Expired', now(), now());
-insert into offerstatus (offerstatus, entrytimestamp, updatetimestamp) values ('Submitted', now(), now());
+insert into OfferStatus (offerstatus, entrytimestamp, updatetimestamp) values ('Accepted', now(), now());
+insert into OfferStatus (offerstatus, entrytimestamp, updatetimestamp) values ('Declined', now(), now());
+insert into OfferStatus (offerstatus, entrytimestamp, updatetimestamp) values ('Expired', now(), now());
+insert into OfferStatus (offerstatus, entrytimestamp, updatetimestamp) values ('Submitted', now(), now());
 
