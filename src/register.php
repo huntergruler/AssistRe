@@ -4,13 +4,11 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
-$mysqlhost = getenv('MYSQL_HOST');
-$mysqluser = getenv('MYSQL_USER');
-$mysqlpass = getenv('MYSQL_PASSWORD');
-$mysqldb = getenv('MYSQL_DATABASE');
+require_once('/Users/jim/AssistRE/src/Credentials.php');
+
 
 // Create connection
-$conn = new mysqli($mysqlhost, $mysqluser, $mysqlpass, $mysqldb);
+$conn = new mysqli(MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE);
 
 // Check connection
 if ($conn->connect_error) {
@@ -53,10 +51,11 @@ try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                       // Enable verbose debug output
     $mail->isSMTP();                                             // Set mailer to use SMTP
-    $mail->Host = getenv('SMTP_HOST');          // Specify main SMTP server for Amazon SES
+    $mail->Host = SMTP_HOST;          // Specify main SMTP server for Amazon SES
     $mail->SMTPAuth   = true;                                    // Enable SMTP authentication
-    $mail->Username   = getenv('SMTP_USERNAME');                    // SMTP username from AWS SES
-    $mail->Password   = getenv('SMTP_PASSWORD');                    // SMTP password from AWS SES
+    $mail->Username   = SMTP_USERNAME;                    // SMTP username from AWS SES
+    $mail->Password   = SMTP_PASSWORD;                    // SMTP password from AWS SES
+    $mail->SMTPDebug = 0;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;          // Enable TLS encryption, `ssl` is also accepted
     $mail->Port       = 587;                                     // TCP port to connect to
 
