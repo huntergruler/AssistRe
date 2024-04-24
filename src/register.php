@@ -1,6 +1,6 @@
 <?php
 $host = 'seekingagents.cdciwk4kesz5.us-east-2.rds.amazonaws.com';
-$username = 'admin';
+$username = 'dev';
 $password = 'Newpass1one!';
 $dbname = 'seekingagents';
 
