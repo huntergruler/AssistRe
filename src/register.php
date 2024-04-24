@@ -56,8 +56,8 @@ try {
     $mail->isSMTP();                                             // Set mailer to use SMTP
     $mail->Host = 'email-smtp.us-east-2.amazonaws.com';          // Specify main SMTP server for Amazon SES
     $mail->SMTPAuth   = true;                                    // Enable SMTP authentication
-    $mail->Username   = '';                    // SMTP username from AWS SES
-    $mail->Password   = '';                    // SMTP password from AWS SES
+    $mail->Username   = 'AKIAZQ3DT33WYQBCPM2J';                    // SMTP username from AWS SES
+    $mail->Password   = 'BE7h5qzUvxfU0/lbJibroMfBV1F2mP3TeCvwYXW/U+by';                    // SMTP password from AWS SES
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;          // Enable TLS encryption, `ssl` is also accepted
     $mail->Port       = 587;                                     // TCP port to connect to
 
