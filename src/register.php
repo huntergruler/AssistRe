@@ -1,4 +1,10 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/autoload.php';
+
 $host = 'seekingagents.cdciwk4kesz5.us-east-2.rds.amazonaws.com';
 $username = 'admin';
 $password = 'Newpass1one!';
@@ -43,11 +49,32 @@ $conn->close();
 
 function sendVerificationEmail($email, $token) {
     $verificationLink = "http://localhost:8080/src/verify.php?token=" . $token;
-    $subject = "Verify Your Email";
-    $message = "Please click on the following link to verify your email: " . $verificationLink;
-    $headers = "From: noreply@seekingagents.com\r\n";
-    $headers .= "Reply-To: noreply@seekingagents.com\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    mail($email, $subject, $message, $headers);
+    $mail = new PHPMailer(true);
+try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                       // Enable verbose debug output
+    $mail->isSMTP();                                             // Set mailer to use SMTP
+    $mail->Host = 'email-smtp.us-east-2.amazonaws.com';          // Specify main SMTP server for Amazon SES
+    $mail->SMTPAuth   = true;                                    // Enable SMTP authentication
+    $mail->Username   = '';                    // SMTP username from AWS SES
+    $mail->Password   = '';                    // SMTP password from AWS SES
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;          // Enable TLS encryption, `ssl` is also accepted
+    $mail->Port       = 587;                                     // TCP port to connect to
+
+    //Recipients
+    $mail->setFrom('noreply@seekingagents.com', 'Mailer');
+    $mail->addAddress('gruler@mac.com', 'Jim Gruler');      // Add a recipient, must be verified if your account is in the sandbox
+
+    // Content
+    $mail->isHTML(true);                                         // Set email format to HTML
+    $mail->Subject = 'Verify Your Email';
+    $mail->Body    = 'Please click on the link below to verify your email: <a href="'.$verificationLink.'">Verify Email</a>';
+//    $mail->AltBody = 'Please click on the link below to verify your email: verification-link';
+
+    $mail->send();
+    echo 'Verification email sent.';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 }
 ?>
