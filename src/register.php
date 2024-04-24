@@ -4,14 +4,13 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
-
-$host = 'seekingagents.cdciwk4kesz5.us-east-2.rds.amazonaws.com';
-$username = 'admin';
-$password = 'Newpass1one!';
-$dbname = 'seekingagents';
+$mysqlhost = getenv('MYSQL_HOST');
+$mysqluser = getenv('MYSQL_USER');
+$mysqlpass = getenv('MYSQL_PASSWORD');
+$mysqldb = getenv('MYSQL_DATABASE');
 
 // Create connection
-$conn = new mysqli($host, $username, $password, $dbname);
+$conn = new mysqli($mysqlhost, $mysqlusername, $mysqlpassword, $mysqldbname);
 
 // Check connection
 if ($conn->connect_error) {
@@ -54,10 +53,10 @@ try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                       // Enable verbose debug output
     $mail->isSMTP();                                             // Set mailer to use SMTP
-    $mail->Host = 'email-smtp.us-east-2.amazonaws.com';          // Specify main SMTP server for Amazon SES
+    $mail->Host = getenv('SMTP_HOST');          // Specify main SMTP server for Amazon SES
     $mail->SMTPAuth   = true;                                    // Enable SMTP authentication
-    $mail->Username   = 'AKIAZQ3DT33WYQBCPM2J';                    // SMTP username from AWS SES
-    $mail->Password   = 'BE7h5qzUvxfU0/lbJibroMfBV1F2mP3TeCvwYXW/U+by';                    // SMTP password from AWS SES
+    $mail->Username   = getenv('SMTP_USERNAME');                    // SMTP username from AWS SES
+    $mail->Password   = getenv('SMTP_PASSWORD');                    // SMTP password from AWS SES
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;          // Enable TLS encryption, `ssl` is also accepted
     $mail->Port       = 587;                                     // TCP port to connect to
 
