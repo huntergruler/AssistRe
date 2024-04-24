@@ -17,7 +17,7 @@ $userTypes = [];
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        $userTypes[] = $row['usertypes'];
+        $userTypes[] = $row['usertype'];
     }
     echo json_encode($userTypes);
 } else {
