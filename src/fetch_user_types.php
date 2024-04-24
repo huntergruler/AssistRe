@@ -10,14 +10,14 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT DISTINCT usertype FROM UserType";
+$sql = "SELECT DISTINCT usertype FROM UserTypes";
 $result = $conn->query($sql);
 
 $userTypes = [];
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        $userTypes[] = $row['usertype'];
+        $userTypes[] = $row['usertypes'];
     }
     echo json_encode($userTypes);
 } else {
