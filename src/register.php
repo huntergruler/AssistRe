@@ -10,7 +10,7 @@ $mysqlpass = getenv('MYSQL_PASSWORD');
 $mysqldb = getenv('MYSQL_DATABASE');
 
 // Create connection
-$conn = new mysqli($mysqlhost, $mysqlusername, $mysqlpassword, $mysqldbname);
+$conn = new mysqli($mysqlhost, $mysqluser, $mysqlpass, $mysqldb);
 
 // Check connection
 if ($conn->connect_error) {
