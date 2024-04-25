@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>User Registration</title>
+<style>
+    body { font-family: Arial, sans-serif; }
+    label, input { display: block; margin-top: 10px; }
+    button { margin-top: 20px; }
+</style>
+</head>
+<body>
+<h1>User Registration</h1>
+<form id="userForm" action="register.php" method="post" enctype="multipart/form-data">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required>
+
+    <!-- Additional fields here -->
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+    <label for="userPhoto">Upload Photo:</label>
+    <input type="file" id="userPhoto" name="userPhoto" required>
+
+    <label for="userType">User Type:</label>
+    <select id="userType" name="userType" required></select>
+
+    <button type="submit">Register</button>
+</form>
+
+<script>
+    document.getElementById('userForm').addEventListener('submit', function(event) {
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            event.preventDefault();
+        }
+    });
+
+    fetch('fetch_user_types.php').then(response => response.json())
+        .then(data => {
+            const userTypeSelect = document.getElementById('userType');
+            data.forEach(type => {
+                let option = document.createElement('option');
+                option.value = type;
+                option.textContent = type;
+                userTypeSelect.appendChild(option);
+            });
+        });
+</script>
+</body>
+</html>
