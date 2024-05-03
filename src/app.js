@@ -18,7 +18,7 @@ const db = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME
 });
-
+// test the connection
 db.connect(err => {
   if (err) throw err;
   console.log('Connected to the database');
@@ -117,7 +117,6 @@ function sendVerificationEmail(req, email, token) {
     }
   });
 }
-
 
 // Route to handle email verification
 app.get('/verify-email', (req, res) => {
