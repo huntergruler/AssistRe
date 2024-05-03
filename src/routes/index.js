@@ -1,16 +1,23 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const mysql = require('mysql');
+const bcrypt = require('bcrypt');
+const { body, validationResult } = require('express-validator');
 
-// MySQL connection
-const pool = mysql.createPool({
-  connectionLimit : 10,
-  host            : process.env.DB_HOST,
-  user            : process.env.DB_USER,
-  password        : process.env.DB_PASS,
-  database        : process.env.DB_NAME
-});
+// Database connection setup
+const db = mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+  });
+  // test the connection
+  db.connect(err => {
+    if (err) throw err;
+    console.log('Connected to the database');
+  });
 
 // Email setup
 const transporter = nodemailer.createTransport({
@@ -41,23 +48,12 @@ router.post('/register', (req, res) => {
   const { firstName, lastName, email, phoneNumber, zipCode, userType } = req.body;
   // Query to insert user into database
   const sql = 'INSERT INTO Users (firstName, lastName, email, phoneNumber, zipCode, userType) VALUES (?, ?, ?, ?, ?, ?)';
-  pool.query(sql, [firstName, lastName, email, phoneNumber, zipCode, userType], (error, results) => {
+  db.query(sql, [firstName, lastName, email, phoneNumber, zipCode, userType], (error, results) => {
     if (error) throw error;
+
     // Send confirmation email
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: email,
-      subject: 'Email Confirmation',
-      text: 'Please confirm your email by clicking on this link: [link]'
-    };
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
-    res.redirect('/login');
+    sendVerificationEmail(req, email, verificationToken);
+    res.send('Registration successful! Please check your email to verify.');
   });
 });
 
@@ -86,4 +82,31 @@ router.post('/reset', (req, res) => {
   res.send('Reset email sent');
 });
 
+// Function to send a verification email
+function sendVerificationEmail(req, email, token) {
+    const mailTransporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+      }
+    });
+  
+    const mailDetails = {
+      from: process.env.SMTP_FROM,
+      to: email,
+      subject: 'Verify your email address',
+      html: `Please click on this link to verify your email: <a href="http://${req.headers.host}/verify-email?token=${token}&email=${email}">Verify Email</a>`
+    };
+  
+    mailTransporter.sendMail(mailDetails, (error, info) => {
+      if (error) {
+        console.log('Error sending email:', error);
+      } else {
+        console.log('Verification email sent:', info.response);
+      }
+    });
+  }
+  
 module.exports = router;
