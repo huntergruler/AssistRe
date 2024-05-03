@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form action="/register" method="post">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+        <label for="zipCode">Zip Code:</label>
+        <input type="text" id="zipCode" name="zipCode" required onblur="lookupCityState()">
+        <span id="cityState"></span>
+        <label for="userType">User Type:</label>
+        <select id="userType" name="userType">
+            <option value="Buyer">Buyer</option>
+            <option value="Agent">Agent</option>
+        </select>
+        <button type="submit">Register</button>
+    </form>
+    <script>
+        function lookupCityState() {
+            // AJAX request to server to get city and state by zip code
+        }
+    </script>
+</body>
+</html>
