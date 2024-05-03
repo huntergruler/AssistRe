@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 app.use(express.json());
