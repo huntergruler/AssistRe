@@ -4,11 +4,22 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
-require_once('/Users/jim/AssistRE/src/Credentials.php');
 
+$filePath = '../Credentials';
+$config = json_decode(file_get_contents($filePath), true);
+
+// Example of accessing a config value
+$MYSQL_HOST = $config['database']['MYSQL_HOST'];
+$MYSQL_USERNAME = $config['database']['MYSQL_USERNAME'];
+$MYSQL_PASSWORD = $config['database']['MYSQL_PASSWORD'];
+$MYSQL_DATABASE = $config['database']['MYSQL_DATABASE'];
+$SMTP_HOST = $config['email']['SMTP_HOST'];
+$SMTP_PORT = $config['email']['SMTP_PORT'];
+$SMTP_USERNAME = $config['email']['SMTP_USERNAME'];
+$SMTP_PASSWORD = $config['email']['SMTP_PASSWORD'];
 
 // Create connection
-$conn = new mysqli(MYSQL_HOST, MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_DATABASE);
+$conn = new mysqli($MYSQL_HOST, $MYSQL_USERNAME, $MYSQL_PASSWORD, $MYSQL_DATABASE);
 
 // Check connection
 if ($conn->connect_error) {
@@ -51,13 +62,13 @@ try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                       // Enable verbose debug output
     $mail->isSMTP();                                             // Set mailer to use SMTP
-    $mail->Host = SMTP_HOST;          // Specify main SMTP server for Amazon SES
+    $mail->Host = $GLOBALS['SMTP_HOST'];          // Specify main SMTP server for Amazon SES
     $mail->SMTPAuth   = true;                                    // Enable SMTP authentication
-    $mail->Username   = SMTP_USERNAME;                    // SMTP username from AWS SES
-    $mail->Password   = SMTP_PASSWORD;                    // SMTP password from AWS SES
+    $mail->Username   = $GLOBALS['SMTP_USERNAME'];                    // SMTP username from AWS SES
+    $mail->Password   = $GLOBALS['SMTP_PASSWORD'];                    // SMTP_PASSWORD;                    // SMTP password from AWS SES
     $mail->SMTPDebug = 0;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;          // Enable TLS encryption, `ssl` is also accepted
-    $mail->Port       = 587;                                     // TCP port to connect to
+    $mail->Port       = $GLOBALS['SMTP_PORT'];                                     // TCP port to connect to
 
     //Recipients
     $mail->setFrom('noreply@seekingagents.com', 'Mailer');
