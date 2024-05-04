@@ -86,9 +86,9 @@
         </script>
     <script>
         document.getElementById('user').addEventListener('blur', function() {
-          const email = this.value;
-          if (email) {
-            fetch(`/check-user?email=${encodeURIComponent(email)}`)
+          const User = this.value;
+          if (User) {
+            fetch(`/check-user?email=${encodeURIComponent(User)}`)
               .then(response => response.json())
               .then(data => {
                 if (data.available) {
