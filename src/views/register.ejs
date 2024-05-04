@@ -87,6 +87,7 @@
     <script>
         document.getElementById('username').addEventListener('blur', function() {
           const username = this.value;
+          console.log('Checking username:', username);
           if (username) {
             fetch(`/check-username?username=${encodeURIComponent(username)}`)
               .then(response => response.json())
