@@ -103,7 +103,7 @@ router.post('/register', (req, res) => {
         }
         if (isMatch) {
           // Passwords match
-          return res.redirect('/index'); // or wherever you want the user to go after login
+          return res.redirect('/public'); // or wherever you want the user to go after login
         } else {
           // Passwords do not match
           return res.status(403).send('Incorrect password');
