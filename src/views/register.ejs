@@ -41,7 +41,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email"  required onblur="lookupEmail()">
+            <input type="email" id="email" name="email" required onblur="lookupEmail()">
             <span id="emailexists"></span>
         </div>
         <div class="form-group">
@@ -50,7 +50,7 @@
         </div>
         <div class="form-group">
             <label for="zipCode">Zip Code:</label>
-            <input type="text" id="zipCode" name="zipCode" required>
+            <input type="text" id="zipCode" name="zipCode" required onblur="lookupCityState()">
             <span id="cityState"></span>
         </div>
         <div class="form-group">
@@ -90,19 +90,19 @@
             var email = document.getElementById('email').value;
             if (email) {
                 // Create a new XMLHttpRequest object
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', '/check-email?email=' + email, true);
+                var xhr2 = new XMLHttpRequest();
+                xhr2.open('GET', '/check-email?email=' + email, true);
                 console.log(email);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        var response = JSON.parse(xhr.responseText);
+                xhr2.onreadystatechange = function () {
+                    if (xhr2.readyState == 4 && xhr2.status == 200) {
+                        var response = JSON.parse(xhr2.responseText);
                         console.log(response);
                         if (response.emailexists) {
                             document.getElementById('emailexists').textContent = 'Email already exists. Please enter a different email';
                         }
                     }
                 };
-                xhr.send();
+                xhr2.send();
             }
         }
         </script>
