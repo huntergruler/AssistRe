@@ -45,7 +45,7 @@ router.get('/register', (req, res) => {
 
 // Handle registration with city and state lookup
 router.post('/register', (req, res) => {
-    const { firstName, lastName, email, phoneNumber, zipCode, userType } = req.body;
+    const { firstName, lastName, user, phoneNumber, zipCode, userType } = req.body;
   
     // First, query the city and state from the ZipCodes table
     const zipQuery = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
@@ -62,7 +62,7 @@ router.post('/register', (req, res) => {
       const verificationtoken = require('crypto').randomBytes(16).toString('hex');
       // Now insert the user into the Users table with city and state
       const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, verificationtoken, phoneNumber, zip, city, state, usertype, username) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-      db.query(userInsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, city, state, userType,email], (userError, userResults) => {
+      db.query(userInsertSql, [firstName, lastName, user, verificationtoken, phoneNumber, zipCode, city, state, userType,user], (userError, userResults) => {
         if (userError) {
             console.error('Error inserting user into database:', userError);
             return res.status(500).send('Error inserting user into database');
@@ -96,24 +96,24 @@ router.get('/get-city-state', (req, res) => {
       }
   });
 });
-// Route to check if email exists
-router.get('/check-email', (req, res) => {
-  const email = req.query.email;
-  if (!email) {
-      return res.status(400).json({error: 'Email is required'});
+// Route to check if user exists
+router.get('/check-user', (req, res) => {
+  const user = req.query.user;
+  if (!user) {
+      return res.status(400).json({error: 'User Name is required'});
   }
-  console.log('checking email');
-  const query = 'SELECT count(*) cnt FROM Users WHERE email = ?';
-  db.query(query, [email], (error, results) => {
+  console.log('checking user');
+  const query = 'SELECT count(*) cnt FROM Users WHERE user = ?';
+  db.query(query, [user], (error, results) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
       console.log(results[0]);
       if (results[0].cnt > 0) {
-        // Email is already taken
+        // User Name is already taken
         res.json({ available: false });
       } else {
-        // Email is available
+        // User Name is available
         res.json({ available: true });
       }
   });
