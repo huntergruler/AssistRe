@@ -98,7 +98,7 @@ router.get('/get-city-state', (req, res) => {
 });
 // Route to check if user exists
 router.get('/check-user', (req, res) => {
-  const username = req.query.email;
+  const username = req.query.username;
   if (!username) {
       return res.status(400).json({error: 'User Name is required'});
   }
