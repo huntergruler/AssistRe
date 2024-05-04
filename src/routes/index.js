@@ -59,16 +59,17 @@ router.post('/register', (req, res) => {
       
       const { city, state } = results[0];
 
+      const verificationtoken = require('crypto').randomBytes(16).toString('hex');
       // Now insert the user into the Users table with city and state
-      const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, phoneNumber, zip, city, state, usertype) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-      db.query(userInsertSql, [firstName, lastName, email, phoneNumber, zipCode, city, state, userType], (userError, userResults) => {
+      const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, verificationtoken, phoneNumber, zip, city, state, usertype) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      db.query(userInsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, city, state, userType], (userError, userResults) => {
         if (userError) {
             console.error('Error inserting user into database:', userError);
             return res.status(500).send('Error inserting user into database');
         }
         
       // Send confirmation email
-      sendVerificationEmail(req, email, verificationToken);
+      sendVerificationEmail(req, email, verificationtoken);
       res.send('Registration successful! Please check your email to verify.');      // Placeholder for email sending logic...
   
       res.redirect('/login');
