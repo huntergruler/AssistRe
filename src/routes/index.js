@@ -1,11 +1,20 @@
 require('dotenv').config();
 const express = require('express');
+const session = require('express-session');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
 const saltRounds = 10; // The cost factor controls how much time is needed to calculate a single bcrypt hash.
+
+// Setting up the session middleware
+app.use(session({
+  secret: process.env.SESSION_SECRET,  // a secret key used to sign the session ID cookie
+  resave: false,              // forces the session to be saved back to the session store, even if the session was never modified during the request
+  saveUninitialized: true,    // forces a session that is "uninitialized" to be saved to the store
+  cookie: { secure: true }    // ensures the browser only sends the cookie over HTTPS
+}));
 
 // Database connection setup
 const db = mysql.createConnection({
@@ -157,8 +166,7 @@ router.get('/check-user', (req, res) => {
 // Route to serve the dashboard page
 router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
-      // Assuming you're using session to manage logins
-      return res.status(401).send("Access denied. Please login to access this page.");
+    return res.status(401).send("Access denied. Please login to access this page.");
   }
   res.render('dashboard');
 });
