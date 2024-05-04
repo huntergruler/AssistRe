@@ -98,13 +98,13 @@ router.get('/get-city-state', (req, res) => {
 });
 // Route to check if email exists
 router.get('/check-email', (req, res) => {
-  const email = req.query.email;
-  if (!email) {
-      return res.status(400).json({error: 'Email is required'});
+  const username = req.query.email;
+  if (!username) {
+      return res.status(400).json({error: 'User Name is required'});
   }
-  console.log('checking email');
-  const query = 'SELECT count(*) cnt FROM Users WHERE email = ?';
-  db.query(query, [email], (error, results) => {
+  console.log('checking username');
+  const query = 'SELECT count(*) cnt FROM Users WHERE username = ?';
+  db.query(query, [username], (error, results) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
