@@ -4,26 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <style>
+        form {
+            max-width: 300px; /* Adjust the form width as necessary */
+        }
+        .form-group {
+            margin-bottom: 10px; /* Space between each form group */
+        }
+        label {
+            display: block; /* Ensures the label is on its own line */
+            margin-bottom: 5px; /* Space between label and input */
+        }
+        input, select {
+            width: 100%; /* Makes inputs and selects take up the full width of the form */
+            box-sizing: border-box; /* Includes padding and border in the width */
+        }
+    </style>
 </head>
 <body>
     <h1>Register</h1>
     <form action="/register" method="post">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" required>
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="text" id="phoneNumber" name="phoneNumber" required>
-        <label for="zipCode">Zip Code:</label>
-        <input type="text" id="zipCode" name="zipCode" required onblur="lookupCityState()">
-        <span id="cityState"></span>
-        <label for="userType">User Type:</label>
-        <select id="userType" name="userType">
-            <option value="Buyer">Buyer</option>
-            <option value="Agent">Agent</option>
-        </select>
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="zipCode">Zip Code:</label>
+            <input type="text" id="zipCode" name="zipCode" required onblur="lookupCityState()">
+            <span id="cityState"></span>
+        </div>
+        <div class="form-group">
+            <label for="userType">User Type:</label>
+            <select id="userType" name="userType">
+                <option value="Buyer">Buyer</option>
+                <option value="Agent">Agent</option>
+            </select>
+        </div>
         <button type="submit">Register</button>
     </form>
     <script>
