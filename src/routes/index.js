@@ -96,8 +96,8 @@ router.get('/get-city-state', (req, res) => {
       }
   });
 });
-// Route to check if email exists
-router.get('/check-email', (req, res) => {
+// Route to check if user exists
+router.get('/check-user', (req, res) => {
   const username = req.query.email;
   if (!username) {
       return res.status(400).json({error: 'User Name is required'});
@@ -110,10 +110,10 @@ router.get('/check-email', (req, res) => {
       }
       console.log(results[0]);
       if (results[0].cnt > 0) {
-        // Email is already taken
+        // User Name is already taken
         res.json({ available: false });
       } else {
-        // Email is available
+        // User Name is available
         res.json({ available: true });
       }
   });
