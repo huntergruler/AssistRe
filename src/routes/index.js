@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
+const saltRounds = 10; // The cost factor controls how much time is needed to calculate a single bcrypt hash.
 
 // Database connection setup
 const db = mysql.createConnection({
@@ -45,11 +46,15 @@ router.get('/register', (req, res) => {
 
 // Handle registration with city and state lookup
 router.post('/register', (req, res) => {
-    const { firstName, lastName, email, phoneNumber, zipCode, userType } = req.body;
+    const { firstName, lastName, user, phoneNumber, zipCode, userType, password } = req.body;
   
     // First, query the city and state from the ZipCodes table
-    const zipQuery = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
-    db.query(zipQuery, [zipCode], (error, results) => {
+    bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
+      if (err) {
+        return res.status(500).send('Error hashing password');
+      }
+      const zipQuery = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
+      db.query(zipQuery, [zipCode], (error, results) => {
       if (error) {
         return res.status(500).send('Error accessing the database');
       }
@@ -61,8 +66,8 @@ router.post('/register', (req, res) => {
 
       const verificationtoken = require('crypto').randomBytes(16).toString('hex');
       // Now insert the user into the Users table with city and state
-      const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, verificationtoken, phoneNumber, zip, city, state, usertype, username) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-      db.query(userInsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, city, state, userType,email], (userError, userResults) => {
+      const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, verificationtoken, phoneNumber, zip, city, state, usertype, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      db.query(userInsertSql, [firstName, lastName, user, verificationtoken, phoneNumber, zipCode, city, state, userType, user, hashedPassword], (userError, userResults) => {
         if (userError) {
             console.error('Error inserting user into database:', userError);
             return res.status(500).send('Error inserting user into database');
@@ -74,6 +79,7 @@ router.post('/register', (req, res) => {
  
       });
     });
+   });
   });
   
 // Route to get city and state by zip code
