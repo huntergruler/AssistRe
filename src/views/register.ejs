@@ -15,7 +15,7 @@
             display: block; /* Ensures the label is on its own line */
             margin-bottom: 5px; /* Space between label and input */
         }
-        input[type="text"], input[type="username"], select {
+        input[type="text"], input[type="email"], select {
             width: 100%; /* Makes inputs and selects take up the full width of the form */
             box-sizing: border-box; /* Includes padding and border in the width */
         }
@@ -49,9 +49,9 @@
             <span id="cityState"></span>
         </div>
         <div class="form-group">
-            <label for="username">User Name:</label>
-            <input type="email" id="username" name="username" required>
-            <span id="usernameStatus"></span>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <span id="emailStatus"></span>
         </div>
         <div class="form-group">
             <label>User Type:</label>
@@ -85,24 +85,23 @@
         }
         </script>
     <script>
-        document.getElementById('username').addEventListener('blur', function() {
-          const username = this.value;
-          console.log('Checking username:', username);
-          if (username) {
-            fetch(`/check-username?username=${encodeURIComponent(username)}`)
+        document.getElementById('email').addEventListener('blur', function() {
+          const email = this.value;
+          if (email) {
+            fetch(`/check-email?email=${encodeURIComponent(email)}`)
               .then(response => response.json())
               .then(data => {
                 if (data.available) {
-                  // User Name is available
-                  document.getElementById('usernameStatus').textContent = 'User Name is available.';
-                  document.getElementById('usernameStatus').style.color = 'green';
+                  // Email is available
+                  document.getElementById('emailStatus').textContent = 'Email is available.';
+                  document.getElementById('emailStatus').style.color = 'green';
                 } else {
-                  // User Name is not available
-                  document.getElementById('usernameStatus').textContent = 'User Name is already registered.';
-                  document.getElementById('usernameStatus').style.color = 'red';
+                  // Email is not available
+                  document.getElementById('emailStatus').textContent = 'Email is already registered.';
+                  document.getElementById('emailStatus').style.color = 'red';
                 }
               })
-              .catch(error => console.error('Error checking username:', error));
+              .catch(error => console.error('Error checking email:', error));
           }
         });
         </script>
