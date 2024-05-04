@@ -49,9 +49,9 @@
             <span id="cityState"></span>
         </div>
         <div class="form-group">
-            <label for="user">Email:</label>
+            <label for="user">User Name:</label>
             <input type="email" id="user" name="user" required>
-            <span id="emailStatus"></span>
+            <span id="userStatus"></span>
         </div>
         <div class="form-group">
             <label>User Type:</label>
@@ -93,15 +93,15 @@
               .then(data => {
                 if (data.available) {
                   // Email is available
-                  document.getElementById('emailStatus').textContent = 'Email is available.';
-                  document.getElementById('emailStatus').style.color = 'green';
+                  document.getElementById('userStatus').textContent = 'Username is available.';
+                  document.getElementById('userStatus').style.color = 'green';
                 } else {
                   // Email is not available
-                  document.getElementById('emailStatus').textContent = 'Email is already registered.';
-                  document.getElementById('emailStatus').style.color = 'red';
+                  document.getElementById('userStatus').textContent = 'Username is already registered.';
+                  document.getElementById('userStatus').style.color = 'red';
                 }
               })
-              .catch(error => console.error('Error checking email:', error));
+              .catch(error => console.error('Error checking user:', error));
           }
         });
         </script>
