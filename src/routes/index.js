@@ -98,13 +98,13 @@ router.get('/get-city-state', (req, res) => {
 });
 // Route to check if user exists
 router.get('/check-user', (req, res) => {
-  const user = req.query.user;
+  const user = req.query.username;
   if (!user) {
       return res.status(400).json({error: 'User Name is required'});
   }
-  console.log('checking user');
+  console.log('checking username');
   const query = 'SELECT count(*) cnt FROM Users WHERE user = ?';
-  db.query(query, [user], (error, results) => {
+  db.query(query, [username], (error, results) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
