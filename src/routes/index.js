@@ -56,6 +56,9 @@ router.post('/register', (req, res) => {
       if (results.length === 0) {
         return res.status(404).send('Zip code not found');
       }
+      if (results.length !== 0) {
+        return res.status(404).send(results);
+      }
       
       const { city, state } = results[0];
   
