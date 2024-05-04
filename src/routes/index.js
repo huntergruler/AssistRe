@@ -84,7 +84,7 @@ router.post('/reset', (req, res) => {
 });
 
 // Route to handle email verification
-app.get('/verify-email', (req, res) => {
+router.get('/verify-email', (req, res) => {
     const { token, email } = req.query;
     db.query('UPDATE Users SET emailverified = 1 WHERE email = ? AND verificationtoken = ?', [email, token], (err, result) => {
       if (err) return res.status(500).send('Database error during email verification.');
@@ -92,7 +92,7 @@ app.get('/verify-email', (req, res) => {
       res.send('Email successfully verified!');
     });
   });
-  
+
 // Function to send a verification email
 function sendVerificationEmail(req, email, token) {
     const mailTransporter = nodemailer.createTransport({
