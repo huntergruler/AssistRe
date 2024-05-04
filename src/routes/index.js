@@ -82,6 +82,35 @@ router.post('/register', (req, res) => {
     });
    });
   });
+
+  router.post('/login', (req, res) => {
+    const { user, password } = req.body;
+  
+    // Query to find the user
+    const query = 'SELECT password FROM Users WHERE username = ?';
+    db.query(query, [user], (error, results) => {
+      if (error) {
+        return res.status(500).send('Error during database query');
+      }
+      if (results.length === 0) {
+        return res.status(404).send('User not found');
+      }
+  
+      // Compare the hashed password stored in the database
+      bcrypt.compare(password, results[0].password, (err, isMatch) => {
+        if (err) {
+          return res.status(500).send('Error comparing passwords');
+        }
+        if (isMatch) {
+          // Passwords match
+          return res.redirect('/index'); // or wherever you want the user to go after login
+        } else {
+          // Passwords do not match
+          return res.status(403).send('Incorrect password');
+        }
+      });
+    });
+  });
   
 // Route to get city and state by zip code
 router.get('/get-city-state', (req, res) => {
