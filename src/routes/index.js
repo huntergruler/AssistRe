@@ -45,11 +45,11 @@ router.get('/register', (req, res) => {
 
 // Handle registration with city and state lookup
 router.post('/register', (req, res) => {
-    const { firstName, lastName, email, phoneNumber, zipCode, userType } = req.body;
+    const { firstName, lastName, email, phoneNumber, zipcode, userType } = req.body;
   
     // First, query the city and state from the ZipCodes table
-    const zipQuery = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
-    db.query(zipQuery, [zipCode], (error, results) => {
+    const zipQuery = 'SELECT city, state FROM ZipCodes WHERE zipcode = ?';
+    db.query(zipQuery, [zipcode], (error, results) => {
       if (error) {
         return res.status(500).send('Error accessing the database');
       }
@@ -60,7 +60,7 @@ router.post('/register', (req, res) => {
       const { city, state } = results[0];
 
       // Now insert the user into the Users table with city and state
-      const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, phoneNumber, zipCode, city, state, userType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+      const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, phoneNumber, zicCode, city, state, userType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
       db.query(userInsertSql, [firstName, lastName, email, phoneNumber, zipcode, city, state, userType], (userError, userResults) => {
         if (userError) {
             return res.status(500).send('Error inserting user into database');
@@ -76,13 +76,13 @@ router.post('/register', (req, res) => {
   
 // Route to get city and state by zip code
 router.get('/get-city-state', (req, res) => {
-    const zipCode = req.query.zipCode;
-    if (!zipCode) {
+    const zipcode = req.query.zipcode;
+    if (!zipcode) {
         return res.status(400).json({error: 'Zip code is required'});
     }
 
-    const query = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
-    db.query(query, [zipCode], (error, results) => {
+    const query = 'SELECT city, state FROM ZipCodes WHERE zipcode = ?';
+    db.query(query, [zipcode], (error, results) => {
         if (error) {
             return res.status(500).json({error: 'Internal server error'});
         }
