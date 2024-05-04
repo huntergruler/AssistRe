@@ -63,6 +63,7 @@ router.post('/register', (req, res) => {
       const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, phoneNumber, zipcode, city, state, usertype) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
       db.query(userInsertSql, [firstName, lastName, email, phoneNumber, zipCode, city, state, userType], (userError, userResults) => {
         if (userError) {
+            console.error('Error inserting user into database:', userError);
             return res.status(500).send('Error inserting user into database');
         }
         
