@@ -103,7 +103,7 @@ router.post('/register', (req, res) => {
         }
         if (isMatch) {
           // Passwords match
-          return res.redirect('/public'); // or wherever you want the user to go after login
+          return res.redirect('/dashboard'); // or wherever you want the user to go after login
         } else {
           // Passwords do not match
           return res.status(403).send('Incorrect password');
@@ -152,6 +152,15 @@ router.get('/check-user', (req, res) => {
         res.json({ available: true });
       }
   });
+});
+
+// Route to serve the dashboard page
+router.get('/dashboard', (req, res) => {
+  if (!req.session.user) {
+      // Assuming you're using session to manage logins
+      return res.status(401).send("Access denied. Please login to access this page.");
+  }
+  res.render('dashboard');
 });
 
 // Password reset route
