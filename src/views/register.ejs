@@ -56,8 +56,24 @@
     </form>
     <script>
         function lookupCityState() {
-            // AJAX request to server to get city and state by zip code
+            var zipCode = document.getElementById('zipCode').value;
+            if (zipCode) {
+                // Create a new XMLHttpRequest object
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/get-city-state?zipCode=' + zipCode, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.city && response.state) {
+                            document.getElementById('cityState').textContent = response.city + ', ' + response.state;
+                        } else {
+                            document.getElementById('cityState').textContent = 'City and state not found';
+                        }
+                    }
+                };
+                xhr.send();
+            }
         }
-    </script>
+        </script>
 </body>
 </html>

@@ -58,6 +58,27 @@ router.post('/register', (req, res) => {
   });
 });
 
+// Route to get city and state by zip code
+router.get('/get-city-state', (req, res) => {
+    const zipCode = req.query.zipCode;
+    if (!zipCode) {
+        return res.status(400).json({error: 'Zip code is required'});
+    }
+
+    const query = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
+    db.query(query, [zipCode], (error, results) => {
+        if (error) {
+            return res.status(500).json({error: 'Internal server error'});
+        }
+        if (results.length > 0) {
+            const { city, state } = results[0];
+            res.json({ city, state });
+        } else {
+            res.status(404).json({error: 'No data found for this zip code'});
+        }
+    });
+});
+
 // Password reset route
 router.get('/reset', (req, res) => {
   res.render('reset');
