@@ -51,6 +51,7 @@ router.post('/register', (req, res) => {
     // First, query the city and state from the ZipCodes table
     bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
       if (err) {
+        console.error("Hashing error:", err);
         return res.status(500).send('Error hashing password');
       }
       const zipQuery = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
