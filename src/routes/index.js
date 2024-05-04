@@ -61,10 +61,9 @@ router.post('/register', (req, res) => {
 
       // Now insert the user into the Users table with city and state
       const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, phoneNumber, zipCode, city, state, userType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-      db.query(userInsertSql, [firstName, lastName, email, phoneNumber, zipCode, city, state, userType], (userError, userResults) => {
+      db.query(userInsertSql, [firstName, lastName, email, phoneNumber, zipcode, city, state, userType], (userError, userResults) => {
         if (userError) {
-            console.log(`City: ${city}, State: ${state}, Error: ${userError}`);
-            return res.status(500).send(userError);
+            return res.status(500).send('Error inserting user into database');
         }
         
         // Send confirmation email (setup code for nodemailer should be here as in previous examples)
