@@ -67,10 +67,11 @@ router.post('/register', (req, res) => {
             return res.status(500).send('Error inserting user into database');
         }
         
-        // Send confirmation email (setup code for nodemailer should be here as in previous examples)
-        // Placeholder for email sending logic...
+      // Send confirmation email
+      sendVerificationEmail(req, email, verificationToken);
+      res.send('Registration successful! Please check your email to verify.');      // Placeholder for email sending logic...
   
-        res.redirect('/login');
+      res.redirect('/login');
       });
     });
   });
