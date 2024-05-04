@@ -70,9 +70,8 @@ router.post('/register', (req, res) => {
         
       // Send confirmation email
       sendVerificationEmail(req, email, verificationtoken);
-      res.send('Registration successful! Please check your email to verify.');      // Placeholder for email sending logic...
-  
-      res.redirect('/login');
+      res.send('Registration successful! Please check your email to verify.');
+ 
       });
     });
   });
