@@ -75,7 +75,7 @@ router.post('/register', (req, res) => {
         }
         
       // Send confirmation email
-      sendVerificationEmail(req, email, verificationtoken);
+      sendVerificationEmail(req, user, verificationtoken);
       res.send('Registration successful! Please check your email to verify.');
  
       });
@@ -152,8 +152,8 @@ router.post('/reset', (req, res) => {
 
 // Route to handle email verification
 router.get('/verify-email', (req, res) => {
-    const { token, email } = req.query;
-    db.query('UPDATE Users SET emailverified = 1 WHERE email = ? AND verificationtoken = ?', [email, token], (err, result) => {
+    const { token, user } = req.query;
+    db.query('UPDATE Users SET emailverified = 1 WHERE email = ? AND verificationtoken = ?', [user, token], (err, result) => {
       if (err) return res.status(500).send('Database error during email verification.');
       if (result.affectedRows === 0) return res.status(404).send('Token not found or email already verified.');
       res.send('Email successfully verified!');
@@ -161,7 +161,7 @@ router.get('/verify-email', (req, res) => {
   });
 
 // Function to send a verification email
-function sendVerificationEmail(req, email, token) {
+function sendVerificationEmail(req, user, token) {
     const mailTransporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: process.env.SMTP_PORT,
@@ -173,9 +173,9 @@ function sendVerificationEmail(req, email, token) {
   
     const mailDetails = {
       from: process.env.SMTP_FROM,
-      to: email,
+      to: user,
       subject: 'Verify your email address',
-      html: `Please click on this link to verify your email: <a href="http://${req.headers.host}/verify-email?token=${token}&email=${email}">Verify Email</a>`
+      html: `Please click on this link to verify your email: <a href="http://${req.headers.host}/verify-email?token=${token}&email=${user}">Verify Email</a>`
     };
   
     mailTransporter.sendMail(mailDetails, (error, info) => {
