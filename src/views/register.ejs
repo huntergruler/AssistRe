@@ -49,8 +49,8 @@
             <span id="cityState"></span>
         </div>
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="user">Email:</label>
+            <input type="email" id="user" name="user" required>
             <span id="emailStatus"></span>
         </div>
         <div class="form-group">
@@ -85,10 +85,10 @@
         }
         </script>
     <script>
-        document.getElementById('email').addEventListener('blur', function() {
+        document.getElementById('user').addEventListener('blur', function() {
           const email = this.value;
           if (email) {
-            fetch(`/check-user?email=${encodeURIComponent(email)}`)
+            fetch(`/check-user?email=${encodeURIComponent(user)}`)
               .then(response => response.json())
               .then(data => {
                 if (data.available) {
