@@ -15,9 +15,16 @@
             display: block; /* Ensures the label is on its own line */
             margin-bottom: 5px; /* Space between label and input */
         }
-        input, select {
+        input[type="text"], input[type="email"], select {
             width: 100%; /* Makes inputs and selects take up the full width of the form */
             box-sizing: border-box; /* Includes padding and border in the width */
+        }
+        .radio-group {
+            padding-left: 20px; /* Indentation for radio buttons */
+        }
+        .radio-label {
+            display: inline-block;
+            margin-right: 10px; /* Space between radio buttons */
         }
     </style>
 </head>
@@ -46,11 +53,11 @@
             <span id="cityState"></span>
         </div>
         <div class="form-group">
-            <label for="userType">User Type:</label>
-            <select id="userType" name="userType">
-                <option value="Buyer">Buyer</option>
-                <option value="Agent">Agent</option>
-            </select>
+            <label>User Type:</label>
+            <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="userType" value="Buyer" required> Buyer</label>
+                <label class="radio-label"><input type="radio" name="userType" value="Agent" required> Agent</label>
+            </div>
         </div>
         <button type="submit">Register</button>
     </form>

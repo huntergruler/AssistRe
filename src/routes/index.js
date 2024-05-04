@@ -61,8 +61,8 @@ router.post('/register', (req, res) => {
 
       const verificationtoken = require('crypto').randomBytes(16).toString('hex');
       // Now insert the user into the Users table with city and state
-      const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, verificationtoken, phoneNumber, zip, city, state, usertype) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-      db.query(userInsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, city, state, userType], (userError, userResults) => {
+      const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, verificationtoken, phoneNumber, zip, city, state, usertype, username) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      db.query(userInsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, city, state, userType,email], (userError, userResults) => {
         if (userError) {
             console.error('Error inserting user into database:', userError);
             return res.status(500).send('Error inserting user into database');
