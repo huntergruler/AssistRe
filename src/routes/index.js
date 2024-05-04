@@ -58,8 +58,8 @@ router.post('/register', (req, res) => {
       }
       
       const { city, state } = results[0];
-      return res.status(404).send(results[0], 'city',city, 'state',state);
-  
+      console.log(`City: ${city}, State: ${state}`);
+
       // Now insert the user into the Users table with city and state
       const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, phoneNumber, zipCode, city, state, userType) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
       db.query(userInsertSql, [firstName, lastName, email, phoneNumber, zipCode, city, state, userType], (userError, userResults) => {
