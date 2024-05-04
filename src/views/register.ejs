@@ -41,8 +41,8 @@
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required onblur="lookupEmail()">
-            <span id="emailexists"></span>
+            <input type="email" id="email" name="email" required>
+            <span id="emailStatus"></span>
         </div>
         <div class="form-group">
             <label for="phoneNumber">Phone Number:</label>
@@ -106,5 +106,27 @@
             }
         }
         </script>
+    <script>
+        document.getElementById('email').addEventListener('blur', function() {
+          const email = this.value;
+          if (email) {
+            fetch(`/check-email?email=${encodeURIComponent(email)}`)
+              .then(response => response.json())
+              .then(data => {
+                if (data.available) {
+                  // Email is available
+                  document.getElementById('emailStatus').textContent = 'Email is available.';
+                  document.getElementById('emailStatus').style.color = 'green';
+                } else {
+                  // Email is not available
+                  document.getElementById('emailStatus').textContent = 'Email is already registered.';
+                  document.getElementById('emailStatus').style.color = 'red';
+                }
+              })
+              .catch(error => console.error('Error checking email:', error));
+          }
+        });
+        </script>
+    
 </body>
 </html>

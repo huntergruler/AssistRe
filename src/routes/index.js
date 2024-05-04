@@ -108,10 +108,13 @@ router.get('/check-email', (req, res) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
-      if (results > 0) {
-        const { emailexists } = true;
-        res.json({ emailexists });
-    }
+      if (results[0].count > 0) {
+        // Email is already taken
+        res.json({ available: false });
+      } else {
+        // Email is available
+        res.json({ available: true });
+      }
   });
 });
 
