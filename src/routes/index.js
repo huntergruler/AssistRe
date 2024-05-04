@@ -103,13 +103,13 @@ router.get('/check-email', (req, res) => {
       return res.status(400).json({error: 'Email is required'});
   }
   console.log('checking email');
-  const query = 'SELECT count(*) FROM Users WHERE email = ?';
+  const query = 'SELECT count(*) cnt FROM Users WHERE email = ?';
   db.query(query, [email], (error, results) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
-      console.log(results[0].count);
-      if (results[0].count > 0) {
+      console.log(results[0]);
+      if (results[0].cnt > 0) {
         // Email is already taken
         res.json({ available: false });
       } else {
