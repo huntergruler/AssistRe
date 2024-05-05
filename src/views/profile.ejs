@@ -2,6 +2,73 @@
 <script src="/script.js"></script> <!-- Link to your external JavaScript file -->
 <html lang="en">
     <head>
+        <style
+        /* Style for the modal background */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        
+        /* Modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // Function to add a license
+// Get the modal
+var modal = document.getElementById('licenseDialog');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
@@ -15,6 +82,19 @@
         <input type="text" id="licensestate" name="licensestate" placeholder="License State" pattern="[A-Z]{2}" title="Enter a valid US state abbreviation" required>
         <button type="button" onclick="addLicense()">Add</button>
     </form>
+<!-- Popup Dialog HTML -->
+<div id="licenseDialog" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <form id="licenseForm">
+            <label for="licenseNumber">License Number:</label>
+            <input type="text" id="licenseNumber" name="licenseNumber" required>
+            <label for="licenseState">License State:</label>
+            <input type="text" id="licenseState" name="licenseState" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+            <button type="button" onclick="addLicense()">Add License</button>
+        </form>
+    </div>
+</div>
 
     <table id="licensesTable">
         <thead>

@@ -54,7 +54,8 @@ router.get('/logout', (req, res) => {
           return console.log(err);
       }
       res.send("Logout successful!");
-  });
+      res.render('login');
+    });
 });
 
 // Register route
