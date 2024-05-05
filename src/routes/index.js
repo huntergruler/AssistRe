@@ -108,7 +108,6 @@ router.post('/register', (req, res) => {
       db.query(query,[ req.session.userid ], (err, results) => {
           if (err) throw err;
           let haslicenses = results.length > 0;
-          console.log('results', haslicenses, results);
           res.render('profile', { licenses: results, haslicenses });
       });
   });
