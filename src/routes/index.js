@@ -112,6 +112,13 @@ router.post('/register', (req, res) => {
           res.render('profile', { licenses: results, hasLicenses: hasLicenses });
       });
   });
+
+  router.get('/all', (req, res) => {
+    const query = 'SELECT * FROM AgentLicenseInfo where userid = ?'; 
+      db.query(query,[ req.session.userid ], (err, results) => {
+        res.json({results});
+      });
+  });
   
   router.post('/api/licenses', (req, res) => {
     console.log('req.body:',req.body);
