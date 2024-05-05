@@ -27,12 +27,12 @@
         <tbody>
             <% if (hasLicenses) { %>
               <% licenses.forEach(function(license) { %>
-                <tr id="license-<%= license.id %>">
+                <tr id="license-<%= license.agentlicenseid %>">
                     <td><%= license.licensenumber %></td>
                     <td><%= license.licensestate %></td>
                     <td>
                         <button onclick="editLicense(<%= license.id %>)">Edit</button>
-                        <button class="delete-btn" data-id="<%= license.id %>">Delete</button>
+                        <button class="delete-btn" data-id="<%= license.agentlicenseid %>">Delete</button>
                     </td>
                 </tr>
             <% }); %>

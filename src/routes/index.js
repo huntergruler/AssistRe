@@ -145,8 +145,8 @@ router.post('/register', (req, res) => {
 
   router.delete('/api/licenses/:id', (req, res) => {
       const { id } = req.params;
-      const deleteQuery = 'DELETE FROM AgentLicenseInfo WHERE id = ?';
-      db.query(deleteQuery, [id], (err, result) => {
+      const deleteQuery = 'DELETE FROM AgentLicenseInfo WHERE agentlicenseid = ?';
+      db.query(deleteQuery, [req.session.userid,id], (err, result) => {
           if (err) throw err;
           res.status(204).send();
       });
