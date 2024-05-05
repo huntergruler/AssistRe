@@ -114,7 +114,7 @@ router.post('/register', (req, res) => {
   });
 
   router.get('/all', (req, res) => {
-    const query = 'SELECT * FROM AgentLicenseInfo where userid = ?'; 
+    const query = 'SELECT * FROM AgentLicenseInfo'; 
       db.query(query,[ req.session.userid ], (err, results) => {
         res.json({results});
       });
