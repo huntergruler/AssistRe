@@ -109,8 +109,6 @@ router.post('/register', (req, res) => {
           if (err) throw err;
           let hasLicenses = results.length > 0;
           res.render('profile', { licenses: results, hasLicenses: hasLicenses });
-          // Or using ES6 object shorthand if keeping the same variable name
-          res.render('profile', { licenses: results, hasLicenses });
       });
   });
   
