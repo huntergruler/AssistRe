@@ -119,8 +119,17 @@ router.post('/register', (req, res) => {
   router.get('/all', (req, res) => {
     const query = 'SELECT * FROM AgentLicenseInfo'; 
       db.query(query,[ req.session.userid ], (err, results) => {
-        res.json({results});
+        if (error) {
+          return res.status(500).json({error: 'Internal server error'});
+        }
+        if (results.length > 0) {
+          res.json({results});
+        }
       });
+  });
+
+  router.get('/launch', (req, res) => {
+    return res.status(500).json({error: 'Bad request'});
   });
   
   router.post('/api/licenses', (req, res) => {
