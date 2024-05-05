@@ -42,7 +42,7 @@
         }
     </style>
     <script>
-        // Function to add a license
+// Function to add a license
 // Get the modal
 var modal = document.getElementById('licenseDialog');
 
@@ -77,11 +77,6 @@ window.onclick = function(event) {
 <body>
     <h1>Profile Page</h1>
     <a href="/dashboard">Dashboard</a> | <a href="/settings">Settings</a> | <a href="/logout">Logout</a>
-    <form id="licenseForm">
-        <input type="text" id="licensenumber" name="licensenumber" placeholder="License Number" required>
-        <input type="text" id="licensestate" name="licensestate" placeholder="License State" pattern="[A-Z]{2}" title="Enter a valid US state abbreviation" required>
-        <button type="button" onclick="addLicense()">Add</button>
-    </form>
 <!-- Popup Dialog HTML -->
 <div id="licenseDialog" class="modal">
     <div class="modal-content">
