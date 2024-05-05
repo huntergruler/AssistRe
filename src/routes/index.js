@@ -119,7 +119,7 @@ router.post('/register', (req, res) => {
         if (isMatch) {
           // Passwords match
           console.log('User logged in:', user);
-          req.session.user = results[0]; // Store the whole user object or just parts of it, e.g., req.session.user = { id: results[0].id, name: results[0].name };
+          req.session.user = user; // Store the whole user object or just parts of it, e.g., req.session.user = { id: results[0].id, name: results[0].name };
           return res.redirect('/dashboard'); // or wherever you want the user to go after login
         } else {
           // Passwords do not match
