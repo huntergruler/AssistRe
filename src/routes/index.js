@@ -107,6 +107,14 @@ router.post('/register', (req, res) => {
         if (isMatch) {
           // Passwords match
           console.log('User logged in:', user);
+
+
+          const query = 'UPDATE Users set lastlogin = now()';
+          db.query(query, [user], (error, results) => {
+            if (error) {
+              return res.status(500).send('Error during database query');
+            }
+          });
           req.session.user = user; // Store the user in the session
           return res.redirect('/dashboard'); // or wherever you want the user to go after login
         } else {
