@@ -7,6 +7,8 @@ const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
 const saltRounds = 10; // The cost factor controls how much time is needed to calculate a single bcrypt hash.
+const app = express();
+
 
 // Setting up the session middleware
 app.use(session({
