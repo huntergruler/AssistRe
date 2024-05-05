@@ -19,8 +19,6 @@ app.use(session({
   cookie: { secure: false }    // ensures the browser only sends the cookie over HTTPS
 }));
 
-console.log(req.session);
-
 //app.use(require('routes'));
 
 // Database connection setup
@@ -52,6 +50,7 @@ router.get('/', (req, res) => {
 
 // Login route
 router.get('/login', (req, res) => {
+  console.log(req.session);
   res.render('login');
 });
 
