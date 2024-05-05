@@ -43,11 +43,6 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// Login route
-router.get('/profile', (req, res) => {
-  res.render('profile');
-});
-
 // Route to handle user logout
 router.get('/logout', (req, res) => {
   req.session.destroy((err) => {
@@ -108,8 +103,8 @@ router.post('/register', (req, res) => {
       db.query(query,[ req.session.userid ], (err, results) => {
           if (err) throw err;
           let hasLicenses = results.length > 0;
-          hasLicenses = true;
-          console.log('hasLicenses:',hasLicenses);
+//          hasLicenses = true;
+//          console.log('hasLicenses:',hasLicenses);
           res.render('profile', { licenses: results, hasLicenses: hasLicenses });
       });
   });
