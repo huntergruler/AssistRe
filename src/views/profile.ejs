@@ -1,3 +1,4 @@
+<pre><%= JSON.stringify(locals, null, 2) %></pre>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            <% if (haslicenses) { %>
+            <% if (hasLicenses) { %>
               <% licenses.forEach(function(license) { %>
                 <tr id="license-<%= license.id %>">
                     <td><%= license.licensenumber %></td>

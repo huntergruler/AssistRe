@@ -107,8 +107,10 @@ router.post('/register', (req, res) => {
       const query = 'SELECT * FROM AgentLicenseInfo where userid = ?'; 
       db.query(query,[ req.session.userid ], (err, results) => {
           if (err) throw err;
-          let haslicenses = results.length > 0;
-          res.render('profile', { licenses: results, haslicenses });
+          let hasLicenses = results.length > 0;
+          res.render('profile', { licenses: results, hasLicenses: hasLicenses });
+          // Or using ES6 object shorthand if keeping the same variable name
+          res.render('profile', { licenses: results, hasLicenses });
       });
   });
   
