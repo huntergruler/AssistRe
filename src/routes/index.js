@@ -104,11 +104,11 @@ router.post('/register', (req, res) => {
 
   // Assuming `db` is your MySQL connection db, already set up in app.js
   router.get('/profile', (req, res) => {
-      const query = 'SELECT * FROM AgentLicenseInfo'; 
-      db.query(query, (err, results) => {
+      const query = 'SELECT * FROM AgentLicenseInfo where userid = ?'; 
+      db.query(query,[ req.session.userid ], (err, results) => {
           if (err) throw err;
-      console.log(results);
-          res.render('profile', { licenses: results });
+          let haslicenses = results.length > 0;
+          res.render('profile', { licenses: results, haslicenses });
       });
   });
   

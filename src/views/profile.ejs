@@ -23,7 +23,8 @@
             </tr>
         </thead>
         <tbody>
-            <% licenses.forEach(function(license) { %>
+            <% if (licenses.lenght > 0) { %>
+              <% licenses.forEach(function(license) { %>
                 <tr id="license-<%= license.id %>">
                     <td><%= license.licensenumber %></td>
                     <td><%= license.licensestate %></td>
@@ -33,6 +34,11 @@
                     </td>
                 </tr>
             <% }); %>
+            <% } else { %>
+                <tr>
+                    <td colspan="3">No licenses found.</td>
+                </tr>
+            <% } %>
         </tbody>
     </table>
 
