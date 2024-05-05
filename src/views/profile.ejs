@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Ensure you have some CSS for basic styling -->
+</head>
+<body>
+    <h1>Profile Page</h1>
+    <form id="licenseForm">
+        <input type="text" id="licensenumber" name="licensenumber" placeholder="License Number" required>
+        <input type="text" id="licensestate" name="licensestate" placeholder="License State" pattern="[A-Z]{2}" title="Enter a valid US state abbreviation" required>
+        <button type="button" onclick="addLicense()">Add</button>
+    </form>
+
+    <table id="licensesTable">
+        <thead>
+            <tr>
+                <th>License Number</th>
+                <th>License State</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% licenses.forEach(function(license) { %>
+                <tr id="license-<%= license.id %>">
+                    <td><%= license.licensenumber %></td>
+                    <td><%= license.licensestate %></td>
+                    <td>
+                        <button onclick="editLicense(<%= license.id %>)">Edit</button>
+                        <button class="delete-btn" data-id="<%= license.id %>">Delete</button>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <script src="/script.js"></script> <!-- Link to your external JavaScript file -->
+</body>
+</html>

@@ -7,6 +7,7 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
+const validStates = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 const { body, validationResult } = require('express-validator');
 const saltRounds = 10; // The cost factor controls how much time is needed to calculate a single bcrypt hash.
 
@@ -40,6 +41,11 @@ router.get('/', (req, res) => {
 // Login route
 router.get('/login', (req, res) => {
   res.render('login');
+});
+
+// Login route
+router.get('/profile', (req, res) => {
+  res.render('profile');
 });
 
 // Route to handle user logout
@@ -96,11 +102,59 @@ router.post('/register', (req, res) => {
    });
   });
 
+  // Assuming `pool` is your MySQL connection pool, already set up in app.js
+  router.get('/profile', (req, res) => {
+      const query = 'SELECT * FROM AgentLicenseInfo'; // Assume you have a table `Licenses`
+      pool.query(query, (err, results) => {
+          if (err) throw err;
+          res.render('profile', { licenses: results });
+      });
+  });
+  
+  router.post('/api/licenses', (req, res) => {
+      const { licensenumber, licensestate } = req.body;
+      const insertQuery = 'INSERT INTO AgentLicenseInfo (licensenumber, licensestate, userid) VALUES (?, ?, ?)';
+      pool.query(insertQuery, [licensenumber, licensestate, req.session.userid], (err, result) => {
+          if (err) throw err;
+          res.json({ id: result.insertId, licensenumber, licensestate });
+      });
+  });
+
+  router.put('/api/licenses/:id', (req, res) => {
+      const { id } = req.params;
+      const { licensenumber, licensestate } = req.body;
+  
+      if (!validStates.includes(licensestate)) {
+          return res.status(400).json({ error: 'Invalid state abbreviation' });
+      }
+  
+      const updateQuery = 'UPDATE Licenses SET licensenumber = ?, licensestate = ? WHERE id = ?';
+      pool.query(updateQuery, [licensenumber, licensestate, id], (err, result) => {
+          if (err) {
+              return res.status(500).json({ error: 'Database error during the update' });
+          }
+          if (result.affectedRows === 0) {
+              return res.status(404).json({ error: 'License not found' });
+          }
+          res.json({ id, licensenumber, licensestate });
+      });
+  });
+
+  router.delete('/api/licenses/:id', (req, res) => {
+      const { id } = req.params;
+      const deleteQuery = 'DELETE FROM AgentLicenseInfo WHERE id = ?';
+      pool.query(deleteQuery, [id], (err, result) => {
+          if (err) throw err;
+          res.status(204).send();
+      });
+  });
+ 
+
   router.post('/login', (req, res) => {
     const { user, password } = req.body;
   
     // Query to find the user
-    const query = 'SELECT password FROM Users WHERE username = ?';
+    const query = 'SELECT password,userid FROM Users WHERE username = ?';
     db.query(query, [user], (error, results) => {
       if (error) {
         return res.status(500).send('Error during database query');
@@ -124,6 +178,7 @@ router.post('/register', (req, res) => {
             }
           });
           req.session.user = user; // Store the user in the session
+          req.session.userid = userid; // Store the userid in the session
           return res.redirect('/dashboard'); // or wherever you want the user to go after login
         } else {
           // Passwords do not match
