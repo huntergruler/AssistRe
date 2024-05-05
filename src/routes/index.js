@@ -102,10 +102,10 @@ router.post('/register', (req, res) => {
    });
   });
 
-  // Assuming `pool` is your MySQL connection pool, already set up in app.js
+  // Assuming `db` is your MySQL connection db, already set up in app.js
   router.get('/profile', (req, res) => {
-      const query = 'SELECT * FROM AgentLicenseInfo'; // Assume you have a table `Licenses`
-      pool.query(query, (err, results) => {
+      const query = 'SELECT * FROM AgentLicenseInfo'; 
+      db.query(query, (err, results) => {
           if (err) throw err;
           res.render('profile', { licenses: results });
       });
@@ -114,7 +114,7 @@ router.post('/register', (req, res) => {
   router.post('/api/licenses', (req, res) => {
       const { licensenumber, licensestate } = req.body;
       const insertQuery = 'INSERT INTO AgentLicenseInfo (licensenumber, licensestate, userid) VALUES (?, ?, ?)';
-      pool.query(insertQuery, [licensenumber, licensestate, req.session.userid], (err, result) => {
+      db.query(insertQuery, [licensenumber, licensestate, req.session.userid], (err, result) => {
           if (err) throw err;
           res.json({ id: result.insertId, licensenumber, licensestate });
       });
@@ -129,7 +129,7 @@ router.post('/register', (req, res) => {
       }
   
       const updateQuery = 'UPDATE Licenses SET licensenumber = ?, licensestate = ? WHERE id = ?';
-      pool.query(updateQuery, [licensenumber, licensestate, id], (err, result) => {
+      db.query(updateQuery, [licensenumber, licensestate, id], (err, result) => {
           if (err) {
               return res.status(500).json({ error: 'Database error during the update' });
           }
@@ -143,7 +143,7 @@ router.post('/register', (req, res) => {
   router.delete('/api/licenses/:id', (req, res) => {
       const { id } = req.params;
       const deleteQuery = 'DELETE FROM AgentLicenseInfo WHERE id = ?';
-      pool.query(deleteQuery, [id], (err, result) => {
+      db.query(deleteQuery, [id], (err, result) => {
           if (err) throw err;
           res.status(204).send();
       });
@@ -154,15 +154,15 @@ router.post('/register', (req, res) => {
     const { user, password } = req.body;
   
     // Query to find the user
-    const query = 'SELECT password,userid FROM Users WHERE username = ?';
-    db.query(query, [user], (error, results) => {
+    const query = 'SELECT password, userid FROM Users WHERE username = ?';
+      db.query(query, [user], (error, results) => {
       if (error) {
         return res.status(500).send('Error during database query');
       }
       if (results.length === 0) {
         return res.status(404).send('User not found');
       }
-  
+      const { userid } = results[0];
       // Compare the hashed password stored in the database
       bcrypt.compare(password, results[0].password, (err, isMatch) => {
         if (err) {
@@ -171,8 +171,8 @@ router.post('/register', (req, res) => {
         if (isMatch) {
           // Passwords match
           console.log('User logged in:', user);
-          const query = 'UPDATE Users set lastlogin = now()';
-          db.query(query, [user], (error, results) => {
+          const query = 'UPDATE Users set lastlogin = now() WHERE userid = ?';
+            db.query(query, [userid], (error, results) => {
             if (error) {
               return res.status(500).send('Error during database query');
             }
