@@ -107,6 +107,7 @@ router.post('/register', (req, res) => {
       const query = 'SELECT * FROM AgentLicenseInfo'; 
       db.query(query, (err, results) => {
           if (err) throw err;
+      console.log(results);
           res.render('profile', { licenses: results });
       });
   });
@@ -128,7 +129,7 @@ router.post('/register', (req, res) => {
           return res.status(400).json({ error: 'Invalid state abbreviation' });
       }
   
-      const updateQuery = 'UPDATE Licenses SET licensenumber = ?, licensestate = ? WHERE id = ?';
+      const updateQuery = 'UPDATE AgentLicenseInfo SET licensenumber = ?, licensestate = ? WHERE id = ?';
       db.query(updateQuery, [licensenumber, licensestate, id], (err, result) => {
           if (err) {
               return res.status(500).json({ error: 'Database error during the update' });
