@@ -5,7 +5,7 @@ function addLicense() {
     fetch('/api/licenses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ licensenumber, licensestate })
+        body: JSON.stringify({ licensenumber: licensenumber, licensestate: licensestate })
     })
     .then(response => response.json())
     .then(data => {

@@ -110,6 +110,7 @@ router.post('/register', (req, res) => {
   });
   
   router.post('/api/licenses', (req, res) => {
+    console.log('req.body:',req.body);
       const { licensenumber, licensestate } = req.body;
       const insertQuery = 'INSERT INTO AgentLicenseInfo (licensenumber, licensestate, userid) VALUES (?, ?, ?)';
       db.query(insertQuery, [licensenumber, licensestate, req.session.userid], (err, result) => {
