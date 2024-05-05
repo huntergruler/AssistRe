@@ -10,6 +10,10 @@ const bcrypt = require('bcrypt');
 const validStates = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 const { body, validationResult } = require('express-validator');
 const saltRounds = 10; // The cost factor controls how much time is needed to calculate a single bcrypt hash.
+const bodyParser = require('body-parser');
+
+// Ensure you have body-parser configured to parse JSON
+router.use(bodyParser.json());
 
 // Database connection setup
 const db = mysql.createConnection({
