@@ -17,13 +17,17 @@ function addLicense() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Attach event listeners to delete buttons
-    document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const licenseId = this.getAttribute('data-id');
-            deleteLicense(licenseId);
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    if (deleteButtons.length > 0) {
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const licenseId = this.getAttribute('data-id');
+                deleteLicense(licenseId);
+            });
         });
-    });
+    } else {
+        console.log("No delete buttons to attach listeners to.");
+    }
 });
 
 function deleteLicense(id) {
