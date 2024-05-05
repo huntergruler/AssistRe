@@ -17,6 +17,7 @@ app.use(session({
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
 
 app.use((req, res, next) => {
   req.session._garbage = Date();
