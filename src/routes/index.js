@@ -19,7 +19,7 @@ app.use(session({
   cookie: { secure: false }    // ensures the browser only sends the cookie over HTTPS
 }));
 
-//app.use(require('./routes'));
+app.use(require('routes'));
 
 // Database connection setup
 const db = mysql.createConnection({
