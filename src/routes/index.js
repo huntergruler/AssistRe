@@ -109,6 +109,7 @@ router.post('/register', (req, res) => {
           if (err) throw err;
           let hasLicenses = results.length > 0;
           hasLicenses = true;
+          console.log('hasLicenses:',hasLicenses);
           res.render('profile', { licenses: results, hasLicenses: hasLicenses });
       });
   });
