@@ -1,6 +1,6 @@
 require('dotenv').config();
-const express = require('express');
-const session = require('express-session');
+//const express = require('express');
+//const session = require('express-session');
 const app = express();
 
 const router = express.Router();
@@ -9,17 +9,6 @@ const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
 const saltRounds = 10; // The cost factor controls how much time is needed to calculate a single bcrypt hash.
-
-
-// Setting up the session middleware
-app.use(session({
-  secret: process.env.SESSION_SECRET,  // a secret key used to sign the session ID cookie
-  resave: false,              // forces the session to be saved back to the session store, even if the session was never modified during the request
-  saveUninitialized: true,    // forces a session that is "uninitialized" to be saved to the store
-  cookie: { secure: false }    // ensures the browser only sends the cookie over HTTPS
-}));
-
-//app.use(require('routes'));
 
 // Database connection setup
 const db = mysql.createConnection({
@@ -50,7 +39,6 @@ router.get('/', (req, res) => {
 
 // Login route
 router.get('/login', (req, res) => {
-  console.log(req.session);
   res.render('login');
 });
 
@@ -101,7 +89,6 @@ router.post('/register', (req, res) => {
   router.post('/login', (req, res) => {
     const { user, password } = req.body;
   
-    console.log(req.session); 
     // Query to find the user
     const query = 'SELECT password FROM Users WHERE username = ?';
     db.query(query, [user], (error, results) => {
