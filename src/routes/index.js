@@ -113,6 +113,9 @@ router.post('/register', (req, res) => {
       });
   });
 
+
+
+  // GET RID OF THIS, DEBUG ONLY
   router.get('/all', (req, res) => {
     const query = 'SELECT * FROM AgentLicenseInfo'; 
       db.query(query,[ req.session.userid ], (err, results) => {
