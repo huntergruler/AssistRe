@@ -42,6 +42,16 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Route to handle user logout
+router.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+      if (err) {
+          return console.log(err);
+      }
+      res.send("Logout successful!");
+  });
+});
+
 // Register route
 router.get('/register', (req, res) => {
   res.render('register');
@@ -107,8 +117,6 @@ router.post('/register', (req, res) => {
         if (isMatch) {
           // Passwords match
           console.log('User logged in:', user);
-
-
           const query = 'UPDATE Users set lastlogin = now()';
           db.query(query, [user], (error, results) => {
             if (error) {

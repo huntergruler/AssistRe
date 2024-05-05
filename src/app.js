@@ -10,10 +10,19 @@ app.use(session({
   secret: 'your_secret_key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // for development, set secure: true in production
+  cookie: {
+    secure: false, // set to true if you're using HTTPS
+    maxAge: 1000 * 60 * 15 // sets the cookie to expire after 15 minutes
+}
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+
+app.use((req, res, next) => {
+  req.session._garbage = Date();
+  req.session.touch();
+  next();
+});
 
 // Use routes
 app.use('/', indexRouter);
