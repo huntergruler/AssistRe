@@ -16,7 +16,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,  // a secret key used to sign the session ID cookie
   resave: false,              // forces the session to be saved back to the session store, even if the session was never modified during the request
   saveUninitialized: true,    // forces a session that is "uninitialized" to be saved to the store
-  cookie: { secure: auto }    // ensures the browser only sends the cookie over HTTPS
+  cookie: { secure: false }    // ensures the browser only sends the cookie over HTTPS
 }));
 
 app.use(require('./routes'));
