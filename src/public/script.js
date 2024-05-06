@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
     console.log("No delete buttons to attach listeners to.");
    }
-    console.log('myparam:',myParam);
     if (params.get('emailverified') === 'false') {
         const messageDiv = document.getElementById('verifyMessage');
         messageDiv.innerHTML = 'Please verify your email and try again.';
