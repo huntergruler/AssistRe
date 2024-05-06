@@ -54,6 +54,9 @@ router.get('/logout', (req, res) => {
           return console.log(err);
       }
       res.send("Logout successful!");
+      .then(() => {
+          res.redirect('/login');
+      }
     });
 });
 
@@ -176,13 +179,16 @@ router.post('/register', (req, res) => {
     const { user, password } = req.body;
   
     // Query to find the user
-    const query = 'SELECT password, userid FROM Users WHERE username = ?';
+    const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
       db.query(query, [user], (error, results) => {
       if (error) {
         return res.status(500).send('Error during database query');
       }
       if (results.length === 0) {
         return res.status(404).send('User not found');
+      }
+      if (results[0].emailverified === 0) {
+        return res.status(404).send('Please verify your email before logging in.');
       }
       const { userid } = results[0];
       // Compare the hashed password stored in the database
