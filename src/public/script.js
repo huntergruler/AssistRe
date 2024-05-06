@@ -19,7 +19,7 @@ function addLicense() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
-    const myParam = params.get('myParam');
+    const myParam = params.get('emialverified');
     const deleteButtons = document.querySelectorAll('.delete-btn');
     if (deleteButtons.length > 0) {
         deleteButtons.forEach(button => {
