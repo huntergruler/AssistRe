@@ -188,6 +188,7 @@ router.post('/login', (req, res) => {
       if (results.length === 0) {
         return res.status(404).send('User not found');
       }
+      console.log('results:',results);
       if (results[0].emailverified === 0) {
       //  return res.status(404).send('Please verify your email before logging in.');
          // Redirect to login with a logout message

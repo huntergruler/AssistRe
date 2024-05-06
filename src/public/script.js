@@ -32,20 +32,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 document.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('loggedOut') === 'true') {
-        const messageDiv = document.getElementById('logoutMessage');
-        messageDiv.innerHTML = 'You are logged out.';
-        // Add any styles or animations you want
-        messageDiv.style.color = 'green';
-    }
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const params = new URLSearchParams(window.location.search);
     if (params.get('emailverified') === 'false') {
         const messageDiv = document.getElementById('verifyMessage');
         messageDiv.innerHTML = 'Please verify your email and try again.';
         // Add any styles or animations you want
         messageDiv.style.color = 'red';
+    }
+    if (params.get('loggedOut') === 'true') {
+        const messageDiv = document.getElementById('logoutMessage');
+        messageDiv.innerHTML = 'You are logged out.';
+        // Add any styles or animations you want
+        messageDiv.style.color = 'green';
     }
 });
 function deleteLicense(id) {
