@@ -177,47 +177,35 @@ router.get('/logout', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    const { user, password } = req.body;
-  
-    // Query to find the user
-    const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
-      db.query(query, [user], (error, results) => {
-      if (error) {
-        return res.status(500).send('Error during database query');
+  const { user, password } = req.body;
+
+  const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
+  db.query(query, [user], (error, results) => {
+    if (error) {
+      return res.render('login', { errorMessage: 'Error during database query' });
+    }
+    if (results.length === 0) {
+      return res.render('login', { errorMessage: 'User not found' });
+    }
+    if (results[0].emailverified === 0) {
+      return res.render('login', { errorMessage: 'Email not verified. Please check your email for the verification link.' });
+    }
+    const { userid } = results[0];
+    bcrypt.compare(password, results[0].password, (err, isMatch) => {
+      if (err) {
+        return res.render('login', { errorMessage: 'Error comparing passwords' });
       }
-      if (results.length === 0) {
-        return res.status(404).send('User not found');
+      if (isMatch) {
+        req.session.user = user;
+        req.session.userid = userid;
+        return res.redirect('/dashboard');
+      } else {
+        return res.render('login', { errorMessage: 'Incorrect password' });
       }
-      if (results[0].emailverified === 0) {
-        return res.status(404).send('Email not verified. Please check your email for the verification link.');
-//          return res.redirect('/login?emailverfied=false');
-      }
-      const { userid } = results[0];
-      // Compare the hashed password stored in the database
-      bcrypt.compare(password, results[0].password, (err, isMatch) => {
-        if (err) {
-          return res.status(500).send('Error comparing passwords');
-        }
-        if (isMatch) {
-          // Passwords match
-          console.log('User logged in:', user);
-          const query = 'UPDATE Users set lastlogin = now() WHERE userid = ?';
-            db.query(query, [userid], (error, results) => {
-            if (error) {
-              return res.status(500).send('Error during database query');
-            }
-          });
-          req.session.user = user; // Store the user in the session
-          req.session.userid = userid; // Store the userid in the session
-          return res.redirect('/dashboard'); // or wherever you want the user to go after login
-        } else {
-          // Passwords do not match
-          return res.status(403).send('Incorrect password');
-        }
-      });
     });
   });
-  
+});
+
 // Route to get city and state by zip code
 router.get('/get-city-state', (req, res) => {
   const zipCode = req.query.zipCode;
