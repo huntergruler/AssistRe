@@ -18,6 +18,8 @@ function addLicense() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const myParam = params.get('myParam');
     const deleteButtons = document.querySelectorAll('.delete-btn');
     if (deleteButtons.length > 0) {
         deleteButtons.forEach(button => {
@@ -27,12 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     } else {
-        console.log("No delete buttons to attach listeners to.");
-    }
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const params = new URLSearchParams(window.location.search);
-    const myParam = params.get('myParam');
+    console.log("No delete buttons to attach listeners to.");
+   }
     console.log('myparam:',myParam);
     if (params.get('emailverified') === 'false') {
         const messageDiv = document.getElementById('verifyMessage');
