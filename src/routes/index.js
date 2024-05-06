@@ -191,7 +191,7 @@ router.post('/register', (req, res) => {
       if (results[0].emailverified === 0) {
       //  return res.status(404).send('Please verify your email before logging in.');
          // Redirect to login with a logout message
-         res.redirect('/login?emailverfied=false');
+         return res.redirect('/login?emailverfied=false');
       }
       const { userid } = results[0];
       // Compare the hashed password stored in the database
