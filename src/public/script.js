@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if (params.get('loggedOut') === 'true') {
         const messageDiv = document.getElementById('logoutMessage');
-        messageDiv.innerHTML = 'You are logged out.';
+        messageDiv.innerHTML = 'You are logged out';
         // Add any styles or animations you want
         messageDiv.style.color = 'green';
     }
