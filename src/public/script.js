@@ -32,8 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 document.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
+    const myParam = params.get('myParam');
+    console.log('myparam:',myParam);
     if (params.get('emailverified') === 'false') {
-        console.log('emailverified:',params.get('emailverified'));
         const messageDiv = document.getElementById('verifyMessage');
         messageDiv.innerHTML = 'Please verify your email and try again.';
         // Add any styles or animations you want
