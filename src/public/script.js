@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add any styles or animations you want
         messageDiv.style.color = 'green';
     }
+});
+document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
     if (params.get('emailverified') === 'false') {
         const messageDiv = document.getElementById('verifyMessage');
         messageDiv.innerHTML = 'Please verify your email and try again.';
