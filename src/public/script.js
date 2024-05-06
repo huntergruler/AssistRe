@@ -16,7 +16,7 @@ function addLicense() {
     })
     .catch(error => console.error('Error:', error));
 }
-
+console.log('script.js loaded');
 document.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
     console.log('params:',params);
