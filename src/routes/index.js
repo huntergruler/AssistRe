@@ -265,20 +265,30 @@ router.get('/reset', (req, res) => {
 router.post('/reset', (req, res) => {
   const email = req.body.email;
   // Send reset email
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
+  const mailTransporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
+    }
+  });
+
+  const mailDetails = {
+    from: process.env.SMTP_FROM,
     to: email,
     subject: 'Password Reset',
     text: 'Please reset your password by clicking on this link: [reset link]'
   };
-  transporter.sendMail(mailOptions, function(error, info){
+
+  mailTransporter.sendMail(mailDetails, (error, info) => {
     if (error) {
-      console.log(error);
+      console.log('Error sending email:', error);
     } else {
-      console.log('Email sent: ' + info.response);
+      console.log('Verification email sent:', info.response);
     }
-  });
   res.send('Reset email sent');
+  });
 });
 
 // Route to handle email verification
