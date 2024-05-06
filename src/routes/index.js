@@ -7,6 +7,7 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const validStates = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 const { body, validationResult } = require('express-validator');
 const saltRounds = 10; // The cost factor controls how much time is needed to calculate a single bcrypt hash.
@@ -68,7 +69,7 @@ router.post('/register', (req, res) => {
       
       const { city, state } = results[0];
 
-      const verificationtoken = require('crypto').randomBytes(16).toString('hex');
+      const verificationtoken = crypto.randomBytes(16).toString('hex');
       // Now insert the user into the Users table with city and state
       const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, verificationtoken, phoneNumber, zip, city, state, usertype, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
       db.query(userInsertSql, [firstName, lastName, user, verificationtoken, phoneNumber, zipCode, city, state, userType, user, hashedPassword], (userError, userResults) => {
@@ -261,33 +262,44 @@ router.get('/reset', (req, res) => {
   res.render('reset');
 });
 
-// Handle password reset
 router.post('/reset', (req, res) => {
   const email = req.body.email;
-  // Send reset email
-  const mailTransporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS
-    }
-  });
+  const resetToken = crypto.randomBytes(20).toString('hex');
+  const resetTokenExpire = Date.now() + 900000; // 15 minutes from now
 
-  const mailDetails = {
-    from: process.env.SMTP_FROM,
-    to: email,
-    subject: 'Password Reset',
-    text: 'Please reset your password by clicking on this link: [reset link]'
-  };
-
-  mailTransporter.sendMail(mailDetails, (error, info) => {
+  // Store the reset token and its expiration in the database
+  const updateQuery = 'UPDATE Users SET resetToken=?, resetTokenExpire=? WHERE email=?';
+  db.query(updateQuery, [resetToken, resetTokenExpire, email], (error, results) => {
     if (error) {
-      console.log('Error sending email:', error);
-    } else {
-      console.log('Verification email sent:', info.response);
+      console.error('Database error:', error);
+      return res.status(500).send('Database error');
     }
-  res.send('Reset email sent');
+
+    const mailTransporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+      }
+    });
+
+    const resetLink = `http://${req.headers.host}/reset-password?token=${resetToken}`;
+    const mailDetails = {
+      from: process.env.SMTP_FROM,
+      to: email,
+      subject: 'Password Reset',
+      html: `Please reset your password by clicking on this link: <a href="http://${req.headers.host}/reset-password?token=${resetToken}">Reset Password</a>`
+    };
+
+    mailTransporter.sendMail(mailDetails, (error, info) => {
+      if (error) {
+        console.log('Error sending email:', error);
+        return res.status(500).send('Error sending reset email');
+      }
+      console.log('Reset email sent:', info.response);
+      res.send('Reset email sent');
+    });
   });
 });
 
