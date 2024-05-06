@@ -80,7 +80,7 @@ function cancelEdit(id) {
 document.addEventListener('DOMContentLoaded', function() {
     const params = new URLSearchParams(window.location.search);
     console.log('params:',params);
-    const myParam = params.get('emialverified');
+    const myParam = params['emailverified'];
     const deleteButtons = document.querySelectorAll('.delete-btn');
     if (deleteButtons.length > 0) {
         deleteButtons.forEach(button => {
