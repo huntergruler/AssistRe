@@ -303,6 +303,19 @@ router.post('/reset', (req, res) => {
   });
 });
 
+router.get('/reset-password', (req, res) => {
+  const { token } = req.query;
+  // Verify the token and its expiration
+  const query = 'SELECT * FROM Users WHERE resetToken=? AND resetTokenExpire > ?';
+  db.query(query, [token, Date.now()], (error, results) => {
+    if (error || results.length === 0) {
+      return res.status(400).send('Invalid or expired token');
+    }
+    // Serve the password reset form
+    res.render('reset', { email: results[0].email, token: token });
+  });
+});
+
 // Route to handle email verification
 router.get('/verify-email', (req, res) => {
     const { token, email } = req.query;
