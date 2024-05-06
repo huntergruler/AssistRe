@@ -30,7 +30,21 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("No delete buttons to attach listeners to.");
     }
 });
-
+document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('loggedOut') === 'true') {
+        const messageDiv = document.getElementById('logoutMessage');
+        messageDiv.innerHTML = 'You are logged out.';
+        // Add any styles or animations you want
+        messageDiv.style.color = 'green';
+    }
+    if (params.get('emailverified') === 'false') {
+        const messageDiv = document.getElementById('verifyMessage');
+        messageDiv.innerHTML = 'Please verify your email and try again.';
+        // Add any styles or animations you want
+        messageDiv.style.color = 'red';
+    }
+});
 function deleteLicense(id) {
     fetch(`/api/licenses/${id}`, {
         method: 'DELETE'
