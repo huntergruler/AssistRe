@@ -44,20 +44,21 @@ router.get('/', (req, res) => {
 
 // Login route
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', { query: req.query });
 });
 
-// Route to handle user logout
+// Logout route
 router.get('/logout', (req, res) => {
+  // Destroy the session or clear the cookie
   req.session.destroy((err) => {
       if (err) {
-          return console.log(err);
+          return console.error('Failed to destroy the session on logout', err);
       }
-      res.send("Logout successful!");
-      .then(() => {
-          res.redirect('/login');
-      }
-    });
+      res.clearCookie('connect.sid'); // If you're using session cookies, clear them
+
+      // Redirect to login with a logout message
+      res.redirect('/login?loggedOut=true');
+  });
 });
 
 // Register route
