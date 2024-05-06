@@ -78,6 +78,7 @@ function cancelEdit(id) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log(window.location.search);
     const params = new URLSearchParams(window.location.search);
     console.log(params['emailverified']);
     const myParam = params['emailverified'];
