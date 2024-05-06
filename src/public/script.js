@@ -1,3 +1,4 @@
+console.log('script.js loaded');
 function addLicense() {
     const licensenumber = document.getElementById('licensenumber').value;
     const licensestate = document.getElementById('licensestate').value;
@@ -16,37 +17,6 @@ function addLicense() {
     })
     .catch(error => console.error('Error:', error));
 }
-console.log('script.js loaded');
-document.addEventListener('DOMContentLoaded', function() {
-    const params = new URLSearchParams(window.location.search);
-    console.log('params:',params);
-    const myParam = params.get('emialverified');
-    const deleteButtons = document.querySelectorAll('.delete-btn');
-    if (deleteButtons.length > 0) {
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const licenseId = this.getAttribute('data-id');
-                deleteLicense(licenseId);
-            });
-        });
-    } else {
-    console.log("No delete buttons to attach listeners to.");
-   }
-    console.log('myparam:',myParam);
-    if (params.get('emailverified') === 'false') {
-        const messageDiv = document.getElementById('verifyMessage');
-        messageDiv.innerHTML = 'Please verify your email and try again.';
-        // Add any styles or animations you want
-        messageDiv.style.color = 'red';
-    }
-    if (params.get('loggedOut') === 'true') {
-        const messageDiv = document.getElementById('logoutMessage');
-        messageDiv.innerHTML = 'You are logged out.';
-        console.log('User LOGGGED OUT');
-        // Add any styles or animations you want
-        messageDiv.style.color = 'green';
-    }
-});
 function deleteLicense(id) {
     fetch(`/api/licenses/${id}`, {
         method: 'DELETE'
@@ -106,6 +76,37 @@ function cancelEdit(id) {
     actionsCell.innerHTML = `<button onclick="editLicense(${id})">Edit</button>
                              <button onclick="deleteLicense(${id})">Delete</button>`;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    console.log('params:',params);
+    const myParam = params.get('emialverified');
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    if (deleteButtons.length > 0) {
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const licenseId = this.getAttribute('data-id');
+                deleteLicense(licenseId);
+            });
+        });
+    } else {
+    console.log("No delete buttons to attach listeners to.");
+   }
+    console.log('myparam:',myParam);
+    if (params.get('emailverified') === 'false') {
+        const messageDiv = document.getElementById('verifyMessage');
+        messageDiv.innerHTML = 'Please verify your email and try again.';
+        // Add any styles or animations you want
+        messageDiv.style.color = 'red';
+    }
+    if (params.get('loggedOut') === 'true') {
+        const messageDiv = document.getElementById('logoutMessage');
+        messageDiv.innerHTML = 'You are logged out.';
+        console.log('User LOGGGED OUT');
+        // Add any styles or animations you want
+        messageDiv.style.color = 'green';
+    }
+});
 
 // Get the modal
 var modal = document.getElementById('licenseDialog');
