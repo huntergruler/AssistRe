@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
     let passwordInput = document.getElementById('password');
     let confirmPasswordInput = document.getElementById('confirm_password');
@@ -9,6 +11,46 @@ document.addEventListener('DOMContentLoaded', function() {
             confirmPasswordInput.setCustomValidity('');
         }
     };
+});
+
+function lookupCityState() {
+    console.log('lookupCityState');
+    var zipCode = document.getElementById('zipCode').value;
+    if (zipCode) {
+        // Create a new XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/get-city-state?zipCode=' + zipCode, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.city && response.state) {
+                    document.getElementById('cityState').textContent = response.city + ', ' + response.state;
+                } else {
+                    document.getElementById('cityState').textContent = 'City and state not found';
+                }
+            }
+        };
+        xhr.send();
+    }
+}
+document.getElementById('user').addEventListener('blur', function() {
+  const User = this.value;
+  if (User) {
+    fetch(`/check-user?username=${encodeURIComponent(User)}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.available) {
+          // Email is available
+          document.getElementById('userStatus').textContent = 'Username is available.';
+          document.getElementById('userStatus').style.color = 'green';
+        } else {
+          // Email is not available
+          document.getElementById('userStatus').textContent = 'Username is already registered.';
+          document.getElementById('userStatus').style.color = 'red';
+        }
+      })
+      .catch(error => console.error('Error checking user:', error));
+  }
 });
 
 function addLicense() {
