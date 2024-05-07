@@ -138,8 +138,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             document.getElementById('username').focus();
         } else {
             // Redirect or handle successful login
-            document.getElementById('message').innerText = 'Login successful!';
-            document.getElementById('message').style.color = 'green'; // Optional: change text color
+            return res.redirect('/dashboard');
         }
     })
     .catch(error => console.error('Error:', error));

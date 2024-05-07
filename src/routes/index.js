@@ -180,7 +180,6 @@ router.get('/logout', (req, res) => {
 
 router.post('/login', (req, res) => {
   const { user, password } = req.body;
-console.log('user:',user);
   const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
   db.query(query, [user], (error, results) => {
     if (error) {
@@ -201,9 +200,11 @@ console.log('user:',user);
         if (isMatch) {
           req.session.user = user;
           req.session.userid = userid;
-          return res.redirect('/dashboard');
         } else {
-          res.status(401).json({success: false,  message: "Invalid credentials."
+            // Send response when email is not verified
+            res.json({
+              success: false,
+              message: "Invalid credentials."
             });
           }
         }
