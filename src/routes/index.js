@@ -186,6 +186,7 @@ router.post('/login', [
         return res.status(400).json({ errors: errors.array() });
     }
   const { user, password } = req.body;
+  console.log('User', user, 'Password', password);  
   const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
   db.query(query, [user], (error, results) => {
     if (error) {
