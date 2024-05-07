@@ -173,6 +173,10 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
 
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
+    var messageElement = document.getElementById('Message');
+    messageElement.innerHTML = 'Updated content!';
+    document.getElementById('message').innerText = 'GOT HERE';
+    document.getElementById('message').style.color = 'green'; // Optional: change text color
 
     if (password.length < 4) {
         document.getElementById('message').innerText = 'Password must be at least 4 characters long.';
@@ -198,8 +202,6 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             document.getElementById('username').focus();
         } else {
             // Redirect or handle successful login
-            document.getElementById('message').innerText = 'GOT HERE';
-            document.getElementById('message').style.color = 'green'; // Optional: change text color
             window.location.href = '/dashboard';
         }
     })
