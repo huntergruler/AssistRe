@@ -178,9 +178,7 @@ router.get('/logout', (req, res) => {
   });
 });
 
-router.post('/login', [
-  body('username').trim().escape(),
-  body('password').isLength({ min: 4 }).trim().escape()], (req, res) => {
+router.post('/login', (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
