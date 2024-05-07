@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
-    const email = document.getElementById('email').value;
+    const email = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     fetch('/login', {
@@ -125,7 +125,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: email, password: password })
+        body: JSON.stringify({ user: username, password: password })
     })
     .then(response => response.json())
     .then(data => {

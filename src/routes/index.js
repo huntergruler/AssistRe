@@ -183,6 +183,7 @@ router.post('/login', (req, res) => {
 
   const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
   db.query(query, [user], (error, results) => {
+  console.log('Results:', results);
     if (error) {
       return res.render('login', { errorMessage: 'Error during database query' });
     }
