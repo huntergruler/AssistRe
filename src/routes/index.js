@@ -303,7 +303,7 @@ router.post('/reset', (req, res) => {
   });
 });
 
-router.post('/reset-password', (req, res) => {
+router.get('/reset-password', (req, res) => {
   const { token } = req.query;
   // Verify the token and its expiration
   const query = 'SELECT * FROM Users WHERE resetToken=? AND resetTokenExpire > ?';
