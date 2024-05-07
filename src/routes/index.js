@@ -178,15 +178,17 @@ router.get('/logout', (req, res) => {
   });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', [
+  body('username').trim().escape(),
+  body('password').isLength({ min: 4 }).trim().escape()], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-  const { user, password } = req.body;
-  console.log('User', user, 'Password', password);  
+  const { username, password } = req.body;
+  console.log('User', username, 'Password', password);  
   const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
-  db.query(query, [user], (error, results) => {
+  db.query(query, [username], (error, results) => {
     if (error) {
       return res.render('login', { errorMessage: 'Error during database query' });
     }
@@ -204,9 +206,9 @@ router.post('/login', (req, res) => {
         return res.render('login', { errorMessage: 'Error comparing passwords' });
       } else {
         if (isMatch) {
-          req.session.user = user;
+          req.session.user = username;
           req.session.userid = userid;
-          console.log('User logged in:', user);
+          console.log('User logged in:', username);
           res.json({
             success: true,
             message: "Successful Login"});
