@@ -1,4 +1,4 @@
-console.log('script.js loaded');
+
 function addLicense() {
     const licensenumber = document.getElementById('licensenumber').value;
     const licensestate = document.getElementById('licensestate').value;
@@ -112,6 +112,34 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add any styles or animations you want
         messageDiv.style.color = 'green';
     }
+});
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email, password: password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (!data.success) {
+            // Display message if login failed
+            document.getElementById('message').innerText = data.message;
+            document.getElementById('message').style.color = 'red'; // Optional: change text color
+        } else {
+            // Redirect or handle successful login
+            document.getElementById('message').innerText = 'Login successful!';
+            document.getElementById('message').style.color = 'green'; // Optional: change text color
+        }
+    })
+    .catch(error => console.error('Error:', error));
 });
 
 // Get the modal

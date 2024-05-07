@@ -14,7 +14,8 @@ const saltRounds = 10; // The cost factor controls how much time is needed to ca
 const bodyParser = require('body-parser');
 
 // Ensure you have body-parser configured to parse JSON
-router.use(bodyParser.json());
+// router.use(bodyParser.json());
+router.use(express.json());
 
 // Database connection setup
 const db = mysql.createConnection({
@@ -189,8 +190,12 @@ router.post('/login', (req, res) => {
       return res.render('login', { errorMessage: 'User not found' });
     }
     if (results[0].emailverified === 0) {
-      return res.render('login', { errorMessage: 'Email not verified. Please check your email for the verification link.' });
-    }
+            // Send response when email is not verified
+            res.json({
+              success: false,
+              message: "Verify your email address and then try to login again."
+          });
+  }
     const { userid } = results[0];
     bcrypt.compare(password, results[0].password, (err, isMatch) => {
       if (err) {
@@ -201,7 +206,8 @@ router.post('/login', (req, res) => {
         req.session.userid = userid;
         return res.redirect('/dashboard');
       } else {
-        return res.render('login', { errorMessage: 'Incorrect password' });
+        res.status(401).json({success: false,  message: "Invalid credentials."
+            });
       }
     });
   });
