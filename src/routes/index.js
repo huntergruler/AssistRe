@@ -266,7 +266,7 @@ router.post('/reset', (req, res) => {
   const email = req.body.email;
   const resetToken = crypto.randomBytes(20).toString('hex');
   const resetTokenExpire = Date.now() + 900000; // 15 minutes from now
-
+  console.log('Reset token:', resetToken, 'Expires:', new Date(resetTokenExpire);
   // Store the reset token and its expiration in the database
   const updateQuery = 'UPDATE Users SET resetToken=?, resetTokenExpire=? WHERE email=?';
   db.query(updateQuery, [resetToken, resetTokenExpire, email], (error, results) => {
