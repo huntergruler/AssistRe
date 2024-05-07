@@ -273,7 +273,7 @@ router.post('/reset', (req, res) => {
       return res.status(500).send('Error hashing password');
     }
     const updateQuery = 'UPDATE Users SET password = ? WHERE username = ?';
-    db.query(zipQuery, [password , email], (error, results) => {
+    db.query(updateQuery, [password , email], (error, results) => {
     if (error) {
       return res.status(500).send('Error accessing the database');
     }
