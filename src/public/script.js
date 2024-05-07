@@ -138,11 +138,14 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             document.getElementById('username').focus();
         } else {
             // Redirect or handle successful login
-            console.log('Login successful!');
-            return res.redirect('/dashboard');
+            window.location.href = '/dashboard';
         }
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('message').innerText = 'An error occurred. Please try again.';
+        document.getElementById('message').style.color = 'red';
+    });
 });
 
 // Get the modal
