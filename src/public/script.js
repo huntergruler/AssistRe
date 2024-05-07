@@ -1,3 +1,15 @@
+document.addEventListener('DOMContentLoaded', function() {
+    let passwordInput = document.getElementById('password');
+    let confirmPasswordInput = document.getElementById('confirm_password');
+    
+    confirmPasswordInput.onkeyup = function() {
+        if (passwordInput.value !== confirmPasswordInput.value) {
+            confirmPasswordInput.setCustomValidity('Passwords do not match.');
+        } else {
+            confirmPasswordInput.setCustomValidity('');
+        }
+    };
+});
 
 function addLicense() {
     const licensenumber = document.getElementById('licensenumber').value;
@@ -153,7 +165,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         document.getElementById('message').style.color = 'red';
     });
 });
-
+   
 // Get the modal
 var modal = document.getElementById('licenseDialog');
 
