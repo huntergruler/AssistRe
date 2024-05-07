@@ -178,7 +178,13 @@ router.get('/logout', (req, res) => {
   });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', [
+  body('username').trim().escape(),
+  body('password').isLength({ min: 5 }).trim().escape()], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
   const { user, password } = req.body;
   const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
   db.query(query, [user], (error, results) => {
