@@ -138,6 +138,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             document.getElementById('username').focus();
         } else {
             // Redirect or handle successful login
+            console.log('Login successful!');
             return res.redirect('/dashboard');
         }
     })

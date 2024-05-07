@@ -200,6 +200,7 @@ router.post('/login', (req, res) => {
         if (isMatch) {
           req.session.user = user;
           req.session.userid = userid;
+          console.log('User logged in:', user);
         } else {
             // Send response when email is not verified
             res.json({
