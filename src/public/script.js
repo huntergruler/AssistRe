@@ -198,6 +198,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             document.getElementById('username').focus();
         } else {
             // Redirect or handle successful login
+            document.getElementById('message').innerText = 'GOT HERE';
+            document.getElementById('message').style.color = 'green'; // Optional: change text color
             window.location.href = '/dashboard';
         }
     })
