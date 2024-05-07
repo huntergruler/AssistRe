@@ -121,7 +121,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const password = document.getElementById('password').value.trim();
 
     if (password.length < 8) {
-        document.getElementById('message').innerText = 'Password must be at least 8 characters long.';
+        document.getElementById('message').innerText = 'Password must be at least 4 characters long.';
         document.getElementById('message').style.color = 'red';
         return; // Stop the form submission if validation fails
     }
