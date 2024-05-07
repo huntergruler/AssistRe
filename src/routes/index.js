@@ -269,7 +269,7 @@ router.post('/reset', (req, res) => {
   console.log('Reset token:', resetToken, 'Expires:', new Date(resetTokenExpire));
   // Store the reset token and its expiration in the database
   const updateQuery = 'UPDATE Users SET resetToken=?, resetTokenExpire=? WHERE email=?';
-  db.query(updateQuery, [resetToken, resetTokenExpire, email], (error, results) => {
+  db.query(updateQuery, [resetToken, new Date(resetTokenExpire), email], (error, results) => {
     if (error) {
       console.error('Database error:', error);
       return res.status(500).send('Database error');
