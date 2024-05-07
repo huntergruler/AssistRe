@@ -200,10 +200,10 @@ router.post('/login', (req, res) => {
         if (isMatch) {
           req.session.user = user;
           req.session.userid = userid;
+          console.log('User logged in:', user);
           res.json({
             success: true,
-            message: "Successful Login"
-        console.log('User logged in:', user);
+            message: "Successful Login"});
         } else {
             // Send response when email is not verified
             res.json({
