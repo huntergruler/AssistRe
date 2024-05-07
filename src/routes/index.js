@@ -264,7 +264,7 @@ router.get('/reset', (req, res) => {
 
 // Handle resetting the password
 router.post('/reset', (req, res) => {
-  const { firstName, lastName, user, phoneNumber, zipCode, userType, password } = req.body;
+  const { email, token, password } = req.body;
 
   // First, query the city and state from the ZipCodes table
   bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
@@ -272,34 +272,17 @@ router.post('/reset', (req, res) => {
       console.error("Hashing error:", err);
       return res.status(500).send('Error hashing password');
     }
-    const zipQuery = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
-    db.query(zipQuery, [zipCode], (error, results) => {
+    const updateQuery = 'UPDATE Users SET password = ? WHERE username = ?';
+    db.query(zipQuery, [password , email], (error, results) => {
     if (error) {
       return res.status(500).send('Error accessing the database');
     }
-    if (results.length === 0) {
-      return res.status(404).send('Zip code not found');
-    }
-    
-    const { city, state } = results[0];
-
-    const verificationtoken = crypto.randomBytes(16).toString('hex');
-    // Now insert the user into the Users table with city and state
-    const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, verificationtoken, phoneNumber, zip, city, state, usertype, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    db.query(userInsertSql, [firstName, lastName, user, verificationtoken, phoneNumber, zipCode, city, state, userType, user, hashedPassword], (userError, userResults) => {
-      if (userError) {
-          console.error('Error inserting user into database:', userError);
-          return res.status(500).send('Error inserting user into database');
-      }
-      
-    // Send confirmation email
-    sendVerificationEmail(req, user, verificationtoken);
-    res.send('Registration successful! Please check your email to verify.');
+      // Redirect to login with a logout message
+      res.redirect('/login?passwordchanged=true');
 
     });
   });
  });
-});
 
 // send password reset email route
 router.get('/sendreset', (req, res) => {

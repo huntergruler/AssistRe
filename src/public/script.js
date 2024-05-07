@@ -106,6 +106,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add any styles or animations you want
         messageDiv.style.color = 'green';
     }
+    if (params.get('passwordchanged') === 'true') {
+        const messageDiv = document.getElementById('passwordChangedMessage');
+        messageDiv.innerHTML = 'Pasword changed successfully!';
+        // Add any styles or animations you want
+        messageDiv.style.color = 'green';
+    }
 });
 
 // Get the modal
