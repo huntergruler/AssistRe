@@ -174,7 +174,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
     var messageElement = document.getElementById('Message');
-    messageElement.innerHTML = 'Updated content!';
+    messageElement.innerText = 'Updated content!';
     document.getElementById('message').innerText = 'GOT HERE';
     document.getElementById('message').style.color = 'green'; // Optional: change text color
 
