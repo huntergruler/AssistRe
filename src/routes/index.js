@@ -190,6 +190,7 @@ router.post('/login', (req, res) => {
       return res.render('login', { errorMessage: 'User not found' });
     }
     if (results[0].emailverified === 0) {
+      console.log('Email not verified');
             // Send response when email is not verified
             res.json({
               success: false,
