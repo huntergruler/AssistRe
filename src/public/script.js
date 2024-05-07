@@ -117,8 +117,14 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    if (password.length < 8) {
+        document.getElementById('message').innerText = 'Password must be at least 8 characters long.';
+        document.getElementById('message').style.color = 'red';
+        return; // Stop the form submission if validation fails
+    }
 
     fetch('/login', {
         method: 'POST',
