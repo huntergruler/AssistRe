@@ -17,26 +17,6 @@ function addLicense() {
     })
     .catch(error => console.error('Error:', error));
 }
-
-var passwordInput = document.getElementById('password');
-var confirmPasswordInput = document.getElementById('confirm_password');
-var form = document.getElementById('resetForm');
-
-confirmPasswordInput.onkeyup = function() {
-    if (passwordInput.value !== confirmPasswordInput.value) {
-        confirmPasswordInput.setCustomValidity('Passwords do not match.');
-    } else {
-        confirmPasswordInput.setCustomValidity('');
-    }
-};
-
-form.addEventListener('submit', function(event) {
-    if (passwordInput.value !== confirmPasswordInput.value) {
-        event.preventDefault(); // Prevent form from submitting
-        alert('Passwords do not match.');
-    }
-});
-
 function deleteLicense(id) {
     fetch(`/api/licenses/${id}`, {
         method: 'DELETE'
