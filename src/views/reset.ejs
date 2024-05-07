@@ -8,8 +8,7 @@
 <body>
     <h1>Reset Password</h1>
     <form action="/verify-email" method="post">
-        <input type="hidden" name="email" value="<%= email %>">
-        <input type="hidden" name="token" value="<%= token %>">
+        <input type="email" name="email" placeholder="Email" required>
         <label for="password">New Password:</label>
         <input type="password" id="password" name="password" required>
         <label for="confirm_password">Confirm Password:</label>
