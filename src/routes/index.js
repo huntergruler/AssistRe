@@ -180,17 +180,15 @@ router.get('/logout', (req, res) => {
 
 router.post('/login', (req, res) => {
   const { user, password } = req.body;
-
+console.log('user:',user);
   const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
   db.query(query, [user], (error, results) => {
-  console.log('Results:', results);
     if (error) {
       return res.render('login', { errorMessage: 'Error during database query' });
     }
     if (results.length === 0) {
       return res.render('login', { errorMessage: 'User not found' });
     }
-    console.log('Email not verified');
     if (results[0].emailverified === 0) {
             // Send response when email is not verified
             res.json({
