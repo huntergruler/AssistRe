@@ -178,12 +178,13 @@ router.get('/logout', (req, res) => {
   });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', [
+  body('username').trim().escape(),
+  body('password').isLength({ min: 4 }).trim().escape()], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    console.log('req.body:', req.body);
   const { user, password } = req.body;
   const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
   db.query(query, [user], (error, results) => {
@@ -199,7 +200,6 @@ router.post('/login', (req, res) => {
      } else {
       const { userid } = results[0];
       bcrypt.compare(password, results[0].password, (err, isMatch) => {
-        console.log('isMatch:', isMatch);
       if (err) {
         return res.render('login', { errorMessage: 'Error comparing passwords' });
       } else {
@@ -364,7 +364,7 @@ router.get('/verify-email', (req, res) => {
     db.query('UPDATE Users SET emailverified = 1 WHERE email = ? AND verificationtoken = ?', [email, token], (err, result) => {
       if (err) return res.status(500).send('Database error during email verification.');
       if (result.affectedRows === 0) return res.status(404).send('Token not found or email already verified.');
-      res.redirect('/login?emailverified=true');
+      res.redirect('login', { emailverified: true });
     });
   });
 

@@ -168,7 +168,50 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
 
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    var messageElement = document.getElementById('Message');
+    messageElement.innerText = 'Updated content!';
+    document.getElementById('message').innerText = 'GOT HERE';
+    document.getElementById('message').style.color = 'green'; // Optional: change text color
+
+    if (password.length < 4) {
+        document.getElementById('message').innerText = 'Password must be at least 4 characters long.';
+        document.getElementById('message').style.color = 'red';
+        return; // Stop the form submission if validation fails
+    }
+
+    fetch('/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ user: username, password: password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (!data.success) {
+            // Display message if login failed
+            document.getElementById('message').innerText = data.message;
+            document.getElementById('message').style.color = 'red'; // Optional: change text color
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('username').focus();
+        } else {
+            // Redirect or handle successful login
+            window.location.href = '/dashboard';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('message').innerText = 'An error occurred. Please try again.';
+        document.getElementById('message').style.color = 'red';
+    });
+});
+   
 // Get the modal
 var modal = document.getElementById('licenseDialog');
 
