@@ -8,7 +8,8 @@
 <body>
     <h1>Reset Password</h1>
     <form action="/reset" method="post">
-        <input type="email" name="email" placeholder="Email" required>
+        <input type="hidden" name="email" value="<%= email %>">
+        <input type="hidden" name="token" value="<%= token %>">
         <label for="password">New Password:</label>
         <input type="password" id="password" name="password" required>
         <label for="confirm_password">Confirm Password:</label>

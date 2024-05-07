@@ -262,7 +262,51 @@ router.get('/reset', (req, res) => {
   res.render('reset');
 });
 
+// Handle resetting the password
 router.post('/reset', (req, res) => {
+  const { firstName, lastName, user, phoneNumber, zipCode, userType, password } = req.body;
+
+  // First, query the city and state from the ZipCodes table
+  bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
+    if (err) {
+      console.error("Hashing error:", err);
+      return res.status(500).send('Error hashing password');
+    }
+    const zipQuery = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
+    db.query(zipQuery, [zipCode], (error, results) => {
+    if (error) {
+      return res.status(500).send('Error accessing the database');
+    }
+    if (results.length === 0) {
+      return res.status(404).send('Zip code not found');
+    }
+    
+    const { city, state } = results[0];
+
+    const verificationtoken = crypto.randomBytes(16).toString('hex');
+    // Now insert the user into the Users table with city and state
+    const userInsertSql = 'INSERT INTO Users (firstName, lastName, email, verificationtoken, phoneNumber, zip, city, state, usertype, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    db.query(userInsertSql, [firstName, lastName, user, verificationtoken, phoneNumber, zipCode, city, state, userType, user, hashedPassword], (userError, userResults) => {
+      if (userError) {
+          console.error('Error inserting user into database:', userError);
+          return res.status(500).send('Error inserting user into database');
+      }
+      
+    // Send confirmation email
+    sendVerificationEmail(req, user, verificationtoken);
+    res.send('Registration successful! Please check your email to verify.');
+
+    });
+  });
+ });
+});
+
+// send password reset email route
+router.get('/sendreset', (req, res) => {
+  res.render('sendreset');
+});
+
+router.post('/sendreset', (req, res) => {
   const email = req.body.email;
   const resetToken = crypto.randomBytes(20).toString('hex');
   const resetTokenExpire = Date.now() + 900000; // 15 minutes from now
@@ -284,7 +328,6 @@ router.post('/reset', (req, res) => {
       }
     });
 
-    const resetLink = `http://${req.headers.host}/reset-password?token=${resetToken}`;
     const mailDetails = {
       from: process.env.SMTP_FROM,
       to: email,
