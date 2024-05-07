@@ -198,9 +198,9 @@ router.post('/login', [
               message: "Verify your email address and then try to login again."
           });
      } else {
-      const emailverified = results[0].emailverified;
       const { userid } = results[0];
       bcrypt.compare(password, results[0].password, (err, isMatch) => {
+        console.log('isMatch:', isMatch);
       if (err) {
         return res.render('login', { errorMessage: 'Error comparing passwords' });
       } else {
