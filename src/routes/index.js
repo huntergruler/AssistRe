@@ -186,32 +186,31 @@ console.log('user:',user);
     if (error) {
       return res.render('login', { errorMessage: 'Error during database query' });
     }
-    if (results.length === 0) {
-      return res.render('login', { errorMessage: 'User not found' });
-    }
     if (results[0].emailverified === 0) {
             // Send response when email is not verified
             res.json({
               success: false,
               message: "Verify your email address and then try to login again."
           });
-  }
-    const { userid } = results[0];
-    bcrypt.compare(password, results[0].password, (err, isMatch) => {
+     } else {
+      const { userid } = results[0];
+      bcrypt.compare(password, results[0].password, (err, isMatch) => {
       if (err) {
         return res.render('login', { errorMessage: 'Error comparing passwords' });
-      }
-      if (isMatch) {
-        req.session.user = user;
-        req.session.userid = userid;
-        return res.redirect('/dashboard');
       } else {
-        res.status(401).json({success: false,  message: "Invalid credentials."
+        if (isMatch) {
+          req.session.user = user;
+          req.session.userid = userid;
+          return res.redirect('/dashboard');
+        } else {
+          res.status(401).json({success: false,  message: "Invalid credentials."
             });
-      }
+          }
+        }
+        });
+      };
     });
   });
-});
 
 // Route to get city and state by zip code
 router.get('/get-city-state', (req, res) => {
