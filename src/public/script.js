@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
-    const email = document.getElementById('username').value;
+    const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
     fetch('/login', {
