@@ -88,20 +88,6 @@ function saveLicense(id) {
     .catch(error => console.error('Error:', error));
 }
 
-function comparePasswords() {
-    // Handle the blur event for the 'confirm_password' element
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirm_password');
-    console.log(password,   confirmPassword);
-    confirmPasswordInput.onkeyup = function() {
-        if (passwordInput.value !== confirmPasswordInput.value) {
-            confirmPasswordInput.setCustomValidity('Passwords do not match.');
-        } else {
-            confirmPasswordInput.setCustomValidity('');
-        }
-    };
-}
-
 function cancelEdit(id) {
     const licenseRow = document.getElementById(`license-${id}`);
     licenseRow.querySelectorAll('.editable').forEach(cell => {
@@ -156,13 +142,29 @@ function showMessage(text) {
     }
     });
    
-    document.addEventListener('DOMContentLoaded', function() {
+    function comparePassword() {
+        // Handle the blur event for the 'confirm_password' element
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm_password');
+        console.log(password,   confirmPassword);
+        confirmPasswordInput.onkeyup = function() {
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                confirmPasswordInput.setCustomValidity('Passwords do not match.');
+            } else {
+                confirmPasswordInput.setCustomValidity('');
+            }
+        };
+    }
+    
+        document.addEventListener('DOMContentLoaded', function() {
         // Access the parent element by its ID
         const parent = document.getElementById('parentElement');
     
         parent.addEventListener('keyup', function(event) {
+            if (event.target.id === 'confirm_password') {
             console.log('Key released: ', event.key);
             console.log('Input value after key up: ', this.value);
+        }
         });
         
         parent.addEventListener('click', function(event) {
