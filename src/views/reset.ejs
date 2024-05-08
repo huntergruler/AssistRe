@@ -19,8 +19,8 @@
         <div id="resetContainer">
     <h1>Reset Password</h1>
     <form id="resetForm" action="/reset" method="post">
-        <input type="hidden" name="email" value="<%= email %>">
-        <input type="hidden" name="token" value="<%= token %>">
+        <input type="text" name="email" value="<%= email %>">
+        <input type="text" name="token" value="<%= token %>">
         <label for="password">New Password:</label>
         <input type="password" id="password" name="password" required>
         <label for="confirm_password">Confirm Password:</label>
