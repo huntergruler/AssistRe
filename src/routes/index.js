@@ -15,7 +15,7 @@ const bodyParser = require('body-parser');
 
 // Ensure you have body-parser configured to parse JSON
 router.use(bodyParser.json());
-router.use(express.json());
+//router.use(express.json());
 
 // Database connection setup
 const db = mysql.createConnection({
