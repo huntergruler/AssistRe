@@ -181,6 +181,7 @@ function showMessage(text) {
         parent.addEventListener('click', function(event) {
             const deleteButtons = document.querySelectorAll('.delete-btn');
 //            const email = document.getElementById('email');
+const email = 'gruler@me.com'   
             const password = document.getElementById('password');
             const token = document.getElementById('token');
             console.log('email:',email.value, 'password:',password.value, 'token:',token.value);
