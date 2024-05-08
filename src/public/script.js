@@ -105,7 +105,6 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
 
-    console.log(data);
     fetch('/login', {
         method: 'POST',
         headers: {
@@ -114,6 +113,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         body: JSON.stringify({ username: username, password: password })
     })
     .then(response => response.json())
+    console.log(data);
     .then(data => {
         console.log(data);
         if (!data.success) {
