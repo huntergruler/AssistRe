@@ -14,6 +14,7 @@ header {
 }
 
 #title {
+    margin-left: 25px;
     flex-grow: 10;
     margin: 0;
     height: 100%;
@@ -43,5 +44,17 @@ header {
 }
 
 #navlinks a:hover{
-    background-color: rgb(40, 71, 130);
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        background-color: rgba(40, 71, 130, 0);
+    }
+
+    100% {
+        background-color: rgba(40, 71, 130);
+    }
 }
