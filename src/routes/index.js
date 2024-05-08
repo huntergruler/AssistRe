@@ -166,7 +166,7 @@ router.post('/register', (req, res) => {
 router.get('/login', (req, res) => {
   const message = req.session.message;
   if (message) {
-    res.render('login?messagein=${ message }');
+    res.redirect('login?messagein=${ message }');
     req.session.message = null;
   }
   else  
