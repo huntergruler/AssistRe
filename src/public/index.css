@@ -23,4 +23,5 @@ header {
     list-style-type: none;
     height: 75px;
     align-self: start;
+    align-items: center;
 }
