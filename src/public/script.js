@@ -88,10 +88,11 @@ function saveLicense(id) {
     .catch(error => console.error('Error:', error));
 }
 
-function comparePasswords(text) {
+function comparePasswords() {
     // Handle the blur event for the 'confirm_password' element
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirm_password');
+    console.log(password,   confirmPassword);
     confirmPasswordInput.onkeyup = function() {
         if (passwordInput.value !== confirmPasswordInput.value) {
             confirmPasswordInput.setCustomValidity('Passwords do not match.');
