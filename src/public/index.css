@@ -37,6 +37,7 @@ header {
     width: 60px;
     text-align: center;
     justify-content: flex-start;
+    align-content: center;
     color: white;
     text-decoration: none;
 }
