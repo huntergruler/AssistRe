@@ -27,10 +27,9 @@ header {
     flex-direction: row;
     background-color: aqua;
     list-style-type: none;
-    height: 75px;
+    height: 100%;
     align-items: center;
-    margin: 0 auto;
-    width: fit-content;
+    margin: 0;
 }
 
 #navlinks li a{
