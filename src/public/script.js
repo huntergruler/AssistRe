@@ -162,6 +162,8 @@ function showMessage(text) {
     
         parent.addEventListener('keyup', function(event) {
             const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirm_password');
+
             if (event.target.id === 'confirm_password') {
                 if (passwordInput.value !== this.value) {
                     confirmPasswordInput.setCustomValidity('Passwords do not match.');
