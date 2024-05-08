@@ -116,7 +116,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     console.log(data);
     .then(data => {
         console.log(data);
-        if (!data.success) {
+        if (data.success === false) {
             console.log(data);
             // Display message if login failed
             document.getElementById('message').innerText = data.message;
