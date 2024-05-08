@@ -113,11 +113,11 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         body: JSON.stringify({ username: username, password: password })
     })
     .then(response => response.json())
-//    console.log(data);
+    console.log('HERE2');
     .then(data => {
 //        console.log(data);
         if (data.success === false) {
-            console.log(data);
+            console.log('HERE');
             // Display message if login failed
             document.getElementById('message').innerText = data.message;
             document.getElementById('message').style.color = 'red'; // Optional: change text color
