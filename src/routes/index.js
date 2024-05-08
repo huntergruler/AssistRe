@@ -279,7 +279,9 @@ router.get('/dashboard', (req, res) => {
     const message = 'Please login to access the Dashboard';
     res.redirect('/login?message=${message}');  
   }
+  else { 
   res.render('dashboard', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
+  }
 });
 
 // Password reset route
