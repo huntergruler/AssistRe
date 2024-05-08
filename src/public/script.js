@@ -147,6 +147,7 @@ function showMessage(text) {
         const parent = document.getElementById('parentElement');
     
         parent.addEventListener('click', function(event) {
+            const deleteButtons = document.querySelectorAll('.delete-btn');
             if (event.target.id === 'licensesTable') {
                 let modal = document.getElementById('licenseDialog');
                 let btn = document.getElementById("myBtn");
@@ -200,46 +201,45 @@ function showMessage(text) {
         }, true); // Using capturing phase to handle the event as it propagates down
         });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Access the parent element by its ID
-    const parent = document.getElementById('parentElement');
-    const params = new URLSearchParams(window.location.search);
-    const myParam = params['emailverified'];
-    const messagein = document.getElementById('message').textContent;
-
-    const deleteButtons = document.querySelectorAll('.delete-btn');
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirm_password');
-    
-
-   if (params.get('emailverified') === 'false') {
-        const messageDiv = document.getElementById('verifyMessage');
-        messageDiv.innerHTML = 'Please verify your email and try again.';
-        // Add any styles or animations you want
-        messageDiv.style.color = 'red';
-    }
-    if (params.get('loggedOut') === 'true') {
-        const messageDiv = document.getElementById('logoutMessage');
-        messageDiv.innerHTML = 'You are logged out.';
-        console.log('User LOGGGED OUT');
-        // Add any styles or animations you want
-        messageDiv.style.color = 'green';
-    }
-
-    confirmPasswordInput.onkeyup = function() {
-        if (passwordInput.value !== confirmPasswordInput.value) {
-            confirmPasswordInput.setCustomValidity('Passwords do not match.');
-        } else {
-            confirmPasswordInput.setCustomValidity('');
-        }
-    };
-    if (params.get('passwordchanged') === 'true') {
-        const messageDiv = document.getElementById('passwordChangedMessage');
-        messageDiv.innerHTML = 'Pasword changed successfully!';
-        // Add any styles or animations you want
-        messageDiv.style.color = 'green';
-    }
-});
-
+        document.addEventListener('DOMContentLoaded', function() {
+            var loginContainer = document.getElementById('loginContainer');
+            var resetContainer = document.getElementById('resetContainer');
+            var registerContainer = document.getElementById('registerContainer');
+            const params = new URLSearchParams(window.location.search);
+            if (loginContainer) {    // Access the parent element by its ID
+                const messagein = document.getElementById('message').textContent;
+                if (params.get('emailverified') === 'false') {
+                    const messageDiv = document.getElementById('verifyMessage');
+                    messageDiv.innerHTML = 'Please verify your email and try again.';
+                    // Add any styles or animations you want
+                    messageDiv.style.color = 'red';
+                }
+                if (params.get('loggedOut') === 'true') {
+                    const messageDiv = document.getElementById('logoutMessage');
+                    messageDiv.innerHTML = 'You are logged out.';
+                    console.log('User LOGGGED OUT');
+                    // Add any styles or animations you want
+                    messageDiv.style.color = 'green';
+                }
+            }    
+            if (resetContainer || registerContainer) {    // Access the parent element by its ID
+                const passwordInput = document.getElementById('password');
+                const confirmPasswordInput = document.getElementById('confirm_password');
+                confirmPasswordInput.onkeyup = function() {
+                    if (passwordInput.value !== confirmPasswordInput.value) {
+                        confirmPasswordInput.setCustomValidity('Passwords do not match.');
+                    } else {
+                        confirmPasswordInput.setCustomValidity('');
+                    }
+                };
+                if (params.get('passwordchanged') === 'true') {
+                    const messageDiv = document.getElementById('passwordChangedMessage');
+                    messageDiv.innerHTML = 'Pasword changed successfully!';
+                    // Add any styles or animations you want
+                    messageDiv.style.color = 'green';
+                }
+                    }
+        });
+        
 
 

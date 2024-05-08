@@ -14,17 +14,19 @@
     </div>
 </header>
 <body>
-   <h1>Please Login:</h1>
-   <div id="parentElement">
-    <form id="loginForm" action="/login" method="post">
-        <input type="email" id="username" name="username" placeholder="Username">
-        <input type="password" id="password" name="password" placeholder="Password">
-        <button type="submit" >Login</button>
-    </form>
-    <div id="message"><%= message %></div>
-    <br>
-    <a href="/sendreset">Forgot Password?</a>
-   </div>
-    <script src="/script.js"></script>
+    <h1>Please Login:</h1>
+    <div id="parentElement">
+     <div id="loginContainer">
+         <form id="loginForm" action="/login" method="post">
+         <input type="email" id="username" name="username" placeholder="Username">
+         <input type="password" id="password" name="password" placeholder="Password">
+         <button type="submit" >Login</button>
+     </form>
+     <div id="message"><%= message %></div>
+     <br>
+     <a href="/sendreset">Forgot Password?</a>
+ </div>
+ </div>
+ <script src="/script.js"></script>
 </body>
 </html>
