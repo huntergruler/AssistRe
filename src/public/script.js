@@ -144,7 +144,7 @@ function showMessage(text) {
    
     document.addEventListener('DOMContentLoaded', function() {
         // Access the parent element by its ID
-        const parent = document.getElementById('parentElement2');
+        const parent = document.getElementById('parentElement');
     
         parent.addEventListener('click', function(event) {
             if (event.target.id === 'licensesTable') {
