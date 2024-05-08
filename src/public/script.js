@@ -1,18 +1,5 @@
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    let passwordInput = document.getElementById('password');
-    let confirmPasswordInput = document.getElementById('confirm_password');
-    
-    confirmPasswordInput.onkeyup = function() {
-        if (passwordInput.value !== confirmPasswordInput.value) {
-            confirmPasswordInput.setCustomValidity('Passwords do not match.');
-        } else {
-            confirmPasswordInput.setCustomValidity('');
-        }
-    };
-});
-
 function lookupCityState() {
     console.log('lookupCityState');
     var zipCode = document.getElementById('zipCode').value;
@@ -33,25 +20,6 @@ function lookupCityState() {
         xhr.send();
     }
 }
-document.getElementById('user').addEventListener('blur', function() {
-  const User = this.value;
-  if (User) {
-    fetch(`/check-user?username=${encodeURIComponent(User)}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.available) {
-          // Email is available
-          document.getElementById('userStatus').textContent = 'Username is available.';
-          document.getElementById('userStatus').style.color = 'green';
-        } else {
-          // Email is not available
-          document.getElementById('userStatus').textContent = 'Username is already registered.';
-          document.getElementById('userStatus').style.color = 'red';
-        }
-      })
-      .catch(error => console.error('Error checking user:', error));
-  }
-});
 
 function addLicense() {
     const licensenumber = document.getElementById('licensenumber').value;
@@ -131,43 +99,6 @@ function cancelEdit(id) {
                              <button onclick="deleteLicense(${id})">Delete</button>`;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log(window.location.search);
-    const params = new URLSearchParams(window.location.search);
-    console.log(params);
-    const myParam = params['emailverified'];
-    const deleteButtons = document.querySelectorAll('.delete-btn');
-    if (deleteButtons.length > 0) {
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const licenseId = this.getAttribute('data-id');
-                deleteLicense(licenseId);
-            });
-        });
-    } else {
-    console.log("No delete buttons to attach listeners to.");
-   }
-    if (params.get('emailverified') === 'false') {
-        const messageDiv = document.getElementById('verifyMessage');
-        messageDiv.innerHTML = 'Please verify your email and try again.';
-        // Add any styles or animations you want
-        messageDiv.style.color = 'red';
-    }
-    if (params.get('loggedOut') === 'true') {
-        const messageDiv = document.getElementById('logoutMessage');
-        messageDiv.innerHTML = 'You are logged out.';
-        console.log('User LOGGGED OUT');
-        // Add any styles or animations you want
-        messageDiv.style.color = 'green';
-    }
-    if (params.get('passwordchanged') === 'true') {
-        const messageDiv = document.getElementById('passwordChangedMessage');
-        messageDiv.innerHTML = 'Pasword changed successfully!';
-        // Add any styles or animations you want
-        messageDiv.style.color = 'green';
-    }
-});
-
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -203,6 +134,74 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     });
 });
    
+document.getElementById('user').addEventListener('blur', function() {
+    const User = this.value;
+    if (User) {
+      fetch(`/check-user?username=${encodeURIComponent(User)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.available) {
+            // Email is available
+            document.getElementById('userStatus').textContent = 'Username is available.';
+            document.getElementById('userStatus').style.color = 'green';
+          } else {
+            // Email is not available
+            document.getElementById('userStatus').textContent = 'Username is already registered.';
+            document.getElementById('userStatus').style.color = 'red';
+          }
+        })
+        .catch(error => console.error('Error checking user:', error));
+    }
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log(window.location.search);
+    const params = new URLSearchParams(window.location.search);
+    console.log(params);
+    const myParam = params['emailverified'];
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    if (deleteButtons.length > 0) {
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const licenseId = this.getAttribute('data-id');
+                deleteLicense(licenseId);
+            });
+        });
+    } else {
+    console.log("No delete buttons to attach listeners to.");
+   }
+    if (params.get('emailverified') === 'false') {
+        const messageDiv = document.getElementById('verifyMessage');
+        messageDiv.innerHTML = 'Please verify your email and try again.';
+        // Add any styles or animations you want
+        messageDiv.style.color = 'red';
+    }
+    if (params.get('loggedOut') === 'true') {
+        const messageDiv = document.getElementById('logoutMessage');
+        messageDiv.innerHTML = 'You are logged out.';
+        console.log('User LOGGGED OUT');
+        // Add any styles or animations you want
+        messageDiv.style.color = 'green';
+    }
+    let passwordInput = document.getElementById('password');
+    let confirmPasswordInput = document.getElementById('confirm_password');
+    
+    confirmPasswordInput.onkeyup = function() {
+        if (passwordInput.value !== confirmPasswordInput.value) {
+            confirmPasswordInput.setCustomValidity('Passwords do not match.');
+        } else {
+            confirmPasswordInput.setCustomValidity('');
+        }
+    };
+    if (params.get('passwordchanged') === 'true') {
+        const messageDiv = document.getElementById('passwordChangedMessage');
+        messageDiv.innerHTML = 'Pasword changed successfully!';
+        // Add any styles or animations you want
+        messageDiv.style.color = 'green';
+    }
+});
+
+
 // Get the modal
 var modal = document.getElementById('licenseDialog');
 
