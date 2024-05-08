@@ -167,7 +167,7 @@ router.get('/login', (req, res) => {
   const message = req.session.message;
   if (message) {
     res.redirect('login?messagein=${ message }');
-    req.session.message = null;
+//    req.session.message = null;
   }
   else  
   {
@@ -286,6 +286,7 @@ router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
     const message = 'Please login to access the Dashboard';
     req.session.message = message;
+    console.log('Message:', message);
     res.redirect('/login');  
   }
   else { 
