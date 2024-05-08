@@ -165,7 +165,14 @@ router.post('/register', (req, res) => {
 // Login route
 router.get('/login', (req, res) => {
   const message = req.session.message;
-  res.render('login', { query: req.query });
+  if (message) {
+    res.render('login?messagein=${ message }');
+    req.session.message = null;
+  }
+  else  
+  {
+    res.render('login', { query: req.query });
+  }
 });
 
 // Logout route
