@@ -320,7 +320,8 @@ router.post('/sendreset', (req, res) => {
   const email = req.body.email;
   const resetToken = crypto.randomBytes(20).toString('hex');
   const resetTokenExpire = Date.now() + 900000; // 15 minutes from now
-  console.log('Reset token:', resetToken, 'Expires:', new Date(resetTokenExpire));
+  const resetTokenExpireDate = new Date(resetTokenExpire);
+  console.log('Reset token:', resetToken, 'Expires:', resetTokenExpireDate);
   // Store the reset token and its expiration in the database
   const updateQuery = 'UPDATE Users SET resetToken=?, resetTokenExpire=? WHERE email=?';
   db.query(updateQuery, [resetToken, new Date(resetTokenExpire), email], (error, results) => {
