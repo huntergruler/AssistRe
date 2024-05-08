@@ -15,6 +15,7 @@ header {
     background-color: aquamarine;
     margin: 0;
     height: 100%;
+    align-content: center;
 }
 
 #navlinks {
