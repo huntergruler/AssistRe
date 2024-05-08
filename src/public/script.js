@@ -166,7 +166,7 @@ document.getElementById('user').addEventListener('blur', function() {
     const parent = document.getElementById('parentElement');
     const params = new URLSearchParams(window.location.search);
     const myParam = params['emailverified'];
-    const messagein = sessionStorage.getItem('message');
+    const messagein = <%= message %>;
     console.log('messagein', messagein);
 
     const deleteButtons = document.querySelectorAll('.delete-btn');
