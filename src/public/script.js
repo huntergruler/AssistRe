@@ -186,6 +186,7 @@ function showMessage(text) {
                 fetch(`/check-user?username=${encodeURIComponent(User)}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data);
                   if (data.available) {
                     // Email is available
                     document.getElementById('userStatus').textContent = 'Username is available.';
