@@ -103,24 +103,6 @@ router.post('/register', (req, res) => {
       });
   });
 
-
-
-  // GET RID OF THIS, DEBUG ONLY
-  router.get('/all', (req, res) => {
-    const query = 'SELECT * FROM AgentLicenseInfo'; 
-      db.query(query,[ req.session.userid ], (err, results) => {
-        if (error) {
-          return res.status(500).json({error: 'Internal server error'});
-        }
-        if (results.length > 0) {
-          res.json({results});
-        }
-      });
-  });
-
-  router.get('/launch', (req, res) => {
-    return res.status(500).json({error: 'Bad request'});
-  });
   
   router.post('/api/licenses', (req, res) => {
     console.log('req.body:',req.body);
@@ -182,7 +164,7 @@ router.get('/logout', (req, res) => {
       // Redirect to login with a logout message
       req.session.message = 'Successfully logged out';
       req.session.killsession = true;
-      res.redirect('/login');
+      res.redirect('/');
 });
 
 router.post('/login', [
