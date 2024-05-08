@@ -42,3 +42,12 @@
 /*    align-items: center; /* Center vertically */
     height: 100vh; /* Example height, adjust as necessary */
 }
+
+#message {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0; /* Start invisible */
+}
+
+#message.show {
+    opacity: 1; /* Fade in when class 'show' is added */
+}

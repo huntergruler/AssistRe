@@ -98,6 +98,12 @@ function cancelEdit(id) {
     actionsCell.innerHTML = `<button onclick="editLicense(${id})">Edit</button>
                              <button onclick="deleteLicense(${id})">Delete</button>`;
 }
+function showMessage(text) {
+    const messageDiv = document.getElementById('message');
+    messageDiv.textContent = text;
+    messageDiv.classList.add('show');
+    setTimeout(() => messageDiv.classList.remove('show'), 5000); // Fade out after 5 seconds
+}
 
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
