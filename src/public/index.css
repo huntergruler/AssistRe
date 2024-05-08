@@ -38,4 +38,6 @@ header {
     width: 60px;
     text-align: center;
     justify-content: center;
+    color: white;
+    text-decoration: none;
 }
