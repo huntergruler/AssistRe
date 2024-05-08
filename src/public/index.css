@@ -32,11 +32,6 @@ header {
     margin: 0 auto;
     width: fit-content;
 }
-#navlinks li {
-    display: inline-block;
-    width: 100px;
-    background-color: blueviolet;
-}
 
 #navlinks li a{
     margin: 0 10px;
