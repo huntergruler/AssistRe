@@ -165,6 +165,7 @@ router.post('/register', (req, res) => {
 // Login route
 router.get('/login', (req, res) => {
   const message = req.session.message;
+  console.log('Message:', message);
   if (message) {
     res.redirect('login?messagein=${ message }');
 //    req.session.message = null;
@@ -286,9 +287,8 @@ router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
     const message = 'Please login to access the Dashboard';
     req.session.message = message;
-    const redirectto = '/login?message=${message}';
     console.log('Redirecting to:', redirectto);
-    res.redirect('/login?message=${message}');  
+    res.redirect('/login');  
   }
   else { 
   res.render('dashboard', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
