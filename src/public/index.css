@@ -14,6 +14,8 @@ header {
     flex-grow: 2;
     background-color: aquamarine;
     margin: 0;
+    height: 100%;
+    align-self: center;
 }
 
 #navlinks {
@@ -22,8 +24,7 @@ header {
     flex-direction: row;
     background-color: aqua;
     list-style-type: none;
-    height: 75px;
-    align-self: start;
+    height: 100%;
     align-items: center;
     margin: 0;
 }
