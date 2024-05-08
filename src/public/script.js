@@ -168,41 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
 
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
-
-    fetch('/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username: username, password: password })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        if (!data.success) {
-            // Display message if login failed
-            document.getElementById('message').innerText = data.message;
-            document.getElementById('message').style.color = 'red'; // Optional: change text color
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            document.getElementById('username').focus();
-        } else {
-            // Redirect or handle successful login
-            window.location.href = '/dashboard';
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('message').innerText = 'An error occurred. Please try again.';
-        document.getElementById('message').style.color = 'red';
-    });
-});
-   
 // Get the modal
 var modal = document.getElementById('licenseDialog');
 
