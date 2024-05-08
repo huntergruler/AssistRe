@@ -161,9 +161,13 @@ function showMessage(text) {
         const parent = document.getElementById('parentElement');
     
         parent.addEventListener('keyup', function(event) {
+            const passwordInput = document.getElementById('password');
             if (event.target.id === 'confirm_password') {
-            console.log('Key released: ', event.key);
-            console.log('Input value after key up: ', this.value);
+                if (passwordInput.value !== this.value) {
+                    confirmPasswordInput.setCustomValidity('Passwords do not match.');
+                } else {
+                    confirmPasswordInput.setCustomValidity('');
+                }
         }
         });
         
