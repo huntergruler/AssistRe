@@ -200,6 +200,7 @@ router.post('/login', [
     if (error) {
       return res.render('login', { errorMessage: 'Error during database query' });
     }
+    console.log('Results:', results);
     if (results[0].emailverified === 0) {
             // Send response when email is not verified
             res.json({
