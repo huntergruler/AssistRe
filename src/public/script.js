@@ -120,13 +120,31 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         body: JSON.stringify({ username: username, password: password })
     })
     .then(response => response.json())
-    window.location.href = '/dashboard';
+    .then(data => {
+        console.log(data);
+        if (data.success === false) {
+            // Display message if login failed
+            document.getElementById('message').innerText = data.message;
+            document.getElementById('message').style.color = 'red'; // Optional: change text color
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('username').focus();
+        } else {
+            // Redirect or handle successful login
+            window.location.href = '/dashboard';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('message').innerText = 'An error occurred. Please try again.';
+        document.getElementById('message').style.color = 'red';
+    });
 });
    
-document.getElementById('user').addEventListener('blur', function() {
-    const User = this.value;
-    if (User) {
-      fetch(`/check-user?username=${encodeURIComponent(User)}`)
+document.body.addEventListener('blur', function(event) {
+    if (event.target.id === 'user') {
+        // Handle the blur event for the 'user' element
+        fetch(`/check-user?username=${encodeURIComponent(User)}`)
         .then(response => response.json())
         .then(data => {
           if (data.available) {
@@ -141,8 +159,8 @@ document.getElementById('user').addEventListener('blur', function() {
         })
         .catch(error => console.error('Error checking user:', error));
     }
-  });
-  
+}, true); // Using capturing phase to handle the event as it propagates down
+
   document.addEventListener('DOMContentLoaded', function() {
     // Access the parent element by its ID
     console.log('GOTHERE');
