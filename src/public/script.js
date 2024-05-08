@@ -117,6 +117,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     .then(data => {
         console.log(data);
         if (!data.success) {
+            console.log(data);
             // Display message if login failed
             document.getElementById('message').innerText = data.message;
             document.getElementById('message').style.color = 'red'; // Optional: change text color
