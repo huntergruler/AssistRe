@@ -44,7 +44,7 @@ header {
 }
 
 #navlinks a:hover{
-    animation: fadeInAnimation ease 1s;
+    animation: fadeInAnimation ease 0.3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
