@@ -6,6 +6,8 @@ header {
     display: flex;
     flex-direction: row;
     margin: 0;
+    align-items: flex-start;
+    height: 50px;
 }
 
 #title {
