@@ -226,7 +226,7 @@ router.post('/login', [
             // Send response when email is not verified
             res.json({
               success: false,
-              message: "Invalid credentials."
+              message: "Invalid credentials"
             });
           }
         }
