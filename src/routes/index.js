@@ -164,9 +164,8 @@ router.post('/register', (req, res) => {
 
 // Login route
 router.get('/login', (req, res) => {
-  const message = req.session.message;
-  console.log('/login Message:', message);
-    res.render('login', { query: req.query, message: message });
+   const message = req.session.message;
+   res.render('login', { query: req.query, message: message });
 });
 
 // Logout route
@@ -278,7 +277,7 @@ router.get('/check-user', (req, res) => {
 // Route to serve the dashboard page
 router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
-    req.session.message = 'Please login to access the dashboard';
+    req.session.message = 'Please login to access the Dashboard';
 //    console.log('Redirecting to:', redirectto);
     res.redirect('/login');  
   }
