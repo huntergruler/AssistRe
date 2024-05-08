@@ -28,6 +28,7 @@ a{
 #title a{
     height: 100%;
     color: white;
+    width: fit-content;
 }
 
 #navlinks {
