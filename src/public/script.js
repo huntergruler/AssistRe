@@ -155,12 +155,12 @@ function showMessage(text) {
                 .then(data => {
                   if (data.available) {
                     // Email is available
-                    parent.getElementById('userStatus').textContent = 'Username is available.';
-                    parent.getElementById('userStatus').style.color = 'green';
+                    document.getElementById('userStatus').textContent = 'Username is available.';
+                    document.getElementById('userStatus').style.color = 'green';
                   } else {
                     // Email is not available
-                    parent.getElementById('userStatus').textContent = 'Username is already registered.';
-                    parent.getElementById('userStatus').style.color = 'red';
+                    document.getElementById('userStatus').textContent = 'Username is already registered.';
+                    document.getElementById('userStatus').style.color = 'red';
                   }
                 })
                 .catch(error => console.error('Error checking user:', error));
