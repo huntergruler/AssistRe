@@ -192,7 +192,6 @@ router.post('/login', [
     if (error) {
       return res.render('login', { errorMessage: 'Error during database query' });
     }
-    console.log('Results:', results);
     if (results[0].emailverified === 0) {
             // Send response when email is not verified
             res.json({
@@ -201,6 +200,7 @@ router.post('/login', [
           });
      } else {
       const { userid } = results[0];
+      
       bcrypt.compare(password, results[0].password, (err, isMatch) => {
       if (err) {
         return res.render('login', { errorMessage: 'Error comparing passwords' });
