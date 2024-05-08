@@ -88,6 +88,19 @@ function saveLicense(id) {
     .catch(error => console.error('Error:', error));
 }
 
+function comparePasswords(text) {
+    // Handle the blur event for the 'confirm_password' element
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm_password');
+    confirmPasswordInput.onkeyup = function() {
+        if (passwordInput.value !== confirmPasswordInput.value) {
+            confirmPasswordInput.setCustomValidity('Passwords do not match.');
+        } else {
+            confirmPasswordInput.setCustomValidity('');
+        }
+    };
+}
+
 function cancelEdit(id) {
     const licenseRow = document.getElementById(`license-${id}`);
     licenseRow.querySelectorAll('.editable').forEach(cell => {
@@ -200,36 +213,6 @@ function showMessage(text) {
                 })
                 .catch(error => console.error('Error checking user:', error));
             }
-            if (event.target.id === 'confirm_password') {
-                // Handle the blur event for the 'confirm_password' element
-                const passwordInput = document.getElementById('password');
-                const confirmPasswordInput = document.getElementById('confirm_password');
-                confirmPasswordInput.onkeyup = function() {
-                    if (passwordInput.value !== confirmPasswordInput.value) {
-                        confirmPasswordInput.setCustomValidity('Passwords do not match.');
-                    } else {
-                        confirmPasswordInput.setCustomValidity('');
-                    }
-                };
-
-                const User = document.getElementById('confirm_password').value.trim();
-                fetch(`/check-user?username=${encodeURIComponent(User)}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                  if (data.available) {
-                    // Email is available
-                    document.getElementById('userStatus').textContent = 'Username is available.';
-                    document.getElementById('userStatus').style.color = 'green';
-                  } else {
-                    // Email is not available
-                    document.getElementById('userStatus').textContent = 'Username is already registered.';
-                    document.getElementById('userStatus').style.color = 'red';
-                    document.getElementById('user').focus();
-                }
-                })
-                .catch(error => console.error('Error checking user:', error));
-            }
         }, true); // Using capturing phase to handle the event as it propagates down
         });
 
@@ -254,7 +237,7 @@ function showMessage(text) {
                     messageDiv.style.color = 'green';
                 }
             }    
-            if (resetContainer || registerContainer) {    // Access the parent element by its ID
+/*            if (resetContainer || registerContainer) {    // Access the parent element by its ID
                 if (params.get('passwordchanged') === 'true') {
                     const messageDiv = document.getElementById('passwordChangedMessage');
                     messageDiv.innerHTML = 'Pasword changed successfully!';
@@ -262,7 +245,8 @@ function showMessage(text) {
                     messageDiv.style.color = 'green';
                 }
                     }
-        });
+                */
+                     });
         
 
 
