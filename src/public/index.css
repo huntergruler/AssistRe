@@ -23,12 +23,11 @@ a{
     margin: 0;
     height: 100%;
     align-content: center;
+    color: white;
 }
 
 #title a{
     height: 100%;
-    color: white;
-    width: fit-content;
 }
 
 #navlinks {
