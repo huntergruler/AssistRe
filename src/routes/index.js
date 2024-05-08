@@ -267,7 +267,7 @@ router.get('/check-user', (req, res) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
-
+  console.log('Results:', results);
       if (results[0].cnt > 0) {
         // User Name is already taken
         res.json({ available: false });
