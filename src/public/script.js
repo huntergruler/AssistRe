@@ -166,9 +166,9 @@ document.getElementById('user').addEventListener('blur', function() {
     const parent = document.getElementById('parentElement');
     const params = new URLSearchParams(window.location.search);
     const myParam = params['emailverified'];
-    const messagein = params['message'];
+    const messagein = sessionStorage.getItem('message');
     console.log('messagein', messagein);
-    
+
     const deleteButtons = document.querySelectorAll('.delete-btn');
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirm_password');
