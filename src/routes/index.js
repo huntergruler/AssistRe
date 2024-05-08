@@ -274,12 +274,12 @@ router.get('/dashboard', (req, res) => {
 
 router.get('/settings', (req, res) => {
   if (!req.session.user) {
-    req.session.message = 'Please login to access the Dashboard';
+    req.session.message = 'Please login to access the Settings page';
 //    console.log('Redirecting to:', redirectto);
     res.redirect('/login');  
   }
   else { 
-    res.render('settings', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
+    res.render('settings');
   }
 });
 
