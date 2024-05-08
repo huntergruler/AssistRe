@@ -33,10 +33,10 @@ header {
 
 #navlinks a{
     margin: 10px;
-    padding: 25px 5px;
+    height: 100%;
     width: 60px;
     text-align: center;
-    justify-content: start;
+    justify-content: flex-start;
     color: white;
     text-decoration: none;
 }
