@@ -105,7 +105,6 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
 
-    console.log('HERE3');
     fetch('/login', {
         method: 'POST',
         headers: {
@@ -114,11 +113,9 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         body: JSON.stringify({ username: username, password: password })
     })
     .then(response => response.json())
-    console.log('HERE2');
     .then(data => {
-//        console.log(data);
+        console.log(data);
         if (data.success === false) {
-            console.log('HERE');
             // Display message if login failed
             document.getElementById('message').innerText = data.message;
             document.getElementById('message').style.color = 'red'; // Optional: change text color
