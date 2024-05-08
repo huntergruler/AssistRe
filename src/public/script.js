@@ -174,12 +174,6 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
 
-    if (password.length < 4) {
-        document.getElementById('message').innerText = 'Password must be at least 4 characters long.';
-        document.getElementById('message').style.color = 'red';
-        return; // Stop the form submission if validation fails
-    }
-
     fetch('/login', {
         method: 'POST',
         headers: {
