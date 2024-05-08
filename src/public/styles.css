@@ -51,7 +51,3 @@
 #message.show {
     opacity: 1; /* Fade in when class 'show' is added */
 }
-
-h1{
-    color: red;
-}
