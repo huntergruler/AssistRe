@@ -189,7 +189,7 @@ router.post('/login', [
         return res.status(400).json({ errors: errors.array() });
     }
   const { username, password } = req.body;
-  console.log('User', username, 'Password', password);  
+//  console.log('User', username, 'Password', password);  
   const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Users WHERE username = ?';
   res.setHeader('Content-Type', 'application/json');
   db.query(query, [username], (error, results) => {
@@ -276,7 +276,7 @@ router.get('/check-user', (req, res) => {
 // Route to serve the dashboard page
 router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
-    return res.status(401).send("Access denied. Please login to access this page.");
+    res.redirect('/login',{ message: 'Please login to access this page.' });
   }
   res.render('dashboard', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
 });
