@@ -159,28 +159,28 @@ function showMessage(text) {
             span.onclick = function() {
                 modal.style.display = "none";
              }
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-            if (event.target.id === 'button') {
-                if (deleteButtons.length > 0) {
-                    deleteButtons.forEach(button => {
-                        button.addEventListener('click', function() {
-                            const licenseId = this.getAttribute('data-id');
-                            deleteLicense(licenseId);
-                        });
-                    });
-                } else {
-                console.log("No delete buttons to attach listeners to.");
-               }
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                    if (event.target.id === 'button') {
+                        if (deleteButtons.length > 0) {
+                            deleteButtons.forEach(button => {
+                                button.addEventListener('click', function() {
+                                    const licenseId = this.getAttribute('data-id');
+                                    deleteLicense(licenseId);
+                                });
+                            });
+                        } else {
+                        console.log("No delete buttons to attach listeners to.");
+                    }
+                    }
+                }
             }
-        }
-        }
-    });
+        });
         parent.addEventListener('blur', function(event) {
-                if (event.target.id === 'user') {
+            if (event.target.id === 'user') {
                 // Handle the blur event for the 'user' element
                 const User = document.getElementById('user').value.trim();
                 fetch(`/check-user?username=${encodeURIComponent(User)}`)
@@ -195,7 +195,38 @@ function showMessage(text) {
                     // Email is not available
                     document.getElementById('userStatus').textContent = 'Username is already registered.';
                     document.getElementById('userStatus').style.color = 'red';
-                  }
+                    document.getElementById('user').focus();
+                }
+                })
+                .catch(error => console.error('Error checking user:', error));
+            }
+            if (event.target.id === 'confirm_password') {
+                // Handle the blur event for the 'confirm_password' element
+                const passwordInput = document.getElementById('password');
+                const confirmPasswordInput = document.getElementById('confirm_password');
+                confirmPasswordInput.onkeyup = function() {
+                    if (passwordInput.value !== confirmPasswordInput.value) {
+                        confirmPasswordInput.setCustomValidity('Passwords do not match.');
+                    } else {
+                        confirmPasswordInput.setCustomValidity('');
+                    }
+                };
+
+                const User = document.getElementById('confirm_password').value.trim();
+                fetch(`/check-user?username=${encodeURIComponent(User)}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                  if (data.available) {
+                    // Email is available
+                    document.getElementById('userStatus').textContent = 'Username is available.';
+                    document.getElementById('userStatus').style.color = 'green';
+                  } else {
+                    // Email is not available
+                    document.getElementById('userStatus').textContent = 'Username is already registered.';
+                    document.getElementById('userStatus').style.color = 'red';
+                    document.getElementById('user').focus();
+                }
                 })
                 .catch(error => console.error('Error checking user:', error));
             }
@@ -224,15 +255,6 @@ function showMessage(text) {
                 }
             }    
             if (resetContainer || registerContainer) {    // Access the parent element by its ID
-                const passwordInput = document.getElementById('password');
-                const confirmPasswordInput = document.getElementById('confirm_password');
-                confirmPasswordInput.onkeyup = function() {
-                    if (passwordInput.value !== confirmPasswordInput.value) {
-                        confirmPasswordInput.setCustomValidity('Passwords do not match.');
-                    } else {
-                        confirmPasswordInput.setCustomValidity('');
-                    }
-                };
                 if (params.get('passwordchanged') === 'true') {
                     const messageDiv = document.getElementById('passwordChangedMessage');
                     messageDiv.innerHTML = 'Pasword changed successfully!';
