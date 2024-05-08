@@ -14,7 +14,7 @@ header {
 }
 
 #title {
-    margin-left: 25px;
+    padding-left: 25px;
     flex-grow: 10;
     margin: 0;
     height: 100%;
