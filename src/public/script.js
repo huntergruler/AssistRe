@@ -146,8 +146,22 @@ function showMessage(text) {
         // Access the parent element by its ID
         const parent = document.getElementById('parentElement');
     
+        parent.addEventListener('click', function(event) {
+            if (event.target.id === 'button') {
+                if (deleteButtons.length > 0) {
+                    deleteButtons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            const licenseId = this.getAttribute('data-id');
+                            deleteLicense(licenseId);
+                        });
+                    });
+                } else {
+                console.log("No delete buttons to attach listeners to.");
+               }
+            }
+        });
         parent.addEventListener('blur', function(event) {
-            if (event.target.id === 'user') {
+                if (event.target.id === 'user') {
                 // Handle the blur event for the 'user' element
                 const User = document.getElementById('user').value.trim();
                 fetch(`/check-user?username=${encodeURIComponent(User)}`)
@@ -180,16 +194,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmPasswordInput = document.getElementById('confirm_password');
     
 
-    if (deleteButtons.length > 0) {
-        deleteButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const licenseId = this.getAttribute('data-id');
-                deleteLicense(licenseId);
-            });
-        });
-    } else {
-    console.log("No delete buttons to attach listeners to.");
-   }
    if (params.get('emailverified') === 'false') {
         const messageDiv = document.getElementById('verifyMessage');
         messageDiv.innerHTML = 'Please verify your email and try again.';
