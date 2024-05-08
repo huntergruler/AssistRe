@@ -14,7 +14,7 @@ const saltRounds = 10; // The cost factor controls how much time is needed to ca
 const bodyParser = require('body-parser');
 
 // Ensure you have body-parser configured to parse JSON
-// router.use(bodyParser.json());
+router.use(bodyParser.json());
 router.use(express.json());
 
 // Database connection setup
