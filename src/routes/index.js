@@ -276,7 +276,8 @@ router.get('/check-user', (req, res) => {
 // Route to serve the dashboard page
 router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
-    res.redirect('/login',{ message: 'Please login to access this page.' });
+    const message = 'Please login to access the Dashboard';
+    res.redirect('/login?message=${message}');  
   }
   res.render('dashboard', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
 });
