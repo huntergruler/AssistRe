@@ -155,11 +155,15 @@ document.getElementById('user').addEventListener('blur', function() {
   });
   
   document.addEventListener('DOMContentLoaded', function() {
-    console.log(window.location.search);
+    // Access the parent element by its ID
+    const parent = document.getElementById('parentElement');
     const params = new URLSearchParams(window.location.search);
-    console.log(params);
     const myParam = params['emailverified'];
     const deleteButtons = document.querySelectorAll('.delete-btn');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm_password');
+    
+
     if (deleteButtons.length > 0) {
         deleteButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -183,9 +187,7 @@ document.getElementById('user').addEventListener('blur', function() {
         // Add any styles or animations you want
         messageDiv.style.color = 'green';
     }
-    let passwordInput = document.getElementById('password');
-    let confirmPasswordInput = document.getElementById('confirm_password');
-    
+
     confirmPasswordInput.onkeyup = function() {
         if (passwordInput.value !== confirmPasswordInput.value) {
             confirmPasswordInput.setCustomValidity('Passwords do not match.');

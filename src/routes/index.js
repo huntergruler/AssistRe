@@ -90,7 +90,10 @@ router.post('/register', (req, res) => {
 
   // Assuming `db` is your MySQL connection db, already set up in app.js
   router.get('/profile', (req, res) => {
-      const query = 'SELECT * FROM AgentLicenseInfo where userid = ?'; 
+    if (!req.session.user) {
+      return res.status(401).send("Access denied. Please login to access this page.");
+    }
+        const query = 'SELECT * FROM AgentLicenseInfo where userid = ?'; 
       db.query(query,[ req.session.userid ], (err, results) => {
           if (err) throw err;
           let hasLicenses = results.length > 0;
@@ -187,7 +190,7 @@ router.post('/login', [
     }
   const { username, password } = req.body;
   console.log('User', username, 'Password', password);  
-  const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
+  const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Users WHERE username = ?';
   res.setHeader('Content-Type', 'application/json');
   db.query(query, [username], (error, results) => {
     if (error) {
@@ -200,7 +203,7 @@ router.post('/login', [
               message: "Verify your email address and then try to login again."
           });
      } else {
-      const { userid } = results[0];
+      const { userid, firstname, lastname } = results[0];
       
       bcrypt.compare(password, results[0].password, (err, isMatch) => {
       if (err) {
@@ -209,6 +212,8 @@ router.post('/login', [
         if (isMatch) {
           req.session.user = username;
           req.session.userid = userid;
+          req.session.firstname = firstname;
+          req.session.lastname = lastname;
           console.log('User logged in:', username);
           res.json({
             success: true,
@@ -273,7 +278,7 @@ router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
     return res.status(401).send("Access denied. Please login to access this page.");
   }
-  res.render('dashboard');
+  res.render('dashboard', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
 });
 
 // Password reset route
