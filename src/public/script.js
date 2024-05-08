@@ -159,7 +159,10 @@ function showMessage(text) {
         document.addEventListener('DOMContentLoaded', function() {
         // Access the parent element by its ID
         const parent = document.getElementById('parentElement');
-        var resetContainer = document.getElementById('resetContainer');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const token = document.getElementById('token');
+        const resetContainer = document.getElementById('resetContainer');
     
         parent.addEventListener('keyup', function(event) {
             const passwordInput = document.getElementById('password');
@@ -208,9 +211,6 @@ function showMessage(text) {
                 }
             }
             if (resetContainer) {
-                const email = document.getElementById('email');
-                const password = document.getElementById('password');
-                const token = document.getElementById('token');
                 console.log(email, password, token);
                 fetch('/reset', {
                     method: 'POST',  // Specify the method you want to use
@@ -218,7 +218,7 @@ function showMessage(text) {
                         'Content-Type': 'application/json',  // Set the content type header
                         // Add other headers as necessary
                     },
-                    body: JSON.stringify({ email: document.getElementById('email').value, password: document.getElementById('password').value, token: document.getElementById('token').value})
+                    body: JSON.stringify({ email, password, token})
                 })
                 .then(response => {
                     if (response.ok) {
