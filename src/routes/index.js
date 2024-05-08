@@ -41,7 +41,7 @@ const transporter = nodemailer.createTransport({
 
 // Landing page route
 router.get('/', (req, res) => {
-  res.render('login');
+  res.render('index');
 });
 
 // Register route
@@ -226,7 +226,7 @@ router.post('/login', [
             // Send response when email is not verified
             res.json({
               success: false,
-              message: "Invalid credentials"
+              message: "Invalid credentials."
             });
           }
         }
