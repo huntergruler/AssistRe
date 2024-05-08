@@ -178,7 +178,7 @@ router.get('/logout', (req, res) => {
       res.clearCookie('connect.sid'); // If you're using session cookies, clear them
 
       // Redirect to login with a logout message
-      res.redirect('/login?loggedOut=true');
+      res.redirect('/login', { message: 'Successfully logged out' });
   });
 });
 
