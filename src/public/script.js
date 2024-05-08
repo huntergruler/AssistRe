@@ -149,6 +149,7 @@ function showMessage(text) {
         parent.addEventListener('blur', function(event) {
             if (event.target.id === 'user') {
                 // Handle the blur event for the 'user' element
+                const User = document.getElementById('user').value.trim();
                 fetch(`/check-user?username=${encodeURIComponent(User)}`)
                 .then(response => response.json())
                 .then(data => {
