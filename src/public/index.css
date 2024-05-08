@@ -4,7 +4,7 @@
 header {
     background-color: #333;
     width: 100%;
-    color: white;
+    color: #13326D;
     text-align: start;
     display: flex;
     flex-direction: row;
@@ -39,4 +39,8 @@ header {
     justify-content: center;
     color: white;
     text-decoration: none;
+}
+
+#navlinks a:hover{
+    opacity: 0.7;
 }
