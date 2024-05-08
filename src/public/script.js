@@ -159,6 +159,7 @@ document.getElementById('user').addEventListener('blur', function() {
     const parent = document.getElementById('parentElement');
     const params = new URLSearchParams(window.location.search);
     const myParam = params['emailverified'];
+    const messagein = params['message'];
     const deleteButtons = document.querySelectorAll('.delete-btn');
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirm_password');
@@ -174,7 +175,13 @@ document.getElementById('user').addEventListener('blur', function() {
     } else {
     console.log("No delete buttons to attach listeners to.");
    }
-    if (params.get('emailverified') === 'false') {
+   if (messagein.length > 0) {
+    const messageDiv = document.getElementById('message');
+    messageDiv.innerHTML = messagein;
+    // Add any styles or animations you want
+    messageDiv.style.color = 'red';
+}
+if (params.get('emailverified') === 'false') {
         const messageDiv = document.getElementById('verifyMessage');
         messageDiv.innerHTML = 'Please verify your email and try again.';
         // Add any styles or animations you want
