@@ -183,6 +183,7 @@ function showMessage(text) {
             const email = document.getElementById('email');
             const password = document.getElementById('password');
             const token = document.getElementById('token');
+            console.log('email:',email.value, 'password:',password.value, 'token:',token.value);
             if (event.target.id === 'licensesTable') {
                 let modal = document.getElementById('licenseDialog');
                 let btn = document.getElementById("myBtn");
