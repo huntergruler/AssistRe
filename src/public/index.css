@@ -15,7 +15,7 @@ header {
 }
 
 #title {
-    flex-grow: 5;
+    flex-grow: 10;
     margin: 0;
     height: 100%;
     align-content: center;
@@ -30,6 +30,7 @@ header {
     height: 100%;
     align-items: center;
     margin: 0;
+    justify-content: flex-end;
 }
 
 #navlinks a{
