@@ -1,6 +1,7 @@
 *{
     margin: 0;
 }
+
 header {
     background-color: rgba(19, 50, 109);
     width: 100%;
@@ -13,10 +14,6 @@ header {
     height: 75px;
 }
 
-a{
-    text-decoration: none;
-}
-
 #title {
     padding-left: 25px;
     flex-grow: 10;
@@ -27,6 +24,7 @@ a{
 
 #title a{
     color: white;
+    text-decoration: none;
 }
 
 #navlinks {
@@ -48,6 +46,7 @@ a{
     text-justify: start;
     align-content: center;
     color: white;
+    text-decoration: none;
 }
 
 #navlinks a:hover{
