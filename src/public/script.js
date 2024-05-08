@@ -175,13 +175,7 @@ document.getElementById('user').addEventListener('blur', function() {
     } else {
     console.log("No delete buttons to attach listeners to.");
    }
-   if (messagein.length > 0) {
-    const messageDiv = document.getElementById('message');
-    messageDiv.innerHTML = messagein;
-    // Add any styles or animations you want
-    messageDiv.style.color = 'red';
-}
-if (params.get('emailverified') === 'false') {
+   if (params.get('emailverified') === 'false') {
         const messageDiv = document.getElementById('verifyMessage');
         messageDiv.innerHTML = 'Please verify your email and try again.';
         // Add any styles or animations you want
