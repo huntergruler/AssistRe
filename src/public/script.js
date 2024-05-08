@@ -208,6 +208,10 @@ function showMessage(text) {
                 }
             }
             if (resetContainer) {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const token = document.getElementById('token').value;
+                console.log(email, password, token);
                 fetch('/reset', {
                     method: 'POST',  // Specify the method you want to use
                     headers: {
