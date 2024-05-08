@@ -183,6 +183,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (!data.success) {
             // Display message if login failed
             document.getElementById('message').innerText = data.message;
