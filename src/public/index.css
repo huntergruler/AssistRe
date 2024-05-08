@@ -18,4 +18,6 @@ header {
     display: flex;
     flex-direction: row;
     background-color: aqua;
+    list-style-type: none;
+    height: 100%;
 }
