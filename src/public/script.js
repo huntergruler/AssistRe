@@ -160,6 +160,11 @@ function showMessage(text) {
         // Access the parent element by its ID
         const parent = document.getElementById('parentElement');
     
+        parent.addEventListener('keyup', function(event) {
+            console.log('Key released: ', event.key);
+            console.log('Input value after key up: ', this.value);
+        });
+        
         parent.addEventListener('click', function(event) {
             const deleteButtons = document.querySelectorAll('.delete-btn');
             if (event.target.id === 'licensesTable') {
