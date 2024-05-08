@@ -25,11 +25,7 @@ a{
     align-content: center;
 }
 
-#title h1{
-    height: 100%;
-}
-
-#title h1 a{
+#title a{
     height: 100%;
     color: white;
 }
