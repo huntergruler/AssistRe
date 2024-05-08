@@ -2,9 +2,9 @@
     margin: 0;
 }
 header {
-    background-color: #333;
+    background-color: #13326D;
     width: 100%;
-    color: #13326D;
+    color: white;
     text-align: start;
     display: flex;
     flex-direction: row;
