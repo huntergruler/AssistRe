@@ -142,40 +142,30 @@ function showMessage(text) {
     }
     });
    
-document.body.addEventListener('blur', function(event) {
-    if (event.target.id === 'user') {
-        // Handle the blur event for the 'user' element
-        fetch(`/check-user?username=${encodeURIComponent(User)}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.available) {
-            // Email is available
-            document.getElementById('userStatus').textContent = 'Username is available.';
-            document.getElementById('userStatus').style.color = 'green';
-          } else {
-            // Email is not available
-            document.getElementById('userStatus').textContent = 'Username is already registered.';
-            document.getElementById('userStatus').style.color = 'red';
-          }
-        })
-        .catch(error => console.error('Error checking user:', error));
-    }
-}, true); // Using capturing phase to handle the event as it propagates down
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Access the parent element by its ID
-    const parent = document.getElementById('parentElement');
-
-    // Attach a click event listener to the parent element
-    parent.addEventListener('click', function(event) {
-        // Check if the clicked element has the class 'child'
-        if (event.target.classList.contains('child')) {
-            // Perform some action, here we just log the button's text
-            console.log("Clicked:", event.target.textContent);
-        }
-    });
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        // Access the parent element by its ID
+        const parent = document.getElementById('parentElement');
+    
+        parent.body.addEventListener('blur', function(event) {
+            if (event.target.id === 'user') {
+                // Handle the blur event for the 'user' element
+                fetch(`/check-user?username=${encodeURIComponent(User)}`)
+                .then(response => response.json())
+                .then(data => {
+                  if (data.available) {
+                    // Email is available
+                    parent.getElementById('userStatus').textContent = 'Username is available.';
+                    parent.getElementById('userStatus').style.color = 'green';
+                  } else {
+                    // Email is not available
+                    parent.getElementById('userStatus').textContent = 'Username is already registered.';
+                    parent.getElementById('userStatus').style.color = 'red';
+                  }
+                })
+                .catch(error => console.error('Error checking user:', error));
+            }
+        }, true); // Using capturing phase to handle the event as it propagates down
+        });
 
 document.addEventListener('DOMContentLoaded', function() {
     // Access the parent element by its ID
