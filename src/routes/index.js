@@ -164,6 +164,7 @@ router.post('/register', (req, res) => {
 
 // Login route
 router.get('/login', (req, res) => {
+  const message = req.session.message;
   res.render('login', { query: req.query });
 });
 
@@ -277,7 +278,8 @@ router.get('/check-user', (req, res) => {
 router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
     const message = 'Please login to access the Dashboard';
-    res.redirect('/login?message=${message}');  
+    req.session.message = message;
+    res.redirect('/login');  
   }
   else { 
   res.render('dashboard', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
