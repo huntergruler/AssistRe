@@ -166,7 +166,6 @@ function showMessage(text) {
 
             if (event.target.id === 'confirm_password') {
                 // Handle the keyup event for the 'confirm_password' element
-                console.log("passwordInput", passwordInput.value, "confirmPasswordInput", confirmPasswordInput.value);
                 if (passwordInput.value !== confirmPasswordInput.value) {
                     confirmPasswordInput.setCustomValidity('Passwords do not match.');
                 } else {
@@ -206,6 +205,10 @@ function showMessage(text) {
                     }
                     }
                 }
+            }
+            else {
+                // Default action for other clicks not handled above
+                console.log("Default action executed: Click not on 'licensesTable'");
             }
         });
         parent.addEventListener('blur', function(event) {
