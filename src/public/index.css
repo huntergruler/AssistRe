@@ -29,7 +29,8 @@ header {
     list-style-type: none;
     height: 75px;
     align-items: center;
-    margin: 0;
+    margin: 0 auto;
+    width: fit-content;
 }
 #navlinks li {
     display: inline-block;
