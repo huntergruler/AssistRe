@@ -113,9 +113,9 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         body: JSON.stringify({ username: username, password: password })
     })
     .then(response => response.json())
-    console.log(data);
+//    console.log(data);
     .then(data => {
-        console.log(data);
+//        console.log(data);
         if (data.success === false) {
             console.log(data);
             // Display message if login failed
