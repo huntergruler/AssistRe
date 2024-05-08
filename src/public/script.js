@@ -180,6 +180,9 @@ function showMessage(text) {
         
         parent.addEventListener('click', function(event) {
             const deleteButtons = document.querySelectorAll('.delete-btn');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const token = document.getElementById('token');
             if (event.target.id === 'licensesTable') {
                 let modal = document.getElementById('licenseDialog');
                 let btn = document.getElementById("myBtn");
