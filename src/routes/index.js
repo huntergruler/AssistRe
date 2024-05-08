@@ -188,6 +188,7 @@ router.post('/login', [
   const { username, password } = req.body;
   console.log('User', username, 'Password', password);  
   const query = 'SELECT password, userid, emailverified FROM Users WHERE username = ?';
+  res.setHeader('Content-Type', 'application/json');
   db.query(query, [username], (error, results) => {
     if (error) {
       return res.render('login', { errorMessage: 'Error during database query' });
