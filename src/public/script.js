@@ -146,7 +146,7 @@ function showMessage(text) {
         // Access the parent element by its ID
         const parent = document.getElementById('parentElement');
     
-        parent.body.addEventListener('blur', function(event) {
+        parent.addEventListener('blur', function(event) {
             if (event.target.id === 'user') {
                 // Handle the blur event for the 'user' element
                 fetch(`/check-user?username=${encodeURIComponent(User)}`)
