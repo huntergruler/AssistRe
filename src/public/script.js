@@ -98,6 +98,7 @@ function cancelEdit(id) {
     actionsCell.innerHTML = `<button onclick="editLicense(${id})">Edit</button>
                              <button onclick="deleteLicense(${id})">Delete</button>`;
 }
+
 function showMessage(text) {
     const messageDiv = document.getElementById('message');
     messageDiv.textContent = text;
@@ -166,6 +167,8 @@ document.getElementById('user').addEventListener('blur', function() {
     const params = new URLSearchParams(window.location.search);
     const myParam = params['emailverified'];
     const messagein = params['message'];
+    console.log('messagein', messagein);
+    
     const deleteButtons = document.querySelectorAll('.delete-btn');
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirm_password');
