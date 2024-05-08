@@ -41,7 +41,7 @@ const transporter = nodemailer.createTransport({
 
 // Landing page route
 router.get('/', (req, res) => {
-  res.render('index');
+  res.render('login');
 });
 
 // Register route
