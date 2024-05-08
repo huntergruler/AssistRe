@@ -159,6 +159,7 @@ function showMessage(text) {
         document.addEventListener('DOMContentLoaded', function() {
         // Access the parent element by its ID
         const parent = document.getElementById('parentElement');
+        var resetContainer = document.getElementById('resetContainer');
     
         parent.addEventListener('keyup', function(event) {
             const passwordInput = document.getElementById('password');
@@ -206,9 +207,29 @@ function showMessage(text) {
                     }
                 }
             }
-            else {
-                // Default action for other clicks not handled above
-                console.log("Default action executed: Click not on 'licensesTable'");
+            if (resetContainer) {
+                fetch('/reset', {
+                    method: 'POST',  // Specify the method you want to use
+                    headers: {
+                        'Content-Type': 'application/json',  // Set the content type header
+                        // Add other headers as necessary
+                    },
+                    body: JSON.stringify({ /* Your payload here if needed */ })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json(); // or response.text() if the server sends back plain text
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(data => {
+                    console.log('Success:', data); // Handle success
+                    window.location.href = '/login'; 
+                })
+                .catch(error => {
+                    console.error('There was a problem with the fetch operation:', error); // Handle errors
+                });
+                
             }
         });
         parent.addEventListener('blur', function(event) {
