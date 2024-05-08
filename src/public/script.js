@@ -214,7 +214,7 @@ function showMessage(text) {
                         'Content-Type': 'application/json',  // Set the content type header
                         // Add other headers as necessary
                     },
-                    body: JSON.stringify({ /* Your payload here if needed */ })
+                    body: JSON.stringify({ email: document.getElementById('email').value, password: document.getElementById('password').value, token: document.getElementById('token').value})
                 })
                 .then(response => {
                     if (response.ok) {
