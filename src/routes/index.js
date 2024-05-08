@@ -286,8 +286,9 @@ router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
     const message = 'Please login to access the Dashboard';
     req.session.message = message;
-    console.log('Message:', message);
-    res.redirect('/login', { messagein: message });  
+    const redirectto = '/login?message=${message}';
+    console.log('Redirecting to:', redirectto);
+    res.redirect('/login?message=${message}');  
   }
   else { 
   res.render('dashboard', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
