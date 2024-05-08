@@ -303,6 +303,7 @@ router.post('/reset', (req, res) => {
     if (error) {
       return res.status(500).send('Error accessing the database');
     }
+    console.log('Results:', results, 'Password:', password, 'Hashed Password', hashedPassword);
       // Redirect to login with a logout message
       res.redirect('/login?passwordchanged=true');
 
