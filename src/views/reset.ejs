@@ -15,6 +15,7 @@
     </div>
 </header>
 <body>
+    <div id="parentElement">
     <h1>Reset Password</h1>
     <form id="resetForm" action="/reset" method="post">
         <input type="hidden" name="email" value="<%= email %>">
@@ -25,6 +26,7 @@
         <input type="password" id="confirm_password" name="confirm_password" required>
         <button type="submit">Reset Password</button>
     </form>
+    </div> 
     <script src="script.js"></script>
 </body>
 </html>

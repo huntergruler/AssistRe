@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="header.css">
 </head>
 <header>
-    <div id="parentElement">
     <h1 id="title"><a href="/">SeekingAgents</a></h1>
     <div id="navlinks">
         <a href="/dashboard">Dashboard</a>
@@ -20,7 +19,8 @@
     </div>
 </header>
 <body>
-    <h1>Profile Page</h1>
+    <div id="parentElement">
+        <h1>Profile Page</h1>
     <form id="licenseForm">
         <input type="text" id="licensenumber" name="licensenumber" placeholder="License Number" required>
         <input type="text" id="licensestate" name="licensestate" placeholder="License State" pattern="[A-Z]{2}" title="Enter a valid US state abbreviation" required>

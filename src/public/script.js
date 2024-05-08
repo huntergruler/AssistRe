@@ -2,14 +2,14 @@
 
 function lookupCityState() {
     console.log('lookupCityState');
-    var zipCode = document.getElementById('zipCode').value;
+    let zipCode = document.getElementById('zipCode').value;
     if (zipCode) {
         // Create a new XMLHttpRequest object
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open('GET', '/get-city-state?zipCode=' + zipCode, true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                var response = JSON.parse(xhr.responseText);
+                let response = JSON.parse(xhr.responseText);
                 if (response.city && response.state) {
                     document.getElementById('cityState').textContent = response.city + ', ' + response.state;
                 } else {
@@ -147,6 +147,22 @@ function showMessage(text) {
         const parent = document.getElementById('parentElement');
     
         parent.addEventListener('click', function(event) {
+            if (event.target.id === 'licensesTable') {
+                let modal = document.getElementById('licenseDialog');
+                let btn = document.getElementById("myBtn");
+                let span = document.getElementsByClassName("close")[0];
+                btn.onclick = function() {
+                    modal.style.display = "block";
+                }
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+             }
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
             if (event.target.id === 'button') {
                 if (deleteButtons.length > 0) {
                     deleteButtons.forEach(button => {
@@ -159,7 +175,9 @@ function showMessage(text) {
                 console.log("No delete buttons to attach listeners to.");
                }
             }
-        });
+        }
+        }
+    });
         parent.addEventListener('blur', function(event) {
                 if (event.target.id === 'user') {
                 // Handle the blur event for the 'user' element
@@ -224,29 +242,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Get the modal
-var modal = document.getElementById('licenseDialog');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 
