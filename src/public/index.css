@@ -32,12 +32,6 @@ header {
     margin: 0;
 }
 
-#navlinks li{
-    margin: 0 10px;
-    background-color: blueviolet;
-    height: 100%;
-}
-
 #navlinks li a{
     margin: 0 10px;
     background-color: rgb(255, 0, 8);
