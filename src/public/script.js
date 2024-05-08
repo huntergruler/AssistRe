@@ -125,7 +125,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         if (data.success === false) {
             // Display message if login failed
             document.getElementById('message').innerText = data.message;
-            document.getElementById('message').style.color = 'red'; // Optional: change text color
+            document.getElementById('message').style.color = 'green'; // Optional: change text color
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
             document.getElementById('username').focus();
