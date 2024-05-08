@@ -163,6 +163,7 @@ document.getElementById('user').addEventListener('blur', function() {
   
   document.addEventListener('DOMContentLoaded', function() {
     // Access the parent element by its ID
+    console.log('GOTHERE');
     const parent = document.getElementById('parentElement');
     const params = new URLSearchParams(window.location.search);
     const myParam = params['emailverified'];
