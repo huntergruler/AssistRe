@@ -34,9 +34,9 @@ header {
 #navlinks a{
     margin: 10px;
     height: 100%;
-    width: 60px;
+    width: 75px;
     text-align: center;
-    justify-content: flex-start;
+    text-justify: start;
     align-content: center;
     color: white;
     text-decoration: none;
