@@ -2,7 +2,7 @@
     margin: 0;
 }
 header {
-    background-color: #13326D;
+    background-color: rgba(19, 50, 109);
     width: 100%;
     color: white;
     text-align: start;
@@ -36,11 +36,11 @@ header {
     padding: 25px 5px;
     width: 60px;
     text-align: center;
-    justify-content: center;
+    justify-content: start;
     color: white;
     text-decoration: none;
 }
 
 #navlinks a:hover{
-    opacity: 0.7;
+    background-color: rgba(19, 50, 109, 0.7);
 }
