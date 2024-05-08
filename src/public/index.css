@@ -23,11 +23,15 @@ a{
     margin: 0;
     height: 100%;
     align-content: center;
-    color: white;
+}
+
+#title h1{
+    height: 100%;
 }
 
 #title h1 a{
     height: 100%;
+    color: white;
 }
 
 #navlinks {
