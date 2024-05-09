@@ -217,7 +217,7 @@ function showMessage(text) {
                 }
             }
             if (resetContainer) {
-                console.log('email:',email.value, 'password:',password.value, 'token:',token.value);
+//                console.log('email:',email.value, 'password:',password.value, 'token:',token.value);
                 fetch('/reset', {
                     method: 'POST',  // Specify the method you want to use
                     headers: {
