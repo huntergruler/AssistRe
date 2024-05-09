@@ -20,7 +20,7 @@
     <h1>Reset Password</h1>
     <form id="resetForm" action="/reset" method="post">
         <input type="hidden" id="email" name="email" value="<%= email %>">
-        <input type="hidden" is="token" name="token" value="<%= token %>">
+        <input type="hidden" id="token" name="token" value="<%= token %>">
         <label for="password">New Password:</label>
         <input type="password" id="password" name="password" required>
         <label for="confirm_password">Confirm Password:</label>
