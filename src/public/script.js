@@ -182,9 +182,6 @@ function showMessage(text) {
             console.log(document.querySelectorAll('*'));
 
             const deleteButtons = document.querySelectorAll('.delete-btn');
-            const email = document.getElementById('email');
-            const password = document.getElementById('password');
-            const token = document.getElementById('token');
             if (event.target.id === 'licensesTable') {
                 let modal = document.getElementById('licenseDialog');
                 let btn = document.getElementById("myBtn");
@@ -216,14 +213,17 @@ function showMessage(text) {
                 }
             }
             if (resetContainer) {
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const token = document.getElementById('token').value.trim();
                 console.log('email:',email.value, 'password:',password.value, 'token:',token.value);
-                fetch('/reset', {
+                    fetch('/reset', {
                     method: 'POST',  // Specify the method you want to use
                     headers: {
                         'Content-Type': 'application/json',  // Set the content type header
                         // Add other headers as necessary
                     },
-                    body: JSON.stringify({ email: email.value, password: password.value, token: token.value})
+                    body: JSON.stringify({ email: email, password: password, token: token})
                 })
                 .then(response => {
                     if (response.ok) {
