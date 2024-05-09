@@ -179,6 +179,8 @@ function showMessage(text) {
         });
         
         parent.addEventListener('click', function(event) {
+            console.log(document.querySelectorAll('*'));
+
             const deleteButtons = document.querySelectorAll('.delete-btn');
 //            const email = document.getElementById('email');
 const email = 'gruler@me.com'   
