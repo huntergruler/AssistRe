@@ -179,7 +179,7 @@ function showMessage(text) {
         });
         
         parent.addEventListener('click', function(event) {
-            console.log(document.querySelectorAll('*'));
+//            console.log(document.querySelectorAll('*'));
 
             const deleteButtons = document.querySelectorAll('.delete-btn');
             if (event.target.id === 'licensesTable') {
