@@ -156,6 +156,15 @@ function showMessage(text) {
         };
     }
     
+    document.addEventListener('DOMContentLoaded', function() {
+        // Access the parent element by its ID
+        const parent = document.getElementById('parentElement');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const token = document.getElementById('token');
+        const resetContainer = document.getElementById('resetContainer');
+    });
+    
         document.addEventListener('DOMContentLoaded', function() {
         // Access the parent element by its ID
         const parent = document.getElementById('parentElement');
