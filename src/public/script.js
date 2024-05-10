@@ -155,16 +155,7 @@ function showMessage(text) {
             }
         };
     }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        // Access the parent element by its ID
-        const parent = document.getElementById('parentElement');
-        const email = document.getElementById('email');
-        const password = document.getElementById('password');
-        const token = document.getElementById('token');
-        const resetContainer = document.getElementById('resetContainer');
-    });
-    
+    /*
         document.addEventListener('DOMContentLoaded', function() {
         // Access the parent element by its ID
         const parent = document.getElementById('parentElement');
@@ -273,8 +264,12 @@ function showMessage(text) {
             }
         }, true); // Using capturing phase to handle the event as it propagates down
         });
-
+*/
         document.addEventListener('DOMContentLoaded', function() {
+            const parent = document.getElementById('parentElement');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const token = document.getElementById('token');
             var loginContainer = document.getElementById('loginContainer');
             var resetContainer = document.getElementById('resetContainer');
             var registerContainer = document.getElementById('registerContainer');
