@@ -291,7 +291,6 @@ router.get('/reset', (req, res) => {
 // Handle resetting the password
 router.post('/reset', (req, res) => {
   const { email, token, password } = req.body;
- console.log('Email:', email, 'Token:', token, 'Password:', password);
   // First, query the city and state from the ZipCodes table
   bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
     if (err) {
@@ -305,6 +304,7 @@ router.post('/reset', (req, res) => {
     }
 //    console.log('Results:', results, 'Password:', password, 'Hashed Password', hashedPassword);
       // Redirect to login with a logout message
+      console.log('Email:', email, 'Token:', token, 'Password:', password);
       res.redirect('/login?passwordchanged=true');
 
     });
