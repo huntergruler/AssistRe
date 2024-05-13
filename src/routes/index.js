@@ -363,7 +363,7 @@ router.get('/reset-password', (req, res) => {
   const query = 'SELECT * FROM Users WHERE resetToken=? AND resetTokenExpire > ?';
   const date = new Date(Date.now())
   console.log('Token:', token, 'Now:', date.toString());
-  db.query(query, [token, Date.now()], (error, results) => {
+  db.query(query, [token, date], (error, results) => {
     console.log('Results:', results, 'Error:', error)
     if (error || results.length === 0) {
       return res.status(400).send('Invalid or expired token');
