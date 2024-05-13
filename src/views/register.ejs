@@ -69,7 +69,8 @@
         </div>
         <div class="form-group">
             <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required onkeyup="comparePasswords()">
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            <p id="error_message" style="display: none; color: red">Passwords do not match</p>
         </div>
         <div class="form-group">
             <label>User Type:</label>
@@ -78,10 +79,11 @@
                 <label class="radio-label"><input type="radio" name="userType" value="Agent" required> Agent</label>
             </div>
         </div>
-        <button type="submit">Register</button>
+        <button id="submit_button" type="submit">Reset Password</button>
     </form>
 </div>
 </div>  
 <script src="/script.js"></script>
+<script src="/verifypass.js"></script>
 </body>
 </html>
