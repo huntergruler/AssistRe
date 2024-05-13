@@ -313,6 +313,7 @@ router.post('/reset', (req, res) => {
 
 // send password reset email route
 router.get('/sendreset', (req, res) => {
+  console.log('Send reset',res, req);
   res.render('sendreset');
 });
 
@@ -364,9 +365,9 @@ router.get('/reset-password', (req, res) => {
   const date = new Date(Date.now())
   console.log('Token:', token, 'Now:', date.toString());
   db.query(query, [token, date], (error, results) => {
-    console.log('Results:', results, 'Error:', error)
     if (error || results.length === 0) {
-      return res.status(400).send('Invalid or expired token');
+      res.status(400).send('Invalid or expired token');
+      return res.redirect('/sendreset', { error: 'Invalid or expired token' })
     }
     // Serve the password reset form
     res.render('reset', { email: results[0].email, token: token });
