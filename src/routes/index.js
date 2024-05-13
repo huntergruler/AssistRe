@@ -366,7 +366,7 @@ router.get('/reset-password', (req, res) => {
   console.log('Token:', token, 'Now:', date.toString());
   db.query(query, [token, date], (error, results) => {
     if (error || results.length === 0) {
-      res.status(400).send('Invalid or expired token');
+//      res.status(400).send('Invalid or expired token');
       return res.redirect(400, '/sendreset')
     }
     // Serve the password reset form
