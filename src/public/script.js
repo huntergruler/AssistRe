@@ -7,10 +7,10 @@
             var resetContainer = document.getElementById('resetContainer');
             var registerContainer = document.getElementById('registerContainer');
             const params = new URLSearchParams(window.location.search);
-/*            if (loginContainer) {    // Access the parent element by its ID
+            if (loginContainer) {    // Access the parent element by its ID
                 const messagein = document.getElementById('message').textContent;
                 if (params.get('emailverified') === 'false') {
-                    const messageDiv = document.getElementById('verifyMessage');
+                    const messageDiv = document.getElementById('message');
                     messageDiv.innerHTML = 'Please verify your email and try again.';
                     // Add any styles or animations you want
                     messageDiv.style.color = 'red';
@@ -22,7 +22,7 @@
                     // Add any styles or animations you want
                     messageDiv.style.color = 'green';
                 }
-            }    */
+            }   
     });
         
 
