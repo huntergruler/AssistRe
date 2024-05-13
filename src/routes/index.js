@@ -313,7 +313,8 @@ router.post('/reset', (req, res) => {
 
 // send password reset email route
 router.get('/sendreset', (req, res) => {
-  console.log('Send reset',res, req);
+  const data = req.cookies.data;
+  console.log('Send reset', data);
   res.render('sendreset');
 });
 
@@ -367,7 +368,8 @@ router.get('/reset-password', (req, res) => {
   db.query(query, [token, date], (error, results) => {
     if (error || results.length === 0) {
 //      res.status(400).send('Invalid or expired token');
-      res.redirect(400, '/sendreset')
+      res.cookie('data', 'Bad Token', { maxAge: 9000, httpOnly: true });
+      res.redirect('/sendreset')
       return
     }
     // Serve the password reset form
