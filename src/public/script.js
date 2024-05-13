@@ -7,7 +7,7 @@
             var resetContainer = document.getElementById('resetContainer');
             var registerContainer = document.getElementById('registerContainer');
             const params = new URLSearchParams(window.location.search);
-            if (resetContainer) {    // Access the parent element by its ID
+/*            if (resetContainer) {    // Access the parent element by its ID
                 document.body.addEventListener('submit', function(event) {
                     event.preventDefault(); // Prevent default form submission
                     if (event.target.id === 'resetForm') {
@@ -26,6 +26,7 @@
                     })
 
                     })};
+                    */
             if (loginContainer) {    // Access the parent element by its ID
                 document.body.addEventListener('submit', function(event) {
                     event.preventDefault(); // Prevent default form submission
