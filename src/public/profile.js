@@ -13,8 +13,8 @@ function addLicense() {
         const newRow = table.insertRow(table.rows.length);
         console.log(data);
         newRow.id = `license-${data.agentlicenseid}`;
-        newRow.insertCell(0).textContent = data.licenseNumber;
-        newRow.insertCell(1).textContent = data.licenseState;
+        newRow.insertCell(0).textContent = data.licenseState;
+        newRow.insertCell(1).textContent = data.licenseNumber;
         newRow.insertCell(2).innerHTML = '<button onclick="deleteLicense(' + data.agentlicenseid + ')">Delete</button>';
 
 
