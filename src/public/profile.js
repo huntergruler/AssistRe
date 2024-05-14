@@ -12,7 +12,10 @@ function addLicense() {
     const year = parseInt(yearSelect.value);
 
     const licenseExpirationDate = new Date(year, month, day);
-    
+    if (licenseExpirationDate < new Date()) {
+        alert('Expiration date must be in the future');
+        return;
+    }
     console.log(licenseNumber, licenseState, licenseExpirationDate);
     fetch('/api/licenses', {
         method: 'POST',
