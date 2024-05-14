@@ -111,7 +111,7 @@ router.post('/register', (req, res) => {
           if (err) throw err;
             agentlicenseid = result.insertId;
             console.log('Inserted:', agentlicenseid, licenseNumber, licenseState, licenseExpirationDate);
-            res.json({ agentlicenseid, licenseNumber, licenseState });
+            res.json({ agentlicenseid, licenseNumber, licenseState, licenseExpirationDate });
             });
   });
 
