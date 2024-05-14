@@ -39,7 +39,7 @@ function deleteLicense(id) {
 
 document.addEventListener('blur', function(event) {
     if (event.target.id === 'licenseState') {
-        const User = document.getElementById ('licenseState').value.trim();
+        const licenseState = document.getElementById ('licenseState').value.trim();
         fetch(`/check-license?licenseState=${encodeURIComponent(licenseState)}`)
         .then(response => response.json())
         .then(data => {
