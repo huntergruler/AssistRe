@@ -18,10 +18,17 @@ function addLicense() {
     .then(response => response.json())
     .then(data => {
         const table = document.getElementById('licensesTable').getElementsByTagName('tbody')[0];
-        const row = table.insertRow();
+        const newRow = table.insertRow(table.rows.length);
         console.log(data);
-        row.innerHTML = `<tr id="license-${data.agentlicenseid}"> <td>${data.licensenumber}</td><td>${data.licensestate}</td><td>${data.agentlicenseid}</td><td><button onclick="deleteLicense(${data.agentlicenseid})">Delete</button></td></tr>`;
-        console.log(row);
+        newRow.id = `license-${data.agentlicenseid}`;
+        newRow.insertCell(0).textContent = data.licensenumber;
+        newRow.insertCell(1).textContent = data.licensestate;
+        newRow.insertCell(2).textContent = data.agentlicenseid;
+        newRow.insertCell(3).innerHTML = '<button onclick="deleteLicense(' + data.agentlicenseid + ')">Delete</button>';
+
+
+//        row.innerHTML = `<tr id="license-${data.agentlicenseid}"> <td>${data.licensenumber}</td><td>${data.licensestate}</td><td>${data.agentlicenseid}</td><td><button onclick="deleteLicense(${data.agentlicenseid})">Delete</button></td></tr>`;
+        console.log(newRow);
         document.getElementById('licenseForm').reset();
     })
     .catch(error => console.error('Error:', error));
