@@ -46,12 +46,12 @@ document.addEventListener('blur', function(event) {
             console.log(data);
           if (data.validstate) {
             // state is valid
-            document.getElementById('licstatus').textContent = '';
-            document.getElementById('licenseadd').disabled = false;
+            document.getElementById('licStatus').textContent = '';
+            document.getElementById('licenseAdd').disabled = false;
           } else {
             // state is not valid
-            document.getElementById('licstatus').textContent = 'Invalid State';
-            document.getElementById('licstatus').style.color = 'red';
+            document.getElementById('licStatus').textContent = 'Invalid State';
+            document.getElementById('licStatus').style.color = 'red';
             document.getElementById('licenseAdd').disabled = true;
             document.getElementById('licenseState').focus();
         }
