@@ -29,7 +29,7 @@ function addLicense() {
         newRow.id = `license-${data.agentlicenseid}`;
         newRow.insertCell(0).textContent = licenseState;
         newRow.insertCell(1).textContent = licenseNumber;
-        newRow.insertCell(2).textContent = licenseExpirationDate;
+        newRow.insertCell(2).textContent = expDate;
         newRow.insertCell(3).innerHTML = '<button onclick="deleteLicense(' + data.agentlicenseid + ')">Delete</button>';
 
 
