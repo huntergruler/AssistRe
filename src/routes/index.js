@@ -266,6 +266,7 @@ router.get('/check-user', (req, res) => {
 // Route to check if user exists
 router.get('/check-license', (req, res) => {
   const licenseState = req.query.licenseState;
+  console.log('License State:', licenseState);
   const query = 'SELECT count(*) cnt FROM ZipCodes WHERE state = ?';
   db.query(query, [licenseState], (error, results) => {
       if (error) {

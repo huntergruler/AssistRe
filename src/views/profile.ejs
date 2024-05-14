@@ -25,7 +25,7 @@
     <form id="licenseForm">
         <input type="text" id="licenseState" name="licenseState" placeholder="License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
         <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
-        <button type="button" onclick="addLicense()">Add</button>
+        <button type="button" id="licenseAdd" onclick="addLicense()">Add</button>
         <span id="licstatus"></span>
     </form>
     <table id="licensesTable">
@@ -40,8 +40,8 @@
             <% if (hasLicenses) { %>
               <% licenses.forEach(function(license) { %>
                 <tr id="license-<%= license.agentlicenseid %>">
-                    <td><%= license.licensestate %></td>
-                    <td><%= license.licensenumber %></td>
+                    <td><%= license.licenseState %></td>
+                    <td><%= license.licenseNumber %></td>
                     <td>
                         <button type="button" onclick="deleteLicense(<%= license.agentlicenseid %>)">Delete</button>
                     </td>
