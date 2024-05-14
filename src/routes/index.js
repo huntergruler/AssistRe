@@ -96,7 +96,7 @@ router.post('/register', (req, res) => {
       req.session.message = 'Please login to access the Profile';
       res.redirect('/login');  
     }
-          const query = 'SELECT * FROM AgentLicenses where userid = ?'; 
+          const query = 'SELECT a.agentlicenseid, date_format(a.licenseExpirationDate,"%m/%d/%Y") licenseExpirationDate, a.licenseNumber, a.licenseState, a.userid FROM AgentLicenses a where userid = ?'; 
       db.query(query,[ req.session.userid ], (err, results) => {
           if (err) throw err;
           let hasLicenses = results.length > 0;
