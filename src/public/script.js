@@ -19,7 +19,7 @@ function addLicense() {
     .then(data => {
         const table = document.getElementById('licensesTable').getElementsByTagName('tbody')[0];
         const row = table.insertRow();
-        row.id = `license-${data.agentlicenseid}`;
+        console.log(data);
         row.innerHTML = `<td>${data.licensenumber}</td><td>${data.licensestate}</td><td>${data.id}</td><td></button><button onclick="deleteLicense(${data.id})">Delete</button></td>`;
         document.getElementById('licenseForm').reset();
     })
