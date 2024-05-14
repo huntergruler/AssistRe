@@ -2,6 +2,7 @@ function addLicense() {
     const licenseNumber = document.getElementById('licenseNumber').value;
     const licenseState = document.getElementById('licenseState').value;
     const licenseExpirationDate = document.getElementById('licenseExpirationDate').value;
+    console.log(licenseNumber, licenseState, licenseExpirationDate);
     fetch('/api/licenses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
