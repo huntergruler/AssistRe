@@ -52,6 +52,7 @@ document.addEventListener('blur', function(event) {
             document.getElementById('licstatus').textContent = 'Invalid State';
             document.getElementById('licstatus').style.color = 'red';
             document.getElementById('licenseadd').disabled = true;
+            document.getElementById('licenseState').focus();
         }
         })
         .catch(error => console.error('Error checking user:', error));
