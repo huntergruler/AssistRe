@@ -1,9 +1,21 @@
 function addLicense() {
     const licenseNumber = document.getElementById('licenseNumber').value;
     const licenseState = document.getElementById('licenseState').value;
-    const expDate = document.getElementById('licenseExpirationDate').value;
-    let parts = expDate.split('-'); // splits 'yyyy-mm-dd' into an array ['yyyy', 'mm', 'dd']
-    let licenseExpirationDate = `${parts[1]}/${parts[2]}/${parts[0]}`; // rearranges to 'mm/dd/yyyy'
+    const monthSelect = document.getElementById('monthSelect');
+    const daySelect = document.getElementById('daySelect');
+    const yearSelect = document.getElementById('yearSelect');
+
+    // JavaScript Date months are 0-indexed, so subtract 1. 
+    // HTML values are 1-indexed if filled as shown in previous messages.
+    const month = parseInt(monthSelect.value) - 1;
+    const day = parseInt(daySelect.value);
+    const year = parseInt(yearSelect.value);
+
+    const licenseExpirationDate = new Date(year, month, day);
+    
+    
+    // let parts = expDate.split('-'); // splits 'yyyy-mm-dd' into an array ['yyyy', 'mm', 'dd']
+    // let licenseExpirationDate = `${parts[1]}/${parts[2]}/${parts[0]}`; // rearranges to 'mm/dd/yyyy'
 
     console.log(licenseNumber, licenseState, licenseExpirationDate);
     fetch('/api/licenses', {
@@ -114,3 +126,4 @@ function updateDays() {
         daySelect.appendChild(option);
     }
 }
+

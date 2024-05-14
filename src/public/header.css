@@ -2,6 +2,11 @@
     margin: 0;
 }
 
+select {
+    width: 150px;
+    margin: 5px;
+}
+
 header {
     background-color: rgba(19, 50, 109);
     width: 100%;
