@@ -44,18 +44,24 @@ document.addEventListener('blur', function(event) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-          if (data.validstate) {
-            // state is valid
-            document.getElementById('licStatus').textContent = '';
-            document.getElementById('licenseAdd').disabled = false;
-          } else {
-            // state is not valid
-            document.getElementById('licStatus').textContent = 'Invalid State';
-            document.getElementById('licStatus').style.color = 'red';
-            document.getElementById('licenseAdd').disabled = true;
-            document.getElementById('licenseState').focus();
-        }
-        })
+            if (data.validstate === "Invalid") {
+                // state is valid
+                document.getElementById('licStatus').textContent = '';
+                document.getElementById('licenseAdd').disabled = false;
+              } else if (data.validstate === "Used") {
+                // state has been used
+                document.getElementById('licStatus').textContent = 'License for this state exists';
+                document.getElementById('licStatus').style.color = 'red';
+                document.getElementById('licenseAdd').disabled = true;
+                document.getElementById('licenseState').focus();
+              } else {
+                // state is not valid
+                document.getElementById('licStatus').textContent = 'Invalid State';
+                document.getElementById('licStatus').style.color = 'red';
+                document.getElementById('licenseAdd').disabled = true;
+                document.getElementById('licenseState').focus();
+                }
+            })
         .catch(error => console.error('Error checking user:', error));
     }
 }, true); // Using capturing phase to handle the event as it propagates down

@@ -272,16 +272,26 @@ router.get('/check-license', (req, res) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
-  console.log('Results:', results);
       if (results[0].cnt == 0) {
         // Is not a valid state
-        res.json({ validstate: false });
+        res.json({ stateResult: 'Invalid' });
       } else {
-        // Is a valid state
-        res.json({ validstate: true });
-      }
+        const query = 'SELECT count(*) cnt FROM AgentLicense WHERE userid = ?';
+        db.query(query, [req.session.userid], (error, results) => {
+            if (error) {
+                return res.status(500).json({error: 'Internal server error'});
+            }
+            if (results[0].cnt == 0) {
+              // Is not a valid state
+              res.json({ stateResult: 'Used' });
+              } else {
+          // Is a valid state
+          res.json({ stateResult: 'Valid' });
+        }
+      });
+    }
+    });
   });
-});
 
 // Route to serve the dashboard page
 router.get('/dashboard', (req, res) => {
