@@ -283,7 +283,7 @@ router.get('/check-license', (req, res) => {
             if (error) {
                 return res.status(500).json({error: 'Internal server error'});
             }
-            if (results[0].cnt == 0) {
+            if (results[0].cnt > 0) {
               // Is not a valid state
               res.json({ stateResult: 'Used' });
               } else {
