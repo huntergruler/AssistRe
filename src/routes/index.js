@@ -265,6 +265,7 @@ router.get('/check-user', (req, res) => {
 });
 // Route to check if user exists
 router.get('/check-license', (req, res) => {
+  const userid = req.session.userid;
   const licenseState = req.query.licenseState;
   console.log('License State:', licenseState);
   const query = 'SELECT count(*) cnt FROM ZipCodes WHERE state = ?';
@@ -276,8 +277,9 @@ router.get('/check-license', (req, res) => {
         // Is not a valid state
         res.json({ stateResult: 'Invalid' });
       } else {
+        console.log('Valid state:', licenseState, 'Userid:', userid);
         const query = 'SELECT count(*) cnt FROM AgentLicense WHERE userid = ?';
-        db.query(query, [req.session.userid], (error, results) => {
+        db.query(query, [userid], (error, results) => {
             if (error) {
                 return res.status(500).json({error: 'Internal server error'});
             }
