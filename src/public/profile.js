@@ -1,7 +1,10 @@
 function addLicense() {
     const licenseNumber = document.getElementById('licenseNumber').value;
     const licenseState = document.getElementById('licenseState').value;
-    const licenseExpirationDate = document.getElementById('licenseExpirationDate').value;
+    const expDate = document.getElementById('licenseExpirationDate').value;
+    let parts = expDate.split('-'); // splits 'yyyy-mm-dd' into an array ['yyyy', 'mm', 'dd']
+    let licenseExpirationDate = `${parts[1]}/${parts[2]}/${parts[0]}`; // rearranges to 'mm/dd/yyyy'
+
     console.log(licenseNumber, licenseState, licenseExpirationDate);
     fetch('/api/licenses', {
         method: 'POST',
