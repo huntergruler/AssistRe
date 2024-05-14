@@ -19,7 +19,7 @@ function lookupCityState() {
   }
 }
 
-document.addEventListener('blur', function(event) {
+document.addEventListener('keyup', function(event) {
     if (event.target.id === 'user') {
         const User = document.getElementById('user').value.trim();
         fetch(`/check-user?username=${encodeURIComponent(User)}`)
