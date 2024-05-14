@@ -40,29 +40,31 @@ function deleteLicense(id) {
 document.addEventListener('blur', function(event) {
     if (event.target.id === 'licenseState') {
         const licenseState = document.getElementById ('licenseState').value.trim();
-        fetch(`/check-license?licenseState=${encodeURIComponent(licenseState)}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            if (data.stateResult === "Valid") {
-                // state is valid
-                document.getElementById('licStatus').textContent = '';
-                document.getElementById('licenseAdd').disabled = false;
-              } else if (data.stateResult === "Used") {
-                // state has been used
-                document.getElementById('licStatus').textContent = 'License for this state exists';
-                document.getElementById('licStatus').style.color = 'red';
-                document.getElementById('licenseAdd').disabled = true;
-                document.getElementById('licenseState').focus();
-              } else {
-                // state is not valid
-                document.getElementById('licStatus').textContent = 'Invalid State';
-                document.getElementById('licStatus').style.color = 'red';
-                document.getElementById('licenseAdd').disabled = true;
-                document.getElementById('licenseState').focus();
-                }
-            })
-        .catch(error => console.error('Error checking user:', error));
+        if (licenseState.length !== 0) {
+            fetch(`/check-license?licenseState=${encodeURIComponent(licenseState)}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.stateResult === "Valid") {
+                    // state is valid
+                    document.getElementById('licStatus').textContent = '';
+                    document.getElementById('licenseAdd').disabled = false;
+                } else if (data.stateResult === "Used") {
+                    // state has been used
+                    document.getElementById('licStatus').textContent = 'License for this state exists';
+                    document.getElementById('licStatus').style.color = 'red';
+                    document.getElementById('licenseAdd').disabled = true;
+                    document.getElementById('licenseState').focus();
+                } else {
+                    // state is not valid
+                    document.getElementById('licStatus').textContent = 'Invalid State';
+                    document.getElementById('licStatus').style.color = 'red';
+                    document.getElementById('licenseAdd').disabled = true;
+                    document.getElementById('licenseState').focus();
+                    }
+                })
+            .catch(error => console.error('Error checking user:', error));
+        }
     }
 }, true); // Using capturing phase to handle the event as it propagates down
 
