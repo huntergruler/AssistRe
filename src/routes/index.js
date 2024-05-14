@@ -317,7 +317,7 @@ router.post('/reset', (req, res) => {
 router.get('/sendreset', (req, res) => {
   const data = req.cookies.data;
   console.log('Send reset', data);
-  res.render('sendreset');
+  res.render('sendreset', { data: data });
 });
 
 router.post('/sendreset', (req, res) => {

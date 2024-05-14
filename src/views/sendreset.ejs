@@ -16,6 +16,9 @@
 </header>
 <body>
     <h1>Send Password Reset Email</h1>
+    <% if (data == "Bad Token") { %>
+        <p style="color: red;">Invalid token. Please try again.</p>
+    <% } %>
     <form action="/sendreset" method="post">
         <input type="email" name="email" placeholder="Email" required>
         <button type="submit">Send Reset Email</button>
