@@ -105,7 +105,6 @@ router.post('/register', (req, res) => {
           res.render('profile', { licenses: results, hasLicenses: hasLicenses });
       });
   });
-
   
   router.post('/api/licenses', (req, res) => {
       const { licensenumber, licensestate } = req.body;
@@ -242,6 +241,7 @@ router.get('/get-city-state', (req, res) => {
       }
   });
 });
+
 // Route to check if user exists
 router.get('/check-user', (req, res) => {
   const username = req.query.username;
@@ -260,6 +260,24 @@ router.get('/check-user', (req, res) => {
       } else {
         // User Name is available
         res.json({ available: true });
+      }
+  });
+});
+// Route to check if user exists
+router.get('/check-license', (req, res) => {
+  const licenseState = req.query.licenseState;
+  const query = 'SELECT count(*) cnt FROM ZipCodes WHERE state = ?';
+  db.query(query, [licenseState], (error, results) => {
+      if (error) {
+          return res.status(500).json({error: 'Internal server error'});
+      }
+  console.log('Results:', results);
+      if (results[0].cnt == 0) {
+        // Is not a valid state
+        res.json({ validstate: false });
+      } else {
+        // Is a valid state
+        res.json({ validstate: true });
       }
   });
 });

@@ -30,8 +30,8 @@
     <table id="licensesTable">
         <thead>
             <tr>
-                <th>License Number</th>
                 <th>License State</th>
+                <th>License Number</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -39,8 +39,8 @@
             <% if (hasLicenses) { %>
               <% licenses.forEach(function(license) { %>
                 <tr id="license-<%= license.agentlicenseid %>">
-                    <td><%= license.licensenumber %></td>
                     <td><%= license.licensestate %></td>
+                    <td><%= license.licensenumber %></td>
                     <td>
                         <button type="button" onclick="deleteLicense(<%= license.agentlicenseid %>)">Delete</button>
                     </td>
@@ -58,11 +58,12 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <form id="licenseForm">
+            <label for="licenseState">License State:</label>
+            <input type="text" id="licenseState" name="licenseState" maxlength="2" minlength="2" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
             <label for="licenseNumber">License Number:</label>
             <input type="text" id="licenseNumber" name="licenseNumber" required>
-            <label for="licenseState">License State:</label>
-            <input type="text" id="licenseState" name="licenseState" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-            <button type="button" onclick="addLicense()">Add License</button>
+            <button type="button" id="licenseadd" onclick="addLicense()">Add License</button>
+            <span id="licstatus"></span>
         </form>
     </div>
 </div>
@@ -70,5 +71,6 @@
 </div>
 </div>
 <script src="/script.js"></script>
+<script src="/profile.js"></script>
 </body>
 </html>
