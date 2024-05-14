@@ -28,11 +28,11 @@ document.addEventListener('keyup', function(event) {
             console.log(data);
           if (data.available) {
             // Email is available
-            document.getElementById('userStatus').textContent = 'Username is available.';
+            document.getElementById('userStatus').textContent = 'Email is available.';
             document.getElementById('userStatus').style.color = 'green';
           } else {
             // Email is not available
-            document.getElementById('userStatus').textContent = 'Username is already registered.';
+            document.getElementById('userStatus').textContent = 'Email is already registered.';
             document.getElementById('userStatus').style.color = 'red';
             document.getElementById('user').focus();
         }
