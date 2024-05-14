@@ -12,6 +12,7 @@ function addLicense() {
     const year = parseInt(yearSelect.value);
 
     const licenseExpirationDate = new Date(year, month, day);
+    const licenseExpirationDate_disp = month+"/"+day+"/"+year;
     
     
     // let parts = expDate.split('-'); // splits 'yyyy-mm-dd' into an array ['yyyy', 'mm', 'dd']
@@ -30,7 +31,7 @@ function addLicense() {
         newRow.id = `license-${data.agentlicenseid}`;
         newRow.insertCell(0).textContent = data.licenseState;
         newRow.insertCell(1).textContent = data.licenseNumber;
-        newRow.insertCell(2).textContent = data.licenseExpirationDate;
+        newRow.insertCell(2).textContent = data.licenseExpirationDate_disp;
         newRow.insertCell(3).innerHTML = '<button onclick="deleteLicense(' + data.agentlicenseid + ')">Delete</button>';
 
 
