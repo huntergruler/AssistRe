@@ -11,14 +11,14 @@ function addLicense() {
     const day = parseInt(daySelect.value);
     const year = parseInt(yearSelect.value);
 
-    const licenseExpirationDate = new Date(year, month, day);
-    const licenseExpirationDate_disp = month+"/"+day+"/"+year;
+//    const licenseExpirationDate = new Date(year, month, day);
+    const licenseExpirationDate = month+"/"+day+"/"+year;
     
     
     // let parts = expDate.split('-'); // splits 'yyyy-mm-dd' into an array ['yyyy', 'mm', 'dd']
     // let licenseExpirationDate = `${parts[1]}/${parts[2]}/${parts[0]}`; // rearranges to 'mm/dd/yyyy'
 
-    console.log(licenseNumber, licenseState, licenseExpirationDate);
+    console.log(licenseNumber, licenseState, licenseExpirationDate, licenseExpirationDate_disp);
     fetch('/api/licenses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -31,7 +31,7 @@ function addLicense() {
         newRow.id = `license-${data.agentlicenseid}`;
         newRow.insertCell(0).textContent = data.licenseState;
         newRow.insertCell(1).textContent = data.licenseNumber;
-        newRow.insertCell(2).textContent = data.licenseExpirationDate_disp;
+        newRow.insertCell(2).textContent = data.licenseExpirationDate;
         newRow.insertCell(3).innerHTML = '<button onclick="deleteLicense(' + data.agentlicenseid + ')">Delete</button>';
 
 
