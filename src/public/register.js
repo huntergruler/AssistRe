@@ -1,5 +1,4 @@
 function lookupCityState() {
-  console.log('lookupCityState');
   let zipCode = document.getElementById('zipCode').value;
   if (zipCode) {
       // Create a new XMLHttpRequest object
@@ -25,7 +24,6 @@ document.addEventListener('keyup', function(event) {
         fetch(`/check-user?username=${encodeURIComponent(User)}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
           if (data.available) {
             // Email is available
             document.getElementById('userStatus').textContent = 'Email is available.';

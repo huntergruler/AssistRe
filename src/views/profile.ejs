@@ -29,6 +29,7 @@
             <tr>
                 <th>License State</th>
                 <th>License Number</th>
+                <th>Expiration Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -38,6 +39,7 @@
                 <tr id="license-<%= license.agentlicenseid %>">
                     <td><%= license.licenseState %></td>
                     <td><%= license.licenseNumber %></td>
+                    <td><%= license.licenseExpirationDate %></td>
                     <td>
                         <button type="button" onclick="deleteLicense(<%= license.agentlicenseid %>)">Delete</button>
                     </td>
@@ -53,6 +55,7 @@
     <form id="licenseForm">
         <input type="text" id="licenseState" name="licenseState" placeholder="License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
         <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
+        <input type="date" id="licenseExpirationDate" name="licenseExpirationDate" placeholder="License Expiration Date" required>
         <button type="button" id="licenseAdd" disabled onclick="addLicense()">Add</button>
         <span id="licStatus"></span>
     </form>

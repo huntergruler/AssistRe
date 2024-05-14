@@ -96,50 +96,28 @@ router.post('/register', (req, res) => {
       req.session.message = 'Please login to access the Profile';
       res.redirect('/login');  
     }
-          const query = 'SELECT * FROM AgentLicenseInfo where userid = ?'; 
+          const query = 'SELECT * FROM AgentLicenses where userid = ?'; 
       db.query(query,[ req.session.userid ], (err, results) => {
           if (err) throw err;
           let hasLicenses = results.length > 0;
-//          hasLicenses = true;
-//          console.log('hasLicenses:',hasLicenses);
           res.render('profile', { licenses: results, hasLicenses: hasLicenses });
       });
   });
   
   router.post('/api/licenses', (req, res) => {
-      const { licenseNumber, licenseState } = req.body;
-      const insertQuery = 'INSERT INTO AgentLicenseInfo (licenseNumber, licenseState, userid) VALUES (?, ?, ?)';
-      db.query(insertQuery, [licenseNumber, licenseState, req.session.userid], (err, result) => {
+      const { licenseNumber, licenseState, licenseExpirationDate } = req.body;
+      const insertQuery = 'INSERT INTO AgentLicenses (licenseNumber, licenseState, licenseExpirationDate, userid) VALUES (?, ?, ?)';
+      db.query(insertQuery, [licenseNumber, licenseState, licenseExpirationDate, req.session.userid], (err, result) => {
           if (err) throw err;
             agentlicenseid = result.insertId;
-            console.log('Inserted:', agentlicenseid, licenseNumber, licenseState);
+            console.log('Inserted:', agentlicenseid, licenseNumber, licenseState, licenseExpirationDate);
             res.json({ agentlicenseid, licenseNumber, licenseState });
             });
   });
 
-  router.put('/api/licenses/:id', (req, res) => {
-      const { id } = req.params;
-      const { licenseNumber, licenseState } = req.body;
-  
-      if (!validStates.includes(licenseState)) {
-          return res.status(400).json({ error: 'Invalid state abbreviation' });
-      }
-  
-      const updateQuery = 'UPDATE AgentLicenseInfo SET licenseNumber = ?, licenseState = ? WHERE id = ?';
-      db.query(updateQuery, [licenseNumber, licenseState, id], (err, result) => {
-          if (err) {
-              return res.status(500).json({ error: 'Database error during the update' });
-          }
-          if (result.affectedRows === 0) {
-              return res.status(404).json({ error: 'License not found' });
-          }
-          res.json({ id, licenseNumber, licenseState });
-      });
-  });
-
   router.delete('/api/licenses/:id', (req, res) => {
       const { id } = req.params;
-      const deleteQuery = 'DELETE FROM AgentLicenseInfo WHERE agentlicenseid = ?';
+      const deleteQuery = 'DELETE FROM AgentLicenses WHERE agentlicenseid = ?';
       db.query(deleteQuery, [id], (err, result) => {
           if (err) throw err;
           res.status(204).send();
@@ -267,7 +245,6 @@ router.get('/check-user', (req, res) => {
 router.get('/check-license', (req, res) => {
   const userid = req.session.userid;
   const licenseState = req.query.licenseState;
-  console.log('License State:', licenseState);
   const query = 'SELECT count(*) cnt FROM ZipCodes WHERE state = ?';
   db.query(query, [licenseState], (error, results) => {
       if (error) {
@@ -277,13 +254,11 @@ router.get('/check-license', (req, res) => {
         // Is not a valid state
         res.json({ stateResult: 'Invalid' });
       } else {
-        console.log('Valid state:', licenseState, 'Userid:', userid);
-        const query = 'SELECT count(*) cnt FROM AgentLicenseInfo WHERE userid = ? and licenseState = ?';
+        const query = 'SELECT count(*) cnt FROM AgentLicenses WHERE userid = ? and licenseState = ?';
         db.query(query, [userid, licenseState], (error, results) => {
             if (error) {
                 return res.status(500).json({error: 'Internal server error'});
             }
-            console.log('Results:', results);
             if (results[0].cnt > 0) {
               // License for this state exists
               res.json({ stateResult: 'Used' });
