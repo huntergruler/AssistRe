@@ -44,11 +44,11 @@ document.addEventListener('blur', function(event) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            if (data.validstate === "Invalid") {
+            if (data.stateResult === "Invalid") {
                 // state is valid
                 document.getElementById('licStatus').textContent = '';
                 document.getElementById('licenseAdd').disabled = false;
-              } else if (data.validstate === "Used") {
+              } else if (data.stateResult === "Used") {
                 // state has been used
                 document.getElementById('licStatus').textContent = 'License for this state exists';
                 document.getElementById('licStatus').style.color = 'red';
