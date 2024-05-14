@@ -46,6 +46,7 @@ document.addEventListener('blur', function(event) {
             console.log(data);
           if (data.validstate) {
             // state is valid
+            document.getElementById('licstatus').textContent = '';
             document.getElementById('licenseadd').disabled = false;
           } else {
             // state is not valid
