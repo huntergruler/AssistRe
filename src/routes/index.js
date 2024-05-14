@@ -5,6 +5,7 @@ const app = express();
 
 const router = express.Router();
 const nodemailer = require('nodemailer');
+const cookierParser = require('cookie-parser');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
@@ -16,6 +17,7 @@ const bodyParser = require('body-parser');
 // Ensure you have body-parser configured to parse JSON
 router.use(bodyParser.json());
 router.use(express.json());
+router.use(cookierParser());
 
 // Database connection setup
 const db = mysql.createConnection({
@@ -368,7 +370,7 @@ router.get('/reset-password', (req, res) => {
   db.query(query, [token, date], (error, results) => {
     if (error || results.length === 0) {
 //      res.status(400).send('Invalid or expired token');
-      res.cookie('data', 'Bad Token', { maxAge: 9000, httpOnly: true });
+      res.cookie('data', 'Bad Token', { maxAge: 900000, httpOnly: true });
       res.redirect('/sendreset')
       return
     }
