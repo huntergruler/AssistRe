@@ -2,30 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Select Zip Code</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="header.css">
+    <style>
+        #zipCodeContainer {
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 300px;
+        height: 150px;
+        overflow-y: auto;
+        }
+
+        .zipCodeOption {
+        padding: 5px;
+        border: 1px solid #ddd;
+        margin-bottom: 5px;
+        cursor: pointer;
+        }
+
+        .zipCodeOption.selected {
+        background-color: #007BFF;
+        color: white;
+        }
+    </style>
 </head>
 <body>
-    <label for="stateSelect">State:</label>
-    <select id="stateSelect" onchange="updateCities(this.value)">
-        <!-- States will be populated here -->
-    </select>
-
-    <label for="citySelect">City:</label>
-    <select id="citySelect" onchange="updateZipCodes(this.value)">
-        <!-- Cities will be populated here -->
-    </select>
-
-    <label for="zipSelect">Zip Code:</label>
-    <select id="zipSelect">
-        <!-- Zip codes will be populated here -->
-    </select>
-
-    <button onclick="addZipCode()">Add Zip Code</button>
-
-    <div id="selectedZipCodes">
-        <!-- Selected zip codes will be displayed here -->
-    </div>
-
-    <script src="zipcode.js"></script>
-</body>
-</html>
+    <div id="zipCodeContainer">
+        <!-- JavaScript will populate this container -->
+      </div>
+      <script src="/zipcode.js"></script>
+    </body>
+</html>      
