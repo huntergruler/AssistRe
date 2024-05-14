@@ -1,4 +1,13 @@
-        document.addEventListener('DOMContentLoaded', function() {
+function showConfirm() {
+    var userResponse = confirm("Do you agree to our terms?");
+    if (userResponse) {
+        console.log("User agreed.");
+    } else {
+        console.log("User did not agree.");
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
             const parent = document.getElementById('parentElement');
             const email = document.getElementById('email');
             const password = document.getElementById('password');
