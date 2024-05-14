@@ -44,7 +44,7 @@ document.addEventListener('blur', function(event) {
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            if (data.stateResult === "Invalid") {
+            if (data.stateResult === "Valid") {
                 // state is valid
                 document.getElementById('licStatus').textContent = '';
                 document.getElementById('licenseAdd').disabled = false;
