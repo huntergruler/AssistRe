@@ -278,7 +278,7 @@ router.get('/check-license', (req, res) => {
         res.json({ stateResult: 'Invalid' });
       } else {
         console.log('Valid state:', licenseState, 'Userid:', userid);
-        const query = 'SELECT count(*) cnt FROM AgentLicense WHERE userid = ?';
+        const query = 'SELECT count(*) FROM AgentLicense WHERE userid = ?';
         db.query(query, [userid], (error, results) => {
             if (error) {
                 return res.status(500).json({error: 'Internal server error'});
