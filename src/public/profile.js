@@ -1,11 +1,11 @@
 function addLicense() {
-    const licensenumber = document.getElementById('licensenumber').value;
-    const licensestate = document.getElementById('licensestate').value;
-    console.log(licensenumber, licensestate);
+    const licenseNumber = document.getElementById('licenseNumber').value;
+    const licenseState = document.getElementById('licenseState').value;
+    console.log(licenseNumber, licenseState);
     fetch('/api/licenses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ licensenumber: licensenumber, licensestate: licensestate })
+        body: JSON.stringify({ licenseNumber: licenseNumber, licenseState: licenseState })
     })
     .then(response => response.json())
     .then(data => {
@@ -13,12 +13,12 @@ function addLicense() {
         const newRow = table.insertRow(table.rows.length);
         console.log(data);
         newRow.id = `license-${data.agentlicenseid}`;
-        newRow.insertCell(0).textContent = data.licensenumber;
-        newRow.insertCell(1).textContent = data.licensestate;
+        newRow.insertCell(0).textContent = data.licenseNumber;
+        newRow.insertCell(1).textContent = data.licenseState;
         newRow.insertCell(2).innerHTML = '<button onclick="deleteLicense(' + data.agentlicenseid + ')">Delete</button>';
 
 
-//        row.innerHTML = `<tr id="license-${data.agentlicenseid}"> <td>${data.licensenumber}</td><td>${data.licensestate}</td><td>${data.agentlicenseid}</td><td><button onclick="deleteLicense(${data.agentlicenseid})">Delete</button></td></tr>`;
+//        row.innerHTML = `<tr id="license-${data.agentlicenseid}"> <td>${data.licenseNumber}</td><td>${data.licenseState}</td><td>${data.agentlicenseid}</td><td><button onclick="deleteLicense(${data.agentlicenseid})">Delete</button></td></tr>`;
         console.log(newRow);
         document.getElementById('licenseForm').reset();
     })

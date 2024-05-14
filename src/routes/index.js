@@ -107,33 +107,33 @@ router.post('/register', (req, res) => {
   });
   
   router.post('/api/licenses', (req, res) => {
-      const { licensenumber, licensestate } = req.body;
-      const insertQuery = 'INSERT INTO AgentLicenseInfo (licensenumber, licensestate, userid) VALUES (?, ?, ?)';
-      db.query(insertQuery, [licensenumber, licensestate, req.session.userid], (err, result) => {
+      const { licenseNumber, licenseState } = req.body;
+      const insertQuery = 'INSERT INTO AgentLicenseInfo (licenseNumber, licenseState, userid) VALUES (?, ?, ?)';
+      db.query(insertQuery, [licenseNumber, licenseState, req.session.userid], (err, result) => {
           if (err) throw err;
             agentlicenseid = result.insertId;
-            console.log('Inserted:', agentlicenseid, licensenumber, licensestate);
-            res.json({ agentlicenseid, licensenumber, licensestate });
+            console.log('Inserted:', agentlicenseid, licenseNumber, licenseState);
+            res.json({ agentlicenseid, licenseNumber, licenseState });
             });
   });
 
   router.put('/api/licenses/:id', (req, res) => {
       const { id } = req.params;
-      const { licensenumber, licensestate } = req.body;
+      const { licenseNumber, licenseState } = req.body;
   
-      if (!validStates.includes(licensestate)) {
+      if (!validStates.includes(licenseState)) {
           return res.status(400).json({ error: 'Invalid state abbreviation' });
       }
   
-      const updateQuery = 'UPDATE AgentLicenseInfo SET licensenumber = ?, licensestate = ? WHERE id = ?';
-      db.query(updateQuery, [licensenumber, licensestate, id], (err, result) => {
+      const updateQuery = 'UPDATE AgentLicenseInfo SET licenseNumber = ?, licenseState = ? WHERE id = ?';
+      db.query(updateQuery, [licenseNumber, licenseState, id], (err, result) => {
           if (err) {
               return res.status(500).json({ error: 'Database error during the update' });
           }
           if (result.affectedRows === 0) {
               return res.status(404).json({ error: 'License not found' });
           }
-          res.json({ id, licensenumber, licensestate });
+          res.json({ id, licenseNumber, licenseState });
       });
   });
 
