@@ -12,11 +12,7 @@ function addLicense() {
     const year = parseInt(yearSelect.value);
 
     const licenseExpirationDate = new Date(year, month, day);
-    const expDate = new Date(year, month, day);
     
-    let parts = expDate.split('-'); // splits 'yyyy-mm-dd' into an array ['yyyy', 'mm', 'dd']
-    // let licenseExpirationDate = `${parts[1]}/${parts[2]}/${parts[0]}`; // rearranges to 'mm/dd/yyyy'
-
     console.log(licenseNumber, licenseState, licenseExpirationDate);
     fetch('/api/licenses', {
         method: 'POST',
@@ -27,10 +23,13 @@ function addLicense() {
     .then(data => {
         const table = document.getElementById('licensesTable').getElementsByTagName('tbody')[0];
         const newRow = table.insertRow(table.rows.length);
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        const expDate = licenseExpirationDate.toLocaleDateString('en-US', options);
+
         newRow.id = `license-${data.agentlicenseid}`;
-        newRow.insertCell(0).textContent = data.licenseState;
-        newRow.insertCell(1).textContent = data.licenseNumber;
-        newRow.insertCell(2).textContent = data.licenseExpirationDate;
+        newRow.insertCell(0).textContent = licenseState;
+        newRow.insertCell(1).textContent = licenseNumber;
+        newRow.insertCell(2).textContent = licenseExpirationDate;
         newRow.insertCell(3).innerHTML = '<button onclick="deleteLicense(' + data.agentlicenseid + ')">Delete</button>';
 
 
