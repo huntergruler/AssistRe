@@ -12,10 +12,9 @@ function addLicense() {
     const year = parseInt(yearSelect.value);
 
     const licenseExpirationDate = new Date(year, month, day);
-//    const licenseExpirationDate = month+"/"+day+"/"+year;
+    const expDate = new Date(year, month, day);
     
-    
-    // let parts = expDate.split('-'); // splits 'yyyy-mm-dd' into an array ['yyyy', 'mm', 'dd']
+    let parts = expDate.split('-'); // splits 'yyyy-mm-dd' into an array ['yyyy', 'mm', 'dd']
     // let licenseExpirationDate = `${parts[1]}/${parts[2]}/${parts[0]}`; // rearranges to 'mm/dd/yyyy'
 
     console.log(licenseNumber, licenseState, licenseExpirationDate);
