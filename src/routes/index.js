@@ -113,7 +113,12 @@ router.post('/register', (req, res) => {
       const insertQuery = 'INSERT INTO AgentLicenseInfo (licensenumber, licensestate, userid) VALUES (?, ?, ?)';
       db.query(insertQuery, [licensenumber, licensestate, req.session.userid], (err, result) => {
           if (err) throw err;
-          res.json({ id: result.insertId, licensenumber, licensestate });
+            console.log('Inserted:', result.insertId, licensenumber, licensestate);
+            const insertQuery = 'select agentlicenseid from AgentLicenseInfo where licensenumber = ? and licensestate = ? and userid = ?) VALUES (?, ?, ?)';
+            db.query(insertQuery, [licensenumber, licensestate, req.session.userid], (err, result) => {
+                if (err) throw err;
+                res.json({ id: result.agentlicenseid, licensenumber, licensestate });
+            });
       });
   });
 
