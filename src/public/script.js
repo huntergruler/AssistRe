@@ -6,6 +6,35 @@ function showConfirm() {
         console.log("User did not agree.");
     }
 }
+function addLicense() {
+    const licensenumber = document.getElementById('licensenumber').value;
+    const licensestate = document.getElementById('licensestate').value;
+    console.log(licensenumber, licensestate);
+    fetch('/api/licenses', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ licensenumber: licensenumber, licensestate: licensestate })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const table = document.getElementById('licensesTable').getElementsByTagName('tbody')[0];
+        const row = table.insertRow();
+        row.innerHTML = `<td>${data.licensenumber}</td><td>${data.licensestate}</td><td><button onclick="editLicense(${data.id})">Edit</button><button onclick="deleteLicense(${data.id})">Delete</button></td>`;
+        document.getElementById('licenseForm').reset();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function deleteLicense(id) {
+    fetch(`/api/licenses/${id}`, {
+        method: 'DELETE'
+    })
+    .then(() => {
+        // Remove the row from the table
+        document.getElementById(`license-${id}`).remove();
+    })
+    .catch(error => console.error('Error:', error));
+}
 
 document.addEventListener('DOMContentLoaded', function() {
             const parent = document.getElementById('parentElement');

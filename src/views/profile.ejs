@@ -42,7 +42,7 @@
                     <td><%= license.licensenumber %></td>
                     <td><%= license.licensestate %></td>
                     <td>
-                        <button class="delete-btn" data-id="<%= license.agentlicenseid %>">Delete</button>
+                        <button type="button" onclick="deleteLicense(<%= license.agentlicenseid %>)">Delete</button>
                     </td>
                 </tr>
             <% }); %>

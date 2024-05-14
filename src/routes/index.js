@@ -93,7 +93,7 @@ router.post('/register', (req, res) => {
   // Assuming `db` is your MySQL connection db, already set up in app.js
   router.get('/profile', (req, res) => {
     if (!req.session.user) {
-      req.session.message = 'Please login to access the Dashboard';
+      req.session.message = 'Please login to access the Profile';
       res.redirect('/login');  
     }
           const query = 'SELECT * FROM AgentLicenseInfo where userid = ?'; 
