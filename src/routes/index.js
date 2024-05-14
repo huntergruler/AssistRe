@@ -93,9 +93,10 @@ router.post('/register', (req, res) => {
   // Assuming `db` is your MySQL connection db, already set up in app.js
   router.get('/profile', (req, res) => {
     if (!req.session.user) {
-      return res.status(401).send("Access denied. Please login to access this page.");
+      req.session.message = 'Please login to access the Dashboard';
+      res.redirect('/login');  
     }
-        const query = 'SELECT * FROM AgentLicenseInfo where userid = ?'; 
+          const query = 'SELECT * FROM AgentLicenseInfo where userid = ?'; 
       db.query(query,[ req.session.userid ], (err, results) => {
           if (err) throw err;
           let hasLicenses = results.length > 0;
