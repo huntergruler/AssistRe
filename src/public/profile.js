@@ -69,3 +69,48 @@ document.addEventListener('blur', function(event) {
     }
 }, true); // Using capturing phase to handle the event as it propagates down
 
+// datePickerScript.js
+
+document.addEventListener('DOMContentLoaded', function () {
+    populateMonths();
+    populateYears();
+    updateDays();
+});
+
+function populateMonths() {
+    const monthSelect = document.getElementById('monthSelect');
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    months.forEach((month, index) => {
+        let option = new Option(month, index + 1);
+        monthSelect.appendChild(option);
+    });
+}
+
+function populateYears() {
+    const yearSelect = document.getElementById('yearSelect');
+    const year = new Date().getFullYear();
+    for (let i = year; i <= year + 10; i++) {
+        let option = new Option(i, i);
+        yearSelect.appendChild(option);
+    }
+}
+
+function updateDays() {
+    const monthSelect = document.getElementById('monthSelect');
+    const yearSelect = document.getElementById('yearSelect');
+    const daySelect = document.getElementById('daySelect');
+
+    const month = monthSelect.value;
+    const year = yearSelect.value;
+    const daysInMonth = new Date(year, month, 0).getDate();
+
+    daySelect.innerHTML = '';
+
+    for (let i = 1; i <= daysInMonth; i++) {
+        let option = new Option(i, i);
+        daySelect.appendChild(option);
+    }
+}
