@@ -120,7 +120,7 @@ function populateStates() {
     });
 }
 
-function popupateCities() {
+function populateCities() {
     const stateSelect = document.getElementById('stateSelect');
     fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
     .then(response => response.json())
