@@ -97,23 +97,26 @@ function zipUpdate() {
     });
 }
 
+function populateZipCodes() {
+    const zipCodes = ["10001", "10002", "10003", "10004"]; // Add more zip codes as needed
+    const container = document.getElementById("availabeZipCodesContainer");
+
+    zipCodes.forEach(code => {
+        const div = document.createElement("div");
+        div.textContent = code;
+        div.className = "zipCodeOption";
+        div.onclick = function() {
+            this.classList.toggle("selected");
+        };
+        container.appendChild(div);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     populateMonths();
     populateYears();
     updateDays();
     populateStates();
-    const zipCodes = ["10001", "10002", "10003", "10004"]; // Add more zip codes as needed
-    const container = document.getElementById("availabeZipCodesContainer");
-  
-    zipCodes.forEach(code => {
-      const div = document.createElement("div");
-      div.textContent = code;
-      div.className = "zipCodeOption";
-      div.onclick = function() {
-        this.classList.toggle("selected");
-      };
-      container.appendChild(div);
-    });
 });
 
 function getSelectedZipCodes() {
@@ -121,7 +124,7 @@ function getSelectedZipCodes() {
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
     console.log(selectedZipCodes); // Output to console or handle as needed
   }
-  
+
 function populateStates() {
     const stateSelect = document.getElementById('stateSelect');
     const states = [
@@ -131,11 +134,17 @@ function populateStates() {
         'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
         'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
     ];
-    states.forEach(state => {
-        let option = new Option(state, state);
+    fetch(`/get-states`)
+    .then(response => response.json())
+    .then(data => {
+        console.log('data',data);
+        data.results.forEach(item => {
+        let option = new Option(item.state, item.stateName);
         stateSelect.appendChild(option);
     });
+    })
 }
+
 stateSelect.addEventListener('change', function() {
     var selectedValue = this.value;
     console.log(selectedValue);
@@ -148,7 +157,6 @@ function populateCities() {
     fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
     .then(response => response.json())
     .then(data => {
-        console.log('data',data);
         // Clear existing options in citySelect
         citySelect.innerHTML = '';
          data.results.forEach(item => {
