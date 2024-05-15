@@ -134,7 +134,7 @@ function populateCities() {
         console.log('data',data);
         // Clear existing options in citySelect
         citySelect.innerHTML = '';
-         data.forEach(item => {
+         data.results.forEach(item => {
             let option = new Option(item.city, item.city);
             citySelect.appendChild(option);
         });    
