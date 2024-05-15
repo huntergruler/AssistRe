@@ -21,10 +21,6 @@
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
-.button-arrow {
-    padding-right: 20px; /* Provide space for the arrow */
-}
-
 
 /* The Close Button */
 .close {
