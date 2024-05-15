@@ -131,11 +131,11 @@ function populateCities() {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-/*         data.forEach(city => {
+         data.forEach(city => {
             let option = new Option(city, city);
             citySelect.appendChild(option);
         });    
- */        })
+         })
     .catch(error => console.error('Error checking user:', error));
 }
 
