@@ -126,7 +126,7 @@ stateSelect.addEventListener('change', function() {
   
 
 function populateCities() {
-    const stateSelect = document.getElementById('stateSelect');
+    const stateSelect = document.getElementById('stateSelect').value;
     fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
     .then(response => response.json())
     .then(data => {

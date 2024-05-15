@@ -273,7 +273,7 @@ router.get('/check-license', (req, res) => {
 
 // Route to get city and state by zip code
 router.get('/get-cities', (req, res) => {
-  const stateSelect = req.query.stateSelect.value;
+  const stateSelect = req.query.stateSelect;
   const query = 'SELECT city FROM ZipCodes WHERE state = ?';
   console.log('State:', stateSelect);
   db.query(query, [stateSelect], (error, results) => {
