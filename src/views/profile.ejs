@@ -76,11 +76,11 @@
 </div>
 <br>
 <div id="zipCodeContainer">
-    <p><b>Current Licenses</b></p>
+    <p><b>Zip Codes </b></p>
     <p> Select the Zip Codes you are want to make offers in</p>
     <p>Limit zip codes by state and city if desired</p>
     <label for="stateSelect">States:</label>
-    <select id="stateSelect">
+    <select id="stateSelect" onchange="populateCities();">
     </select>   
     <label for="citySelect">Cities:</label>
     <select id="citySelect">

@@ -122,26 +122,13 @@ function populateStates() {
 
 function popupateCities() {
     const stateSelect = document.getElementById('stateSelect');
-    fetch(`/check-license?licenseState=${encodeURIComponent(licenseState)}`)
+    fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
     .then(response => response.json())
     .then(data => {
-        if (data.stateResult === "Valid") {
-            // state is valid
-            document.getElementById('licStatus').textContent = '';
-            document.getElementById('licenseAdd').disabled = false;
-        } else if (data.stateResult === "Used") {
-            // state has been used
-            document.getElementById('licStatus').textContent = 'License for this state exists';
-            document.getElementById('licStatus').style.color = 'red';
-            document.getElementById('licenseAdd').disabled = true;
-            document.getElementById('licenseState').focus();
-        } else {
-            // state is not valid
-            document.getElementById('licStatus').textContent = 'Invalid State';
-            document.getElementById('licStatus').style.color = 'red';
-            document.getElementById('licenseAdd').disabled = true;
-            document.getElementById('licenseState').focus();
-            }
+        data.forEach(city => {
+            let option = new Option(city, city);
+            citySelect.appendChild(option);
+        });    
         })
     .catch(error => console.error('Error checking user:', error));
 }

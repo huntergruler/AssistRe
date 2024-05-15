@@ -271,6 +271,23 @@ router.get('/check-license', (req, res) => {
     });
   });
 
+// Route to get city and state by zip code
+router.get('/get-cities', (req, res) => {
+  const stateSelect = req.query.stateSelect;
+  const query = 'SELECT city FROM ZipCodes WHERE state = ?';
+  db.query(query, [stateSelect], (error, results) => {
+      if (error) {
+          return res.status(500).json({error: 'Internal server error'});
+      }
+      if (results.length > 0) {
+          const { city, state } = results[0];
+          res.json({ city, state });
+      } else {
+          res.status(404).json({error: 'No zips found for this state'});
+      }
+  });
+});
+
 // Route to serve the dashboard page
 router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
