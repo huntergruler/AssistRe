@@ -134,7 +134,20 @@ function populateCities() {
         console.log('data',data);
         // Clear existing options in citySelect
         citySelect.innerHTML = '';
-         data.forEach(item => {
+        let cities = [
+            { city: "Adak" },
+            { city: "Akiachak" },
+            { city: "Akiak" },
+            { city: "Akutan" },
+            { city: "Alakanuk" },
+            { city: "Aleknagik" },
+            { city: "Allakaket" },
+            { city: "Ambler" },
+            { city: "Anaktuvuk Pass" },
+            { city: "Anchor Point" },
+            { city: "Anchorage" }
+        ];
+         cities.forEach(item => {
             let option = new Option(item.city, item.city);
             citySelect.appendChild(option);
         });    
