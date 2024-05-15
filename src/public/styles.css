@@ -53,13 +53,9 @@
 }
 
 .container {
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #000;
+    display: flex;
 }
 
-.box {
-    margin: 10px;
-    padding: 5px;
-    border: 1px solid red;
+.box1, .box2 {
+    width: 50%; /* Adjust width as necessary */
 }
