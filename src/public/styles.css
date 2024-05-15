@@ -20,6 +20,19 @@
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
+.button-arrow {
+    position: relative;
+    padding-right: 20px; /* Provide space for the arrow */
+}
+
+.button-arrow::after {
+    content: '>';
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold; /* Make the arrow more prominent */
+}
 
 /* The Close Button */
 .close {
