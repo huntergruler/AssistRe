@@ -127,21 +127,16 @@ function getSelectedZipCodes() {
 
 function populateStates() {
     const stateSelect = document.getElementById('stateSelect');
-    const states = [
-        'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
-        'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
-        'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
-        'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
-        'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
-    ];
     fetch(`/get-states`)
     .then(response => response.json())
     .then(data => {
         console.log('data',data);
         data.results.forEach(item => {
-        let option = new Option(item.state, item.stateName);
-        stateSelect.appendChild(option);
-    });
+            let option = document.createElement('option');
+            option.value = item.state;
+            option.textContent = item.stateName;
+            stateSelect.appendChild(option);
+        });
     })
 }
 

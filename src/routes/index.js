@@ -293,7 +293,7 @@ router.get('/get-cities', (req, res) => {
 // Route to get states
 router.get('/get-states', (req, res) => {
   const stateSelect = req.query.stateSelect;
-  const query = 'SELECT distinct state, stateName FROM ZipCodes order by stateName';
+  const query = 'SELECT distinct state, stateName FROM ZipCodes where stateName is not null order by stateName';
   db.query(query, [stateSelect], (error, results) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
