@@ -72,7 +72,7 @@ header {
 #zipCodeContainer {
     /* border: 1px solid #ccc; */
     padding: 10px;
-    width: 400px;
+    width: 100px;
     height: 3000px;
     overflow-y: auto;
     }
@@ -89,7 +89,7 @@ header {
     color: white;
     }
     html {
-        font-size: 16px; /* setting base size */
+        font-size: 14px; /* setting base size */
     }
     
     p {
