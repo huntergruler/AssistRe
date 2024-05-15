@@ -59,3 +59,41 @@
 .box1, .box2 {
     width: 50%; /* Adjust width as necessary */
 }
+
+#availabeZipCodesContainer {
+    border: 2px solid #ccc;
+    padding: 10px;
+    width: 100px;
+    margin: 20px;
+    height: 300px;
+    overflow-y: auto;
+    }
+#selectedZipCodesContainer {
+    border: 2px solid #ccc;
+    padding: 10px;
+    width: 100px;
+    margin: 20px;
+    height: 300px;
+    overflow-y: auto;
+    }
+    
+    .zipCodeOption {
+    padding: 2px;
+    /* border: 1px solid #ddd; */
+    margin-bottom: 2px;
+    cursor: pointer;
+    }
+
+    .zipCodeOption.selected {
+    background-color: #007BFF;
+    color: white;
+    }
+    html {
+        font-size: 14px; /* setting base size */
+    }
+    
+    p {
+        font-size: 1.25rem; /* 20px if the base size is 16px */
+    }
+    
+    
