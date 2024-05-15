@@ -127,12 +127,15 @@ stateSelect.addEventListener('change', function() {
 
 function populateCities() {
     const stateSelect = document.getElementById('stateSelect').value;
+    const citySelect = document.getElementById('citySelect');
     fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
-         data.forEach(city => {
-            let option = new Option(city, city);
+        // Clear existing options in citySelect
+        citySelect.innerHTML = '';
+         data.forEach(item => {
+            let option = new Option(item.city, item.city);
             citySelect.appendChild(option);
         });    
          })
