@@ -26,15 +26,6 @@
     padding-right: 20px; /* Provide space for the arrow */
 }
 
-.button-arrow::after {
-    content: '>';
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-weight: bold; /* Make the arrow more prominent */
-}
-
 .button-arrow::before {
     content: '<';
     position: absolute;
