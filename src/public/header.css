@@ -70,17 +70,17 @@ header {
     }
 }
 #zipCodeContainer {
-    border: 1px solid #ccc; */
-    padding: 5px;
+    border: 2px solid #ccc; */
+    padding: 10px;
     width: 100px;
     height: 300px;
     overflow-y: auto;
     }
 
     .zipCodeOption {
-    padding: 5px;
+    padding: 2px;
     /* border: 1px solid #ddd; */
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     cursor: pointer;
     }
 
