@@ -85,8 +85,12 @@
     <label for="citySelect">Cities:</label>
     <select id="citySelect">
     </select>
-    <button type="button" id="zipUpdate" onclick="zipUpdate()">Update zip code list</button>
-    
+    <button type="button" id="zipUpdate" disabled onclick="zipUpdate()">Update zip code list</button>
+    <div id="zipCodeContainer">
+        <!-- JavaScript will populate this container -->
+    </div>
+      <script src="/zipcode.js"></script>
+
     <!-- JavaScript will populate this container -->
     
 </div>
