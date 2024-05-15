@@ -139,17 +139,17 @@ stateSelect.addEventListener('change', function() {
   function populateCities() {
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect');
-    const defaultOption = document.createElement('option');
-    defaultOption.textContent = 'Select a City';
-    defaultOption.value = '';
-    citySelect.appendChild(defaultOption);
     
     fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
     .then(response => response.json())
     .then(data => {
         // Clear existing options in citySelect
         citySelect.innerHTML = '';
-         data.results.forEach(item => {
+        const defaultOption = document.createElement('option');
+        defaultOption.textContent = 'Select a City';
+        defaultOption.value = '';
+        citySelect.appendChild(defaultOption);
+             data.results.forEach(item => {
             let option = new Option(item.city, item.city);
             citySelect.appendChild(option);
         });    
