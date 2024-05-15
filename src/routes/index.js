@@ -156,14 +156,13 @@ router.post('/login', [
         return res.status(400).json({ errors: errors.array() });
     }
   const { username, password } = req.body;
-//  console.log('User', username, 'Password', password);  
+  console.log('User', username, 'Password', password);  
   const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Users WHERE username = ?';
   res.setHeader('Content-Type', 'application/json');
   db.query(query, [username], (error, results) => {
     if (error) {
       return res.render('login', { errorMessage: 'Error during database query' });
     }
-    console.log('Results:', results);
     if (results[0].emailverified === 0) {
             // Send response when email is not verified
             res.json({
