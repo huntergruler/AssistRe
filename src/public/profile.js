@@ -131,7 +131,7 @@ function populateCities() {
     fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+        console.log('data',data);
         // Clear existing options in citySelect
         citySelect.innerHTML = '';
          data.forEach(item => {
