@@ -275,6 +275,7 @@ router.get('/check-license', (req, res) => {
 router.get('/get-cities', (req, res) => {
   const stateSelect = req.query.stateSelect;
   const query = 'SELECT city FROM ZipCodes WHERE state = ?';
+  console.log('State:', stateSelect);
   db.query(query, [stateSelect], (error, results) => {
     console.log('Results:', results);
 
