@@ -137,6 +137,7 @@ router.get('/login', (req, res) => {
     res.clearCookie('connect.sid'); // If you're using session cookies, clear them
     }});
   }
+  console.log('Message:');
  res.render('login', { query: req.query, message: message });
 });
 
