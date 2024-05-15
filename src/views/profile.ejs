@@ -75,36 +75,22 @@
     </form>
 </div>
 <br>
-<p><b>Current Zip Codes</b></p>
-<table id="zipcodeTable">
-<thead>
-    <tr>
-        <th>Zip Codes</th>
-        <th>Actions</th>
-    </tr>
-</thead>
-<tbody>
-    <% if (hasZips) { %>
-      <% zips.forEach(function(zip) { %>
-        <tr id="zip-<%= zip.userzipcodeid %>">
-            <td>
-                <button type="button" onclick="deleteZip(<%= zip.userzipcodeid %>)">Delete</button>
-            </td>
-        </tr>
-    <% }); %>
-    <% } else { %>
-        <tr>
-            <td colspan="3">No zip codes found.</td>
-        </tr>
-    <% } %>
-</tbody>
-</table>
-<form id="zipcodeForm">
-<input type="text" id="zipCode" name="zipCode" placeholder="Zip Code" maxlength="5" minlength="5" required pattern="[A-Z]{2}" title="Enter a valid US zip code">
-        <button type="button" id="zipAdd" disabled onclick="addZip()">Add</button>
-<span id="licStatus"></span>
-</form>
+<div id="zipCodeContainer">
+    <p><b>Current Licenses</b></p>
+    <p> Select the Zip Codes you are want to make offers in</p>
+    <p>Limit zip codes by state and city if desired</p>
+    <label for="stateSelect">States:</label>
+    <select id="stateSelect">
+    </select>   
+    <label for="citySelect">Cities:</label>
+    <select id="citySelect">
+    </select>
+    <button type="button" id="zipUpdate" onclick="zipUpdate()">Update zip code list</button>
+    
+    <!-- JavaScript will populate this container -->
+    
 </div>
+
 </div>
 </div>
 <script src="/profile.js"></script>

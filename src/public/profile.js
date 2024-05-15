@@ -85,11 +85,67 @@ document.addEventListener('blur', function(event) {
 
 // datePickerScript.js
 
+function zipUpdate() {
+    const monthSelect = document.getElementById('monthSelect');
+    const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    months.forEach((month, index) => {
+        let option = new Option(month, index + 1);
+        monthSelect.appendChild(option);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     populateMonths();
     populateYears();
     updateDays();
+    populateStates();
+//    populateCities();
 });
+
+function populateStates() {
+    const stateSelect = document.getElementById('stateSelect');
+    const states = [
+        'AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
+        'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD',
+        'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ',
+        'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC',
+        'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'
+    ];
+    states.forEach(state => {
+        let option = new Option(state, state);
+        stateSelect.appendChild(option);
+    });
+}
+
+function popupateCities() {
+    const stateSelect = document.getElementById('stateSelect');
+    fetch(`/check-license?licenseState=${encodeURIComponent(licenseState)}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data.stateResult === "Valid") {
+            // state is valid
+            document.getElementById('licStatus').textContent = '';
+            document.getElementById('licenseAdd').disabled = false;
+        } else if (data.stateResult === "Used") {
+            // state has been used
+            document.getElementById('licStatus').textContent = 'License for this state exists';
+            document.getElementById('licStatus').style.color = 'red';
+            document.getElementById('licenseAdd').disabled = true;
+            document.getElementById('licenseState').focus();
+        } else {
+            // state is not valid
+            document.getElementById('licStatus').textContent = 'Invalid State';
+            document.getElementById('licStatus').style.color = 'red';
+            document.getElementById('licenseAdd').disabled = true;
+            document.getElementById('licenseState').focus();
+            }
+        })
+    .catch(error => console.error('Error checking user:', error));
+}
+
 
 function populateMonths() {
     const monthSelect = document.getElementById('monthSelect');
