@@ -112,6 +112,7 @@ function getSelectedZipCodes() {
 
 function populateStates() {
     const stateSelect = document.getElementById('stateSelect');
+
     const defaultOption = document.createElement('option');
     defaultOption.textContent = 'Select a State';
     defaultOption.value = '';
@@ -138,6 +139,11 @@ stateSelect.addEventListener('change', function() {
   function populateCities() {
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect');
+    const defaultOption = document.createElement('option');
+    defaultOption.textContent = 'Select a City';
+    defaultOption.value = '';
+    citySelect.appendChild(defaultOption);
+    
     fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
     .then(response => response.json())
     .then(data => {
