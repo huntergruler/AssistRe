@@ -119,6 +119,11 @@ function populateStates() {
         stateSelect.appendChild(option);
     });
 }
+stateSelect.addEventListener('change', function() {
+    var selectedValue = this.value;
+    console.log(selectedValue);
+  });
+  
 
 function populateCities() {
     const stateSelect = document.getElementById('stateSelect');
