@@ -97,21 +97,6 @@ function zipUpdate() {
     });
 }
 
-function populateZipCodes() {
-    const zipCodes = ["10001", "10002", "10003", "10004"]; // Add more zip codes as needed
-    const container = document.getElementById("availabeZipCodesContainer");
-
-    zipCodes.forEach(code => {
-        const div = document.createElement("div");
-        div.textContent = code;
-        div.className = "zipCodeOption";
-        div.onclick = function() {
-            this.classList.toggle("selected");
-        };
-        container.appendChild(div);
-    });
-}
-
 document.addEventListener('DOMContentLoaded', function () {
     populateMonths();
     populateYears();
@@ -145,8 +130,7 @@ stateSelect.addEventListener('change', function() {
     console.log(selectedValue);
   });
   
-
-function populateCities() {
+  function populateCities() {
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect');
     fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
@@ -159,6 +143,26 @@ function populateCities() {
             citySelect.appendChild(option);
         });    
          })
+    .catch(error => console.error('Error checking user:', error));
+}
+
+function populateZipCodes() {
+    const stateSelect = document.getElementById('stateSelect').value;
+    const citySelect = document.getElementById('citySelect').value;
+    const container = document.getElementById("availabeZipCodesContainer");
+    fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
+    .then(response => response.json())
+    .then(data => {
+        zipCodes.results.forEach(code => {
+            const div = document.createElement("div");
+            div.textContent = code.zipCode;
+            div.className = "zipCodeOption";
+            div.onclick = function() {
+              this.classList.toggle("selected");
+            };
+            container.appendChild(div);
+          });
+    })
     .catch(error => console.error('Error checking user:', error));
 }
 

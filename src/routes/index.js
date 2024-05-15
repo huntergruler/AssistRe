@@ -294,7 +294,26 @@ router.get('/get-cities', (req, res) => {
 router.get('/get-states', (req, res) => {
   const stateSelect = req.query.stateSelect;
   const query = 'SELECT distinct state, stateName FROM ZipCodes where stateName is not null order by stateName';
-  db.query(query, [stateSelect], (error, results) => {
+  db.query(query, (error, results) => {
+      if (error) {
+          return res.status(500).json({error: 'Internal server error'});
+      }
+      if (results.length > 0) {
+          res.json({ results });
+      } else {
+          res.status(404).json({error: 'No zips found for this state'});
+      }
+  });
+});
+
+// Route to get city and state by zip code
+router.get('/get-zipcodes', (req, res) => {
+  const stateSelect = req.query.stateSelect;
+  const citySelect = req.query.citySelect;
+  const query = 'SELECT zipCode FROM ZipCodes WHERE state = ? and city = ? order by zipCode';
+  db.query(query, [stateSelect, citySelect], (error, results) => {
+//    console.log('Results:', results);
+
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
