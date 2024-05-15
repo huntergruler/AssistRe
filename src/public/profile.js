@@ -154,7 +154,7 @@ function populateZipCodes() {
     .then(response => response.json())
     .then(data => {
         console.log('data',data);
-        zipCodes.results.forEach(code => {
+        data.results.forEach(code => {
             const div = document.createElement("div");
             div.textContent = code.zipCode;
             div.className = "zipCodeOption";
