@@ -125,6 +125,7 @@ function popupateCities() {
     fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         data.forEach(city => {
             let option = new Option(city, city);
             citySelect.appendChild(option);

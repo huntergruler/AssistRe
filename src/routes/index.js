@@ -276,6 +276,8 @@ router.get('/get-cities', (req, res) => {
   const stateSelect = req.query.stateSelect;
   const query = 'SELECT city FROM ZipCodes WHERE state = ?';
   db.query(query, [stateSelect], (error, results) => {
+    console.log('Results:', results);
+
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
