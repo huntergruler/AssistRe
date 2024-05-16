@@ -98,7 +98,7 @@ function deleteLicense(id) {
 
 function deleteOffice(id) {
     console.log(id);
-    fetch(`/api/office/${id}`, {
+    fetch(`/api/offices/${id}`, {
         method: 'DELETE'
     })
     .then(() => {
