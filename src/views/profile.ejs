@@ -22,6 +22,14 @@
 </header>
 <body id="profileBody">
     <h1>Profile for <%= firstname %> <%= lastname %></h1>
+    <div id="profileNav">
+        <button type="button" id="officeButton" onclick="showOverview()">Overview</button>
+        <button type="button" id="officeButton" onclick="showOffice()">Office</button>
+        <button type="button" id="licenseButton" onclick="showLicense()">License</button>
+        <button type="button" id="zipCodeButton" onclick="showZipCode()">Zip Codes</button>
+        <button type="button" id="transactionButton" onclick="showTransaction()">Transactions</button>
+        <button type="button" id="bioButton" onclick="showBio()">Bio</button>
+    </div>
     <div id="profileContainer">
         <div id="officeContainer">
             <p><h1>Current Office(s)</h1></p>
