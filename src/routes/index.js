@@ -374,6 +374,7 @@ router.post('/api/offices', (req, res) => {
 
 router.delete('/api/offices/:id', (req, res) => {
   const { id } = req.params;
+  console.log('Delete:', id);
   const deleteQuery = 'DELETE FROM AgentOffices WHERE agentlicenseid = ?';
   db.query(deleteQuery, [id], (err, result) => {
       if (err) throw err;
