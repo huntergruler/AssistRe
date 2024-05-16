@@ -325,25 +325,6 @@ function populateUserZipCodes() {
     .catch(error => console.error('Error checking user:', error));
 }
 
-function populateOffices() {
-    const officeContainer = document.getElementById("officeContainer");
-    fetch(`/get-offices`)
-    .then(response => response.json())
-    .then(data => {
-        officeContainer.innerHTML = '';
-        if (data.results.length === 0) {
-            const div = document.createElement("div");
-            div.textContent = 'No offices';
-            officeContainer.appendChild(div);
-          }
-        data.results.forEach(office => {
-            const div = document.createElement("div");
-            div.textContent = office.officeName;
-            officeContainer.appendChild(div);
-          });
-    .catch(error => console.error('Error checking user:', error));
-}
-
 function populateMonths() {
     const monthSelect = document.getElementById('monthSelect');
     const months = [
