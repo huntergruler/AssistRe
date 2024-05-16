@@ -159,7 +159,8 @@ stateSelect.addEventListener('change', function() {
 
 function addSelection() {
     const container = document.getElementById("availabeZipCodesContainer");
-    const selected = document.querySelectorAll(".box1.selected");
+    const selected = document.querySelectorAll(".zipCodeOption.selected");
+    console.log(selected);
     selected.forEach(node => {
           console.log(node);
 //        node.classList.remove("selected");
