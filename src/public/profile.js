@@ -190,11 +190,12 @@ function removeSelection() {
 function populateZipCodes() {
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect').value;
-    const container = document.getElementById("availabeZipCodesContainer");
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
     .then(response => response.json())
     .then(data => {
-        container.innerHTML = '';
+        contaavailabeZipCodesContainerner.innerHTML = '';
         data.results.forEach(code => {
             const div = document.createElement("div");
             div.textContent = code.zipCode;
@@ -202,7 +203,22 @@ function populateZipCodes() {
             div.onclick = function() {
               this.classList.toggle("selected");
             };
-            container.appendChild(div);
+            availabeZipCodesContainer.appendChild(div);
+          });
+    })
+    .catch(error => console.error('Error checking user:', error));
+    fetch(`/get-userzipcodes`)
+    .then(response => response.json())
+    .then(data => {
+        selectedZipCodesContainer.innerHTML = '';
+        data.results.forEach(code => {
+            const div = document.createElement("div");
+            div.textContent = code.zipCode;
+            div.className = "zipCodeSelected";
+            div.onclick = function() {
+              this.classList.toggle("selected");
+            };
+            selectedZipCodesContainer.appendChild(div);
           });
     })
     .catch(error => console.error('Error checking user:', error));

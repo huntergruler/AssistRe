@@ -325,6 +325,24 @@ router.get('/get-zipcodes', (req, res) => {
   });
 });
 
+// Route to get city and state by zip code
+router.get('/get-userzipcodes', (req, res) => {
+  userid = req.session.userid;
+  const query = 'SELECT zipCode FROM UserZipCodes WHERE userid = ? order by zipCode';
+  db.query(query, [userid], (error, results) => {
+//    console.log('Results:', results);
+
+      if (error) {
+          return res.status(500).json({error: 'Internal server error'});
+      }
+      if (results.length > 0) {
+          res.json({ results });
+      } else {
+          res.status(404).json({error: 'No zips found for this state'});
+      }
+  });
+});
+
 // Route to serve the dashboard page
 router.get('/dashboard', (req, res) => {
   if (!req.session.user) {
