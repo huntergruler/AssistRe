@@ -80,7 +80,7 @@
 <p>Limit zip codes by state and city if desired</p>
 <div id="zipCodeParam">
     <label for="stateSelect">States:</label>
-    <select id="stateSelect" onblur="populateCities();">
+    <select id="stateSelect" onchange="populateCities();">
     </select>   
     <form autocomplete="off" action="/action_page.php">
         <div class="autocomplete" style="width:300px;">
