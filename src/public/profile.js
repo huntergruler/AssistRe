@@ -166,7 +166,6 @@ function populateStates() {
     fetch(`/get-states`)
     .then(response => response.json())
     .then(data => {
-        console.log('data',data);
         data.results.forEach(item => {
             let option = document.createElement('option');
             option.value = item.state;
@@ -178,7 +177,6 @@ function populateStates() {
 
 stateSelect.addEventListener('change', function() {
     var selectedValue = this.value;
-    console.log(selectedValue);
   });
   
   function populateCities() {
