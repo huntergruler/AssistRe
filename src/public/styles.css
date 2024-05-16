@@ -131,6 +131,12 @@
         padding: 1px;
       }
       
+      .grid-action {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        justify-content: center; /* Center buttons vertically within the container */
+        align-items: center; /* Center buttons horizontally within the container */
+      }
       .grid-container > div {
         background-color: rgba(255, 255, 255, 0.8);
         text-align: center;
