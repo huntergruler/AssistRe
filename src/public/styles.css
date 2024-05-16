@@ -11,52 +11,6 @@ body {
     box-sizing: border-box;
   }
   
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  header {
-    background-color: rgba(19, 50, 109);
-    width: 100%;
-    color: white;
-    text-align: start;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  #title {
-    flex-grow: 1;
-  }
-  
-  #title a {
-    color: white;
-    text-decoration: none;
-    font-size: 24px;
-  }
-  
-  #navlinks {
-    display: flex;
-    list-style-type: none;
-  }
-  
-  #navlinks a {
-    margin: 0 10px;
-    padding: 20px 0;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    transition: background-color 0.3s;
-  }
-  
-  #navlinks a:hover {
-    background-color: rgba(40, 71, 130, 0.8);
-  }
-  
   .container {
     display: flex;
     justify-content: center;
