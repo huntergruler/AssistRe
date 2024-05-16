@@ -7,15 +7,14 @@
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="/styles.css"> <!-- Ensure you have some CSS for basic styling -->
 </head>
-<header>
-    <h1 id="title"><a href="/">SeekingAgents</a></h1>
-    <div id="navlinks">
-        <a href="/register">Register</a>
-    </div>
-</header>
 <body>
+    <header>
+    <h1 id="title"><a href="/">SeekingAgents</a></h1>
+    <nav id="navlinks">
+        <a href="/register">Register</a>
+    </nav>
+    </header>
     <h1>Please Login:</h1>
-    <div id="parentElement">
      <div id="loginContainer">
          <form id="loginForm" action="/login" method="post">
          <input type="email" id="username" name="username" placeholder="Email">
@@ -25,8 +24,7 @@
      <div id="message"><%= message %></div>
      <br>
      <a href="/sendreset">Forgot Password?</a>
- </div>
- </div>
+     </div>
  <script src="/script.js"></script>
 </body>
 </html>

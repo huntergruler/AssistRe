@@ -11,7 +11,7 @@ body {
     width: 100%;
   }
   
-  #profileContainer, #dashboardContainer, .zipCode-container {
+  #profileContainer, #dashboardContainer, #loginContainer, .zipCode-container {
     background-color: white;
     padding: 20px;
     margin: 20px 0;
@@ -21,7 +21,7 @@ body {
     max-width: 800px;
   }
   
-  #profileContainer h1, #dashboardContainer h1, .zipCode-container h1 {
+  #profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
     margin-bottom: 20px;
   }
 
