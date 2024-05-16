@@ -45,10 +45,12 @@ body {
 
 #officeContainer, #licenseContainer {
     grid-column: 1;
+    margin: 0 20px;
 }
 
 .zipCode-container, #transactionContainer, #BioContainer {
     grid-column: 2;
+    margin: 0 20px;
 }
   
 #profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
