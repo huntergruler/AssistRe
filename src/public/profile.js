@@ -166,7 +166,7 @@ function addSelection() {
           console.log(node.zipCode);
           node.classList.remove("selected");
           const div = document.createElement("div");
-          div.textContent = node.zipCodeOption.value;
+          div.textContent = node.zipCodeOption;
           div.className = "zipCodeSelected";
           div.onclick = function() {
             this.classList.toggle("selected");
