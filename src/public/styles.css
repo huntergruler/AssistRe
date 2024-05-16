@@ -25,11 +25,11 @@ body {
 #profileBody{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    margin-top: 30px;
 }
 
 #profileContainer{
     grid-column: 2;
+    margin-top: 30px;
 }
   
 #profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
