@@ -158,13 +158,14 @@ stateSelect.addEventListener('change', function() {
 }
 
 function addSelection() {
-    const container = document.getElementById("availabeZipCodesContainer");
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
     console.log(selected);
     selected.forEach(node => {
           console.log(node);
-//        node.classList.remove("selected");
-//        container.appendChild(node);
+          node.classList.remove("selected");
+          selectedZipCodesContainer.appendChild(node);
     });
 }
 
