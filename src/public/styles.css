@@ -57,7 +57,7 @@ body {
   
   form button {
     background-color: blue;
-    color: black;
+    color: white;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -70,7 +70,7 @@ body {
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+    gap: 1px;
     background-color: grey;
     padding: 10px;
     border-radius: 8px;
