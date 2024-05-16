@@ -172,6 +172,7 @@ function addSelection() {
             this.classList.toggle("selected");
           };
           console.log('div',div);
+          console.log('node',node);
           selectedZipCodesContainer.appendChild(node);
     });
 }
