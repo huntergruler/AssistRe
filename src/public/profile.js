@@ -411,6 +411,7 @@ function showOffice() {
     const offices = window.offices
     const hasLicenses = window.hasLicenses
     const data = window.hasTransactions;
+    console.log(offices);
     if(hasOffices) {
         console.log(offices);
     } else {
