@@ -95,12 +95,17 @@ router.post('/register', (req, res) => {
       req.session.message = 'Please login to access the Profile';
       res.redirect('/login');  
     }
-          const query = 'SELECT a.agentlicenseid, date_format(a.licenseExpirationDate,"%m/%d/%Y") licenseExpirationDate, a.licenseNumber, a.licenseState, a.userid FROM AgentLicenses a where userid = ?'; 
-      db.query(query,[ req.session.userid ], (err, results) => {
-          if (err) throw err;
-          let hasLicenses = results.length > 0;
-          res.render('profile', { licenses: results, hasLicenses: hasLicenses, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
+    const query = 'SELECT a.agentlicenseid, date_format(a.licenseExpirationDate,"%m/%d/%Y") licenseExpirationDate, a.licenseNumber, a.licenseState, a.userid FROM AgentLicenses a where userid = ?'; 
+    db.query(query,[ req.session.userid ], (err, results) => {
+        if (err) throw err;
+        let hasLicenses = results.length > 0;
+        const query = 'SELECT * FROM AgentOffices a where userid = ?'; 
+        db.query(query,[ req.session.userid ], (err, results) => {
+            if (err) throw err;
+            let hasOffices = results.length > 0;
+          res.render('profile', { licenses: results, hasLicenses: hasLicenses, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
         });
+      });
   });
   
   router.post('/api/licenses', (req, res) => {
