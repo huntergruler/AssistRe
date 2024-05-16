@@ -77,19 +77,32 @@
     height: 300px;
     overflow-y: auto;
     }
-    
-    .zipCodeOption {
+
+    .zipCodeSelected {
     padding: 2px;
     /* border: 1px solid #ddd; */
     margin-bottom: 2px;
     cursor: pointer;
     }
 
-    .zipCodeOption.selected {
+    .zipCodeSelected.selected {
     background-color: #007BFF;
     color: white;
     }
-    html {
+    
+
+    .zipCodeOption {
+        padding: 2px;
+        /* border: 1px solid #ddd; */
+        margin-bottom: 2px;
+        cursor: pointer;
+        }
+    
+        .zipCodeOption.selected {
+        background-color: #007BFF;
+        color: white;
+        }
+        html {
         font-size: 14px; /* setting base size */
     }
     
