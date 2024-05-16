@@ -127,7 +127,7 @@
         grid-template-columns: auto auto auto;
         gap: 1px;
         width: 50%; /* Set width to 50% */
-        /* background-color: #2196F3; */
+        background-color: #2196F3;
         padding: 1px;
       }
       
