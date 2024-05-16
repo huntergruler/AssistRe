@@ -217,6 +217,10 @@
         <span id="bioStatus"></span>
 </div>
 <script>
+    window.localData = {
+        hasOffices: "<%= hasOffices %>",
+        offices: <%= offices %>
+    };
     window.hasOffices = JSON.stringify(hasOffices);
     window.offices = JSON.stringify(offices);
     window.hasLicenses = JSON.stringify(hasLicenses);
