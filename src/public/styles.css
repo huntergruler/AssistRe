@@ -22,22 +22,12 @@ body {
     
 }
 
-#dashboardBody{
+.gridBody{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
 }
 
-#dashboardContainer{
-    grid-column: 2;
-    margin-top: 100px;
-}
-
-#profileBody{
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-}
-
-#profileContainer{
+.gridContainer{
     grid-column: 2;
     margin-top: 100px;
 }
