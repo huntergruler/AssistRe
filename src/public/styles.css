@@ -39,8 +39,32 @@ body {
 #profileNav{
     grid-column: 2;
     margin-top: 100px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+#overviewButton{
+    grid-row: 1;
+}
+
+#officeButton{
+    grid-row: 2;
+}
+
+#licenseButton{
+    grid-row: 3;
+}
+
+#zipCodeButton{
+    grid-row: 4;
+}
+
+#transactionButton{
+    grid-row: 5;
+}
+
+#bioButton{
+    grid-row: 6;
 }
 
 #profileContainer{
