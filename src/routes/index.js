@@ -124,7 +124,6 @@ router.post('/register', (req, res) => {
       db.query(insertQuery, [licenseNumber, licenseState, licenseExpirationDate, req.session.userid], (err, result) => {
           if (err) throw err;
             agentlicenseid = result.insertId;
-            console.log('Inserted:', agentlicenseid, licenseNumber, licenseState, licenseExpirationDate);
             res.json({ agentlicenseid, licenseNumber, licenseState, licenseExpirationDate });
             });
   });
@@ -151,7 +150,6 @@ router.get('/login', (req, res) => {
     res.clearCookie('connect.sid'); // If you're using session cookies, clear them
     }});
   }
-  console.log('Message:');
  res.render('login', { query: req.query, message: message });
 });
 
@@ -171,7 +169,6 @@ router.post('/login', [
         return res.status(400).json({ errors: errors.array() });
     }
   const { username, password } = req.body;
-  console.log('User', username, 'Password', password);  
   const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Users WHERE username = ?';
   res.setHeader('Content-Type', 'application/json');
   db.query(query, [username], (error, results) => {
@@ -245,7 +242,6 @@ router.get('/check-user', (req, res) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
-  console.log('Results:', results);
       if (results[0].cnt > 0) {
         // User Name is already taken
         res.json({ available: false });
@@ -289,7 +285,6 @@ router.get('/check-license', (req, res) => {
 router.get('/get-cities', (req, res) => {
   const stateSelect = req.query.stateSelect;
   const query = 'SELECT distinct city FROM ZipCodes WHERE state = ? order by city';
-  console.log('State:', stateSelect);
   db.query(query, [stateSelect], (error, results) => {
 //    console.log('Results:', results);
 
@@ -391,7 +386,6 @@ router.delete('/api/licenses/:id', (req, res) => {
 
 router.delete('/api/offices/:id', (req, res) => {
   const { id } = req.params;
-  console.log('Delete:', id);
   const deleteQuery = 'DELETE FROM AgentOffices WHERE agentofficeid = ?';
   db.query(deleteQuery, [id], (err, result) => {
       if (err) throw err;
@@ -460,7 +454,6 @@ router.post('/reset', (req, res) => {
     }
 //    console.log('Results:', results, 'Password:', password, 'Hashed Password', hashedPassword);
       // Redirect to login with a password changed message
-      console.log('Email:', email, 'Token:', token, 'Password:', password);
       res.redirect('/login?passwordchanged=true');
 
     });
@@ -470,7 +463,6 @@ router.post('/reset', (req, res) => {
 // send password reset email route
 router.get('/sendreset', (req, res) => {
   const data = req.cookies.data;
-  console.log('Send reset', data);
   res.render('sendreset', { data: data });
 });
 
@@ -479,7 +471,6 @@ router.post('/sendreset', (req, res) => {
   const resetToken = crypto.randomBytes(20).toString('hex');
   const resetTokenExpire = Date.now() + 900000; // 15 minutes from now
   const resetTokenExpireDate = new Date(resetTokenExpire);
-  console.log('Reset token:', resetToken, 'Expires:', resetTokenExpireDate.toString());
   // Store the reset token and its expiration in the database
   const updateQuery = 'UPDATE Users SET resetToken=?, resetTokenExpire=? WHERE email=?';
   db.query(updateQuery, [resetToken, new Date(resetTokenExpire), email], (error, results) => {
@@ -520,7 +511,6 @@ router.get('/reset-password', (req, res) => {
   // Verify the token and its expiration
   const query = 'SELECT * FROM Users WHERE resetToken=? AND resetTokenExpire > ?';
   const date = new Date(Date.now())
-  console.log('Token:', token, 'Now:', date.toString());
   db.query(query, [token, date], (error, results) => {
     if (error || results.length === 0) {
 //      res.status(400).send('Invalid or expired token');

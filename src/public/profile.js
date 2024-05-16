@@ -31,7 +31,6 @@ function addOffice() {
 };
 
 function deleteOffice(id) {
-    console.log(id);
     fetch(`/api/offices/${id}`, {
         method: 'DELETE'
     })
@@ -97,7 +96,6 @@ function deleteLicense(id) {
 }
 
 function deleteOffice(id) {
-    console.log(id);
     fetch(`/api/offices/${id}`, {
         method: 'DELETE'
     })
@@ -163,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function () {
 function getSelectedZipCodes() {
     const selected = document.querySelectorAll(".zipCodeOption.selected");
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
-    console.log(selectedZipCodes); // Output to console or handle as needed
   }
 
 function populateStates() {
@@ -243,13 +240,11 @@ function saveChanges() {
     .catch(error => {
         console.error('Error:', error);
     });
-    console.log(selectedZipCodes); // Output to console or handle as needed
    
     selected.forEach(node => {
         const data = {
             zipCode: node.textContent
         };
-            console.log(node);
     });
 }
 
@@ -275,9 +270,7 @@ function removeSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeSelected.selected");
-    console.log(selected);
     selected.forEach(node => {
-        console.log(node);
           node.classList.remove("selected");
           const div = document.createElement("div");
           div.textContent = node.textContent;
