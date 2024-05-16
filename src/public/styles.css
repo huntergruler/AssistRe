@@ -23,7 +23,8 @@ body {
 }
 
 #profileContainer {
-    justify-self: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
 }
   
 #profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
@@ -155,5 +156,9 @@ form button:hover {
 
 .button:hover {
     background-color: #45a049;
+}
+
+#officeContainer, #licenseContainer, #transactionContainer, .zipCode-container, #BioContainer {
+    grid-column: 2;
 }
   
