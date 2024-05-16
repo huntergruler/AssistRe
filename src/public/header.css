@@ -50,6 +50,11 @@
   }
 
   #navlinks p {
-    align-self: center;  
+    align-self: center; 
+    font-size: 16px; 
+  }
+
+  #navname{
+    margin: 0 10px;
   }
   
