@@ -150,6 +150,12 @@ form button:hover {
     max-height: 125px;
 }
 
+#selectedZipCodesContainer {
+    overflow: auto;
+    width: 100%;
+    max-height: 125px;
+}
+
 .zipCodeOption {
     text-align: center;
 }
@@ -188,3 +194,21 @@ form button:hover {
     background-color: #45a049;
 }
   
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
