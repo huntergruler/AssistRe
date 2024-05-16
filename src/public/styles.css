@@ -24,7 +24,35 @@ body {
   #profileContainer h1, #dashboardContainer h1, .zipCode-container h1 {
     margin-bottom: 20px;
   }
-  
+
+  .zipCodeSelected {
+    padding: 2px;
+    /* border: 1px solid #ddd; */
+    margin-bottom: 2px;
+    cursor: pointer;
+    }
+
+    .zipCodeSelected.selected {
+    background-color: #007BFF;
+    color: white;
+    }
+    
+
+    .zipCodeOption {
+        padding: 2px;
+        /* border: 1px solid #ddd; */
+        margin-bottom: 2px;
+        cursor: pointer;
+        }
+
+    .zipCodeOption.selected {
+    background-color: #007BFF;
+    color: white;
+    }
+    html {
+    font-size: 14px; /* setting base size */
+    }
+
   table {
     width: 100%;
     border-collapse: collapse;
