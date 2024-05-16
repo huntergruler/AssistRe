@@ -41,6 +41,7 @@ body {
     margin-top: 100px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    max-height: 400px;
 }
 
 #overviewButton{
