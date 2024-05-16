@@ -407,7 +407,8 @@ function updateDays() {
 
 function showOffice() {
     const contain = document.getElementById('profileContainer');
-    if(req.sessions.hasOffices) {
+    const data = window.trans;
+    if(data) {
         console.log("Has Offices");
     } else {
         console.log("No Offices");
