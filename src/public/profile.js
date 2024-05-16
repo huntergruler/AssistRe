@@ -1,3 +1,40 @@
+function addTransaction() {
+    const transactionDate = document.getElementById('transactionDate').value;
+    const transactionAmount = document.getElementById('transactionAmount').value;
+    const propertyType = document.getElementById('propertyType').value;
+    const levelOfService = document.getElementById('levelOfService').value; 
+    const compensationType = document.getElementById('compensationType').value;    
+    fetch('/api/transactions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ transactionDate, transactionAmount, propertyType, levelOfService, compensationType })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const table = document.getElementById('transactionTable').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow(table.rows.length);
+        newRow.id = `transaction-${data.agenttransactionid}`;
+        newRow.insertCell(0).textContent = transactionDate;
+        newRow.insertCell(1).textContent = transactionAmount;
+        newRow.insertCell(2).textContent = propertyType;
+        newRow.insertCell(3).textContent = levelOfService;
+        newRow.insertCell(4).textContent = compensationType;
+        newRow.insertCell(5).innerHTML = '<button onclick="deleteTransaction(' + data.agenttransactionid + ')">Delete</button>';
+        document.getElementById('transactionForm').reset();
+    })
+};
+
+function deleteTransaction(id) {
+    fetch(`/api/transactions/${id}`, {
+        method: 'DELETE'
+    })
+    .then(() => {
+        // Remove the row from the table
+        document.getElementById(`transaction-${id}`).remove();
+    })
+    .catch(error => console.error('Error:', error));
+};
+
 function addOffice() {
     const officeName = document.getElementById('officeName').value;
     const address = document.getElementById('address').value;
@@ -39,7 +76,7 @@ function deleteOffice(id) {
         document.getElementById(`office-${id}`).remove();
     })
     .catch(error => console.error('Error:', error));
-}
+};
 
 function addLicense() {
     const licenseNumber = document.getElementById('licenseNumber').value;
@@ -82,7 +119,7 @@ function addLicense() {
         document.getElementById('licenseForm').reset();
     })
     .catch(error => console.error('Error:', error));
-}
+};
 
 function deleteLicense(id) {
     fetch(`/api/licenses/${id}`, {
@@ -93,7 +130,7 @@ function deleteLicense(id) {
         document.getElementById(`license-${id}`).remove();
     })
     .catch(error => console.error('Error:', error));
-}
+};
 
 function deleteOffice(id) {
     fetch(`/api/offices/${id}`, {
@@ -104,7 +141,7 @@ function deleteOffice(id) {
         document.getElementById(`office-${id}`).remove();
     })
     .catch(error => console.error('Error:', error));
-}
+};
 
 document.addEventListener('blur', function(event) {
     if (event.target.id === 'licenseState') {
@@ -148,7 +185,7 @@ function zipUpdate() {
         let option = new Option(month, index + 1);
         monthSelect.appendChild(option);
     });
-}
+};
 
 document.addEventListener('DOMContentLoaded', function () {
     populateMonths();
@@ -161,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function getSelectedZipCodes() {
     const selected = document.querySelectorAll(".zipCodeOption.selected");
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
-  }
+  };
 
 function populateStates() {
     const stateSelect = document.getElementById('stateSelect');
@@ -181,7 +218,7 @@ function populateStates() {
             stateSelect.appendChild(option);
         });
     })
-}
+};
 
 stateSelect.addEventListener('change', function() {
     var selectedValue = this.value;
@@ -206,7 +243,7 @@ stateSelect.addEventListener('change', function() {
         });    
          })
     .catch(error => console.error('Error checking user:', error));
-}
+};
 
 function saveChanges() {
     const selected = document.querySelectorAll(".zipCodeSelected");
@@ -246,7 +283,7 @@ function saveChanges() {
             zipCode: node.textContent
         };
     });
-}
+};
 
 function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
@@ -264,7 +301,7 @@ function addSelection() {
           node.remove();
           document.getElementById('saveChanges').disabled = false;
     });
-}
+};
 
 function removeSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
@@ -282,7 +319,7 @@ function removeSelection() {
           node.remove();
           document.getElementById('saveChanges').disabled = false;
     });
-}
+};
 
 function populateZipCodes() {
     const stateSelect = document.getElementById('stateSelect').value;
@@ -304,7 +341,8 @@ function populateZipCodes() {
           });
     })
     .catch(error => console.error('Error checking user:', error));
-}
+};
+
 function populateUserZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     fetch(`/get-userzipcodes`)
@@ -327,7 +365,7 @@ function populateUserZipCodes() {
           });
     })
     .catch(error => console.error('Error checking user:', error));
-}
+};
 
 function populateMonths() {
     const monthSelect = document.getElementById('monthSelect');
@@ -339,7 +377,7 @@ function populateMonths() {
         let option = new Option(month, index + 1);
         monthSelect.appendChild(option);
     });
-}
+};
 
 function populateYears() {
     const yearSelect = document.getElementById('yearSelect');
@@ -348,7 +386,7 @@ function populateYears() {
         let option = new Option(i, i);
         yearSelect.appendChild(option);
     }
-}
+};
 
 function updateDays() {
     const monthSelect = document.getElementById('monthSelect');
@@ -365,5 +403,5 @@ function updateDays() {
         let option = new Option(i, i);
         daySelect.appendChild(option);
     }
-}
+};
 
