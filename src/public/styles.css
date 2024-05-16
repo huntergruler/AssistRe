@@ -22,14 +22,24 @@ body {
     
 }
 
-.gridBody{
+#dashboardBody{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
 }
 
-.gridContainer{
+#dashboardContainer{
     grid-column: 2;
-    margin-top: 150px;
+    margin-top: 100px;
+}
+
+#profileBody{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+#profileContainer{
+    grid-column: 2;
+    margin-top: 100px;
 }
   
 #profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
