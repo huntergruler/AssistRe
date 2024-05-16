@@ -99,15 +99,14 @@ router.post('/register', (req, res) => {
     const query = `SELECT a.agentlicenseid, date_format(a.licenseExpirationDate,"%m/%d/%Y") licenseExpirationDate, a.licenseNumber, a.licenseState, a.userid 
                      FROM AgentLicenses a 
                     WHERE userid = ?`; 
-    db.query(query,[ userid ], (err, results) => {
+    db.query(query,[ userid ], (err, licenseresults) => {
         if (err) throw err;
-        let hasLicenses = results.length > 0;
+        let hasLicenses = licenseresults.length > 0;
         const query = 'SELECT * FROM AgentOffices a where userid = ?'; 
-        db.query(query,[ userid ], (err, results) => {
-          console.log('Results:', results);
+        db.query(query,[ userid ], (err, officeresults) => {
             if (err) throw err;
-            let hasOffices = results.length > 0;
-          res.render('profile', { licenses: results, hasLicenses: hasLicenses, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
+            let hasOffices = officeresults.length > 0;
+          res.render('profile', { licenses: licenseresults, offices: officeresults, hasLicenses: hasLicenses, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
         });
       });
   });
