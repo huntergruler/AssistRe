@@ -7,6 +7,7 @@ function addOffice() {
     const phoneNumber = document.getElementById('phoneNumber').value;
     const officeLicenseNumber = document.getElementById('officeLicenseNumber').value;
     const officeLicenseState = document.getElementById('officeLicenseState').value;
+    console.log(officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState);
     fetch('/api/offices', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
