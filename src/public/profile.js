@@ -15,7 +15,7 @@ function addOffice() {
     })
     .then(response => response.json())
     .then(data => {
-        const table = document.getElementById('officesTable').getElementsByTagName('tbody')[0];
+        const table = document.getElementById('officeTable').getElementsByTagName('tbody')[0];
         const newRow = table.insertRow(table.rows.length);
         newRow.id = `office-${data.officeid}`;
         newRow.insertCell(0).textContent = officeName;
@@ -146,7 +146,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updateDays();
     populateStates();
     populateUserZipCodes();
-    populateOffices();
 });
 
 function getSelectedZipCodes() {
