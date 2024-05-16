@@ -70,7 +70,7 @@ body {
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px;
+    gap: 0px;
     background-color: grey;
     padding: 10px;
     border-radius: 8px;
