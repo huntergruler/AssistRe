@@ -333,6 +333,19 @@ router.get('/get-zipcodes', (req, res) => {
   });
 });
 
+router.post('/process-zip-codes', (req, res) => {
+  const { zipCodes } = req.body;
+  const userid = req.session.userid;
+  const insertQuery = 'INSERT INTO UserZipCodes (userid, zipCode) VALUES ?';
+  const values = zipCodes.map(zipCode => [userid, zipCode]);
+  db.query(insertQuery, [values], (error, results) => {
+      if (error) {
+          return res.status(500).json({error: 'Internal server error'});
+      }
+      res.json({ success: true });
+  });
+});
+
 // Route to get city and state by zip code
 router.get('/get-userzipcodes', (req, res) => {
   userid = req.session.userid;

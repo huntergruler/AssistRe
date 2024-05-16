@@ -158,14 +158,44 @@ stateSelect.addEventListener('change', function() {
 }
 
 function saveChanges() {
-    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeSelected");
-    const selectedZipCodes = Array.from(selected).map(node => node.textContent);
-    console.log(selectedZipCodes); // Output to console or handle as needed
 
-    // selected.forEach(node => {
-        // console.log(node);
-    // });
+    // Prepare the array of selected zip codes
+    const selectedZipCodes = Array.from(selected).map(node => node.textContent);
+
+    // Prepare the data to be sent
+    const data = {
+        zipCodes: selectedZipCodes
+    };
+
+    // Send the data to the server using fetch
+    fetch('/process-zip-codes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(result => {
+        console.log('Success:', result);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+    console.log(selectedZipCodes); // Output to console or handle as needed
+   
+    selected.forEach(node => {
+        const data = {
+            zipCode: node.textContent
+        };
+            console.log(node);
+    });
 }
 
 function addSelection() {
