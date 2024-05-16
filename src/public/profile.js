@@ -338,16 +338,11 @@ function populateOffices() {
             div.textContent = 'No offices';
             officeContainer.appendChild(div);
           }
-        data.results.forEach(code => {
+        data.results.forEach(office => {
             const div = document.createElement("div");
-            div.textContent = code.zipCode;
-            div.className = "zipCodeSelected";
-            div.onclick = function() {
-              this.classList.toggle("selected");
-            };
-            selectedZipCodesContainer.appendChild(div);
+            div.textContent = office.officeName;
+            officeContainer.appendChild(div);
           });
-    })
     .catch(error => console.error('Error checking user:', error));
 }
 
