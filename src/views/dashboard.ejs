@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="header.css">
     <title>Profile</title>
 </head>
-<body>
-    <header>
-        <h1 id="title"><a href="/">SeekingAgents</a></h1>
-        <p><%= firstname %> <%= lastname %></p>
-        <p>   ---      </p>
-        <nav id="navlinks">
-            <a href="/profile">Profile</a>
-            <p>|</p>
-            <a href="/settings">Settings</a>
-            <p>|</p>
-            <a href="/logout">Logout</a>
-        </nav>
-    </header>
+<header>
+    <h1 id="title"><a href="/">SeekingAgents</a></h1>
+    <nav id="navlinks">
+        <p id="navname"><%= firstname %> <%= lastname %></p>
+        <p>|</p>
+        <a href="/profile">Profile</a>
+        <p>|</p>
+        <a href="/settings">Settings</a>
+        <p>|</p>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<body id="dashboardBody">
     <h1>Dashboard for <%= firstname %> <%= lastname %></h1>
     <div id="dashboardContainer">
         <h1>Dashboard for <%= firstname %> <%= lastname %></h1>

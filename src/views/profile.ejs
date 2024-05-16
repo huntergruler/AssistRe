@@ -8,20 +8,28 @@
     <link rel="stylesheet" href="header.css">
     <title>Profile</title>
 </head>
-<body>
-    <header>
-        <h1 id="title"><a href="/">SeekingAgents</a></h1>
-        <p><%= firstname %> <%= lastname %></p>
-        <p>   ---      </p>
-        <nav id="navlinks">
-            <a href="/dashboard">Dashboard</a>
-            <p>|</p>
-            <a href="/settings">Settings</a>
-            <p>|</p>
-            <a href="/logout">Logout</a>
-        </nav>
-    </header>
+<header>
+    <h1 id="title"><a href="/">SeekingAgents</a></h1>
+    <nav id="navlinks">
+        <p id="navname"><%= firstname %> <%= lastname %></p>
+        <p>|</p>
+        <a href="/dashboard">Dashboard</a>
+        <p>|</p>
+        <a href="/settings">Settings</a>
+        <p>|</p>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<body id="profileBody">
     <h1>Profile for <%= firstname %> <%= lastname %></h1>
+    <div id="profileNav">
+        <button type="button" id="overviewButton" onclick="showOverview()">Overview</button>
+        <button type="button" id="officeButton" onclick="showOffice()">Office</button>
+        <button type="button" id="licenseButton" onclick="showLicense()">License</button>
+        <button type="button" id="zipCodeButton" onclick="showZipCode()">Zip Codes</button>
+        <button type="button" id="transactionButton" onclick="showTransaction()">Transactions</button>
+        <button type="button" id="bioButton" onclick="showBio()">Bio</button>
+    </div>
     <div id="profileContainer">
         <div id="officeContainer">
             <p><h1>Current Office(s)</h1></p>
@@ -75,8 +83,8 @@
             <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
             <span id="offStatus"></span>
     </div>
-            <div id="licenseContainer">
-            <p><h1>Current Licenses</h1></p>
+    <div id="licenseContainer">
+        <p><h1>Current Licenses</h1></p>
         <table id="licensesTable">
             <thead>
                 <tr>

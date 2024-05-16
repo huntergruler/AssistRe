@@ -405,3 +405,58 @@ function updateDays() {
     }
 };
 
+function showOffice() {
+    const contain = document.getElementById('profileContainer');
+    contain.innerHTML = `<div id="officeContainer">
+    <p><h1>Current Office(s)</h1></p>
+<table id="officeTable">
+    <thead>
+        <tr>
+            <th>Office Name</th>
+            <th>Office License Number</th>
+            <th>Office License State</th>
+            <th>Office Address</th>
+            <th>Office City</th>
+            <th>Office State</th>
+            <th>Office Zip</th>
+            <th>Office Phone Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (hasOffices) { %>
+          <% offices.forEach(function(office) { %>
+            <tr id="office-<%= office.agentofficeid %>">
+                <td><%= office.officeName %></td>
+                <td><%= office.officeLicenseNumber %></td>
+                <td><%= office.officeLicenseState %></td>
+                <td><%= office.address %></td>
+                <td><%= office.city %></td>
+                <td><%= office.state %></td>
+                <td><%= office.zip %></td>
+                <td><%= office.phoneNumber %></td>
+                <td>
+                    <button type="button" onclick="deleteOffice(<%= office.agentofficeid %>)">Delete</button>
+                </td>
+            </tr>
+        <% }); %>
+        <% } else { %>
+            <tr>
+                <td colspan="4">No offices found.</td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+<form id="officeForm">
+    <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
+    <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
+    <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+    <input type="text" id="address" name="address" placeholder="Office Address" required>
+    <input type="text" id="city" name="city" placeholder="Office City" required>
+    <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+    <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
+    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
+    <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
+    <span id="offStatus"></span>
+</div>`;
+}

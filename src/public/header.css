@@ -48,4 +48,13 @@
   #navlinks a:hover {
     background-color: rgba(40, 71, 130, 0.8);
   }
+
+  #navlinks p {
+    align-self: center; 
+    font-size: 16px; 
+  }
+
+  #navname{
+    margin: 0 10px;
+  }
   
