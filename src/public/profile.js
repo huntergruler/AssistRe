@@ -162,9 +162,9 @@ function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
-    console.log(selected);
+    console.log('selected',selected);
     selected.forEach(node => {
-          console.log(node.classList);
+//          console.log(node.classList);
           node.classList.remove("selected");
           const div = document.createElement("div");
           div.textContent = node.zipCodeOption;
