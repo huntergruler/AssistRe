@@ -39,12 +39,30 @@ body {
 #profileContainer{
     grid-column: 2;
     margin-top: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#officeContainer, #licenseContainer {
+    grid-column: 1;
+}
+
+.zipCode-container, #transactionContainer, #BioContainer {
+    grid-column: 2;
 }
   
 #profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
     margin-bottom: 20px;
 }
+
+#loginBody{
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+
+}
+
 #loginContainer {
+    grid-column: 2;
     background-color: white;
     padding: 20px;
     margin: 100px 0;
@@ -69,7 +87,6 @@ body {
     background-color: #007BFF;
     color: white;
 }
-    
 
 .zipCodeOption {
     padding: 2px;
@@ -81,10 +98,6 @@ body {
 .zipCodeOption.selected {
     background-color: #007BFF;
     color: white;
-}
-
-#availabeZipCodesContainer{
-    max-height: 200px;
 }
 
 html {
