@@ -216,16 +216,6 @@
         <button type="button" id="bioAdd" onclick="addBio()">Add</button>
         <span id="bioStatus"></span>
 </div>
-<script>
-    window.localData = {
-        hasOffices: "<%= hasOffices %>",
-        offices: <%= offices %>
-    };
-    window.hasOffices = JSON.stringify(hasOffices);
-    window.offices = JSON.stringify(offices);
-    window.hasLicenses = JSON.stringify(hasLicenses);
-    window.hasTransactions = JSON.stringify(hasTransactions);
-</script>
 <script src="/profile.js"></script>
 </body>
 </html>
