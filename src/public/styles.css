@@ -150,5 +150,6 @@ body {
   
   .disabled {
     opacity: 0.6;
+    color: #ccc;
     cursor: not-allowed;
   }
