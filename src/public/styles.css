@@ -14,7 +14,7 @@ body {
   #profileContainer, #dashboardContainer, #loginContainer, .zipCode-container {
     background-color: white;
     padding: 20px;
-    margin: 100px 0;
+    margin: 50px 0;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -22,6 +22,19 @@ body {
   }
   
   #profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
+    margin-bottom: 20px;
+  }
+  #loginContainer {
+    background-color: white;
+    padding: 20px;
+    margin: 100px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  #loginContainer h1 {
     margin-bottom: 20px;
   }
 
