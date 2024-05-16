@@ -56,8 +56,8 @@ body {
   }
   
   form button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: blue;
+    color: black;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -71,10 +71,10 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-    background-color: #2196F3;
+    background-color: grey;
     padding: 10px;
     border-radius: 8px;
-    color: white;
+    color: black;
   }
   
   .grid-container > div {
@@ -91,7 +91,7 @@ body {
   }
   
   .button {
-    background-color: #4CAF50;
+    background-color: blue;
     color: white;
     padding: 10px 20px;
     border: none;
