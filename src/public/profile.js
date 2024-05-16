@@ -7,7 +7,6 @@ function addOffice() {
     const phoneNumber = document.getElementById('phoneNumber').value;
     const officeLicenseNumber = document.getElementById('officeLicenseNumber').value;
     const officeLicenseState = document.getElementById('officeLicenseState').value;
-    console.log(officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState);
     fetch('/api/offices', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -17,7 +16,7 @@ function addOffice() {
     .then(data => {
         const table = document.getElementById('officeTable').getElementsByTagName('tbody')[0];
         const newRow = table.insertRow(table.rows.length);
-        newRow.id = `office-${data.officeid}`;
+        newRow.id = `office-${data.agentofficeid}`;
         newRow.insertCell(0).textContent = officeName;
         newRow.insertCell(1).textContent = address;
         newRow.insertCell(2).textContent = city;
@@ -30,6 +29,17 @@ function addOffice() {
         document.getElementById('officeForm').reset();
     })
 };
+
+function deleteOffice(id) {
+    fetch(`/api/offices/${id}`, {
+        method: 'DELETE'
+    })
+    .then(() => {
+        // Remove the row from the table
+        document.getElementById(`office-${id}`).remove();
+    })
+    .catch(error => console.error('Error:', error));
+}
 
 function addLicense() {
     const licenseNumber = document.getElementById('licenseNumber').value;
