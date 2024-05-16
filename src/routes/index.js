@@ -106,9 +106,16 @@ router.post('/register', (req, res) => {
         db.query(query,[ userid ], (err, officeresults) => {
             if (err) throw err;
             let hasOffices = officeresults.length > 0;
-          res.render('profile', { licenses: licenseresults, offices: officeresults, hasLicenses: hasLicenses, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
+            const query = `SELECT h.agenttransactionid, h.transactionDate, h.transactionAmount, p.propertytype, s.levelofservice, c.compensationtype
+                             FROM AgentTransactionHistory_v h 
+                            WHERE userid = ?`; 
+            db.query(query,[ userid ], (err, transactionresults) => {
+                if (err) throw err;
+                let hasTransactions = transactionresults.length > 0;
+              res.render('profile', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
+            });
+          });
         });
-      });
   });
   
   router.post('/api/licenses', (req, res) => {

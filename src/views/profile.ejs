@@ -72,7 +72,7 @@
             <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
             <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
             <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-            <button type="button" id="officeAdd" onclick="addOffice()">Add</button>
+            <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
             <span id="offStatus"></span>
     </div>
             <div id="licenseContainer">
@@ -157,7 +157,50 @@
         </div>
         <button type="button" class="button" disabled id="saveChanges" onclick="saveChanges()">SAVE</button>
     </div>
-    <div id="BioContainer">
+    <div id="transactionContainer">
+        <p><h1>Current Transaction(s)</h1></p>
+    <table id="transactionTable">
+        <thead>
+            <tr>
+                <th>Transaction Date</th>
+                <th>Transaction Amount</th>
+                <th>Transaction Property Type</th>
+                <th>Transaction Level Of Service</th>
+                <th>Transaction Compensation Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (hasTransactions) { %>
+              <% transactions.forEach(function(transaction) { %>
+                <tr id="transaction-<%= transaction.agenttransactionid %>">
+                    <td><%= transaction.transactionDate %></td>
+                    <td><%= transaction.transactionAmount %></td>
+                    <td><%= transaction.PropertyType %></td>
+                    <td><%= transaction.LevelOfService %></td>
+                    <td><%= transaction.CompensationType %></td>
+                    <td>
+                        <button type="button" onclick="deleteTransaction(<%= transaction.agenttransactionid %>)">Delete</button>
+                    </td>
+                </tr>
+            <% }); %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4">No transactions found.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <form id="transactionForm">
+        <input type="date" id="transactionDate" name="transactionDate" placeholder="Transaction Date" required>
+        <input type="number" id="transactionAmount" name="transactionAmount" placeholder="Transaction Amount" required>
+        <input type="text" id="PropertyType" name="PropertyType" placeholder="Transaction Property Type" required>
+        <input type="text" id="LevelOfService" name="LevelOfService" placeholder="Transaction Level Of Service" required>
+        <input type="text" id="CompensationType" name="CompensationType" placeholder="Transaction Compensation Type" required>
+        <button type="button" id="transactionAdd" onclick="addTransaction()">Add</button>
+    </form>
+</div>
+<div id="BioContainer">
         <h1>Biography</h1>
         <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required></textarea>
         <br>
