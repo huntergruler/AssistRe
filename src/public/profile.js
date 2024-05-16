@@ -31,6 +31,7 @@ function addOffice() {
 };
 
 function deleteOffice(id) {
+    console.log(id);
     fetch(`/api/offices/${id}`, {
         method: 'DELETE'
     })
