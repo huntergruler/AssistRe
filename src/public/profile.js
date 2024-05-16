@@ -16,7 +16,6 @@ function addLicense() {
         alert('Expiration date must be in the future');
         return;
     }
-    console.log(licenseNumber, licenseState, licenseExpirationDate);
     fetch('/api/licenses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -158,6 +157,17 @@ stateSelect.addEventListener('change', function() {
     .catch(error => console.error('Error checking user:', error));
 }
 
+function saveChanges() {
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    const selected = document.querySelectorAll(".zipCodeOption");
+    const selectedZipCodes = Array.from(selected).map(node => node.textContent);
+    console.log(selectedZipCodes); // Output to console or handle as needed
+
+    // selected.forEach(node => {
+        // console.log(node);
+    // });
+}
+
 function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
@@ -172,6 +182,7 @@ function addSelection() {
           };
           selectedZipCodesContainer.appendChild(div);
           node.remove();
+          document.getElementById('saveChanges').disabled = false;
     });
 }
 
@@ -191,6 +202,7 @@ function removeSelection() {
           };
           availabeZipCodesContainer.appendChild(div);
           node.remove();
+          document.getElementById('saveChanges').disabled = false;
     });
 }
 
