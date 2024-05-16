@@ -173,7 +173,7 @@ function addSelection() {
           };
           console.log('div',div);
           console.log('node',node);
-          selectedZipCodesContainer.appendChild(node);
+          selectedZipCodesContainer.appendChild(div);
     });
 }
 
