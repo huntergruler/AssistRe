@@ -336,6 +336,14 @@ router.get('/get-zipcodes', (req, res) => {
 router.post('/process-zip-codes', (req, res) => {
   const { zipCodes } = req.body;
   const userid = req.session.userid;
+  // First, delete all zip codes for this user
+  const query = 'DELETE FROM UserZipCodes WHERE userid = ?';
+  db.query(query, [userid], (error, results) => {
+      if (error) {
+          return res.status(500).json({error: 'Internal server error'});
+      }
+  });
+  // Now insert the new zip codes
   const insertQuery = 'INSERT INTO UserZipCodes (userid, zipCode) VALUES ?';
   const values = zipCodes.map(zipCode => [userid, zipCode]);
   db.query(insertQuery, [values], (error, results) => {
