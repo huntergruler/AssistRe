@@ -407,9 +407,12 @@ function updateDays() {
 
 function showOffice() {
     const contain = document.getElementById('profileContainer');
-    const data = window.trans;
-    if(data) {
-        console.log("Has Offices");
+    const hasOffices = window.hasOffices
+    const offices = window.offices
+    const hasLicenses = window.hasLicenses
+    const data = window.hasTransactions;
+    if(hasOffices) {
+        console.log(offices);
     } else {
         console.log("No Offices");
     }
