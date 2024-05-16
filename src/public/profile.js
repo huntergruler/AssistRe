@@ -164,10 +164,10 @@ function addSelection() {
     const selected = document.querySelectorAll(".zipCodeOption.selected");
     console.log(selected);
     selected.forEach(node => {
-//          console.log(node.classList);
+          console.log(node.textContent);
           node.classList.remove("selected");
           const div = document.createElement("div");
-          div.textContent = node.zipCodeOption;
+          div.textContent = node.textContent;
           div.className = "zipCodeSelected";
           div.onclick = function() {
             this.classList.toggle("selected");
