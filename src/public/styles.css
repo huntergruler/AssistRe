@@ -144,6 +144,10 @@ form button:hover {
     max-height: 300px;
 }
 
+.grid-action{
+    align-items: center;
+}
+
 #availabeZipCodesContainer {
     overflow: auto;
     width: 100%;
