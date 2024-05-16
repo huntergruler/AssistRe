@@ -159,7 +159,7 @@ stateSelect.addEventListener('change', function() {
 
 function saveChanges() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const selected = document.querySelectorAll(".zipCodeOption");
+    const selected = document.querySelectorAll(".zipCodeSelected");
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
     console.log(selectedZipCodes); // Output to console or handle as needed
 
