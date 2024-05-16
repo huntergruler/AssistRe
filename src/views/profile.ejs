@@ -80,8 +80,14 @@
 <p>Limit zip codes by state and city if desired</p>
 <div id="zipCodeParam">
     <label for="stateSelect">States:</label>
-    <select id="stateSelect" onchange="populateCities();">
+    <select id="stateSelect" onblur="populateCities();">
     </select>   
+    <form autocomplete="off" action="/action_page.php">
+        <div class="autocomplete" style="width:300px;">
+          <input id="stateSelect" type="text" name="stateSelect" placeholder="States:">
+        </div>
+    </form>
+
     <label for="citySelect">Cities:</label>
     <select id="citySelect" onchange="populateZipCodes();">
     </select>
@@ -97,8 +103,8 @@
         <!-- JavaScript will populate this container -->
     </div>
 </div>
-<button type="button" onclick="addSelection()"> Add to Selected --> </button>
-<button type="button" onclick="removeSelection()"> <-- Remove from Selected </button>
+<button type="button" class="action" onclick="addSelection()"> Add to Selected --> </button>
+<button type="button" class="action" onclick="removeSelection()"> <-- Remove from Selected </button>
 <button type="button" disabled id="saveChanges" onclick="saveChanges()"> SAVE </button>
 </div>
 
