@@ -413,7 +413,7 @@ function showOffice() {
     const data = window.hasTransactions;
     fetch('/profile')
         .then(response => console.log(response.json));
-    console.log(offices);
+    console.log(window.localData);
     if(hasOffices) {
         console.log(offices);
     } else {
