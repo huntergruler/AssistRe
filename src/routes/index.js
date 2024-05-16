@@ -372,6 +372,16 @@ router.post('/api/offices', (req, res) => {
   });
 });
 
+router.delete('/api/offices/:id', (req, res) => {
+  const { id } = req.params;
+  const deleteQuery = 'DELETE FROM AgentOffices WHERE agentlicenseid = ?';
+  db.query(deleteQuery, [id], (err, result) => {
+      if (err) throw err;
+      res.status(204).send();
+  });
+});
+
+
 // Route to get city and state by zip code
 router.get('/get-userzipcodes', (req, res) => {
   userid = req.session.userid;
