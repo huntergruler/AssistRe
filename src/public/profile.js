@@ -163,7 +163,7 @@ function addSelection() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
     selected.forEach(node => {
-          console.log(node.zipCode);
+          console.log(node.classList);
           node.classList.remove("selected");
           const div = document.createElement("div");
           div.textContent = node.zipCodeOption;
