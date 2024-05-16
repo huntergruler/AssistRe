@@ -407,18 +407,8 @@ function updateDays() {
 
 function showOffice() {
     const contain = document.getElementById('profileContainer');
-    const hasOffices = window.hasOffices
-    const offices = window.offices
-    const hasLicenses = window.hasLicenses
-    const data = window.hasTransactions;
     fetch('/profile')
         .then(response => console.log(response.json));
-    console.log(window.localData);
-    if(hasOffices) {
-        console.log(offices);
-    } else {
-        console.log("No Offices");
-    }
     contain.innerHTML = `<div id="officeContainer">
     <p><h1>Current Office(s)</h1></p>
 <table id="officeTable">
