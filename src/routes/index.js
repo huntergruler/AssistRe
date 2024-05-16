@@ -372,10 +372,20 @@ router.post('/api/offices', (req, res) => {
   });
 });
 
+router.delete('/api/licenses/:id', (req, res) => {
+  const { id } = req.params;
+  const deleteQuery = 'DELETE FROM AgentLicenses WHERE agentlicenseid = ?';
+  db.query(deleteQuery, [id], (err, result) => {
+      if (err) throw err;
+      res.status(204).send();
+  });
+});
+
+
 router.delete('/api/offices/:id', (req, res) => {
   const { id } = req.params;
   console.log('Delete:', id);
-  const deleteQuery = 'DELETE FROM AgentOffices WHERE agentlicenseid = ?';
+  const deleteQuery = 'DELETE FROM AgentOffices WHERE agentofficeid = ?';
   db.query(deleteQuery, [id], (err, result) => {
       if (err) throw err;
       res.status(204).send();
