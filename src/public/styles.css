@@ -24,7 +24,7 @@ body {
 
 #dashboardBody{
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 2fr 3fr 2fr;
 }
 
 #dashboardContainer{
@@ -34,7 +34,7 @@ body {
 
 #profileBody{
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 2fr 3fr 2fr;
 }
 
 #profileContainer{
