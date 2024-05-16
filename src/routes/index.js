@@ -338,8 +338,6 @@ router.get('/get-userzipcodes', (req, res) => {
   userid = req.session.userid;
   const query = 'SELECT zipCode FROM UserZipCodes WHERE userid = ? order by zipCode';
   db.query(query, [userid], (error, results) => {
-    console.log('Results:', results);
-
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
