@@ -157,6 +157,16 @@ stateSelect.addEventListener('change', function() {
     .catch(error => console.error('Error checking user:', error));
 }
 
+function addSelection() {
+    const container = document.getElementById("availabeZipCodesContainer");
+    const selected = document.querySelectorAll(".box1.selected");
+    selected.forEach(node => {
+          console.log(node);
+//        node.classList.remove("selected");
+//        container.appendChild(node);
+    });
+}
+
 function populateZipCodes() {
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect').value;
