@@ -4,7 +4,24 @@ const session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
+const router = express.Router();
+const nodemailer = require('nodemailer');
+const cookierParser = require('cookie-parser');
+const mysql = require('mysql');
+const bcrypt = require('bcrypt');
+const crypto = require('crypto');
+const { body, validationResult } = require('express-validator');
+const saltRounds = 10; // The cost factor controls how much time is needed to calculate a single bcrypt hash.
+
+
 const indexRouter = require('./routes/index');
+const profileRouter = require('./routes/profile');
+
+// Ensure you have body-parser configured to parse JSON
+router.use(bodyParser.json());
+router.use(express.json());
+router.use(cookierParser());
+
 
 // Set up session middleware
 app.use(session({
@@ -29,6 +46,7 @@ app.use((req, res, next) => {
 
 // Use routes
 app.use('/', indexRouter);
+app.use('/', profileRouter);
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');

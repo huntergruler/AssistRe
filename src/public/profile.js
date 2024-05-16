@@ -1,3 +1,35 @@
+function addOffice() {
+    const officeName = document.getElementById('officeName').value;
+    const address = document.getElementById('address').value;
+    const city = document.getElementById('city').value;
+    const state = document.getElementById('state').value;
+    const zip = document.getElementById('zip').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const officeLicenseNumber = document.getElementById('officeLicenseNumber').value;
+    const officeLicenseState = document.getElementById('officeLicenseState').value;
+    fetch('/api/offices', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const table = document.getElementById('officesTable').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow(table.rows.length);
+        newRow.id = `office-${data.officeid}`;
+        newRow.insertCell(0).textContent = officeName;
+        newRow.insertCell(1).textContent = address;
+        newRow.insertCell(2).textContent = city;
+        newRow.insertCell(3).textContent = state;
+        newRow.insertCell(4).textContent = zip;
+        newRow.insertCell(5).textContent = phoneNumber;
+        newRow.insertCell(6).textContent = officeLicenseNumber;
+        newRow.insertCell(7).textContent = officeLicenseState;
+        newRow.insertCell(8).innerHTML = '<button onclick="deleteOffice(' + data.officeid + ')">Delete</button>';
+        document.getElementById('officeForm').reset();
+    })
+};
+
 function addLicense() {
     const licenseNumber = document.getElementById('licenseNumber').value;
     const licenseState = document.getElementById('licenseState').value;
@@ -48,6 +80,17 @@ function deleteLicense(id) {
     .then(() => {
         // Remove the row from the table
         document.getElementById(`license-${id}`).remove();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function deleteOffice(id) {
+    fetch(`/api/office/${id}`, {
+        method: 'DELETE'
+    })
+    .then(() => {
+        // Remove the row from the table
+        document.getElementById(`office-${id}`).remove();
     })
     .catch(error => console.error('Error:', error));
 }
