@@ -162,7 +162,6 @@ function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
-    console.log(selected);
     selected.forEach(node => {
           console.log(node);
           node.classList.remove("selected");
@@ -172,6 +171,7 @@ function addSelection() {
           div.onclick = function() {
             this.classList.toggle("selected");
           };
+          console.log('div',div);
           selectedZipCodesContainer.appendChild(node);
     });
 }
@@ -215,6 +215,11 @@ function populateUserZipCodes() {
     .then(response => response.json())
     .then(data => {
         selectedZipCodesContainer.innerHTML = '';
+        if (data.results.length === 0) {
+            const div = document.createElement("div");
+            div.textContent = 'No zip codes selected';
+            selectedZipCodesContainer.appendChild(div);
+          }
         data.results.forEach(code => {
             const div = document.createElement("div");
             div.textContent = code.zipCode;
