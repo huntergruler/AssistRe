@@ -61,7 +61,22 @@
     width: 50%; /* Adjust width as necessary */
 }
 
-
+#availabeZipCodesContainer {
+    border: 2px solid #ccc;
+    padding: 10px;
+    width: 100px;
+    margin: 20px;
+    height: 300px;
+    overflow-y: auto;
+    }
+#selectedZipCodesContainer {
+    border: 2px solid #ccc;
+    padding: 10px;
+    width: 50px;
+    margin: 20px;
+    height: 300px;
+    overflow-y: auto;
+    }
 
     .zipCodeSelected {
     padding: 2px;
