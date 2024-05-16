@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     populateYears();
     updateDays();
     populateStates();
+    populateUserZipCodes();
 });
 
 function getSelectedZipCodes() {
@@ -178,12 +179,12 @@ function addSelection() {
 function removeSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const selected = document.querySelectorAll(".zipCodeOption.selected");
+    const selected = document.querySelectorAll(".zipCodeSelected.selected");
     console.log(selected);
     selected.forEach(node => {
           console.log(node);
           node.classList.remove("selected");
-          selectedZipCodesContainer.appendChild(node);
+          availabeZipCodesContainer.appendChild(node);
     });
 }
 
@@ -195,7 +196,7 @@ function populateZipCodes() {
     fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
     .then(response => response.json())
     .then(data => {
-        contaavailabeZipCodesContainerner.innerHTML = '';
+        availabeZipCodesContainer.innerHTML = '';
         data.results.forEach(code => {
             const div = document.createElement("div");
             div.textContent = code.zipCode;
@@ -207,6 +208,9 @@ function populateZipCodes() {
           });
     })
     .catch(error => console.error('Error checking user:', error));
+}
+function populateUserZipCodes() {
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     fetch(`/get-userzipcodes`)
     .then(response => response.json())
     .then(data => {
