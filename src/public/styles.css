@@ -29,7 +29,7 @@ body {
 
 .gridContainer{
     grid-column: 2;
-    margin-top: 100px;
+    margin-top: 150px;
 }
   
 #profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
