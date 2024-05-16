@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 
 // Use routes
 app.use('/', indexRouter);
-app.use('/', profileRouter);
+//app.use('/', profileRouter);
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
