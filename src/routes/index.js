@@ -100,8 +100,8 @@ router.post('/register', (req, res) => {
       db.query(query,[ req.session.userid ], (err, results) => {
           if (err) throw err;
           let hasLicenses = results.length > 0;
-          res.render('profile', { licenses: results, hasLicenses: hasLicenses });
-      });
+          res.render('profile', { licenses: results, hasLicenses: hasLicenses, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
+        });
   });
   
   router.post('/api/licenses', (req, res) => {
