@@ -113,6 +113,7 @@ router.post('/register', (req, res) => {
             db.query(query,[ userid ], (err, transactionresults) => {
                 if (err) throw err;
                 let hasTransactions = transactionresults.length > 0;
+              res.json({ licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
               res.render('profile', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
             });
           });
