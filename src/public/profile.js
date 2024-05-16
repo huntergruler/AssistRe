@@ -97,6 +97,7 @@ function deleteLicense(id) {
 }
 
 function deleteOffice(id) {
+    console.log(id);
     fetch(`/api/office/${id}`, {
         method: 'DELETE'
     })
