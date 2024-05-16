@@ -125,23 +125,17 @@
     
       .grid-container {
         display: grid;
-        grid-auto-columns: 150px;
-        gap: 1px;
-        padding: 1px;
+        grid-template-columns: auto auto auto;
+        gap: 10px;
+        background-color: #2196F3;
+        padding: 10px;
       }
       
       .grid-container > div {
         background-color: rgba(255, 255, 255, 0.8);
         text-align: center;
-        padding: 2px;
-        font-size: 15px;
+        padding: 20px 0;
+        font-size: 30px;
       }
       
-            
-      .grid-action {
-        grid-column-start: 2;
-        grid-column-end: 3;
-        grid-row-start: 1;
-        grid-row-end: 3;
-      }
       
