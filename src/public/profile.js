@@ -411,6 +411,11 @@ function showOffice() {
     const offices = window.offices
     const hasLicenses = window.hasLicenses
     const data = window.hasTransactions;
+    fetch('/profile')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        });
     console.log(offices);
     if(hasOffices) {
         console.log(offices);
