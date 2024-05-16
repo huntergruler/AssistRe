@@ -115,6 +115,13 @@
         cursor: pointer;
         border-radius: 16px;
       }
+
+      .zipCodeParam {
+        padding: 2px;
+        /* border: 1px solid #ddd; */
+        margin-bottom: 2px;
+        cursor: pointer;
+        }
     
       .grid-container {
         display: grid;
