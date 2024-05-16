@@ -72,6 +72,7 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     /* background-color: #2196F3; */
+    border: grey 1px solid;
     padding: 10px;
     border-radius: 8px;
     color: white;
