@@ -165,6 +165,24 @@ function addSelection() {
     selected.forEach(node => {
           console.log(node);
           node.classList.remove("selected");
+          const div = document.createElement("div");
+          div.textContent = code.zipCode;
+          div.className = "zipCodeSelected";
+          div.onclick = function() {
+            this.classList.toggle("selected");
+          };
+          selectedZipCodesContainer.appendChild(node);
+    });
+}
+
+function removeSelection() {
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    const selected = document.querySelectorAll(".zipCodeOption.selected");
+    console.log(selected);
+    selected.forEach(node => {
+          console.log(node);
+          node.classList.remove("selected");
           selectedZipCodesContainer.appendChild(node);
     });
 }
