@@ -21,6 +21,10 @@ body {
     width: 100%;
     max-width: 800px;
 }
+
+#profileContainer {
+    justify-self: center;
+}
   
 #profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
     margin-bottom: 20px;
