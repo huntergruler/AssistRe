@@ -90,21 +90,7 @@ body {
     align-items: center;
   }
   
-  form input, form select, form button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  form button {
-    background-color: grey;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
+
   form button:hover {
     background-color: #45a049;
   }
