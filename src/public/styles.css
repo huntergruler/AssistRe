@@ -125,7 +125,7 @@
     
       .grid-container {
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-auto-columns: 50px;
         gap: 1px;
         padding: 1px;
       }
@@ -139,5 +139,9 @@
       
             
       .grid-action {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
       }
       
