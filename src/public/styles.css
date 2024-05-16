@@ -125,7 +125,7 @@
     
       .grid-container {
         display: grid;
-        grid-auto-columns: 50px;
+        grid-auto-columns: 150px;
         gap: 1px;
         padding: 1px;
       }
