@@ -171,6 +171,7 @@ function addSelection() {
             this.classList.toggle("selected");
           };
           selectedZipCodesContainer.appendChild(div);
+          node.remove();
     });
 }
 
@@ -189,6 +190,7 @@ function removeSelection() {
             this.classList.toggle("selected");
           };
           availabeZipCodesContainer.appendChild(div);
+          node.remove();
     });
 }
 
