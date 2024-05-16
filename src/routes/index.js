@@ -18,6 +18,7 @@ const profileRoutes = require('./profile');
 router.use(bodyParser.json());
 router.use(express.json());
 router.use(cookierParser());
+
 router.use('/profile', profileRoutes);
 
 // Database connection setup
