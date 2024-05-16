@@ -64,7 +64,7 @@
 #availabeZipCodesContainer {
     border: 2px solid #ccc;
     padding: 10px;
-    width: 100px;
+    width: 50px;
     margin: 20px;
     height: 300px;
     overflow-y: auto;
@@ -97,13 +97,13 @@
         margin-bottom: 2px;
         cursor: pointer;
         }
-    
-        .zipCodeOption.selected {
-        background-color: #007BFF;
-        color: white;
-        }
-        html {
-        font-size: 14px; /* setting base size */
+
+    .zipCodeOption.selected {
+    background-color: #007BFF;
+    color: white;
+    }
+    html {
+    font-size: 14px; /* setting base size */
     }
     
     p {
