@@ -17,7 +17,7 @@ function lookupCityState() {
       xhr.send();
   }
 }
-
+//Test
 document.addEventListener('keyup', function(event) {
     if (event.target.id === 'user') {
         const User = document.getElementById('user').value.trim();
