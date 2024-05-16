@@ -65,16 +65,16 @@
     border: 2px solid #ccc;
     padding: 10px;
     width: 50px;
-    margin: 20px;
-    height: 300px;
+    margin: 10px;
+    height: 200px;
     overflow-y: auto;
     }
 #selectedZipCodesContainer {
     border: 2px solid #ccc;
     padding: 10px;
     width: 50px;
-    margin: 20px;
-    height: 300px;
+    margin: 10px;
+    height: 200px;
     overflow-y: auto;
     }
 
