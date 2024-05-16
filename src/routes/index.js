@@ -310,8 +310,16 @@ router.get('/get-states', (req, res) => {
 router.get('/get-zipcodes', (req, res) => {
   const stateSelect = req.query.stateSelect;
   const citySelect = req.query.citySelect;
-  const query = 'SELECT zipCode FROM ZipCodes WHERE state = ? and city = ? order by zipCode';
-  db.query(query, [stateSelect, citySelect], (error, results) => {
+  userid = req.session.userid;
+  const query = `SELECT zipCode 
+                   FROM ZipCodes z 
+                  WHERE state = ? and city = ?
+                    and not exists(select 1 
+                                     from UserZipCodes u 
+                                    where userid = ? 
+                                      and u.zipCode = z.zipCode) 
+                  order by zipCode`;
+  db.query(query, [stateSelect, citySelect, userid], (error, results) => {
 //    console.log('Results:', results);
 
       if (error) {
