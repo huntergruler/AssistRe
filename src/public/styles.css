@@ -142,6 +142,9 @@ form button:hover {
     border-radius: 8px;
     color: black;
     max-height: 200px;
+}
+
+#availabeZipCodesContainer {
     overflow: auto;
 }
   
