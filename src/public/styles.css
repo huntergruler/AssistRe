@@ -19,7 +19,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
-    
 }
 
 #dashboardBody{
@@ -83,6 +82,11 @@ body {
     background-color: #007BFF;
     color: white;
 }
+
+#availabeZipCodesContainer{
+    max-height: 200px;
+}
+
 html {
     font-size: 14px; /* setting base size */
 }   
@@ -137,6 +141,7 @@ form button:hover {
     padding: 1px;
     border-radius: 8px;
     color: black;
+    max-height: 200px;
 }
   
 .grid-container > div {
