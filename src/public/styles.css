@@ -21,7 +21,16 @@
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
-
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
 /* The Close Button */
 .close {
     color: #aaa;
