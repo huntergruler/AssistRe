@@ -32,24 +32,6 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                <% if (hasLicenses) { %>
-                  <% licenses.forEach(function(license) { %>
-                    <tr id="license-<%= license.agentlicenseid %>">
-                        <td><%= license.licenseState %></td>
-                        <td><%= license.licenseNumber %></td>
-                        <td><%= license.licenseExpirationDate %></td>
-                        <td>
-                            <button type="button" onclick="deleteLicense(<%= license.agentlicenseid %>)">Delete</button>
-                        </td>
-                    </tr>
-                <% }); %>
-                <% } else { %>
-                    <tr>
-                        <td colspan="4">No licenses found.</td>
-                    </tr>
-                <% } %>
-            </tbody>
         </table>
         <form id="licenseForm">
             <input type="text" id="licenseState" name="licenseState" placeholder="License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
