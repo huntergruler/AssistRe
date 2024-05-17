@@ -451,10 +451,7 @@ function showOffice() {
             </tr>`
         }
     });
-
-    contain.innerHTML = 
-    `${htmlChange}
-    </tbody>
+    htmlChange += `</tbody>
 </table>
 <form id="officeForm">
     <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
@@ -468,4 +465,6 @@ function showOffice() {
     <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
     <span id="offStatus"></span>
 </div>`;
+console.log(htmlChange);
+contain.innerHTML = htmlChange;
 }
