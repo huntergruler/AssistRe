@@ -191,8 +191,7 @@ function zipUpdate() {
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded event fired');
-    populateUserZipCodes().then(() => {console.log(zipCodes);}); 
-    console.log("6");
+    populateUserZipCodes(); 
     console.log(zipCodes);
     populateMonths();
     console.log("2");
@@ -377,8 +376,9 @@ function populateUserZipCodes() {
             selectedZipCodesContainer.appendChild(div);
             htmlCodes += `<p>${code.zipCode}</p><br>`;
             //ownedZipCodes.appendChild(div);
-            zipCodes.push(code.zipCode);
+            htmlCodes += `<p>${code.zipCode}</p><br>`;
           });
+        ownedZipCodes.innerHTML = htmlCodes;
     })
     .catch(error => console.error('Error checking user:', error));
 };
