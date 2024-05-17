@@ -633,8 +633,8 @@ function showBio(){
     contain.innerHTML = htmlChange;
     const bioButton = document.getElementById('bioButton');
     const overButton = document.getElementById('overviewButton');
-    bioButton.style.color = 'white';
-    bioButton.style.backgroundColor = 'rgba(19, 50, 109)';
-    overButton.style.color = 'black';
-    overButton.style.backgroundColor = 'white';
+    bioButton.classList.add('selectedStyle');
+    bioButton.classList.remove('hoverStyle');
+    overButton.classList.remove('selectedStyle');
+    overButton.classList.add('hoverStyle');
 }
