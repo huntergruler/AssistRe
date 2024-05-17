@@ -378,6 +378,7 @@ function populateUserZipCodes() {
             //ownedZipCodes.appendChild(div);
             htmlCodes += `<p>${code.zipCode}</p><br>`;
           });
+          console.log(htmlCodes);
         ownedZipCodes.innerHTML = htmlCodes;
     })
     .catch(error => console.error('Error checking user:', error));
