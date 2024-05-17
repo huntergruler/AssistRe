@@ -191,6 +191,9 @@ function zipUpdate() {
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded event fired');
+    populateUserZipCodes(); 
+    console.log("6");
+    console.log(zipCodes);
     populateMonths();
     console.log("2");
     populateYears();
@@ -199,9 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log("4");
     populateStates();
     console.log("5");
-    populateUserZipCodes(); 
-    console.log("6");
-    console.log(zipCodes);
+    
     console.log('DOM fully loaded and parsed');
 });
 
@@ -390,7 +391,7 @@ function populateMonths() {
     ];
     months.forEach((month, index) => {
         let option = new Option(month, index + 1);
-        //monthSelect.appendChild(option);
+        monthSelect.appendChild(option);
     });
 };
 
@@ -399,7 +400,7 @@ function populateYears() {
     const year = new Date().getFullYear();
     for (let i = year; i <= year + 10; i++) {
         let option = new Option(i, i);
-        //yearSelect.appendChild(option);
+        yearSelect.appendChild(option);
     }
 };
 
@@ -408,16 +409,16 @@ function updateDays() {
     const yearSelect = document.getElementById('yearSelect');
     const daySelect = document.getElementById('daySelect');
 
-    //const month = monthSelect.value;
-    //const year = yearSelect.value;
-    //const daysInMonth = new Date(year, month, 0).getDate();
+    const month = monthSelect.value;
+    const year = yearSelect.value;
+    const daysInMonth = new Date(year, month, 0).getDate();
 
-    //daySelect.innerHTML = '';
-    /*
+    daySelect.innerHTML = '';
+
     for (let i = 1; i <= daysInMonth; i++) {
         let option = new Option(i, i);
-        //daySelect.appendChild(option);
-    }*/
+        daySelect.appendChild(option);
+    }
 };
 
 function showOffice() {
