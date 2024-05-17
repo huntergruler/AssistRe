@@ -195,6 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateDays();
     populateStates();
     populateUserZipCodes();
+    console.log(zipCodes);
 });
 
 function getSelectedZipCodes() {
@@ -359,7 +360,6 @@ function populateUserZipCodes() {
             selectedZipCodesContainer.appendChild(div);
           }
         data.results.forEach(code => {
-            console.log(code);
             const div = document.createElement("div");
             div.textContent = code.zipCode;
             div.className = "zipCodeSelected";
@@ -371,7 +371,6 @@ function populateUserZipCodes() {
             //ownedZipCodes.appendChild(div);
             zipCodes.push(code.zipCode);
           });
-        console.log(zipCodes);
     })
     .catch(error => console.error('Error checking user:', error));
 };
