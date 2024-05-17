@@ -350,7 +350,7 @@ function populateUserZipCodes() {
     fetch(`/get-userzipcodes`)
     .then(response => response.json())
     .then(data => {
-        console.log(data.stateSelect);
+        console.log(data);
         selectedZipCodesContainer.innerHTML = '';
         if (data.results.length === 0) {
             const div = document.createElement("div");
@@ -367,7 +367,6 @@ function populateUserZipCodes() {
             selectedZipCodesContainer.appendChild(div);
             htmlCodes += `<p>${code.zipCode}</p><br>`;
           });
-          console.log(htmlCodes);
         ownedZipCodes.innerHTML = htmlCodes;
     })
     .catch(error => console.error('Error checking user:', error));
