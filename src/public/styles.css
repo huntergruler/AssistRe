@@ -51,9 +51,9 @@ body {
 }
 
 #profileNav button{
-    background-color: #007BFF;
-    color: white;
-    border: none;
+    background-color: white;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px 8px 0 0;
     padding: 10px;
     cursor: pointer;
