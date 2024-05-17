@@ -364,7 +364,7 @@ function populateUserZipCodes() {
               this.classList.toggle("selected");
             };
             selectedZipCodesContainer.appendChild(div);
-            ownedZipCodes.appendChild(div);
+            //ownedZipCodes.appendChild(div);
           });
     })
     .catch(error => console.error('Error checking user:', error));
