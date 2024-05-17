@@ -429,8 +429,8 @@ function showOffice() {
     .then(data => {
         if (data.hasOffices) {
             data.offices.forEach(office => {
-                htmlChange += `<tr id="office-${data.office.agentofficeid}">
-                <td>${data.office.officeName}</td>
+                htmlChange += `<tr id="office-${office.agentofficeid}">
+                <td>${office.officeName}</td>
                 <td>${office.officeLicenseNumber}</td>
                 <td>${office.officeLicenseState}</td>
                 <td>${office.address}</td>
