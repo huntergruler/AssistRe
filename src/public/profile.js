@@ -430,7 +430,23 @@ function showOffice() {
         console.log(data);
         if (data.hasOffices) {
             data.offices.forEach(office => {
-                htmlChange += `\n<tr id="office-${office.agentofficeid}">
+                htmlChange += `<div id="officeContainer">
+                <p><h1>Current Office(s)</h1></p>
+            <table id="officeTable">
+                <thead>
+                    <tr>
+                        <th>Office Name</th>
+                        <th>Office License Number</th>
+                        <th>Office License State</th>
+                        <th>Office Address</th>
+                        <th>Office City</th>
+                        <th>Office State</th>
+                        <th>Office Zip</th>
+                        <th>Office Phone Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody><tr id="office-${office.agentofficeid}">
                 <td>${office.officeName}</td>
                 <td>${office.officeLicenseNumber}</td>
                 <td>${office.officeLicenseState}</td>
@@ -459,7 +475,23 @@ function showOffice() {
             console.log(htmlChange);
             });
         } else {
-            htmlChange += `<tr>
+            htmlChange += `<div id="officeContainer">
+            <p><h1>Current Office(s)</h1></p>
+        <table id="officeTable">
+            <thead>
+                <tr>
+                    <th>Office Name</th>
+                    <th>Office License Number</th>
+                    <th>Office License State</th>
+                    <th>Office Address</th>
+                    <th>Office City</th>
+                    <th>Office State</th>
+                    <th>Office Zip</th>
+                    <th>Office Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody><tr>
                 <td colspan="4">No offices found.</td>
             </tr></tbody>
             </table>
