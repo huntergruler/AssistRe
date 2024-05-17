@@ -430,23 +430,7 @@ function showOffice() {
         console.log(data);
         if (data.hasOffices) {
             data.offices.forEach(office => {
-                htmlChange += `<div id="officeContainer">
-                <p><h1>Current Office(s)</h1></p>
-            <table id="officeTable">
-                <thead>
-                    <tr>
-                        <th>Office Name</th>
-                        <th>Office License Number</th>
-                        <th>Office License State</th>
-                        <th>Office Address</th>
-                        <th>Office City</th>
-                        <th>Office State</th>
-                        <th>Office Zip</th>
-                        <th>Office Phone Number</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
+                htmlChange += `
                     <tr id="office-${office.agentofficeid}">
                         <td>${office.officeName}</td>
                         <td>1</td>
@@ -475,6 +459,7 @@ function showOffice() {
                 <span id="offStatus"></span>
             </div>`;
             console.log(htmlChange);
+            contain.innerHTML = htmlChange;
             });
         } else {
             htmlChange += `<div id="officeContainer">
@@ -509,9 +494,8 @@ function showOffice() {
                 <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
                 <span id="offStatus"></span>
             </div>`;
+            contain.innerHTML = htmlChange;
         }
     });
-    
-console.log(htmlChange);
-contain.innerHTML = htmlChange;
+
 }
