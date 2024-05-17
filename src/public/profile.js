@@ -442,28 +442,40 @@ function showOffice() {
                 <td>
                     <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
                 </td>
-            </tr>\n`
+            </tr></tbody>
+            </table>
+            <form id="officeForm">
+                <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
+                <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
+                <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+                <input type="text" id="address" name="address" placeholder="Office Address" required>
+                <input type="text" id="city" name="city" placeholder="Office City" required>
+                <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+                <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
+                <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
+                <span id="offStatus"></span>
+            </div>`;
             console.log(htmlChange);
             });
         } else {
             htmlChange += `<tr>
                 <td colspan="4">No offices found.</td>
-            </tr>`
+            </tr></tbody>
+            </table>
+            <form id="officeForm">
+                <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
+                <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
+                <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+                <input type="text" id="address" name="address" placeholder="Office Address" required>
+                <input type="text" id="city" name="city" placeholder="Office City" required>
+                <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+                <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
+                <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
+                <span id="offStatus"></span>
+            </div>`;
         }
-        htmlChange += `</tbody>
-</table>
-<form id="officeForm">
-    <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
-    <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
-    <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-    <input type="text" id="address" name="address" placeholder="Office Address" required>
-    <input type="text" id="city" name="city" placeholder="Office City" required>
-    <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-    <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
-    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-    <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
-    <span id="offStatus"></span>
-</div>`;
     });
     
 console.log(htmlChange);
