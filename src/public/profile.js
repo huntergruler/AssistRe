@@ -565,3 +565,7 @@ function showZipCodes(){
     populateStates();
     populateUserZipCodes();
 }
+
+function showOverview(){
+    location.reload(); 
+}
