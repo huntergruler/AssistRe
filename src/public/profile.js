@@ -430,21 +430,20 @@ function showOffice() {
         console.log(data);
         if (data.hasOffices) {
             data.offices.forEach(office => {
-                htmlChange += `
-                    <tr id="office-${office.agentofficeid}">
-                        <td>${office.officeName}</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>
-                            <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
+                htmlChange += `<tr id="office-${office.agentofficeid}">
+                    <td>${office.officeName}</td>
+                    <td>${office.officeLicenseNumber}</td>
+                    <td>${office.officeLicenseState}</td>
+                    <td>${office.address}</td>
+                    <td>${office.city}</td>
+                    <td>${office.state}</td>
+                    <td>${office.zip}</td>
+                    <td>${office.phoneNumber}</td>
+                    <td>
+                        <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
             </table>
             <form id="officeForm">
                 <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
@@ -459,7 +458,6 @@ function showOffice() {
                 <span id="offStatus"></span>
             </div>`;
             console.log(htmlChange);
-            contain.innerHTML = htmlChange;
             });
         } else {
             htmlChange += `<div id="officeContainer">
@@ -494,8 +492,9 @@ function showOffice() {
                 <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
                 <span id="offStatus"></span>
             </div>`;
-            contain.innerHTML = htmlChange;
         }
     });
-
+    
+console.log(htmlChange);
+contain.innerHTML = htmlChange;
 }
