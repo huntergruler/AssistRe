@@ -466,6 +466,26 @@ function showOffice() {
         </div>`;
         contain.innerHTML = htmlChange;
     });
+
+    const overButton = document.getElementById('overviewButton');
+    const officeButton = document.getElementById('officeButton');
+    const licButton = document.getElementById('licenseButton');
+    const zipButton = document.getElementById('zipCodeButton');
+    const transButton = document.getElementById('transactionButton');
+    const bioButton = document.getElementById('bioButton');
+    
+    overButton.classList.remove('selectedStyle');
+    overButton.classList.add('hoverStyle');
+    officeButton.classList.add('selectedStyle');
+    officeButton.classList.remove('hoverStyle');
+    licButton.classList.remove('selectedStyle');
+    licButton.classList.add('hoverStyle');
+    zipButton.classList.remove('selectedStyle');
+    zipButton.classList.add('hoverStyle');
+    transButton.classList.remove('selectedStyle');
+    transButton.classList.add('hoverStyle');
+    bioButton.classList.remove('selectedStyle');
+    bioButton.classList.add('hoverStyle');
 }
 
 function showLicense() {
@@ -527,6 +547,26 @@ function showLicense() {
             populateYears();
             updateDays();
         });
+
+    const overButton = document.getElementById('overviewButton');
+    const officeButton = document.getElementById('officeButton');
+    const licButton = document.getElementById('licenseButton');
+    const zipButton = document.getElementById('zipCodeButton');
+    const transButton = document.getElementById('transactionButton');
+    const bioButton = document.getElementById('bioButton');
+    
+    overButton.classList.remove('selectedStyle');
+    overButton.classList.add('hoverStyle');
+    officeButton.classList.remove('selectedStyle');
+    officeButton.classList.add('hoverStyle');
+    licButton.classList.add('selectedStyle');
+    licButton.classList.remove('hoverStyle');
+    zipButton.classList.remove('selectedStyle');
+    zipButton.classList.add('hoverStyle');
+    transButton.classList.remove('selectedStyle');
+    transButton.classList.add('hoverStyle');
+    bioButton.classList.remove('selectedStyle');
+    bioButton.classList.add('hoverStyle');
 };
 
 function showZipCodes(){
@@ -564,6 +604,26 @@ function showZipCodes(){
     contain.innerHTML = htmlChange;
     populateStates();
     populateUserZipCodes();
+
+    const overButton = document.getElementById('overviewButton');
+    const officeButton = document.getElementById('officeButton');
+    const licButton = document.getElementById('licenseButton');
+    const zipButton = document.getElementById('zipCodeButton');
+    const transButton = document.getElementById('transactionButton');
+    const bioButton = document.getElementById('bioButton');
+    
+    overButton.classList.remove('selectedStyle');
+    overButton.classList.add('hoverStyle');
+    officeButton.classList.remove('selectedStyle');
+    officeButton.classList.add('hoverStyle');
+    licButton.classList.remove('selectedStyle');
+    licButton.classList.add('hoverStyle');
+    zipButton.classList.add('selectedStyle');
+    zipButton.classList.remove('hoverStyle');
+    transButton.classList.remove('selectedStyle');
+    transButton.classList.add('hoverStyle');
+    bioButton.classList.remove('selectedStyle');
+    bioButton.classList.add('hoverStyle');
 }
 
 function showOverview(){
@@ -619,6 +679,26 @@ function showTransactions(){
     </form>`;
             contain.innerHTML = htmlChange;
         });
+
+        const overButton = document.getElementById('overviewButton');
+        const officeButton = document.getElementById('officeButton');
+        const licButton = document.getElementById('licenseButton');
+        const zipButton = document.getElementById('zipCodeButton');
+        const transButton = document.getElementById('transactionButton');
+        const bioButton = document.getElementById('bioButton');
+        
+        overButton.classList.remove('selectedStyle');
+        overButton.classList.add('hoverStyle');
+        officeButton.classList.remove('selectedStyle');
+        officeButton.classList.add('hoverStyle');
+        licButton.classList.remove('selectedStyle');
+        licButton.classList.add('hoverStyle');
+        zipButton.classList.remove('selectedStyle');
+        zipButton.classList.add('hoverStyle');
+        transButton.classList.add('selectedStyle');
+        transButton.classList.remove('hoverStyle');
+        bioButton.classList.remove('selectedStyle');
+        bioButton.classList.add('hoverStyle');
 }
 
 
@@ -631,10 +711,24 @@ function showBio(){
     <button type="button" id="bioAdd" onclick="addBio()">Add</button>
     <span id="bioStatus"></span>`;
     contain.innerHTML = htmlChange;
-    const bioButton = document.getElementById('bioButton');
+    
     const overButton = document.getElementById('overviewButton');
-    bioButton.classList.add('selectedStyle');
-    bioButton.classList.remove('hoverStyle');
+    const officeButton = document.getElementById('officeButton');
+    const licButton = document.getElementById('licenseButton');
+    const zipButton = document.getElementById('zipCodeButton');
+    const transButton = document.getElementById('transactionButton');
+    const bioButton = document.getElementById('bioButton');
+
     overButton.classList.remove('selectedStyle');
     overButton.classList.add('hoverStyle');
+    officeButton.classList.remove('selectedStyle');
+    officeButton.classList.add('hoverStyle');
+    licButton.classList.remove('selectedStyle');
+    licButton.classList.add('hoverStyle');
+    zipButton.classList.remove('selectedStyle');
+    zipButton.classList.add('hoverStyle');
+    transButton.classList.remove('selectedStyle');
+    transButton.classList.add('hoverStyle');
+    bioButton.classList.add('selectedStyle');
+    bioButton.classList.remove('hoverStyle');
 }
