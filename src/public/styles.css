@@ -69,7 +69,7 @@ body {
 }
 
 #overviewButton:hover {
-    background-color: rgba(19, 50, 109, .8);
+    opacity: 0.8;
 
 }
 #officeButton:hover, #licenseButton:hover, #zipCodeButton:hover, #transactionButton:hover, #bioButton:hover{
