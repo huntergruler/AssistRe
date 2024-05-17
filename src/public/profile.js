@@ -633,5 +633,5 @@ function showBio(){
     contain.innerHTML = htmlChange;
     const bioButton = document.getElementById('bioButton');
     button.style.color = 'white';
-    button.style.backgroundColor = 'rgba(19, 50, 109)';
+    button.style.backgroundColor = 'black';//'rgba(19, 50, 109)';
 }
