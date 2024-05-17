@@ -442,58 +442,86 @@ function showOffice() {
                     <td>
                         <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
                     </td>
-                </tr>
-            </tbody>
-            </table>
-            <form id="officeForm">
-                <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
-                <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
-                <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-                <input type="text" id="address" name="address" placeholder="Office Address" required>
-                <input type="text" id="city" name="city" placeholder="Office City" required>
-                <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-                <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-                <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
-                <span id="offStatus"></span>
-            </div>`;
+                </tr>`;
             contain.innerHTML = htmlChange;
             });
         } else {
-            htmlChange += `<div id="officeContainer">
-            <p><h1>Current Office(s)</h1></p>
-        <table id="officeTable">
-            <thead>
-                <tr>
-                    <th>Office Name</th>
-                    <th>Office License Number</th>
-                    <th>Office License State</th>
-                    <th>Office Address</th>
-                    <th>Office City</th>
-                    <th>Office State</th>
-                    <th>Office Zip</th>
-                    <th>Office Phone Number</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody><tr>
+            htmlChange += `<tr>
                 <td colspan="4">No offices found.</td>
-            </tr></tbody>
-            </table>
-            <form id="officeForm">
-                <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
-                <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
-                <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-                <input type="text" id="address" name="address" placeholder="Office Address" required>
-                <input type="text" id="city" name="city" placeholder="Office City" required>
-                <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-                <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-                <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
-                <span id="offStatus"></span>
-            </div>`;
-            
-            contain.innerHTML = htmlChange;
+            </tr>`;   
         }
+        htmlChange += `</tbody>
+        </table>
+        <form id="officeForm">
+            <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
+            <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
+            <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+            <input type="text" id="address" name="address" placeholder="Office Address" required>
+            <input type="text" id="city" name="city" placeholder="Office City" required>
+            <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+            <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
+            <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
+            <span id="offStatus"></span>
+        </div>`;
+        contain.innerHTML = htmlChange;
     });
 }
+
+function showLicense() {
+    const contain = document.getElementById('profileContainer');
+    let htmlChange = `<p><h1>Current Licenses</h1></p>
+    <table id="licensesTable">
+        <thead>
+            <tr>
+                <th>License State</th>
+                <th>License Number</th>
+                <th>Expiration Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>`;
+    fetch('/api/profile')
+        .then(response => response.json())
+        .then(data => {
+            if(data.hasLicenses){
+                forEach(data.licenses, license => {
+                    htmlChange += `<tr id="license-${license.agentlicenseid}">
+                    <td>${license.licenseState}</td>
+                    <td>${license.licenseNumber}</td>
+                    <td>${license.licenseExpirationDate}</td>
+                    <td>
+                        <button type="button" onclick="deleteLicense(${license.agentlicenseid})">Delete</button>
+                    </td>
+                    </tr>`;
+                });
+            } else {
+                htmlChange += `<tr>
+                <td colspan="4">No licenses found.</td>
+                </tr>`;
+            }
+            htmlChange += `</tbody>
+    </table>
+    <form id="licenseForm">
+        <input type="text" id="licenseState" name="licenseState" placeholder="License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+        <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
+        <!-- <input type="date" id="licenseExpirationDate" name="licenseExpirationDate" placeholder="License Expiration Date" required> -->
+        <label for="monthSelect">Month:</label>
+        <select id="monthSelect" onchange="updateDays();">
+            <!-- Options will be generated by JavaScript -->
+        </select>
+        <label for="daySelect">Day:</label>
+        <select id="daySelect">
+            <!-- Options will be generated by JavaScript -->
+        </select>
+        <label for="yearSelect">Year:</label>
+        <select id="yearSelect" onchange="updateDays();">
+            <!-- Options will be generated by JavaScript -->
+        </select>
+        <button type="button" id="licenseAdd" disabled onclick="addLicense()">Add</button>
+        <span id="licStatus"></span>
+    </form>
+</div>`;
+            contain.innerHTML = htmlChange;
+        });
+};
