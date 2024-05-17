@@ -443,6 +443,7 @@ function showOffice() {
                     <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
                 </td>
             </tr>`
+            console.log(htmlChange);
             });
         } else {
             htmlChange += `<tr>
