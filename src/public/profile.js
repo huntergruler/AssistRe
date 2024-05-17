@@ -412,7 +412,7 @@ function updateDays() {
     //const year = yearSelect.value;
     //const daysInMonth = new Date(year, month, 0).getDate();
 
-    daySelect.innerHTML = '';
+    //daySelect.innerHTML = '';
     /*
     for (let i = 1; i <= daysInMonth; i++) {
         let option = new Option(i, i);
