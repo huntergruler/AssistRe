@@ -523,5 +523,8 @@ function showLicense() {
     </form>
 </div>`;
             contain.innerHTML = htmlChange;
+            populateMonths();
+            populateYears();
+            updateDays();
         });
 };
