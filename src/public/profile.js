@@ -408,7 +408,10 @@ function updateDays() {
 function showOffice() {
     const contain = document.getElementById('profileContainer');
     fetch('/api/profile')
-    .then(response => console.log(response.json()));
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
     contain.innerHTML = `<div id="officeContainer">
     <p><h1>Current Office(s)</h1></p>
 <table id="officeTable">
