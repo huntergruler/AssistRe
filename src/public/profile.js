@@ -407,12 +407,7 @@ function updateDays() {
 
 function showOffice() {
     const contain = document.getElementById('profileContainer');
-    fetch('/api/profile')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    })
-    contain.innerHTML = `<div id="officeContainer">
+    let htmlChange = `<div id="officeContainer">
     <p><h1>Current Office(s)</h1></p>
 <table id="officeTable">
     <thead>
@@ -428,28 +423,35 @@ function showOffice() {
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody>
-        <% if (hasOffices) { %>
-          <% offices.forEach(function(office) { %>
-            <tr id="office-<%= office.agentofficeid %>">
-                <td><%= office.officeName %></td>
-                <td><%= office.officeLicenseNumber %></td>
-                <td><%= office.officeLicenseState %></td>
-                <td><%= office.address %></td>
-                <td><%= office.city %></td>
-                <td><%= office.state %></td>
-                <td><%= office.zip %></td>
-                <td><%= office.phoneNumber %></td>
+    <tbody>`;
+    fetch('/api/profile')
+    .then(response => response.json())
+    .then(data => {
+        if (data.hasOffices) {
+            data.offices.forEach(office => {
+                htmlChange += `<tr id="office-${data.office.agentofficeid}">
+                <td>${data.office.officeName}</td>
+                <td>${office.officeLicenseNumber}</td>
+                <td>${office.officeLicenseState}</td>
+                <td>${office.address}</td>
+                <td>${office.city}</td>
+                <td>${office.state}</td>
+                <td>${office.zip}</td>
+                <td>${office.phoneNumber}</td>
                 <td>
-                    <button type="button" onclick="deleteOffice(<%= office.agentofficeid %>)">Delete</button>
+                    <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
                 </td>
-            </tr>
-        <% }); %>
-        <% } else { %>
-            <tr>
+            </tr>`
+            });
+        } else {
+            htmlChange += `<tr>
                 <td colspan="4">No offices found.</td>
-            </tr>
-        <% } %>
+            </tr>`
+        }
+    });
+
+    contain.innerHTML = 
+    `${htmlChange}
     </tbody>
 </table>
 <form id="officeForm">
