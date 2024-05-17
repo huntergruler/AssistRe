@@ -191,7 +191,7 @@ function zipUpdate() {
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded event fired');
-    populateUserZipCodes(); 
+    populateUserZipCodes().then(() => {console.log(zipCodes);}); 
     console.log("6");
     console.log(zipCodes);
     populateMonths();
