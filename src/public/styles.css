@@ -62,12 +62,6 @@ body {
     padding: 10px;
     cursor: pointer;
 }
-
-#officeButton, #licenseButton, #zipCodeButton, #transactionButton, #bioButton{
-    background-color: white;
-    color: black;
-}
-
 #overviewButton:hover {
     opacity: 0.8;
 
@@ -76,26 +70,34 @@ body {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-
-
 #officeButton{
     grid-column: 2;
+    background-color: white;
+    color: black;
 }
 
 #licenseButton{
     grid-column: 3;
+    background-color: white;
+    color: black;
 }
 
 #zipCodeButton{
     grid-column: 4;
+    background-color: white;
+    color: black;
 }
 
 #transactionButton{
     grid-column: 5;
+    background-color: white;
+    color: black;
 }
 
 #bioButton{
     grid-column: 6;
+    background-color: white;
+    color: black;
 }
 
 #profileContainer{
