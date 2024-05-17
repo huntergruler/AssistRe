@@ -53,6 +53,7 @@ body {
 #overviewButton{
     grid-column: 1;
     background-color: rgba(19, 50, 109);
+    color: white;
 }
 
 #profileNav button{
