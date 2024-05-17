@@ -612,9 +612,9 @@ function showTransactions(){
     <form id="transactionForm">
         <input type="date" id="transactionDate" name="transactionDate" placeholder="Transaction Date" required>
         <input type="number" id="transactionAmount" name="transactionAmount" placeholder="Transaction Amount" required>
-        <input type="text" id="PropertyType" name="PropertyType" placeholder="Transaction Property Type" required>
-        <input type="text" id="LevelOfService" name="LevelOfService" placeholder="Transaction Level Of Service" required>
-        <input type="text" id="CompensationType" name="CompensationType" placeholder="Transaction Compensation Type" required>
+        <input type="text" id="propertyType" name="PropertyType" placeholder="Transaction Property Type" required>
+        <input type="text" id="levelOfService" name="LevelOfService" placeholder="Transaction Level Of Service" required>
+        <input type="text" id="compensationType" name="CompensationType" placeholder="Transaction Compensation Type" required>
         <button type="button" id="transactionAdd" onclick="addTransaction()">Add</button>
     </form>`;
             contain.innerHTML = htmlChange;
