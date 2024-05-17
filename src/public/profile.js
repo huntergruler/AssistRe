@@ -1,4 +1,4 @@
-let zipCodes = [];
+let zipCodes = [1];
 
 function addTransaction() {
     const transactionDate = document.getElementById('transactionDate').value;
