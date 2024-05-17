@@ -531,8 +531,7 @@ function showLicense() {
 
 function showZipCodes(){
     const contain = document.getElementById('profileContainer');
-    let htmlChange = `<div class="zipCode-container">
-    <h1>Zip Codes</h1>
+    let htmlChange = `<h1>Zip Codes</h1>
     <p>Select Zip Codes in which you would like offers</p>
     <br>
     <label for="stateSelect">States:</label>
@@ -561,8 +560,7 @@ function showZipCodes(){
             </div>
         </div>
     </div>
-    <button type="button" class="button" disabled id="saveChanges" onclick="saveChanges()">SAVE</button>
-</div>`;
+    <button type="button" class="button" disabled id="saveChanges" onclick="saveChanges()">SAVE</button>`;
     contain.innerHTML = htmlChange;
     populateStates();
     populateUserZipCodes();
