@@ -408,16 +408,16 @@ function updateDays() {
     const yearSelect = document.getElementById('yearSelect');
     const daySelect = document.getElementById('daySelect');
 
-    const month = monthSelect.value;
-    const year = yearSelect.value;
-    const daysInMonth = new Date(year, month, 0).getDate();
+    //const month = monthSelect.value;
+    //const year = yearSelect.value;
+    //const daysInMonth = new Date(year, month, 0).getDate();
 
     daySelect.innerHTML = '';
-
+    /*
     for (let i = 1; i <= daysInMonth; i++) {
         let option = new Option(i, i);
         //daySelect.appendChild(option);
-    }
+    }*/
 };
 
 function showOffice() {
