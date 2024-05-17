@@ -190,13 +190,13 @@ function zipUpdate() {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOMContentLoaded event fired');
     populateMonths();
     populateYears();
     updateDays();
     populateStates();
-    populateUserZipCodes().then(() => {
-        console.log(zipCodes);
-    });
+    populateUserZipCodes(); 
+    console.log(zipCodes);
     console.log('DOM fully loaded and parsed');
 });
 
