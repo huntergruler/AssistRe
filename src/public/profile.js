@@ -416,7 +416,7 @@ function updateDays() {
 
     for (let i = 1; i <= daysInMonth; i++) {
         let option = new Option(i, i);
-        daySelect.appendChild(option);
+        //daySelect.appendChild(option);
     }
 };
 
