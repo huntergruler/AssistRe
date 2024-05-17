@@ -197,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
     populateUserZipCodes().then(() => {
         console.log(zipCodes);
     });
+    console.log('DOM fully loaded and parsed');
 });
 
 function getSelectedZipCodes() {
