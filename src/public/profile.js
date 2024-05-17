@@ -356,6 +356,7 @@ function populateUserZipCodes() {
             selectedZipCodesContainer.appendChild(div);
           }
         data.results.forEach(code => {
+            console.log(code);
             const div = document.createElement("div");
             div.textContent = code.zipCode;
             div.className = "zipCodeSelected";
