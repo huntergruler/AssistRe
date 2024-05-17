@@ -631,7 +631,7 @@ function showBio(){
     <button type="button" id="bioAdd" onclick="addBio()">Add</button>
     <span id="bioStatus"></span>`;
     contain.innerHTML = htmlChange;
-    const button = document.getElementById('overviewButton');
+    const bioButton = document.getElementById('bioButton');
     button.style.color = 'white';
-    button.style.backgroundColor = 'black';
+    button.style.backgroundColor = 'rgba(19, 50, 109)';
 }
