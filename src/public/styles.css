@@ -56,12 +56,15 @@ body {
 }
 
 #profileNav button{
-    background-color: white;
     color: black;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px 8px 0 0;
     padding: 10px;
     cursor: pointer;
+}
+
+#officeButton, #licenseButton, #zipCodeButton, #transactionButton, #bioButton{
+    background-color: white;
 }
 
 #overviewButton:hover, #officeButton:hover, #licenseButton:hover, #zipCodeButton:hover, #transactionButton:hover, #bioButton:hover{
