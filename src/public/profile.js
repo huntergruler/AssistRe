@@ -192,10 +192,15 @@ function zipUpdate() {
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOMContentLoaded event fired');
     populateMonths();
+    console.log("2");
     populateYears();
+    console.log("3");
     updateDays();
+    console.log("4");
     populateStates();
+    console.log("5");
     populateUserZipCodes(); 
+    console.log("6");
     console.log(zipCodes);
     console.log('DOM fully loaded and parsed');
 });
