@@ -57,7 +57,6 @@ body {
 }
 
 #profileNav button{
-    color: black;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px 8px 0 0;
     padding: 10px;
@@ -66,6 +65,7 @@ body {
 
 #officeButton, #licenseButton, #zipCodeButton, #transactionButton, #bioButton{
     background-color: white;
+    color: black;
 }
 
 #overviewButton:hover {
