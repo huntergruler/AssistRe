@@ -50,6 +50,15 @@ body {
     height: 50px;
 }
 
+#profileNav button{
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+}
+
 #overviewButton{
     grid-column: 1;
 }
