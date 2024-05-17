@@ -50,10 +50,14 @@ body {
     height: 50px;
 }
 
-#overviewButton{
-    grid-column: 1;
+.selectedStyle {
     background-color: rgba(19, 50, 109);
     color: white;
+}
+
+.hoverStyle {
+    background-color: white;
+    color: black;
 }
 
 #profileNav button{
@@ -62,42 +66,36 @@ body {
     padding: 10px;
     cursor: pointer;
 }
-#overviewButton:hover {
+.selectedStyle:hover {
     opacity: 0.8;
 
 }
-#officeButton:hover, #licenseButton:hover, #zipCodeButton:hover, #transactionButton:hover, #bioButton:hover{
+.hoverStyle:hover{
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+#overviewButton{
+    grid-column: 1;
 }
 
 #officeButton{
     grid-column: 2;
-    background-color: white;
-    color: black;
 }
 
 #licenseButton{
     grid-column: 3;
-    background-color: white;
-    color: black;
 }
 
 #zipCodeButton{
     grid-column: 4;
-    background-color: white;
-    color: black;
 }
 
 #transactionButton{
     grid-column: 5;
-    background-color: white;
-    color: black;
 }
 
 #bioButton{
     grid-column: 6;
-    background-color: white;
-    color: black;
 }
 
 #profileContainer{
