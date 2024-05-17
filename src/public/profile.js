@@ -528,3 +528,42 @@ function showLicense() {
             updateDays();
         });
 };
+
+function showZipCodes(){
+    const contain = document.getElementById('profileContainer');
+    let htmlChange = `<div class="zipCode-container">
+    <h1>Zip Codes</h1>
+    <p>Select Zip Codes in which you would like offers</p>
+    <br>
+    <label for="stateSelect">States:</label>
+    <select id="stateSelect" onchange="populateCities();"></select>   
+    <label for="citySelect">Cities:</label>
+    <select id="citySelect" onchange="populateZipCodes();"></select>
+    <div class="grid-container">
+        <div class="grid-available">
+            <p>Available Zip Codes</p>
+            <div class="container">
+                <div id="availabeZipCodesContainer" class="box1">
+                    <!-- JavaScript will populate this container -->
+                </div>
+            </div>
+        </div>
+        <div class="grid-action">
+            <button type="button" class="button" onclick="addSelection()">Add --> </button>
+            <button type="button" class="button" onclick="removeSelection()"> <-- Remove</button>
+        </div>
+        <div class="grid-selected">
+            <p>Selected Zip Codes</p>
+            <div class="container">
+                <div id="selectedZipCodesContainer" class="box2">
+                    <!-- JavaScript will populate this container -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="button" disabled id="saveChanges" onclick="saveChanges()">SAVE</button>
+</div>`;
+    contain.innerHTML = htmlChange;
+    populateStates();
+    populateUserZipCodes();
+}
