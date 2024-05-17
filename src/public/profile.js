@@ -194,8 +194,9 @@ document.addEventListener('DOMContentLoaded', function () {
     populateYears();
     updateDays();
     populateStates();
-    populateUserZipCodes();
-    console.log(zipCodes);
+    populateUserZipCodes().then(() => {
+        console.log(zipCodes);
+    });
 });
 
 function getSelectedZipCodes() {
