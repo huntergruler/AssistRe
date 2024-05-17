@@ -1,3 +1,5 @@
+let zipCodes = [];
+
 function addTransaction() {
     const transactionDate = document.getElementById('transactionDate').value;
     const transactionAmount = document.getElementById('transactionAmount').value;
@@ -367,8 +369,9 @@ function populateUserZipCodes() {
             selectedZipCodesContainer.appendChild(div);
             htmlCodes += `<p>${code.zipCode}</p><br>`;
             //ownedZipCodes.appendChild(div);
+            zipCodes.push(code.zipCode);
           });
-            ownedZipCodes.innerHTML = htmlCodes;
+        console.log(zipCodes);
     })
     .catch(error => console.error('Error checking user:', error));
 };
