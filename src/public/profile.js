@@ -485,7 +485,7 @@ function showLicense() {
         .then(response => response.json())
         .then(data => {
             if(data.hasLicenses){
-                forEach(data.licenses, license => {
+                data.licenses.forEach(function(license){
                     htmlChange += `<tr id="license-${license.agentlicenseid}">
                     <td>${license.licenseState}</td>
                     <td>${license.licenseNumber}</td>
