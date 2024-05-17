@@ -117,6 +117,34 @@ router.post('/register', (req, res) => {
           });
         });
   });
+
+  router.post('/api/profile', (req, res) => {
+    if (!req.session.user) {
+      req.session.message = 'Please login to access the Profile';
+      res.redirect('/login');  
+    }
+    userid = req.session.userid;
+    const query = `SELECT a.agentlicenseid, date_format(a.licenseExpirationDate,"%m/%d/%Y") licenseExpirationDate, a.licenseNumber, a.licenseState, a.userid 
+                     FROM AgentLicenses a 
+                    WHERE userid = ?`; 
+    db.query(query,[ userid ], (err, licenseresults) => {
+        if (err) throw err;
+        let hasLicenses = licenseresults.length > 0;
+        const query = 'SELECT * FROM AgentOffices a where userid = ?'; 
+        db.query(query,[ userid ], (err, officeresults) => {
+            if (err) throw err;
+            let hasOffices = officeresults.length > 0;
+            const query = `SELECT agenttransactionid, transactionDate, transactionAmount, propertytype, levelofservice, compensationtype
+                             FROM AgentTransactionHistory_v h 
+                            WHERE userid = ?`; 
+            db.query(query,[ userid ], (err, transactionresults) => {
+                if (err) throw err;
+                let hasTransactions = transactionresults.length > 0;
+              res.json({ licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
+            });
+          });
+        });
+  });
   
   router.post('/api/licenses', (req, res) => {
       const { licenseNumber, licenseState, licenseExpirationDate } = req.body;
