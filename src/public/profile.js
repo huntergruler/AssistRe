@@ -399,7 +399,7 @@ function populateYears() {
     const year = new Date().getFullYear();
     for (let i = year; i <= year + 10; i++) {
         let option = new Option(i, i);
-        yearSelect.appendChild(option);
+        //yearSelect.appendChild(option);
     }
 };
 
