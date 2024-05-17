@@ -457,7 +457,7 @@ function showOffice() {
                 <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
                 <span id="offStatus"></span>
             </div>`;
-            console.log(htmlChange);
+            contain.innerHTML = htmlChange;
             });
         } else {
             htmlChange += `<div id="officeContainer">
@@ -492,9 +492,8 @@ function showOffice() {
                 <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
                 <span id="offStatus"></span>
             </div>`;
+            
+            contain.innerHTML = htmlChange;
         }
     });
-    
-console.log(htmlChange);
-contain.innerHTML = htmlChange;
 }
