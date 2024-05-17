@@ -430,7 +430,7 @@ function showOffice() {
         console.log(data);
         if (data.hasOffices) {
             data.offices.forEach(office => {
-                htmlChange += `<tr id="office-${office.agentofficeid}">
+                htmlChange += `\n<tr id="office-${office.agentofficeid}">
                 <td>${office.officeName}</td>
                 <td>${office.officeLicenseNumber}</td>
                 <td>${office.officeLicenseState}</td>
@@ -442,7 +442,7 @@ function showOffice() {
                 <td>
                     <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
                 </td>
-            </tr>`
+            </tr>\n`
             console.log(htmlChange);
             });
         } else {
