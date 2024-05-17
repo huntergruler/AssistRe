@@ -210,8 +210,8 @@ form button:hover {
     max-height: 300px;
 }
 
-.grid-action{
-    align-items: center;
+#overSelect {
+    -ms-grid-col-span: 3;
 }
 
 #availabeZipCodesContainer {
