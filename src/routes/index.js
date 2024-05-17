@@ -106,7 +106,6 @@ router.post('/register', (req, res) => {
         db.query(query,[ userid ], (err, officeresults) => {
             if (err) throw err;
             let hasOffices = officeresults.length > 0;
-            req.sessions.hasOffices = hasOffices;
             const query = `SELECT agenttransactionid, transactionDate, transactionAmount, propertytype, levelofservice, compensationtype
                              FROM AgentTransactionHistory_v h 
                             WHERE userid = ?`; 
