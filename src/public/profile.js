@@ -347,7 +347,7 @@ function populateZipCodes() {
 
 function populateUserZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const ownedZipCodes = document.getElementById("ownedZipCodes");
+    const ownedZipCodes = document.getElementById("ownerZipCodes");
     let htmlCodes = '';
     fetch(`/get-userzipcodes`)
     .then(response => response.json())
