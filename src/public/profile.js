@@ -449,13 +449,13 @@ function showOffice() {
                 <tbody>
                     <tr id="office-${office.agentofficeid}">
                         <td>${office.officeName}</td>
-                        <td>${office.officeLicenseNumber}</td>
-                        <td>${office.officeLicenseState}</td>
-                        <td>${office.address}</td>
-                        <td>${office.city}</td>
-                        <td>${office.state}</td>
-                        <td>${office.zip}</td>
-                        <td>${office.phoneNumber}</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
                         <td>
                             <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
                         </td>
