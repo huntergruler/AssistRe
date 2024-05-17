@@ -359,7 +359,7 @@ router.get('/get-zipcodes', (req, res) => {
           return res.status(500).json({error: 'Internal server error'});
       }
       if (results.length > 0) {
-          res.json({ results });
+          res.json({ results, stateSelect, citySelect });
       } else {
           res.status(404).json({error: 'No zips found for this state'});
       }
