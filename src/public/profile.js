@@ -427,6 +427,7 @@ function showOffice() {
     fetch('/api/profile')
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (data.hasOffices) {
             data.offices.forEach(office => {
                 htmlChange += `<tr id="office-${office.agentofficeid}">
