@@ -390,7 +390,7 @@ function populateMonths() {
     ];
     months.forEach((month, index) => {
         let option = new Option(month, index + 1);
-        monthSelect.appendChild(option);
+        //monthSelect.appendChild(option);
     });
 };
 
