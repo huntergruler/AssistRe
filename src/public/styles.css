@@ -73,7 +73,6 @@ body {
 #profileContainer{
     grid-column: 2;
     grid-row: 2;
-    margin-top: 100px;
 }
   
 #profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
