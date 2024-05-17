@@ -59,8 +59,13 @@ body {
     cursor: pointer;
 }
 
+#overviewButton:hover, #officeButton:hover, #licenseButton:hover, #zipCodeButton:hover, #transactionButton:hover, #bioButton:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 #overviewButton{
     grid-column: 1;
+    background-color: #007BFF;
 }
 
 #officeButton{
