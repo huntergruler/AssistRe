@@ -1,5 +1,3 @@
-let zipCodes = [1];
-
 function addTransaction() {
     const transactionDate = document.getElementById('transactionDate').value;
     const transactionAmount = document.getElementById('transactionAmount').value;
@@ -366,8 +364,6 @@ function populateUserZipCodes() {
               this.classList.toggle("selected");
             };
             selectedZipCodesContainer.appendChild(div);
-            htmlCodes += `<p>${code.zipCode}</p><br>`;
-            //ownedZipCodes.appendChild(div);
             htmlCodes += `<p>${code.zipCode}</p><br>`;
           });
           console.log(htmlCodes);
