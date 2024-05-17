@@ -190,11 +190,11 @@ function zipUpdate() {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
+    populateUserZipCodes();
     populateMonths();
     populateYears();
     updateDays();
     populateStates();
-    populateUserZipCodes();
 });
 
 function getSelectedZipCodes() {
