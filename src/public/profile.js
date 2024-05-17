@@ -569,3 +569,54 @@ function showZipCodes(){
 function showOverview(){
     location.reload(); 
 }
+
+function showTransactions(){
+    const contain = document.getElementById('profileContainer');
+    let htmlChange = `<p><h1>Current Transaction(s)</h1></p>
+    <table id="transactionTable">
+        <thead>
+            <tr>
+                <th>Transaction Date</th>
+                <th>Transaction Amount</th>
+                <th>Transaction Property Type</th>
+                <th>Transaction Level Of Service</th>
+                <th>Transaction Compensation Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>`;
+
+    fetch('/api/profile')
+        .then(response => response.json())
+        .then(data => {
+            if(data.hasTransactions){
+                data.transactions.forEach(function(transaction){
+                    htmlChange += `<tr id="transaction-${transaction.agenttransactionid}">
+                    <td>${transaction.transactionDate}</td>
+                    <td>${transaction.transactionAmount}</td>
+                    <td>${transaction.PropertyType}</td>
+                    <td>${transaction.LevelOfService}</td>
+                    <td>${transaction.CompensationType}</td>
+                    <td>
+                        <button type="button" onclick="deleteTransaction(${transaction.agenttransactionid})">Delete</button>
+                    </td>
+                    </tr>`;
+                });
+            } else {
+                htmlChange += `<tr>
+                <td colspan="4">No transactions found.</td>
+                </tr>`;
+            }
+            htmlChange += `</tbody>
+    </table>
+    <form id="transactionForm">
+        <input type="date" id="transactionDate" name="transactionDate" placeholder="Transaction Date" required>
+        <input type="number" id="transactionAmount" name="transactionAmount" placeholder="Transaction Amount" required>
+        <input type="text" id="PropertyType" name="PropertyType" placeholder="Transaction Property Type" required>
+        <input type="text" id="LevelOfService" name="LevelOfService" placeholder="Transaction Level Of Service" required>
+        <input type="text" id="CompensationType" name="CompensationType" placeholder="Transaction Compensation Type" required>
+        <button type="button" id="transactionAdd" onclick="addTransaction()">Add</button>
+    </form>`;
+            contain.innerHTML = htmlChange;
+        });
+}
