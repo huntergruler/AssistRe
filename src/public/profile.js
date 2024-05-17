@@ -446,19 +446,21 @@ function showOffice() {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody><tr id="office-${office.agentofficeid}">
-                <td>${office.officeName}</td>
-                <td>${office.officeLicenseNumber}</td>
-                <td>${office.officeLicenseState}</td>
-                <td>${office.address}</td>
-                <td>${office.city}</td>
-                <td>${office.state}</td>
-                <td>${office.zip}</td>
-                <td>${office.phoneNumber}</td>
-                <td>
-                    <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
-                </td>
-            </tr></tbody>
+                <tbody>
+                    <tr id="office-${office.agentofficeid}">
+                        <td>${office.officeName}</td>
+                        <td>${office.officeLicenseNumber}</td>
+                        <td>${office.officeLicenseState}</td>
+                        <td>${office.address}</td>
+                        <td>${office.city}</td>
+                        <td>${office.state}</td>
+                        <td>${office.zip}</td>
+                        <td>${office.phoneNumber}</td>
+                        <td>
+                            <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <form id="officeForm">
                 <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
