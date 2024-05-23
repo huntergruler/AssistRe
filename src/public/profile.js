@@ -502,10 +502,11 @@ function showOffice() {
         modal.style.display = "none";
     }
     }
+    console.log(table.innerHTML);
     fetch('/api/profile')
     .then(response => response.json())
     .then(data => {
-        console.log(table.innerHTML);
+        
         if (data.hasOffices) {
             data.offices.forEach(office => {
                 htmlChange += `<tr id="office-${office.agentofficeid}">
