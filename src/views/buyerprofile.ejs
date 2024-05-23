@@ -1,127 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buyer Information Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        form {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input[type="text"], input[type="email"], input[type="number"], select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-        }
-        input[type="checkbox"] {
-            margin-right: 10px;
-        }
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .checkbox-group label {
-            flex: 1 0 30%;
-            margin-top: 0;
-        }
-        .hidden {
-            display: none;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-        }
-    </style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Buyer Profile</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            form {
+                background: #fff;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 600px;
+                width: 100%;
+            }
+            h2 {
+                margin-bottom: 20px;
+                color: #333;
+                text-align: center;
+            }
+            label {
+                display: block;
+                margin-top: 10px;
+                color: #666;
+            }
+            input[type="text"], input[type="email"], input[type="number"], select, input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            input[type="checkbox"], input[type="radio"] {
+                margin-right: 10px;
+            }
+            .checkbox-group {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .checkbox-group label {
+                flex: 1 0 45%;
+                margin-top: 0;
+            }
+            .hidden {
+                display: none;
+            }
+            button {
+                display: block;
+                width: 100%;
+                padding: 15px;
+                border: none;
+                border-radius: 5px;
+                background-color: #28a745;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                margin-top: 20px;
+            }
+            button:hover {
+                background-color: #218838;
+            }
+        </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="header.css">
+    <title>Buyer Profile</title>
 </head>
+    <h1 id="title"><a href="/">SeekingAgents</a></h1>
+    <nav id="navlinks">
+        <p id="navname"><%= firstname %> <%= lastname %></p>
+        <p>|</p>
+        <a href="/dashboard">Dashboard</a>
+        <p>|</p>
+        <a href="/profile">Profile</a>
+        <p>|</p>
+        <a href="/settings">Settings</a>
+        <p>|</p>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
 <body>
-
-<form id="buyerForm" enctype="multipart/form-data">
-    <h2>Buyer Information Form</h2>
+    <form id="buyerForm" enctype="multipart/form-data">
+        <h2>Buyer Information Form</h2>
+        
+        <label for="buyerType">Buyer Type (at least one must be selected)</label>
+        <div class="checkbox-group" id="buyerTypeCheckboxes">
+            <label><input type="checkbox" name="buyerType" value="First Time Homebuyer"> First Time Homebuyer</label>
+            <label><input type="checkbox" name="buyerType" value="Investor"> Investor</label>
+            <label><input type="checkbox" name="buyerType" value="Contingency Required"> Contingency Required</label>
+            <label><input type="checkbox" name="buyerType" value="Current Home Listed"> Current Home Listed</label>
+            <label><input type="checkbox" name="buyerType" value="VA"> VA</label>
+            <label><input type="checkbox" name="buyerType" value="FHA"> FHA</label>
+        </div>
     
-    <label for="buyerType">Buyer Type (at least one must be selected)</label>
-    <div class="checkbox-group" id="buyerTypeCheckboxes">
-        <label><input type="checkbox" name="buyerType" value="First Time Homebuyer"> First Time Homebuyer</label>
-        <label><input type="checkbox" name="buyerType" value="Investor"> Investor</label>
-        <label><input type="checkbox" name="buyerType" value="Contingency Required"> Contingency Required</label>
-        <label><input type="checkbox" name="buyerType" value="Current Home Listed"> Current Home Listed</label>
-        <label><input type="checkbox" name="buyerType" value="VA"> VA</label>
-        <label><input type="checkbox" name="buyerType" value="FHA"> FHA</label>
-    </div>
-
-    <label for="firstName">First Name</label>
-    <input type="text" id="firstName" name="firstName" required>
-
-    <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" name="lastName" required>
-
-    <label for="address">Address</label>
-    <input type="text" id="address" name="address" required>
-
-    <label for="city">City</label>
-    <input type="text" id="city" name="city" required>
-
-    <label for="state">State</label>
-    <input type="text" id="state" name="state" required maxlength="2">
-
-    <label for="zip">Zip</label>
-    <input type="text" id="zip" name="zip" required maxlength="5">
-
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="phoneNumber">Phone Number</label>
-    <input type="text" id="phoneNumber" name="phoneNumber" required>
-
-    <label for="propertyType">Property Type</label>
-    <input type="text" id="propertyType" name="propertyType" required>
-
-    <label for="bedrooms">Bedrooms</label>
-    <input type="number" id="bedrooms" name="bedrooms" required>
-
-    <label for="bathrooms">Bathrooms</label>
-    <input type="number" id="bathrooms" name="bathrooms" required>
-
-    <label for="squareFootage">Square Footage</label>
-    <input type="number" id="squareFootage" name="squareFootage" required>
-
-    <label for="priceRange">Price Range</label>
-    <input type="number" id="priceRange" name="priceRange" required>
-
-    <label for="timeFrame">Time Frame</label>
-    <input type="text" id="timeFrame" name="timeFrame" required>
-
-    <label for="prequalified">Prequalified</label>
-    <input type="radio" name="prequalified" value="1" onclick="showUpload()"> Yes
-    <input type="radio" name="prequalified" value="0" onclick="hideUpload()"> No
-
-    <div id="uploadSection" class="hidden">
-        <label for="prequalifiedFile">Upload Prequalification Document</label>
-        <input type="file" id="prequalifiedFile" name="prequalifiedFile">
-    </div>
-
-    <label for="preferredLanguages">Preferred Languages</label>
-    <input type="text" id="preferredLanguages" name="preferredLanguages">
-
-    <label for="userPhoto">Upload User Photo</label>
-    <input type="file" id="userPhoto" name="userPhoto" required>
-
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-
-    <button type="submit">Submit</button>
-</form>
-<script src="/buyerprofile.js"></script>
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" required>
+    
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" required>
+    
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" required>
+    
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" required>
+    
+        <label for="state">State</label>
+        <input type="text" id="state" name="state" required maxlength="2">
+    
+        <label for="zip">Zip</label>
+        <input type="text" id="zip" name="zip" required maxlength="5">
+    
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+    
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+    
+        <label for="propertyType">Property Type</label>
+        <input type="text" id="propertyType" name="propertyType" required>
+    
+        <label for="bedrooms">Bedrooms</label>
+        <input type="number" id="bedrooms" name="bedrooms" required>
+    
+        <label for="bathrooms">Bathrooms</label>
+        <input type="number" id="bathrooms" name="bathrooms" required>
+    
+        <label for="squareFootage">Square Footage</label>
+        <input type="number" id="squareFootage" name="squareFootage" required>
+    
+        <label for="priceRange">Price Range</label>
+        <input type="number" id="priceRange" name="priceRange" required>
+    
+        <label for="timeFrame">Time Frame</label>
+        <input type="text" id="timeFrame" name="timeFrame" required>
+    
+        <label for="prequalified">Prequalified</label>
+        <div>
+            <input type="radio" name="prequalified" value="1" onclick="document.getElementById('uploadSection').style.display='block'"> Yes
+            <input type="radio" name="prequalified" value="0" onclick="document.getElementById('uploadSection').style.display='none'"> No
+        </div>
+    
+        <div id="uploadSection" class="hidden">
+            <label for="prequalifiedFile">Upload Prequalification Document</label>
+            <input type="file" id="prequalifiedFile" name="prequalifiedFile">
+        </div>
+    
+        <label for="preferredLanguages">Preferred Languages</label>
+        <input type="text" id="preferredLanguages" name="preferredLanguages">
+    
+        <label for="userPhoto">Upload User Photo</label>
+        <input type="file" id="userPhoto" name="userPhoto" required>
+    
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+    
+        <button type="submit">Submit</button>
+    </form>
+    <script src="/buyerprofile.js"></script>
 </body>
 </html>
