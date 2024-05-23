@@ -350,9 +350,12 @@ function populateUserZipCodes() {
     fetch(`/get-userzipcodes`)
     .then(response => response.json())
     .then(data => {
-        console.log(data.results);
+        console.log(data);
+        if(data.error){
+            console.log('Error:', data.error);
+        }
         selectedZipCodesContainer.innerHTML = '';
-        if (data.results.length === 0) {
+        if (data.error === 0) {
             const div = document.createElement("div");
             div.textContent = 'No zip codes selected';
             selectedZipCodesContainer.appendChild(div);
