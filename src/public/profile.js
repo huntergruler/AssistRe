@@ -395,7 +395,7 @@ function populateModals() {
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody>`;
+    <tbody id="officeModalTable>`;
     fetch('/api/profile')
     .then(response => response.json())
     .then(data => {
@@ -479,7 +479,7 @@ function updateDays() {
 };
 
 function showOffice() {
-    
+    var table = document.getElementById("officeModalTable");
     var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -502,6 +502,29 @@ function showOffice() {
         modal.style.display = "none";
     }
     }
+    fetch('/api/profile')
+    .then(response => response.json())
+    .then(data => {
+        console.log(table.innerHTML);
+        if (data.hasOffices) {
+            data.offices.forEach(office => {
+                htmlChange += `<tr id="office-${office.agentofficeid}">
+                    <td>${office.officeName}</td>
+                    <td>${office.officeLicenseNumber}</td>
+                    <td>${office.officeLicenseState}</td>
+                    <td>${office.address}</td>
+                    <td>${office.city}</td>
+                    <td>${office.state}</td>
+                    <td>${office.zip}</td>
+                    <td>${office.phoneNumber}</td>
+                    <td>
+                        <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
+                    </td>
+                </tr>`;
+            });
+            table.innerHTML = htmlChange;
+        }
+        });
 
     const overButton = document.getElementById('overviewButton');
     const officeButton = document.getElementById('officeButton');
