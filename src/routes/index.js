@@ -6,6 +6,9 @@ const app = express();
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const cookierParser = require('cookie-parser');
+const multer = require('multer');
+const path = require('path');
+const mysql = require('mysql');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
@@ -15,8 +18,10 @@ const bodyParser = require('body-parser');
 
 // Ensure you have body-parser configured to parse JSON
 router.use(bodyParser.json());
+router.use(express.static(path.join(__dirname, 'public')));
 router.use(express.json());
 router.use(cookierParser());
+const upload = multer({ dest: 'uploads/' });
 
 // Database connection setup
 const db = mysql.createConnection({
@@ -528,6 +533,31 @@ router.post('/sendreset', (req, res) => {
       console.log('Reset email sent:', info.response);
       res.send('Reset email sent');
     });
+  });
+});
+
+router.post('/buyersubmit', upload.fields([{ name: 'prequalifiedFile' }, { name: 'userPhoto' }]), (req, res) => {
+  const {
+      buyerType, firstName, lastName, address, city, state, zip, email,
+      phoneNumber, propertyType, bedrooms, bathrooms, squareFootage,
+      priceRange, timeFrame, prequalified, preferredLanguages, password
+  } = req.body;
+
+  const prequalifiedFile = req.files['prequalifiedFile'] ? req.files['prequalifiedFile'][0].path : null;
+  const userPhoto = req.files['userPhoto'][0].path;
+
+  const hashedPassword = bcrypt.hashSync(password, 10);
+
+  const sql = `INSERT INTO Buyers (buyerType, firstName, lastName, address, city, state, zip, email, phoneNumber, propertyType, bedrooms, bathrooms, squareFootage, priceRange, timeFrame, prequalified, prequalified_file_location, emailverified, userPhoto, preferredLanguages, password)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?)`;
+
+  db.query(sql, [buyerType, firstName, lastName, address, city, state, zip, email, phoneNumber, propertyType, bedrooms, bathrooms, squareFootage, priceRange, timeFrame, prequalified, prequalifiedFile, userPhoto, preferredLanguages, hashedPassword], (err, result) => {
+      if (err) {
+          console.error(err);
+          res.json({ success: false, error: err });
+      } else {
+          res.json({ success: true });
+      }
   });
 });
 
