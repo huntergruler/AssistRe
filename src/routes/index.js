@@ -9,7 +9,6 @@ const cookierParser = require('cookie-parser');
 const multer = require('multer');
 const path = require('path');
 const mysql = require('mysql');
-const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const { body, validationResult } = require('express-validator');
