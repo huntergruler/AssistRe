@@ -351,11 +351,9 @@ function populateUserZipCodes() {
     .then(response => response.json())
     .then(data => {
         console.log(data.error);
-        if(data.error){
-            console.log('Error:', data.error);
-        }
         selectedZipCodesContainer.innerHTML = '';
-        if (data.error === 0) {
+        if (data.error) {
+            console.log('Error:', data.error);
             const div = document.createElement("div");
             div.textContent = 'No zip codes selected';
             selectedZipCodesContainer.appendChild(div);
