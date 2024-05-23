@@ -415,7 +415,7 @@ function updateDays() {
 };
 
 function showOffice() {
-    const contain = document.getElementById('profileContainer');
+    const contain = document.getElementById('officeContent');
     var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -438,7 +438,7 @@ function showOffice() {
         modal.style.display = "none";
     }
     }
-    /*
+    
     let htmlChange = `<div id="officeContainer">
     <p><h1>Current Office(s)</h1></p>
 <table id="officeTable">
@@ -496,7 +496,7 @@ function showOffice() {
             <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
             <span id="offStatus"></span>
         </div>`;
-        //contain.innerHTML = htmlChange;
+        contain.innerHTML = htmlChange;
     });
 
     const overButton = document.getElementById('overviewButton');
@@ -517,7 +517,7 @@ function showOffice() {
     transButton.classList.remove('selectedStyle');
     transButton.classList.add('hoverStyle');
     bioButton.classList.remove('selectedStyle');
-    bioButton.classList.add('hoverStyle');*/
+    bioButton.classList.add('hoverStyle');
 }
 
 function showLicense() {
