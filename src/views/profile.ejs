@@ -24,7 +24,7 @@
     <h1>Profile for <%= firstname %> <%= lastname %></h1>
     <div id="profileNav">
         <button type="button" class="selectedStyle" id="overviewButton" onclick="showOverview()">Overview</button>
-        <button type="button" class="hoverStyle" id="officeButton" onclick="showOffice()">Office</button>
+        <!--<button type="button" class="hoverStyle" id="officeButton" onclick="showOffice()">Office</button>-->
         <button type="button" class="hoverStyle" id="licenseButton" onclick="showLicense()">License</button>
         <button type="button" class="hoverStyle" id="zipCodeButton" onclick="showZipCodes()">Zip Codes</button>
         <button type="button" class="hoverStyle" id="transactionButton" onclick="showTransactions()">Transactions</button>
@@ -67,6 +67,7 @@
                 <% } %>
             </tbody>
         </table>
+        <button type="button" class="hoverStyle" id="officeButton" onclick="showOffice()">Office</button>
         
     </div>
     <div id="licenseContainer">
