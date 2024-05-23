@@ -356,6 +356,7 @@ function populateUserZipCodes() {
             const div = document.createElement("div");
             div.textContent = 'No zip codes selected';
             selectedZipCodesContainer.appendChild(div);
+            htmlCodes += `<p>No Zip Codes</p><br>`;
           }
         data.results.forEach(code => {
             const div = document.createElement("div");

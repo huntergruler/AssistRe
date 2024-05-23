@@ -359,7 +359,7 @@ router.get('/get-zipcodes', (req, res) => {
           return res.status(500).json({error: 'Internal server error'});
       }
       if (results.length > 0) {
-          res.json({ results, stateSelect, citySelect });
+          res.json({ results });
       } else {
           res.status(404).json({error: 'No zips found for this state'});
       }
@@ -424,12 +424,13 @@ router.get('/get-userzipcodes', (req, res) => {
   const query = 'SELECT zipCode FROM UserZipCodes WHERE userid = ? order by zipCode';
   db.query(query, [userid], (error, results) => {
       if (error) {
-          return res.status(500).json({error: 'Internal server error'});
+        return res.status(500).json({error: 'Internal server error'});
       }
       if (results.length > 0) {
-          res.json({ results });
+        res.json({ results });
       } else {
-          res.status(404).json({error: 'No zips found for this state'});
+        res.json({ results });
+        res.status(404).json({error: 'No zips found for this state'});
       }
   });
 });
