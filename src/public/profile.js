@@ -75,6 +75,7 @@ function deleteOffice(id) {
         document.getElementById(`office-${id}`).remove();
     })
     .catch(error => console.error('Error:', error));
+    populateModals();
 };
 
 function addLicense() {
