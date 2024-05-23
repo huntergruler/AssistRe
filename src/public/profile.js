@@ -359,16 +359,18 @@ function populateUserZipCodes() {
             selectedZipCodesContainer.appendChild(div);
             htmlCodes += `<p>No Zip Codes</p><br>`;
           }
-        data.results.forEach(code => {
-            const div = document.createElement("div");
-            div.textContent = code.zipCode;
-            div.className = "zipCodeSelected";
-            div.onclick = function() {
-              this.classList.toggle("selected");
-            };
-            selectedZipCodesContainer.appendChild(div);
-            htmlCodes += `<p>${code.zipCode}</p><br>`;
-          });
+        else{
+            data.results.forEach(code => {
+                const div = document.createElement("div");
+                div.textContent = code.zipCode;
+                div.className = "zipCodeSelected";
+                div.onclick = function() {
+                this.classList.toggle("selected");
+                };
+                selectedZipCodesContainer.appendChild(div);
+                htmlCodes += `<p>${code.zipCode}</p><br>`;
+            });
+        }
         ownedZipCodes.innerHTML = htmlCodes;
     })
     .catch(error => console.error('Error checking user:', error));
