@@ -6,8 +6,14 @@
     <title>Buyer Information Form</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        .form-control {
+        .form-control-short {
+            max-width: 100px; /* Adjust this value as needed */
+        }
+        .form-control-medium {
             max-width: 200px; /* Adjust this value as needed */
+        }
+        .form-control-long {
+            max-width: 600px; /* Adjust this value as needed */
         }
     </style>
 </head>
@@ -48,72 +54,72 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" required maxlength="30">
+                <input type="text" class="form-control form-control-medium" id="firstName" name="firstName" required maxlength="30">
             </div>
             <div class="form-group col-md-6">
                 <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" required maxlength="30">
+                <input type="text" class="form-control form-control-medium" id="lastName" name="lastName" required maxlength="30">
             </div>
         </div>
 
         <div class="form-group">
             <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" name="address" required>
+            <input type="text" class="form-control form-control-long" id="address" name="address" required>
         </div>
 
-        <div class="form-group">
-            <label for="city">City</label>
-            <input type="text" class="form-control" id="city" name="city" required>
-        </div>
-
-        <div class="form-group">
-            <label for="state">State</label>
-            <input type="text" class="form-control" id="state" name="state" required maxlength="2">
-        </div>
-
-        <div class="form-group">
-            <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" name="zip" required maxlength="5">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="city">City</label>
+                <input type="text" class="form-control form-control-medium" id="city" name="city" required>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="state">State</label>
+                <input type="text" class="form-control form-control-short" id="state" name="state" required maxlength="2">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="zip">Zip</label>
+                <input type="text" class="form-control form-control-medium" id="zip" name="zip" required maxlength="5">
+            </div>
         </div>
 
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control form-control-medium" id="email" name="email" required>
         </div>
 
         <div class="form-group">
             <label for="phoneNumber">Phone Number</label>
-            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
+            <input type="text" class="form-control form-control-medium" id="phoneNumber" name="phoneNumber" required>
         </div>
 
         <div class="form-group">
             <label for="propertyType">Property Type</label>
-            <input type="text" class="form-control" id="propertyType" name="propertyType" required>
+            <input type="text" class="form-control form-control-medium" id="propertyType" name="propertyType" required>
         </div>
 
         <div class="form-group">
             <label for="bedrooms">Bedrooms</label>
-            <input type="number" class="form-control" id="bedrooms" name="bedrooms" required>
+            <input type="number" class="form-control form-control-short" id="bedrooms" name="bedrooms" required>
         </div>
 
         <div class="form-group">
             <label for="bathrooms">Bathrooms</label>
-            <input type="number" class="form-control" id="bathrooms" name="bathrooms" required>
+            <input type="number" class="form-control form-control-short" id="bathrooms" name="bathrooms" required>
         </div>
 
         <div class="form-group">
             <label for="squareFootage">Square Footage</label>
-            <input type="number" class="form-control" id="squareFootage" name="squareFootage" required>
+            <input type="number" class="form-control form-control-medium" id="squareFootage" name="squareFootage" required>
         </div>
 
         <div class="form-group">
             <label for="priceRange">Price Range</label>
-            <input type="number" class="form-control" id="priceRange" name="priceRange" required>
+            <input type="number" class="form-control form-control-medium" id="priceRange" name="priceRange" required>
         </div>
 
         <div class="form-group">
             <label for="timeFrame">Time Frame</label>
-            <input type="text" class="form-control" id="timeFrame" name="timeFrame" required>
+            <input type="text" class="form-control form-control-medium" id="timeFrame" name="timeFrame" required>
         </div>
 
         <div class="form-group">
@@ -135,7 +141,7 @@
 
         <div class="form-group">
             <label for="preferredLanguages">Preferred Languages</label>
-            <input type="text" class="form-control" id="preferredLanguages" name="preferredLanguages">
+            <input type="text" class="form-control form-control-medium" id="preferredLanguages" name="preferredLanguages">
         </div>
 
         <div class="form-group">
@@ -145,7 +151,7 @@
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <input type="password" class="form-control form-control-medium" id="password" name="password" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
