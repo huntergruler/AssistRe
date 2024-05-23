@@ -438,6 +438,7 @@ function showOffice() {
         modal.style.display = "none";
     }
     }
+    /*
     let htmlChange = `<div id="officeContainer">
     <p><h1>Current Office(s)</h1></p>
 <table id="officeTable">
@@ -516,7 +517,7 @@ function showOffice() {
     transButton.classList.remove('selectedStyle');
     transButton.classList.add('hoverStyle');
     bioButton.classList.remove('selectedStyle');
-    bioButton.classList.add('hoverStyle');
+    bioButton.classList.add('hoverStyle');*/
 }
 
 function showLicense() {
