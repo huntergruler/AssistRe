@@ -4,142 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buyer Information Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        form {
-            max-width: 600px;
-            margin: auto;
-            padding: 100px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input[type="text"], input[type="email"], input[type="number"], select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-        }
-        input[type="checkbox"] {
-            margin-right: 10px;
-        }
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .checkbox-group label {
-            flex: 1 0 30%;
-            margin-top: 0;
-        }
-        .hidden {
-            display: none;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-        }
-    </style>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file -->
-    <link rel="stylesheet" href="header.css">
-    <title>Buyer Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<header>
-    <h1 id="title"><a href="/">SeekingAgents</a></h1>
-    <nav id="navlinks">
-        <p id="navname"><%= firstname %> <%= lastname %></p>
-        <p>|</p>
-        <a href="/dashboard">Dashboard</a>
-        <p>|</p>
-        <a href="/profile">Profile</a>
-        <p>|</p>
-        <a href="/settings">Settings</a>
-        <p>|</p>
-        <a href="/logout">Logout</a>
-    </nav>
-</header>
-
 <body>
 
-<form id="buyerForm" enctype="multipart/form-data">
-    <h2>Buyer Information Form</h2>
-    
-    <label for="buyerType">Buyer Type (at least one must be selected)</label>
-    <div class="checkbox-group" id="buyerTypeCheckboxes">
-        <label><input type="checkbox" name="buyerType" value="First Time Homebuyer"> First Time Homebuyer</label>
-        <label><input type="checkbox" name="buyerType" value="Investor"> Investor</label>
-        <label><input type="checkbox" name="buyerType" value="Contingency Required"> Contingency Required</label>
-        <label><input type="checkbox" name="buyerType" value="Current Home Listed"> Current Home Listed</label>
-        <label><input type="checkbox" name="buyerType" value="VA"> VA</label>
-        <label><input type="checkbox" name="buyerType" value="FHA"> FHA</label>
-    </div>
+<div class="container mt-5">
+    <form id="buyerForm" enctype="multipart/form-data">
+        <h2 class="mb-4">Buyer Information Form</h2>
 
-    <label for="firstName">First Name</label>
-    <input type="text" id="firstName" name="firstName" required>
+        <div class="form-group">
+            <label for="buyerType">Buyer Type (at least one must be selected)</label>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="buyerType" value="First Time Homebuyer">
+                <label class="form-check-label">First Time Homebuyer</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="buyerType" value="Investor">
+                <label class="form-check-label">Investor</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="buyerType" value="Contingency Required">
+                <label class="form-check-label">Contingency Required</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="buyerType" value="Current Home Listed">
+                <label class="form-check-label">Current Home Listed</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="buyerType" value="VA">
+                <label class="form-check-label">VA</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="buyerType" value="FHA">
+                <label class="form-check-label">FHA</label>
+            </div>
+        </div>
 
-    <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" name="lastName" required>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" required>
+        </div>
 
-    <label for="address">Address</label>
-    <input type="text" id="address" name="address" required>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" required>
+        </div>
 
-    <label for="city">City</label>
-    <input type="text" id="city" name="city" required>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+        </div>
 
-    <label for="state">State</label>
-    <input type="text" id="state" name="state" required maxlength="2">
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+        </div>
 
-    <label for="zip">Zip</label>
-    <input type="text" id="zip" name="zip" required maxlength="5">
+        <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" class="form-control" id="state" name="state" required maxlength="2">
+        </div>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
+        <div class="form-group">
+            <label for="zip">Zip</label>
+            <input type="text" class="form-control" id="zip" name="zip" required maxlength="5">
+        </div>
 
-    <label for="phoneNumber">Phone Number</label>
-    <input type="text" id="phoneNumber" name="phoneNumber" required>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
 
-    <label for="propertyType">Property Type</label>
-    <input type="text" id="propertyType" name="propertyType" required>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required>
+        </div>
 
-    <label for="bedrooms">Bedrooms</label>
-    <input type="number" id="bedrooms" name="bedrooms" required>
+        <div class="form-group">
+            <label for="propertyType">Property Type</label>
+            <input type="text" class="form-control" id="propertyType" name="propertyType" required>
+        </div>
 
-    <label for="bathrooms">Bathrooms</label>
-    <input type="number" id="bathrooms" name="bathrooms" required>
+        <div class="form-group">
+            <label for="bedrooms">Bedrooms</label>
+            <input type="number" class="form-control" id="bedrooms" name="bedrooms" required>
+        </div>
 
-    <label for="squareFootage">Square Footage</label>
-    <input type="number" id="squareFootage" name="squareFootage" required>
+        <div class="form-group">
+            <label for="bathrooms">Bathrooms</label>
+            <input type="number" class="form-control" id="bathrooms" name="bathrooms" required>
+        </div>
 
-    <label for="priceRange">Price Range</label>
-    <input type="number" id="priceRange" name="priceRange" required>
+        <div class="form-group">
+            <label for="squareFootage">Square Footage</label>
+            <input type="number" class="form-control" id="squareFootage" name="squareFootage" required>
+        </div>
 
-    <label for="timeFrame">Time Frame</label>
-    <input type="text" id="timeFrame" name="timeFrame" required>
+        <div class="form-group">
+            <label for="priceRange">Price Range</label>
+            <input type="number" class="form-control" id="priceRange" name="priceRange" required>
+        </div>
 
-    <label for="prequalified">Prequalified</label>
-    <input type="radio" name="prequalified" value="1" onclick="showUpload()"> Yes
-    <input type="radio" name="prequalified" value="0" onclick="hideUpload()"> No
+        <div class="form-group">
+            <label for="timeFrame">Time Frame</label>
+            <input type="text" class="form-control" id="timeFrame" name="timeFrame" required>
+        </div>
 
-    <div id="uploadSection" class="hidden">
-        <label for="prequalifiedFile">Upload Prequalification Document</label>
-        <input type="file" id="prequalifiedFile" name="prequalifiedFile">
-    </div>
+        <div class="form-group">
+            <label for="prequalified">Prequalified</label>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" name="prequalified" value="1" onclick="showUpload()"> Yes
+                <label class="form-check-label">Yes</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" name="prequalified" value="0" onclick="hideUpload()"> No
+                <label class="form-check-label">No</label>
+            </div>
+        </div>
 
-    <label for="preferredLanguages">Preferred Languages</label>
-    <input type="text" id="preferredLanguages" name="preferredLanguages">
+        <div id="uploadSection" class="form-group hidden">
+            <label for="prequalifiedFile">Upload Prequalification Document</label>
+            <input type="file" class="form-control-file" id="prequalifiedFile" name="prequalifiedFile">
+        </div>
 
-    <label for="userPhoto">Upload User Photo</label>
-    <input type="file" id="userPhoto" name="userPhoto" required>
+        <div class="form-group">
+            <label for="preferredLanguages">Preferred Languages</label>
+            <input type="text" class="form-control" id="preferredLanguages" name="preferredLanguages">
+        </div>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
+        <div class="form-group">
+            <label for="userPhoto">Upload User Photo</label>
+            <input type="file" class="form-control-file" id="userPhoto" name="userPhoto" required>
+        </div>
 
-    <button type="submit">Submit</button>
-</form>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
 <script src="/buyerprofile.js"></script>
 </body>
 </html>
