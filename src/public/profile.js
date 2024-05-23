@@ -62,7 +62,6 @@ function addOffice() {
         newRow.insertCell(5).textContent = phoneNumber;
         newRow.insertCell(6).textContent = officeLicenseNumber;
         newRow.insertCell(7).textContent = officeLicenseState;
-        newRow.insertCell(8).innerHTML = '<button onclick="deleteOffice(' + data.officeid + ')">Delete</button>';
         document.getElementById('officeForm').reset();
     })
 };
@@ -76,6 +75,7 @@ function deleteOffice(id) {
         document.getElementById(`office-${id}`).remove();
     })
     .catch(error => console.error('Error:', error));
+    populateModals();
 };
 
 function addLicense() {
@@ -433,11 +433,12 @@ function populateModals() {
             <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
             <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
             <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-            <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
+            <button type="button" id="officeAdd">Add</button>
             <span id="offStatus"></span>
         </div>`;
         contain.innerHTML = htmlChange;
     });
+    
 }
 
 function populateMonths() {
@@ -479,7 +480,6 @@ function updateDays() {
 };
 
 function showOffice() {
-    var table = document.getElementById("officeModalTable");
     var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -487,13 +487,19 @@ function showOffice() {
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
+    var add = document.getElementById("officeAdd");
 
     // When the user clicks on the button, open the modal
     modal.style.display = "block";
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
-    modal.style.display = "none";
+        modal.style.display = "none";
+    }
+    add.onclick = function() {
+        addOffice();
+        populateModals();
+        modal.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
@@ -502,7 +508,6 @@ function showOffice() {
         modal.style.display = "none";
     }
     }
-    console.log(table.innerHTML);
     fetch('/api/profile')
     .then(response => response.json())
     .then(data => {
@@ -523,7 +528,6 @@ function showOffice() {
                     </td>
                 </tr>`;
             });
-            table.innerHTML = htmlChange;
         }
         });
 
