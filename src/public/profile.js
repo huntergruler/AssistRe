@@ -495,7 +495,7 @@ function showOffice() {
             <button type="button" id="transactionAdd" onclick="addOffice()">Add</button>
             <span id="offStatus"></span>
         </div>`;
-        contain.innerHTML = htmlChange;
+        //contain.innerHTML = htmlChange;
     });
 
     const overButton = document.getElementById('overviewButton');
