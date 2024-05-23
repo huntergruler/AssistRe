@@ -50,14 +50,14 @@
 <form id="buyerForm" enctype="multipart/form-data">
     <h2>Buyer Information Form</h2>
     
-    <label for="buyerType">Buyer Type</label>
-    <div class="checkbox-group">
-        <label><input type="radio" name="buyerType" value="First Time Homebuyer" required> First Time Homebuyer</label>
-        <label><input type="radio" name="buyerType" value="Investor"> Investor</label>
-        <label><input type="radio" name="buyerType" value="Contingency Required"> Contingency Required</label>
-        <label><input type="radio" name="buyerType" value="Current Home Listed"> Current Home Listed</label>
-        <label><input type="radio" name="buyerType" value="VA"> VA</label>
-        <label><input type="radio" name="buyerType" value="FHA"> FHA</label>
+    <label for="buyerType">Buyer Type (at least one must be selected)</label>
+    <div class="checkbox-group" id="buyerTypeCheckboxes">
+        <label><input type="checkbox" name="buyerType" value="First Time Homebuyer"> First Time Homebuyer</label>
+        <label><input type="checkbox" name="buyerType" value="Investor"> Investor</label>
+        <label><input type="checkbox" name="buyerType" value="Contingency Required"> Contingency Required</label>
+        <label><input type="checkbox" name="buyerType" value="Current Home Listed"> Current Home Listed</label>
+        <label><input type="checkbox" name="buyerType" value="VA"> VA</label>
+        <label><input type="checkbox" name="buyerType" value="FHA"> FHA</label>
     </div>
 
     <label for="firstName">First Name</label>

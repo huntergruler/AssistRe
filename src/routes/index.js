@@ -549,10 +549,14 @@ router.post('/sendreset', (req, res) => {
 
 router.post('/buyersubmit', upload.fields([{ name: 'prequalifiedFile' }, { name: 'userPhoto' }]), (req, res) => {
   const {
-      buyerType, firstName, lastName, address, city, state, zip, email,
-      phoneNumber, propertyType, bedrooms, bathrooms, squareFootage,
-      priceRange, timeFrame, prequalified, preferredLanguages, password
-  } = req.body;
+    firstName, lastName, address, city, state, zip, email,
+    phoneNumber, propertyType, bedrooms, bathrooms, squareFootage,
+    priceRange, timeFrame, prequalified, preferredLanguages, password
+} = req.body;
+
+  const buyerTypes = req.body.buyerType; // This will be an array
+  const buyerType = Array.isArray(buyerTypes) ? buyerTypes.join(', ') : buyerTypes;
+
 
   const prequalifiedFile = req.files['prequalifiedFile'] ? req.files['prequalifiedFile'][0].path : null;
   const userPhoto = req.files['userPhoto'][0].path;
