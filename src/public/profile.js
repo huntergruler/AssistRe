@@ -437,6 +437,7 @@ function populateModals() {
         </div>`;
         contain.innerHTML = htmlChange;
     });
+    
 }
 
 function populateMonths() {
@@ -478,7 +479,6 @@ function updateDays() {
 };
 
 function showOffice() {
-    var table = document.getElementById("officeModalTable");
     var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -501,7 +501,6 @@ function showOffice() {
         modal.style.display = "none";
     }
     }
-    console.log(table.innerHTML);
     fetch('/api/profile')
     .then(response => response.json())
     .then(data => {
@@ -522,7 +521,6 @@ function showOffice() {
                     </td>
                 </tr>`;
             });
-            table.innerHTML = htmlChange;
         }
         });
 
