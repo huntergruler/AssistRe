@@ -17,12 +17,20 @@
 <body id="loginBody">
     <div id="loginContainer">
         <h1>Please Login:</h1>
-        <form id="loginForm" action="/login" method="post">
-         <input type="email" id="username" name="username" placeholder="Email">
-         <input type="password" id="password" name="password" placeholder="Password">
-         <button type="submit" >Login</button>
-         </form>
-        <div class="alert alert-warning" id="message"><%= message %></div>
+        <div class="row">
+            <form id="loginForm" action="/login" method="post">
+                <div class="col-md-12">
+                    <input type="email" id="username" name="username" placeholder="Email">
+                    <div class="col-md-12">
+                        <input type="password" id="password" name="password" placeholder="Password">
+                        <div class="col-md-12">
+                            <button type="submit" >Login</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="alert alert-warning" id="message"><%= message %></div>
+        </div>
         <br>
         <a href="/sendreset">Forgot Password?</a>
      </div>
