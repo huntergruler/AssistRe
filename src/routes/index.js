@@ -452,6 +452,18 @@ router.get('/dashboard', (req, res) => {
   }
 });
 
+// Route to serve the buyerProfile page
+router.get('/buyerProfile', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access the Buyer Profile';
+//    console.log('Redirecting to:', redirectto);
+    res.redirect('/login');  
+  }
+  else { 
+    res.render('buyerprofile', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname});
+  }
+});
+
 router.get('/settings', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access the Settings page';
