@@ -40,3 +40,9 @@ document.addEventListener('keyup', function(event) {
     }
 }, true); // Using capturing phase to handle the event as it propagates down
 
+document.addEventListener('change', function(event) {
+    if (event.target.id === 'userType') {
+        document.getElementById('email').textContent = '';
+        document.getElementById('userStatus').textContent = '';
+    }
+});
