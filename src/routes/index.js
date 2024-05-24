@@ -99,11 +99,11 @@ router.post('/register', (req, res) => {
 
 // Route to get the buyer's profile
 router.get('/profile_buyer', (req, res) => {
-  const userId = req.query.userid; // Assuming the user ID is passed as a query parameter
+  const userid = req.session.userid;
 
   const query = 'SELECT firstName, lastName, address, city, state, zip, email, phoneNumber, userid FROM Buyers WHERE userid = ?';
 
-  db.query(query, [userId], (error, results) => {
+  db.query(query, [userid], (error, results) => {
     if (error) {
       console.error('Error fetching buyer profile:', error);
       return res.status(500).send('Server error');
