@@ -223,7 +223,7 @@ router.get('/logout', (req, res) => {
   // Redirect to login with a logout message
   req.session.message = 'Successfully logged out';
   req.session.killsession = true;
-  res.redirect('/');
+  res.redirect('/login');
 });
 
 router.post('/login', [
