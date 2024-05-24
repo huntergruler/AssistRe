@@ -239,6 +239,7 @@ router.post('/login', [
     } else if (userType == 'Buyer') {
       const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
     }
+    console.log('User Type:', userType, 'query:', query);
     res.setHeader('Content-Type', 'application/json');
     db.query(query, [email], (error, results) => {
       if (error) {
