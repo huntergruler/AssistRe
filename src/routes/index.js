@@ -242,6 +242,7 @@ router.post('/login', [
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
       if (error) {
+        console.error('Database error:', error);
         return res.render('login', { message: 'Error during database query' });
       }
       if (results[0].emailverified === 0) {
