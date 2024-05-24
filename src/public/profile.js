@@ -429,7 +429,6 @@ function showOffice() {
 
     if(officeToggle == 0){
         form.style.display = "none";
-        console.log("officeToggle is 0");
         officeButton.classList.remove('selectedStyle');
         officeButton.classList.add('hoverStyle');
         const headerRow = table.querySelector('thead tr');
@@ -465,13 +464,12 @@ function showOffice() {
 
                     const headerRow = table.querySelector('thead tr');
                     const newHeader = document.createElement('th');
-                    newHeader.textContent = `Header ${headerRow.children.length + 1}`;
+                    newHeader.textContent = ``;
                     headerRow.appendChild(newHeader);
                 
                     // Add cells to each row in the tbody
                     const rows = table.querySelectorAll('tbody tr');
                     rows.forEach((row, index) => {
-                        console.log(officeIDs[index]);
                         const newCell = document.createElement('td');
                         newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
                         row.appendChild(newCell);
