@@ -236,11 +236,12 @@ router.post('/login', [
     const { email, password, userType } = req.body;
     console.log('User Type:', userType, 'Email:', email, 'Password:', password  );
     if (userType == 'Agent') {
-      const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
+      let query = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
     } else if (userType == 'Buyer') {
-      const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
+      let query = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
     }
-    console.log('User Type:', userType, 'query:', query);
+    console.log('User Type:', userType);
+    console.log('query:', query);
     res.setHeader('Content-Type', 'application/json');
     db.query(query, [email], (error, results) => {
       if (error) {
