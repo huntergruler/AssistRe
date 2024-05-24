@@ -86,7 +86,7 @@ connection.query(sql, [buyerType, firstName, lastName, address, city, state, zip
 
 // Handle registration with city and state lookup
 router.post('/register', (req, res) => {
-  const { firstName, lastName, user, phoneNumber, address, zipCode, userType, password } = req.body;
+  const { firstName, lastName, email, phoneNumber, address, zipCode, userType, password } = req.body;
 
   // First, query the city and state from the ZipCodes table
   bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
@@ -109,8 +109,8 @@ router.post('/register', (req, res) => {
       // Now insert the user into the Agents table with city and state
 
       if (userType === 'Agent') {
-        const agentInsertSql = 'INSERT INTO Agents (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, usertype, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        db.query(agentInsertSql, [firstName, lastName, user, verificationtoken, phoneNumber, zipCode, address, city, state, userType, user, hashedPassword], (userError, userResults) => {
+        const agentInsertSql = 'INSERT INTO Agents (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        db.query(agentInsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, address, city, state, hashedPassword], (userError, userResults) => {
           if (userError) {
             console.error('Error inserting user into database:', userError);
             return res.status(500).send('Error inserting user into database');
@@ -122,8 +122,8 @@ router.post('/register', (req, res) => {
         });
       }
       else {
-        const buyerInsertSql = 'INSERT INTO Buyers (firstName, lastName, email, phoneNumber, zip, address, city, state, usertype, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        db.query(buyerInsertSql, [firstName, lastName, user, phoneNumber, zipCode, address, city, state, userType, user, hashedPassword], (userError, userResults) => {
+        const buyerInsertSql = 'INSERT INTO Buyers (firstName, lastName, email, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        db.query(buyerInsertSql, [firstName, lastName, email, phoneNumber, zipCode, address, city, state, hashedPassword], (userError, userResults) => {
           if (userError) {
             console.error('Error inserting user into database:', userError);
             return res.status(500).send('Error inserting user into database');
