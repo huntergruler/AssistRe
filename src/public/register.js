@@ -21,7 +21,6 @@ function lookupCityState() {
 document.addEventListener('keyup', function(event) {
     if (event.target.id === 'email') {
         const Email = document.getElementById('email').value.trim();
-        console.log("email",Email);
         if (!Email) {
             document.getElementById('userStatus').textContent = '';
             return;
@@ -55,5 +54,7 @@ document.querySelectorAll('input[name="userType"]').forEach(radio => {
         document.querySelectorAll('#registerForm input, #registerForm button').forEach(field => {
             field.disabled = false;
         });
+        document.getElementById('email').textContent = '';
+        document.getElementById('userStatus').textContent = '';
     });
 });
