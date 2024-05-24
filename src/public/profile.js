@@ -459,6 +459,8 @@ function showOffice() {
     }
     else {
         console.log("officeToggle is 1");
+        officeButton.classList.remove('selectedStyle');
+        officeButton.innerHTML = "Edit";
         officeToggle = 0;
     }
     // const headerRow = table.querySelector('thead tr');
