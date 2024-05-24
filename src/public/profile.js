@@ -429,13 +429,27 @@ function showOffice() {
     var officeIDs = []
 
     if(officeToggle == 0){
+        form.style.display = "none";
         console.log("officeToggle is 0");
         officeButton.classList.remove('selectedStyle');
+        const headerRow = table.querySelector('thead tr');
+        const rows = table.querySelectorAll('tbody tr');
+
+        // Check if there's more than one column to delete
+        if (headerRow.children.length > 0) {
+            // Remove the last header cell
+            headerRow.removeChild(headerRow.lastElementChild);
+
+            // Remove the last cell in each row
+            rows.forEach((row) => {
+                row.removeChild(row.lastElementChild);
+            });
+        }
         officeButton.innerHTML = "Edit";
         officeToggle = 1;
     }
     else {
-
+        form.style.display = "grid";
         officeButton.classList.add('selectedStyle');
         officeButton.innerHTML = "Done";
         console.log("officeToggle is 1");
@@ -465,26 +479,6 @@ function showOffice() {
             }
         });
     }
-    // const headerRow = table.querySelector('thead tr');
-    // const rows = table.querySelectorAll('tbody tr');
-
-    // // Check if there's more than one column to delete
-    // if (headerRow.children.length > 0) {
-    //     // Remove the last header cell
-    //     headerRow.removeChild(headerRow.lastElementChild);
-
-    //     // Remove the last cell in each row
-    //     rows.forEach((row) => {
-    //         row.removeChild(row.lastElementChild);
-    //     });
-    // }
-    
-
-    form.style.display = "grid";
-
-    
-    
-
     const overButton = document.getElementById('overviewButton');
     
     const licButton = document.getElementById('licenseButton');
