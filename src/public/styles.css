@@ -263,6 +263,11 @@ form button:hover {
 .button:hover {
     background-color: #45a049;
 }
+
+#ownedZipCodes{
+    max-height: 300px;
+    overflow: auto;
+}
   
 /* The Modal (background) */
 .modal {
