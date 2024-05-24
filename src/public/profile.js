@@ -461,23 +461,35 @@ function showOffice() {
     // <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
     // <button type="button" onclick="addOffice()">Add</button>
     // <span id="offStatus"></span>`
+    var officeIDs = []
+    fetch('/api/profile')
+        .then(response => response.json())
+        .then(data => {
+            if (data.hasOffices) {
+                data.offices.forEach(function (office) {
+                    officeIDs.push(office.agentofficeid);
+                });
+                const table = document.getElementById('officeTable');
+
+                const headerRow = table.querySelector('thead tr');
+                const newHeader = document.createElement('th');
+                newHeader.textContent = `Header ${headerRow.children.length + 1}`;
+                headerRow.appendChild(newHeader);
+            
+                // Add cells to each row in the tbody
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach((row, index) => {
+                    console.log(officeIDs[index]);
+                    const newCell = document.createElement('td');
+                    newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
+                    row.appendChild(newCell);
+                });
+        }
+    });
 
     form.style.display = "grid";
 
-    const table = document.getElementById('officeTable');
-
-    const headerRow = table.querySelector('thead tr');
-    const newHeader = document.createElement('th');
-    newHeader.textContent = `Header ${headerRow.children.length + 1}`;
-    headerRow.appendChild(newHeader);
-
-    // Add cells to each row in the tbody
-    const rows = table.querySelectorAll('tbody tr');
-    rows.forEach((row, index) => {
-        const newCell = document.createElement('td');
-        newCell.innerHTML = `Row ${index + 1}, Cell ${row.children.length + 1}`;
-        row.appendChild(newCell);
-    });
+    
     
 
     const overButton = document.getElementById('overviewButton');
