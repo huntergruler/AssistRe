@@ -234,21 +234,16 @@ router.post('/login', [
         return res.status(400).json({ errors: errors.array() });
     }
     const { email, password, userType } = req.body;
-    userQuery = 'NOPE';
-    console.log('User Type:', userType, 'Email:', email, 'Password:', password  );
     if (userType === 'Agent') {
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
     } else if (userType === 'Buyer') {
-      console.log('Buyer');
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
     } else {
       var userQuery = '';
       return res.render('login', { errorMessage: 'Invalid user type' });
     }
-    console.log('User Type:', userType);
-    console.log('query:', userQuery);
     res.setHeader('Content-Type', 'application/json');
-    db.query(query, [email], (error, results) => {
+    db.query(userQuery, [email], (error, results) => {
       if (error) {
         return res.render('login', { errorMessage: 'Error during database query' });
       }
