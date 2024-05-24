@@ -109,27 +109,27 @@ router.post('/register', (req, res) => {
       // Now insert the user into the Agents table with city and state
 
       if (userType === 'Agent') {
-        const agentInsertSql = 'INSERT INTO Agents (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        const agentInsertSql = 'INSERT INTO Agents (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         db.query(agentInsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, address, city, state, hashedPassword], (userError, userResults) => {
           if (userError) {
             console.error('Error inserting user into database:', userError);
             return res.status(500).send('Error inserting user into database');
           }
           // Send confirmation email
-          sendVerificationEmail(req, user, verificationtoken);
+          sendVerificationEmail(req, email, verificationtoken, userType);
           res.send('Registration successful! Please check your email to verify.');
 
         });
       }
       else {
-        const buyerInsertSql = 'INSERT INTO Buyers (firstName, lastName, email, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        db.query(buyerInsertSql, [firstName, lastName, email, phoneNumber, zipCode, address, city, state, hashedPassword], (userError, userResults) => {
+        const buyerInsertSql = 'INSERT INTO Buyers (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        db.query(buyerInsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, address, city, state, hashedPassword], (userError, userResults) => {
           if (userError) {
             console.error('Error inserting user into database:', userError);
             return res.status(500).send('Error inserting user into database');
           }
           // Send confirmation email
-          sendVerificationEmail(req, user, verificationtoken);
+          sendVerificationEmail(req, email, verificationtoken, userType);
           res.send('Registration successful! Please check your email to verify.');
 
         });
@@ -662,18 +662,27 @@ router.get('/reset-password', (req, res) => {
 
 // Route to handle email verification
 router.get('/verify-email', (req, res) => {
-  const { token, email } = req.query;
+  const { token, email, type } = req.query;
+  if (type == 'A') {
   db.query('UPDATE Agents SET emailverified = 1 WHERE email = ? AND verificationtoken = ?', [email, token], (err, result) => {
     res.cookie('data', 'Email Verified', { maxAge: 900000, httpOnly: true });
     if (err) return res.status(500).send('Database error during email verification.');
     if (result.affectedRows === 0) return res.status(404).send('Token not found or email already verified.');
     res.redirect('login');
   });
+} else if (type == 'B') {
+  db.query('UPDATE Buyers SET emailverified = 1 WHERE email = ? AND verificationtoken = ?', [email, token], (err, result) => {
+    res.cookie('data', 'Email Verified', { maxAge: 900000, httpOnly: true });
+    if (err) return res.status(500).send('Database error during email verification.');
+    if (result.affectedRows === 0) return res.status(404).send('Token not found or email already verified.');
+    res.redirect('login');
+  });
+}
 });
 
 
 // Function to send a verification email
-function sendVerificationEmail(req, user, token) {
+function sendVerificationEmail(req, email, token, userType) {
     const mailTransporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: process.env.SMTP_PORT,
@@ -682,12 +691,17 @@ function sendVerificationEmail(req, user, token) {
         pass: process.env.SMTP_PASS
       }
     });
-  
+    if (userType == 'Agent') {
+      usertype = 'A';
+    } else if (userType == 'Buyer'){
+      usertype = 'B';
+    }
+ 
     const mailDetails = {
       from: process.env.SMTP_FROM,
-      to: user,
+      to: email,
       subject: 'Verify your email address',
-      html: `Please click on this link to verify your email: <a href="http://${req.headers.host}/verify-email?token=${token}&email=${user}">Verify Email</a>`
+      html: `Please click on this link to verify your email: <a href="http://${req.headers.host}/verify-email?token=${token}&email=${email}&type=${usertype}">Verify Email</a>`
     };
   
     mailTransporter.sendMail(mailDetails, (error, info) => {
