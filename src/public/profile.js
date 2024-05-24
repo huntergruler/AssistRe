@@ -419,65 +419,53 @@ function updateDays() {
         daySelect.appendChild(option);
     }
 };
-var officeToggle = 0;
-const officeButton = document.getElementById('officeButton');
-officeButton.addEventListener('click', function () {
-    console.log("HERE");
-    const form = document.getElementById("officeForm");
-    console.log(officeToggle);
-    if (officeToggle === 0) {
-        console.log(officeToggle);
-        form.style.display = "grid";
-        var officeIDs = []
-        officeButton.textContent = "Done";
-
-        fetch('/api/profile')
-            .then(response => response.json())
-            .then(data => {
-                if (data.hasOffices) {
-                    data.offices.forEach(function (office) {
-                        officeIDs.push(office.agentofficeid);
-                    });
-                    const table = document.getElementById('officeTable');
-
-                    const headerRow = table.querySelector('thead tr');
-                    const newHeader = document.createElement('th');
-                    newHeader.textContent = `Header ${headerRow.children.length + 1}`;
-                    headerRow.appendChild(newHeader);
-                
-                    // Add cells to each row in the tbody
-                    const rows = table.querySelectorAll('tbody tr');
-                    rows.forEach((row, index) => {
-                        console.log(officeIDs[index]);
-                        const newCell = document.createElement('td');
-                        newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
-                        row.appendChild(newCell);
-                    });
-            }
-        });
-        officeToggle = 1;
-    }
-    else {
-        console.log(officeToggle);
-        form.style.display = "none";
-        const headerRow = table.querySelector('thead tr');
-        const rows = table.querySelectorAll('tbody tr');
-
-        // Check if there's more than one column to delete
-        if (headerRow.children.length > 0) {
-            // Remove the last header cell
-            headerRow.removeChild(headerRow.lastElementChild);
-
-            // Remove the last cell in each row
-            rows.forEach((row) => {
-                row.removeChild(row.lastElementChild);
-            });
-        }
-        officeToggle = 0;
-    }
-});
 
 function showOffice() {
+    const form = document.getElementById("officeForm");
+    //const doneButton = document.getElementById('officeDone');
+    var officeIDs = []
+    //doneButton.style.display = "block";
+
+    fetch('/api/profile')
+        .then(response => response.json())
+        .then(data => {
+            if (data.hasOffices) {
+                data.offices.forEach(function (office) {
+                    officeIDs.push(office.agentofficeid);
+                });
+                const table = document.getElementById('officeTable');
+
+                const headerRow = table.querySelector('thead tr');
+                const newHeader = document.createElement('th');
+                newHeader.textContent = `Header ${headerRow.children.length + 1}`;
+                headerRow.appendChild(newHeader);
+            
+                // Add cells to each row in the tbody
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach((row, index) => {
+                    console.log(officeIDs[index]);
+                    const newCell = document.createElement('td');
+                    newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
+                    row.appendChild(newCell);
+                });
+        }
+    });
+    const headerRow = table.querySelector('thead tr');
+    const rows = table.querySelectorAll('tbody tr');
+
+    // Check if there's more than one column to delete
+    if (headerRow.children.length > 0) {
+        // Remove the last header cell
+        headerRow.removeChild(headerRow.lastElementChild);
+
+        // Remove the last cell in each row
+        rows.forEach((row) => {
+            row.removeChild(row.lastElementChild);
+        });
+    }
+    
+
+    form.style.display = "grid";
 
     
     
