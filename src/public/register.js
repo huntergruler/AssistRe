@@ -42,10 +42,13 @@ document.addEventListener('keyup', function (event) {
 
 document.querySelectorAll('input[name="userType"]').forEach(radio => {
     radio.addEventListener('change', function () {
+        const email = document.getElementById('email').value.trim();
         document.querySelectorAll('#registerForm input, #registerForm button').forEach(field => {
             field.disabled = false;
-        });
+        if (email) {
         document.getElementById('email').textContent = '';
         document.getElementById('userStatus').textContent = '';
-    })
-});
+        }
+        });
+    });
+})
