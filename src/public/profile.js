@@ -487,7 +487,7 @@ function updateDays() {
 };
 
 function showOffice() {
-    var modal = document.getElementById("myModal");
+    //var modal = document.getElementById("myModal");
 
     // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
@@ -497,7 +497,7 @@ function showOffice() {
     var add = document.getElementById("officeAdd");
 
     // When the user clicks on the button, open the modal
-    modal.style.display = "block";
+    //modal.style.display = "block";
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
