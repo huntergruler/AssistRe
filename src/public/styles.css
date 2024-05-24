@@ -296,7 +296,7 @@ form button:hover {
     margin-left: 20px;
     cursor: pointer;
     width: 50px;
-    align-self: center;
+    margin-bottom: 3px;
 }
 
 #officeButton:hover {
