@@ -23,6 +23,7 @@ document.addEventListener('keyup', function(event) {
         const User = document.getElementById('user').value.trim();
         fetch(`/check-user?username=${encodeURIComponent(User)}`)
         .then(response => response.json())
+        console.log(response);
         .then(data => {
           if (data.available) {
             // Email is available
