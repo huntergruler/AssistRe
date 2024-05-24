@@ -291,6 +291,10 @@ form button:hover {
     flex-direction: column;
 }
 
+#officeForm {
+    display: none;
+}
+
 /* The Modal (background) */
 .modal {
     display: none;

@@ -492,6 +492,7 @@ function showOffice() {
     // Get the button that opens the modal
     var form = document.getElementById("officeForm");
 
+
     // Get the <span> element that closes the modal
     //var span = document.getElementsByClassName("close")[0];
     //var add = document.getElementById("officeAdd");
@@ -515,17 +516,19 @@ function showOffice() {
     //         modal.style.display = "none";
     //     }
     // }
-    form.innerHTML = `<form id="officeForm">
-    <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
-    <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
-    <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-    <input type="text" id="address" name="address" placeholder="Office Address" required>
-    <input type="text" id="city" name="city" placeholder="Office City" required>
-    <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-    <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
-    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-    <button type="button" onclick="addOffice()">Add</button>
-    <span id="offStatus"></span>`
+    // form.innerHTML = `<form id="officeForm">
+    // <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
+    // <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
+    // <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+    // <input type="text" id="address" name="address" placeholder="Office Address" required>
+    // <input type="text" id="city" name="city" placeholder="Office City" required>
+    // <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+    // <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
+    // <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
+    // <button type="button" onclick="addOffice()">Add</button>
+    // <span id="offStatus"></span>`
+
+    form.style.display = "block";
 
     var add = document.getElementById("officeAdd");
     fetch('/api/profile')
