@@ -450,19 +450,19 @@ function showOffice() {
                 });
         }
     });
-    const headerRow = table.querySelector('thead tr');
-    const rows = table.querySelectorAll('tbody tr');
+    // const headerRow = table.querySelector('thead tr');
+    // const rows = table.querySelectorAll('tbody tr');
 
-    // Check if there's more than one column to delete
-    if (headerRow.children.length > 0) {
-        // Remove the last header cell
-        headerRow.removeChild(headerRow.lastElementChild);
+    // // Check if there's more than one column to delete
+    // if (headerRow.children.length > 0) {
+    //     // Remove the last header cell
+    //     headerRow.removeChild(headerRow.lastElementChild);
 
-        // Remove the last cell in each row
-        rows.forEach((row) => {
-            row.removeChild(row.lastElementChild);
-        });
-    }
+    //     // Remove the last cell in each row
+    //     rows.forEach((row) => {
+    //         row.removeChild(row.lastElementChild);
+    //     });
+    // }
     
 
     form.style.display = "grid";
