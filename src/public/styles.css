@@ -291,6 +291,15 @@ form button:hover {
     flex-direction: column;
 }
 
+#officeForm {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+#officeForm button {
+    grid-column: 1 / span 2;
+}
 /* The Modal (background) */
 .modal {
     display: none;
