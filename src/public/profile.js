@@ -456,6 +456,7 @@ function showOffice() {
     }
     else {
         console.log("officeToggle is 1");
+        officeToggle = 0;
     }
     // const headerRow = table.querySelector('thead tr');
     // const rows = table.querySelectorAll('tbody tr');
