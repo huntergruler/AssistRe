@@ -242,7 +242,7 @@ router.post('/login', [
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
       console.log('Results:', results);
-      if (results.length === 0) { 
+      if (!results) { 
         // Send response when email is not found
         res.json({
           success: false,
