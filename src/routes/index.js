@@ -55,7 +55,7 @@ router.get('/register', (req, res) => {
 });
 
 // Handle registration with city and state lookup
-router.post('/buyerprofile', (req, res) => {
+router.post('/profile_b', (req, res) => {
   const {
     firstName, lastName, address, city, state, zip, email,
     phoneNumber, propertyType, bedrooms, bathrooms, squareFootage,
@@ -128,7 +128,7 @@ router.post('/register', (req, res) => {
 });
 
 // Assuming `db` is your MySQL connection db, already set up in app.js
-router.get('/profile', (req, res) => {
+router.get('/profile_a', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access the Profile';
     res.redirect('/login');
@@ -151,14 +151,14 @@ router.get('/profile', (req, res) => {
         db.query(query, [userid], (err, transactionresults) => {
           if (err) throw err;
           let hasTransactions = transactionresults.length > 0;
-          res.render('profile', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
+          res.render('profile_a', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
         });
       });
     });
   }
 });
 
-router.get('/api/profile', (req, res) => {
+router.get('/api/profile_a', (req, res) => {
   userid = req.session.userid;
   const query = `SELECT a.agentlicenseid, date_format(a.licenseExpirationDate,"%m/%d/%Y") licenseExpirationDate, a.licenseNumber, a.licenseState, a.userid 
                      FROM AgentLicenses a 
@@ -505,7 +505,7 @@ router.get('/get-agentzipcodes', (req, res) => {
   });
 });
 
-// Route to serve the aDashboard page
+// Route to serve the dashboard_a page
 router.get('/dashboard_a', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Dashboard';
@@ -517,7 +517,7 @@ router.get('/dashboard_a', (req, res) => {
   }
 });
 
-// Route to serve the aDashboard page
+// Route to serve the dashboard_b page
 router.get('/dashboard_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Dashboard';
@@ -529,15 +529,15 @@ router.get('/dashboard_b', (req, res) => {
   }
 });
 
-// Route to serve the buyerProfile page
-router.get('/buyerProfile', (req, res) => {
+// Route to serve the profile_b page
+router.get('/profile_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access the Buyer Profile';
     //    console.log('Redirecting to:', redirectto);
     res.redirect('/login');
   }
   else {
-    res.render('buyerprofile', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
+    res.render('profile_b', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
   }
 });
 

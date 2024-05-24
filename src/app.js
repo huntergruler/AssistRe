@@ -15,7 +15,6 @@ const saltRounds = 10; // The cost factor controls how much time is needed to ca
 
 
 const indexRouter = require('./routes/index');
-//const profileRouter = require('./routes/profile');
 
 // Ensure you have body-parser configured to parse JSON
 router.use(bodyParser.json());

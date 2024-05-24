@@ -450,7 +450,7 @@ function showOffice() {
         form.style.display = "grid";
         officeButton.innerHTML = "Done";
         console.log("officeToggle is 1");
-        fetch('/api/profile')
+        fetch('/api/profile_a')
             .then(response => response.json())
             .then(data => {
                 if (data.hasOffices) {
@@ -509,7 +509,7 @@ function showLicense() {
             </tr>
         </thead>
         <tbody>`;
-    fetch('/api/profile')
+    fetch('/api/profile_a')
         .then(response => response.json())
         .then(data => {
             if (data.hasLicenses) {
@@ -654,7 +654,7 @@ function showTransactions() {
         </thead>
         <tbody>`;
 
-    fetch('/api/profile')
+    fetch('/api/profile_a')
         .then(response => response.json())
         .then(data => {
             if (data.hasTransactions) {
