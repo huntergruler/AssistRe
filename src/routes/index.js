@@ -97,6 +97,42 @@ router.post('/register', (req, res) => {
   });
 });
 
+// Route to get the buyer's profile
+router.get('/profile_buyer', (req, res) => {
+  const userId = req.query.userid; // Assuming the user ID is passed as a query parameter
+
+  const query = 'SELECT firstName, lastName, address, city, state, zip, email, phoneNumber, userid FROM Buyers WHERE userid = ?';
+
+  connection.query(query, [userId], (error, results) => {
+    if (error) {
+      console.error('Error fetching buyer profile:', error);
+      return res.status(500).send('Server error');
+    }
+
+    if (results.length === 0) {
+      return res.status(404).send('User not found');
+    }
+
+    res.render('profile_b', { buyer: results[0] });
+  });
+});
+
+// Route to update the buyer's profile
+router.post('/profile_buyer', (req, res) => {
+  const { firstName, lastName, address, city, state, zip, email, phoneNumber, userid } = req.body;
+
+  const query = 'UPDATE Buyers SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, email = ?, phoneNumber = ? WHERE userid = ?';
+
+  connection.query(query, [firstName, lastName, address, city, state, zip, email, phoneNumber, userid], (error, results) => {
+    if (error) {
+      console.error('Error updating buyer profile:', error);
+      return res.status(500).send('Server error');
+    }
+
+    res.send({ success: true });
+  });
+});
+
 // Route to serve the profile_b page
 router.get('/profile_b', (req, res) => {
   if (!req.session.user) {
