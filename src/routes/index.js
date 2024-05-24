@@ -99,6 +99,7 @@ router.post('/register', (req, res) => {
       req.session.message = 'Please login to access the Profile';
       res.redirect('/login');  
     }
+    else {
     userid = req.session.userid;
     const query = `SELECT a.agentlicenseid, date_format(a.licenseExpirationDate,"%m/%d/%Y") licenseExpirationDate, a.licenseNumber, a.licenseState, a.userid 
                      FROM AgentLicenses a 
@@ -120,6 +121,7 @@ router.post('/register', (req, res) => {
             });
           });
         });
+      }
   });
 
   router.get('/api/profile', (req, res) => {
