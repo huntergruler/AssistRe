@@ -423,10 +423,13 @@ function updateDays() {
 var officeToggle = 0;
 function showOffice() {
     const form = document.getElementById("officeForm");
-    //const doneButton = document.getElementById('officeDone');
+    const table = document.getElementById('officeTable');
+    const officeButton = document.getElementById('officeButton');
     var officeIDs = []
-    //doneButton.style.display = "block";
+
     if(officeToggle == 0){
+        officeButton.classList.add('selectedStyle');
+        officeButton.textContent = "Done";
         console.log("officeToggle is 0");
         fetch('/api/profile')
             .then(response => response.json())
@@ -435,7 +438,7 @@ function showOffice() {
                     data.offices.forEach(function (office) {
                         officeIDs.push(office.agentofficeid);
                     });
-                    const table = document.getElementById('officeTable');
+                    
 
                     const headerRow = table.querySelector('thead tr');
                     const newHeader = document.createElement('th');
@@ -479,7 +482,7 @@ function showOffice() {
     
 
     const overButton = document.getElementById('overviewButton');
-    const officeButton = document.getElementById('officeButton');
+    
     const licButton = document.getElementById('licenseButton');
     const zipButton = document.getElementById('zipCodeButton');
     const transButton = document.getElementById('transactionButton');
