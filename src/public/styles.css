@@ -295,7 +295,7 @@ form button:hover {
     border-radius: 5px;
     margin-left: 20px;
     cursor: pointer;
-    padding: 0 10px;
+    width: 50px;
 }
 
 #officeButton:hover {
