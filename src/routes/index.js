@@ -314,7 +314,7 @@ router.get('/check-user', (req, res) => {
   if (!username) {
       return res.status(400).json({error: 'User Name is required'});
   }
-  const query = 'SELECT count(*) cnt FROM Users WHERE username = ?';
+  const query = 'SELECT count(*) cnt FROM Agents WHERE username = ?';
   db.query(query, [username], (error, results) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
@@ -562,7 +562,7 @@ router.post('/sendreset', (req, res) => {
   const resetTokenExpire = Date.now() + 900000; // 15 minutes from now
   const resetTokenExpireDate = new Date(resetTokenExpire);
   // Store the reset token and its expiration in the database
-  const updateQuery = 'UPDATE Users SET resetToken=?, resetTokenExpire=? WHERE email=?';
+  const updateQuery = 'UPDATE Agents SET resetToken=?, resetTokenExpire=? WHERE email=?';
   db.query(updateQuery, [resetToken, new Date(resetTokenExpire), email], (error, results) => {
     if (error) {
       console.error('Database error:', error);
@@ -628,7 +628,7 @@ router.post('/buyersubmit', upload.fields([{ name: 'prequalifiedFile' }, { name:
 router.get('/reset-password', (req, res) => {
   const { token } = req.query;
   // Verify the token and its expiration
-  const query = 'SELECT * FROM Users WHERE resetToken=? AND resetTokenExpire > ?';
+  const query = 'SELECT * FROM Agents WHERE resetToken=? AND resetTokenExpire > ?';
   const date = new Date(Date.now())
   db.query(query, [token, date], (error, results) => {
     if (error || results.length === 0) {
