@@ -315,7 +315,7 @@ router.get('/check-user', (req, res) => {
   if (!email) {
       return res.status(400).json({error: 'User Name is required'});
   }
-  if (usertype = 'Agent') { 
+  if (usertype == 'Agent') { 
   const query = 'SELECT count(*) cnt FROM Agents WHERE email = ?';
   db.query(query, [email], (error, results) => {
       if (error) {
