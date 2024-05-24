@@ -201,7 +201,8 @@ router.post('/register', (req, res) => {
 // Login route
 router.get('/login', (req, res) => {
    let message = req.session.message;
-   if req.cookies.data = 'Email Verified' {
+   let data = req.cookies.data;
+   if (data = 'Email Verified') {
       let message = 'Email verified. Please login.';
     }
   // Destroy the session or clear the cookie
