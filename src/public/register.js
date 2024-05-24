@@ -54,7 +54,7 @@ document.querySelectorAll('input[name="userType"]').forEach(radio => {
         document.querySelectorAll('#registerForm input, #registerForm button').forEach(field => {
             field.disabled = false;
         });
-        document.getElementById('email').textContent = '';
+        document.getElementById('email').value = '';
         document.getElementById('userStatus').textContent = '';
     });
 });
