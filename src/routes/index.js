@@ -202,6 +202,7 @@ router.post('/register', (req, res) => {
 router.get('/login', (req, res) => {
    let message = req.session.message;
    let data = req.cookies.data;
+   console.log(message, data);
    if (data = 'Email Verified') {
 //      let message = 'Email verified. Please login.';
     }
