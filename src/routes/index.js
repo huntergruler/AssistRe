@@ -242,7 +242,7 @@ router.post('/login', [
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
       if (error) {
-        return res.render('login', { errorMessage: 'Error during database query' });
+        return res.render('login', { message: 'Error during database query' });
       }
       if (results[0].emailverified === 0) {
         // Send response when email is not verified
@@ -255,7 +255,7 @@ router.post('/login', [
 
         bcrypt.compare(password, results[0].password, (err, isMatch) => {
           if (err) {
-            return res.render('login', { errorMessage: 'Error comparing passwords' });
+            return res.render('login', { message: 'Error comparing passwords' });
           } else {
             if (isMatch) {
               req.session.user = email;
