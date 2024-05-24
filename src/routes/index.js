@@ -113,7 +113,7 @@ router.get('/profile_buyer', (req, res) => {
       return res.status(404).send('User not found');
     }
 
-    res.render('profile_b', { buyer: results[0] });
+    res.render('profile_buyer', { buyer: results[0] });
   });
 });
 
