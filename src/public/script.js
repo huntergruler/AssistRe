@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             document.getElementById('email').focus();
                         } else {
                             // Redirect or handle successful login
+                            console.log('login successful', data);
                             if (userType === 'Agent') {
                                 window.location.href = '/dashboard_a';
                             }
