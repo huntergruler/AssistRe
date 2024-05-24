@@ -628,6 +628,7 @@ router.get('/reset-password', (req, res) => {
 // Route to handle email verification
 router.get('/verify-email', (req, res) => {
     const { token, email } = req.query;
+    console.log('Token:', token, 'Email:', email);
     db.query('UPDATE Users SET emailverified = 1 WHERE email = ? AND verificationtoken = ?', [email, token], (err, result) => {
       if (err) return res.status(500).send('Database error during email verification.');
       if (result.affectedRows === 0) return res.status(404).send('Token not found or email already verified.');
