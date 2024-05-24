@@ -367,7 +367,9 @@ function populateUserZipCodes() {
                 div.onclick = function() {
                 this.classList.toggle("selected");
                 };
-                selectedZipCodesContainer.appendChild(div);
+                if(selectedZipCodesContainer){
+                   selectedZipCodesContainer.appendChild(div);
+                }
                 htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
             });
         }
