@@ -287,7 +287,8 @@ form button:hover {
     overflow: auto;
 }
 #officeHeader {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
 }
 
 /* The Modal (background) */
