@@ -279,11 +279,11 @@ form button:hover {
 }
 
 #profileZip {
-    max-height: 500px;
+    max-height: 300px;
 }
 
 #ownedZipCodes {
-    max-height: 425px;
+    max-height: 225px;
     overflow: auto;
 }
 
