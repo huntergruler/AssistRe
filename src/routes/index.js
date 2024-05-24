@@ -238,14 +238,11 @@ router.post('/login', [
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
     } else if (userType === 'Buyer') {
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
-    } else {
-      var userQuery = '';
-      return res.render('login', { errorMessage: 'Invalid user type' });
     }
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
       if (error) {
-        return res.render('login', { errorMessage: 'Error during database query' });
+        return res.render('login', { message: 'Error during database query' });
       }
       if (results[0].emailverified === 0) {
         // Send response when email is not verified
