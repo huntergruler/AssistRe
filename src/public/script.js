@@ -42,13 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (event.target.id === 'loginForm') {
                         const email = document.getElementById('email').value.trim();
                         const password = document.getElementById('password').value.trim();
+                        const userType = document.querySelector('input[name="userType"]:checked').value;
                     
                         fetch('/login', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ email: email, password: password })
+                            body: JSON.stringify({ email: email, password: password, userType: userType})
                         })
                         .then(response => response.json())
                         .then(data => {

@@ -35,11 +35,11 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <input type="email" id="email" name="email" placeholder="Email">
+                        <input type="email" id="email" name="email" placeholder="Email" disabled>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="password" id="password" name="password" placeholder="Password">
+                            <input type="password" id="password" name="password" placeholder="Password" disabled>
                         </div>
                     </div>
                     <div class="row">
@@ -58,6 +58,14 @@
             </div>
         </div>
     </div>
+    <script>document.querySelectorAll('input[name="userType"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.querySelectorAll('#loginForm input, #loginForm button').forEach(field => {
+                    field.disabled = false;
+                });
+            });
+        });
+    </script>
     <script src="/script.js"></script>
 </body>
 
