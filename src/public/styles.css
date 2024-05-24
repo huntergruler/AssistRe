@@ -286,6 +286,10 @@ form button:hover {
     max-height: 225px;
     overflow: auto;
 }
+#officeHeader {
+    display: flex;
+    flex-direction: column;
+}
 
 /* The Modal (background) */
 .modal {
