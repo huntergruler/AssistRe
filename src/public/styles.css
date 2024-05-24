@@ -266,11 +266,13 @@ form button:hover {
 
 #profileZip{
     max-height: 500px;
+    background-color: tomato;
 }
 #ownedZipCodes{
     height: 100px;
     max-height: 425px;
     overflow: auto;
+    background-color: lightblue;
 }
   
 /* The Modal (background) */
