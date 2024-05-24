@@ -237,7 +237,7 @@ router.post('/login', [
     if (userType === 'Agent') {
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
     } else if (userType === 'Buyer') {
-      var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
+      var userQuery = 'SELECT password, buyerid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
     }
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
