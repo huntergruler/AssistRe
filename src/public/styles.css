@@ -293,6 +293,9 @@ form button:hover {
     color: white;
     border: 1px solid black;
     border-radius: 5px;
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 0 10px;
 }
 
 #officeButton:hover {
