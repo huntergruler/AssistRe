@@ -109,8 +109,11 @@ router.post('/register', (req, res) => {
       // Now insert the user into the Agents table with city and state
 
       if (userType === 'Agent') {
-        const agentInsertSql = 'INSERT INTO Agents (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        db.query(agentInsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, address, city, state, hashedPassword], (userError, userResults) => {
+        const InsertSql = 'INSERT INTO Agents (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      } else if (userType === 'Buyer') {
+        const InsertSql = 'INSERT INTO Buyers (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      }
+        db.query(InsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, address, city, state, hashedPassword], (userError, userResults) => {
           if (userError) {
             console.error('Error inserting user into database:', userError);
             return res.status(500).send('Error inserting user into database');
@@ -120,23 +123,9 @@ router.post('/register', (req, res) => {
           res.send('Registration successful! Please check your email to verify.');
 
         });
-      }
-      else {
-        const buyerInsertSql = 'INSERT INTO Buyers (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        db.query(buyerInsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, address, city, state, hashedPassword], (userError, userResults) => {
-          if (userError) {
-            console.error('Error inserting user into database:', userError);
-            return res.status(500).send('Error inserting user into database');
-          }
-          // Send confirmation email
-          sendVerificationEmail(req, email, verificationtoken, userType);
-          res.send('Registration successful! Please check your email to verify.');
-
-        });
-      }
+      });
     });
    });
-  });
 
   // Assuming `db` is your MySQL connection db, already set up in app.js
   router.get('/profile', (req, res) => {
@@ -244,8 +233,12 @@ router.post('/login', [
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    const { email, password } = req.body;
-    const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
+    const { email, password, userType } = req.body;
+    if (userType == 'Agent') {
+      const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
+    } else if (userType == 'Buyer') {
+      const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
+    }
     res.setHeader('Content-Type', 'application/json');
     db.query(query, [email], (error, results) => {
       if (error) {
@@ -269,6 +262,7 @@ router.post('/login', [
               req.session.userid = userid;
               req.session.firstname = firstname;
               req.session.lastname = lastname;
+              req.session.userType = userType;
               console.log('User logged in:', email);
               res.json({
                 success: true,
