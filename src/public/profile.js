@@ -422,9 +422,9 @@ function updateDays() {
 
 function showOffice() {
     const form = document.getElementById("officeForm");
-    const doneButton = document.getElementById('officeDone');
+    //const doneButton = document.getElementById('officeDone');
     var officeIDs = []
-    doneButton.style.display = "block";
+    //doneButton.style.display = "block";
 
     fetch('/api/profile')
         .then(response => response.json())
