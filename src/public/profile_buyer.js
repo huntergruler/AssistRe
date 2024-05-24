@@ -41,3 +41,24 @@ $(document).ready(function() {
         });
     });
 });
+
+function lookupCityState() {
+    let zipCode = document.getElementById('zip').value;
+    if (zipCode) {
+        // Create a new XMLHttpRequest object
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', '/get-city-state?zipCode=' + zipCode, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                if (response.city && response.state) {
+                    document.getElementById('cityState').textContent = response.city + ', ' + response.state;
+                } else {
+                    document.getElementById('cityState').textContent = 'City and state not found';
+                }
+            }
+        };
+        xhr.send();
+    }
+  }
+  
