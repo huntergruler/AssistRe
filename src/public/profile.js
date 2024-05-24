@@ -528,7 +528,7 @@ function showOffice() {
     // <button type="button" onclick="addOffice()">Add</button>
     // <span id="offStatus"></span>`
 
-    form.style.display = "block";
+    form.style.display = "grid";
 
     var add = document.getElementById("officeAdd");
     fetch('/api/profile')
