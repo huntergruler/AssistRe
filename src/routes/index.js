@@ -242,8 +242,9 @@ router.post('/login', [
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
       console.log('Results:', results, 'Error:', error);
-      if (!results) { 
+      if (results.length === 0 || error) { 
         // Send response when email is not found
+        console.log('Email not found');
         res.json({
           success: false,
           message: "Invalid credentials."
