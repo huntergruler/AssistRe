@@ -1,5 +1,3 @@
-const { off } = require("process");
-
 function addTransaction() {
     const transactionDate = document.getElementById('transactionDate').value;
     const transactionAmount = document.getElementById('transactionAmount').value;
