@@ -21,7 +21,16 @@ function lookupCityState() {
 document.addEventListener('keyup', function(event) {
     if (event.target.id === 'email') {
         const Email = document.getElementById('email').value.trim();
-        console.log(Email);
+        console.log("email",Email);
+        if (!Email) {
+            document.getElementById('userStatus').textContent = '';
+            return;
+        } else if (!Email.includes('@') || !Email.includes('.')) {
+            document.getElementById('userStatus').textContent = 'Email is invalid.';
+            document.getElementById('userStatus').style.color = 'red';
+            document.getElementById('email').focus();
+            return;
+        } else {
         fetch(`/check-user?email=${encodeURIComponent(Email)}`)
         .then(response => response.json())
         .then(data => {
@@ -37,6 +46,7 @@ document.addEventListener('keyup', function(event) {
         }
         })
         .catch(error => console.error('Error checking email:', error));
+    }
     }
 }, true); // Using capturing phase to handle the event as it propagates down
 
