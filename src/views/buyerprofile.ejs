@@ -23,7 +23,8 @@
     <form id="buyerForm" enctype="multipart/form-data">
         <h2 class="mb-4">Buyer Information Form</h2>
 
-        <div class="form-group">
+        <form action="/buyerprofile" method="post">
+            <div class="form-group">
             <label for="buyerType">Buyer Type (at least one must be selected)</label>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" name="buyerType" value="First Time Homebuyer">

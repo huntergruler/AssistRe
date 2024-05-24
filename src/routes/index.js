@@ -55,6 +55,36 @@ router.get('/register', (req, res) => {
 });
 
 // Handle registration with city and state lookup
+router.post('/buyerprofile', (req, res) => {
+  const {
+    firstName, lastName, address, city, state, zip, email,
+    phoneNumber, propertyType, bedrooms, bathrooms, squareFootage,
+    priceRange, timeFrame, prequalified, preferredLanguages, password
+} = req.body;
+
+const buyerTypes = req.body.buyerType; // This will be an array
+const buyerType = Array.isArray(buyerTypes) ? buyerTypes.join(', ') : buyerTypes;
+
+const prequalifiedFile = req.files['prequalifiedFile'] ? req.files['prequalifiedFile'][0].path : null;
+const userPhoto = req.files['userPhoto'][0].path;
+
+const hashedPassword = bcrypt.hashSync(password, 10);
+
+const sql = `INSERT INTO Buyers (buyerType, firstName, lastName, address, city, state, zip, email, phoneNumber, propertyType, bedrooms, bathrooms, squareFootage, priceRange, timeFrame, prequalified, prequalified_file_location, emailverified, userPhoto, preferredLanguages, password)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?)`;
+
+connection.query(sql, [buyerType, firstName, lastName, address, city, state, zip, email, phoneNumber, propertyType, bedrooms, bathrooms, squareFootage, priceRange, timeFrame, prequalified, prequalifiedFile, userPhoto, preferredLanguages, hashedPassword], (err, result) => {
+    if (err) {
+        console.error(err);
+        res.json({ success: false, error: err });
+    } else {
+        res.json({ success: true });
+    }
+});
+});
+
+
+// Handle registration with city and state lookup
 router.post('/register', (req, res) => {
     const { firstName, lastName, user, phoneNumber, zipCode, userType, password } = req.body;
   
