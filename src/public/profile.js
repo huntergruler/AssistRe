@@ -422,6 +422,7 @@ function updateDays() {
 var officeToggle = 0;
 const officeButton = document.getElementById('officeButton');
 officeButton.addEventListener('click', function () {
+    console.log("HERE");
     const form = document.getElementById("officeForm");
     console.log(officeToggle);
     if (officeToggle === 0) {
