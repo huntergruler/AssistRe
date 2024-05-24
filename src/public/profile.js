@@ -1,3 +1,4 @@
+var officeToggle = 0;
 function addTransaction() {
     const transactionDate = document.getElementById('transactionDate').value;
     const transactionAmount = document.getElementById('transactionAmount').value;
@@ -187,6 +188,7 @@ function zipUpdate() {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
+    officeToggle = 0;
     populateAgentZipCodes();
     populateMonths();
     populateYears();
@@ -420,8 +422,9 @@ function updateDays() {
     }
 };
 
-var officeToggle = 0;
+
 function showOffice() {
+    
     const form = document.getElementById("officeForm");
     const table = document.getElementById('officeTable');
     const officeButton = document.getElementById('officeButton');
