@@ -421,7 +421,7 @@ router.delete('/api/offices/:id', (req, res) => {
 // Route to get city and state by zip code
 router.get('/get-userzipcodes', (req, res) => {
   userid = req.session.userid;
-  const query = 'SELECT zipCode FROM UserZipCodes WHERE userid = ? order by zipCode';
+  const query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM UserZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
   db.query(query, [userid], (error, results) => {
       if (error) {
         return res.status(500).json({error: 'Internal server error'});
