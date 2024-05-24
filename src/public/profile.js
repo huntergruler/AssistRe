@@ -429,7 +429,7 @@ function showOffice() {
 
     if(officeToggle == 0){
         officeButton.classList.add('selectedStyle');
-        officeButton.textContent = "Done";
+        officeButton.innerHTML = "Done";
         console.log("officeToggle is 0");
         fetch('/api/profile')
             .then(response => response.json())
