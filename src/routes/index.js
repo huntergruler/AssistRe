@@ -241,17 +241,16 @@ router.post('/login', [
     }
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
-      console.log('Results:', results, 'Error:', error);
-      if (results.length === 0 || error) { 
-        // Send response when email is not found
-        console.log('Email not found');
-        res.json({
-          success: false,
-          message: "Invalid credentials."
-        });
-      }
       if (error) {
         return res.render('login', { message: 'Error during database query' });
+      }
+      if (results.length === 0 || error) { 
+        // Send response when email is not found
+        return res.render('login', { message: 'Invalid credentials' });
+        // res.json({
+        //   success: false,
+        //   message: "Invalid credentials."
+        // });
       }
       console.log('HERE:');
       if (results[0].emailverified === 0) {
