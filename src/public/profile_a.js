@@ -190,10 +190,10 @@ function zipUpdate() {
 
 document.addEventListener('DOMContentLoaded', function () {
     populateAgentZipCodes();
-    populateMonths();
-    populateYears();
-    updateDays();
-    populateStates();
+//    populateMonths();
+//    populateYears();
+//    updateDays();
+//    populateStates();
 });
 
 function getSelectedZipCodes() {
@@ -221,9 +221,9 @@ function populateStates() {
         })
 };
 
-stateSelect.addEventListener('change', function () {
-    var selectedValue = this.value;
-});
+// stateSelect.addEventListener('change', function () {
+//     var selectedValue = this.value;
+// });
 
 function populateCities() {
     const stateSelect = document.getElementById('stateSelect').value;
