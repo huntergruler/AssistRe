@@ -63,6 +63,7 @@ function addOffice() {
             newRow.insertCell(5).textContent = phoneNumber;
             newRow.insertCell(6).textContent = officeLicenseNumber;
             newRow.insertCell(7).textContent = officeLicenseState;
+            newRow.insertCell(8).innerHTML = `<button onclick="deleteOffice('${data.agentofficeid}')">Delete</button>`;
             document.getElementById('officeForm').reset();
         })
 };
