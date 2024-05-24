@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 window.location.href = '/dashboard_a';
                             }
                             else if (userType === 'Buyer') {
-                                window.location.href = '/dashboardb';
+                                window.location.href = '/dashboard_b';
                             }
                         }
                     })
