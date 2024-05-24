@@ -264,9 +264,12 @@ form button:hover {
     background-color: #45a049;
 }
 
-#profileZips{
+#profileZip{
+    max-height: 500px;
+}
+#ownedZipCodes{
     height: 100px;
-    max-height: 300px;
+    max-height: 425px;
     overflow: auto;
 }
   
