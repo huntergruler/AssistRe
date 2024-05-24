@@ -188,7 +188,7 @@ function zipUpdate() {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-    populateUserZipCodes();
+    populateAgentZipCodes();
     populateModals();
     populateMonths();
     populateYears();
@@ -344,11 +344,11 @@ function populateZipCodes() {
     .catch(error => console.error('Error checking user:', error));
 };
 
-function populateUserZipCodes() {
+function populateAgentZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const ownedZipCodes = document.getElementById("ownerZipCodes");
     let htmlCodes = '';
-    fetch(`/get-userzipcodes`)
+    fetch(`/get-agentzipcodes`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -674,7 +674,7 @@ function showZipCodes(){
     <button type="button" class="button" disabled id="saveChanges" onclick="saveChanges()">SAVE</button>`;
     contain.innerHTML = htmlChange;
     populateStates();
-    populateUserZipCodes();
+    populateAgentZipCodes();
 
     const overButton = document.getElementById('overviewButton');
     const officeButton = document.getElementById('officeButton');

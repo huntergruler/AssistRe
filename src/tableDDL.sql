@@ -1,4 +1,4 @@
-Create table Users
+Create table Agents
 (
     userid       int auto_increment not null,
     usertype      varchar(255) not null,
@@ -55,7 +55,7 @@ create table BuyerRequestDetails
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (buyerrequestid),
-    foreign key (userid) references Users(userid)
+    foreign key (userid) references Agents(userid)
 );
 create table PurchaseTimeLineTypes
 (
@@ -116,7 +116,7 @@ create table BuyerPropertyURLs
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (buyerpropertyurlid),
-    foreign key (userid) references Users(userid)
+    foreign key (userid) references Agents(userid)
 );
 
 create table AgentReviews
@@ -129,7 +129,7 @@ create table AgentReviews
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (agentreviewid),
-    foreign key (userid) references Users(userid)
+    foreign key (userid) references Agents(userid)
 );
 
 create table SeekingAgentReviews
@@ -142,7 +142,7 @@ create table SeekingAgentReviews
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (seekingagentreviewid),
-    foreign key (userid) references Users(userid)
+    foreign key (userid) references Agents(userid)
 );
 
 create table AgentMLSs
@@ -154,7 +154,7 @@ create table AgentMLSs
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (agentmlsid),
-    foreign key (userid) references Users(userid)
+    foreign key (userid) references Agents(userid)
 );
 
 CREATE table AgentTransactionHistory
@@ -167,7 +167,7 @@ CREATE table AgentTransactionHistory
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (agenttransactionid),
-    foreign key (userid) references Users(userid)
+    foreign key (userid) references Agents(userid)
 );
 
 
@@ -181,7 +181,7 @@ Create table AgentLicenseInfo
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (agentlicenseid),
-    foreign key (userid) references Users(userid)
+    foreign key (userid) references Agents(userid)
 );
 
 create table AgentOffices
@@ -198,7 +198,7 @@ create table AgentOffices
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (agentofficeid),
-    foreign key (userid) references Users(userid)
+    foreign key (userid) references Agents(userid)
 );
 
 Create table AgentApprovedBuyerForms
@@ -209,11 +209,11 @@ Create table AgentApprovedBuyerForms
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (agentapprovedbuyerformid),
-    foreign key (userid) references Users(userid)
+    foreign key (userid) references Agents(userid)
 );
 
 
-Create table UserZipCodes
+Create table AgentZipCodes
 (
     userzipcodeid int auto_increment not null,
     userid         int not null,
@@ -221,7 +221,7 @@ Create table UserZipCodes
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (userzipcodeid),
-    foreign key (userid) references Users(userid)
+    foreign key (userid) references Agents(userid)
 );
 
 Create table ZipCodes
@@ -258,8 +258,8 @@ Create table AgentOffers
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (agentofferid),
-    foreign key (buyeruserid) references Users(userid),
-    foreign key (agentuserid) references Users(userid)
+    foreign key (buyeruserid) references Agents(userid),
+    foreign key (agentuserid) references Agents(userid)
 );
 
 create table OfferTypes

@@ -41,7 +41,7 @@ if (!move_uploaded_file($userPhoto["tmp_name"], $targetFile)) {
 }
 
 // Insert user data into database
-$sql = "INSERT INTO Users (usertype, firstname, lastname, email, phonenumber, password, userphoto, emailverified, verificationToken) VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?)";
+$sql = "INSERT INTO Agents (usertype, firstname, lastname, email, phonenumber, password, userphoto, emailverified, verificationToken) VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?)";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssssssss", $_POST['userType'], $_POST['firstName'], $_POST['lastName'], $email, $phoneNumber, $password, $targetFile, $verificationToken);
