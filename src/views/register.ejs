@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,27 +9,42 @@
     <link rel="stylesheet" href="header.css">
     <style>
         form {
-            max-width: 300px; /* Adjust the form width as necessary */
+            max-width: 300px;
+            /* Adjust the form width as necessary */
             margin-top: 100px;
             margin-left: 20px;
         }
+
         .form-group {
-            margin-bottom: 10px; /* Space between each form group */
+            margin-bottom: 10px;
+            /* Space between each form group */
         }
+
         label {
-            display: block; /* Ensures the label is on its own line */
-            margin-bottom: 5px; /* Space between label and input */
+            display: block;
+            /* Ensures the label is on its own line */
+            margin-bottom: 5px;
+            /* Space between label and input */
         }
-        input[type="text"], input[type="email"], select {
-            width: 100%; /* Makes inputs and selects take up the full width of the form */
-            box-sizing: border-box; /* Includes padding and border in the width */
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            /* Makes inputs and selects take up the full width of the form */
+            box-sizing: border-box;
+            /* Includes padding and border in the width */
         }
+
         .radio-group {
-            padding-left: 20px; /* Indentation for radio buttons */
+            padding-left: 20px;
+            /* Indentation for radio buttons */
         }
+
         .radio-label {
             display: inline-block;
-            margin-right: 10px; /* Space between radio buttons */
+            margin-right: 10px;
+            /* Space between radio buttons */
         }
     </style>
 </head>
@@ -38,6 +54,7 @@
         <a href="/login">Login</a>
     </div>
 </header>
+
 <body>
     <div id="parentElement">
         <div id="registerContainer">
@@ -45,55 +62,58 @@
             <form action="/register" method="post">
                 <div class="form-group">
 
-        <div class="form-group">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
+                    <div class="form-group">
+                        <label>User Type:</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="userType" value="Buyer" required>
+                                Buyer</label>
+                            <label class="radio-label"><input type="radio" name="userType" value="Agent" required>
+                                Agent</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number:</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required>
+                        <span id="address"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">Zip Code:</label>
+                        <input type="text" id="zipCode" name="zipCode" required onblur="lookupCityState()">
+                        <span id="cityState"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="user">Email:</label>
+                        <input type="email" id="user" name="user" required>
+                        <span id="userStatus"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password:</label>
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                        <p id="error_message" style="display: none; color: red">Passwords do not match</p>
+                    </div>
+                    <button id="submit_button" type="submit">Register</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
-        </div>
-        <div class="form-group">
-            <label for="phoneNumber">Phone Number:</label>
-            <input type="text" id="phoneNumber" name="phoneNumber" required>
-        </div>
-        <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required>
-            <span id="address"></span>
-        </div>
-        <div class="form-group">
-            <label for="zipCode">Zip Code:</label>
-            <input type="text" id="zipCode" name="zipCode" required onblur="lookupCityState()">
-            <span id="cityState"></span>
-        </div>
-        <div class="form-group">
-            <label for="user">Email:</label>
-            <input type="email" id="user" name="user" required>
-            <span id="userStatus"></span>
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div class="form-group">
-            <label for="confirm_password">Confirm Password:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required>
-            <p id="error_message" style="display: none; color: red">Passwords do not match</p>
-        </div>
-        <div class="form-group">
-            <label>User Type:</label>
-            <div class="radio-group">
-                <label class="radio-label"><input type="radio" name="userType" value="Buyer" required> Buyer</label>
-                <label class="radio-label"><input type="radio" name="userType" value="Agent" required> Agent</label>
-            </div>
-        </div>
-        <button id="submit_button" type="submit">Register</button>
-    </form>
-</div>
-</div>  
-<script src="/script.js"></script>
-<script src="/verifypass.js"></script>
-<script src="/register.js"></script>
+    </div>
+    <script src="/script.js"></script>
+    <script src="/verifypass.js"></script>
+    <script src="/register.js"></script>
 </body>
+
 </html>
