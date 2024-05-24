@@ -505,15 +505,27 @@ router.get('/get-agentzipcodes', (req, res) => {
   });
 });
 
-// Route to serve the dashboard page
-router.get('/dashboard', (req, res) => {
+// Route to serve the aDashboard page
+router.get('/dashboard_a', (req, res) => {
   if (!req.session.user) {
-    req.session.message = 'Please login to access the Dashboard';
+    req.session.message = 'Please login to access your Dashboard';
     //    console.log('Redirecting to:', redirectto);
     res.redirect('/login');
   }
   else {
-    res.render('dashboard', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
+    res.render('dashboard_a', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
+  }
+});
+
+// Route to serve the aDashboard page
+router.get('/dashboard_b', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Dashboard';
+    //    console.log('Redirecting to:', redirectto);
+    res.redirect('/login');
+  }
+  else {
+    res.render('dashboard_b', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
   }
 });
 

@@ -63,7 +63,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             document.getElementById('email').focus();
                         } else {
                             // Redirect or handle successful login
-                            window.location.href = '/dashboard';
+                            if (userType === 'Agent') {
+                                window.location.href = '/dashboard_a';
+                            }
+                            else if (userType === 'Buyer') {
+                                window.location.href = '/dashboard_b';
+                            }
                         }
                     })
                     .catch(error => {

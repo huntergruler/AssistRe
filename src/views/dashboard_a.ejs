@@ -12,9 +12,8 @@
     <nav id="navlinks">
         <p id="navname"><%= firstname %> <%= lastname %></p>
         <p>|</p>
+        <% if (hasLicenses) { %>
         <a href="/profile">Profile</a>
-        <p>|</p>
-        <a href="/buyerprofile">Buyer Profile</a>
         <p>|</p>
         <a href="/settings">Settings</a>
         <p>|</p>
@@ -22,9 +21,9 @@
     </nav>
 </header>
 <body id="dashboardBody">
-    <h1>Dashboard for <%= firstname %> <%= lastname %></h1>
+    <h1>Agent Dashboard for <%= firstname %> <%= lastname %></h1>
     <div id="dashboardContainer">
-        <h1>Dashboard for <%= firstname %> <%= lastname %></h1>
+        <h1>Agent Dashboard for <%= firstname %> <%= lastname %></h1>
     </div>
 </body>
 </html>

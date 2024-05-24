@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="header.css">
+    <title>Dashboard</title>
+</head>
+<header>
+    <h1 id="title"><a href="/">SeekingAgents</a></h1>
+    <nav id="navlinks">
+        <p id="navname"><%= firstname %> <%= lastname %></p>
+        <p>|</p>
+        <% if (hasLicenses) { %>
+        <a href="/profile_a">Profile</a>
+        <p>|</p>
+        <a href="/settings">Settings</a>
+        <p>|</p>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
+<body id="dashboardBody">
+    <h1>Buyer Dashboard for <%= firstname %> <%= lastname %></h1>
+    <div id="dashboardContainer">
+        <h1>Buyer Dashboard for <%= firstname %> <%= lastname %></h1>
+    </div>
+</body>
+</html>
