@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,10 @@
 <header>
     <h1 id="title"><a href="/">SeekingAgents</a></h1>
     <nav id="navlinks">
-        <p id="navname"><%= firstname %> <%= lastname %></p>
+        <p id="navname">
+            <%= firstname %>
+                <%= lastname %>
+        </p>
         <p>|</p>
         <a href="/dashboard">Dashboard</a>
         <p>|</p>
@@ -20,138 +24,183 @@
         <a href="/logout">Logout</a>
     </nav>
 </header>
+
 <body id="profileBody">
-    <h1>Profile for <%= firstname %> <%= lastname %></h1>
+    <h1>Profile for <%= firstname %>
+            <%= lastname %>
+    </h1>
     <div id="profileNav">
         <button type="button" class="selectedStyle" id="overviewButton" onclick="showOverview()">Overview</button>
         <!--<button type="button" class="hoverStyle" id="officeButton" onclick="showOffice()">Office</button>-->
         <button type="button" class="hoverStyle" id="licenseButton" onclick="showLicense()">License</button>
         <button type="button" class="hoverStyle" id="zipCodeButton" onclick="showZipCodes()">Zip Codes</button>
-        <button type="button" class="hoverStyle" id="transactionButton" onclick="showTransactions()">Transactions</button>
+        <button type="button" class="hoverStyle" id="transactionButton"
+            onclick="showTransactions()">Transactions</button>
         <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Bio</button>
     </div>
     <div id="profileContainer">
         <div id="officeContainer">
-            <p><h1>Current Office(s)</h1></p>
-        <table id="officeTable">
-            <thead>
-                <tr>
-                    <th>Office Name</th>
-                    <th>Office License Number</th>
-                    <th>Office License State</th>
-                    <th>Office Address</th>
-                    <th>Office City</th>
-                    <th>Office State</th>
-                    <th>Office Zip</th>
-                    <th>Office Phone Number</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% if (hasOffices) { %>
-                  <% offices.forEach(function(office) { %>
-                    <tr id="office-<%= office.agentofficeid %>">
-                        <td><%= office.officeName %></td>
-                        <td><%= office.officeLicenseNumber %></td>
-                        <td><%= office.officeLicenseState %></td>
-                        <td><%= office.address %></td>
-                        <td><%= office.city %></td>
-                        <td><%= office.state %></td>
-                        <td><%= office.zip %></td>
-                        <td><%= office.phoneNumber %></td>
-                    </tr>
-                <% }); %>
-                <% } else { %>
+            <p>
+            <h1>Current Office(s)</h1>
+            </p>
+            <table id="officeTable">
+                <thead>
                     <tr>
-                        <td colspan="4">No offices found.</td>
+                        <th>Office Name</th>
+                        <th>Office License Number</th>
+                        <th>Office License State</th>
+                        <th>Office Address</th>
+                        <th>Office City</th>
+                        <th>Office State</th>
+                        <th>Office Zip</th>
+                        <th>Office Phone Number</th>
                     </tr>
-                <% } %>
-            </tbody>
-        </table>
-        <button type="button" class="hoverStyle" id="officeButton" onclick="showOffice()">Office</button>
-        <div id="myModal" class="modal">
+                </thead>
+                <tbody>
+                    <% if (hasOffices) { %>
+                        <% offices.forEach(function(office) { %>
+                            <tr id="office-<%= office.agentofficeid %>">
+                                <td>
+                                    <%= office.officeName %>
+                                </td>
+                                <td>
+                                    <%= office.officeLicenseNumber %>
+                                </td>
+                                <td>
+                                    <%= office.officeLicenseState %>
+                                </td>
+                                <td>
+                                    <%= office.address %>
+                                </td>
+                                <td>
+                                    <%= office.city %>
+                                </td>
+                                <td>
+                                    <%= office.state %>
+                                </td>
+                                <td>
+                                    <%= office.zip %>
+                                </td>
+                                <td>
+                                    <%= office.phoneNumber %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="4">No offices found.</td>
+                                    </tr>
+                                    <% } %>
+                </tbody>
+            </table>
+            <button type="button" class="hoverStyle" id="officeButton" onclick="showOffice()">Office</button>
+            <div id="myModal" class="modal">
 
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <div id="officeContent">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="officeContent">
 
-              </div>
+                    </div>
+                </div>
+
             </div>
-          
-          </div>
-        
-    </div>
-    <div id="licenseContainer">
-        <p><h1>Current Licenses</h1></p>
-        <table id="licensesTable">
-            <thead>
-                <tr>
-                    <th>License State</th>
-                    <th>License Number</th>
-                    <th>Expiration Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% if (hasLicenses) { %>
-                  <% licenses.forEach(function(license) { %>
-                    <tr id="license-<%= license.agentlicenseid %>">
-                        <td><%= license.licenseState %></td>
-                        <td><%= license.licenseNumber %></td>
-                        <td><%= license.licenseExpirationDate %></td>
-                    </tr>
-                <% }); %>
-                <% } else { %>
+
+        </div>
+        <div id="licenseContainer">
+            <p>
+            <h1>Current Licenses</h1>
+            </p>
+            <table id="licensesTable">
+                <thead>
                     <tr>
-                        <td colspan="4">No licenses found.</td>
+                        <th>License State</th>
+                        <th>License Number</th>
+                        <th>Expiration Date</th>
                     </tr>
-                <% } %>
-            </tbody>
-        </table>
-    </div>
-    <div class="zipCode-container" id="profileZips">
-        <h1 id>Zip Codes</h1>
-        <br>
-        <div id="ownedZipCodes"></div>
-    </div>
-    <div id="transactionContainer">
-        <p><h1>Current Transaction(s)</h1></p>
-    <table id="transactionTable">
-        <thead>
-            <tr>
-                <th>Transaction Date</th>
-                <th>Transaction Amount</th>
-                <th>Transaction Property Type</th>
-                <th>Transaction Level Of Service</th>
-                <th>Transaction Compensation Type</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% if (hasTransactions) { %>
-              <% transactions.forEach(function(transaction) { %>
-                <tr id="transaction-<%= transaction.agenttransactionid %>">
-                    <td><%= transaction.transactionDate %></td>
-                    <td><%= transaction.transactionAmount %></td>
-                    <td><%= transaction.PropertyType %></td>
-                    <td><%= transaction.LevelOfService %></td>
-                    <td><%= transaction.CompensationType %></td>
-                </tr>
-            <% }); %>
-            <% } else { %>
-                <tr>
-                    <td colspan="4">No transactions found.</td>
-                </tr>
-            <% } %>
-        </tbody>
-    </table>
-</div>
-<div id="BioContainer">
-        <h1>Biography</h1>
-        <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required></textarea>
-        <br>
-        <textarea id="langauges" name="languages" rows="4" cols="50" placeholder="Enter the languages you speak here" required></textarea>
-        <button type="button" id="bioAdd" onclick="addBio()">Add</button>
-        <span id="bioStatus"></span>
-</div>
-<script src="/profile.js"></script>
+                </thead>
+                <tbody>
+                    <% if (hasLicenses) { %>
+                        <% licenses.forEach(function(license) { %>
+                            <tr id="license-<%= license.agentlicenseid %>">
+                                <td>
+                                    <%= license.licenseState %>
+                                </td>
+                                <td>
+                                    <%= license.licenseNumber %>
+                                </td>
+                                <td>
+                                    <%= license.licenseExpirationDate %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="4">No licenses found.</td>
+                                    </tr>
+                                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="zipCode-container" id="profileZips">
+            <h1 id>Zip Codes</h1>
+            <br>
+            <div id="ownedZipCodes"></div>
+        </div>
+        <div id="transactionContainer">
+            <p>
+            <h1>Current Transaction(s)</h1>
+            </p>
+            <table id="transactionTable">
+                <thead>
+                    <tr>
+                        <th>Transaction Date</th>
+                        <th>Transaction Amount</th>
+                        <th>Transaction Property Type</th>
+                        <th>Transaction Level Of Service</th>
+                        <th>Transaction Compensation Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (hasTransactions) { %>
+                        <% transactions.forEach(function(transaction) { %>
+                            <tr id="transaction-<%= transaction.agenttransactionid %>">
+                                <td>
+                                    <%= transaction.transactionDate %>
+                                </td>
+                                <td>
+                                    <%= transaction.transactionAmount %>
+                                </td>
+                                <td>
+                                    <%= transaction.PropertyType %>
+                                </td>
+                                <td>
+                                    <%= transaction.LevelOfService %>
+                                </td>
+                                <td>
+                                    <%= transaction.CompensationType %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="4">No transactions found.</td>
+                                    </tr>
+                                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div id="BioContainer">
+            <h1>Biography</h1>
+            <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
+                required></textarea>
+            <br>
+            <textarea id="langauges" name="languages" rows="4" cols="50"
+                placeholder="Enter the languages you speak here" required></textarea>
+            <button type="button" id="bioAdd" onclick="addBio()">Add</button>
+            <span id="bioStatus"></span>
+        </div>
+        <script src="/profile.js"></script>
 </body>
+
 </html>

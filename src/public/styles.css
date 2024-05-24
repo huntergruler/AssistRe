@@ -4,7 +4,7 @@ body {
     background-color: #f0f2f5;
     font-size: 14px;
 }
-    
+
 .container {
     display: flex;
     justify-content: center;
@@ -12,35 +12,40 @@ body {
     width: 100%;
 }
 
-#profileContainer, #dashboardContainer, #loginContainer, .zipCode-container {
-    background-color: white;    
+#profileContainer,
+#dashboardContainer,
+#loginContainer,
+.zipCode-container {
+    background-color: white;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
 
-#dashboardContainer, #loginContainer, .zipCode-container {
+#dashboardContainer,
+#loginContainer,
+.zipCode-container {
     margin: 50px 0;
     border-radius: 8px;
 }
 
-#dashboardBody{
+#dashboardBody {
     display: grid;
     grid-template-columns: 2fr 3fr 2fr;
 }
 
-#dashboardContainer{
+#dashboardContainer {
     grid-column: 2;
     margin-top: 100px;
 }
 
-#profileBody{
+#profileBody {
     display: grid;
     grid-template-rows: 1fr 10fr;
     grid-template-columns: 2fr 3fr 2fr;
 }
 
-#profileNav{
+#profileNav {
     grid-column: 2;
     grid-row: 1;
     margin-top: 100px;
@@ -60,55 +65,60 @@ body {
     color: black;
 }
 
-#profileNav button{
+#profileNav button {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px 8px 0 0;
     padding: 10px;
     cursor: pointer;
 }
+
 .selectedStyle:hover {
     opacity: 0.8;
 
 }
-.hoverStyle:hover{
+
+.hoverStyle:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-#overviewButton{
+#overviewButton {
     grid-column: 1;
 }
 
-#officeButton{
+#officeButton {
     grid-column: 2;
 }
 
-#licenseButton{
+#licenseButton {
     grid-column: 3;
 }
 
-#zipCodeButton{
+#zipCodeButton {
     grid-column: 4;
 }
 
-#transactionButton{
+#transactionButton {
     grid-column: 5;
 }
 
-#bioButton{
+#bioButton {
     grid-column: 6;
 }
 
-#profileContainer{
+#profileContainer {
     grid-column: 2;
     grid-row: 2;
     border-radius: 0 0 8px 8px;
 }
-  
-#profileContainer h1, #dashboardContainer h1, #loginContainer h1, .zipCode-container h1 {
+
+#profileContainer h1,
+#dashboardContainer h1,
+#loginContainer h1,
+.zipCode-container h1 {
     margin-bottom: 20px;
 }
 
-#loginBody{
+#loginBody {
     display: grid;
     grid-template-columns: 2fr 3fr 2fr;
 
@@ -124,7 +134,7 @@ body {
     width: 100%;
     max-width: 800px;
 }
-  
+
 #loginContainer h1 {
     margin-bottom: 20px;
 }
@@ -154,39 +164,43 @@ body {
 }
 
 html {
-    font-size: 14px; /* setting base size */
-}   
+    font-size: 14px;
+    /* setting base size */
+}
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
-  
-table th, table td {
+
+table th,
+table td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
 }
-  
+
 table th {
     background-color: #f4f4f4;
 }
-  
+
 form {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     align-items: center;
 }
-  
-form input, form select, form button {
+
+form input,
+form select,
+form button {
     padding: 10px;
     border: 1px solid rgba(19, 50, 109);
     border-radius: 4px;
     font-size: 14px;
 }
-  
+
 form button {
     background-color: rgb(0, 0, 0);
     color: white;
@@ -194,11 +208,11 @@ form button {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-  
+
 form button:hover {
     background-color: #45a049;
 }
-  
+
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -229,21 +243,21 @@ form button:hover {
 .zipCodeOption {
     text-align: center;
 }
-  
-.grid-container > div {
+
+.grid-container>div {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     gap: 10px;
     border-radius: 8px;
 }
-  
+
 .grid-action {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
-  
+
 .button {
     background-color: blue;
     color: white;
@@ -253,7 +267,7 @@ form button:hover {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-  
+
 .disabled {
     opacity: 0.6;
     color: #ccc;
@@ -264,49 +278,60 @@ form button:hover {
     background-color: #45a049;
 }
 
-#profileZip{
+#profileZip {
     max-height: 750px;
 }
-#ownedZipCodes{
+
+#ownedZipCodes {
     height: 100px;
     max-height: 675px;
     overflow: auto;
 }
-  
+
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
+    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
