@@ -420,36 +420,43 @@ function updateDays() {
     }
 };
 
+var officeToggle = 0;
 function showOffice() {
     const form = document.getElementById("officeForm");
     //const doneButton = document.getElementById('officeDone');
     var officeIDs = []
     //doneButton.style.display = "block";
+    if(officeToggle == 0){
+        console.log("officeToggle is 0");
+        fetch('/api/profile')
+            .then(response => response.json())
+            .then(data => {
+                if (data.hasOffices) {
+                    data.offices.forEach(function (office) {
+                        officeIDs.push(office.agentofficeid);
+                    });
+                    const table = document.getElementById('officeTable');
 
-    fetch('/api/profile')
-        .then(response => response.json())
-        .then(data => {
-            if (data.hasOffices) {
-                data.offices.forEach(function (office) {
-                    officeIDs.push(office.agentofficeid);
-                });
-                const table = document.getElementById('officeTable');
-
-                const headerRow = table.querySelector('thead tr');
-                const newHeader = document.createElement('th');
-                newHeader.textContent = `Header ${headerRow.children.length + 1}`;
-                headerRow.appendChild(newHeader);
-            
-                // Add cells to each row in the tbody
-                const rows = table.querySelectorAll('tbody tr');
-                rows.forEach((row, index) => {
-                    console.log(officeIDs[index]);
-                    const newCell = document.createElement('td');
-                    newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
-                    row.appendChild(newCell);
-                });
-        }
-    });
+                    const headerRow = table.querySelector('thead tr');
+                    const newHeader = document.createElement('th');
+                    newHeader.textContent = `Header ${headerRow.children.length + 1}`;
+                    headerRow.appendChild(newHeader);
+                
+                    // Add cells to each row in the tbody
+                    const rows = table.querySelectorAll('tbody tr');
+                    rows.forEach((row, index) => {
+                        console.log(officeIDs[index]);
+                        const newCell = document.createElement('td');
+                        newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
+                        row.appendChild(newCell);
+                    });
+            }
+        });
+        officeToggle = 1;
+    }
+    else {
+        console.log("officeToggle is 1");
+    }
     // const headerRow = table.querySelector('thead tr');
     // const rows = table.querySelectorAll('tbody tr');
 
