@@ -236,14 +236,14 @@ router.post('/login', [
     const { email, password, userType } = req.body;
     userQuery = 'NOPE';
     console.log('User Type:', userType, 'Email:', email, 'Password:', password  );
-    if (userType == 'Agent') {
-      let userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
-    } else if (userType == 'Buyer') {
+    if (userType === 'Agent') {
+      var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
+    } else if (userType === 'Buyer') {
       console.log('Buyer');
-      let userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
+      var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
     } else {
+      var userQuery = '';
       return res.render('login', { errorMessage: 'Invalid user type' });
-      userQuery = '';
     }
     console.log('User Type:', userType);
     console.log('query:', userQuery);
