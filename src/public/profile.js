@@ -420,7 +420,7 @@ function updateDays() {
     }
 };
 
-var officeToggle = 0;
+//var officeToggle = 0;
 
 function showOffice() {
     var officeButton = document.getElementById('officeButton');
