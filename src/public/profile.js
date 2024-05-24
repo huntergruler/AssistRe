@@ -524,8 +524,10 @@ function showOffice() {
     <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
     <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
     <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-    <button type="button" id="officeAdd">Add</button>
+    <button type="button" onclick="addOffice()">Add</button>
     <span id="offStatus"></span>`
+
+    var add = document.getElementById("officeAdd");
     fetch('/api/profile')
         .then(response => response.json())
         .then(data => {
