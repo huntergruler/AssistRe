@@ -286,6 +286,9 @@ form button:hover {
     max-height: 225px;
     overflow: auto;
 }
+#officeHeader {
+    display: inline-block;
+}
 
 /* The Modal (background) */
 .modal {
