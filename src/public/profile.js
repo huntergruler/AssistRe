@@ -1,4 +1,4 @@
-var officeToggle = 0;
+
 function addTransaction() {
     const transactionDate = document.getElementById('transactionDate').value;
     const transactionAmount = document.getElementById('transactionAmount').value;
@@ -188,7 +188,6 @@ function zipUpdate() {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-    officeToggle = 0;
     populateAgentZipCodes();
     populateMonths();
     populateYears();
@@ -422,19 +421,24 @@ function updateDays() {
     }
 };
 
-
+var officeToggle = 0;
 function showOffice() {
-    
     const form = document.getElementById("officeForm");
     const table = document.getElementById('officeTable');
     const officeButton = document.getElementById('officeButton');
     var officeIDs = []
-    console.log(officeToggle)
 
     if(officeToggle == 0){
+        console.log("officeToggle is 0");
+        officeButton.classList.remove('selectedStyle');
+        officeButton.innerHTML = "Edit";
+        officeToggle = 1;
+    }
+    else {
+
         officeButton.classList.add('selectedStyle');
         officeButton.innerHTML = "Done";
-        console.log("officeToggle is 0");
+        console.log("officeToggle is 1");
         fetch('/api/profile')
             .then(response => response.json())
             .then(data => {
@@ -457,16 +461,9 @@ function showOffice() {
                         newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
                         row.appendChild(newCell);
                     });
-                    officeToggle = 1;
+                    officeToggle = 0;
             }
         });
-        
-    }
-    else {
-        console.log("officeToggle is 1");
-        officeButton.classList.remove('selectedStyle');
-        officeButton.innerHTML = "Edit";
-        officeToggle = 0;
     }
     // const headerRow = table.querySelector('thead tr');
     // const rows = table.querySelectorAll('tbody tr');
