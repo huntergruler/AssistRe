@@ -239,6 +239,7 @@ router.post('/login', [
     if (userType == 'Agent') {
       let userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
     } else if (userType == 'Buyer') {
+      console.log('Buyer');
       let userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
     } else {
       return res.render('login', { errorMessage: 'Invalid user type' });
