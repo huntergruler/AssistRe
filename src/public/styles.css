@@ -297,6 +297,10 @@ form button:hover {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
+#officeAdd{
+    column-span: 2;
+}
+
 /* The Modal (background) */
 .modal {
     display: none;
