@@ -265,6 +265,7 @@ form button:hover {
 }
 
 #ownedZipCodes{
+    height: 100px;
     max-height: 300px;
     overflow: auto;
 }
