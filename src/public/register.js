@@ -21,9 +21,9 @@ function lookupCityState() {
 document.addEventListener('keyup', function(event) {
     if (event.target.id === 'user') {
         const User = document.getElementById('user').value.trim();
+        console.log(User);
         fetch(`/check-user?username=${encodeURIComponent(User)}`)
         .then(response => response.json())
-        console.log(response);
         .then(data => {
           if (data.available) {
             // Email is available
