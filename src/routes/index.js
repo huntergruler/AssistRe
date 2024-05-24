@@ -109,7 +109,7 @@ router.post('/register', (req, res) => {
       // Now insert the user into the Agents table with city and state
 
       if (userType === 'Agent') {
-        const agentInsertSql = 'INSERT INTO Agents (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, usertype, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        const agentInsertSql = 'INSERT INTO Agents (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, usertype, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         db.query(agentInsertSql, [firstName, lastName, user, verificationtoken, phoneNumber, zipCode, address, city, state, userType, user, hashedPassword], (userError, userResults) => {
           if (userError) {
             console.error('Error inserting user into database:', userError);
@@ -122,7 +122,7 @@ router.post('/register', (req, res) => {
         });
       }
       else {
-        const buyerInsertSql = 'INSERT INTO Buyers (firstName, lastName, email, phoneNumber, zip, address, city, state, usertype, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        const buyerInsertSql = 'INSERT INTO Buyers (firstName, lastName, email, phoneNumber, zip, address, city, state, usertype, email, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         db.query(buyerInsertSql, [firstName, lastName, user, phoneNumber, zipCode, address, city, state, userType, user, hashedPassword], (userError, userResults) => {
           if (userError) {
             console.error('Error inserting user into database:', userError);
@@ -238,16 +238,16 @@ router.get('/logout', (req, res) => {
 });
 
 router.post('/login', [
-  body('username').trim().escape(),
+  body('email').trim().escape(),
   body('password').isLength({ min: 4 }).trim().escape()], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    const { username, password } = req.body;
-    const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE username = ?';
+    const { email, password } = req.body;
+    const query = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
     res.setHeader('Content-Type', 'application/json');
-    db.query(query, [username], (error, results) => {
+    db.query(query, [email], (error, results) => {
       if (error) {
         return res.render('login', { errorMessage: 'Error during database query' });
       }
@@ -265,11 +265,11 @@ router.post('/login', [
             return res.render('login', { errorMessage: 'Error comparing passwords' });
           } else {
             if (isMatch) {
-              req.session.user = username;
+              req.session.user = email;
               req.session.userid = userid;
               req.session.firstname = firstname;
               req.session.lastname = lastname;
-              console.log('User logged in:', username);
+              console.log('User logged in:', email);
               res.json({
                 success: true,
                 message: "Successful Login"
@@ -310,12 +310,14 @@ router.get('/get-city-state', (req, res) => {
 
 // Route to check if user exists
 router.get('/check-user', (req, res) => {
-  const username = req.query.username;
-  if (!username) {
+  const email = req.query.email;
+  const usertype = req.query.usertype;
+  if (!email) {
       return res.status(400).json({error: 'User Name is required'});
   }
-  const query = 'SELECT count(*) cnt FROM Agents WHERE username = ?';
-  db.query(query, [username], (error, results) => {
+  if (usertype = 'Agent') { 
+  const query = 'SELECT count(*) cnt FROM Agents WHERE email = ?';
+  db.query(query, [email], (error, results) => {
       if (error) {
           return res.status(500).json({error: 'Internal server error'});
       }
@@ -327,6 +329,22 @@ router.get('/check-user', (req, res) => {
         res.json({ available: true });
       }
   });
+}
+else {
+  const query = 'SELECT count(*) cnt FROM Buyers WHERE email = ?';
+  db.query(query, [email], (error, results) => {
+      if (error) {
+          return res.status(500).json({error: 'Internal server error'});
+      }
+      if (results[0].cnt > 0) {
+        // User Name is already taken
+        res.json({ available: false });
+      } else {
+        // User Name is available
+        res.json({ available: true });
+      }
+  });
+}
 });
 // Route to check if user exists
 router.get('/check-license', (req, res) => {
@@ -537,7 +555,7 @@ router.post('/reset', (req, res) => {
       console.error("Hashing error:", err);
       return res.status(500).send('Error hashing password');
     }
-    const updateQuery = 'UPDATE Agents SET password = ? WHERE username = ?';
+    const updateQuery = 'UPDATE Agents SET password = ? WHERE email = ?';
     db.query(updateQuery, [hashedPassword, email], (error, results) => {
       if (error) {
         return res.status(500).send('Error accessing the database');

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.addEventListener('submit', function(event) {
                     event.preventDefault(); // Prevent default form submission
                     if (event.target.id === 'loginForm') {
-                        const username = document.getElementById('username').value.trim();
+                        const email = document.getElementById('email').value.trim();
                         const password = document.getElementById('password').value.trim();
                     
                         fetch('/login', {
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify({ username: username, password: password })
+                            body: JSON.stringify({ email: email, password: password })
                         })
                         .then(response => response.json())
                         .then(data => {
@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                 // Display message if login failed
                                 document.getElementById('message').innerText = data.message;
                                 document.getElementById('message').style.color = 'red'; // Optional: change text color
-                                document.getElementById('username').value = '';
+                                document.getElementById('email').value = '';
                                 document.getElementById('password').value = '';
-                                document.getElementById('username').focus();
+                                document.getElementById('email').focus();
                             } else {
                                 // Redirect or handle successful login
                                 window.location.href = '/dashboard';

@@ -10,7 +10,6 @@ Create table Agents
     zip           varchar(255) not null,
     email         varchar(255) not null,
     phonenumber   varchar(255) not null,
-    username      varchar(255) not null,
     emailverified boolean      not null, 
     userphoto     varchar(255) not null,
     entrytimestamp timestamp not null,

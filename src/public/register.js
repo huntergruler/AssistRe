@@ -22,7 +22,7 @@ document.addEventListener('keyup', function(event) {
     if (event.target.id === 'user') {
         const User = document.getElementById('user').value.trim();
         console.log(User);
-        fetch(`/check-user?username=${encodeURIComponent(User)}`)
+        fetch(`/check-user?email=${encodeURIComponent(User)}`)
         .then(response => response.json())
         .then(data => {
           if (data.available) {
