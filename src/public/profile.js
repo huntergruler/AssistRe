@@ -2,37 +2,37 @@ function addTransaction() {
     const transactionDate = document.getElementById('transactionDate').value;
     const transactionAmount = document.getElementById('transactionAmount').value;
     const propertyType = document.getElementById('propertyType').value;
-    const levelOfService = document.getElementById('levelOfService').value; 
-    const compensationType = document.getElementById('compensationType').value;    
+    const levelOfService = document.getElementById('levelOfService').value;
+    const compensationType = document.getElementById('compensationType').value;
     fetch('/api/transactions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ transactionDate, transactionAmount, propertyType, levelOfService, compensationType })
     })
-    .then(response => response.json())
-    .then(data => {
-        const table = document.getElementById('transactionTable').getElementsByTagName('tbody')[0];
-        const newRow = table.insertRow(table.rows.length);
-        newRow.id = `transaction-${data.agenttransactionid}`;
-        newRow.insertCell(0).textContent = transactionDate;
-        newRow.insertCell(1).textContent = transactionAmount;
-        newRow.insertCell(2).textContent = propertyType;
-        newRow.insertCell(3).textContent = levelOfService;
-        newRow.insertCell(4).textContent = compensationType;
-        newRow.insertCell(5).innerHTML = '<button onclick="deleteTransaction(' + data.agenttransactionid + ')">Delete</button>';
-        document.getElementById('transactionForm').reset();
-    })
+        .then(response => response.json())
+        .then(data => {
+            const table = document.getElementById('transactionTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow(table.rows.length);
+            newRow.id = `transaction-${data.agenttransactionid}`;
+            newRow.insertCell(0).textContent = transactionDate;
+            newRow.insertCell(1).textContent = transactionAmount;
+            newRow.insertCell(2).textContent = propertyType;
+            newRow.insertCell(3).textContent = levelOfService;
+            newRow.insertCell(4).textContent = compensationType;
+            newRow.insertCell(5).innerHTML = '<button onclick="deleteTransaction(' + data.agenttransactionid + ')">Delete</button>';
+            document.getElementById('transactionForm').reset();
+        })
 };
 
 function deleteTransaction(id) {
     fetch(`/api/transactions/${id}`, {
         method: 'DELETE'
     })
-    .then(() => {
-        // Remove the row from the table
-        document.getElementById(`transaction-${id}`).remove();
-    })
-    .catch(error => console.error('Error:', error));
+        .then(() => {
+            // Remove the row from the table
+            document.getElementById(`transaction-${id}`).remove();
+        })
+        .catch(error => console.error('Error:', error));
 };
 
 function addOffice() {
@@ -49,32 +49,32 @@ function addOffice() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState })
     })
-    .then(response => response.json())
-    .then(data => {
-        const table = document.getElementById('officeTable').getElementsByTagName('tbody')[0];
-        const newRow = table.insertRow(table.rows.length);
-        newRow.id = `office-${data.agentofficeid}`;
-        newRow.insertCell(0).textContent = officeName;
-        newRow.insertCell(1).textContent = address;
-        newRow.insertCell(2).textContent = city;
-        newRow.insertCell(3).textContent = state;
-        newRow.insertCell(4).textContent = zip;
-        newRow.insertCell(5).textContent = phoneNumber;
-        newRow.insertCell(6).textContent = officeLicenseNumber;
-        newRow.insertCell(7).textContent = officeLicenseState;
-        document.getElementById('officeForm').reset();
-    })
+        .then(response => response.json())
+        .then(data => {
+            const table = document.getElementById('officeTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow(table.rows.length);
+            newRow.id = `office-${data.agentofficeid}`;
+            newRow.insertCell(0).textContent = officeName;
+            newRow.insertCell(1).textContent = address;
+            newRow.insertCell(2).textContent = city;
+            newRow.insertCell(3).textContent = state;
+            newRow.insertCell(4).textContent = zip;
+            newRow.insertCell(5).textContent = phoneNumber;
+            newRow.insertCell(6).textContent = officeLicenseNumber;
+            newRow.insertCell(7).textContent = officeLicenseState;
+            document.getElementById('officeForm').reset();
+        })
 };
 
 function deleteOffice(id) {
     fetch(`/api/offices/${id}`, {
         method: 'DELETE'
     })
-    .then(() => {
-        // Remove the row from the table
-        document.getElementById(`office-${id}`).remove();
-    })
-    .catch(error => console.error('Error:', error));
+        .then(() => {
+            // Remove the row from the table
+            document.getElementById(`office-${id}`).remove();
+        })
+        .catch(error => console.error('Error:', error));
     populateModals();
 };
 
@@ -101,74 +101,74 @@ function addLicense() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ licenseNumber: licenseNumber, licenseState: licenseState, licenseExpirationDate: licenseExpirationDate })
     })
-    .then(response => response.json())
-    .then(data => {
-        const table = document.getElementById('licensesTable').getElementsByTagName('tbody')[0];
-        const newRow = table.insertRow(table.rows.length);
-        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-        const expDate = licenseExpirationDate.toLocaleDateString('en-US', options);
+        .then(response => response.json())
+        .then(data => {
+            const table = document.getElementById('licensesTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow(table.rows.length);
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            const expDate = licenseExpirationDate.toLocaleDateString('en-US', options);
 
-        newRow.id = `license-${data.agentlicenseid}`;
-        newRow.insertCell(0).textContent = licenseState;
-        newRow.insertCell(1).textContent = licenseNumber;
-        newRow.insertCell(2).textContent = expDate;
-        newRow.insertCell(3).innerHTML = '<button onclick="deleteLicense(' + data.agentlicenseid + ')">Delete</button>';
+            newRow.id = `license-${data.agentlicenseid}`;
+            newRow.insertCell(0).textContent = licenseState;
+            newRow.insertCell(1).textContent = licenseNumber;
+            newRow.insertCell(2).textContent = expDate;
+            newRow.insertCell(3).innerHTML = '<button onclick="deleteLicense(' + data.agentlicenseid + ')">Delete</button>';
 
 
-//        row.innerHTML = `<tr id="license-${data.agentlicenseid}"> <td>${data.licenseNumber}</td><td>${data.licenseState}</td><td>${data.agentlicenseid}</td><td><button onclick="deleteLicense(${data.agentlicenseid})">Delete</button></td></tr>`;
-        document.getElementById('licenseForm').reset();
-    })
-    .catch(error => console.error('Error:', error));
+            //        row.innerHTML = `<tr id="license-${data.agentlicenseid}"> <td>${data.licenseNumber}</td><td>${data.licenseState}</td><td>${data.agentlicenseid}</td><td><button onclick="deleteLicense(${data.agentlicenseid})">Delete</button></td></tr>`;
+            document.getElementById('licenseForm').reset();
+        })
+        .catch(error => console.error('Error:', error));
 };
 
 function deleteLicense(id) {
     fetch(`/api/licenses/${id}`, {
         method: 'DELETE'
     })
-    .then(() => {
-        // Remove the row from the table
-        document.getElementById(`license-${id}`).remove();
-    })
-    .catch(error => console.error('Error:', error));
+        .then(() => {
+            // Remove the row from the table
+            document.getElementById(`license-${id}`).remove();
+        })
+        .catch(error => console.error('Error:', error));
 };
 
 function deleteOffice(id) {
     fetch(`/api/offices/${id}`, {
         method: 'DELETE'
     })
-    .then(() => {
-        // Remove the row from the table
-        document.getElementById(`office-${id}`).remove();
-    })
-    .catch(error => console.error('Error:', error));
+        .then(() => {
+            // Remove the row from the table
+            document.getElementById(`office-${id}`).remove();
+        })
+        .catch(error => console.error('Error:', error));
 };
 
-document.addEventListener('blur', function(event) {
+document.addEventListener('blur', function (event) {
     if (event.target.id === 'licenseState') {
-        const licenseState = document.getElementById ('licenseState').value.trim();
+        const licenseState = document.getElementById('licenseState').value.trim();
         if (licenseState.length !== 0) {
             fetch(`/check-license?licenseState=${encodeURIComponent(licenseState)}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.stateResult === "Valid") {
-                    // state is valid
-                    document.getElementById('licStatus').textContent = '';
-                    document.getElementById('licenseAdd').disabled = false;
-                } else if (data.stateResult === "Used") {
-                    // state has been used
-                    document.getElementById('licStatus').textContent = 'License for this state exists';
-                    document.getElementById('licStatus').style.color = 'red';
-                    document.getElementById('licenseAdd').disabled = true;
-                    document.getElementById('licenseState').focus();
-                } else {
-                    // state is not valid
-                    document.getElementById('licStatus').textContent = 'Invalid State';
-                    document.getElementById('licStatus').style.color = 'red';
-                    document.getElementById('licenseAdd').disabled = true;
-                    document.getElementById('licenseState').focus();
+                .then(response => response.json())
+                .then(data => {
+                    if (data.stateResult === "Valid") {
+                        // state is valid
+                        document.getElementById('licStatus').textContent = '';
+                        document.getElementById('licenseAdd').disabled = false;
+                    } else if (data.stateResult === "Used") {
+                        // state has been used
+                        document.getElementById('licStatus').textContent = 'License for this state exists';
+                        document.getElementById('licStatus').style.color = 'red';
+                        document.getElementById('licenseAdd').disabled = true;
+                        document.getElementById('licenseState').focus();
+                    } else {
+                        // state is not valid
+                        document.getElementById('licStatus').textContent = 'Invalid State';
+                        document.getElementById('licStatus').style.color = 'red';
+                        document.getElementById('licenseAdd').disabled = true;
+                        document.getElementById('licenseState').focus();
                     }
                 })
-            .catch(error => console.error('Error checking user:', error));
+                .catch(error => console.error('Error checking user:', error));
         }
     }
 }, true); // Using capturing phase to handle the event as it propagates down
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function getSelectedZipCodes() {
     const selected = document.querySelectorAll(".zipCodeOption.selected");
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
-  };
+};
 
 function populateStates() {
     const stateSelect = document.getElementById('stateSelect');
@@ -208,42 +208,42 @@ function populateStates() {
     defaultOption.textContent = 'Select a State';
     defaultOption.value = '';
     stateSelect.appendChild(defaultOption);
-    
+
     fetch(`/get-states`)
-    .then(response => response.json())
-    .then(data => {
-        data.results.forEach(item => {
-            let option = document.createElement('option');
-            option.value = item.state;
-            option.textContent = item.stateName;
-            stateSelect.appendChild(option);
-        });
-    })
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let option = document.createElement('option');
+                option.value = item.state;
+                option.textContent = item.stateName;
+                stateSelect.appendChild(option);
+            });
+        })
 };
 
-stateSelect.addEventListener('change', function() {
+stateSelect.addEventListener('change', function () {
     var selectedValue = this.value;
-  });
-  
-  function populateCities() {
+});
+
+function populateCities() {
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect');
-    
+
     fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
-    .then(response => response.json())
-    .then(data => {
-        // Clear existing options in citySelect
-        citySelect.innerHTML = '';
-        const defaultOption = document.createElement('option');
-        defaultOption.textContent = 'Select a City';
-        defaultOption.value = '';
-        citySelect.appendChild(defaultOption);
-             data.results.forEach(item => {
-            let option = new Option(item.city, item.city);
-            citySelect.appendChild(option);
-        });    
-         })
-    .catch(error => console.error('Error checking user:', error));
+        .then(response => response.json())
+        .then(data => {
+            // Clear existing options in citySelect
+            citySelect.innerHTML = '';
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = 'Select a City';
+            defaultOption.value = '';
+            citySelect.appendChild(defaultOption);
+            data.results.forEach(item => {
+                let option = new Option(item.city, item.city);
+                citySelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error checking user:', error));
 };
 
 function saveChanges() {
@@ -266,19 +266,19 @@ function saveChanges() {
         },
         body: JSON.stringify(data)
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(result => {
-        console.log('Success:', result);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-   
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
     selected.forEach(node => {
         const data = {
             zipCode: node.textContent
@@ -291,16 +291,16 @@ function addSelection() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
     selected.forEach(node => {
-          node.classList.remove("selected");
-          const div = document.createElement("div");
-          div.textContent = node.textContent;
-          div.className = "zipCodeSelected";
-          div.onclick = function() {
+        node.classList.remove("selected");
+        const div = document.createElement("div");
+        div.textContent = node.textContent;
+        div.className = "zipCodeSelected";
+        div.onclick = function () {
             this.classList.toggle("selected");
-          };
-          selectedZipCodesContainer.appendChild(div);
-          node.remove();
-          document.getElementById('saveChanges').disabled = false;
+        };
+        selectedZipCodesContainer.appendChild(div);
+        node.remove();
+        document.getElementById('saveChanges').disabled = false;
     });
 };
 
@@ -309,16 +309,16 @@ function removeSelection() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeSelected.selected");
     selected.forEach(node => {
-          node.classList.remove("selected");
-          const div = document.createElement("div");
-          div.textContent = node.textContent;
-          div.className = "zipCodeOption";
-          div.onclick = function() {
+        node.classList.remove("selected");
+        const div = document.createElement("div");
+        div.textContent = node.textContent;
+        div.className = "zipCodeOption";
+        div.onclick = function () {
             this.classList.toggle("selected");
-          };
-          availabeZipCodesContainer.appendChild(div);
-          node.remove();
-          document.getElementById('saveChanges').disabled = false;
+        };
+        availabeZipCodesContainer.appendChild(div);
+        node.remove();
+        document.getElementById('saveChanges').disabled = false;
     });
 };
 
@@ -328,25 +328,25 @@ function populateZipCodes() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
-    .then(response => response.json())
-    .then(data => {
-        availabeZipCodesContainer.innerHTML = '';
-        data.results.forEach(code => {
-            const div = document.createElement("div");
-            div.textContent = code.zipCode;
-            div.className = "zipCodeOption";
-            div.onclick = function() {
-              this.classList.toggle("selected");
-            };
-            availabeZipCodesContainer.appendChild(div);
-          });
-    })
-    .catch(error => console.error('Error checking user:', error));
+        .then(response => response.json())
+        .then(data => {
+            availabeZipCodesContainer.innerHTML = '';
+            data.results.forEach(code => {
+                const div = document.createElement("div");
+                div.textContent = code.zipCode;
+                div.className = "zipCodeOption";
+                div.onclick = function () {
+                    this.classList.toggle("selected");
+                };
+                availabeZipCodesContainer.appendChild(div);
+            });
+        })
+        .catch(error => console.error('Error checking user:', error));
 };
 
 function populateAgentZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const ownedZipCodes = document.getElementById("ownerZipCodes");
+    const ownedZipCodes = document.getElementById("ownedZipCodes");
     let htmlCodes = '';
     fetch(`/get-agentzipcodes`)
     .then(response => response.json())
@@ -404,12 +404,12 @@ function populateModals() {
     </thead>
     <tbody id="officeModalTable>`;
     fetch('/api/profile')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        if (data.hasOffices) {
-            data.offices.forEach(office => {
-                htmlChange += `<tr id="office-${office.agentofficeid}">
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.hasOffices) {
+                data.offices.forEach(office => {
+                    htmlChange += `<tr id="office-${office.agentofficeid}">
                     <td>${office.officeName}</td>
                     <td>${office.officeLicenseNumber}</td>
                     <td>${office.officeLicenseState}</td>
@@ -422,14 +422,14 @@ function populateModals() {
                         <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
                     </td>
                 </tr>`;
-            contain.innerHTML = htmlChange;
-            });
-        } else {
-            htmlChange += `<tr>
+                    contain.innerHTML = htmlChange;
+                });
+            } else {
+                htmlChange += `<tr>
                 <td colspan="4">No offices found.</td>
-            </tr>`;   
-        }
-        htmlChange += `</tbody>
+            </tr>`;
+            }
+            htmlChange += `</tbody>
         </table>
         <form id="officeForm">
             <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
@@ -443,9 +443,9 @@ function populateModals() {
             <button type="button" id="officeAdd">Add</button>
             <span id="offStatus"></span>
         </div>`;
-        contain.innerHTML = htmlChange;
-    });
-    
+            contain.innerHTML = htmlChange;
+        });
+
 }
 
 function populateMonths() {
@@ -489,7 +489,7 @@ function updateDays() {
 function showOffice() {
     var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
+    // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
 
     // Get the <span> element that closes the modal
@@ -500,28 +500,28 @@ function showOffice() {
     modal.style.display = "block";
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    span.onclick = function () {
         modal.style.display = "none";
     }
-    add.onclick = function() {
+    add.onclick = function () {
         addOffice();
         populateModals();
         modal.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
     fetch('/api/profile')
-    .then(response => response.json())
-    .then(data => {
-        
-        if (data.hasOffices) {
-            data.offices.forEach(office => {
-                htmlChange += `<tr id="office-${office.agentofficeid}">
+        .then(response => response.json())
+        .then(data => {
+
+            if (data.hasOffices) {
+                data.offices.forEach(office => {
+                    htmlChange += `<tr id="office-${office.agentofficeid}">
                     <td>${office.officeName}</td>
                     <td>${office.officeLicenseNumber}</td>
                     <td>${office.officeLicenseState}</td>
@@ -534,8 +534,8 @@ function showOffice() {
                         <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
                     </td>
                 </tr>`;
-            });
-        }
+                });
+            }
         });
 
     const overButton = document.getElementById('overviewButton');
@@ -544,7 +544,7 @@ function showOffice() {
     const zipButton = document.getElementById('zipCodeButton');
     const transButton = document.getElementById('transactionButton');
     const bioButton = document.getElementById('bioButton');
-    
+
     overButton.classList.remove('selectedStyle');
     overButton.classList.add('hoverStyle');
     officeButton.classList.add('selectedStyle');
@@ -575,8 +575,8 @@ function showLicense() {
     fetch('/api/profile')
         .then(response => response.json())
         .then(data => {
-            if(data.hasLicenses){
-                data.licenses.forEach(function(license){
+            if (data.hasLicenses) {
+                data.licenses.forEach(function (license) {
                     htmlChange += `<tr id="license-${license.agentlicenseid}">
                     <td>${license.licenseState}</td>
                     <td>${license.licenseNumber}</td>
@@ -625,7 +625,7 @@ function showLicense() {
     const zipButton = document.getElementById('zipCodeButton');
     const transButton = document.getElementById('transactionButton');
     const bioButton = document.getElementById('bioButton');
-    
+
     overButton.classList.remove('selectedStyle');
     overButton.classList.add('hoverStyle');
     officeButton.classList.remove('selectedStyle');
@@ -640,7 +640,7 @@ function showLicense() {
     bioButton.classList.add('hoverStyle');
 };
 
-function showZipCodes(){
+function showZipCodes() {
     const contain = document.getElementById('profileContainer');
     let htmlChange = `<h1>Zip Codes</h1>
     <p>Select Zip Codes in which you would like offers</p>
@@ -682,7 +682,7 @@ function showZipCodes(){
     const zipButton = document.getElementById('zipCodeButton');
     const transButton = document.getElementById('transactionButton');
     const bioButton = document.getElementById('bioButton');
-    
+
     overButton.classList.remove('selectedStyle');
     overButton.classList.add('hoverStyle');
     officeButton.classList.remove('selectedStyle');
@@ -697,11 +697,11 @@ function showZipCodes(){
     bioButton.classList.add('hoverStyle');
 }
 
-function showOverview(){
-    location.reload(); 
+function showOverview() {
+    location.reload();
 }
 
-function showTransactions(){
+function showTransactions() {
     const contain = document.getElementById('profileContainer');
     let htmlChange = `<p><h1>Current Transaction(s)</h1></p>
     <table id="transactionTable">
@@ -720,8 +720,8 @@ function showTransactions(){
     fetch('/api/profile')
         .then(response => response.json())
         .then(data => {
-            if(data.hasTransactions){
-                data.transactions.forEach(function(transaction){
+            if (data.hasTransactions) {
+                data.transactions.forEach(function (transaction) {
                     htmlChange += `<tr id="transaction-${transaction.agenttransactionid}">
                     <td>${transaction.transactionDate}</td>
                     <td>${transaction.transactionAmount}</td>
@@ -751,29 +751,29 @@ function showTransactions(){
             contain.innerHTML = htmlChange;
         });
 
-        const overButton = document.getElementById('overviewButton');
-        const officeButton = document.getElementById('officeButton');
-        const licButton = document.getElementById('licenseButton');
-        const zipButton = document.getElementById('zipCodeButton');
-        const transButton = document.getElementById('transactionButton');
-        const bioButton = document.getElementById('bioButton');
-        
-        overButton.classList.remove('selectedStyle');
-        overButton.classList.add('hoverStyle');
-        officeButton.classList.remove('selectedStyle');
-        officeButton.classList.add('hoverStyle');
-        licButton.classList.remove('selectedStyle');
-        licButton.classList.add('hoverStyle');
-        zipButton.classList.remove('selectedStyle');
-        zipButton.classList.add('hoverStyle');
-        transButton.classList.add('selectedStyle');
-        transButton.classList.remove('hoverStyle');
-        bioButton.classList.remove('selectedStyle');
-        bioButton.classList.add('hoverStyle');
+    const overButton = document.getElementById('overviewButton');
+    const officeButton = document.getElementById('officeButton');
+    const licButton = document.getElementById('licenseButton');
+    const zipButton = document.getElementById('zipCodeButton');
+    const transButton = document.getElementById('transactionButton');
+    const bioButton = document.getElementById('bioButton');
+
+    overButton.classList.remove('selectedStyle');
+    overButton.classList.add('hoverStyle');
+    officeButton.classList.remove('selectedStyle');
+    officeButton.classList.add('hoverStyle');
+    licButton.classList.remove('selectedStyle');
+    licButton.classList.add('hoverStyle');
+    zipButton.classList.remove('selectedStyle');
+    zipButton.classList.add('hoverStyle');
+    transButton.classList.add('selectedStyle');
+    transButton.classList.remove('hoverStyle');
+    bioButton.classList.remove('selectedStyle');
+    bioButton.classList.add('hoverStyle');
 }
 
 
-function showBio(){
+function showBio() {
     const contain = document.getElementById('profileContainer');
     let htmlChange = `<h1>Biography</h1>
     <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required></textarea>
@@ -782,7 +782,7 @@ function showBio(){
     <button type="button" id="bioAdd" onclick="addBio()">Add</button>
     <span id="bioStatus"></span>`;
     contain.innerHTML = htmlChange;
-    
+
     const overButton = document.getElementById('overviewButton');
     const officeButton = document.getElementById('officeButton');
     const licButton = document.getElementById('licenseButton');
