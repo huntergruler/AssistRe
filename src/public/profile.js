@@ -349,39 +349,39 @@ function populateAgentZipCodes() {
     const ownedZipCodes = document.getElementById("ownedZipCodes");
     let htmlCodes = '';
     fetch(`/get-agentzipcodes`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        if(selectedZipCodesContainer){
-            selectedZipCodesContainer.innerHTML = '';
-        }
-        if (data.error) {
-            const div = document.createElement("div");
-            div.textContent = 'No zip codes selected';
-            if(selectedZipCodesContainer){
-                selectedZipCodesContainer.appendChild(div);
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (selectedZipCodesContainer) {
+                selectedZipCodesContainer.innerHTML = '';
             }
-            htmlCodes += `<p>No Zip Codes</p><br>`;
-          }
-        else{
-            data.results.forEach(code => {
+            if (data.error) {
                 const div = document.createElement("div");
-                div.textContent = code.zipCode;
-                div.className = "zipCodeSelected";
-                div.onclick = function() {
-                this.classList.toggle("selected");
-                };
-                if(selectedZipCodesContainer){
-                   selectedZipCodesContainer.appendChild(div);
+                div.textContent = 'No zip codes selected';
+                if (selectedZipCodesContainer) {
+                    selectedZipCodesContainer.appendChild(div);
                 }
-                htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
-            });
-        }
-        if(ownedZipCodes){
-            ownedZipCodes.innerHTML = htmlCodes;
-        }
-    })
-    .catch(error => console.error('Error checking user:', error));
+                htmlCodes += `<p>No Zip Codes</p><br>`;
+            }
+            else {
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.textContent = code.zipCode;
+                    div.className = "zipCodeSelected";
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    if (selectedZipCodesContainer) {
+                        selectedZipCodesContainer.appendChild(div);
+                    }
+                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
+                });
+            }
+            if (ownedZipCodes) {
+                ownedZipCodes.innerHTML = htmlCodes;
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
 };
 
 function populateModals() {
@@ -490,7 +490,7 @@ function showOffice() {
     //var modal = document.getElementById("myModal");
 
     // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
+    var form = document.getElementById("officeForm");
 
     // Get the <span> element that closes the modal
     //var span = document.getElementsByClassName("close")[0];
@@ -510,11 +510,22 @@ function showOffice() {
     // }
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    // window.onclick = function (event) {
+    //     if (event.target == modal) {
+    //         modal.style.display = "none";
+    //     }
+    // }
+    form.innerHTML = `<form id="officeForm">
+    <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
+    <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
+    <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+    <input type="text" id="address" name="address" placeholder="Office Address" required>
+    <input type="text" id="city" name="city" placeholder="Office City" required>
+    <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+    <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
+    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
+    <button type="button" id="officeAdd">Add</button>
+    <span id="offStatus"></span>`
     fetch('/api/profile')
         .then(response => response.json())
         .then(data => {
