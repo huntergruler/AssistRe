@@ -453,9 +453,10 @@ function showOffice() {
                         newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
                         row.appendChild(newCell);
                     });
+                    officeToggle = 1;
             }
         });
-        officeToggle = 1;
+        
     }
     else {
         console.log("officeToggle is 1");
