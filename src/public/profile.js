@@ -75,7 +75,6 @@ function deleteOffice(id) {
             document.getElementById(`office-${id}`).remove();
         })
         .catch(error => console.error('Error:', error));
-    populateModals();
 };
 
 function addLicense() {
@@ -189,7 +188,6 @@ function zipUpdate() {
 
 document.addEventListener('DOMContentLoaded', function () {
     populateAgentZipCodes();
-    populateModals();
     populateMonths();
     populateYears();
     updateDays();
@@ -384,70 +382,6 @@ function populateAgentZipCodes() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function populateModals() {
-    const contain = document.getElementById('officeContent');
-    let htmlChange = `<div id="officeContainer">
-    <p><h1>Current Office(s)</h1></p>
-<table id="officeTable">
-    <thead>
-        <tr>
-            <th>Office Name</th>
-            <th>Office License Number</th>
-            <th>Office License State</th>
-            <th>Office Address</th>
-            <th>Office City</th>
-            <th>Office State</th>
-            <th>Office Zip</th>
-            <th>Office Phone Number</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody id="officeModalTable>`;
-    fetch('/api/profile')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            if (data.hasOffices) {
-                data.offices.forEach(office => {
-                    htmlChange += `<tr id="office-${office.agentofficeid}">
-                    <td>${office.officeName}</td>
-                    <td>${office.officeLicenseNumber}</td>
-                    <td>${office.officeLicenseState}</td>
-                    <td>${office.address}</td>
-                    <td>${office.city}</td>
-                    <td>${office.state}</td>
-                    <td>${office.zip}</td>
-                    <td>${office.phoneNumber}</td>
-                    <td>
-                        <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
-                    </td>
-                </tr>`;
-                    contain.innerHTML = htmlChange;
-                });
-            } else {
-                htmlChange += `<tr>
-                <td colspan="4">No offices found.</td>
-            </tr>`;
-            }
-            htmlChange += `</tbody>
-        </table>
-        <form id="officeForm">
-            <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
-            <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
-            <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-            <input type="text" id="address" name="address" placeholder="Office Address" required>
-            <input type="text" id="city" name="city" placeholder="Office City" required>
-            <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-            <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
-            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-            <button type="button" id="officeAdd">Add</button>
-            <span id="offStatus"></span>
-        </div>`;
-            contain.innerHTML = htmlChange;
-        });
-
-}
-
 function populateMonths() {
     const monthSelect = document.getElementById('monthSelect');
     const months = [
@@ -541,7 +475,7 @@ function showOffice() {
     const rows = table.querySelectorAll('tbody tr');
     rows.forEach((row, index) => {
         const newCell = document.createElement('td');
-        newCell.textContent = `Row ${index + 1}, Cell ${row.children.length + 1}`;
+        newCell.innerHTML = `Row ${index + 1}, Cell ${row.children.length + 1}`;
         row.appendChild(newCell);
     });
     
