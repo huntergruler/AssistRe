@@ -354,7 +354,6 @@ function populateUserZipCodes() {
         console.log(data);
         selectedZipCodesContainer.innerHTML = '';
         if (data.error) {
-            console.log('Error:', data.error);
             const div = document.createElement("div");
             div.textContent = 'No zip codes selected';
             selectedZipCodesContainer.appendChild(div);
@@ -369,7 +368,7 @@ function populateUserZipCodes() {
                 this.classList.toggle("selected");
                 };
                 selectedZipCodesContainer.appendChild(div);
-                htmlCodes += `<p>${code.zipCode}</p><br>`;
+                htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
             });
         }
         ownedZipCodes.innerHTML = htmlCodes;
