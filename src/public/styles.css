@@ -85,10 +85,6 @@ body {
     grid-column: 1;
 }
 
-#officeButton {
-    grid-column: 2;
-}
-
 #licenseButton {
     grid-column: 3;
 }
@@ -289,6 +285,18 @@ form button:hover {
 #officeHeader {
     display: flex;
     flex-direction: column;
+}
+
+#officeButton {
+    height: 32px;
+    background-color: rgba(19, 50, 109);
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#officeButton:hover {
+    opacity: 0.8;
 }
 
 #officeForm {

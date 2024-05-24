@@ -429,8 +429,6 @@ function showOffice() {
 
     if(officeToggle == 0){
         form.style.display = "none";
-        officeButton.classList.remove('selectedStyle');
-        officeButton.classList.add('hoverStyle');
         const headerRow = table.querySelector('thead tr');
         const rows = table.querySelectorAll('tbody tr');
 
@@ -449,8 +447,6 @@ function showOffice() {
     }
     else {
         form.style.display = "grid";
-        officeButton.classList.add('selectedStyle');
-        officeButton.classList.remove('hoverStyle');
         officeButton.innerHTML = "Done";
         console.log("officeToggle is 1");
         fetch('/api/profile')
