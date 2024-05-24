@@ -426,6 +426,7 @@ function showOffice() {
     const table = document.getElementById('officeTable');
     const officeButton = document.getElementById('officeButton');
     var officeIDs = []
+    console.log(officeToggle)
 
     if(officeToggle == 0){
         officeButton.classList.add('selectedStyle');
