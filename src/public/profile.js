@@ -494,7 +494,7 @@ function showOffice() {
 
     // Get the <span> element that closes the modal
     //var span = document.getElementsByClassName("close")[0];
-    var add = document.getElementById("officeAdd");
+    //var add = document.getElementById("officeAdd");
 
     // When the user clicks on the button, open the modal
     //modal.style.display = "block";
@@ -503,11 +503,11 @@ function showOffice() {
     //span.onclick = function () {
     //    modal.style.display = "none";
     //}
-    add.onclick = function () {
-        addOffice();
-        populateModals();
-        modal.style.display = "none";
-    }
+    // add.onclick = function () {
+    //     addOffice();
+    //     populateModals();
+    //     modal.style.display = "none";
+    // }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
