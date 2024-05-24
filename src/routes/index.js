@@ -55,6 +55,36 @@ router.get('/register', (req, res) => {
 });
 
 // Handle registration with city and state lookup
+router.post('/buyerprofile', (req, res) => {
+  const {
+    firstName, lastName, address, city, state, zip, email,
+    phoneNumber, propertyType, bedrooms, bathrooms, squareFootage,
+    priceRange, timeFrame, prequalified, preferredLanguages, password
+} = req.body;
+
+const buyerTypes = req.body.buyerType; // This will be an array
+const buyerType = Array.isArray(buyerTypes) ? buyerTypes.join(', ') : buyerTypes;
+
+const prequalifiedFile = req.files['prequalifiedFile'] ? req.files['prequalifiedFile'][0].path : null;
+const userPhoto = req.files['userPhoto'][0].path;
+
+const hashedPassword = bcrypt.hashSync(password, 10);
+
+const sql = `INSERT INTO Buyers (buyerType, firstName, lastName, address, city, state, zip, email, phoneNumber, propertyType, bedrooms, bathrooms, squareFootage, priceRange, timeFrame, prequalified, prequalified_file_location, emailverified, userPhoto, preferredLanguages, password)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?)`;
+
+connection.query(sql, [buyerType, firstName, lastName, address, city, state, zip, email, phoneNumber, propertyType, bedrooms, bathrooms, squareFootage, priceRange, timeFrame, prequalified, prequalifiedFile, userPhoto, preferredLanguages, hashedPassword], (err, result) => {
+    if (err) {
+        console.error(err);
+        res.json({ success: false, error: err });
+    } else {
+        res.json({ success: true });
+    }
+});
+});
+
+
+// Handle registration with city and state lookup
 router.post('/register', (req, res) => {
     const { firstName, lastName, user, phoneNumber, zipCode, userType, password } = req.body;
   
@@ -170,7 +200,12 @@ router.post('/register', (req, res) => {
 
 // Login route
 router.get('/login', (req, res) => {
-   const message = req.session.message;
+   let message = req.session.message;
+   let data = req.cookies.data;
+   console.log(message, data);
+   if (data = 'Email Verified') {
+      let message = 'Email verified. Please login.';
+    }
   // Destroy the session or clear the cookie
   if (req.session.killsession)
   {
@@ -599,9 +634,10 @@ router.get('/reset-password', (req, res) => {
 router.get('/verify-email', (req, res) => {
     const { token, email } = req.query;
     db.query('UPDATE Users SET emailverified = 1 WHERE email = ? AND verificationtoken = ?', [email, token], (err, result) => {
+      res.cookie('data', 'Email Verified', { maxAge: 900000, httpOnly: true });
       if (err) return res.status(500).send('Database error during email verification.');
       if (result.affectedRows === 0) return res.status(404).send('Token not found or email already verified.');
-      res.redirect('login', { emailverified: true });
+      res.redirect('login');
     });
   });
 
