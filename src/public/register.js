@@ -47,5 +47,5 @@ document.querySelectorAll('input[name="userType"]').forEach(radio => {
         });
         document.getElementById('email').textContent = '';
         document.getElementById('userStatus').textContent = '';
-    }
+    })
 });
