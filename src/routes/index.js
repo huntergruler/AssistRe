@@ -203,7 +203,7 @@ router.get('/login', (req, res) => {
    let message = req.session.message;
    let data = req.cookies.data;
    if (data = 'Email Verified') {
-      let message = 'Email verified. Please login.';
+//      let message = 'Email verified. Please login.';
     }
   // Destroy the session or clear the cookie
   if (req.session.killsession)
