@@ -25,6 +25,11 @@
             height: calc(1.5em + .5rem + 2px); /* Adjust height */
             font-size: 14px; /* Element value font size */
         }
+        .form-control.view-mode {
+            border: none;
+            background-color: transparent;
+            box-shadow: none;
+        }
         .text-center button {
             margin: 5px; /* Less space between buttons */
         }
@@ -38,49 +43,49 @@
             <div class="form-group row justify-content-center">
                 <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="firstName" name="firstName" value="<%= buyer.firstName %>" disabled>
+                    <input type="text" class="form-control view-mode" id="firstName" name="firstName" value="<%= buyer.firstName %>" disabled>
                 </div>
             </div>
             <div class="form-group row justify-content-center">
                 <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="lastName" name="lastName" value="<%= buyer.lastName %>" disabled>
+                    <input type="text" class="form-control view-mode" id="lastName" name="lastName" value="<%= buyer.lastName %>" disabled>
                 </div>
             </div>
             <div class="form-group row justify-content-center">
                 <label for="address" class="col-sm-2 col-form-label">Address</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="address" name="address" value="<%= buyer.address %>" disabled>
+                    <input type="text" class="form-control view-mode" id="address" name="address" value="<%= buyer.address %>" disabled>
                 </div>
             </div>
             <div class="form-group row justify-content-center">
                 <label for="city" class="col-sm-2 col-form-label">City</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="city" name="city" value="<%= buyer.city %>" disabled>
+                    <input type="text" class="form-control view-mode" id="city" name="city" value="<%= buyer.city %>" disabled>
                 </div>
             </div>
             <div class="form-group row justify-content-center">
                 <label for="state" class="col-sm-2 col-form-label">State</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="state" name="state" value="<%= buyer.state %>" disabled>
+                    <input type="text" class="form-control view-mode" id="state" name="state" value="<%= buyer.state %>" disabled>
                 </div>
             </div>
             <div class="form-group row justify-content-center">
                 <label for="zip" class="col-sm-2 col-form-label">Zip</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="zip" name="zip" value="<%= buyer.zip %>" disabled>
+                    <input type="text" class="form-control view-mode" id="zip" name="zip" value="<%= buyer.zip %>" disabled>
                 </div>
             </div>
             <div class="form-group row justify-content-center">
                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-4">
-                    <input type="email" class="form-control" id="email" name="email" value="<%= buyer.email %>" disabled>
+                    <input type="email" class="form-control view-mode" id="email" name="email" value="<%= buyer.email %>" disabled>
                 </div>
             </div>
             <div class="form-group row justify-content-center">
                 <label for="phoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="<%= buyer.phoneNumber %>" disabled>
+                    <input type="text" class="form-control view-mode" id="phoneNumber" name="phoneNumber" value="<%= buyer.phoneNumber %>" disabled>
                 </div>
             </div>
             <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">

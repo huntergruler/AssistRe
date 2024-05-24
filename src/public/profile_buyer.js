@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#editButton').click(function() {
-        $('#profileForm input').prop('disabled', false);
+        $('#profileForm input').prop('disabled', false).removeClass('view-mode');
         $('#editButton').hide();
         $('#saveButton').show();
         $('#cancelButton').show();
