@@ -423,7 +423,9 @@ var officeToggle = 0;
 const officeButton = document.getElementById('officeButton');
 officeButton.addEventListener('click', function () {
     const form = document.getElementById("officeForm");
+    console.log(officeToggle);
     if (officeToggle === 0) {
+        console.log(officeToggle);
         form.style.display = "grid";
         var officeIDs = []
         officeButton.textContent = "Done";
@@ -455,6 +457,7 @@ officeButton.addEventListener('click', function () {
         officeToggle = 1;
     }
     else {
+        console.log(officeToggle);
         form.style.display = "none";
         const headerRow = table.querySelector('thead tr');
         const rows = table.querySelectorAll('tbody tr');
