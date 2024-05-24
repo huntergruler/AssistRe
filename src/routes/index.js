@@ -109,9 +109,9 @@ router.post('/register', (req, res) => {
       // Now insert the user into the Agents table with city and state
 
       if (userType === 'Agent') {
-        const InsertSql = 'INSERT INTO Agents (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        var InsertSql = 'INSERT INTO Agents (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
       } else if (userType === 'Buyer') {
-        const InsertSql = 'INSERT INTO Buyers (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        var InsertSql = 'INSERT INTO Buyers (firstName, lastName, email, verificationtoken, phoneNumber, zip, address, city, state, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
       }
       db.query(InsertSql, [firstName, lastName, email, verificationtoken, phoneNumber, zipCode, address, city, state, hashedPassword], (userError, userResults) => {
         if (userError) {
