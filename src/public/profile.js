@@ -419,9 +419,11 @@ function updateDays() {
         daySelect.appendChild(option);
     }
 };
+
 var officeToggle = 0;
-const officeButton = document.getElementById('officeButton');
-officeButton.addEventListener('click', function () {
+
+function showOffice() {
+    var officeButton = document.getElementById('officeButton');
     console.log("HERE");
     const form = document.getElementById("officeForm");
     console.log(officeToggle);
@@ -475,11 +477,6 @@ officeButton.addEventListener('click', function () {
         }
         officeToggle = 0;
     }
-});
-
-function showOffice() {
-
-    
     
 
     const overButton = document.getElementById('overviewButton');
