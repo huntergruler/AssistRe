@@ -352,11 +352,15 @@ function populateUserZipCodes() {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        selectedZipCodesContainer.innerHTML = '';
+        if(selectedZipCodesContainer){
+            selectedZipCodesContainer.innerHTML = '';
+        }
         if (data.error) {
             const div = document.createElement("div");
             div.textContent = 'No zip codes selected';
-            selectedZipCodesContainer.appendChild(div);
+            if(selectedZipCodesContainer){
+                selectedZipCodesContainer.appendChild(div);
+            }
             htmlCodes += `<p>No Zip Codes</p><br>`;
           }
         else{
@@ -367,11 +371,15 @@ function populateUserZipCodes() {
                 div.onclick = function() {
                 this.classList.toggle("selected");
                 };
-                selectedZipCodesContainer.appendChild(div);
+                if(selectedZipCodesContainer){
+                   selectedZipCodesContainer.appendChild(div);
+                }
                 htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
             });
         }
-        ownedZipCodes.innerHTML = htmlCodes;
+        if(ownedZipCodes){
+            ownedZipCodes.innerHTML = htmlCodes;
+        }
     })
     .catch(error => console.error('Error checking user:', error));
 };
