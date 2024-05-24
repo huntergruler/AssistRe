@@ -188,7 +188,7 @@ function zipUpdate() {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-    populateUserZipCodes();
+    populateAgentZipCodes();
     populateModals();
     populateMonths();
     populateYears();
@@ -344,44 +344,44 @@ function populateZipCodes() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function populateUserZipCodes() {
+function populateAgentZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const ownedZipCodes = document.getElementById("ownedZipCodes");
     let htmlCodes = '';
-    fetch(`/get-userzipcodes`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            if (selectedZipCodesContainer) {
-                selectedZipCodesContainer.innerHTML = '';
+    fetch(`/get-agentzipcodes`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if(selectedZipCodesContainer){
+            selectedZipCodesContainer.innerHTML = '';
+        }
+        if (data.error) {
+            const div = document.createElement("div");
+            div.textContent = 'No zip codes selected';
+            if(selectedZipCodesContainer){
+                selectedZipCodesContainer.appendChild(div);
             }
-            if (data.error) {
+            htmlCodes += `<p>No Zip Codes</p><br>`;
+          }
+        else{
+            data.results.forEach(code => {
                 const div = document.createElement("div");
-                div.textContent = 'No zip codes selected';
-                if (selectedZipCodesContainer) {
-                    selectedZipCodesContainer.appendChild(div);
+                div.textContent = code.zipCode;
+                div.className = "zipCodeSelected";
+                div.onclick = function() {
+                this.classList.toggle("selected");
+                };
+                if(selectedZipCodesContainer){
+                   selectedZipCodesContainer.appendChild(div);
                 }
-                htmlCodes += `<p>No Zip Codes</p><br>`;
-            }
-            else {
-                data.results.forEach(code => {
-                    const div = document.createElement("div");
-                    div.textContent = code.zipCode;
-                    div.className = "zipCodeSelected";
-                    div.onclick = function () {
-                        this.classList.toggle("selected");
-                    };
-                    if (selectedZipCodesContainer) {
-                        selectedZipCodesContainer.appendChild(div);
-                    }
-                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
-                });
-            }
-            if (ownedZipCodes) {
-                ownedZipCodes.innerHTML = htmlCodes;
-            }
-        })
-        .catch(error => console.error('Error checking user:', error));
+                htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
+            });
+        }
+        if(ownedZipCodes){
+            ownedZipCodes.innerHTML = htmlCodes;
+        }
+    })
+    .catch(error => console.error('Error checking user:', error));
 };
 
 function populateModals() {
@@ -674,7 +674,7 @@ function showZipCodes() {
     <button type="button" class="button" disabled id="saveChanges" onclick="saveChanges()">SAVE</button>`;
     contain.innerHTML = htmlChange;
     populateStates();
-    populateUserZipCodes();
+    populateAgentZipCodes();
 
     const overButton = document.getElementById('overviewButton');
     const officeButton = document.getElementById('officeButton');
