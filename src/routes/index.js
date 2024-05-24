@@ -200,7 +200,10 @@ router.post('/register', (req, res) => {
 
 // Login route
 router.get('/login', (req, res) => {
-   const message = req.session.message;
+   let message = req.session.message;
+   if req.cookies.data = 'Email Verified' {
+      let message = 'Email verified. Please login.';
+    }
   // Destroy the session or clear the cookie
   if (req.session.killsession)
   {
@@ -629,10 +632,10 @@ router.get('/reset-password', (req, res) => {
 router.get('/verify-email', (req, res) => {
     const { token, email } = req.query;
     db.query('UPDATE Users SET emailverified = 1 WHERE email = ? AND verificationtoken = ?', [email, token], (err, result) => {
-      console.log('Result:', result);
+      res.cookie('data', 'Email Verified', { maxAge: 900000, httpOnly: true });
       if (err) return res.status(500).send('Database error during email verification.');
       if (result.affectedRows === 0) return res.status(404).send('Token not found or email already verified.');
-      res.redirect({ emailverified: true }, 'login');
+      res.redirect('login');
     });
   });
 
