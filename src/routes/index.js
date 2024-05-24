@@ -103,7 +103,7 @@ router.get('/profile_buyer', (req, res) => {
 
   const query = 'SELECT firstName, lastName, address, city, state, zip, email, phoneNumber, userid FROM Buyers WHERE userid = ?';
 
-  connection.query(query, [userId], (error, results) => {
+  db.query(query, [userId], (error, results) => {
     if (error) {
       console.error('Error fetching buyer profile:', error);
       return res.status(500).send('Server error');
@@ -123,7 +123,7 @@ router.post('/profile_buyer', (req, res) => {
 
   const query = 'UPDATE Buyers SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, email = ?, phoneNumber = ? WHERE userid = ?';
 
-  connection.query(query, [firstName, lastName, address, city, state, zip, email, phoneNumber, userid], (error, results) => {
+  db.query(query, [firstName, lastName, address, city, state, zip, email, phoneNumber, userid], (error, results) => {
     if (error) {
       console.error('Error updating buyer profile:', error);
       return res.status(500).send('Server error');
