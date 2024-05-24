@@ -1,3 +1,5 @@
+const { off } = require("process");
+
 function addTransaction() {
     const transactionDate = document.getElementById('transactionDate').value;
     const transactionAmount = document.getElementById('transactionAmount').value;
@@ -419,75 +421,61 @@ function updateDays() {
         daySelect.appendChild(option);
     }
 };
+var officeToggle = 0;
+const officeButton = document.getElementById('officeButton');
+officeButton.addEventListener('click', function () {
+    const form = document.getElementById("officeForm");
+    if (officeToggle === 0) {
+        form.style.display = "grid";
+        var officeIDs = []
+        officeButton.textContent = "Done";
+
+        fetch('/api/profile')
+            .then(response => response.json())
+            .then(data => {
+                if (data.hasOffices) {
+                    data.offices.forEach(function (office) {
+                        officeIDs.push(office.agentofficeid);
+                    });
+                    const table = document.getElementById('officeTable');
+
+                    const headerRow = table.querySelector('thead tr');
+                    const newHeader = document.createElement('th');
+                    newHeader.textContent = `Header ${headerRow.children.length + 1}`;
+                    headerRow.appendChild(newHeader);
+                
+                    // Add cells to each row in the tbody
+                    const rows = table.querySelectorAll('tbody tr');
+                    rows.forEach((row, index) => {
+                        console.log(officeIDs[index]);
+                        const newCell = document.createElement('td');
+                        newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
+                        row.appendChild(newCell);
+                    });
+            }
+        });
+        officeToggle = 1;
+    }
+    else {
+        form.style.display = "none";
+        const headerRow = table.querySelector('thead tr');
+        const rows = table.querySelectorAll('tbody tr');
+
+        // Check if there's more than one column to delete
+        if (headerRow.children.length > 0) {
+            // Remove the last header cell
+            headerRow.removeChild(headerRow.lastElementChild);
+
+            // Remove the last cell in each row
+            rows.forEach((row) => {
+                row.removeChild(row.lastElementChild);
+            });
+        }
+        officeToggle = 0;
+    }
+});
 
 function showOffice() {
-    //var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    var form = document.getElementById("officeForm");
-
-
-    // Get the <span> element that closes the modal
-    //var span = document.getElementsByClassName("close")[0];
-    //var add = document.getElementById("officeAdd");
-
-    // When the user clicks on the button, open the modal
-    //modal.style.display = "block";
-
-    // When the user clicks on <span> (x), close the modal
-    //span.onclick = function () {
-    //    modal.style.display = "none";
-    //}
-    // add.onclick = function () {
-    //     addOffice();
-    //     populateModals();
-    //     modal.style.display = "none";
-    // }
-
-    // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function (event) {
-    //     if (event.target == modal) {
-    //         modal.style.display = "none";
-    //     }
-    // }
-    // form.innerHTML = `<form id="officeForm">
-    // <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
-    // <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
-    // <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-    // <input type="text" id="address" name="address" placeholder="Office Address" required>
-    // <input type="text" id="city" name="city" placeholder="Office City" required>
-    // <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-    // <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
-    // <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-    // <button type="button" onclick="addOffice()">Add</button>
-    // <span id="offStatus"></span>`
-    var officeIDs = []
-    fetch('/api/profile')
-        .then(response => response.json())
-        .then(data => {
-            if (data.hasOffices) {
-                data.offices.forEach(function (office) {
-                    officeIDs.push(office.agentofficeid);
-                });
-                const table = document.getElementById('officeTable');
-
-                const headerRow = table.querySelector('thead tr');
-                const newHeader = document.createElement('th');
-                newHeader.textContent = `Header ${headerRow.children.length + 1}`;
-                headerRow.appendChild(newHeader);
-            
-                // Add cells to each row in the tbody
-                const rows = table.querySelectorAll('tbody tr');
-                rows.forEach((row, index) => {
-                    console.log(officeIDs[index]);
-                    const newCell = document.createElement('td');
-                    newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
-                    row.appendChild(newCell);
-                });
-        }
-    });
-
-    form.style.display = "grid";
 
     
     
