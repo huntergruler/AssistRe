@@ -530,29 +530,10 @@ function showOffice() {
 
     form.style.display = "grid";
 
-    var add = document.getElementById("officeAdd");
-    fetch('/api/profile')
-        .then(response => response.json())
-        .then(data => {
-
-            if (data.hasOffices) {
-                data.offices.forEach(office => {
-                    htmlChange += `<tr id="office-${office.agentofficeid}">
-                    <td>${office.officeName}</td>
-                    <td>${office.officeLicenseNumber}</td>
-                    <td>${office.officeLicenseState}</td>
-                    <td>${office.address}</td>
-                    <td>${office.city}</td>
-                    <td>${office.state}</td>
-                    <td>${office.zip}</td>
-                    <td>${office.phoneNumber}</td>
-                    <td>
-                        <button type="button" onclick="deleteOffice(${office.agentofficeid})">Delete</button>
-                    </td>
-                </tr>`;
-                });
-            }
-        });
+    const table = document.getElementById('officeTable').getElementsByTagName('tbody')[0];
+    table.addColumn("Delete");
+    const newRow = table.insertRow(table.rows.length);
+    
 
     const overButton = document.getElementById('overviewButton');
     const officeButton = document.getElementById('officeButton');
