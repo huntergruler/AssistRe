@@ -632,7 +632,7 @@ router.get('/verify-email', (req, res) => {
       console.log('Result:', result);
       if (err) return res.status(500).send('Database error during email verification.');
       if (result.affectedRows === 0) return res.status(404).send('Token not found or email already verified.');
-      res.redirect('login', { emailverified: true });
+      res.redirect({ emailverified: true }, 'login');
     });
   });
 
