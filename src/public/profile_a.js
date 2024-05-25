@@ -82,25 +82,12 @@ function deleteOffice(id) {
 function addLicense() {
     const licenseNumber = document.getElementById('licenseNumber').value;
     const licenseState = document.getElementById('licenseState').value;
-    const licenseExpirationDate1 = document.getElementById('licenseExpirationDate').value;
-    const monthSelect = document.getElementById('monthSelect');
-    const daySelect = document.getElementById('daySelect');
-    const yearSelect = document.getElementById('yearSelect');
-    const dates = licenseExpirationDate1.split('-');
-    console.log(dates);
-    const date = new Date(dates[0], dates[1] - 1, dates[2]);
-    const date1 = new Date(licenseExpirationDate1);
-    console.log(licenseExpirationDate1);
-    console.log(date);
-    console.log(date1);
+    const licenseDate = document.getElementById('licenseExpirationDate').value;
+    const date = licenseDate.split('-');
+    const licenseExpirationDate = new Date(date[0], date[1] - 1, date[2]);
 
     // JavaScript Date months are 0-indexed, so subtract 1. 
     // HTML values are 1-indexed if filled as shown in previous messages.
-    const month = parseInt(monthSelect.value) - 1;
-    const day = parseInt(daySelect.value);
-    const year = parseInt(yearSelect.value);
-
-    const licenseExpirationDate = new Date(year, month, day);
     if (licenseExpirationDate < new Date()) {
         alert('Expiration date must be in the future');
         return;
