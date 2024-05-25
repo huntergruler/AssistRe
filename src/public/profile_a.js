@@ -86,7 +86,9 @@ function addLicense() {
     const monthSelect = document.getElementById('monthSelect');
     const daySelect = document.getElementById('daySelect');
     const yearSelect = document.getElementById('yearSelect');
+    const date = new Date(2024, 5, 30);
     console.log(licenseExpirationDate1);
+    console.log(date);
 
     // JavaScript Date months are 0-indexed, so subtract 1. 
     // HTML values are 1-indexed if filled as shown in previous messages.
