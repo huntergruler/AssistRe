@@ -52,6 +52,7 @@ function addOffice() {
     })
         .then(response => response.json())
         .then(data => {
+            console.log)("addOffice :", data.agentofficeid)
             const table = document.getElementById('officeTable').getElementsByTagName('tbody')[0];
             const newRow = table.insertRow(table.rows.length);
             newRow.id = `office-${data.agentofficeid}`;
