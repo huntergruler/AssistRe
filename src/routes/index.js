@@ -347,6 +347,7 @@ router.post('/login', [
       return res.status(400).json({ errors: errors.array() });
     }
     const { email, password, userType } = req.body;
+    console.log('Email:', email, 'Password:', password, 'User Type:', userType);
     if (userType === 'Agent') {
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
     } else if (userType === 'Buyer') {
