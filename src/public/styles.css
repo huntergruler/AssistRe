@@ -316,6 +316,7 @@ form button:hover {
 
 #zipCodeForm {
     display: none;
+    max-height: 225px;
 }
 
 #officeForm button {
