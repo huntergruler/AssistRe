@@ -561,6 +561,8 @@ function showZipCodes() {
     else {
         form.style.display = "block";
         disp.style.display = "none";
+        populateStates();
+        populateAgentZipCodes();
         zipToggle = 0;
     }
     /*const contain = document.getElementById('profileContainer');
