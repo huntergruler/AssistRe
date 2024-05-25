@@ -426,17 +426,14 @@ function showOffice() {
     var htmlChange = '';
 
     addOfficeButton.onclick = function () {
-        
         const rows = table.querySelectorAll('tbody tr');
         console.log("HERE");
         console.log(rows[0].innerHTML);
         if(rows[0].innerHTML.includes("No offices found.")){
-            rows[0].removeChild(rows[0].lastElementChild);
-            rows[0].removeChild(rows[0].lastElementChild);
+            rows[0].innerHTML = "";
         }
         console.log(rows[0].innerHTML);
         addOffice();
-        //if(rows[0])
     }
 
     if (officeToggle == 0) {
