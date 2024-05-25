@@ -354,6 +354,7 @@ router.post('/login', [
     }
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
+      console.log('Results:', results);
       if (error) {
         return res.render('login', { message: 'Error during database query' });
       }
@@ -384,7 +385,7 @@ router.post('/login', [
                   req.session.firstname = firstname;
                   req.session.lastname = lastname;
                   req.session.userType = userType;
-                  console.log('User logged in:', email);
+                  console.log('User logged in:', email, userType);
                   res.json({
                     success: true,
                     message: "Successful Login"
