@@ -431,7 +431,6 @@ function showOffice() {
         if(noOffices){
             noOffices.remove();
         }
-        
         addOffice();
     }
 
@@ -493,9 +492,18 @@ function showLicense() {
     const form = document.getElementById("licenseForm");
     const table = document.getElementById('licensesTable');
     const licenseButton = document.getElementById('licenseButton');
+    const addLicenseButton = document.getElementById('licenseAdd');
     var licenseIDs = []
     var htmlChange = '';
     //console.log("licToggle is " + licToggle);
+    
+    addLicenseButton.onclick = function () {
+        const noLicences = document.getElementById('noLicenseRow');
+        if(noLicences){
+            noLicences.remove();
+        }
+        addLicense();
+    }
 
     if (licToggle == 0) {
         form.style.display = "none";

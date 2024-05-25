@@ -139,7 +139,7 @@
                             <% }); %>
                                 <% } else { %>
                                     <tr>
-                                        <td colspan="3">No licenses found.</td>
+                                        <td colspan="3" id="noLicenseRow">No licenses found.</td>
                                     </tr>
                                     <% } %>
                 </tbody>
@@ -151,7 +151,7 @@
                 <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
                 <input type="date" id="licenseExpirationDate" name="licenseExpirationDate"
                     placeholder="License Expiration Date" required>
-                <button type="button" id="licenseAdd" disabled onclick="addLicense()">Add</button>
+                <button type="button" id="licenseAdd" disabled>Add</button>
                 <span id="licStatus"></span>
             </form>
         </div>
