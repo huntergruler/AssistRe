@@ -43,6 +43,43 @@ $(document).ready(function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var slider = document.getElementById('slider-square-footage');
+
+    noUiSlider.create(slider, {
+        start: [500, 3000], // Initial values
+        connect: true,
+        range: {
+            'min': 500,
+            'max': 5000
+        },
+        tooltips: [true, true],
+        format: {
+            to: function (value) {
+                return parseInt(value);
+            },
+            from: function (value) {
+                return parseInt(value);
+            }
+        }
+    });
+
+    var minSquareFootage = document.getElementById('min-square-footage');
+    var maxSquareFootage = document.getElementById('max-square-footage');
+    var minSquareFootageInput = document.getElementById('minSquareFootage');
+    var maxSquareFootageInput = document.getElementById('maxSquareFootage');
+
+    slider.noUiSlider.on('update', function(values, handle) {
+        if (handle === 0) {
+            minSquareFootage.textContent = values[0];
+            minSquareFootageInput.value = values[0];
+        } else {
+            maxSquareFootage.textContent = values[1];
+            maxSquareFootageInput.value = values[1];
+        }
+    });
+});
+
 $(document).ready(function() {
     $('#editButton2').click(function() {
         $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
