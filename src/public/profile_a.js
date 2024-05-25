@@ -427,7 +427,7 @@ function showOffice() {
     const table = document.getElementById('officeTable');
     const officeButton = document.getElementById('officeButton');
     var officeIDs = []
-
+    console.log("officeToggle is " + officeToggle);
     if(officeToggle == 0){
         form.style.display = "none";
         const headerRow = table.querySelector('thead tr');
