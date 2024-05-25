@@ -33,7 +33,7 @@
         <button type="button" class="selectedStyle" id="overviewButton" onclick="showOverview()">Overview</button>
         <!--<button type="button" class="hoverStyle" id="officeButton" onclick="showOffice()">Office</button>-->
         <!-- <button type="button" class="hoverStyle" id="licenseButton" onclick="showLicense()">License</button> -->
-        <button type="button" class="hoverStyle" id="zipCodeButton" onclick="showZipCodes()">Zip Codes</button>
+        <!-- <button type="button" class="hoverStyle" id="zipCodeButton" onclick="showZipCodes()">Zip Codes</button> -->
         <button type="button" class="hoverStyle" id="transactionButton"
             onclick="showTransactions()">Transactions</button>
         <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Bio</button>
@@ -104,11 +104,16 @@
             </div> -->
             <form id="officeForm">
                 <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
-                <input type="text" id="officeLicenseNumber" name="officeLicenseNumber" placeholder="Office License Number" required>
-                <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+                <input type="text" id="officeLicenseNumber" name="officeLicenseNumber"
+                    placeholder="Office License Number" required>
+                <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State"
+                    maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required
+                    pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
                 <input type="text" id="address" name="address" placeholder="Office Address" required>
                 <input type="text" id="city" name="city" placeholder="Office City" required>
-                <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+                <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2"
+                    oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
+                    title="Enter a valid US state abbreviation">
                 <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
                 <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
                 <button type="button" onclick="addOffice()" id="">Add</button>
@@ -151,9 +156,12 @@
                 </tbody>
             </table>
             <form id="licenseForm">
-                <input type="text" id="licenseState" name="licenseState" placeholder="License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+                <input type="text" id="licenseState" name="licenseState" placeholder="License State" maxlength="2"
+                    minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
+                    title="Enter a valid US state abbreviation">
                 <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
-                <input type="date" id="licenseExpirationDate" name="licenseExpirationDate" placeholder="License Expiration Date" required>
+                <input type="date" id="licenseExpirationDate" name="licenseExpirationDate"
+                    placeholder="License Expiration Date" required>
                 <!-- <label for="monthSelect">Month:</label>
                 <select id="monthSelect" onchange="updateDays();">
                   
@@ -171,64 +179,94 @@
             </form>
         </div>
         <div class="zipCode-container" id="profileZips">
-            <h1 id>Zip Codes</h1>
+            <h1 id>Zip Codes</h1> <button type="button" class="hoverStyle" id="zipCodeButton" onclick="showZipCodes()">Edit</button>
             <br>
             <div id="ownedZipCodes"></div>
-        </div>
-        <div id="transactionContainer">
-            <p>
-            <h1>Current Transaction(s)</h1>
-            </p>
-            <table id="transactionTable">
-                <thead>
-                    <tr>
-                        <th>Transaction Date</th>
-                        <th>Transaction Amount</th>
-                        <th>Transaction Property Type</th>
-                        <th>Transaction Level Of Service</th>
-                        <th>Transaction Compensation Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if (hasTransactions) { %>
-                        <% transactions.forEach(function(transaction) { %>
-                            <tr id="transaction-<%= transaction.agenttransactionid %>">
-                                <td>
-                                    <%= transaction.transactionDate %>
-                                </td>
-                                <td>
-                                    <%= transaction.transactionAmount %>
-                                </td>
-                                <td>
-                                    <%= transaction.PropertyType %>
-                                </td>
-                                <td>
-                                    <%= transaction.LevelOfService %>
-                                </td>
-                                <td>
-                                    <%= transaction.CompensationType %>
-                                </td>
-                            </tr>
-                            <% }); %>
-                                <% } else { %>
-                                    <tr>
-                                        <td colspan="4">No transactions found.</td>
-                                    </tr>
-                                    <% } %>
-                </tbody>
-            </table>
-        </div>
-        <div id="BioContainer">
-            <h1>Biography</h1>
-            <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
-                required></textarea>
-            <br>
-            <textarea id="langauges" name="languages" rows="4" cols="50"
-                placeholder="Enter the languages you speak here" required></textarea>
-            <button type="button" id="bioAdd" onclick="addBio()">Add</button>
-            <span id="bioStatus"></span>
-        </div>
-        <script src="/profile_a.js"></script>
+            <div id="zipCodeForm">
+                <p>Select Zip Codes in which you would like offers</p>
+                <br>
+                <label for="stateSelect">States:</label>
+                <select id="stateSelect" onchange="populateCities();"></select>
+                <label for="citySelect">Cities:</label>
+                <select id="citySelect" onchange="populateZipCodes();"></select>
+                <div class="grid-container">
+                    <div class="grid-available">
+                        <p>Available Zip Codes</p>
+                        <div class="container">
+                            <div id="availabeZipCodesContainer" class="box1">
+                                <!-- JavaScript will populate this container -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-action">
+                        <button type="button" class="button" onclick="addSelection()">Add --> </button>
+                        <button type="button" class="button" onclick="removeSelection()"> <-- Remove</button>
+                    </div>
+                    <div class="grid-selected">
+                        <p>Selected Zip Codes</p>
+                        <div class="container">
+                            <div id="selectedZipCodesContainer" class="box2">
+                                <!-- JavaScript will populate this container -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="button" disabled id="saveChanges" onclick="saveChanges()">SAVE</button>`
+            </div>
+            <div id="transactionContainer">
+                <p>
+                <h1>Current Transaction(s)</h1>
+                </p>
+                <table id="transactionTable">
+                    <thead>
+                        <tr>
+                            <th>Transaction Date</th>
+                            <th>Transaction Amount</th>
+                            <th>Transaction Property Type</th>
+                            <th>Transaction Level Of Service</th>
+                            <th>Transaction Compensation Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (hasTransactions) { %>
+                            <% transactions.forEach(function(transaction) { %>
+                                <tr id="transaction-<%= transaction.agenttransactionid %>">
+                                    <td>
+                                        <%= transaction.transactionDate %>
+                                    </td>
+                                    <td>
+                                        <%= transaction.transactionAmount %>
+                                    </td>
+                                    <td>
+                                        <%= transaction.PropertyType %>
+                                    </td>
+                                    <td>
+                                        <%= transaction.LevelOfService %>
+                                    </td>
+                                    <td>
+                                        <%= transaction.CompensationType %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                                    <% } else { %>
+                                        <tr>
+                                            <td colspan="4">No transactions found.</td>
+                                        </tr>
+                                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <div id="BioContainer">
+                <h1>Biography</h1>
+                <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
+                    required></textarea>
+                <br>
+                <textarea id="langauges" name="languages" rows="4" cols="50"
+                    placeholder="Enter the languages you speak here" required></textarea>
+                <button type="button" id="bioAdd" onclick="addBio()">Add</button>
+                <span id="bioStatus"></span>
+            </div>
+            <script src="/profile_a.js"></script>
 </body>
 
 </html>

@@ -313,6 +313,10 @@ form button:hover {
     display: none;
 }
 
+#zipCodeForm {
+    display: none;
+}
+
 #officeForm button {
     grid-column: 1 / span 2;
 }

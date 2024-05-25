@@ -527,7 +527,6 @@ function showLicense() {
                     data.licenses.forEach(function (license) {
                         licenseIDs.push(license.agentlicenseid);
                     });
-                    
 
                     const headerRow = table.querySelector('thead tr');
                     const newHeader = document.createElement('th');
@@ -547,8 +546,24 @@ function showLicense() {
     }
 };
 
+var zipToggle = 1;
 function showZipCodes() {
-    const contain = document.getElementById('profileContainer');
+    const form = document.getElementById("zipCodeForm");
+    const disp = document.getElementById("ownedZipCodes");
+    const zipButton = document.getElementById('zipCodeButton');
+    //console.log("licToggle is " + licToggle);
+
+    if(zipToggle == 0){
+        form.style.display = "none";
+        disp.style.display = "block";
+        zipToggle = 1;
+    }
+    else {
+        form.style.display = "block";
+        disp.style.display = "none";
+        zipToggle = 0;
+    }
+    /*const contain = document.getElementById('profileContainer');
     let htmlChange = `<h1>Zip Codes</h1>
     <p>Select Zip Codes in which you would like offers</p>
     <br>
@@ -601,7 +616,7 @@ function showZipCodes() {
     transButton.classList.remove('selectedStyle');
     transButton.classList.add('hoverStyle');
     bioButton.classList.remove('selectedStyle');
-    bioButton.classList.add('hoverStyle');
+    bioButton.classList.add('hoverStyle');*/
 }
 
 function showOverview() {
