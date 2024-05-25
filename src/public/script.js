@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                     .then(response => response.json())
                     .then(data => {
-                        console.log('login container');
+                        console.log('Success:', data);
                         if (data.success === false) {
                             // Display message if login failed
                             document.getElementById('message').style.display = 'block';
