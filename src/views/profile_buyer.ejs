@@ -47,14 +47,18 @@
             /* Less space between buttons */
         }
     </style>
-    <header>
-        <h1 id="title"><a href="/">SeekingAgents</a></h1>
-        <nav id="navlinks">
-            <a href="/login">Login</a>
-            <p>|</p>
-            <a href="/register">Register</a>
-        </nav>
-    </header>
+<header>
+    <h1 id="title"><a href="/">SeekingAgents</a></h1>
+    <nav id="navlinks">
+        <p id="navname"><%= firstname %> <%= lastname %></p>
+        <p>|</p>
+        <a href="/profile_buyer">Profile</a>
+        <p>|</p>
+        <a href="/settings">Settings</a>
+        <p>|</p>
+        <a href="/logout">Logout</a>
+    </nav>
+</header>
 </head>
 <body>
     <div class="container mt-5">
