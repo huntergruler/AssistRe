@@ -86,22 +86,11 @@
                             <% }); %>
                                 <% } else { %>
                                     <tr>
-                                        <td colspan="4">No offices found.</td>
+                                        <td colspan="8">No offices found.</td>
                                     </tr>
                                     <% } %>
                 </tbody>
             </table>
-            <!-- <div id="myModal" class="modal">
-
-                Modal content
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div id="officeContent">
-
-                    </div>
-                </div>
-
-            </div> -->
             <form id="officeForm">
                 <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
                 <input type="text" id="officeLicenseNumber" name="officeLicenseNumber"
@@ -116,7 +105,7 @@
                     title="Enter a valid US state abbreviation">
                 <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
                 <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-                <button type="button" onclick="addOffice()" id="">Add</button>
+                <button type="button" id="officeAdd">Add</button>
                 <span id="offStatus"></span>
             </form>
 
@@ -150,7 +139,7 @@
                             <% }); %>
                                 <% } else { %>
                                     <tr>
-                                        <td colspan="4">No licenses found.</td>
+                                        <td colspan="3">No licenses found.</td>
                                     </tr>
                                     <% } %>
                 </tbody>
@@ -162,18 +151,6 @@
                 <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
                 <input type="date" id="licenseExpirationDate" name="licenseExpirationDate"
                     placeholder="License Expiration Date" required>
-                <!-- <label for="monthSelect">Month:</label>
-                <select id="monthSelect" onchange="updateDays();">
-                  
-                </select>
-                <label for="daySelect">Day:</label>
-                <select id="daySelect">
-                  
-                </select>
-                <label for="yearSelect">Year:</label>
-                <select id="yearSelect" onchange="updateDays();">
-                   
-                </select> -->
                 <button type="button" id="licenseAdd" disabled onclick="addLicense()">Add</button>
                 <span id="licStatus"></span>
             </form>

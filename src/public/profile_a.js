@@ -421,8 +421,18 @@ function showOffice() {
     const form = document.getElementById("officeForm");
     const table = document.getElementById('officeTable');
     const officeButton = document.getElementById('officeButton');
+    const addOfficeButton = document.getElementById('officeAdd');
     var officeIDs = []
     var htmlChange = '';
+
+    addOfficeButton.onclick = function () {
+        
+        const rows = table.querySelectorAll('tbody tr');
+        console.log("HERE");
+        console.log();
+        addOffice();
+        //if(rows[0])
+    }
 
     if (officeToggle == 0) {
         form.style.display = "none";
@@ -463,8 +473,9 @@ function showOffice() {
                     const rows = table.querySelectorAll('tbody tr');
                     rows.forEach((row, index) => {
                         const newCell = document.createElement('td');
+                        htmlChange = '';
                         if (data.hasOffices) {
-                            htmlChange += `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
+                            htmlChange = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
                         }
                         newCell.innerHTML = htmlChange;
                         row.appendChild(newCell);
@@ -521,8 +532,9 @@ function showLicense() {
                 const rows = table.querySelectorAll('tbody tr');
                 rows.forEach((row, index) => {
                     const newCell = document.createElement('td');
+                    htmlChange = '';
                     if (data.hasLicenses) {
-                        htmlChange += `<button type="button" onclick="deleteLicense(${licenseIDs[index]})">Delete</button>`;
+                        htmlChange = `<button type="button" onclick="deleteLicense(${licenseIDs[index]})">Delete</button>`;
                     }
                     newCell.innerHTML = htmlChange;
                     row.appendChild(newCell);
@@ -605,8 +617,9 @@ function showTransactions() {
                 const rows = table.querySelectorAll('tbody tr');
                 rows.forEach((row, index) => {
                     const newCell = document.createElement('td');
+                    htmlChange = '';
                     if (data.hasTransactions) {
-                        htmlChange += `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
+                        htmlChange = `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
                     }
                     newCell.innerHTML = htmlChange;
                     row.appendChild(newCell);
