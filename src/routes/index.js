@@ -189,7 +189,6 @@ router.post('/profile_b_property', (req, res) => {
 
   const query = 'UPDATE Buyers SET bathrooms = ?, bedrooms = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, priceRange = ?, propertyType = ?, squareFootage = ?, timeFrame = ?, userPhoto = ? WHERE userid = ?';
   db.query(query, [bathrooms, bedrooms, buyerType, preferredLanguages, prequalified, priceRange, propertyType, squareFootage, timeFrame, userPhoto, userid], (error, results) => {
-  db.query(query, , (error, results) => {
     if (error) {
       console.error('Error updating buyer profile:', error);
       return res.status(500).send('Server error');
