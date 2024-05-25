@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     noUiSlider.create(slider, {
         start: [500, 3000], // Initial values
         connect: true,
+        step: 100,
         range: {
             'min': 500,
             'max': 5000
