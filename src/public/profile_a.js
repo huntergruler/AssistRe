@@ -557,6 +557,7 @@ function showZipCodes() {
         form.style.display = "none";
         disp.style.display = "block";
         zipToggle = 1;
+        populateAgentZipCodes();
     }
     else {
         form.style.display = "block";
