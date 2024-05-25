@@ -99,6 +99,11 @@ router.post('/register', (req, res) => {
 
 // Route to get the buyer's profile
 router.get('/profile_buyer', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/login');
+  }
+  else {
   const userid = req.session.userid;
 
   const query = 'SELECT firstName, lastName, address, city, state, zip, email, phoneNumber, userid FROM Buyers WHERE userid = ?';
@@ -115,10 +120,16 @@ router.get('/profile_buyer', (req, res) => {
 
     res.render('profile_buyer', { buyer: results[0] });
   });
+  }
 });
 
 // Route to update the buyer's profile
 router.post('/profile_buyer', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/login');
+  }
+  else {
   const { firstName, lastName, address, city, state, zip, email, phoneNumber, userid } = req.body;
 
   const query = 'UPDATE Buyers SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, email = ?, phoneNumber = ? WHERE userid = ?';
@@ -131,6 +142,7 @@ router.post('/profile_buyer', (req, res) => {
 
     res.send({ success: true });
   });
+  }
 });
 
 // Route to serve the profile_b page
