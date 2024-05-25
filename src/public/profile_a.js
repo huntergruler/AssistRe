@@ -432,6 +432,7 @@ function showOffice() {
         console.log(rows[0].innerHTML);
         if(rows[0].innerHTML.includes("No offices found.")){
             rows[0].removeChild(rows[0].lastElementChild);
+            rows[0].removeChild(rows[0].lastElementChild);
         }
         console.log(rows[0].innerHTML);
         addOffice();
