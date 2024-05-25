@@ -448,6 +448,7 @@ function showOffice() {
 
             // Remove the last cell in each row
             rows.forEach((row) => {
+                console.log(row);
                 row.removeChild(row.lastElementChild);
             });
         }
