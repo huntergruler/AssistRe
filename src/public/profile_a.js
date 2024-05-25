@@ -185,10 +185,10 @@ function zipUpdate() {
 
 document.addEventListener('DOMContentLoaded', function () {
     populateAgentZipCodes();
-//    populateMonths();
-//    populateYears();
-//    updateDays();
-//    populateStates();
+    //    populateMonths();
+    //    populateYears();
+    //    updateDays();
+    //    populateStates();
 });
 
 function getSelectedZipCodes() {
@@ -422,8 +422,8 @@ function showOffice() {
     const table = document.getElementById('officeTable');
     const officeButton = document.getElementById('officeButton');
     var officeIDs = []
-    
-    if(officeToggle == 0){
+
+    if (officeToggle == 0) {
         form.style.display = "none";
         const headerRow = table.querySelector('thead tr');
         const rows = table.querySelectorAll('tbody tr');
@@ -452,13 +452,13 @@ function showOffice() {
                     data.offices.forEach(function (office) {
                         officeIDs.push(office.agentofficeid);
                     });
-                    
+
 
                     const headerRow = table.querySelector('thead tr');
                     const newHeader = document.createElement('th');
                     newHeader.textContent = ``;
                     headerRow.appendChild(newHeader);
-                
+
                     // Add cells to each row in the tbody
                     const rows = table.querySelectorAll('tbody tr');
                     rows.forEach((row, index) => {
@@ -466,12 +466,12 @@ function showOffice() {
                         newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
                         row.appendChild(newCell);
                     });
-            }
-            officeToggle = 0;
-        });
+                }
+                officeToggle = 0;
+            });
     }
     const overButton = document.getElementById('overviewButton');
-    
+
     const licButton = document.getElementById('licenseButton');
     const zipButton = document.getElementById('zipCodeButton');
     const transButton = document.getElementById('transactionButton');
@@ -499,7 +499,7 @@ function showLicense() {
     var licenseIDs = []
     //console.log("licToggle is " + licToggle);
 
-    if(licToggle == 0){
+    if (licToggle == 0) {
         form.style.display = "none";
         const headerRow = table.querySelector('thead tr');
         const rows = table.querySelectorAll('tbody tr');
@@ -532,7 +532,7 @@ function showLicense() {
                     const newHeader = document.createElement('th');
                     newHeader.textContent = ``;
                     headerRow.appendChild(newHeader);
-                
+
                     // Add cells to each row in the tbody
                     const rows = table.querySelectorAll('tbody tr');
                     rows.forEach((row, index) => {
@@ -540,9 +540,9 @@ function showLicense() {
                         newCell.innerHTML = `<button type="button" onclick="deleteLicense(${licenseIDs[index]})">Delete</button>`;
                         row.appendChild(newCell);
                     });
-            }
-            licToggle = 0;
-        });
+                }
+                licToggle = 0;
+            });
     }
 };
 
@@ -552,7 +552,7 @@ function showZipCodes() {
     const disp = document.getElementById("ownedZipCodes");
     const zipButton = document.getElementById('zipCodeButton');
 
-    if(zipToggle == 0){
+    if (zipToggle == 0) {
         form.style.display = "none";
         disp.style.display = "block";
         zipButton.innerHTML = "Edit";
@@ -580,7 +580,7 @@ function showTransactions() {
     const transactionButton = document.getElementById('transactionButton');
     var transIDs = []
 
-    if(transToggle == 0){
+    if (transToggle == 0) {
         form.style.display = "none";
         const headerRow = table.querySelector('thead tr');
         const rows = table.querySelectorAll('tbody tr');
@@ -608,22 +608,21 @@ function showTransactions() {
                     data.transactions.forEach(function (transaction) {
                         transIDs.push(transaction.agenttransactionid);
                     });
+                }
+                const headerRow = table.querySelector('thead tr');
+                const newHeader = document.createElement('th');
+                newHeader.textContent = ``;
+                headerRow.appendChild(newHeader);
 
-                    const headerRow = table.querySelector('thead tr');
-                    const newHeader = document.createElement('th');
-                    newHeader.textContent = ``;
-                    headerRow.appendChild(newHeader);
-                
-                    // Add cells to each row in the tbody
-                    const rows = table.querySelectorAll('tbody tr');
-                    rows.forEach((row, index) => {
-                        const newCell = document.createElement('td');
-                        newCell.innerHTML = `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
-                        row.appendChild(newCell);
-                    });
-            }
-            transToggle = 0;
-        });
+                // Add cells to each row in the tbody
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach((row, index) => {
+                    const newCell = document.createElement('td');
+                    newCell.innerHTML = `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
+                    row.appendChild(newCell);
+                });
+                transToggle = 0;
+            });
     }
     /*const contain = document.getElementById('profileContainer');
     let htmlChange = `<p><h1>Current Transaction(s)</h1></p>
