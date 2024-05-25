@@ -47,8 +47,15 @@
             /* Less space between buttons */
         }
     </style>
+    <header>
+        <h1 id="title"><a href="/">SeekingAgents</a></h1>
+        <nav id="navlinks">
+            <a href="/login">Login</a>
+            <p>|</p>
+            <a href="/register">Register</a>
+        </nav>
+    </header>
 </head>
-
 <body>
     <div class="container mt-5">
         <div class="form-container">
@@ -85,8 +92,8 @@
                 <div class="form-group row justify-content-center">
                     <label for="state" class="col-sm-2 col-form-label">State</label>
                     <div class="col-sm-4">
-                        <input class="form-control view-mode" id="state" name="state"
-                            value="<%= buyer.state %>" required disabled>
+                        <input class="form-control view-mode" id="state" name="state" value="<%= buyer.state %>"
+                            required disabled>
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">

@@ -60,37 +60,34 @@
 <% if (data=="Bad Token" ) { %>
     <p style="color: red;">Invalid token. Please try again.</p>
     <% } %>
-        <body id="loginBody">
-            <div id="loginContainer">
-                <h1>Send Password Reset Email:</h1>
+        <div class="container mt-5">
+            <div class="form-container">
+                <h2 class="mb-4 text-center">Reset Password</h2>
                 <form id="loginForm" action="/sendreset" method="post">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Login Type:</label>
-                                <div class="radio-group">
-                                    <label class="radio-label"><input type="radio" name="userType" value="Buyer"
-                                            required>
-                                        Buyer</label>
-                                    <label class="radio-label"><input type="radio" name="userType" value="Agent"
-                                            required>
-                                        Agent</label>
-                                </div>
-                            </div>
+                    <div class="form-group row justify-content-center">
+                        <label>Login Type:</label>
+                        <div class="col-sm-4">
+                            <label class="radio-label"><input type="radio" name="userType" value="Buyer" required>
+                                Buyer</label>
+                            <label class="radio-label"><input type="radio" name="userType" value="Agent" required>
+                                Agent</label>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input type="email" id="email" name="email" placeholder="Email" disabled>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <button type="submit">Send Reset Email</button>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <input type="text" class="form-control view-mode" id="email" name="email"
+                            value="<%= reset.email %>" required disabled>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-sm-4">
+                            <button type="submit">Send Reset Email</button>
                         </div>
-                </form>
+
+                    </div>
             </div>
-            <script src="/script.js"></script>
+        </div>
+        </form>
+        </div>
+        <script src="/script.js"></script>
         </body>
 
 </html>
