@@ -63,9 +63,9 @@
         <div class="container mt-5">
             <div class="form-container">
                 <h2 class="mb-4 text-center">Reset Password</h2>
-                <form id="loginForm" action="/sendreset" method="post">
+                <form id="resetForm" action="/sendreset" method="post">
                     <div class="form-group row justify-content-center">
-                        <label>Login Type:</label>
+                        <label>User Type:</label>
                         <div class="col-sm-4">
                             <label class="radio-label"><input type="radio" name="userType" value="Buyer" required>
                                 Buyer</label>
@@ -87,7 +87,15 @@
         </div>
         </form>
         </div>
-        <script src="/script.js"></script>
+        <script>
+            document.querySelectorAll('input[name="userType"]').forEach(radio => {
+                radio.addEventListener('change', function () {
+                    document.querySelectorAll('#resetForm input, #reset button').forEach(field => {
+                        field.disabled = false;
+                    });
+                });
+            });
+        </script>
         </body>
 
 </html>
