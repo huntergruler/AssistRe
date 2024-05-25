@@ -421,7 +421,7 @@ function updateDays() {
     }
 };
 
-var officeToggle = 0;
+var officeToggle = 1;
 function showOffice() {
     const form = document.getElementById("officeForm");
     const table = document.getElementById('officeTable');
