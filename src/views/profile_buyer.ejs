@@ -133,6 +133,76 @@
             </form>
         </div>
     </div>
+    <div class="container mt-5">
+        <div class="form-container">
+            <h2 class="mb-4 text-center">Property Profile</h2>
+            <form id="propertyForm">
+                <div class="form-group row justify-content-center">
+                    <label for="propertyType" class="col-sm-2 col-form-label">Property Type</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control view-mode" id="propertyType" name="propertyType"
+                            value="<%= buyer.propertyType %>" required disabled>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label for="bedrooms" class="col-sm-2 col-form-label">Bedrooms</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control view-mode" id="bedrooms" name="Bedrooms"
+                            value="<%= buyer.bedrooms %>" required disabled>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label for="bathrooms" class="col-sm-2 col-form-label">Bathrooms</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control view-mode" id="bathrooms" name="bathrooms"
+                            value="<%= buyer.bathrooms %>" required disabled>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label for="squareFootage" class="col-sm-2 col-form-label">Square Footage</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control view-mode" id="squareFootage" name="squareFootage"
+                            value="<%= buyer.squareFootage %>" required disabled>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label for="priceRange" class="col-sm-2 col-form-label">Price Range</label>
+                    <div class="col-sm-4">
+                        <input class="form-control view-mode" id="priceRange" name="priceRange" value="<%= buyer.priceRange %>"
+                            required disabled>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label for="timeFrame" class="col-sm-2 col-form-label">Timeframe</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control view-mode" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>"
+                            required disabled>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label for="prequalified" class="col-sm-2 col-form-label">Prequalified</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control view-mode" id="prequalified" name="prequalified"
+                            value="<%= buyer.prequalified %>" required disabled>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label for="preferredLanguages" class="col-sm-2 col-form-label">Preferred Languages</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control view-mode" id="preferredLanguages" name="preferredLanguages"
+                            value="<%= buyer.preferredLanguages %>" required disabled>
+                    </div>
+                </div>
+                <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
+                <div class="text-center">
+                    <button type="button" id="editButton" class="btn btn-primary">Edit</button>
+                    <button type="button" id="saveButton" class="btn btn-success" style="display:none;">Save</button>
+                    <button type="button" id="cancelButton" class="btn btn-secondary"
+                        style="display:none;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="/profile_buyer.js"></script>
