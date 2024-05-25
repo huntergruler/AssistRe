@@ -20,7 +20,6 @@ $(document).ready(function() {
             city: $('#city').val(),
             state: $('#state').val(),
             zip: $('#zip').val(),
-            email: $('#email').val(),
             phoneNumber: $('#phoneNumber').val(),
             userid: $('#userid').val()
         };
