@@ -117,8 +117,7 @@ router.get('/profile_buyer', (req, res) => {
     if (results.length === 0) {
       return res.status(404).send('User not found');
     }
-
-    res.render('profile_buyer', { buyer: results[0] });
+    res.render('profile_buyer', { buyer: results[0], user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
   });
   }
 });
