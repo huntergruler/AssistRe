@@ -580,7 +580,7 @@ function showTransactions() {
     const transactionButton = document.getElementById('transactionButton');
     var transIDs = []
 
-    if(licToggle == 0){
+    if(transToggle == 0){
         form.style.display = "none";
         const headerRow = table.querySelector('thead tr');
         const rows = table.querySelectorAll('tbody tr');

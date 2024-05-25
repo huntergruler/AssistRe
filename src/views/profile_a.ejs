@@ -34,8 +34,8 @@
         <!--<button type="button" class="hoverStyle" id="officeButton" onclick="showOffice()">Office</button>-->
         <!-- <button type="button" class="hoverStyle" id="licenseButton" onclick="showLicense()">License</button> -->
         <!-- <button type="button" class="hoverStyle" id="zipCodeButton" onclick="showZipCodes()">Zip Codes</button> -->
-        <button type="button" class="hoverStyle" id="transactionButton"
-            onclick="showTransactions()">Transactions</button>
+        <!-- <button type="button" class="hoverStyle" id="transactionButton"
+            onclick="showTransactions()">Transactions</button> -->
         <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Bio</button>
     </div>
     <div id="profileContainer">
@@ -217,7 +217,8 @@
         </div>
         <div id="transactionContainer">
             <p>
-            <h1>Current Transaction(s)</h1>
+            <h1>Current Transaction(s) <button type="button" class="hoverStyle" id="transactionButton"
+                onclick="showTransactions()">Edit</button></h1>
             </p>
             <table id="transactionTable">
                 <thead>
