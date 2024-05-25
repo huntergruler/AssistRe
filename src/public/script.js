@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         */
     if (document.getElementById('message').innerText == '')
         document.getElementById('message').style.display = 'none';
+    else
+        document.getElementById('message').style.display = 'block';
     if (loginContainer) {    // Access the parent element by its ID
         document.body.addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent default form submission
