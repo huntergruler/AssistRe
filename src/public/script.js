@@ -36,10 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
                         })};
                         */
-    // if (document.getElementById('message').innerText == '')
-    //     document.getElementById('message').style.display = 'none';
-    // else
-    //     document.getElementById('message').style.display = 'block';
+    if (document.getElementById('message').innerText == '')
+        document.getElementById('message').style.display = 'none';
     if (loginContainer) {    // Access the parent element by its ID
         document.body.addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent default form submission
@@ -48,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const password = document.getElementById('password').value.trim();
                 const userType = document.getElementById('userType').value.trim();
                 if (!email || !password) {
+                    document.getElementById('message').style.display = 'block';
                     document.getElementById('message').innerText = 'Email and password are required.';
                     document.getElementById('message').style.color = 'red';
                     return;
@@ -64,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log('login container');
                         if (data.success === false) {
                             // Display message if login failed
+                            document.getElementById('message').style.display = 'block';
                             document.getElementById('message').innerText = data.message;
                             document.getElementById('message').style.color = 'red'; // Optional: change text color
                             document.getElementById('email').value = '';
@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                     .catch(error => {
                         console.error('Error:', error);
+                        document.getElementById('message').style.display = 'block';
                         document.getElementById('message').innerText = 'An error occurred. Please try again.';
                         document.getElementById('message').style.color = 'red';
                     });
