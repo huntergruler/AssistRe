@@ -299,6 +299,38 @@ router.get('/login', (req, res) => {
   res.render('login', { query: req.query, message: message });
 });
 
+// Login route
+router.get('/login_a', (req, res) => {
+  const message = req.session.message;
+
+  // Destroy the session or clear the cookie
+  if (req.session.killsession) {
+    req.session.destroy((err) => {
+      if (err) {
+        return console.error('Failed to destroy the session on logout', err);
+        res.clearCookie('connect.sid'); // If you're using session cookies, clear them
+      }
+    });
+  }
+  res.render('login_a', { query: req.query, message: message });
+});
+
+// Login route
+router.get('/login_b', (req, res) => {
+  const message = req.session.message;
+
+  // Destroy the session or clear the cookie
+  if (req.session.killsession) {
+    req.session.destroy((err) => {
+      if (err) {
+        return console.error('Failed to destroy the session on logout', err);
+        res.clearCookie('connect.sid'); // If you're using session cookies, clear them
+      }
+    });
+  }
+  res.render('login_b', { query: req.query, message: message });
+});
+
 // Logout route
 router.get('/logout', (req, res) => {
   // Redirect to login with a logout message
