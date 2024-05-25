@@ -179,7 +179,8 @@
             </form>
         </div>
         <div class="zipCode-container" id="profileZips">
-            <h1 id>Zip Codes<button type="button" class="hoverStyle" id="zipCodeButton" onclick="showZipCodes()">Edit</button></h1> 
+            <h1 id>Zip Codes<button type="button" class="hoverStyle" id="zipCodeButton"
+                    onclick="showZipCodes()">Edit</button></h1>
             <br>
             <div id="ownedZipCodes"></div>
             <div id="zipCodeForm">
@@ -213,60 +214,61 @@
                 </div>
                 <button type="button" class="button" disabled id="saveChanges" onclick="saveChanges()">SAVE</button>`
             </div>
-            <div id="transactionContainer">
-                <p>
-                <h1>Current Transaction(s)</h1>
-                </p>
-                <table id="transactionTable">
-                    <thead>
-                        <tr>
-                            <th>Transaction Date</th>
-                            <th>Transaction Amount</th>
-                            <th>Transaction Property Type</th>
-                            <th>Transaction Level Of Service</th>
-                            <th>Transaction Compensation Type</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% if (hasTransactions) { %>
-                            <% transactions.forEach(function(transaction) { %>
-                                <tr id="transaction-<%= transaction.agenttransactionid %>">
-                                    <td>
-                                        <%= transaction.transactionDate %>
-                                    </td>
-                                    <td>
-                                        <%= transaction.transactionAmount %>
-                                    </td>
-                                    <td>
-                                        <%= transaction.PropertyType %>
-                                    </td>
-                                    <td>
-                                        <%= transaction.LevelOfService %>
-                                    </td>
-                                    <td>
-                                        <%= transaction.CompensationType %>
-                                    </td>
-                                </tr>
-                                <% }); %>
-                                    <% } else { %>
-                                        <tr>
-                                            <td colspan="4">No transactions found.</td>
-                                        </tr>
-                                        <% } %>
-                    </tbody>
-                </table>
-            </div>
-            <div id="BioContainer">
-                <h1>Biography</h1>
-                <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
-                    required></textarea>
-                <br>
-                <textarea id="langauges" name="languages" rows="4" cols="50"
-                    placeholder="Enter the languages you speak here" required></textarea>
-                <button type="button" id="bioAdd" onclick="addBio()">Add</button>
-                <span id="bioStatus"></span>
-            </div>
-            <script src="/profile_a.js"></script>
+        </div>
+        <div id="transactionContainer">
+            <p>
+            <h1>Current Transaction(s)</h1>
+            </p>
+            <table id="transactionTable">
+                <thead>
+                    <tr>
+                        <th>Transaction Date</th>
+                        <th>Transaction Amount</th>
+                        <th>Transaction Property Type</th>
+                        <th>Transaction Level Of Service</th>
+                        <th>Transaction Compensation Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (hasTransactions) { %>
+                        <% transactions.forEach(function(transaction) { %>
+                            <tr id="transaction-<%= transaction.agenttransactionid %>">
+                                <td>
+                                    <%= transaction.transactionDate %>
+                                </td>
+                                <td>
+                                    <%= transaction.transactionAmount %>
+                                </td>
+                                <td>
+                                    <%= transaction.PropertyType %>
+                                </td>
+                                <td>
+                                    <%= transaction.LevelOfService %>
+                                </td>
+                                <td>
+                                    <%= transaction.CompensationType %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="4">No transactions found.</td>
+                                    </tr>
+                                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div id="BioContainer">
+            <h1>Biography</h1>
+            <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
+                required></textarea>
+            <br>
+            <textarea id="langauges" name="languages" rows="4" cols="50"
+                placeholder="Enter the languages you speak here" required></textarea>
+            <button type="button" id="bioAdd" onclick="addBio()">Add</button>
+            <span id="bioStatus"></span>
+        </div>
+        <script src="/profile_a.js"></script>
 </body>
 
 </html>
