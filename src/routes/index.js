@@ -101,7 +101,7 @@ router.post('/register', (req, res) => {
 router.get('/profile_buyer', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
   const userid = req.session.userid;
@@ -117,8 +117,7 @@ router.get('/profile_buyer', (req, res) => {
     if (results.length === 0) {
       return res.status(404).send('User not found');
     }
-
-    res.render('profile_buyer', { buyer: results[0] });
+    res.render('profile_buyer', { buyer: results[0], user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
   });
   }
 });
@@ -127,14 +126,15 @@ router.get('/profile_buyer', (req, res) => {
 router.post('/profile_buyer', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
-  const { firstName, lastName, address, city, state, zip, email, phoneNumber, userid } = req.body;
+  const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
 
-  const query = 'UPDATE Buyers SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, email = ?, phoneNumber = ? WHERE userid = ?';
+  const query = 'UPDATE Buyers SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, phoneNumber = ? WHERE userid = ?';
 console.log('Query:', query);
-  db.query(query, [firstName, lastName, address, city, state, zip, email, phoneNumber, userid], (error, results) => {
+console.log('Params:', [firstName, lastName, address, city, state, zip, phoneNumber, userid]);
+  db.query(query, [firstName, lastName, address, city, state, zip, phoneNumber, userid], (error, results) => {
     if (error) {
       console.error('Error updating buyer profile:', error);
       return res.status(500).send('Server error');
@@ -149,7 +149,7 @@ console.log('Query:', query);
 router.get('/profile_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
     userid = req.session.userid;
@@ -212,7 +212,7 @@ router.post('/profile_b', (req, res) => {
 router.get('/profile_a', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
     userid = req.session.userid;
@@ -349,23 +349,23 @@ router.post('/login', [
     const { email, password, userType } = req.body;
     if (userType === 'Agent') {
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
+      var htmlpage = 'login_a';
     } else if (userType === 'Buyer') {
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
+      var htmlpage = 'login_b';
     }
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
       if (error) {
-        return res.render('login', { message: 'Error during database query' });
+        return res.render(htmlpage, { message: 'Error during database query' });
       }
-      else {
-        if (results.length === 0 || error) {
+      else if (results.length === 0) {
           // Send response when email is not found
           res.json({
             success: false,
             message: "Invalid credentials."
-          });
-        } else {
-          if (results[0].emailverified === 0) {
+          });        
+        } else if (results[0].emailverified === 0) {
             // Send response when email is not verified
             res.json({
               success: false,
@@ -373,31 +373,39 @@ router.post('/login', [
             });
           } else {
             const { userid, firstname, lastname } = results[0];
-
             bcrypt.compare(password, results[0].password, (err, isMatch) => {
-              if (err) {
-                return res.render('login', { message: 'Error comparing passwords' });
-              } else {
-                if (isMatch) {
-                  req.session.user = email;
-                  req.session.userid = userid;
-                  req.session.firstname = firstname;
-                  req.session.lastname = lastname;
-                  req.session.userType = userType;
-                  console.log('User logged in:', email);
-                  res.json({
-                    success: true,
-                    message: "Successful Login"
-                  });
-                }
+              if (!isMatch || err) {
+                res.json({
+                  success: false,
+                  message: "Invalid credentials."
+                });
               }
-            });
-          };
-        }
-      }
-
+               else if (isMatch) {
+                    req.session.user = email;
+                    req.session.userid = userid;
+                    req.session.firstname = firstname;
+                    req.session.lastname = lastname;
+                    req.session.userType = userType;
+                    console.log('User logged in:', email, userType);
+                    if (userType === 'Agent') {
+                      var updateQuery = 'update Agents set lastlogin = now() WHERE email = ?';
+                    } else if (userType === 'Buyer') {
+                      var updateQuery = 'update Buyers set lastlogin = now() WHERE email = ?';
+                    }
+                    db.query(updateQuery, [email], (error, results) => {
+                      if (error) {
+                        return res.render(htmlpage, { message: 'Error during database update' });
+                      }
+                    });
+                    res.json({
+                      success: true,
+                      message: "Successful Login"
+                    });
+                  }
+                });
+            }
+          });
     });
-  });
 
 // Route to get city and state by zip code
 router.get('/get-city-state', (req, res) => {
@@ -623,7 +631,7 @@ router.get('/dashboard_a', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Dashboard';
     //    console.log('Redirecting to:', redirectto);
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
     res.render('dashboard_a', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
@@ -635,7 +643,7 @@ router.get('/dashboard_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Dashboard';
     //    console.log('Redirecting to:', redirectto);
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
     res.render('dashboard_b', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
@@ -646,7 +654,7 @@ router.get('/settings', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access the Settings page';
     //    console.log('Redirecting to:', redirectto);
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
     res.render('settings');
