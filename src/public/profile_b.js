@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         step: 100,
         range: {
             'min': 500,
-            'max': 5000
+            'max': 15000
         },
         tooltips: [true, true],
         format: {
