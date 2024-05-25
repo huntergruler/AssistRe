@@ -601,6 +601,7 @@ function showTransactions() {
     else {
         form.style.display = "grid";
         transactionButton.innerHTML = "Done";
+        var htmlChange = '';
         fetch('/api/profile_a')
             .then(response => response.json())
             .then(data => {
@@ -618,7 +619,10 @@ function showTransactions() {
                 const rows = table.querySelectorAll('tbody tr');
                 rows.forEach((row, index) => {
                     const newCell = document.createElement('td');
-                    newCell.innerHTML = `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
+                    if(data.hasTransactions){
+                        htmlChange += `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
+                    }
+                    newCell.innerHTML = htmlChange;
                     row.appendChild(newCell);
                 });
                 transToggle = 0;
