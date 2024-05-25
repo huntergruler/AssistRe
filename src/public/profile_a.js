@@ -88,7 +88,7 @@ function addLicense() {
     const yearSelect = document.getElementById('yearSelect');
     const dates = licenseExpirationDate1.split('-');
     console.log(dates);
-    const date = new Date(2024, 5, 30);
+    const date = new Date(dates[0], dates[1], dates[2]);
     const date1 = new Date(licenseExpirationDate1);
     console.log(licenseExpirationDate1);
     console.log(date);
