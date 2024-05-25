@@ -463,8 +463,9 @@ function showOffice() {
                     const rows = table.querySelectorAll('tbody tr');
                     rows.forEach((row, index) => {
                         const newCell = document.createElement('td');
+                        htmlChange = '';
                         if (data.hasOffices) {
-                            htmlChange += `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
+                            htmlChange = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
                         }
                         newCell.innerHTML = htmlChange;
                         row.appendChild(newCell);
@@ -521,8 +522,9 @@ function showLicense() {
                 const rows = table.querySelectorAll('tbody tr');
                 rows.forEach((row, index) => {
                     const newCell = document.createElement('td');
+                    htmlChange = '';
                     if (data.hasLicenses) {
-                        htmlChange += `<button type="button" onclick="deleteLicense(${licenseIDs[index]})">Delete</button>`;
+                        htmlChange = `<button type="button" onclick="deleteLicense(${licenseIDs[index]})">Delete</button>`;
                     }
                     newCell.innerHTML = htmlChange;
                     row.appendChild(newCell);
@@ -605,8 +607,9 @@ function showTransactions() {
                 const rows = table.querySelectorAll('tbody tr');
                 rows.forEach((row, index) => {
                     const newCell = document.createElement('td');
+                    htmlChange = '';
                     if (data.hasTransactions) {
-                        htmlChange += `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
+                        htmlChange = `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
                     }
                     newCell.innerHTML = htmlChange;
                     row.appendChild(newCell);
