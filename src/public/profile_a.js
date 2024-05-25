@@ -429,8 +429,8 @@ function showOffice() {
         const rows = table.querySelectorAll('tbody tr');
         const body = table.querySelector('tbody');
         console.log("HERE");
-        if(rows[0].innerHTML.includes("No offices found.")){
-            tbody.innerHTML = "";
+        if(rows && rows[0].innerHTML.includes("No offices found.")){
+            body.innerHTML = "";
         }
         console.log(rows[0].innerHTML);
         addOffice();
