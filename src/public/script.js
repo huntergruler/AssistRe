@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        document.getElementById('message').style.display = 'block';
+//                        document.getElementById('message').style.display = 'block';
                         document.getElementById('message').innerText = 'An error occurred. Please try again.';
                         document.getElementById('message').style.color = 'red';
                     });
