@@ -421,8 +421,16 @@ function showOffice() {
     const form = document.getElementById("officeForm");
     const table = document.getElementById('officeTable');
     const officeButton = document.getElementById('officeButton');
+    const addOfficeButton = document.getElementById('officeAdd');
     var officeIDs = []
     var htmlChange = '';
+
+    addOfficeButton.onclick = function () {
+        addOffice();
+        const rows = table.querySelectorAll('tbody tr');
+        console.log(rows[0].innerHTML);
+        //if(rows[0])
+    }
 
     if (officeToggle == 0) {
         form.style.display = "none";
