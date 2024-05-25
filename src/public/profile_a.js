@@ -422,7 +422,7 @@ function showOffice() {
     const table = document.getElementById('officeTable');
     const officeButton = document.getElementById('officeButton');
     var officeIDs = []
-    console.log("officeToggle is " + officeToggle);
+    
     if(officeToggle == 0){
         form.style.display = "none";
         const headerRow = table.querySelector('thead tr');
@@ -466,8 +466,8 @@ function showOffice() {
                         newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
                         row.appendChild(newCell);
                     });
-                    officeToggle = 0;
             }
+            officeToggle = 0;
         });
     }
     const overButton = document.getElementById('overviewButton');
@@ -540,8 +540,8 @@ function showLicense() {
                         newCell.innerHTML = `<button type="button" onclick="deleteLicense(${licenseIDs[index]})">Delete</button>`;
                         row.appendChild(newCell);
                     });
-                    licToggle = 0;
             }
+            licToggle = 0;
         });
     }
 };
@@ -621,8 +621,8 @@ function showTransactions() {
                         newCell.innerHTML = `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
                         row.appendChild(newCell);
                     });
-                    transToggle = 0;
             }
+            transToggle = 0;
         });
     }
     /*const contain = document.getElementById('profileContainer');
