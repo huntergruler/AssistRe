@@ -98,7 +98,7 @@ router.post('/register', (req, res) => {
 });
 
 // Route to get the buyer's profile
-router.get('/profile_buyer', (req, res) => {
+router.get('/profile_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
@@ -106,24 +106,44 @@ router.get('/profile_buyer', (req, res) => {
   else {
   const userid = req.session.userid;
 
-  const query = 'SELECT firstName, lastName, address, city, state, zip, email, phoneNumber, userid FROM Buyers WHERE userid = ?';
-
-  db.query(query, [userid], (error, results) => {
+    const query = `select b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
+                          b.bathrooms, b.bedrooms, b.buyerType, b.preferredLanguages, b.prequalified, b.priceRange, 
+                          b.propertyType, b.squareFootage, b.state, b.timeFrame, b.userPhoto, b.prequalifiedPath
+                     from Buyers b
+                    where b.userid = ?`;
+db.query(query, [userid], (error, results) => {
     if (error) {
       console.error('Error fetching buyer profile:', error);
       return res.status(500).send('Server error');
     }
-
+    let firstName = results[0].firstName;
+    let lastName = results[0].lastName;
+    let address = results[0].address;
+    let city = results[0].city;
+    let state = results[0].state;
+    let zip = results[0].zip;
+    let phoneNumber = results[0].phoneNumber;
+    let bathrooms = results[0].bathrooms;
+    let bedrooms = results[0].bedrooms;
+    let buyerType = results[0].buyerType;
+    let preferredLanguages = results[0].preferredLanguages;
+    let prequalified = results[0].prequalified;
+    let priceRange = results[0].priceRange;
+    let propertyType = results[0].propertyType;
+    let squareFootage = results[0].squareFootage;
+    let timeFrame = results[0].timeFrame;
+    let userPhoto = results[0].userPhoto;
+    let prequalifiedPath = results[0].prequalifiedPath;
     if (results.length === 0) {
       return res.status(404).send('User not found');
     }
-    res.render('profile_buyer', { buyer: results[0], user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
+    res.render('profile_b', { firstName, lastName, address, city, state, zip, email, phoneNumber, bathrooms, bedrooms, buyerType, preferredLanguages, prequalified, priceRange, propertyType, squareFootage, timeFrame, userPhoto, prequalifiedPath });
   });
   }
 });
 
 // Route to update the buyer's profile
-router.post('/profile_buyer', (req, res) => {
+router.post('/profile_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
@@ -145,67 +165,67 @@ console.log('Params:', [firstName, lastName, address, city, state, zip, phoneNum
   }
 });
 
-// Route to serve the profile_b page
-router.get('/profile_b', (req, res) => {
-  if (!req.session.user) {
-    req.session.message = 'Please login to access your Profile';
-    res.redirect('/');
-  }
-  else {
-    userid = req.session.userid;
-    const query = `select b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
-                          b.bathrooms, b.bedrooms, b.buyerType, b.preferredLanguages, b.prequalified, b.priceRange, 
-                          b.propertyType, b.squareFootage, b.state, b.timeFrame, b.userPhoto, b.prequalifiedPath
-                     from Buyers b
-                    where b.userid = ?`;
-    db.query(query, [userid], (err, licenseresults) => {
-      if (err) throw err;
-      let hasLicenses = licenseresults.length > 0;
-      const query = 'SELECT * FROM AgentOffices a where userid = ?';
-      db.query(query, [userid], (err, officeresults) => {
-        if (err) throw err;
-        let hasOffices = officeresults.length > 0;
-        const query = `SELECT agenttransactionid, transactionDate, transactionAmount, propertytype, levelofservice, compensationtype
-                             FROM AgentTransactionHistory_v h 
-                            WHERE userid = ?`;
-        db.query(query, [userid], (err, transactionresults) => {
-          if (err) throw err;
-          let hasTransactions = transactionresults.length > 0;
-          res.render('profile_b', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
-        });
-      });
-    });
-  }
-});
+// // Route to serve the profile_b page
+// router.get('/profile_b', (req, res) => {
+//   if (!req.session.user) {
+//     req.session.message = 'Please login to access your Profile';
+//     res.redirect('/');
+//   }
+//   else {
+//     userid = req.session.userid;
+//     const query = `select b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
+//                           b.bathrooms, b.bedrooms, b.buyerType, b.preferredLanguages, b.prequalified, b.priceRange, 
+//                           b.propertyType, b.squareFootage, b.state, b.timeFrame, b.userPhoto, b.prequalifiedPath
+//                      from Buyers b
+//                     where b.userid = ?`;
+//     db.query(query, [userid], (err, licenseresults) => {
+//       if (err) throw err;
+//       let hasLicenses = licenseresults.length > 0;
+//       const query = 'SELECT * FROM AgentOffices a where userid = ?';
+//       db.query(query, [userid], (err, officeresults) => {
+//         if (err) throw err;
+//         let hasOffices = officeresults.length > 0;
+//         const query = `SELECT agenttransactionid, transactionDate, transactionAmount, propertytype, levelofservice, compensationtype
+//                              FROM AgentTransactionHistory_v h 
+//                             WHERE userid = ?`;
+//         db.query(query, [userid], (err, transactionresults) => {
+//           if (err) throw err;
+//           let hasTransactions = transactionresults.length > 0;
+//           res.render('profile_b', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
+//         });
+//       });
+//     });
+//   }
+// });
 
-// Handle registration with city and state lookup
-router.post('/profile_b', (req, res) => {
-  const {
-    firstName, lastName, address, city, state, zip, email,
-    phoneNumber, propertyType, bedrooms, bathrooms, squareFootage,
-    priceRange, timeFrame, prequalified, preferredLanguages, password
-  } = req.body;
+// // Handle registration with city and state lookup
+// router.post('/profile_b', (req, res) => {
+//   const {
+//     firstName, lastName, address, city, state, zip, email,
+//     phoneNumber, propertyType, bedrooms, bathrooms, squareFootage,
+//     priceRange, timeFrame, prequalified, preferredLanguages, password
+//   } = req.body;
 
-  const buyerTypes = req.body.buyerType; // This will be an array
-  const buyerType = Array.isArray(buyerTypes) ? buyerTypes.join(', ') : buyerTypes;
+//   const buyerTypes = req.body.buyerType; // This will be an array
+//   const buyerType = Array.isArray(buyerTypes) ? buyerTypes.join(', ') : buyerTypes;
 
-  const prequalifiedFile = req.files['prequalifiedFile'] ? req.files['prequalifiedFile'][0].path : null;
-  const userPhoto = req.files['userPhoto'][0].path;
+//   const prequalifiedFile = req.files['prequalifiedFile'] ? req.files['prequalifiedFile'][0].path : null;
+//   const userPhoto = req.files['userPhoto'][0].path;
 
-  const hashedPassword = bcrypt.hashSync(password, 10);
+//   const hashedPassword = bcrypt.hashSync(password, 10);
 
-  const sql = `INSERT INTO Buyers (buyerType, firstName, lastName, address, city, state, zip, email, phoneNumber, propertyType, bedrooms, bathrooms, squareFootage, priceRange, timeFrame, prequalified, prequalified_file_location, emailverified, userPhoto, preferredLanguages, password)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?)`;
+//   const sql = `INSERT INTO Buyers (buyerType, firstName, lastName, address, city, state, zip, email, phoneNumber, propertyType, bedrooms, bathrooms, squareFootage, priceRange, timeFrame, prequalified, prequalified_file_location, emailverified, userPhoto, preferredLanguages, password)
+//              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?)`;
 
-  connection.query(sql, [buyerType, firstName, lastName, address, city, state, zip, email, phoneNumber, propertyType, bedrooms, bathrooms, squareFootage, priceRange, timeFrame, prequalified, prequalifiedFile, userPhoto, preferredLanguages, hashedPassword], (err, result) => {
-    if (err) {
-      console.error(err);
-      res.json({ success: false, error: err });
-    } else {
-      res.json({ success: true });
-    }
-  });
-});
+//   connection.query(sql, [buyerType, firstName, lastName, address, city, state, zip, email, phoneNumber, propertyType, bedrooms, bathrooms, squareFootage, priceRange, timeFrame, prequalified, prequalifiedFile, userPhoto, preferredLanguages, hashedPassword], (err, result) => {
+//     if (err) {
+//       console.error(err);
+//       res.json({ success: false, error: err });
+//     } else {
+//       res.json({ success: true });
+//     }
+//   });
+// });
 
 
 // Assuming `db` is your MySQL connection db, already set up in app.js
