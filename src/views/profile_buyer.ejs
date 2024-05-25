@@ -112,7 +112,7 @@
                     <label for="zip" class="col-sm-2 col-form-label">Zip</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control view-mode" id="zip" name="zip" value="<%= buyer.zip %>"
-                            required disabled onmouseleave="lookupCityState()">
+                            required disabled onmouseleave="lookupCityState()" onblur="lookupCityState()">
                         <span id="cityState"></span>
                     </div>
                 </div>
