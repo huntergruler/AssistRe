@@ -499,7 +499,7 @@ function showOffice() {
 var licToggle = 1;
 function showLicense() {
     const form = document.getElementById("licenseForm");
-    const table = document.getElementById('licenseTable');
+    const table = document.getElementById('licensesTable');
     const licenseButton = document.getElementById('licenseButton');
     var licenseIDs = []
     console.log("licToggle is " + licToggle);
