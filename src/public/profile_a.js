@@ -551,7 +551,6 @@ function showZipCodes() {
     const form = document.getElementById("zipCodeForm");
     const disp = document.getElementById("ownedZipCodes");
     const zipButton = document.getElementById('zipCodeButton');
-    //console.log("licToggle is " + licToggle);
 
     if(zipToggle == 0){
         form.style.display = "none";
@@ -568,68 +567,65 @@ function showZipCodes() {
         populateAgentZipCodes();
         zipToggle = 0;
     }
-    /*const contain = document.getElementById('profileContainer');
-    let htmlChange = `<h1>Zip Codes</h1>
-    <p>Select Zip Codes in which you would like offers</p>
-    <br>
-    <label for="stateSelect">States:</label>
-    <select id="stateSelect" onchange="populateCities();"></select>   
-    <label for="citySelect">Cities:</label>
-    <select id="citySelect" onchange="populateZipCodes();"></select>
-    <div class="grid-container">
-        <div class="grid-available">
-            <p>Available Zip Codes</p>
-            <div class="container">
-                <div id="availabeZipCodesContainer" class="box1">
-                    <!-- JavaScript will populate this container -->
-                </div>
-            </div>
-        </div>
-        <div class="grid-action">
-            <button type="button" class="button" onclick="addSelection()">Add --> </button>
-            <button type="button" class="button" onclick="removeSelection()"> <-- Remove</button>
-        </div>
-        <div class="grid-selected">
-            <p>Selected Zip Codes</p>
-            <div class="container">
-                <div id="selectedZipCodesContainer" class="box2">
-                    <!-- JavaScript will populate this container -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <button type="button" class="button" disabled id="saveChanges" onclick="saveChanges()">SAVE</button>`;
-    contain.innerHTML = htmlChange;
-    populateStates();
-    populateAgentZipCodes();
-
-    const overButton = document.getElementById('overviewButton');
-    const officeButton = document.getElementById('officeButton');
-    const licButton = document.getElementById('licenseButton');
-    const zipButton = document.getElementById('zipCodeButton');
-    const transButton = document.getElementById('transactionButton');
-    const bioButton = document.getElementById('bioButton');
-
-    overButton.classList.remove('selectedStyle');
-    overButton.classList.add('hoverStyle');
-    officeButton.classList.remove('selectedStyle');
-    officeButton.classList.add('hoverStyle');
-    licButton.classList.remove('selectedStyle');
-    licButton.classList.add('hoverStyle');
-    zipButton.classList.add('selectedStyle');
-    zipButton.classList.remove('hoverStyle');
-    transButton.classList.remove('selectedStyle');
-    transButton.classList.add('hoverStyle');
-    bioButton.classList.remove('selectedStyle');
-    bioButton.classList.add('hoverStyle');*/
 }
 
 function showOverview() {
     location.reload();
 }
 
+var transToggle = 1;
 function showTransactions() {
-    const contain = document.getElementById('profileContainer');
+    const form = document.getElementById("transactionForm");
+    const table = document.getElementById('transactionTable');
+    const transactionButton = document.getElementById('transactionButton');
+    var transIDs = []
+
+    if(licToggle == 0){
+        form.style.display = "none";
+        const headerRow = table.querySelector('thead tr');
+        const rows = table.querySelectorAll('tbody tr');
+
+        // Check if there's more than one column to delete
+        if (headerRow.children.length > 0) {
+            // Remove the last header cell
+            headerRow.removeChild(headerRow.lastElementChild);
+
+            // Remove the last cell in each row
+            rows.forEach((row) => {
+                row.removeChild(row.lastElementChild);
+            });
+        }
+        transactionButton.innerHTML = "Edit";
+        transToggle = 1;
+    }
+    else {
+        form.style.display = "grid";
+        transactionButton.innerHTML = "Done";
+        fetch('/api/profile_a')
+            .then(response => response.json())
+            .then(data => {
+                if (data.hasTransactions) {
+                    data.transactions.forEach(function (transaction) {
+                        transIDs.push(transaction.agenttransactionid);
+                    });
+
+                    const headerRow = table.querySelector('thead tr');
+                    const newHeader = document.createElement('th');
+                    newHeader.textContent = ``;
+                    headerRow.appendChild(newHeader);
+                
+                    // Add cells to each row in the tbody
+                    const rows = table.querySelectorAll('tbody tr');
+                    rows.forEach((row, index) => {
+                        const newCell = document.createElement('td');
+                        newCell.innerHTML = `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
+                        row.appendChild(newCell);
+                    });
+                    transToggle = 0;
+            }
+        });
+    }
+    /*const contain = document.getElementById('profileContainer');
     let htmlChange = `<p><h1>Current Transaction(s)</h1></p>
     <table id="transactionTable">
         <thead>
@@ -696,7 +692,7 @@ function showTransactions() {
     transButton.classList.add('selectedStyle');
     transButton.classList.remove('hoverStyle');
     bioButton.classList.remove('selectedStyle');
-    bioButton.classList.add('hoverStyle');
+    bioButton.classList.add('hoverStyle');*/
 }
 
 

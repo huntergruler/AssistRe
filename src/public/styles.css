@@ -318,6 +318,10 @@ form button:hover {
     display: none;
 }
 
+#transactionForm {
+    display: none;
+}
+
 #officeForm button {
     grid-column: 1 / span 2;
 }
