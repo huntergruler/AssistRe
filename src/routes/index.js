@@ -606,7 +606,8 @@ router.post('/api/offices', (req, res) => {
   const insertQuery = 'INSERT INTO AgentOffices (officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
   db.query(insertQuery, [officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState, userid], (err, result) => {
     if (err) throw err;
-    res.json({ officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState, userid });
+    agentofficeid = result.insertId;
+    res.json({ agentofficeid, officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState, userid });
   });
 });
 
