@@ -426,13 +426,12 @@ function showOffice() {
     var htmlChange = '';
 
     addOfficeButton.onclick = function () {
-        const rows = table.querySelectorAll('tbody tr');
-        const body = table.querySelector('tbody');
-        console.log("HERE");
-        if(rows && rows[0].innerHTML.includes("No offices found.")){
-            body.innerHTML = "";
+        const noOffices = document.getElementById('noOfficesRow');
+        console.log(noOffices);
+        if(noOffices){
+            noOffices.remove();
         }
-        console.log(rows[0].innerHTML);
+        
         addOffice();
     }
 
