@@ -32,7 +32,7 @@
     <div id="profileNav">
         <button type="button" class="selectedStyle" id="overviewButton" onclick="showOverview()">Overview</button>
         <!--<button type="button" class="hoverStyle" id="officeButton" onclick="showOffice()">Office</button>-->
-        <button type="button" class="hoverStyle" id="licenseButton" onclick="showLicense()">License</button>
+        <!-- <button type="button" class="hoverStyle" id="licenseButton" onclick="showLicense()">License</button> -->
         <button type="button" class="hoverStyle" id="zipCodeButton" onclick="showZipCodes()">Zip Codes</button>
         <button type="button" class="hoverStyle" id="transactionButton"
             onclick="showTransactions()">Transactions</button>
@@ -118,7 +118,7 @@
         </div>
         <div id="licenseContainer">
             <p>
-            <h1>Current Licenses</h1>
+            <h1>Current Licenses <button type="button" id="licenseButton" onclick="showLicense()">Edit</button></h1>
             </p>
             <table id="licensesTable">
                 <thead>
