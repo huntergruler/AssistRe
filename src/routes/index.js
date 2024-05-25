@@ -137,7 +137,7 @@ db.query(query, [userid], (error, results) => {
     if (results.length === 0) {
       return res.status(404).send('User not found');
     }
-    res.render('profile_b', { firstName, lastName, address, city, state, zip, email, phoneNumber, bathrooms, bedrooms, buyerType, preferredLanguages, prequalified, priceRange, propertyType, squareFootage, timeFrame, userPhoto, prequalifiedPath });
+    res.render('profile_b', { firstName, lastName, address, city, state, zip, phoneNumber, bathrooms, bedrooms, buyerType, preferredLanguages, prequalified, priceRange, propertyType, squareFootage, timeFrame, userPhoto, prequalifiedPath });
   });
   }
 });
