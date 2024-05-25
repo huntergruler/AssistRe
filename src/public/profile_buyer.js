@@ -45,18 +45,18 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    $('#editButton').click(function() {
+    $('#editButton2').click(function() {
         $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
-        $('#editButton').hide();
-        $('#saveButton').show();
-        $('#cancelButton').show();
+        $('#editButton2').hide();
+        $('#saveButton2').show();
+        $('#cancelButton2').show();
     });
 
-    $('#cancelButton').click(function() {
+    $('#cancelButton2').click(function() {
         location.reload();
     });
 
-    $('#saveButton').click(function() {
+    $('#saveButton2').click(function() {
         const formData = {
             propertyType: $('#propertyType').val(),
             bedrooms: $('#bedrooms').val(),
