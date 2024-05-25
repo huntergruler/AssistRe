@@ -355,17 +355,15 @@ router.post('/login', [
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
       if (error) {
-        return res.render('login', { message: 'Error during database query' });
+        return res.render('login_b', { message: 'Error during database query' });
       }
-      else {
-        if (results.length === 0 || error) {
+      else if (results.length === 0) {
           // Send response when email is not found
           res.json({
             success: false,
             message: "Invalid credentials."
-          });
-        } else {
-          if (results[0].emailverified === 0) {
+          });        
+        } else if (results[0].emailverified === 0) {
             // Send response when email is not verified
             res.json({
               success: false,
@@ -373,17 +371,14 @@ router.post('/login', [
             });
           } else {
             const { userid, firstname, lastname } = results[0];
-            console.log('Userid:', userid, 'Firstname:', firstname, 'Lastname:', lastname);
-
             bcrypt.compare(password, results[0].password, (err, isMatch) => {
-              if (!isMatch) {
+              if (!isMatch || err) {
                 res.json({
                   success: false,
                   message: "Invalid credentials."
                 });
               }
-               else {
-                  if (isMatch) {
+               else if (isMatch) {
                     req.session.user = email;
                     req.session.userid = userid;
                     req.session.firstname = firstname;
@@ -395,14 +390,10 @@ router.post('/login', [
                       message: "Successful Login"
                     });
                   }
-                }
-               });
+                });
             }
-          };
-        }
-
+          });
     });
-  });
 
 // Route to get city and state by zip code
 router.get('/get-city-state', (req, res) => {
