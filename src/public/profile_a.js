@@ -426,7 +426,7 @@ function showOffice() {
     var htmlChange = '';
 
     addOfficeButton.onclick = function () {
-        const noOffices = document.getElementById('noOfficesRow');
+        const noOffices = document.getElementById('noOfficeRow');
         console.log(noOffices);
         if(noOffices){
             noOffices.remove();
