@@ -347,7 +347,6 @@ router.post('/login', [
       return res.status(400).json({ errors: errors.array() });
     }
     const { email, password, userType } = req.body;
-    console.log('Email:', email, 'Password:', password, 'User Type:', userType);
     if (userType === 'Agent') {
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
     } else if (userType === 'Buyer') {
@@ -355,7 +354,6 @@ router.post('/login', [
     }
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
-      console.log('Results:', results);
       if (error) {
         return res.render('login', { message: 'Error during database query' });
       }
@@ -380,29 +378,26 @@ router.post('/login', [
             bcrypt.compare(password, results[0].password, (err, isMatch) => {
               console.log('isMatch:', isMatch, 'Error:', err);
               if (!isMatch) {
-                if (userType === 'Agent') {
-                  return res.render('login_a', { message: 'Error comparing passwords' });
-                } else if (userType === 'Buyer') {
-                  return res.render('login_b', { message: 'Error comparing passwords' });
-                }
-              } else {
-                if (isMatch) {
-                  req.session.user = email;
-                  req.session.userid = userid;
-                  req.session.firstname = firstname;
-                  req.session.lastname = lastname;
-                  req.session.userType = userType;
-                  console.log('User logged in:', email, userType);
-                  res.json({
-                    success: true,
-                    message: "Successful Login"
-                  });
-                }
+                return res.render('login_b', { message: 'Error comparing passwords' });
               }
-            });
+               else {
+                  if (isMatch) {
+                    req.session.user = email;
+                    req.session.userid = userid;
+                    req.session.firstname = firstname;
+                    req.session.lastname = lastname;
+                    req.session.userType = userType;
+                    console.log('User logged in:', email, userType);
+                    res.json({
+                      success: true,
+                      message: "Successful Login"
+                    });
+                  }
+                }
+               });
+            }
           };
         }
-      }
 
     });
   });
