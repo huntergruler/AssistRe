@@ -349,13 +349,15 @@ router.post('/login', [
     const { email, password, userType } = req.body;
     if (userType === 'Agent') {
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Agents WHERE email = ?';
+      var htmlpage = 'login_a';
     } else if (userType === 'Buyer') {
       var userQuery = 'SELECT password, userid, firstname, lastname, emailverified FROM Buyers WHERE email = ?';
+      var htmlpage = 'login_b';
     }
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
       if (error) {
-        return res.render('login_b', { message: 'Error during database query' });
+        return res.render(htmlpage, { message: 'Error during database query' });
       }
       else if (results.length === 0) {
           // Send response when email is not found
@@ -385,6 +387,16 @@ router.post('/login', [
                     req.session.lastname = lastname;
                     req.session.userType = userType;
                     console.log('User logged in:', email, userType);
+                    if (userType === 'Agent') {
+                      var updateQuery = 'update Agents set lastlogin = now() WHERE email = ?';
+                    } else if (userType === 'Buyer') {
+                      var updateQuery = 'update Buyers set lastlogin = now() WHERE email = ?';
+                    }
+                    db.query(userQuery, [email], (error, results) => {
+                      if (error) {
+                        return res.render(htmlpage, { message: 'Error during database update' });
+                      }
+                    });
                     res.json({
                       success: true,
                       message: "Successful Login"
