@@ -276,6 +276,7 @@ form button:hover {
 
 #profileZip {
     max-height: 300px;
+    margin-bottom: 20px;
 }
 
 #ownedZipCodes {
