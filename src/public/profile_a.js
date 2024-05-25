@@ -82,9 +82,11 @@ function deleteOffice(id) {
 function addLicense() {
     const licenseNumber = document.getElementById('licenseNumber').value;
     const licenseState = document.getElementById('licenseState').value;
+    const licenseExpirationDate1 = document.getElementById('licenseExpirationDate').value;
     const monthSelect = document.getElementById('monthSelect');
     const daySelect = document.getElementById('daySelect');
     const yearSelect = document.getElementById('yearSelect');
+    console.log(licenseExpirationDate1);
 
     // JavaScript Date months are 0-indexed, so subtract 1. 
     // HTML values are 1-indexed if filled as shown in previous messages.
