@@ -42,8 +42,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (event.target.id === 'loginForm') {
                 const email = document.getElementById('email').value.trim();
                 const password = document.getElementById('password').value.trim();
-                const userType = document.querySelector('input[name="userType"]:checked').value;
-
+                const userType = document.getElementById('userType').value.trim();
+                if (!email || !password) {
+                    document.getElementById('message').innerText = 'Email and password are required.';
+                    document.getElementById('message').style.color = 'red';
+                    return;
+                }
                 fetch('/login', {
                     method: 'POST',
                     headers: {
