@@ -116,24 +116,24 @@ db.query(query, [userid], (error, results) => {
       console.error('Error fetching buyer profile:', error);
       return res.status(500).send('Server error');
     }
-    let firstName = results[0].firstName;
-    let lastName = results[0].lastName;
-    let address = results[0].address;
-    let city = results[0].city;
-    let state = results[0].state;
-    let zip = results[0].zip;
-    let phoneNumber = results[0].phoneNumber;
-    let bathrooms = results[0].bathrooms;
-    let bedrooms = results[0].bedrooms;
-    let buyerType = results[0].buyerType;
-    let preferredLanguages = results[0].preferredLanguages;
-    let prequalified = results[0].prequalified;
-    let priceRange = results[0].priceRange;
-    let propertyType = results[0].propertyType;
-    let squareFootage = results[0].squareFootage;
-    let timeFrame = results[0].timeFrame;
-    let userPhoto = results[0].userPhoto;
-    let prequalifiedPath = results[0].prequalifiedPath;
+    // let firstName = results[0].firstName;
+    // let lastName = results[0].lastName;
+    // let address = results[0].address;
+    // let city = results[0].city;
+    // let state = results[0].state;
+    // let zip = results[0].zip;
+    // let phoneNumber = results[0].phoneNumber;
+    // let bathrooms = results[0].bathrooms;
+    // let bedrooms = results[0].bedrooms;
+    // let buyerType = results[0].buyerType;
+    // let preferredLanguages = results[0].preferredLanguages;
+    // let prequalified = results[0].prequalified;
+    // let priceRange = results[0].priceRange;
+    // let propertyType = results[0].propertyType;
+    // let squareFootage = results[0].squareFootage;
+    // let timeFrame = results[0].timeFrame;
+    // let userPhoto = results[0].userPhoto;
+    // let prequalifiedPath = results[0].prequalifiedPath;
     if (results.length === 0) {
       return res.status(404).send('User not found');
     }
@@ -156,6 +156,40 @@ router.post('/profile_b', (req, res) => {
 console.log('Query:', query);
 console.log('Params:', [firstName, lastName, address, city, state, zip, phoneNumber, userid]);
   db.query(query, [firstName, lastName, address, city, state, zip, phoneNumber, userid], (error, results) => {
+    if (error) {
+      console.error('Error updating buyer profile:', error);
+      return res.status(500).send('Server error');
+    }
+
+    res.send({ success: true });
+  });
+  }
+});
+
+// Route to update the buyer's profile
+router.post('/profile_b_property', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/');
+  }
+  else {
+    // let bathrooms = results[0].bathrooms;
+    // let bedrooms = results[0].bedrooms;
+    // let buyerType = results[0].buyerType;
+    // let preferredLanguages = results[0].preferredLanguages;
+    // let prequalified = results[0].prequalified;
+    // let priceRange = results[0].priceRange;
+    // let propertyType = results[0].propertyType;
+    // let squareFootage = results[0].squareFootage;
+    // let timeFrame = results[0].timeFrame;
+    // let userPhoto = results[0].userPhoto;
+    // let prequalifiedPath = results[0].prequalifiedPath;
+
+  const { bathrooms, bedrooms, buyerType, preferredLanguages, prequalified, priceRange, propertyType, squareFootage, timeFrame, userPhoto, userid } = req.body;
+
+  const query = 'UPDATE Buyers SET bathrooms = ?, bedrooms = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, priceRange = ?, propertyType = ?, squareFootage = ?, timeFrame = ?, userPhoto = ? WHERE userid = ?';
+  db.query(query, [bathrooms, bedrooms, buyerType, preferredLanguages, prequalified, priceRange, propertyType, squareFootage, timeFrame, userPhoto, userid], (error, results) => {
+  db.query(query, , (error, results) => {
     if (error) {
       console.error('Error updating buyer profile:', error);
       return res.status(500).send('Server error');

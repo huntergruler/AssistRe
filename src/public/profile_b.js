@@ -70,7 +70,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '/profile_b',
+            url: '/profile_b_property',
             data: formData,
             success: function(response) {
                 if (response.success) {
