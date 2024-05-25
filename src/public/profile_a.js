@@ -422,6 +422,7 @@ function showOffice() {
     const table = document.getElementById('officeTable');
     const officeButton = document.getElementById('officeButton');
     var officeIDs = []
+    var htmlChange = '';
 
     if (officeToggle == 0) {
         form.style.display = "none";
@@ -452,9 +453,8 @@ function showOffice() {
                     data.offices.forEach(function (office) {
                         officeIDs.push(office.agentofficeid);
                     });
-
-
-                    const headerRow = table.querySelector('thead tr');
+                }
+                const headerRow = table.querySelector('thead tr');
                     const newHeader = document.createElement('th');
                     newHeader.textContent = ``;
                     headerRow.appendChild(newHeader);
@@ -463,32 +463,15 @@ function showOffice() {
                     const rows = table.querySelectorAll('tbody tr');
                     rows.forEach((row, index) => {
                         const newCell = document.createElement('td');
-                        newCell.innerHTML = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
+                        if (data.hasOffices) {
+                            htmlChange += `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
+                        }
+                        newCell.innerHTML = htmlChange;
                         row.appendChild(newCell);
                     });
-                }
                 officeToggle = 0;
             });
     }
-    const overButton = document.getElementById('overviewButton');
-
-    const licButton = document.getElementById('licenseButton');
-    const zipButton = document.getElementById('zipCodeButton');
-    const transButton = document.getElementById('transactionButton');
-    const bioButton = document.getElementById('bioButton');
-
-    overButton.classList.remove('selectedStyle');
-    overButton.classList.add('hoverStyle');
-    officeButton.classList.add('selectedStyle');
-    officeButton.classList.remove('hoverStyle');
-    licButton.classList.remove('selectedStyle');
-    licButton.classList.add('hoverStyle');
-    zipButton.classList.remove('selectedStyle');
-    zipButton.classList.add('hoverStyle');
-    transButton.classList.remove('selectedStyle');
-    transButton.classList.add('hoverStyle');
-    bioButton.classList.remove('selectedStyle');
-    bioButton.classList.add('hoverStyle');
 }
 
 var licToggle = 1;
@@ -497,6 +480,7 @@ function showLicense() {
     const table = document.getElementById('licensesTable');
     const licenseButton = document.getElementById('licenseButton');
     var licenseIDs = []
+    var htmlChange = '';
     //console.log("licToggle is " + licToggle);
 
     if (licToggle == 0) {
@@ -527,20 +511,22 @@ function showLicense() {
                     data.licenses.forEach(function (license) {
                         licenseIDs.push(license.agentlicenseid);
                     });
-
-                    const headerRow = table.querySelector('thead tr');
-                    const newHeader = document.createElement('th');
-                    newHeader.textContent = ``;
-                    headerRow.appendChild(newHeader);
-
-                    // Add cells to each row in the tbody
-                    const rows = table.querySelectorAll('tbody tr');
-                    rows.forEach((row, index) => {
-                        const newCell = document.createElement('td');
-                        newCell.innerHTML = `<button type="button" onclick="deleteLicense(${licenseIDs[index]})">Delete</button>`;
-                        row.appendChild(newCell);
-                    });
                 }
+                const headerRow = table.querySelector('thead tr');
+                const newHeader = document.createElement('th');
+                newHeader.textContent = ``;
+                headerRow.appendChild(newHeader);
+
+                // Add cells to each row in the tbody
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach((row, index) => {
+                    const newCell = document.createElement('td');
+                    if (data.hasLicenses) {
+                        htmlChange += `<button type="button" onclick="deleteLicense(${licenseIDs[index]})">Delete</button>`;
+                    }
+                    newCell.innerHTML = htmlChange;
+                    row.appendChild(newCell);
+                });
                 licToggle = 0;
             });
     }
@@ -619,7 +605,7 @@ function showTransactions() {
                 const rows = table.querySelectorAll('tbody tr');
                 rows.forEach((row, index) => {
                     const newCell = document.createElement('td');
-                    if(data.hasTransactions){
+                    if (data.hasTransactions) {
                         htmlChange += `<button type="button" onclick="deleteTransaction(${transIDs[index]})">Delete</button>`;
                     }
                     newCell.innerHTML = htmlChange;
