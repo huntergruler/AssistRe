@@ -60,8 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     body: JSON.stringify({ email: email, password: password, userType: userType })
                 })
                     .then(response => response.json())
+                    console.log('Success:', response);
                     .then(data => {
-                        console.log('Success:', data);
+                        console.log('Success:', data, response);
                         if (data.success === false) {
                             // Display message if login failed
                             document.getElementById('message').style.display = 'block';
