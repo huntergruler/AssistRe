@@ -133,7 +133,7 @@ router.post('/profile_buyer', (req, res) => {
   const { firstName, lastName, address, city, state, zip, email, phoneNumber, userid } = req.body;
 
   const query = 'UPDATE Buyers SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, email = ?, phoneNumber = ? WHERE userid = ?';
-
+console.log('Query:', query);
   db.query(query, [firstName, lastName, address, city, state, zip, email, phoneNumber, userid], (error, results) => {
     if (error) {
       console.error('Error updating buyer profile:', error);

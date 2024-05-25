@@ -54,11 +54,11 @@ function lookupCityState() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
                 if (response.city && response.state) {
-//                    document.getElementById('cityState').textContent = response.city + ', ' + response.state;
+                    document.getElementById('cityState').textContent = '';
                     document.getElementById('city').value = response.city;
                     document.getElementById('state').value = response.state;
                 } else {
-                    document.getElementById('cityState').textContent = 'City and state not found';
+                    document.getElementById('cityState').textContent = 'Zip Code not found';
                 }
             }
         };
