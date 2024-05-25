@@ -252,6 +252,15 @@ form button:hover {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    max-height: 225px;
+}
+
+.grid-available {
+    max-height: 225px;
+}
+
+.grid-selected {
+    max-height: 225px;
 }
 
 .button {
