@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('message').style.color = 'red';
                     return;
                 }
+                console.log(email, password, userType);
                 fetch('/login', {
                     method: 'POST',
                     headers: {
