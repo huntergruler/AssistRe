@@ -428,7 +428,6 @@ function showOffice() {
     addOfficeButton.onclick = function () {
         const rows = table.querySelectorAll('tbody tr');
         console.log("HERE");
-        console.log(rows[0].innerHTML);
         if(rows[0].innerHTML.includes("No offices found.")){
             rows[0].innerHTML = "";
         }
