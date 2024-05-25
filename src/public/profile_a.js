@@ -556,12 +556,14 @@ function showZipCodes() {
     if(zipToggle == 0){
         form.style.display = "none";
         disp.style.display = "block";
+        zipButton.innerHTML = "Edit";
         zipToggle = 1;
         populateAgentZipCodes();
     }
     else {
         form.style.display = "block";
         disp.style.display = "none";
+        zipButton.innerHTML = "Done";
         populateStates();
         populateAgentZipCodes();
         zipToggle = 0;
