@@ -496,7 +496,60 @@ function showOffice() {
     bioButton.classList.add('hoverStyle');
 }
 
+var licToggle = 1;
 function showLicense() {
+    const form = document.getElementById("licenseForm");
+    const table = document.getElementById('licenseTable');
+    const licenseButton = document.getElementById('licenseButton');
+    var licenseIDs = []
+    console.log("licToggle is " + licToggle);
+    if(licToggle == 0){
+        form.style.display = "none";
+        const headerRow = table.querySelector('thead tr');
+        const rows = table.querySelectorAll('tbody tr');
+
+        // Check if there's more than one column to delete
+        if (headerRow.children.length > 0) {
+            // Remove the last header cell
+            headerRow.removeChild(headerRow.lastElementChild);
+
+            // Remove the last cell in each row
+            rows.forEach((row) => {
+                row.removeChild(row.lastElementChild);
+            });
+        }
+        licenseButton.innerHTML = "Edit";
+        licToggle = 1;
+    }
+    else {
+        form.style.display = "grid";
+        licenseButton.innerHTML = "Done";
+        fetch('/api/profile_a')
+            .then(response => response.json())
+            .then(data => {
+                if (data.hasLicenses) {
+                    data.licenses.forEach(function (license) {
+                        licenseIDs.push(license.agentlicenseid);
+                    });
+                    
+
+                    const headerRow = table.querySelector('thead tr');
+                    const newHeader = document.createElement('th');
+                    newHeader.textContent = ``;
+                    headerRow.appendChild(newHeader);
+                
+                    // Add cells to each row in the tbody
+                    const rows = table.querySelectorAll('tbody tr');
+                    rows.forEach((row, index) => {
+                        const newCell = document.createElement('td');
+                        newCell.innerHTML = `<button type="button" onclick="deleteLicense(${licenseIDs[index]})">Delete</button>`;
+                        row.appendChild(newCell);
+                    });
+                    licToggle = 0;
+            }
+        });
+    }
+    /*
     const contain = document.getElementById('profileContainer');
     let htmlChange = `<p><h1>Current Licenses</h1></p>
     <table id="licensesTable">
@@ -574,7 +627,7 @@ function showLicense() {
     transButton.classList.remove('selectedStyle');
     transButton.classList.add('hoverStyle');
     bioButton.classList.remove('selectedStyle');
-    bioButton.classList.add('hoverStyle');
+    bioButton.classList.add('hoverStyle');*/
 };
 
 function showZipCodes() {

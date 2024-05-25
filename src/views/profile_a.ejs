@@ -150,6 +150,25 @@
                                     <% } %>
                 </tbody>
             </table>
+            <form id="licenseForm">
+                <input type="text" id="licenseState" name="licenseState" placeholder="License State" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
+                <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
+                <input type="date" id="licenseExpirationDate" name="licenseExpirationDate" placeholder="License Expiration Date" required>
+                <!-- <label for="monthSelect">Month:</label>
+                <select id="monthSelect" onchange="updateDays();">
+                  
+                </select>
+                <label for="daySelect">Day:</label>
+                <select id="daySelect">
+                  
+                </select>
+                <label for="yearSelect">Year:</label>
+                <select id="yearSelect" onchange="updateDays();">
+                   
+                </select> -->
+                <button type="button" id="licenseAdd" disabled onclick="addLicense()">Add</button>
+                <span id="licStatus"></span>
+            </form>
         </div>
         <div class="zipCode-container" id="profileZips">
             <h1 id>Zip Codes</h1>
