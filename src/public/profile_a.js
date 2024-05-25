@@ -426,9 +426,11 @@ function showOffice() {
     var htmlChange = '';
 
     addOfficeButton.onclick = function () {
-        addOffice();
+        
         const rows = table.querySelectorAll('tbody tr');
-        console.log(rows[0].innerHTML);
+        console.log("HERE");
+        console.log();
+        addOffice();
         //if(rows[0])
     }
 
