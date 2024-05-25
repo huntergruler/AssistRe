@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         start: [500, 3000], // Initial values
         connect: true,
         step: 100,
+        margin: 30,
         range: {
             'min': 500,
             'max': 15000
