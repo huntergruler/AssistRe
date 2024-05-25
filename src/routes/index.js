@@ -392,7 +392,7 @@ router.post('/login', [
                     } else if (userType === 'Buyer') {
                       var updateQuery = 'update Buyers set lastlogin = now() WHERE email = ?';
                     }
-                    db.query(userQuery, [email], (error, results) => {
+                    db.query(updateQuery, [email], (error, results) => {
                       if (error) {
                         return res.render(htmlpage, { message: 'Error during database update' });
                       }
