@@ -377,8 +377,10 @@ router.post('/login', [
 
             bcrypt.compare(password, results[0].password, (err, isMatch) => {
               if (!isMatch) {
-                console.log('isMatch:', isMatch, 'Error:', err);
-                return res.render('login_b', { message: 'Error comparing passwords' });
+                res.json({
+                  success: false,
+                  message: "Invalid credentials."
+                });
               }
                else {
                   if (isMatch) {
