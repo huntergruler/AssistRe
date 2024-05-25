@@ -376,8 +376,8 @@ router.post('/login', [
             console.log('Userid:', userid, 'Firstname:', firstname, 'Lastname:', lastname);
 
             bcrypt.compare(password, results[0].password, (err, isMatch) => {
-              console.log('isMatch:', isMatch, 'Error:', err);
               if (!isMatch) {
+                console.log('isMatch:', isMatch, 'Error:', err);
                 return res.render('login_b', { message: 'Error comparing passwords' });
               }
                else {
