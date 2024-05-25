@@ -44,6 +44,50 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('#editButton').click(function() {
+        $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
+        $('#editButton').hide();
+        $('#saveButton').show();
+        $('#cancelButton').show();
+    });
+
+    $('#cancelButton').click(function() {
+        location.reload();
+    });
+
+    $('#saveButton').click(function() {
+        const formData = {
+            propertyType: $('#propertyType').val(),
+            bedrooms: $('#bedrooms').val(),
+            bathrooms: $('#bathrooms').val(),
+            squareFootage: $('#squareFootage').val(),
+            priceRange: $('#priceRange').val(),
+            timeFrame: $('#timeFrame').val(),
+            prequalified: $('#prequalified').val(),
+            preferredLanguages: $('#preferredLanguages').val(),
+            userid: $('#userid').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/profile_buyer',
+            data: formData,
+            success: function(response) {
+                if (response.success) {
+                    alert('Profile updated successfully!');
+                    location.reload();
+                } else {
+                    alert('Error updating profile.');
+                }
+            },
+            error: function() {
+                alert('Error updating profile.');
+            }
+        });
+    });
+});
+
 function lookupCityState() {
     let zipCode = document.getElementById('zip').value;
     if (zipCode) {
