@@ -74,18 +74,20 @@
                         </div>
                     </div>
                     <div class="form-group row justify-content-center">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control view-mode" id="email" name="email" required disabled>
-                    </div>
-                    <div class="form-group row justify-content-center">
                         <div class="col-sm-4">
-                            <button type="submit">Send Reset Email</button>
+                            <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                            <input type="email" class="form-control view-mode" id="email" name="email" required
+                                disabled>
                         </div>
+                        <div class="col-sm-4 row justify-content-center">
+                            <div class="col-sm-4">
+                                <button type="submit">Send Reset Email</button>
+                            </div>
 
+                        </div>
                     </div>
             </div>
-        </div>
-        </form>
+            </form>
         </div>
         <script>
             document.querySelectorAll('input[name="userType"]').forEach(radio => {
