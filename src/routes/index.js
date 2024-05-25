@@ -101,7 +101,7 @@ router.post('/register', (req, res) => {
 router.get('/profile_buyer', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
   const userid = req.session.userid;
@@ -126,7 +126,7 @@ router.get('/profile_buyer', (req, res) => {
 router.post('/profile_buyer', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
   const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
@@ -149,7 +149,7 @@ console.log('Params:', [firstName, lastName, address, city, state, zip, phoneNum
 router.get('/profile_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
     userid = req.session.userid;
@@ -212,7 +212,7 @@ router.post('/profile_b', (req, res) => {
 router.get('/profile_a', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
     userid = req.session.userid;
@@ -623,7 +623,7 @@ router.get('/dashboard_a', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Dashboard';
     //    console.log('Redirecting to:', redirectto);
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
     res.render('dashboard_a', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
@@ -635,7 +635,7 @@ router.get('/dashboard_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Dashboard';
     //    console.log('Redirecting to:', redirectto);
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
     res.render('dashboard_b', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
@@ -646,7 +646,7 @@ router.get('/settings', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access the Settings page';
     //    console.log('Redirecting to:', redirectto);
-    res.redirect('/login');
+    res.redirect('/');
   }
   else {
     res.render('settings');
