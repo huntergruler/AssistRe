@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         margin: 30,
         range: {
             'min': 500,
-            'max': 15000
+            'max': 10000
         },
         tooltips: [true, true],
         format: {
