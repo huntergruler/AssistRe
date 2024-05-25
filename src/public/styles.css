@@ -309,6 +309,10 @@ form button:hover {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
+#licenseForm {
+    display: none;
+}
+
 #officeForm button {
     grid-column: 1 / span 2;
 }
