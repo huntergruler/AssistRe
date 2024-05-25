@@ -429,7 +429,11 @@ function showOffice() {
         
         const rows = table.querySelectorAll('tbody tr');
         console.log("HERE");
-        console.log();
+        console.log(rows[0].innerHTML);
+        if(rows[0].innerHTML.includes("No offices found.")){
+            rows[0].removeChild(rows[0].lastElementChild);
+        }
+        console.log(rows[0].innerHTML);
         addOffice();
         //if(rows[0])
     }
