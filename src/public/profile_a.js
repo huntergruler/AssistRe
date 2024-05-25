@@ -475,6 +475,7 @@ function showOffice() {
                     const rows = table.querySelectorAll('tbody tr');
                     rows.forEach((row, index) => {
                         const newCell = document.createElement('td');
+                        console.log("Office Index: " + officeIDs[index]);
                         htmlChange = '';
                         if (data.hasOffices) {
                             htmlChange = `<button type="button" onclick="deleteOffice(${officeIDs[index]})">Delete</button>`;
