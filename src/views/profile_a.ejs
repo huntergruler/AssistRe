@@ -101,6 +101,21 @@
             </form>
 
         </div>
+        <div id="BioContainer">
+            <h1>Biography <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Edit</button></h1>
+            <div id="bioDiv">
+                <p id="bioText">No Biography</p><br>
+                <h3>Languages:</h3><br><p id="languagesText">No Languages</p>
+            </div>
+            <div id="bioForm">
+                <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
+                    required></textarea>
+                <br>
+                <textarea id="languages" name="languages" rows="4" cols="50"
+                    placeholder="Enter the languages you speak here" required></textarea>
+            </div>
+            <span id="bioStatus"></span>
+        </div>
         <div id="licenseContainer">
             <p>
             <h1>Current Licenses <button type="button" id="licenseButton" onclick="showLicense()">Edit</button></h1>
@@ -233,21 +248,6 @@
                 <input type="text" id="compensationType" name="CompensationType" placeholder="Transaction Compensation Type" required>
                 <button type="button" id="transactionAdd">Add</button>
             </form>
-        </div>
-        <div id="BioContainer">
-            <h1>Biography <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Edit</button></h1>
-            <div id="bioDiv">
-                <p id="bioText">No Biography</p><br>
-                <h3>Languages:</h3><br><p id="languagesText">No Languages</p>
-            </div>
-            <div id="bioForm">
-                <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
-                    required></textarea>
-                <br>
-                <textarea id="languages" name="languages" rows="4" cols="50"
-                    placeholder="Enter the languages you speak here" required></textarea>
-            </div>
-            <span id="bioStatus"></span>
         </div>
         <script src="/profile_a.js"></script>
 </body>
