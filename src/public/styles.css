@@ -110,6 +110,22 @@ body {
     gap: 20px;
 }
 
+#officeContainer{
+    grid-column: 1;
+}
+#licenseContainer{
+    grid-column: 1;
+}
+#transactionContainer{
+    grid-column: 1;
+}
+#bioContainer{
+    grid-column: 2;
+}
+#profileZips {
+    grid-column: 2;
+}
+
 #profileContainer h1,
 #dashboardContainer h1,
 #loginContainer h1,
