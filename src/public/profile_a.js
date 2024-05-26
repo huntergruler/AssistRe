@@ -70,10 +70,11 @@ function addOffice() {
 };
 
 function deleteOffice(id) {
+    console.log("deleteOffice :", id);
     const table = document.getElementById('officeTable');
     const headerRow = table.querySelector('thead tr');
     const rows = table.querySelectorAll('tbody tr');
-    console.log("deleteOffice :", id);
+    
     console.log(rows);
 
     fetch(`/api/offices/${id}`, {
@@ -82,6 +83,7 @@ function deleteOffice(id) {
         .then(() => {
             // Remove the row from the table
             document.getElementById(`office-${id}`).remove();
+            console.log("deleteOffice2 :", id);
         })
         .catch(error => console.error('Error:', error));
 
