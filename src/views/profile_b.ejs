@@ -130,47 +130,53 @@
                 <div class="container mt-4">
                     <div class="row justify-content-center">
                         <div class="col-sm-2">
-                            <label>Min/Max SQFT: </label>
+                            <label for="squareFootage" class="col-sm-2 col-form-label">SQFT Range</label>
+                            <div class="col-sm-4">
+                                <input class="form-control view-mode" id="squareFootage_min" name="squareFootage_min"
+                                    value="<%= buyer.squareFootage_min %>" required disabled>
+                            </div>
+                            <div class="col-sm-4">
+                                <input class="form-control view-mode" id="squareFootage_max" name="squareFootage_max"
+                                    value="<%= buyer.squareFootage_max %>" required disabled>
+                            </div>
+                            </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="priceRange" class="col-sm-2 col-form-label">Price Range</label>
+                        <div class="col-sm-4">
+                            <input class="form-control view-mode" id="priceRange" name="priceRange"
+                                value="<%= buyer.priceRange %>" required disabled>
                         </div>
-                        <div class="custom-range-slider">
-                            <input type="range" min="0" value="50" max="100" step="1" />
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="timeFrame" class="col-sm-2 col-form-label">Timeframe</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control view-mode" id="timeFrame" name="timeFrame"
+                                value="<%= buyer.timeFrame %>" required disabled>
                         </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="prequalified" class="col-sm-2 col-form-label">Prequalified</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control view-mode" id="prequalified" name="prequalified"
+                                value="<%= buyer.prequalified %>" required disabled>
                         </div>
-                <div class="form-group row justify-content-center">
-                    <label for="priceRange" class="col-sm-2 col-form-label">Price Range</label>
-                    <div class="col-sm-4">
-                        <input class="form-control view-mode" id="priceRange" name="priceRange"
-                            value="<%= buyer.priceRange %>" required disabled>
                     </div>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <label for="timeFrame" class="col-sm-2 col-form-label">Timeframe</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control view-mode" id="timeFrame" name="timeFrame"
-                            value="<%= buyer.timeFrame %>" required disabled>
+                    <div class="form-group row justify-content-center">
+                        <label for="preferredLanguages" class="col-sm-2 col-form-label">Preferred Languages</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control view-mode" id="preferredLanguages"
+                                name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required disabled>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <label for="prequalified" class="col-sm-2 col-form-label">Prequalified</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control view-mode" id="prequalified" name="prequalified"
-                            value="<%= buyer.prequalified %>" required disabled>
+                    <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
+                    <div class="text-center">
+                        <button type="button" id="editButton2" class="btn btn-primary">Edit</button>
+                        <button type="button" id="saveButton2" class="btn btn-success"
+                            style="display:none;">Save</button>
+                        <button type="button" id="cancelButton2" class="btn btn-secondary"
+                            style="display:none;">Cancel</button>
                     </div>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <label for="preferredLanguages" class="col-sm-2 col-form-label">Preferred Languages</label>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control view-mode" id="preferredLanguages"
-                            name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required disabled>
-                    </div>
-                </div>
-                <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
-                <div class="text-center">
-                    <button type="button" id="editButton2" class="btn btn-primary">Edit</button>
-                    <button type="button" id="saveButton2" class="btn btn-success" style="display:none;">Save</button>
-                    <button type="button" id="cancelButton2" class="btn btn-secondary"
-                        style="display:none;">Cancel</button>
-                </div>
             </form>
         </div>
     </div>
