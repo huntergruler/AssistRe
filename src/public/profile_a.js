@@ -608,11 +608,7 @@ function showZipCodes() {
         populateAgentZipCodes();
         zipToggle = 0;
     }
-}
-
-function showOverview() {
-    location.reload();
-}
+};
 
 var transToggle = 1;
 function showTransactions() {
@@ -679,75 +675,7 @@ function showTransactions() {
                 transToggle = 0;
             });
     }
-    /*const contain = document.getElementById('profileContainer');
-    let htmlChange = `<p><h1>Current Transaction(s)</h1></p>
-    <table id="transactionTable">
-        <thead>
-            <tr>
-                <th>Transaction Date</th>
-                <th>Transaction Amount</th>
-                <th>Transaction Property Type</th>
-                <th>Transaction Level Of Service</th>
-                <th>Transaction Compensation Type</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>`;
-
-    fetch('/api/profile_a')
-        .then(response => response.json())
-        .then(data => {
-            if (data.hasTransactions) {
-                data.transactions.forEach(function (transaction) {
-                    htmlChange += `<tr id="transaction-${transaction.agenttransactionid}">
-                    <td>${transaction.transactionDate}</td>
-                    <td>${transaction.transactionAmount}</td>
-                    <td>${transaction.PropertyType}</td>
-                    <td>${transaction.LevelOfService}</td>
-                    <td>${transaction.CompensationType}</td>
-                    <td>
-                        <button type="button" onclick="deleteTransaction(${transaction.agenttransactionid})">Delete</button>
-                    </td>
-                    </tr>`;
-                });
-            } else {
-                htmlChange += `<tr>
-                <td colspan="4">No transactions found.</td>
-                </tr>`;
-            }
-            htmlChange += `</tbody>
-    </table>
-    <form id="transactionForm">
-        <input type="date" id="transactionDate" name="transactionDate" placeholder="Transaction Date" required>
-        <input type="number" id="transactionAmount" name="transactionAmount" placeholder="Transaction Amount" required>
-        <input type="text" id="propertyType" name="PropertyType" placeholder="Transaction Property Type" required>
-        <input type="text" id="levelOfService" name="LevelOfService" placeholder="Transaction Level Of Service" required>
-        <input type="text" id="compensationType" name="CompensationType" placeholder="Transaction Compensation Type" required>
-        <button type="button" id="transactionAdd" onclick="addTransaction()">Add</button>
-    </form>`;
-            contain.innerHTML = htmlChange;
-        });
-
-    const overButton = document.getElementById('overviewButton');
-    const officeButton = document.getElementById('officeButton');
-    const licButton = document.getElementById('licenseButton');
-    const zipButton = document.getElementById('zipCodeButton');
-    const transButton = document.getElementById('transactionButton');
-    const bioButton = document.getElementById('bioButton');
-
-    overButton.classList.remove('selectedStyle');
-    overButton.classList.add('hoverStyle');
-    officeButton.classList.remove('selectedStyle');
-    officeButton.classList.add('hoverStyle');
-    licButton.classList.remove('selectedStyle');
-    licButton.classList.add('hoverStyle');
-    zipButton.classList.remove('selectedStyle');
-    zipButton.classList.add('hoverStyle');
-    transButton.classList.add('selectedStyle');
-    transButton.classList.remove('hoverStyle');
-    bioButton.classList.remove('selectedStyle');
-    bioButton.classList.add('hoverStyle');*/
-}
+};
 
 
 function showBio() {
@@ -760,23 +688,4 @@ function showBio() {
     <span id="bioStatus"></span>`;
     contain.innerHTML = htmlChange;
 
-    const overButton = document.getElementById('overviewButton');
-    const officeButton = document.getElementById('officeButton');
-    const licButton = document.getElementById('licenseButton');
-    const zipButton = document.getElementById('zipCodeButton');
-    const transButton = document.getElementById('transactionButton');
-    const bioButton = document.getElementById('bioButton');
-
-    overButton.classList.remove('selectedStyle');
-    overButton.classList.add('hoverStyle');
-    officeButton.classList.remove('selectedStyle');
-    officeButton.classList.add('hoverStyle');
-    licButton.classList.remove('selectedStyle');
-    licButton.classList.add('hoverStyle');
-    zipButton.classList.remove('selectedStyle');
-    zipButton.classList.add('hoverStyle');
-    transButton.classList.remove('selectedStyle');
-    transButton.classList.add('hoverStyle');
-    bioButton.classList.add('selectedStyle');
-    bioButton.classList.remove('hoverStyle');
 }

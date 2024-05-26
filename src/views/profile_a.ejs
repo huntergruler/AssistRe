@@ -30,13 +30,13 @@
             <%= lastname %>
     </h1>
     <div id="profileNav">
-        <button type="button" class="selectedStyle" id="overviewButton" onclick="showOverview()">Overview</button>
+        <!-- <button type="button" class="selectedStyle" id="overviewButton" onclick="showOverview()">Overview</button> -->
         <!--<button type="button" class="hoverStyle" id="officeButton" onclick="showOffice()">Office</button>-->
         <!-- <button type="button" class="hoverStyle" id="licenseButton" onclick="showLicense()">License</button> -->
         <!-- <button type="button" class="hoverStyle" id="zipCodeButton" onclick="showZipCodes()">Zip Codes</button> -->
         <!-- <button type="button" class="hoverStyle" id="transactionButton"
             onclick="showTransactions()">Transactions</button> -->
-        <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Bio</button>
+        <!-- <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Bio</button> -->
     </div>
     <div id="profileContainer">
         <div id="officeContainer">
@@ -245,7 +245,15 @@
             </form>
         </div>
         <div id="BioContainer">
-            <h1>Biography</h1>
+            <h1>Biography <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Bio</button></h1>
+            <div id="bioDiv">
+                <p id="bioText">
+                    This is who I am
+                </p>
+                <p id="languages">
+                    English, Spanish
+                </p>
+            </div>
             <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
                 required></textarea>
             <br>
