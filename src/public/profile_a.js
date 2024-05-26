@@ -138,8 +138,11 @@ function deleteOffice(id) {
     const table = document.getElementById('officeTable');
     const headerRow = table.querySelector('thead tr');
     const rows = table.querySelectorAll('tbody tr');
+
+    rows.forEach((row) => {
+        console.log(row);
+    });
     
-    console.log(rows);
     fetch(`/api/offices/${id}`, {
         method: 'DELETE'
     })
