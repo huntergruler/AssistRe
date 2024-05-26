@@ -677,7 +677,7 @@ function showTransactions() {
     }
 };
 
-
+var bioToggle = 1;
 function showBio() {
     // const contain = document.getElementById('profileContainer');
     // let htmlChange = `<h1>Biography</h1>
@@ -693,7 +693,21 @@ function showBio() {
 
     console.log(bio.innerHTML, lang.textContent);
 
-    bio.innerHTML = `<textarea id="bio" name="bio" rows="4" cols="50" required>${bio.textContent}</textarea> <br>`
+    if (bioToggle == 0) {
+        const bioUpdate = document.getElementById('bioUpdate').value;
+        const languagesUpdate = document.getElementById('languagesUpdate').value;
+        console.log(bioUpdate, languagesUpdate);
+        bio.innerHTML = bio.textContent;
+        lang.innerHTML = lang.textContent;
+        bioToggle = 1;
+    }
+    else {
+        bio.innerHTML = `<textarea id="bioUpdate" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required>${bio.textContent}</textarea> <br>`
+        lang.innerHTML = `<textarea id="languagesUpdate" name="languages" rows="4" cols="50" placeholder="${lang.textContent}" required></textarea>`
+        bioToggle = 0;
+    }
+
+    bio.innerHTML = `<textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required>${bio.textContent}</textarea> <br>`
     lang.innerHTML = `<textarea id="languages" name="languages" rows="4" cols="50" placeholder="${lang.textContent}" required></textarea>`
 
 }
