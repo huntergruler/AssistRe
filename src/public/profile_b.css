@@ -47,28 +47,9 @@ body {
     /* Less space between buttons */
 }
 
-.custom-range-slider {
-    width: 100%;
-    height: 10px;
-    background-color: #e0e0e0;
-    position: relative;
-  }
-  .slider-track {
-    width: 50%;
-    height: 100%;
-    background-color: #4caf50;
-  }
-  .slider-thumb {
-    width: 20px;
-    height: 20px;
-    background-color: #2196f3;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-  }
-
-  /* Example CSS for thumb animation */
-.slider-thumb {
-    transition: left 0.2s ease-in-out, background-color 0.2s ease-in-out;
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance : none;
+    background : red;
+    height : 20px;
+    width : 20px;
   }
