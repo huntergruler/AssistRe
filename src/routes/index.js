@@ -107,8 +107,8 @@ router.get('/profile_b', (req, res) => {
   const userid = req.session.userid;
 
     const query = `select b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
-                          b.bathrooms, b.bedrooms, b.buyerType, b.preferredLanguages, b.prequalified, b.priceRange, 
-                          b.propertyType, b.squareFootage, b.state, b.timeFrame, b.userPhoto, b.prequalifiedPath
+                          b.bathrooms_min, b.bathrooms_max, b.bedrooms_min, b.bedrooms_max, b.buyerType, b.preferredLanguages, b.prequalified, b.price_min, 
+                          b.price_max, b.propertyType, b.squareFootage_min, b.squareFootage_max, b.state, b.timeFrame, b.userPhoto, b.prequalifiedPath
                      from Buyers b
                     where b.userid = ?`;
 db.query(query, [userid], (error, results) => {
@@ -116,28 +116,9 @@ db.query(query, [userid], (error, results) => {
       console.error('Error fetching buyer profile:', error);
       return res.status(500).send('Server error');
     }
-    // let firstName = results[0].firstName;
-    // let lastName = results[0].lastName;
-    // let address = results[0].address;
-    // let city = results[0].city;
-    // let state = results[0].state;
-    // let zip = results[0].zip;
-    // let phoneNumber = results[0].phoneNumber;
-    // let bathrooms = results[0].bathrooms;
-    // let bedrooms = results[0].bedrooms;
-    // let buyerType = results[0].buyerType;
-    // let preferredLanguages = results[0].preferredLanguages;
-    // let prequalified = results[0].prequalified;
-    // let priceRange = results[0].priceRange;
-    // let propertyType = results[0].propertyType;
-    // let squareFootage = results[0].squareFootage;
-    // let timeFrame = results[0].timeFrame;
-    // let userPhoto = results[0].userPhoto;
-    // let prequalifiedPath = results[0].prequalifiedPath;
     if (results.length === 0) {
       return res.status(404).send('User not found');
     }
-  //  res.render('profile_b', { firstName, lastName, address, city, state, zip, phoneNumber, bathrooms, bedrooms, buyerType, preferredLanguages, prequalified, priceRange, propertyType, squareFootage, timeFrame, userPhoto, prequalifiedPath });
     res.render('profile_b', { buyer: results[0] });
     });
   }
