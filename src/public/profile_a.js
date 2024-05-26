@@ -256,7 +256,7 @@ function saveChanges() {
     // Prepare the array of selected zip codes
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
 
-    document.getElementById('saveChanges').disabled = true;
+    //document.getElementById('saveChanges').disabled = true;
     // Prepare the data to be sent
     const data = {
         zipCodes: selectedZipCodes
@@ -304,7 +304,7 @@ function addSelection() {
         };
         selectedZipCodesContainer.appendChild(div);
         node.remove();
-        document.getElementById('saveChanges').disabled = false;
+        //document.getElementById('saveChanges').disabled = false;
     });
 };
 
@@ -322,7 +322,7 @@ function removeSelection() {
         };
         availabeZipCodesContainer.appendChild(div);
         node.remove();
-        document.getElementById('saveChanges').disabled = false;
+        //document.getElementById('saveChanges').disabled = false;
     });
 };
 
