@@ -674,8 +674,18 @@ function showBio() {
     if (bioToggle == 0) {
         form.style.display = "none";
         text.style.display = "block";
-        bioText.innerHTML = bio.value;
-        langText.innerHTML = lang.value;
+        if(bio.value == "") {
+            bioText.innerHTML = "No Biography";
+        }
+        else {
+            bioText.innerHTML = bio.value;
+        }
+        if(lang.value == "") {
+            langText.innerHTML = "No Languages";
+        }
+        else {
+            langText.innerHTML = lang.value;
+        }
         console.log("BIO:", bio.value, "LANG:", lang.value);
         bioToggle = 1;
         //addBio()
