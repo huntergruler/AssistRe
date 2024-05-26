@@ -78,20 +78,24 @@ function addOffice() {
         })
 };
 
-// function deleteOffice(id) {
+function deleteOffice(id) {
+    fetch(`/api/offices/${id}`, {
+        method: 'DELETE'
+    })
+        .then(() => {
+            // Remove the row from the table
+            document.getElementById(`office-${id}`).remove();
+            const table = document.getElementById('officeTable');
+            const rows = table.querySelectorAll('tbody tr');
 
-//     fetch(`/api/offices/${id}`, {
-//         method: 'DELETE'
-//     })
-//         .then(() => {
-//             // Remove the row from the table
-//             console.log("deleteOffice2 :", id);
-//             document.getElementById(`office-${id}`).remove();
-//         })
-//         .catch(error => console.error('Error:', error));
-
-    
-// };
+            if(rows.length === 0){
+                const newRow = table.insertRow(table.rows.length);
+                newRow.id = `noOfficeRow`;
+                newRow.innerHTML = `<td colspan="9">No offices found.</td>`;
+            }
+        })
+        .catch(error => console.error('Error:', error));
+};
 
 function addLicense() {
     const licenseNumber = document.getElementById('licenseNumber').value;
@@ -151,27 +155,6 @@ function deleteLicense(id) {
         .catch(error => console.error('Error:', error));
 };
 
-function deleteOffice(id) {
-    
-    
-    fetch(`/api/offices/${id}`, {
-        method: 'DELETE'
-    })
-        .then(() => {
-            // Remove the row from the table
-            document.getElementById(`office-${id}`).remove();
-            const table = document.getElementById('officeTable');
-            const rows = table.querySelectorAll('tbody tr');
-
-            if(rows.length === 0){
-                const newRow = table.insertRow(table.rows.length);
-                newRow.id = `noOfficeRow`;
-                newRow.innerHTML = `<td colspan="9">No offices found.</td>`;
-            }
-        })
-        .catch(error => console.error('Error:', error));
-};
-
 document.addEventListener('blur', function (event) {
     if (event.target.id === 'licenseState') {
         const licenseState = document.getElementById('licenseState').value.trim();
@@ -218,9 +201,6 @@ function zipUpdate() {
 
 document.addEventListener('DOMContentLoaded', function () {
     populateAgentZipCodes();
-    //    populateMonths();
-    //    populateYears();
-    //    updateDays();
     //    populateStates();
 });
 
@@ -248,10 +228,6 @@ function populateStates() {
             });
         })
 };
-
-// stateSelect.addEventListener('change', function () {
-//     var selectedValue = this.value;
-// });
 
 function populateCities() {
     const stateSelect = document.getElementById('stateSelect').value;
@@ -411,43 +387,43 @@ function populateAgentZipCodes() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function populateMonths() {
-    const monthSelect = document.getElementById('monthSelect');
-    const months = [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-    months.forEach((month, index) => {
-        let option = new Option(month, index + 1);
-        monthSelect.appendChild(option);
-    });
-};
+// function populateMonths() {
+//     const monthSelect = document.getElementById('monthSelect');
+//     const months = [
+//         'January', 'February', 'March', 'April', 'May', 'June',
+//         'July', 'August', 'September', 'October', 'November', 'December'
+//     ];
+//     months.forEach((month, index) => {
+//         let option = new Option(month, index + 1);
+//         monthSelect.appendChild(option);
+//     });
+// };
 
-function populateYears() {
-    const yearSelect = document.getElementById('yearSelect');
-    const year = new Date().getFullYear();
-    for (let i = year; i <= year + 10; i++) {
-        let option = new Option(i, i);
-        yearSelect.appendChild(option);
-    }
-};
+// function populateYears() {
+//     const yearSelect = document.getElementById('yearSelect');
+//     const year = new Date().getFullYear();
+//     for (let i = year; i <= year + 10; i++) {
+//         let option = new Option(i, i);
+//         yearSelect.appendChild(option);
+//     }
+// };
 
-function updateDays() {
-    const monthSelect = document.getElementById('monthSelect');
-    const yearSelect = document.getElementById('yearSelect');
-    const daySelect = document.getElementById('daySelect');
+// function updateDays() {
+//     const monthSelect = document.getElementById('monthSelect');
+//     const yearSelect = document.getElementById('yearSelect');
+//     const daySelect = document.getElementById('daySelect');
 
-    const month = monthSelect.value;
-    const year = yearSelect.value;
-    const daysInMonth = new Date(year, month, 0).getDate();
+//     const month = monthSelect.value;
+//     const year = yearSelect.value;
+//     const daysInMonth = new Date(year, month, 0).getDate();
 
-    daySelect.innerHTML = '';
+//     daySelect.innerHTML = '';
 
-    for (let i = 1; i <= daysInMonth; i++) {
-        let option = new Option(i, i);
-        daySelect.appendChild(option);
-    }
-};
+//     for (let i = 1; i <= daysInMonth; i++) {
+//         let option = new Option(i, i);
+//         daySelect.appendChild(option);
+//     }
+// };
 
 var officeToggle = 1;
 function showOffice() {
@@ -694,20 +670,14 @@ function showBio() {
     console.log(bio.innerHTML, lang.textContent);
 
     if (bioToggle == 0) {
-        // const bioUpdate = document.getElementById('bioUpdate').value;
-        // const languagesUpdate = document.getElementById('languagesUpdate').value;
-        // console.log(bioUpdate, languagesUpdate);
         bio.innerHTML = bio.textContent;
         lang.innerHTML = lang.textContent;
         bioToggle = 1;
+        addBio()
     }
     else {
         bio.innerHTML = `<textarea id="bioUpdate" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required>${bio.textContent}</textarea> <br>`
-        lang.innerHTML = `<textarea id="languagesUpdate" name="languages" rows="4" cols="50" placeholder="${lang.textContent}" required></textarea>`
+        lang.innerHTML = `<textarea id="languagesUpdate" name="languages" rows="4" cols="50" placeholder="Enter the languages you speak here" required>${lang.textContent}</textarea>`
         bioToggle = 0;
     }
-
-    // bio.innerHTML = `<textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required>${bio.textContent}</textarea> <br>`
-    // lang.innerHTML = `<textarea id="languages" name="languages" rows="4" cols="50" placeholder="${lang.textContent}" required></textarea>`
-
 }
