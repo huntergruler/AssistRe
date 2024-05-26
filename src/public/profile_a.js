@@ -693,4 +693,7 @@ function showBio() {
 
     console.log(bio.textContent, lang.textContent);
 
+    bio.innerHTML = `<textarea id="bio" name="bio" rows="4" cols="50" required>${bio.textContent}</textarea> <br>`
+    lang.innerHTML = `<textarea id="languages" name="languages" rows="4" cols="50" placeholder="${lang.textContent}" required></textarea>`
+
 }
