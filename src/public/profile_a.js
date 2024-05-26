@@ -145,19 +145,13 @@ function deleteOffice(id) {
 
             console.log("deleteOffice :", id);
             const table = document.getElementById('officeTable');
-            const headerRow = table.querySelector('thead tr');
             const rows = table.querySelectorAll('tbody tr');
 
-            if(rows.length !== 0){
-                console.log("rows :", rows);
+            if(rows.length === 0){
+                const newRow = table.insertRow(table.rows.length);
+                newRow.id = `noOfficeRow`;
+                newRow.innerHTML = `<td colspan="9">No offices found.</td>`;
             }
-            else {
-                console.log("rows2 :", rows);
-            }
-
-            rows.forEach((row) => {
-                console.log(row);
-            });
         })
         .catch(error => console.error('Error:', error));
 };
