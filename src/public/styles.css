@@ -310,15 +310,7 @@ form button:hover {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
-#licenseForm {
-    display: none;
-}
-
-#zipCodeForm {
-    display: none;
-}
-
-#transactionForm {
+#licenseForm, #zipCodeForm, #transactionForm, #bioForm {
     display: none;
 }
 
