@@ -69,26 +69,20 @@ function addOffice() {
         })
 };
 
-function deleteOffice(id) {
-    console.log("deleteOffice :", id);
-    const table = document.getElementById('officeTable');
-    const headerRow = table.querySelector('thead tr');
-    const rows = table.querySelectorAll('tbody tr');
-    
-    console.log(rows);
+// function deleteOffice(id) {
 
-    fetch(`/api/offices/${id}`, {
-        method: 'DELETE'
-    })
-        .then(() => {
-            // Remove the row from the table
-            console.log("deleteOffice2 :", id);
-            document.getElementById(`office-${id}`).remove();
-        })
-        .catch(error => console.error('Error:', error));
+//     fetch(`/api/offices/${id}`, {
+//         method: 'DELETE'
+//     })
+//         .then(() => {
+//             // Remove the row from the table
+//             console.log("deleteOffice2 :", id);
+//             document.getElementById(`office-${id}`).remove();
+//         })
+//         .catch(error => console.error('Error:', error));
 
     
-};
+// };
 
 function addLicense() {
     const licenseNumber = document.getElementById('licenseNumber').value;
@@ -140,6 +134,12 @@ function deleteLicense(id) {
 };
 
 function deleteOffice(id) {
+    console.log("deleteOffice :", id);
+    const table = document.getElementById('officeTable');
+    const headerRow = table.querySelector('thead tr');
+    const rows = table.querySelectorAll('tbody tr');
+    
+    console.log(rows);
     fetch(`/api/offices/${id}`, {
         method: 'DELETE'
     })
