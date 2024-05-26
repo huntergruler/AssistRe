@@ -686,7 +686,6 @@ function showBio() {
         else {
             langText.innerHTML = lang.value;
         }
-        console.log("BIO:", bio.value, "LANG:", lang.value);
         bioToggle = 1;
         //addBio()
     }
