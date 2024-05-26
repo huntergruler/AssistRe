@@ -575,6 +575,7 @@ function showZipCodes() {
         zipButton.innerHTML = "Edit";
         zipToggle = 1;
         populateAgentZipCodes();
+        saveChanges()
     }
     else {
         form.style.display = "block";
@@ -670,10 +671,12 @@ function showBio() {
     const lang = document.getElementById('languages');
     const form = document.getElementById("bioForm");
     const text = document.getElementById("bioDiv");
+    const bioButton = document.getElementById('bioButton');
 
     if (bioToggle == 0) {
         form.style.display = "none";
         text.style.display = "block";
+        bioButton.innerHTML = "Edit";
         if(bio.value == "") {
             bioText.innerHTML = "No Biography";
         }
@@ -692,6 +695,8 @@ function showBio() {
     else {
         form.style.display = "block";
         text.style.display = "none";
+        bioButton.innerHTML = "Done";
+        
         if(bioText.textContent != "No Biography"){
             bio.value = bioText.textContent;
         }
