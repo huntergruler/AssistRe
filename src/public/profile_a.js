@@ -664,28 +664,30 @@ function showBio() {
     // <span id="bioStatus"></span>`;
     // contain.innerHTML = htmlChange;
 
-    const bio = document.getElementById('bioText');
-    const lang = document.getElementById('languagesText');
-    const biotest = document.getElementById('bio');
-    const langs = document.getElementById('languages');
+    const bioText = document.getElementById('bioText');
+    const langText = document.getElementById('languagesText');
+    const bio = document.getElementById('bio');
+    const lang = document.getElementById('languages');
     const form = document.getElementById("bioForm");
     const text = document.getElementById("bioDiv");
-
-    console.log(bio.innerHTML, lang.textContent);
 
     if (bioToggle == 0) {
         form.style.display = "none";
         text.style.display = "block";
-        bio.innerHTML = biotest.value;
-        lang.innerHTML = langs.value;
+        bioText.innerHTML = bio.value;
+        langText.innerHTML = lang.value;
         bioToggle = 1;
         //addBio()
     }
     else {
         form.style.display = "block";
         text.style.display = "none";
-        biotest.value = bio.textContent;
-        langs.value = lang.textContent;
+        if(bioText.textContent != "No Biography"){
+            bio.value = bioText.textContent;
+        }
+        if(lang.textContent != "No Languages"){
+            lang.value = langText.textContent;
+        }
         bioToggle = 0;
     }
 }
