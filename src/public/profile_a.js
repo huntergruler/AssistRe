@@ -78,6 +78,11 @@ function deleteOffice(id) {
             document.getElementById(`office-${id}`).remove();
         })
         .catch(error => console.error('Error:', error));
+
+    const table = document.getElementById('officeTable');
+    const headerRow = table.querySelector('thead tr');
+    const rows = table.querySelectorAll('tbody tr');
+    console.log(rows);
 };
 
 function addLicense() {
@@ -496,7 +501,7 @@ function showLicense() {
     var licenseIDs = []
     var htmlChange = '';
     //console.log("licToggle is " + licToggle);
-    
+
     addLicenseButton.onclick = function () {
         const noLicences = document.getElementById('noLicenseRow');
         if(noLicences){
@@ -587,7 +592,16 @@ function showTransactions() {
     const form = document.getElementById("transactionForm");
     const table = document.getElementById('transactionTable');
     const transactionButton = document.getElementById('transactionButton');
+    const addTransactionButton = document.getElementById('transactionAdd');
     var transIDs = []
+
+    addTransactionButton.onclick = function () {
+        const noTransaction = document.getElementById('noTransactionRow');
+        if(noTransaction){
+            noTransaction.remove();
+        }
+        addTransaction();
+    }
 
     if (transToggle == 0) {
         form.style.display = "none";

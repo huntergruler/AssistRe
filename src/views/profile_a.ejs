@@ -229,7 +229,7 @@
                             </tr>
                             <% }); %>
                                 <% } else { %>
-                                    <tr>
+                                    <tr id="noTransactionRow">
                                         <td colspan="5">No transactions found.</td>
                                     </tr>
                                     <% } %>
@@ -241,7 +241,7 @@
                 <input type="text" id="propertyType" name="PropertyType" placeholder="Transaction Property Type" required>
                 <input type="text" id="levelOfService" name="LevelOfService" placeholder="Transaction Level Of Service" required>
                 <input type="text" id="compensationType" name="CompensationType" placeholder="Transaction Compensation Type" required>
-                <button type="button" id="transactionAdd" onclick="addTransaction()">Add</button>
+                <button type="button" id="transactionAdd">Add</button>
             </form>
         </div>
         <div id="BioContainer">
