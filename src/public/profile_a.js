@@ -129,6 +129,15 @@ function deleteLicense(id) {
         .then(() => {
             // Remove the row from the table
             document.getElementById(`license-${id}`).remove();
+
+            const table = document.getElementById('licenseTable');
+            const rows = table.querySelectorAll('tbody tr');
+
+            if(rows.length === 0){
+                const newRow = table.insertRow(table.rows.length);
+                newRow.id = `noLicenseRow`;
+                newRow.innerHTML = `<td colspan="4">No licenses found.</td>`;
+            }
         })
         .catch(error => console.error('Error:', error));
 };
@@ -142,8 +151,6 @@ function deleteOffice(id) {
         .then(() => {
             // Remove the row from the table
             document.getElementById(`office-${id}`).remove();
-
-            console.log("deleteOffice :", id);
             const table = document.getElementById('officeTable');
             const rows = table.querySelectorAll('tbody tr');
 
