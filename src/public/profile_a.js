@@ -694,9 +694,9 @@ function showBio() {
     console.log(bio.innerHTML, lang.textContent);
 
     if (bioToggle == 0) {
-        const bioUpdate = document.getElementById('bioUpdate').value;
-        const languagesUpdate = document.getElementById('languagesUpdate').value;
-        console.log(bioUpdate, languagesUpdate);
+        // const bioUpdate = document.getElementById('bioUpdate').value;
+        // const languagesUpdate = document.getElementById('languagesUpdate').value;
+        // console.log(bioUpdate, languagesUpdate);
         bio.innerHTML = bio.textContent;
         lang.innerHTML = lang.textContent;
         bioToggle = 1;
