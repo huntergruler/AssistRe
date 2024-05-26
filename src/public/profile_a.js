@@ -668,6 +668,8 @@ function showBio() {
     const lang = document.getElementById('languagesText');
     const biotest = document.getElementById('bio');
     const langs = document.getElementById('languages');
+    const form = document.getElementById("bioForm");
+    const text = document.getElementById("bioDiv");
 
     biotest.value = "YUP";
     langs.value = "YUP";
@@ -675,12 +677,16 @@ function showBio() {
     console.log(bio.innerHTML, lang.textContent);
 
     if (bioToggle == 0) {
+        form.style.display = "none";
+        text.style.display = "block";
         bio.innerHTML = biotest.value;
         lang.innerHTML = langs.value;
         bioToggle = 1;
         //addBio()
     }
     else {
+        form.style.display = "block";
+        text.style.display = "none";
         biotest.value = bio.textContent;
         langs.value = lang.textContent;
         bioToggle = 0;
