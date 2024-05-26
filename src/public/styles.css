@@ -288,7 +288,7 @@ form button:hover {
     flex-direction: column;
 }
 
-#officeButton, #licenseButton, #zipCodeButton, #transactionButton {
+#officeButton, #licenseButton, #zipCodeButton, #transactionButton, #bioButton {
     height: 32px;
     background-color: rgba(19, 50, 109);
     color: white;
