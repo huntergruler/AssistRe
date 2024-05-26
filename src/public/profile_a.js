@@ -679,13 +679,18 @@ function showTransactions() {
 
 
 function showBio() {
-    const contain = document.getElementById('profileContainer');
-    let htmlChange = `<h1>Biography</h1>
-    <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required></textarea>
-    <br>
-    <textarea id="langauges" name="languages" rows="4" cols="50" placeholder="Enter the languages you speak here" required></textarea>
-    <button type="button" id="bioAdd" onclick="addBio()">Add</button>
-    <span id="bioStatus"></span>`;
-    contain.innerHTML = htmlChange;
+    // const contain = document.getElementById('profileContainer');
+    // let htmlChange = `<h1>Biography</h1>
+    // <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required></textarea>
+    // <br>
+    // <textarea id="langauges" name="languages" rows="4" cols="50" placeholder="Enter the languages you speak here" required></textarea>
+    // <button type="button" id="bioAdd" onclick="addBio()">Add</button>
+    // <span id="bioStatus"></span>`;
+    // contain.innerHTML = htmlChange;
+
+    const bio = document.getElementById('bioText');
+    const lang = document.getElementById('languages');
+
+    console.log(bio.textContent, lang.textContent);
 
 }
