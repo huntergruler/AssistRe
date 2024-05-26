@@ -130,7 +130,7 @@ function deleteLicense(id) {
             // Remove the row from the table
             document.getElementById(`license-${id}`).remove();
 
-            const table = document.getElementById('licenseTable');
+            const table = document.getElementById('licensesTable');
             const rows = table.querySelectorAll('tbody tr');
 
             if(rows.length === 0){
