@@ -43,43 +43,17 @@ $(document).ready(function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    var slider = document.getElementById('slider-square-footage');
-
-    noUiSlider.create(slider, {
-        start: [500, 3000], // Initial values
-        connect: true,
-        step: 100,
-        margin: 30,
-        range: {
-            'min': 500,
-            'max': 10000
-        },
-        tooltips: [true, true],
-        format: {
-            to: function (value) {
-                return parseInt(value);
-            },
-            from: function (value) {
-                return parseInt(value);
-            }
-        }
-    });
-
-    var minSquareFootage = document.getElementById('min-square-footage');
-    var maxSquareFootage = document.getElementById('max-square-footage');
-    var minSquareFootageInput = document.getElementById('minSquareFootage');
-    var maxSquareFootageInput = document.getElementById('maxSquareFootage');
-
-    slider.noUiSlider.on('update', function(values, handle) {
-        if (handle === 0) {
-            minSquareFootage.textContent = values[0];
-            minSquareFootageInput.value = values[0];
-        } else {
-            maxSquareFootage.textContent = values[1];
-            maxSquareFootageInput.value = values[1];
-        }
-    });
+const slider = document.querySelector('.custom-range-slider');
+const track = slider.querySelector('.slider-track');
+const thumb1 = slider.querySelector('.thumb-1');
+const thumb2 = slider.querySelector('.thumb-2');
+slider.addEventListener('input', () => {
+    const value1 = thumb1.value;
+    const value2 = thumb2.value;
+    const min = slider.min || 0;
+  const max = slider.max || 100;
+  const percentage = ((value - min) / (max - min)) * 100;
+  thumb.style.left = `${percentage}%`;
 });
 
 $(document).ready(function() {
