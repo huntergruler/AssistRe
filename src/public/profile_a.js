@@ -685,7 +685,7 @@ function showBio() {
         if(bioText.textContent != "No Biography"){
             bio.value = bioText.textContent;
         }
-        if(lang.textContent != "No Languages"){
+        if(langText.textContent != "No Languages"){
             lang.value = langText.textContent;
         }
         bioToggle = 0;
