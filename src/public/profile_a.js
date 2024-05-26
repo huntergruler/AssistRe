@@ -148,7 +148,7 @@ function deleteOffice(id) {
             const headerRow = table.querySelector('thead tr');
             const rows = table.querySelectorAll('tbody tr');
 
-            if(rows){
+            if(rows.length !== 0){
                 console.log("rows :", rows);
             }
             else {
