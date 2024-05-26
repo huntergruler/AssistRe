@@ -707,7 +707,7 @@ function showBio() {
         bioToggle = 0;
     }
 
-    bio.innerHTML = `<textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required>${bio.textContent}</textarea> <br>`
-    lang.innerHTML = `<textarea id="languages" name="languages" rows="4" cols="50" placeholder="${lang.textContent}" required></textarea>`
+    // bio.innerHTML = `<textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required>${bio.textContent}</textarea> <br>`
+    // lang.innerHTML = `<textarea id="languages" name="languages" rows="4" cols="50" placeholder="${lang.textContent}" required></textarea>`
 
 }
