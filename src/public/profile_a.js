@@ -82,8 +82,8 @@ function deleteOffice(id) {
     })
         .then(() => {
             // Remove the row from the table
-            document.getElementById(`office-${id}`).remove();
             console.log("deleteOffice2 :", id);
+            document.getElementById(`office-${id}`).remove();
         })
         .catch(error => console.error('Error:', error));
 
