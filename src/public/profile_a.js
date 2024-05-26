@@ -671,9 +671,6 @@ function showBio() {
     const form = document.getElementById("bioForm");
     const text = document.getElementById("bioDiv");
 
-    biotest.value = "YUP";
-    langs.value = "YUP";
-
     console.log(bio.innerHTML, lang.textContent);
 
     if (bioToggle == 0) {
