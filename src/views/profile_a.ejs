@@ -30,6 +30,7 @@
             <%= lastname %>
     </h1>
     <div id="profileContainer">
+        <div id="profileGrid1">
         <div id="officeContainer">
             <h1>Current Office(s)<button type="button" id="officeButton" onclick="showOffice()">Edit</button></h1>
             <table id="officeTable">
@@ -101,21 +102,6 @@
             </form>
 
         </div>
-        <div id="BioContainer">
-            <h1>Biography <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Edit</button></h1>
-            <div id="bioDiv">
-                <p id="bioText">No Biography</p><br>
-                <h3>Languages:</h3><br><p id="languagesText">No Languages</p>
-            </div>
-            <div id="bioForm">
-                <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
-                    required></textarea>
-                <br>
-                <textarea id="languages" name="languages" rows="4" cols="50"
-                    placeholder="Enter the languages you speak here" required></textarea>
-            </div>
-            <span id="bioStatus"></span>
-        </div>
         <div id="licenseContainer">
             <p>
             <h1>Current Licenses <button type="button" id="licenseButton" onclick="showLicense()">Edit</button></h1>
@@ -160,42 +146,6 @@
                 <button type="button" id="licenseAdd" disabled>Add</button>
                 <span id="licStatus"></span>
             </form>
-        </div>
-        <div class="zipCode-container" id="profileZips">
-            <h1 id>Zip Codes<button type="button" class="hoverStyle" id="zipCodeButton"
-                    onclick="showZipCodes()">Edit</button></h1>
-            <br>
-            <div id="ownedZipCodes"></div>
-            <div id="zipCodeForm">
-                <p>Select Zip Codes in which you would like offers</p>
-                <br>
-                <label for="stateSelect">States:</label>
-                <select id="stateSelect" onchange="populateCities();"></select>
-                <label for="citySelect">Cities:</label>
-                <select id="citySelect" onchange="populateZipCodes();"></select>
-                <div class="grid-container">
-                    <div class="grid-available">
-                        <p>Available Zip Codes</p>
-                        <div class="container">
-                            <div id="availabeZipCodesContainer" class="box1">
-                                <!-- JavaScript will populate this container -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid-action">
-                        <button type="button" class="button" onclick="addSelection()">Add --> </button>
-                        <button type="button" class="button" onclick="removeSelection()"> <-- Remove</button>
-                    </div>
-                    <div class="grid-selected">
-                        <p>Selected Zip Codes</p>
-                        <div class="container">
-                            <div id="selectedZipCodesContainer" class="box2">
-                                <!-- JavaScript will populate this container -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div id="transactionContainer">
             <p>
@@ -249,6 +199,60 @@
                 <button type="button" id="transactionAdd">Add</button>
             </form>
         </div>
+    </div>
+    <div id="profileGrid2">
+        <div id="BioContainer">
+            <h1>Biography <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Edit</button></h1>
+            <div id="bioDiv">
+                <p id="bioText">No Biography</p><br>
+                <h3>Languages:</h3><br><p id="languagesText">No Languages</p>
+            </div>
+            <div id="bioForm">
+                <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
+                    required></textarea>
+                <br>
+                <textarea id="languages" name="languages" rows="4" cols="50"
+                    placeholder="Enter the languages you speak here" required></textarea>
+            </div>
+            <span id="bioStatus"></span>
+        </div>
+        <div class="zipCode-container" id="profileZips">
+            <h1 id>Zip Codes<button type="button" class="hoverStyle" id="zipCodeButton"
+                    onclick="showZipCodes()">Edit</button></h1>
+            <br>
+            <div id="ownedZipCodes"></div>
+            <div id="zipCodeForm">
+                <p>Select Zip Codes in which you would like offers</p>
+                <br>
+                <label for="stateSelect">States:</label>
+                <select id="stateSelect" onchange="populateCities();"></select>
+                <label for="citySelect">Cities:</label>
+                <select id="citySelect" onchange="populateZipCodes();"></select>
+                <div class="grid-container">
+                    <div class="grid-available">
+                        <p>Available Zip Codes</p>
+                        <div class="container">
+                            <div id="availabeZipCodesContainer" class="box1">
+                                <!-- JavaScript will populate this container -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid-action">
+                        <button type="button" class="button" onclick="addSelection()">Add --> </button>
+                        <button type="button" class="button" onclick="removeSelection()"> <-- Remove</button>
+                    </div>
+                    <div class="grid-selected">
+                        <p>Selected Zip Codes</p>
+                        <div class="container">
+                            <div id="selectedZipCodesContainer" class="box2">
+                                <!-- JavaScript will populate this container -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         <script src="/profile_a.js"></script>
 </body>
 
