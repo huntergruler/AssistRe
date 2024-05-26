@@ -70,6 +70,12 @@ function addOffice() {
 };
 
 function deleteOffice(id) {
+    const table = document.getElementById('officeTable');
+    const headerRow = table.querySelector('thead tr');
+    const rows = table.querySelectorAll('tbody tr');
+    console.log("deleteOffice :", id);
+    console.log(rows);
+
     fetch(`/api/offices/${id}`, {
         method: 'DELETE'
     })
@@ -79,10 +85,7 @@ function deleteOffice(id) {
         })
         .catch(error => console.error('Error:', error));
 
-    const table = document.getElementById('officeTable');
-    const headerRow = table.querySelector('thead tr');
-    const rows = table.querySelectorAll('tbody tr');
-    console.log(rows);
+    
 };
 
 function addLicense() {
