@@ -105,7 +105,7 @@ body {
     left: 0;
     height: 14px;
     border-radius: 14px;
-    background-color: #1a1fbc;
+    background-color: #1ABC9C;
   }
   
   [slider] > div > [thumb] {
@@ -130,7 +130,7 @@ body {
     z-index: 3;
     height: 14px;
     top: -2px;
-    width: 100px;
+    width: 100%;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
     -moz-opacity: 0;
@@ -170,8 +170,8 @@ body {
   
   div[slider] > input[type=range]::-moz-range-thumb {
     pointer-events: all;
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
     border-radius: 0px;
     border: 0 none;
     background: red;
@@ -207,10 +207,10 @@ body {
     margin-left: -11px;
     top: -39px;
     z-index:3;
-    background-color: #1a1fbc;
+    background-color: #1ABC9C;
     color: #fff;
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
     border-radius: 28px;
     -webkit-border-radius: 28px;
     align-items: center;
@@ -229,7 +229,7 @@ body {
     border-right: 14px solid transparent;
     border-top-width: 16px;
     border-top-style: solid;
-    border-top-color: #1a1fbc;
+    border-top-color: #1ABC9C;
   }
   
   [slider] > div > [sign] > span {
