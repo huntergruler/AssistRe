@@ -676,6 +676,7 @@ function showBio() {
         text.style.display = "block";
         bioText.innerHTML = bio.value;
         langText.innerHTML = lang.value;
+        console.log(bio.value, lang.value);
         bioToggle = 1;
         //addBio()
     }
