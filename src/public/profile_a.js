@@ -673,7 +673,7 @@ function showBio() {
         bio.innerHTML = bio.textContent;
         lang.innerHTML = lang.textContent;
         bioToggle = 1;
-        addBio()
+        //addBio()
     }
     else {
         bio.innerHTML = `<textarea id="bioUpdate" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required>${bio.textContent}</textarea> <br>`
