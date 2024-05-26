@@ -147,13 +147,13 @@
                               <span thumb style="left:30%;"></span>
                               <span thumb style="left:60%;"></span>
                               <div sign style="left:30%;">
-                                <span id="value">1000</span>
+                                <span id="value">30</span>
                               </div>
-                              <div sign style="left:60%;">
-                                <span id="value">3000</span>
+                              <div sign style="left:80%;">
+                                <span id="value">80</span>
                               </div>
                             </div>
-                            <input type="range" tabindex="0" value="1000" max="5000" min="1000" step="100" oninput="
+                            <input type="range" tabindex="0" value="30" max="100" min="0" step="5" oninput="
                             this.value=Math.min(this.value,this.parentNode.childNodes[5].value-1);
                             var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
                             var children = this.parentNode.childNodes[1].childNodes;
@@ -162,7 +162,7 @@
                             children[7].style.left=value+'%';children[11].style.left=value+'%';
                             children[11].childNodes[1].innerHTML=this.value;" />
                           
-                            <input type="range" tabindex="0" value="3000" max="5000" min="1000" step="100" oninput="
+                            <input type="range" tabindex="0" value="60" max="100" min="0" step="5" oninput="
                             this.value=Math.max(this.value,this.parentNode.childNodes[3].value-(-1));
                             var value=(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.value)-(100/(parseInt(this.max)-parseInt(this.min)))*parseInt(this.min);
                             var children = this.parentNode.childNodes[1].childNodes;
