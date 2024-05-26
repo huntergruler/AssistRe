@@ -248,8 +248,14 @@
             <h1>Biography <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Bio</button></h1>
             <div id="bioDiv">
                 <p id="bioText"></p>
-                <p id="languages"></p>
+                <p id="language"></p>
             </div>
+            <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
+                required></textarea>
+            <br>
+            <textarea id="langauges" name="languages" rows="4" cols="50"
+                placeholder="Enter the languages you speak here" required></textarea>
+            <button type="button" id="bioAdd" onclick="addBio()">Add</button>
             <span id="bioStatus"></span>
         </div>
         <script src="/profile_a.js"></script>

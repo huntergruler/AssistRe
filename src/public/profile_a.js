@@ -665,7 +665,12 @@ function showBio() {
     // contain.innerHTML = htmlChange;
 
     const bio = document.getElementById('bioText');
-    const lang = document.getElementById('languages');
+    const lang = document.getElementById('language');
+    const biotest = document.getElementById('bio');
+    const langs = document.getElementById('languages');
+
+    biotest.value = "YUP";
+    langs.value = "YUP";
 
     console.log(bio.innerHTML, lang.textContent);
 
@@ -676,7 +681,7 @@ function showBio() {
         //addBio()
     }
     else {
-        bio.innerHTML = `<textarea id="bioUpdate" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required>${bio.textContent}</textarea> <br>`
+        bio.innerHTML = `<textarea id="bioUpdate" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required>${bio.textContent}</textarea><br>`
         lang.innerHTML = `<textarea id="languagesUpdate" name="languages" rows="4" cols="50" placeholder="Enter the languages you speak here" required>${lang.textContent}</textarea>`
         bioToggle = 0;
     }
