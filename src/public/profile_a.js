@@ -134,14 +134,7 @@ function deleteLicense(id) {
 };
 
 function deleteOffice(id) {
-    console.log("deleteOffice :", id);
-    const table = document.getElementById('officeTable');
-    const headerRow = table.querySelector('thead tr');
-    const rows = table.querySelectorAll('tbody tr');
-
-    rows.forEach((row) => {
-        console.log(row);
-    });
+    
     
     fetch(`/api/offices/${id}`, {
         method: 'DELETE'
@@ -149,6 +142,15 @@ function deleteOffice(id) {
         .then(() => {
             // Remove the row from the table
             document.getElementById(`office-${id}`).remove();
+
+            console.log("deleteOffice :", id);
+            const table = document.getElementById('officeTable');
+            const headerRow = table.querySelector('thead tr');
+            const rows = table.querySelectorAll('tbody tr');
+
+            rows.forEach((row) => {
+                console.log(row);
+            });
         })
         .catch(error => console.error('Error:', error));
 };
