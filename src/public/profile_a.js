@@ -32,6 +32,15 @@ function deleteTransaction(id) {
         .then(() => {
             // Remove the row from the table
             document.getElementById(`transaction-${id}`).remove();
+
+            const table = document.getElementById('transactionTable');
+            const rows = table.querySelectorAll('tbody tr');
+
+            if(rows.length === 0){
+                const newRow = table.insertRow(table.rows.length);
+                newRow.id = `noTransactionRow`;
+                newRow.innerHTML = `<td colspan="4">No transactions found.</td>`;
+            }
         })
         .catch(error => console.error('Error:', error));
 };
