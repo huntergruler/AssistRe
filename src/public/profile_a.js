@@ -574,8 +574,9 @@ function showZipCodes() {
         disp.style.display = "block";
         zipButton.innerHTML = "Edit";
         zipToggle = 1;
+        
+        saveChanges();
         populateAgentZipCodes();
-        saveChanges()
     }
     else {
         form.style.display = "block";
@@ -696,7 +697,7 @@ function showBio() {
         form.style.display = "block";
         text.style.display = "none";
         bioButton.innerHTML = "Done";
-        
+
         if(bioText.textContent != "No Biography"){
             bio.value = bioText.textContent;
         }
