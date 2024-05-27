@@ -8,6 +8,7 @@ body {
 .margin-top-100 {
     margin-top: 100px;
 }
+
 .form-container {
     max-width: 500px;
     margin: auto;
@@ -23,8 +24,7 @@ body {
     margin-top: 5px;
     margin-left: 1px;
     margin-right: 1px;
-    padding-left: 1px;
-    padding-right: 1px;
+    padding: 0;
     /* Less space between elements */
 }
 
