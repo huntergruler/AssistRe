@@ -121,19 +121,21 @@
                             value="<%= buyer.bedrooms_max %>" required disabled>
                     </div>
                     <div class="col-md-3"></div>
-                    </div>
-                
+                </div>
+
                 <div class="form-group row justify-content-center">
-                    <label for="bathrooms" class="col-sm-4 col-form-label">Bathroom Range</label>
-                    <div class="col-sm-2">
+                    <label for="bathrooms" class="col-md-4 col-form-label">Bathroom Range</label>
+                    <div class="col-md-1">
                         <input type="text" class="form-control view-mode" id="bathrooms_min" name="bathrooms_min"
                             value="<%= buyer.bathrooms_min %>" required disabled>
                     </div>
-                    <div class="col-sm-1">
-                        <label for="to" class="col-sm-2 col-form-label">to</label>
-                    <div class="col-sm-2">
+                    <div class="col-md-1">
+                        <label for="to" class="form-control view-mode">to</label>
+                    </div>
+                    <div class="col-md-1">
                         <input type="text" class="form-control view-mode" id="bathrooms_max" name="bathrooms_max"
                             value="<%= buyer.bathrooms_max %>" required disabled>
+                        <div class="col-md-3"></div>
                     </div>
                 </div>
                 <div class="container mt-4">
@@ -148,7 +150,7 @@
                                 <input class="form-control view-mode" id="squareFootage_max" name="squareFootage_max"
                                     value="<%= buyer.squareFootage_max %>" required disabled>
                             </div>
-                            </div>
+                        </div>
                     </div>
                     <div class="form-group row justify-content-center">
                         <label for="priceRange" class="col-sm-2 col-form-label">Price Range</label>
