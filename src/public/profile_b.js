@@ -67,15 +67,17 @@ $(document).ready(function() {
             price_min: $('#price_min').val(),
             price_max: $('#price_max').val(),
             timeFrame: $('#timeFrame').val(),
-            prequalifieY: $('#prequalifiedY').is(':checked'),
+            prequalifiedY: $('#prequalifiedY').is(':checked'),
             prequalifiedN: $('#prequalifiedN').is(':checked'),
             preferredLanguages: $('#preferredLanguages').val(),
             userid: $('#userid').val()
         };
         if (formData.prequalifieY) {
             formData.prequalified = 'Y';
+            prequalified: $('#prequalified').val()= 'Y';
         } else {
             formData.prequalified = 'N';
+            prequalified: $('#prequalified').val()= 'N';
         }
         $.ajax({
             type: 'POST',
