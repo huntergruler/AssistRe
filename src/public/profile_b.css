@@ -29,8 +29,7 @@ body {
 }
 
 .form-group .col-form-label {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
     text-align: right;
     border: 1px solid #ccc;
 }
