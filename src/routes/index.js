@@ -156,7 +156,7 @@ router.post('/profile_b_property', (req, res) => {
   else {
 
   const { bathrooms, bedrooms, buyerType, preferredLanguages, prequalified, priceRange, propertyType, squareFootage, timeFrame, userPhoto, userid } = req.body;
-
+console.log('Params:', [bathrooms, bedrooms, buyerType, preferredLanguages, prequalified, priceRange, propertyType, squareFootage, timeFrame, userPhoto, userid] )
   const query = 'UPDATE Buyers SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, userPhoto = ? WHERE userid = ?';
   db.query(query, [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, userPhoto, userid], (error, results) => {
     if (error) {
