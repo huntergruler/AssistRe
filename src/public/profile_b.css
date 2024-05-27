@@ -31,7 +31,6 @@ body {
 .form-group .col-form-label {
     padding: 0;
     text-align: right;
-    border: 1px solid #ccc;
 }
 
 .form-group .form-control {
@@ -41,7 +40,6 @@ body {
     /* Adjust height */
     font-size: 14px;
     /* Element value font size */
-    border: 1px solid #ccc;
 }
 
 .form-control.view-mode {
@@ -49,7 +47,6 @@ body {
     background-color: transparent;
     box-shadow: none;
     font-size: 5;
-    border: 1px solid #ccc;
     padding-left: 0;
 }
 
