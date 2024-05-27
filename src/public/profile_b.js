@@ -96,7 +96,7 @@ $(document).ready(function() {
     });
 });
 document.addEventListener('DOMContentLoaded', function () {
-    prequalified = document.getElementById('prequalified').value;
+    prequalified = document.getElementById('prequalified').value.trim();
     if (prequalified === 'Y') {
         console.log("Y:",prequalified);
         document.getElementById('prequalifiedY').checked = true;
