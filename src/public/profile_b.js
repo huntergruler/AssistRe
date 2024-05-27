@@ -72,6 +72,11 @@ $(document).ready(function() {
             preferredLanguages: $('#preferredLanguages').val(),
             userid: $('#userid').val()
         };
+        if (formData.prequalifieY) {
+            formData.prequalified = 'Y';
+        } else {
+            formData.prequalified = 'N';
+        }
 console.log(formData);
         $.ajax({
             type: 'POST',
