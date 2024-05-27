@@ -10,7 +10,7 @@ body {
 }
 .form-container {
     max-width: 500px;
-    margin: 20px;
+    margin: auto;
     margin-bottom: 1px;
     margin-top: 1px;
     border: 1px solid #ccc;
@@ -37,7 +37,7 @@ body {
     /* Less padding inside input fields */
     height: calc(1.5em + .5rem + 2px);
     /* Adjust height */
-    font-size: 12px;
+    font-size: 14px;
     /* Element value font size */
 }
 
