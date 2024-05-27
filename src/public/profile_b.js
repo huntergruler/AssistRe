@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $('#editButton').click(function() {
+$(document).ready(function () {
+    $('#editButton').click(function () {
         $('#profileForm input').prop('disabled', false).removeClass('view-mode');
         $('#editButton').hide();
         $('#saveButton').show();
@@ -8,11 +8,11 @@ $(document).ready(function() {
         $('#city').prop('disabled', true).addClass('view-mode');
     });
 
-    $('#cancelButton').click(function() {
+    $('#cancelButton').click(function () {
         location.reload();
     });
 
-    $('#saveButton').click(function() {
+    $('#saveButton').click(function () {
         const formData = {
             firstName: $('#firstName').val(),
             lastName: $('#lastName').val(),
@@ -28,7 +28,7 @@ $(document).ready(function() {
             type: 'POST',
             url: '/profile_b',
             data: formData,
-            success: function(response) {
+            success: function (response) {
                 if (response.success) {
                     alert('Profile updated successfully!');
                     location.reload();
@@ -36,26 +36,26 @@ $(document).ready(function() {
                     alert('Error updating profile.');
                 }
             },
-            error: function() {
+            error: function () {
                 alert('Error updating profile.');
             }
         });
     });
 });
 
-$(document).ready(function() {
-    $('#editButton2').click(function() {
+$(document).ready(function () {
+    $('#editButton2').click(function () {
         $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
         $('#editButton2').hide();
         $('#saveButton2').show();
         $('#cancelButton2').show();
     });
 
-    $('#cancelButton2').click(function() {
+    $('#cancelButton2').click(function () {
         location.reload();
     });
 
-    $('#saveButton2').click(function() {
+    $('#saveButton2').click(function () {
         const formData = {
             propertyType: $('#propertyType').val(),
             bedrooms_min: $('#bedrooms_min').val(),
@@ -81,7 +81,7 @@ $(document).ready(function() {
             type: 'POST',
             url: '/profile_b_property',
             data: formData,
-            success: function(response) {
+            success: function (response) {
                 if (response.success) {
                     alert('Profile updated successfully!');
                     location.reload();
@@ -89,21 +89,12 @@ $(document).ready(function() {
                     alert('Error updating profile.');
                 }
             },
-            error: function() {
+            error: function () {
                 alert('Error updating profile.');
             }
         });
     });
 });
-document.addEventListener('DOMContentLoaded', function () {
-    prequalified = document.getElementById('prequalified').value.trim();
-    if (prequalified === 'Y') {
-        document.getElementById('prequalifiedY').checked = true;
-    } else {
-        document.getElementById('prequalifiedN').checked = true;
-    }
-});
-
 
 function lookupCityState() {
     let zipCode = document.getElementById('zip').value;
@@ -125,4 +116,26 @@ function lookupCityState() {
         };
         xhr.send();
     }
-  }
+}
+
+// Function to toggle the file upload input based on the selected radio button
+function toggleFileUpload(show) {
+    var fileUploadDiv = document.getElementById('fileUploadDiv');
+    if (show) {
+        fileUploadDiv.style.display = 'flex'; // Change to 'block' if 'flex' does not suit your layout
+    } else {
+        fileUploadDiv.style.display = 'none';
+    }
+}
+
+// Initialize the state based on the prequalified value
+document.addEventListener('DOMContentLoaded', function () {
+    var prequalified = document.getElementById('prequalified').value;
+    if (prequalified === 'Y') {
+        document.getElementById('prequalifiedY').checked = true;
+        toggleFileUpload(true);
+    } else {
+        document.getElementById('prequalifiedN').checked = true;
+        toggleFileUpload(false);
+    }
+});
