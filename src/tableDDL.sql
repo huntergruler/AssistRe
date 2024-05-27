@@ -42,7 +42,7 @@ CREATE TABLE Buyers (
     price_max int NOT NULL DEFAULT 0,
     timeFrame varchar(25) NOT NULL,
     prequalified tinyint(1) NOT NULL,
-    prequalifiedPath varchar(255) DEFAULT NULL,
+    prequalifiedFile varchar(255) DEFAULT NULL,
     emailverified tinyint(1) NOT NULL,
     verificationtoken varchar(50) DEFAULT NULL,
     userPhoto varchar(255) NOT NULL,

@@ -108,7 +108,7 @@ router.get('/profile_b', (req, res) => {
 
     const query = `select b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
                           b.bathrooms_min, b.bathrooms_max, b.bedrooms_min, b.bedrooms_max, b.buyerType, b.preferredLanguages, b.prequalified, b.price_min, 
-                          b.price_max, b.propertyType, b.squareFootage_min, b.squareFootage_max, b.state, b.timeFrame, b.userPhoto, b.prequalifiedPath
+                          b.price_max, b.propertyType, b.squareFootage_min, b.squareFootage_max, b.state, b.timeFrame, b.userPhoto, b.prequalifiedFile
                      from Buyers b
                     where b.userid = ?`;
 db.query(query, [userid], (error, results) => {
