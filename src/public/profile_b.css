@@ -1,8 +1,7 @@
 body {
     font-size: 14px;
     /* Base font size */
-    /* background-color: #666; */
-    background-color: none;
+    background-color: #666;
     margin: 100px 50px;
 }
 
@@ -32,6 +31,7 @@ body {
 .form-group .col-form-label {
     padding: 0;
     text-align: right;
+    background-color: transparent;
 }
 
 .form-group .form-control {
@@ -45,8 +45,7 @@ body {
 
 .form-control.view-mode {
     border: none;
-    background-color: green;
-    /* background-color: transparent; */
+    background-color: transparent;
     box-shadow: none;
     font-size: 5;
     padding-left: 0;
