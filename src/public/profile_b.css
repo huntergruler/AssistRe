@@ -10,7 +10,7 @@ body {
 }
 .form-container {
     max-width: 500px;
-    margin: auto;
+    margin: 20px;
     margin-bottom: 1px;
     margin-top: 1px;
     border: 1px solid #ccc;
