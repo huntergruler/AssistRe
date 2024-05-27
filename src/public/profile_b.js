@@ -72,12 +72,10 @@ $(document).ready(function() {
             preferredLanguages: $('#preferredLanguages').val(),
             userid: $('#userid').val()
         };
-        if (formData.prequalifieY) {
+        if (formData.prequalifiedY) {
             formData.prequalified = 'Y';
-            prequalified: $('#prequalified').val()= 'Y';
         } else {
             formData.prequalified = 'N';
-            prequalified: $('#prequalified').val()= 'N';
         }
         $.ajax({
             type: 'POST',
@@ -99,6 +97,7 @@ $(document).ready(function() {
 });
 document.addEventListener('DOMContentLoaded', function () {
     prequalified = document.getElementById('prequalified').value;
+    console.log(prequalified);
     if (prequalified === 'Y') {
         document.getElementById('prequalifiedY').checked = true;
     } else {
