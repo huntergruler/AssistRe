@@ -119,6 +119,7 @@ db.query(query, [userid], (error, results) => {
     if (results.length === 0) {
       return res.status(404).send('User not found');
     }
+    console.log('Results:', results);
     res.render('profile_b', { buyer: results[0] });
     });
   }
