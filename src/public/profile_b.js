@@ -43,19 +43,6 @@ $(document).ready(function() {
     });
 });
 
-const slider = document.querySelector('.custom-range-slider');
-const track = slider.querySelector('.slider-track');
-const thumb1 = slider.querySelector('.thumb-1');
-const thumb2 = slider.querySelector('.thumb-2');
-slider.addEventListener('input', () => {
-    const value1 = thumb1.value;
-    const value2 = thumb2.value;
-    const min = slider.min || 0;
-  const max = slider.max || 100;
-  const percentage = ((value - min) / (max - min)) * 100;
-  thumb.style.left = `${percentage}%`;
-});
-
 $(document).ready(function() {
     $('#editButton2').click(function() {
         $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
