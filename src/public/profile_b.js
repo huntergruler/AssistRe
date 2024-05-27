@@ -58,10 +58,14 @@ $(document).ready(function() {
     $('#saveButton2').click(function() {
         const formData = {
             propertyType: $('#propertyType').val(),
-            bedrooms: $('#bedrooms').val(),
-            bathrooms: $('#bathrooms').val(),
-            squareFootage: $('#squareFootage').val(),
-            priceRange: $('#priceRange').val(),
+            bedrooms_min: $('#bedrooms_min').val(),
+            bedrooms_max: $('#bedrooms_max').val(),
+            bathrooms_min: $('#bathrooms_min').val(),
+            bathrooms_max: $('#bathrooms_max').val(),
+            squareFootage_min: $('#squareFootage_min').val(),
+            squareFootage_max: $('#squareFootage_max').val(),
+            price_min: $('#priceRange_min').val(),
+            price_max: $('#priceRange_max').val(),
             timeFrame: $('#timeFrame').val(),
             prequalified: $('#prequalified').val(),
             preferredLanguages: $('#preferredLanguages').val(),
