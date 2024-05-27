@@ -77,7 +77,6 @@ $(document).ready(function() {
         } else {
             formData.prequalified = 'N';
         }
-console.log(formData);
         $.ajax({
             type: 'POST',
             url: '/profile_b_property',
@@ -96,6 +95,15 @@ console.log(formData);
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function () {
+    prequalified = document.getElementById('prequalified').value;
+    if (prequalified === 'Y') {
+        document.getElementById('prequalifiedY').checked = true;
+    } else {
+        document.getElementById('prequalifiedN').checked = true;
+    }
+});
+
 
 function lookupCityState() {
     let zipCode = document.getElementById('zip').value;
@@ -118,4 +126,3 @@ function lookupCityState() {
         xhr.send();
     }
   }
-  
