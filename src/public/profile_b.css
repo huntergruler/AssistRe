@@ -34,7 +34,7 @@ body {
     /* Less padding inside input fields */
     height: calc(1.5em + .5rem + 2px);
     /* Adjust height */
-    font-size: 14px;
+    font-size: 12px;
     /* Element value font size */
 }
 
