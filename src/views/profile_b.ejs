@@ -152,22 +152,23 @@
                     </div>
                     <div class="col-md-1"></div>
                 </div>
-
-
-                <div class="container mt-4">
-                    <div class="row justify-content-center">
-                        <div class="col-sm-2">
-                            <label for="squareFootage" class="col-sm-2 col-form-label">SQFT Range</label>
-                            <div class="col-sm-4">
-                                <input class="form-control view-mode" id="squareFootage_min" name="squareFootage_min"
-                                    value="<%= buyer.squareFootage_min %>" required disabled>
-                            </div>
-                            <div class="col-sm-4">
-                                <input class="form-control view-mode" id="squareFootage_max" name="squareFootage_max"
-                                    value="<%= buyer.squareFootage_max %>" required disabled>
-                            </div>
-                        </div>
+                <div class="form-group row justify-content-center">
+                    <label for="priceRange" class="col-md-4 col-form-label">Price Range</label>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control view-mode" id="price_min" name="price_min"
+                            value="<%= buyer.price_min %>" required disabled>
                     </div>
+                    <div class="col-md-1">
+                        <label for="to" class="form-control view-mode">to</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control view-mode" id="price_max" name="price_max"
+                            value="<%= buyer.price_max %>" required disabled>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+
+
                     <div class="form-group row justify-content-center">
                         <label for="priceRange" class="col-sm-2 col-form-label">Price Range</label>
                         <div class="col-sm-4">
