@@ -119,7 +119,6 @@ db.query(query, [userid], (error, results) => {
     if (results.length === 0) {
       return res.status(404).send('User not found');
     }
-    console.log('Results:', results);
     res.render('profile_b', { buyer: results[0] });
     });
   }
@@ -135,8 +134,6 @@ router.post('/profile_b', (req, res) => {
   const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
 
   const query = 'UPDATE Buyers SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, phoneNumber = ? WHERE userid = ?';
-console.log('Query:', query);
-console.log('Params:', [firstName, lastName, address, city, state, zip, phoneNumber, userid]);
   db.query(query, [firstName, lastName, address, city, state, zip, phoneNumber, userid], (error, results) => {
     if (error) {
       console.error('Error updating buyer profile:', error);
@@ -155,9 +152,7 @@ router.post('/profile_b_property', (req, res) => {
     res.redirect('/');
   }
   else {
-console.log('Request body:', req.body);
   const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, userPhoto, userid } = req.body;
-  console.log('bathrooms_min:', bathrooms_min, 'bathrooms_max:', bathrooms_max, 'bedrooms_min:', bedrooms_min, 'bedrooms_max:', bedrooms_max, 'buyerType:', buyerType, 'preferredLanguages:', preferredLanguages, 'prequalified:', prequalified, 'price_min:', price_min, 'price_max:', price_max, 'propertyType:', propertyType, 'squareFootage_min:', squareFootage_min, 'squareFootage_max:', squareFootage_max, 'timeFrame:', timeFrame, 'userPhoto:', userPhoto, 'userid:', userid );
   const query = 'UPDATE Buyers SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, userPhoto = ? WHERE userid = ?';
   db.query(query, [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, userPhoto, userid], (error, results) => {
     if (error) {
