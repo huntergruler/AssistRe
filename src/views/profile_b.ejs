@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="form-group row justify-content-center">
-                    <label for="bedrooms_min" class="col-md-4 col-form-label">Bedroom Range</label>
+                    <label for="bedrooms" class="col-md-4 col-form-label">Bedroom Range</label>
                     <div class="col-md-1">
                         <input type="text" class="form-control view-mode" id="bedrooms_min" name="bedrooms_min"
                             value="<%= buyer.bedrooms_min %>" required disabled>
@@ -138,20 +138,22 @@
                     <div class="col-md-3"></div>
                 </div>
                 <div class="form-group row justify-content-center">
-                    <label for="bathrooms" class="col-md-4 col-form-label">Bathroom Range</label>
+                    <label for="squareFootage" class="col-md-4 col-form-label">SQFT Range</label>
                     <div class="col-md-1">
-                        <input type="text" class="form-control view-mode" id="bathrooms_min" name="bathrooms_min"
-                            value="<%= buyer.bathrooms_min %>" required disabled>
+                        <input type="text" class="form-control view-mode" id="squareFootage_min" name="squareFootage_min"
+                            value="<%= buyer.squareFootage_min %>" required disabled>
                     </div>
                     <div class="col-md-1">
                         <label for="to" class="form-control view-mode">to</label>
                     </div>
                     <div class="col-md-1">
-                        <input type="text" class="form-control view-mode" id="bathrooms_max" name="bathrooms_max"
-                            value="<%= buyer.bathrooms_max %>" required disabled>
-                        <div class="col-md-3"></div>
+                        <input type="text" class="form-control view-mode" id="squareFootage_max" name="squareFootage_max"
+                            value="<%= buyer.squareFootage_max %>" required disabled>
                     </div>
+                    <div class="col-md-3"></div>
                 </div>
+
+
                 <div class="container mt-4">
                     <div class="row justify-content-center">
                         <div class="col-sm-2">
