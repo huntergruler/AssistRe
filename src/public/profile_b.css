@@ -45,7 +45,7 @@ body {
 
 .form-control.view-mode {
     border: none;
-    background-color: none;
+    background-color: green;
     /* background-color: transparent; */
     box-shadow: none;
     font-size: 5;
