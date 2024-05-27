@@ -23,7 +23,6 @@ body {
     margin-top: 5px;
     margin-left: 1px;
     margin-right: 1px;
-    border: 1px solid #ccc;
     /* Less space between elements */
 }
 
@@ -31,6 +30,7 @@ body {
     padding-top: 0;
     padding-bottom: 0;
     text-align: right;
+    border: 1px solid #ccc;
 }
 
 .form-group .form-control {
@@ -40,6 +40,7 @@ body {
     /* Adjust height */
     font-size: 14px;
     /* Element value font size */
+    border: 1px solid #ccc;
 }
 
 .form-control.view-mode {
