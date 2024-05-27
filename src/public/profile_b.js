@@ -64,14 +64,14 @@ $(document).ready(function() {
             bathrooms_max: $('#bathrooms_max').val(),
             squareFootage_min: $('#squareFootage_min').val(),
             squareFootage_max: $('#squareFootage_max').val(),
-            price_min: $('#priceRange_min').val(),
-            price_max: $('#priceRange_max').val(),
+            price_min: $('#price_min').val(),
+            price_max: $('#price_max').val(),
             timeFrame: $('#timeFrame').val(),
             prequalified: $('#prequalified').val(),
             preferredLanguages: $('#preferredLanguages').val(),
             userid: $('#userid').val()
         };
-
+console.log(formData);
         $.ajax({
             type: 'POST',
             url: '/profile_b_property',
