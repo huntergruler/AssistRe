@@ -176,14 +176,15 @@
                     <div class="col-md-1"></div>
                 </div>
                 <div class="form-group row justify-content-center">
-                    <label for="timeFrame" class="col-md-2 col-form-label">Timeframe</label>
+                    <label for="timeFrame" class="col-md-4 col-form-label">Buying Timeframe</label>
                     <div class="col-md-4">
                         <input type="text" class="form-control view-mode" id="timeFrame" name="timeFrame"
                             value="<%= buyer.timeFrame %>" required disabled>
                     </div>
+                    <div class="col-md-2"></div>
                 </div>
                 <div class="form-group row justify-content-center">
-                    <label for="prequalified" class="col-md-2 col-form-label">Prequalified</label>
+                    <label for="prequalified" class="col-md-4 col-form-label">Prequalified</label>
                     <div class="col-md-4">
                         <input type="radio" id="prequalifiedY" name="prequalified"
                             required disabled>
@@ -193,6 +194,7 @@
                         No
                         <input type="hidden" id="prequalified" value="<%= buyer.prequalified %>">
                     </div>
+                    <div class="col-md-2"></div>
                 </div>
                 <div class="form-group row justify-content-center">
                     <label for="preferredLanguages" class="col-md-5 col-form-label">Preferred Languages</label>
