@@ -98,9 +98,10 @@ $(document).ready(function() {
 document.addEventListener('DOMContentLoaded', function () {
     prequalified = document.getElementById('prequalified').value;
     if (prequalified === 'Y') {
-        document.getElementById('prequalifiedY').checked = true;
         console.log(prequalified);
+        document.getElementById('prequalifiedY').checked = true;
     } else {
+        console.log(prequalified);
         document.getElementById('prequalifiedN').checked = true;
     }
 });
