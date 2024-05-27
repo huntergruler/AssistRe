@@ -35,6 +35,7 @@ body {
 }
 
 .form-group .form-control {
+    padding-left: 0;
     padding: .2rem .25rem;
     /* Less padding inside input fields */
     height: calc(1.5em + .5rem + 2px);
