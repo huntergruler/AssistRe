@@ -730,9 +730,13 @@ router.post('/buyersubmit', upload.fields([{ name: 'prequalifiedFile' }, { name:
 });
 
 router.get('/reset-password', (req, res) => {
-  const { token } = req.query;
+  const { token, resetType } = req.query;
   // Verify the token and its expiration
-  const query = 'SELECT * FROM Agents WHERE resetToken=? AND resetTokenExpire > ?';
+  if (resetType == 'A') {
+    const query = 'SELECT * FROM Agents WHERE resetToken=? AND resetTokenExpire > ?';
+  } else if (resetType == 'B') {
+    const query = 'SELECT * FROM Buyers WHERE resetToken=? AND resetTokenExpire > ?';
+  }
   const date = new Date(Date.now())
   db.query(query, [token, date], (error, results) => {
     if (error || results.length === 0) {
