@@ -32,12 +32,10 @@
             <form id="loginForm" action="/login" method="post">
                 <input type="hidden" id="userType" name="userType" value="Buyer">
                 <div class="form-group row justify-content-center">
-                    <div class="col-md-4"></div>
                     <div class="col-md-4">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" required class="form-control">
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
                 <div class="form-group row justify-content-center">
                     <div class="col-md-4">
@@ -50,20 +48,20 @@
                         <button id="submit_button" type="submit" class="btn btn-primary">Login</button>
                     </div>
                 </div>
-                <div class="form-group row justify-content-center">
-                    <div class="col-md-4">
-                        <label for="message">message:</label>
-                        <div class="alert alert-warning" name="message" id="message">
-                            <%= message %>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <div class="col-md-4">
-                        <a href="/sendreset">Forgot Password?</a>
-                    </div>
-                </div>
             </form>
+            <div class="form-group row justify-content-center">
+                <div class="col-md-4">
+                    <label for="message">message:</label>
+                    <div class="alert alert-warning" name="message" id="message">
+                        <%= message %>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <div class="col-md-4">
+                    <a href="/sendreset">Forgot Password?</a>
+                </div>
+            </div>
         </div>
     </div>
     <script src="/script.js"></script>
