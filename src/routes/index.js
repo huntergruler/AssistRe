@@ -734,9 +734,9 @@ router.get('/reset-password', (req, res) => {
   // Verify the token and its expiration
   console.log('Token:', token, 'Reset Type:', resetType);
   if (resetType == 'A') {
-    const query = 'SELECT * FROM Agents WHERE resetToken=? AND resetTokenExpire > ?';
+    var query = 'SELECT * FROM Agents WHERE resetToken=? AND resetTokenExpire > ?';
   } else if (resetType == 'B') {
-    const query = 'SELECT * FROM Buyers WHERE resetToken=? AND resetTokenExpire > ?';
+    var query = 'SELECT * FROM Buyers WHERE resetToken=? AND resetTokenExpire > ?';
   }
   const date = new Date(Date.now())
   db.query(query, [token, date], (error, results) => {
