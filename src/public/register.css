@@ -4,14 +4,9 @@ body {
     background-color: #666;
     margin: 100px 50px;
 }
+
 .margin-top-100 {
     margin-top: 100px;
-}
-
-.disabled {
-    opacity: 0.6;
-    color: #ccc;
-    cursor: not-allowed;
 }
 
 .form-container {
@@ -64,11 +59,18 @@ body {
     font-size: 14px;
 }
 
+.disabled {
+    opacity: 0.6;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+
 /* form {
     max-width: 300px;
     /* Adjust the form width as necessary */
-    margin-top: 100px;
-    margin-left: 20px;
+margin-top: 100px;
+margin-left: 20px;
 }
 
 label {
@@ -96,4 +98,6 @@ select {
     display: inline-block;
     margin-right: 10px;
     /* Space between radio buttons */
-} */
+}
+
+*/
