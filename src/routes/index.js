@@ -639,7 +639,7 @@ router.post('/reset', (req, res) => {
       var updateQuery = 'UPDATE Buyers SET password = ? WHERE email = ? & resetToken = ?';
     }
     console.log('Update Query:', updateQuery, 'Email:', email, 'Token:', token, 'Password:', password, 'Hashed Password:', hashedPassword);
-    db.query(updateQuery, [hashedPassword, email], token, (error, results) => {
+    db.query(updateQuery, [hashedPassword, email, token], (error, results) => {
       if (error) {
         return res.status(500).send('Error accessing the database');
       }
