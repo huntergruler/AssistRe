@@ -62,24 +62,43 @@
         <a href="/register">Register</a>
     </div>
 </header>
+
 <body>
     <div class="margin-top-100"></div>
     <div id="parentElement">
-        <div id="resetContainer">
-    <h1>Reset Password</h1>
-    <form id="resetForm" action="/reset" method="post">
-        <input type="hidden" id="email" name="email" value="<%= email %>">
-        <input type="hidden" id="token" name="token" value="<%= token %>">
-        <label for="password">New Password:</label>
-        <input type="password" id="password" name="password" required>
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required">
-        <p id="error_message" style="display: none; color: red">Passwords do not match</p>
-        <button id="submit_button" type="submit">Reset Password</button>
-    </form>
-
-</div> 
-<script src="/script.js"></script>
-<script src="/verifypass.js"></script>
+        <div class="container mt-5">
+            <div class="resetContainer">
+                <h3 class="text-center">Reset Password</h3>
+                <form id="resetForm" action="/reset" method="post">
+                    <input type="hidden" id="email" name="email" value="<%= email %>">
+                    <input type="hidden" id="token" name="token" value="<%= token %>">
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-4">
+                            <label for="password">New Password:</label>
+                            <input type="password" id="password" name="password" required class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-4">
+                            <label for="confirm_password">Confirm Password:</label>
+                            <input type="password" id="confirm_password" name="confirm_password" required
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-4">
+                            <p id="error_message" style="display: none; color: red">Passwords do not match</p>
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-4">
+                            <button id="submit_button" type="submit" class="btn btn-primary">Reset Password</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script src="/script.js"></script>
+            <script src="/verifypass.js"></script>
 </body>
+
 </html>
