@@ -10,12 +10,6 @@ body {
     margin-top: 100px;
 }
 
-.disabled {
-    opacity: 0.6;
-    color: #ccc;
-    cursor: not-allowed;
-}
-
 .form-container {
     max-width: 600px;
     margin: auto;
@@ -62,6 +56,9 @@ body {
     /* Less space between buttons */
 }
 
-.font-size-12 {
-    font-size: 14px;
+.disabled {
+    opacity: 0.6;
+    color: #ccc;
+    cursor: not-allowed;
 }
+

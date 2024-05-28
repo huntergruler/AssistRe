@@ -1,6 +1,8 @@
 body {
+    margin: 0;
+    font-family: Arial, sans-serif;
     font-size: 14px;
-    /* Base font size */
+    background-color: #f0f2f5;
     margin: 100px 50px;
 }
 
@@ -19,7 +21,6 @@ body {
 }
 
 .form-group {
-    border: 1px solid #ccc;
     margin-bottom: 5px;
     margin-top: 5px;
     margin-left: 1px;
@@ -53,10 +54,6 @@ body {
 .text-center button {
     margin: 5px;
     /* Less space between buttons */
-}
-
-.font-size-12 {
-    font-size: 14px;
 }
 
 .disabled {
