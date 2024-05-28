@@ -732,6 +732,7 @@ router.post('/buyersubmit', upload.fields([{ name: 'prequalifiedFile' }, { name:
 router.get('/reset-password', (req, res) => {
   const { token, resetType } = req.query;
   // Verify the token and its expiration
+  console.log('Token:', token, 'Reset Type:', resetType);
   if (resetType == 'A') {
     const query = 'SELECT * FROM Agents WHERE resetToken=? AND resetTokenExpire > ?';
   } else if (resetType == 'B') {
