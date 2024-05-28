@@ -194,14 +194,14 @@
                         No
                         <input type="hidden" id="prequalified" value="<%= buyer.prequalified %>">
                     </div>
-
-
-                    <div class="col-md-3">
-                        <span id="prequalifiedFile"></span>
+                    <div class="form-group row justify-content-center">
+                        <label for="prequalifiedFile" class="col-md-4 col-form-label">Preferred Language</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control view-mode" id="prequalifiedFile"
+                                name="prequalifiedFile" value="<%= buyer.prequalifiedFile %>" required disabled>
+                        </div>
                     </div>
-
-
-                    <div class="form-group row justify-content-center" id="fileUploadDiv" style="display: none;">
+                        <div class="form-group row justify-content-center" id="fileUploadDiv" style="display: none;">
                         <label for="dataFile" class="col-md-4 col-form-label">Upload Data File</label>
                         <div class="col-md-4">
                             <input type="file" class="form-control" id="dataFile" name="dataFile">
