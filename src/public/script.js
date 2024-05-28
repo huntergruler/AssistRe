@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
                 console.log(email, password, userType);
-                fetch('/login', {
+                fetch('/login_b', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
