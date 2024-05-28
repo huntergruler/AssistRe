@@ -66,38 +66,3 @@ body {
 }
 
 
-/* form {
-    max-width: 300px;
-    /* Adjust the form width as necessary */
-margin-top: 100px;
-margin-left: 20px;
-}
-
-label {
-    display: block;
-    /* Ensures the label is on its own line */
-    margin-bottom: 5px;
-    /* Space between label and input */
-}
-
-input[type="text"],
-input[type="email"],
-select {
-    width: 100%;
-    /* Makes inputs and selects take up the full width of the form */
-    box-sizing: border-box;
-    /* Includes padding and border in the width */
-}
-
-.radio-group {
-    padding-left: 20px;
-    /* Indentation for radio buttons */
-}
-
-.radio-label {
-    display: inline-block;
-    margin-right: 10px;
-    /* Space between radio buttons */
-}
-
-*/
