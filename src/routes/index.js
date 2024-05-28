@@ -625,14 +625,19 @@ router.get('/reset', (req, res) => {
 
 // Handle resetting the password
 router.post('/reset', (req, res) => {
-  const { email, token, password } = req.body;
+  const { email, token, password, resetType } = req.body;
   // First, query the city and state from the ZipCodes table
   bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
     if (err) {
       console.error("Hashing error:", err);
       return res.status(500).send('Error hashing password');
     }
-    const updateQuery = 'UPDATE Agents SET password = ? WHERE email = ?';
+    if (resetType == 'A') { // Agent
+      var query = 'SELECT * FROM Agents WHERE resetToken=? AND resetTokenExpire > ?';
+    }
+    else if (resetType == 'B') { // Buyer
+      var query = 'SELECT * FROM Buyers WHERE resetToken=? AND resetTokenExpire > ?';
+    }
     db.query(updateQuery, [hashedPassword, email], (error, results) => {
       if (error) {
         return res.status(500).send('Error accessing the database');
@@ -747,7 +752,7 @@ router.get('/reset-password', (req, res) => {
       return
     }
     // Serve the password reset form
-    res.render('reset', { email: results[0].email, token: token });
+    res.render('reset', { email: results[0].email, token: token, resetType: resetType });
   });
 });
 
