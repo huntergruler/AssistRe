@@ -104,22 +104,22 @@ router.get('/profile_b', (req, res) => {
     res.redirect('/');
   }
   else {
-  const userid = req.session.userid;
+    const userid = req.session.userid;
 
     const query = `select b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
                           b.bathrooms_min, b.bathrooms_max, b.bedrooms_min, b.bedrooms_max, b.buyerType, b.preferredLanguages, b.prequalified, b.price_min, 
                           b.price_max, b.propertyType, b.squareFootage_min, b.squareFootage_max, b.state, b.timeFrame, b.userPhoto, b.prequalifiedFile
                      from Buyers b
                     where b.userid = ?`;
-db.query(query, [userid], (error, results) => {
-    if (error) {
-      console.error('Error fetching buyer profile:', error);
-      return res.status(500).send('Server error');
-    }
-    if (results.length === 0) {
-      return res.status(404).send('User not found');
-    }
-    res.render('profile_b', { buyer: results[0] });
+    db.query(query, [userid], (error, results) => {
+      if (error) {
+        console.error('Error fetching buyer profile:', error);
+        return res.status(500).send('Server error');
+      }
+      if (results.length === 0) {
+        return res.status(404).send('User not found');
+      }
+      res.render('profile_b', { buyer: results[0] });
     });
   }
 });
@@ -131,17 +131,17 @@ router.post('/profile_b', (req, res) => {
     res.redirect('/');
   }
   else {
-  const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
+    const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
 
-  const query = 'UPDATE Buyers SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, phoneNumber = ? WHERE userid = ?';
-  db.query(query, [firstName, lastName, address, city, state, zip, phoneNumber, userid], (error, results) => {
-    if (error) {
-      console.error('Error updating buyer profile:', error);
-      return res.status(500).send('Server error');
-    }
+    const query = 'UPDATE Buyers SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, phoneNumber = ? WHERE userid = ?';
+    db.query(query, [firstName, lastName, address, city, state, zip, phoneNumber, userid], (error, results) => {
+      if (error) {
+        console.error('Error updating buyer profile:', error);
+        return res.status(500).send('Server error');
+      }
 
-    res.send({ success: true });
-  });
+      res.send({ success: true });
+    });
   }
 });
 
@@ -152,16 +152,16 @@ router.post('/profile_b_property', (req, res) => {
     res.redirect('/');
   }
   else {
-  const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, userPhoto, userid } = req.body;
-  const query = 'UPDATE Buyers SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, userPhoto = ? WHERE userid = ?';
-  db.query(query, [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, userPhoto, userid], (error, results) => {
-    if (error) {
-      console.error('Error updating buyer profile:', error);
-      return res.status(500).send('Server error');
-    }
+    const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, userPhoto, userid } = req.body;
+    const query = 'UPDATE Buyers SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, userPhoto = ? WHERE userid = ?';
+    db.query(query, [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, userPhoto, userid], (error, results) => {
+      if (error) {
+        console.error('Error updating buyer profile:', error);
+        return res.status(500).send('Server error');
+      }
 
-    res.send({ success: true });
-  });
+      res.send({ success: true });
+    });
   }
 });
 
@@ -317,52 +317,52 @@ router.post('/login', [
         return res.render(htmlpage, { message: 'Error during database query' });
       }
       else if (results.length === 0) {
-          // Send response when email is not found
-          res.json({
-            success: false,
-            message: "Invalid credentials."
-          });        
-        } else if (results[0].emailverified === 0) {
-            // Send response when email is not verified
+        // Send response when email is not found
+        res.json({
+          success: false,
+          message: "Invalid credentials."
+        });
+      } else if (results[0].emailverified === 0) {
+        // Send response when email is not verified
+        res.json({
+          success: false,
+          message: "Verify your email address and then try to login again."
+        });
+      } else {
+        const { userid, firstname, lastname } = results[0];
+        bcrypt.compare(password, results[0].password, (err, isMatch) => {
+          if (!isMatch || err) {
             res.json({
               success: false,
-              message: "Verify your email address and then try to login again."
+              message: "Invalid credentials."
             });
-          } else {
-            const { userid, firstname, lastname } = results[0];
-            bcrypt.compare(password, results[0].password, (err, isMatch) => {
-              if (!isMatch || err) {
-                res.json({
-                  success: false,
-                  message: "Invalid credentials."
-                });
-              }
-               else if (isMatch) {
-                    req.session.user = email;
-                    req.session.userid = userid;
-                    req.session.firstname = firstname;
-                    req.session.lastname = lastname;
-                    req.session.userType = userType;
-                    console.log('User logged in:', email, userType);
-                    if (userType === 'Agent') {
-                      var updateQuery = 'update Agents set lastlogin = now() WHERE email = ?';
-                    } else if (userType === 'Buyer') {
-                      var updateQuery = 'update Buyers set lastlogin = now() WHERE email = ?';
-                    }
-                    db.query(updateQuery, [email], (error, results) => {
-                      if (error) {
-                        return res.render(htmlpage, { message: 'Error during database update' });
-                      }
-                    });
-                    res.json({
-                      success: true,
-                      message: "Successful Login"
-                    });
-                  }
-                });
+          }
+          else if (isMatch) {
+            req.session.user = email;
+            req.session.userid = userid;
+            req.session.firstname = firstname;
+            req.session.lastname = lastname;
+            req.session.userType = userType;
+            console.log('User logged in:', email, userType);
+            if (userType === 'Agent') {
+              var updateQuery = 'update Agents set lastlogin = now() WHERE email = ?';
+            } else if (userType === 'Buyer') {
+              var updateQuery = 'update Buyers set lastlogin = now() WHERE email = ?';
             }
-          });
+            db.query(updateQuery, [email], (error, results) => {
+              if (error) {
+                return res.render(htmlpage, { message: 'Error during database update' });
+              }
+            });
+            res.json({
+              success: true,
+              message: "Successful Login"
+            });
+          }
+        });
+      }
     });
+  });
 
 // Route to get city and state by zip code
 router.get('/get-city-state', (req, res) => {
@@ -653,11 +653,19 @@ router.get('/sendreset', (req, res) => {
 
 router.post('/sendreset', (req, res) => {
   const email = req.body.email;
+  const userType = req.body.userType;
   const resetToken = crypto.randomBytes(20).toString('hex');
   const resetTokenExpire = Date.now() + 900000; // 15 minutes from now
   const resetTokenExpireDate = new Date(resetTokenExpire);
-  // Store the reset token and its expiration in the database
-  const updateQuery = 'UPDATE Agents SET resetToken=?, resetTokenExpire=? WHERE email=?';
+  if (userType == 'Agent') {
+    // Store the reset token and its expiration in the database
+    const updateQuery = 'UPDATE Agents SET resetToken=?, resetTokenExpire=? WHERE email=?';
+    resetType = 'A';
+  } else if (userType == 'Buyer') {
+    // Store the reset token and its expiration in the database
+    const updateQuery = 'UPDATE Buyers SET resetToken=?, resetTokenExpire=? WHERE email=?';
+    resetType = 'B';
+  }
   db.query(updateQuery, [resetToken, new Date(resetTokenExpire), email], (error, results) => {
     if (error) {
       console.error('Database error:', error);
@@ -677,7 +685,7 @@ router.post('/sendreset', (req, res) => {
       from: process.env.SMTP_FROM,
       to: email,
       subject: 'Password Reset',
-      html: `Please reset your password by clicking on this link: <a href="http://${req.headers.host}/reset-password?token=${resetToken}">Reset Password</a>`
+      html: `Please reset your password by clicking on this link: <a href="http://${req.headers.host}/reset-password?token=${resetToken}&resetType=${resetType}">Reset Password</a>`
     };
 
     mailTransporter.sendMail(mailDetails, (error, info) => {
