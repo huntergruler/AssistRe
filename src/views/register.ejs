@@ -34,108 +34,75 @@
                             <label class="radio-label"><input type="radio" name="userType" value="Agent" required>
                                 Agent</label>
                         </div>
-                        <div class="form-group row justify-content-center">
-                            <div class="col-md-4"></div>
-                            <label class="col-md-3" style="font-size: 12px;">First</label>
-                            <label class="col-md-3" style="font-size: 12px;">Last</label>
-                            <div class="col-md-3"></div>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="firstName" class="col-md-4 col-form-label">Name</label>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control view-mode" id="firstName" name="firstName"
-                                    value="<%= buyer.firstName %>" required disabled>
-                            </div>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control view-mode" id="lastName" name="lastName"
-                                    value="<%= buyer.lastName %>" required disabled>
-                            </div>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="address" class="col-md-4 col-form-label">Address</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control view-mode" id="address" name="address"
-                                    value="<%= buyer.address %>" required disabled>
-                            </div>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="city" class="col-md-4 col-form-label">City</label>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control view-mode" id="city" name="city"
-                                    value="<%= buyer.city %>" required disabled>
-                            </div>
-                            <div class="col-md-3"></div>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="state" class="col-md-4 col-form-label">State</label>
-                            <div class="col-md-2">
-                                <input class="form-control view-mode" id="state" name="state" value="<%= buyer.state %>"
-                                    required disabled>
-                            </div>
-                            <div class="col-md-4"></div>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="zip" class="col-md-4 col-form-label">Zip</label>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control view-mode" id="zip" name="zip" value="<%= buyer.zip %>"
-                                    required disabled onmouseleave="lookupCityState()" onblur="lookupCityState()">
-                                <span id="cityState"></span>
-                            </div>
-                            <div class="col-md-4"></div>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="phoneNumber" class="col-md-4 col-form-label">Phone Number</label>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control view-mode" id="phoneNumber" name="phoneNumber"
-                                    value="<%= buyer.phoneNumber %>" required disabled>
-                            </div>
-                            <div class="col-md-3"></div>
-                        </div>
-                            </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-group">
                     </div>
-                    <div class="form-group">
-                        <label for="firstName">First Name:</label>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <div class="col-md-4">
+                        <label>User Type:</label>
+                        <div class="radio-group">
+                            <label class="radio-label"><input type="radio" name="userType" value="Buyer" required>
+                                Buyer</label>
+                            <label class="radio-label"><input type="radio" name="userType" value="Agent" required>
+                                Agent</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <div class="col-md-4"></div>
+                    <label class="col-md-3" style="font-size: 12px;">First</label>
+                    <label class="col-md-3" style="font-size: 12px;">Last</label>
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label for="firstName" class="col-md-4 col-form-label">Name</label>
+                    <div class="col-md-2">
                         <input type="text" id="firstName" name="firstName" required disabled>
                     </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name:</label>
+                    <div class="col-md-2">
                         <input type="text" id="lastName" name="lastName" required disabled>
                     </div>
-                    <div class="form-group">
-                        <label for="phoneNumber">Phone Number:</label>
-                        <input type="text" id="phoneNumber" name="phoneNumber" required disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="address">Address:</label>
-                        <input type="text" id="address" name="address" required disabled>
-                        <span id="address"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="zipCode">Zip Code:</label>
-                        <input type="text" id="zipCode" name="zipCode" required onblur="lookupCityState()" disabled>
-                        <span id="cityState"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required disabled>
-                        <span id="userStatus"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm_password">Confirm Password:</label>
-                        <input type="password" id="confirm_password" name="confirm_password" required disabled>
-                        <p id="error_message" style="display: none; color: red">Passwords do not match</p>
-                    </div>
-                    <button id="submit_button" type="submit" disabled>Register</button>
                 </div>
-            </form>
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required disabled>
+                    <span id="address"></span>
+                </div>
+                <div class="form-group">
+                    <label for="zipCode">Zip Code:</label>
+                    <input type="text" id="zipCode" name="zipCode" required onblur="lookupCityState()" disabled>
+                    <span id="cityState"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required disabled>
+                    <span id="userStatus"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required disabled>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required disabled>
+                    <p id="error_message" style="display: none; color: red">Passwords do not match</p>
+                </div>
+                <button id="submit_button" type="submit" disabled>Register</button>
         </div>
+
+        </form>
+    </div>
     </div>
     <script src="/script.js"></script>
     <script src="/verifypass.js"></script>
