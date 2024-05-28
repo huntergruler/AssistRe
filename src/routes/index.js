@@ -643,10 +643,12 @@ router.post('/reset', (req, res) => {
       if (error) {
         return res.status(500).send('Error accessing the database');
       }
-      //    console.log('Results:', results, 'Password:', password, 'Hashed Password', hashedPassword);
       // Redirect to login with a password changed message
-      res.redirect('/login?passwordchanged=true');
-
+      if (resetType == 'A') {
+        res.redirect('/login_a?passwordchanged=true');
+      } else if (resetType == 'B') {  // Buyer
+        res.redirect('/login_b?passwordchanged=true');
+      }
     });
   });
 });
