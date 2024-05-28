@@ -626,7 +626,7 @@ router.get('/reset', (req, res) => {
 // Handle resetting the password
 router.post('/reset', (req, res) => {
   const { email, token, password, resetType } = req.body;
-  // First, query the city and state from the ZipCodes table
+
   bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
     if (err) {
       console.error("Hashing error:", err);
@@ -638,6 +638,7 @@ router.post('/reset', (req, res) => {
     else if (resetType == 'B') { // Buyer
       var updateQuery = 'UPDATE Buyers SET password = ? WHERE email = ? & resetToken = ?';
     }
+    console.log('Update Query:', updateQuery, 'Email:', email, 'Token:', token, 'Password:', password, 'Hashed Password:', hashedPassword);
     db.query(updateQuery, [hashedPassword, email], token, (error, results) => {
       if (error) {
         return res.status(500).send('Error accessing the database');
