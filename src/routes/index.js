@@ -633,12 +633,12 @@ router.post('/reset', (req, res) => {
       return res.status(500).send('Error hashing password');
     }
     if (resetType == 'A') { // Agent
-      var updateQuery = 'SELECT * FROM Agents WHERE resetToken=? AND resetTokenExpire > ?';
+      var updateQuery = 'UPDATE Agents SET password = ? WHERE email = ? & resetToken = ?';
     }
     else if (resetType == 'B') { // Buyer
-      var updateQuery = 'SELECT * FROM Buyers WHERE resetToken=? AND resetTokenExpire > ?';
+      var updateQuery = 'UPDATE Buyers SET password = ? WHERE email = ? & resetToken = ?';
     }
-    db.query(updateQuery, [hashedPassword, email], (error, results) => {
+    db.query(updateQuery, [hashedPassword, email], token, (error, results) => {
       if (error) {
         return res.status(500).send('Error accessing the database');
       }
