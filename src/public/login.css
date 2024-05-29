@@ -36,7 +36,7 @@ body::before {
 
 .container {
     background-color: #f0f2f5;
-    width: fit-content
+    width: 250px;
 }
 
 .form-group {
