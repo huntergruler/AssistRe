@@ -5,7 +5,11 @@ document.addEventListener('keyup', function(event) {
         const confirm_password = document.getElementById('confirm_password').value.trim();
         const submitButton = document.getElementById('submit_button');
         const password_length = password.length;
-        if (password === confirm_password && password !== '' && password_length >= 1) {
+        if(password ==='')
+        {
+            error_message.style.display = 'none';
+            submitButton.disabled = true;
+        } else if (password === confirm_password) {
             submitButton.disabled = false;
             error_message.style.display = 'none';
         } else {
