@@ -58,7 +58,8 @@ document.addEventListener('keyup', function (event) {
 
 document.querySelectorAll('input[name="userType"]').forEach(radio => {
     radio.addEventListener('change', function () {
-        document.querySelectorAll('#registerForm input, #registerForm button').forEach(field => {
+        const submitButton = document.getElementById('submit_button');
+        document.querySelectorAll('#registerForm input').forEach(field => {
             field.disabled = false;
         });
         document.getElementById('email').value = '';
