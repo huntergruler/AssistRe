@@ -15,6 +15,7 @@ document.addEventListener('keyup', function(event) {
         } else {
             submitButton.disabled = true;
             error_message.style.display = 'block';
+            error_message.innerText = 'Passwords do not match';
         }
     }
 });

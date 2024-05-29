@@ -56,7 +56,7 @@ document.addEventListener('keyup', function (event) {
     }
 }, true); // Using capturing phase to handle the event as it propagates down
 
-document.addEventListener('blur', function (event) {
+document.addEventListener('submit', function (event) {
     const firstName = document.getElementById('firstName').value.trim();
     const lastName = document.getElementById('lastName').value.trim();
     const email = document.getElementById('email').value.trim();
