@@ -20,7 +20,7 @@ body {
 }
 
 .form-container {
-    max-width: 500px;
+    max-width: auto;
     margin-bottom: 1px;
     margin-top: 1px;
     border: 1px solid #ccc;
