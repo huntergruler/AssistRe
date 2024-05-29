@@ -32,13 +32,13 @@ body::before {
     /* border: 1px solid #ccc; */
     font-size: 5;
     /* Less space between elements */
-    background-color: red;
 }
 
 .container {
     background-color: #f0f2f5;
-    width: 500px;
-    border-radius: 5px;
+    width: 400px;
+    border-radius: 10px;
+    opacity: 0.8;
 }
 
 .form-group {
