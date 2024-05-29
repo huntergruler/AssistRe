@@ -30,7 +30,7 @@
 
 <body>
     <div class="margin-top-100"></div>
-    <div class="row row-cols-3">
+    <div class="row row-cols-2">
         <div class="container mt-5">
             <div class="form-container">
                 <h3 class="text-center">Personal Info</h3>
@@ -102,7 +102,12 @@
                     </div>
                 </form>
             </div>
-        </div>
+            <div class="container mt-5">
+                <div class="form-container">
+                    <h3 class="text-center">Zip Code container</h3>
+                </div>
+            </div>
+            </div>
         <div class="container mt-5">
             <div class="form-container">
                 <h3 class="text-center">Property Info</h3>
@@ -215,20 +220,6 @@
                             style="display:none;">Save</button>
                         <button type="button" id="cancelButton2" class="btn btn-secondary btn-sm"
                             style="display:none;">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="container mt-5">
-            <div class="form-container">
-                <h3 class="text-center">Property Info</h3>
-                <form id="propertyForm">
-                    <div class="form-group row justify-content-center">
-                        <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control view-mode" id="propertyType" name="propertyType"
-                                value="<%= buyer.propertyType %>" required disabled>
-                        </div>
                     </div>
                 </form>
             </div>
