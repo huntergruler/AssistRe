@@ -55,30 +55,27 @@
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
-                        <label for="address" class="col-md-4 col-form-label">Address</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control view-mode" id="address" name="address"
-                                required disabled>
-                        </div>
-                            <span id="address"></span>
+                    <label for="address" class="col-md-4 col-form-label">Address</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control view-mode" id="address" name="address" required disabled>
+                    </div>
+                    <span id="address"></span>
                 </div>
                 <div class="form-group row justify-content-center">
                     <label for="zipCode" class="col-md-4 col-form-label">Zip</label>
                     <div class="col-md-2">
-                        <input type="text" class="form-control view-mode" id="zipCode" name="zipCode"
-                            required disabled onmouseleave="lookupCityState()" onblur="lookupCityState()">
+                        <input type="text" class="form-control view-mode" id="zipCode" name="zipCode" required disabled
+                            onmouseleave="lookupCityState()" onblur="lookupCityState()">
                         <span id="cityState"></span>
                     </div>
                     <div class="col-md-4"></div>
                 </div>
-                <div class="form-group">
-                    <label for="phoneNumber">Phone Number:</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber" required disabled>
-                </div>
-                <div class="form-group">
-                    <label for="zipCode">Zip Code:</label>
-                    <input type="text" id="zipCode" name="zipCode" required onblur="lookupCityState()" disabled>
-                    <span id="cityState"></span>
+                <div class="form-group row justify-content-center">
+                    <label for="phoneNumber" class="col-md-4 col-form-label">Phone Number</label>
+                    <div class="col-md-2">
+                        <input type="text" id="phoneNumber" name="phoneNumber" required disabled>
+                    </div>
+                    <div class="col-md-4"></div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
