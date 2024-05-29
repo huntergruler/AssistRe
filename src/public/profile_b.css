@@ -15,6 +15,10 @@ body {
     border: 1px solid #ccc;
     opacity: 0.8;
     margin: 5px 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .form-container {
