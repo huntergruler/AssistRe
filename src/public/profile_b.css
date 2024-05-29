@@ -3,6 +3,7 @@ body {
     /* Base font size */
     background-color: #666;
     margin: 50px 50px;
+    max-width: 1000px;
 }
 
 .margin-top-100 {
