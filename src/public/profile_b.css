@@ -10,7 +10,6 @@ body {
     margin-top: 100px;
 }
 .container {
-    background-color: #f0f2f5;
     width: auto;
     border-radius: 10px;
     border: 1px solid #ccc;
@@ -44,7 +43,7 @@ body {
 }
 
 .form-group .form-control {
-    padding: 0px;
+    padding: .2rem .25rem;
     /* Less padding inside input fields */
     height: calc(1.5em + .5rem + 2px);
     /* Adjust height */
