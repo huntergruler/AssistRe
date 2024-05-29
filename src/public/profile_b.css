@@ -11,7 +11,7 @@ body {
 }
 .container {
     background-color: #f0f2f5;
-    width: 600px;
+    width: auto;
     border-radius: 10px;
     border: 1px solid #ccc;
     opacity: 0.8;
@@ -20,7 +20,7 @@ body {
 .form-container {
     max-width: 400px;
     margin-bottom: 1px;
-    margin-left: 5px;
+    margin-left: 0px;
     margin-top: 1px;
     border: 1px solid #ccc;
     font-size: 5;
