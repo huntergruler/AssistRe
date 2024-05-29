@@ -14,7 +14,7 @@ body {
     width: auto;
     border-radius: 10px;
     border: 1px solid #ccc;
-    opacity: 0.8;
+    /* opacity: 0.8; */
 }
 
 .form-container {
