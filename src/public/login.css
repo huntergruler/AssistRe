@@ -34,14 +34,9 @@ body::before {
     /* Less space between elements */
 }
 
-#loginForm{
-    background-color: red;
-}
-
 .container {
     background-color: #f0f2f5;
-    width: 500px;
-    border-radius: 5px;
+    
 }
 
 .form-group {
