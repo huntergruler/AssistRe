@@ -56,7 +56,7 @@ document.addEventListener('keyup', function (event) {
     }
 }, true); // Using capturing phase to handle the event as it propagates down
 
-document.addEventListener('submit', function (event) {
+document.addEventListener('blur', function (event) {
     const firstName = document.getElementById('firstName').value.trim();
     const lastName = document.getElementById('lastName').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -68,6 +68,7 @@ document.addEventListener('submit', function (event) {
         document.getElementById('submit_button').disabled = true;
     }
 }
+);
 
 
 document.querySelectorAll('input[name="userType"]').forEach(radio => {
