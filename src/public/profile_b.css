@@ -10,7 +10,6 @@ body {
     margin-top: 100px;
 }
 .container {
-    width: auto;
     border-radius: 10px;
     border: 1px solid #ccc;
     opacity: 0.8;
