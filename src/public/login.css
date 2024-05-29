@@ -7,7 +7,7 @@ body {
     background-image: url("images/titlebackground.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center 100px;
 }
 
 .margin-top-100 {
