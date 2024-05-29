@@ -15,7 +15,7 @@ body {
     margin: auto;
     margin-bottom: 1px;
     margin-top: 1px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     font-size: 5;
     /* Less space between elements */
 }
