@@ -32,6 +32,7 @@ body::before {
     /* border: 1px solid #ccc; */
     font-size: 5;
     /* Less space between elements */
+    background-color: aqua;
 }
 
 .container {
