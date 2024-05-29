@@ -21,6 +21,10 @@ body {
     /* Less space between elements */
 }
 
+.container {
+    background-color: #f0f2f5;
+}
+
 .form-group {
     margin-bottom: 5px;
     margin-top: 5px;
