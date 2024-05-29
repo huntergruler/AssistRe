@@ -3,18 +3,18 @@ body {
     /* Base font size */
     background-color: #666;
     margin: 50px 50px;
-    max-width: 820px;
+    max-width: auto;
 }
 
 .margin-top-100 {
     margin-top: 100px;
 }
 .container {
-    background-color: #c4d6f0;
+    background-color: #f0f2f5;
     width: auto;
     border-radius: 10px;
     border: 1px solid #ccc;
-    /* opacity: 0.8; */
+    opacity: 0.8;
 }
 
 .form-container {
