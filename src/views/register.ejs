@@ -27,85 +27,88 @@
             <h3 class="text-center">Register</h3>
             <form id="registerForm" action="/register" method="post">
                 <div class="form-group row justify-content-center">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <label>User Type:</label>
-                        <div class="radio-group">
-                            <label class="radio-label"><input type="radio" name="userType" value="Buyer" required>
-                                Buyer</label>
-                            <label class="radio-label"><input type="radio" name="userType" value="Agent" required>
-                                Agent</label>
+                    <div class="form-group row justify-content-center">
+                        <label for="userType" class="col-md-3 col-form-label">User Type</label>
+                        <div class="col-md-7">
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="userType" value="Buyer" required>
+                                    Buyer</label>
+                                <label class="radio-label"><input type="radio" name="userType" value="Agent" required>
+                                    Agent</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="form-group row justify-content-center">
+                            <div class="col-md-3"></div>
+                            <label class="col-md-2" style="font-size: 12px;">First</label>
+                            <label class="col-md-2" style="font-size: 12px;">Last</label>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <label for="firstName" class="col-md-3 col-form-label">Name</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="firstName" name="firstName" required disabled>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="lastName" name="lastName" required disabled>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="address" class="col-md-3 col-form-label">Address</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="address" name="address" required disabled>
+                        </div>
+                        <span id="address"></span>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="zipCode" class="col-md-3 col-form-label">Zip Code</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="zipCode" name="zipCode" required disabled
+                                onmouseleave="lookupCityState()" onblur="lookupCityState()">
+                            <span id="cityState"></span>
+                        </div>
+                        <div class="col-md-5"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="phoneNumber" class="col-md-3 col-form-label">Phone Number</label>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required
+                                disabled>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="email" class="col-md-3 col-form-label">Email</label>
+                        <div class="col-md-5">
+                            <input type="email" class="form-control" id="email" name="email" required disabled>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <span id="userStatus"></span>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="password" class="col-md-3 col-form-label">Password</label>
+                        <div class="col-md-5">
+                            <input type="password" class="form-control" id="password" name="password" required disabled>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="confirm_password" class="col-md-3 col-form-label">Confirm Password</label>
+                        <div class="col-md-5">
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                                required disabled>
+                        </div>
+                        <div class="col-md-2"></div>
+                        <p id="error_message" style="display: none; color: red">Passwords do not match</p>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="text-center">
+                            <button id="submit_button" type="submit" disabled>Register</button>
                         </div>
                     </div>
-                    <div class="col-md-4"></div>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <div class="form-group row justify-content-center">
-                        <div class="col-md-3"></div>
-                        <label class="col-md-2" style="font-size: 12px;">First</label>
-                        <label class="col-md-2" style="font-size: 12px;">Last</label>
-                        <div class="col-md-3"></div>
-                    </div>
-                    <label for="firstName" class="col-md-3 col-form-label">Name</label>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" id="firstName" name="firstName" required disabled>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control" id="lastName" name="lastName" required disabled>
-                    </div>
-                    <div class="col-md-1"></div>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <label for="address" class="col-md-3 col-form-label">Address</label>
-                    <div class="col-md-7">
-                        <input type="text" class="form-control" id="address" name="address" required disabled>
-                    </div>
-                    <span id="address"></span>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <label for="zipCode" class="col-md-3 col-form-label">Zip Code</label>
-                    <div class="col-md-2">
-                        <input type="text" class="form-control" id="zipCode" name="zipCode" required disabled
-                            onmouseleave="lookupCityState()" onblur="lookupCityState()">
-                        <span id="cityState"></span>
-                    </div>
-                    <div class="col-md-5"></div>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <label for="phoneNumber" class="col-md-3 col-form-label">Phone Number</label>
-                    <div class="col-md-3">
-                        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" required disabled>
-                    </div>
-                    <div class="col-md-4"></div>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <label for="email" class="col-md-3 col-form-label">Email</label>
-                    <div class="col-md-5">
-                        <input type="email" class="form-control" id="email" name="email" required disabled>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <span id="userStatus"></span>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <label for="password" class="col-md-3 col-form-label">Password</label>
-                    <div class="col-md-5">
-                        <input type="password" class="form-control" id="password" name="password" required disabled>
-                    </div>
-                    <div class="col-md-2"></div>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <label for="confirm_password" class="col-md-3 col-form-label">Confirm Password</label>
-                    <div class="col-md-5">
-                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" required disabled>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <p id="error_message" style="display: none; color: red">Passwords do not match</p>
-                </div>
-                <div class="form-group row justify-content-center">
-                    <div class="text-center">
-                        <button id="submit_button" type="submit" disabled>Register</button>
-                    </div>
-                </div>
             </form>
         </div>
     </div>
