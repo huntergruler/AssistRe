@@ -56,6 +56,20 @@ document.addEventListener('keyup', function (event) {
     }
 }, true); // Using capturing phase to handle the event as it propagates down
 
+document.addEventListener('blur', function (event) {
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const confirmPassword = document.getElementById('confirmPassword').value.trim();
+    const zipCode = document.getElementById('zipCode').value.trim();
+    if (!firstName || !lastName || !email || !address || !password || !confirmPassword || !zipCode) {
+        document.getElementById('submit_button').disabled = true;
+    }
+}
+
+
 document.querySelectorAll('input[name="userType"]').forEach(radio => {
     radio.addEventListener('change', function () {
         const submitButton = document.getElementById('submit_button');
