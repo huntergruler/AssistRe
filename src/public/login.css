@@ -5,6 +5,9 @@ body {
     font-size: 14px;
     margin: 100px 50px;
     background-image: url("images/titlebackground.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .margin-top-100 {
