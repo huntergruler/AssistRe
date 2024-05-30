@@ -117,6 +117,29 @@ function lookupCityState() {
         xhr.send();
     }
 }
+function showZipCodes() {
+    const form = document.getElementById("zipCodeForm");
+    const disp = document.getElementById("ownedZipCodes");
+    const zipButton = document.getElementById('zipCodeButton');
+
+    if (zipToggle == 0) {
+        form.style.display = "none";
+        disp.style.display = "block";
+        zipButton.innerHTML = "Edit";
+        zipToggle = 1;
+
+        saveChanges();
+        populateAgentZipCodes();
+    }
+    else {
+        form.style.display = "block";
+        disp.style.display = "none";
+        zipButton.innerHTML = "Done";
+        populateStates();
+        populateAgentZipCodes();
+        zipToggle = 0;
+    }
+};
 
 // // Function to toggle the file upload input based on the selected radio button
 // function toggleFileUpload(show) {
