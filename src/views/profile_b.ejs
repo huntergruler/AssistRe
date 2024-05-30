@@ -264,33 +264,35 @@
                                 <select id="citySelect" onchange="populateZipCodes();"></select>
                                 <div class="form-group row justify-content-center">
                                     <div class="grid-container">
-                                    <div class="grid-available">
-                                        <p>Available Zip Codes</p>
-                                        <div class="container">
-                                            <div id="availabeZipCodesContainer" class="box1">
-                                                <!-- JavaScript will populate this container -->
+                                        <div class="grid-available">
+                                            <div class="row">
+                                                <div class="container">
+                                                    <div class="col-md-4">Available Zip Codes</div>
+                                                    <div id="availabeZipCodesContainer" class="box1">
+                                                        <!-- JavaScript will populate this container -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="grid-action">
+                                                <button type="button" class="button" onclick="addSelection()">Add -->
+                                                </button>
+                                                <button type="button" class="button" onclick="removeSelection()"> <--
+                                                        Remove</button>
+                                            </div>
+                                            <div class="grid-selected">
+                                                <p>Selected Zip Codes</p>
+                                                <div class="container">
+                                                    <div id="selectedZipCodesContainer" class="box2">
+                                                        <!-- JavaScript will populate this container -->
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="grid-action">
-                                        <button type="button" class="button" onclick="addSelection()">Add --> </button>
-                                        <button type="button" class="button" onclick="removeSelection()"> <--
-                                                Remove</button>
-                                    </div>
-                                    <div class="grid-selected">
-                                        <p>Selected Zip Codes</p>
-                                        <div class="container">
-                                            <div id="selectedZipCodesContainer" class="box2">
-                                                <!-- JavaScript will populate this container -->
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <button type="button" class="hoverStyle" id="zipCodeButton"
+                                        onclick="showZipCodes()">Edit</button>
                                 </div>
-                                </div>
-                                <button type="button" class="hoverStyle" id="zipCodeButton"
-                                    onclick="showZipCodes()">Edit</button>
                             </div>
-                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
