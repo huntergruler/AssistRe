@@ -16,7 +16,7 @@ function populateUserZipCodes() {
                 selectedZipCodesContainer.innerHTML = '';
             }
             if (data.error) {
-                const div = document.createElement("div");
+                div.className = "form-group row justify-content-center";
                 div.textContent = 'No zip codes selected';
                 if (selectedZipCodesContainer) {
                     selectedZipCodesContainer.appendChild(div);
