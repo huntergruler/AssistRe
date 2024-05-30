@@ -17,6 +17,8 @@ body {
 .zipCode-container {
     margin: 50px 0;
     border-radius: 8px;
+    border: 1px solid black;
+    
 }
 
 .zipCode-container h1 {
