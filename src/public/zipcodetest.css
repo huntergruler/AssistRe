@@ -148,6 +148,7 @@ body {
     border: 1px solid black;
     max-width: 650px;
     background-color: aqua;
+    border-radius: 5px;
     /* Less space between elements */
 }
 
@@ -161,7 +162,7 @@ body {
 .form-group .form-control {
     padding: .2rem .25rem;
     /* Less padding inside input fields */
-    /* height: calc(1.5em + .5rem + 2px); */
+    height: calc(1.5em + .5rem + 2px);
     /* Adjust height */
     font-size: 14px;
     /* Element value font size */
