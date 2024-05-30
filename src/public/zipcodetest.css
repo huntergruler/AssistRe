@@ -137,7 +137,6 @@ body {
 }
 
 .state-group {
-    margin-bottom: 0px;
     margin-top: 0px;
     margin-left: 1px;
     margin-right: 1px;
@@ -146,6 +145,7 @@ body {
     max-height: fit-content;
     /* Less space between elements */
     border: 1px solid #ccc;
+    align-content: center;
 }
 
 .form-group {
