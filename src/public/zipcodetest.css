@@ -161,6 +161,7 @@ body {
     border: 1px solid #ccc;
     align-content: center;
     align-items: center;
+    text-align: right;
 }
 
 .form-group {
