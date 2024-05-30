@@ -28,7 +28,7 @@ function populateUserZipCodes() {
                 data.results.forEach(code => {
                     const div = document.createElement("div");
                     div.textContent = code.zipCode;
-                    div.className = "form-group row justify-content-center";
+                    div.className = "ownedZipCodes row justify-content-center";
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
