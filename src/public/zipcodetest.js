@@ -17,7 +17,7 @@ function populateUserZipCodes() {
             }
             if (data.error) {
                 const div = document.createElement("div");
-                div.className = "ownedZipCodes row justify-content-center";
+                div.className = "ownedZipCodes zipcoderow justify-content-center";
                 div.textContent = 'No zip codes selected';
                 if (selectedZipCodesContainer) {
                     selectedZipCodesContainer.appendChild(div);
@@ -28,7 +28,7 @@ function populateUserZipCodes() {
                 data.results.forEach(code => {
                     const div = document.createElement("div");
                     div.textContent = code.zipCode;
-                    div.className = "ownedZipCodes row justify-content-center";
+                    div.className = "ownedZipCodes zipcoderow justify-content-center";
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
