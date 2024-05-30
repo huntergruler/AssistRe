@@ -10,17 +10,12 @@ body {
     background-color: white;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%;
     max-width: 200px;
-}
-
-.zipCode-container {
     margin: 50px 0;
     border-radius: 8px;
     border: 1px solid black;
     width: 200px;
-    background-color: aliceblue;
-
+    align-items: center;
 }
 
 .zipCode-container h1 {
@@ -136,16 +131,6 @@ body {
     /* padding: 20px; */
     border-radius: 5px;
     border: 1px solid #ccc;
-}
-
-.btn {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    align-items: center;
 }
 
 .form-group {
