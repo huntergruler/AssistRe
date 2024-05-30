@@ -65,6 +65,7 @@ body {
     overflow: auto;
     width: 75px;
     max-height: 100px;
+    text-align: center;
 }
 
 .zipCodeOption {
