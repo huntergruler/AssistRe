@@ -155,7 +155,7 @@ function showZipCodes() {
 
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
-    populateBuyerZipCodes();
+    populateUserZipCodes();
     // var prequalified = document.getElementById('prequalified').value;
     // if (prequalified === 'Y') {
     //     document.getElementById('prequalifiedY').checked = true;
