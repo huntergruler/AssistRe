@@ -289,9 +289,11 @@ function populateBuyerZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const ownedZipCodes = document.getElementById("ownedZipCodes");
     let htmlCodes = '';
+    console.log('populateBuyerZipCodes');
     fetch(`/get-buyerzipcodes`)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             if (selectedZipCodesContainer) {
                 selectedZipCodesContainer.innerHTML = '';
             }
