@@ -498,6 +498,9 @@ router.get('/get-zipcodes', (req, res) => {
   const citySelect = req.query.citySelect;
   userid = req.session.userid;
   userType = req.session.userType;
+  userid = '1000000002'
+  userType = 'Buyer'
+
   if (userType === 'Agent') {
   var query = `SELECT zipCode 
                    FROM ZipCodes z 
