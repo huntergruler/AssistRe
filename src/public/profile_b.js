@@ -131,14 +131,14 @@ function showZipCodes() {
         zipToggle = 1;
 
         saveChanges();
-        populateAgentZipCodes();
+        populateUserZipCodes();
     }
     else {
         form.style.display = "block";
         disp.style.display = "none";
         zipButton.innerHTML = "Done";
         populateStates();
-        populateAgentZipCodes();
+        populateUserZipCodes();
         zipToggle = 0;
     }
 };
@@ -310,11 +310,11 @@ function populateZipCodes() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function populateBuyerZipCodes() {
+function populateUserZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const ownedZipCodes = document.getElementById("ownedZipCodes");
     let htmlCodes = '';
-    console.log('populateBuyerZipCodes');
+    console.log('populateUserZipCodes');
     fetch(`/get-agentzipcodes`)
         .then(response => response.json())
         .then(data => {
