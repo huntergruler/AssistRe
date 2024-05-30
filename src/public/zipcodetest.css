@@ -138,6 +138,16 @@ body {
     border: 1px solid #ccc;
 }
 
+.btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    align-items: center;
+}
+
 .form-group {
     margin-bottom: 5px;
     margin-top: 5px;
