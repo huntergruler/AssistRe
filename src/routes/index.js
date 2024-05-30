@@ -606,6 +606,29 @@ router.get('/get-agentzipcodes', (req, res) => {
   });
 });
 
+// Route to get city and state by zip code
+router.get('/get-userzipcodes', (req, res) => {
+  userid = req.session.userid;
+  userType = req.session.userType;
+  userid = '1000000002'
+  userType = 'Buyer'
+  if (userType === 'Agent') {
+    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
+  } else if (userType === 'Buyer') {
+    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM BuyerZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
+  }
+  db.query(query, [userid], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results.length > 0) {
+      res.json({ results });
+    } else {
+      res.status(404).json({ error: 'No zips found for this state' });
+    }
+  });
+});
+
 // Route to serve the dashboard_a page
 router.get('/dashboard_a', (req, res) => {
   if (!req.session.user) {
