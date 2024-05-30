@@ -64,7 +64,7 @@ body {
 #selectedZipCodesContainer {
     overflow: auto;
     width: 75px;
-    max-height: 10px;
+    max-height: 100px;
 }
 
 .zipCodeOption {
