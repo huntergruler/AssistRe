@@ -58,6 +58,7 @@ body {
     width: 75px;
     max-height: 105px;
     text-align: center;
+    align-content: center;
     border: 1px solid black;
 }
 
@@ -143,7 +144,7 @@ body {
     margin-right: 1px;
     padding-left: 0px;
     border: 1px solid black;
-    max-width: 650px;
+    max-width: 600px;
     background-color: aqua;
     border-radius: 5px;
     max-height: fit-content;
