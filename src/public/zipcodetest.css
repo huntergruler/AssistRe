@@ -135,10 +135,6 @@ body {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
-.col-form-label {
-    padding: 0;
-    border: 1px solid #ccc;
-}
 .test{
     text-align: right;
     border: 1px solid #ccc;
