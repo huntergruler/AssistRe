@@ -73,7 +73,6 @@ body {
     /* Adjust height */
     font-size: 14px;
     /* Element value font size */
-    border: 1px solid #ccc;
 }
 .form-group .row {
     padding-left: 0px;
@@ -82,7 +81,6 @@ body {
     /* Adjust height */
     font-size: 14px;
     /* Element value font size */
-    border: 1px solid #ccc;
 }
 
 .form-control.view-mode {
