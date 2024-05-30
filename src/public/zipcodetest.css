@@ -218,6 +218,22 @@ body {
     /* Adjust height */
     font-size: 14px;
     /* Element value font size */
+    padding: 2px;
+    /* border: 1px solid #ddd; */
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+.zipcoderow.selected {
+    background-color: #007BFF;
+    color: white;
+}
+
+.zipCodeSelected {
+    padding: 2px;
+    /* border: 1px solid #ddd; */
+    margin-bottom: 2px;
+    cursor: pointer;
 }
 
 .form-group .row {
