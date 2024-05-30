@@ -149,6 +149,7 @@ body {
     max-width: 650px;
     background-color: aqua;
     border-radius: 5px;
+    max-height: fit-content;
     /* Less space between elements */
 }
 
