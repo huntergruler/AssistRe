@@ -118,15 +118,15 @@ function lookupCityState() {
     }
 }
 
-// Function to toggle the file upload input based on the selected radio button
-function toggleFileUpload(show) {
-    var fileUploadDiv = document.getElementById('fileUploadDiv');
-    if (show) {
-        fileUploadDiv.style.display = 'flex'; // Change to 'block' if 'flex' does not suit your layout
-    } else {
-        fileUploadDiv.style.display = 'none';
-    }
-}
+// // Function to toggle the file upload input based on the selected radio button
+// function toggleFileUpload(show) {
+//     var fileUploadDiv = document.getElementById('fileUploadDiv');
+//     if (show) {
+//         fileUploadDiv.style.display = 'flex'; // Change to 'block' if 'flex' does not suit your layout
+//     } else {
+//         fileUploadDiv.style.display = 'none';
+//     }
+// }
 
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
