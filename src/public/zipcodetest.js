@@ -8,7 +8,7 @@ function populateUserZipCodes() {
     const ownedZipCodes = document.getElementById("ownedZipCodes");
     let htmlCodes = '';
     console.log('populateUserZipCodes');
-    fetch(`/get-agentzipcodes`)
+    fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
