@@ -243,7 +243,7 @@
         </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Form Title</h5>
@@ -254,17 +254,16 @@
                 <div class="modal-body">
                     <form>
                         <div class="zipCode-container" id="profileZips">
-                            <h3 id>Zip Codes</h3>
-                            <br>
+                            <h4 id>Zip Codes</h4>
                             <div id="ownedZipCodes"></div>
                             <div id="zipCodeForm">
-                                <p>Select Zip Codes in which you would like offers</p>
-                                <br>
+                                <p>Pick Zip Codes of your next home</p>
                                 <label for="stateSelect">States:</label>
                                 <select id="stateSelect" onchange="populateCities();"></select>
                                 <label for="citySelect">Cities:</label>
                                 <select id="citySelect" onchange="populateZipCodes();"></select>
-                                <div class="grid-container">
+                                <div class="form-group row justify-content-center">
+                                    <div class="grid-container">
                                     <div class="grid-available">
                                         <p>Available Zip Codes</p>
                                         <div class="container">
@@ -286,6 +285,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 </div>
                                 <button type="button" class="hoverStyle" id="zipCodeButton"
                                     onclick="showZipCodes()">Edit</button>
