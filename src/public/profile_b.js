@@ -118,8 +118,8 @@ function lookupCityState() {
     }
 }
 
+var zipToggle = 1;
 function showZipCodes() {
-    var zipToggle = 1;
     const form = document.getElementById("zipCodeForm");
     const disp = document.getElementById("ownedZipCodes");
     const zipButton = document.getElementById('zipCodeButton');
