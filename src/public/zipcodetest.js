@@ -140,8 +140,6 @@ function populateZipCodes() {
                 const div = document.createElement("div");
                 div.textContent = code.zipCode;
                 div.className = "ownedZipCodes zipcoderow justify-content-center";
-                div.textContent = code.zipCode;
-                div.className = "zipCodeOption";
                 div.onclick = function () {
                     this.classList.toggle("selected");
                 };
