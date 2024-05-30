@@ -91,13 +91,15 @@ function populateZipCodes() {
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect').value;
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
-    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
         .then(response => response.json())
         .then(data => {
             availabeZipCodesContainer.innerHTML = '';
             data.results.forEach(code => {
                 const div = document.createElement("div");
+                div.textContent = code.zipCode;
+                div.className = "ownedZipCodes zipcoderow justify-content-center";
                 div.textContent = code.zipCode;
                 div.className = "zipCodeOption";
                 div.onclick = function () {
