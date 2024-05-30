@@ -136,6 +136,20 @@ body {
     border: 1px solid #ccc;
 }
 
+.state-group {
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding-left: 0px;
+    border: 1px solid black;
+    width: 100px;
+    background-color: aqua;
+    border-radius: 5px;
+    max-height: fit-content;
+    /* Less space between elements */
+}
+
 .form-group {
     margin-bottom: 0px;
     margin-top: 0px;
