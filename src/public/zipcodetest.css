@@ -143,6 +143,10 @@ body {
     padding: 0;
     text-align: right;
     border: 1px solid #ccc;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
 .state-group {
