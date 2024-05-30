@@ -142,9 +142,7 @@ body {
     margin-left: 1px;
     margin-right: 1px;
     padding-left: 0px;
-    /* border: 1px solid black; */
     width: 300px;
-    border-radius: 5px;
     max-height: fit-content;
     /* Less space between elements */
     border: 1px solid #ccc;
