@@ -72,7 +72,7 @@ body {
     border: 1px solid #ccc;
 }
 .form-group .row {
-    padding: .2rem .25rem;
+    padding: 0;
     /* Less padding inside input fields */
     height: calc(1.5em + .5rem + 2px);
     /* Adjust height */
