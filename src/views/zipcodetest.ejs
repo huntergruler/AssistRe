@@ -35,10 +35,9 @@
     <div class="container mt-5">
         <p>Container</p>
         <div class="state-group row justify-content-center">
+            <label for="stateSelect" class="col-md-2 col-form-label" >States:</label>
             <div class="col-md-2"></div>
-            <label for="stateSelect">States:</label>
-            <div class="col-md-2"></div>
-            <select id="stateSelect" onchange="populateCities();"></select>
+            <select id="stateSelect" class="form-control"  onchange="populateCities();"></select>
         </div>
         <div class="state-group row justify-content-center">
             <div class="col-md-2"></div>
@@ -50,7 +49,7 @@
     <div class="form-group row">
         <div class="zipCode-container col-md-4 justify-content-center">
             <p>Select Zip Codes</p>
-            <div class="col-md-2"></div>
+            <div class="col-md-2 align-items-center"></div>
             <div id="availabeZipCodesContainer" class="col-md justify-content-center">
                 <!-- JavaScript will populate this container -->
             </div>
