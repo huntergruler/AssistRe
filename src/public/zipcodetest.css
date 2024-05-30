@@ -149,6 +149,19 @@ body {
     align-items: center;
 }
 
+.city-group {
+    margin-top: 0px;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding-left: 0px;
+    width: 300px;
+    max-height: fit-content;
+    /* Less space between elements */
+    border: 1px solid #ccc;
+    align-content: center;
+    align-items: center;
+}
+
 .form-group {
     margin-bottom: 0px;
     margin-top: 0px;
