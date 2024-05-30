@@ -290,7 +290,7 @@ function populateBuyerZipCodes() {
     const ownedZipCodes = document.getElementById("ownedZipCodes");
     let htmlCodes = '';
     console.log('populateBuyerZipCodes');
-    fetch(`/get-buyerzipcodes`)
+    fetch(`/get-zipcodes`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
