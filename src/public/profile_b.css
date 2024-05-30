@@ -8,10 +8,7 @@ body {
 .zipCode-container
 {
     background-color: white;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    margin: 50px 0;
+    margin: 5px 0;
     border-radius: 8px;
 }
 .margin-top-100 {
