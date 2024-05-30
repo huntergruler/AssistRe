@@ -35,17 +35,17 @@
     <div class="container mt-5">
         <p>Container</p>
         <div class="state-group row justify-content-center">
-            <label for="stateSelect" class="col-md col-form-label" >States:</label>
+            <label for="stateSelect" class="col-md col-form-label">States:</label>
             <div class="col-md">
-            <select id="stateSelect" onchange="populateCities();"></select>
-            </div>  
+                <select id="stateSelect" onchange="populateCities();"></select>
+            </div>
         </div>
         <div class="state-group row justify-content-center">
-            <div class="col-md-2"></div>
-        <label for="citySelect">Cities:</label>
-        <select id="citySelect" onchange="populateZipCodes();"></select>
+            <label for="citySelect" class="col-md col-form-label">Cities:</label>
+            <div class="col-md">
+                <select id="citySelect" onchange="populateZipCodes();"></select>
+            </div>
         </div>
-    </div>
     </div>
     <div class="form-group row">
         <div class="zipCode-container col-md-4 justify-content-center">
