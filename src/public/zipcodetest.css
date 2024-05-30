@@ -136,7 +136,7 @@ body {
     border: 1px solid #ccc;
 }
 
-.state-group {
+/* .state-group {
     margin-top: 0px;
     margin-left: 1px;
     margin-right: 1px;
@@ -161,7 +161,7 @@ body {
     border: 1px solid #ccc;
     /* align-content: center; */
     align-items: center;
-}
+} */
 
 .form-group {
     margin-bottom: 0px;
