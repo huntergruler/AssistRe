@@ -111,3 +111,38 @@ function populateZipCodes() {
         .catch(error => console.error('Error checking user:', error));
 };
 
+function addSelection() {
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    const selected = document.querySelectorAll(".zipCodeOption.selected");
+    selected.forEach(node => {
+        node.classList.remove("selected");
+        const div = document.createElement("div");
+        div.textContent = node.textContent;
+        div.className = "zipCodeSelected";
+        div.onclick = function () {
+            this.classList.toggle("selected");
+        };
+        selectedZipCodesContainer.appendChild(div);
+        node.remove();
+        //document.getElementById('saveChanges').disabled = false;
+    });
+};
+
+function removeSelection() {
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    const selected = document.querySelectorAll(".zipCodeSelected.selected");
+    selected.forEach(node => {
+        node.classList.remove("selected");
+        const div = document.createElement("div");
+        div.textContent = node.textContent;
+        div.className = "zipCodeOption";
+        div.onclick = function () {
+            this.classList.toggle("selected");
+        };
+        availabeZipCodesContainer.appendChild(div);
+        node.remove();
+        //document.getElementById('saveChanges').disabled = false;
+    });
+};
