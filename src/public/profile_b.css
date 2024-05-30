@@ -57,6 +57,10 @@ body {
     text-align: right;
 }
 
+.label {
+    border: 1px solid #ccc;
+
+}
 .form-group .form-control {
     padding: .2rem .25rem;
     /* Less padding inside input fields */
