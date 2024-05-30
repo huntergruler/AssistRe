@@ -170,7 +170,7 @@ body {
 .form-group .row {
     padding-left: 0px;
     /* Less padding inside input fields */
-    height: calc(1.5em + .5rem + 2px);
+    /* height: calc(1.5em + .5rem + 2px); */
     /* Adjust height */
     font-size: 14px;
     /* Element value font size */
