@@ -18,7 +18,7 @@ body {
     margin: 50px 0;
     border-radius: 8px;
     border: 1px solid black;
-    
+
 }
 
 .zipCode-container h1 {
@@ -138,6 +138,7 @@ body {
     margin-left: 1px;
     margin-right: 1px;
     padding-left: 0px;
+    border: 1px solid black;
     /* Less space between elements */
 }
 
