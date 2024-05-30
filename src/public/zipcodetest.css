@@ -166,11 +166,24 @@ body {
     font-size: 14px;
     /* Element value font size */
 }
+.col-md-3 {
+    margin-left: 0px;
+    align-items: center;
+}
+
+.zipcoderow {
+    padding-left: 0px;
+    /* Less padding inside input fields */
+    /* height: calc(1.5em + .5rem + 2px); */
+    /* Adjust height */
+    font-size: 14px;
+    /* Element value font size */
+}
 
 .form-group .row {
     padding-left: 0px;
     /* Less padding inside input fields */
-    /* height: calc(1.5em + .5rem + 2px); */
+    height: calc(1.5em + .5rem + 2px);
     /* Adjust height */
     font-size: 14px;
     /* Element value font size */
