@@ -1,0 +1,178 @@
+body {
+    font-size: 14px;
+    /* Base font size */
+    /* background-color: #666; */
+    margin: 50px 50px;
+    max-width: auto;
+}
+
+.zipCode-container {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 200px;
+}
+
+.zipCode-container {
+    margin: 50px 0;
+    border-radius: 8px;
+}
+
+.zipCode-container h1 {
+    margin-bottom: 20px;
+}
+
+#zipCodeButton {
+    grid-column: 4;
+}
+
+.zipCodeSelected {
+    padding: 2px;
+    /* border: 1px solid #ddd; */
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+.zipCodeSelected.selected {
+    background-color: #007BFF;
+    color: white;
+}
+
+.zipCodeOption {
+    padding: 2px;
+    /* border: 1px solid #ddd; */
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+.zipCodeOption.selected {
+    background-color: #007BFF;
+    color: white;
+}
+
+#availabeZipCodesContainer {
+    overflow: auto;
+    width: 100%;
+    max-height: 225px;
+}
+
+#selectedZipCodesContainer {
+    overflow: auto;
+    width: 100%;
+    max-height: 225px;
+}
+
+.zipCodeOption {
+    text-align: center;
+}
+
+#ownedZipCodes {
+    max-height: 225px;
+    overflow: auto;
+}
+
+#zipCodeButton {
+    height: 32px;
+    background-color: rgba(19, 50, 109);
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    cursor: pointer;
+    width: 50px;
+    margin-top: 5px;
+}
+
+#licenseForm,
+#zipCodeForm,
+#transactionForm,
+#bioForm {
+    display: none;
+}
+
+
+.margin-top-100 {
+    margin-top: 100px;
+}
+
+.col-md-4 {
+    margin-left: 0px;
+}
+
+.container {
+    border-radius: 10px;
+    opacity: 0.8;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.form-container {
+    max-width: 500px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 5;
+    /* Less space between elements */
+    /* padding: 20px; */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-group {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding-left: 0px;
+    /* Less space between elements */
+}
+
+.form-group .col-form-label {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 0;
+    text-align: right;
+}
+
+.form-group .form-control {
+    padding: .2rem .25rem;
+    /* Less padding inside input fields */
+    height: calc(1.5em + .5rem + 2px);
+    /* Adjust height */
+    font-size: 14px;
+    /* Element value font size */
+}
+
+.form-group .row {
+    padding-left: 0px;
+    /* Less padding inside input fields */
+    height: calc(1.5em + .5rem + 2px);
+    /* Adjust height */
+    font-size: 14px;
+    /* Element value font size */
+}
+
+.form-control.view-mode {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    font-size: 5;
+    padding-left: 0;
+}
+
+.text-center button {
+    margin: 5px;
+    /* Less space between buttons */
+}
