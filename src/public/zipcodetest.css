@@ -159,14 +159,7 @@ body {
     text-align: right;
 }
 
-.form-group .form-control {
-    padding: .2rem .25rem;
-    /* Less padding inside input fields */
-    height: calc(1.5em + .5rem + 2px);
-    /* Adjust height */
-    font-size: 14px;
-    /* Element value font size */
-}
+
 .col-md-3 {
     margin-left: 0px;
     align-items: center;
@@ -181,6 +174,14 @@ body {
     /* Element value font size */
 }
 
+.form-group .row {
+    padding-left: 0px;
+    /* Less padding inside input fields */
+    height: calc(1.5em + .5rem + 2px);
+    /* Adjust height */
+    font-size: 14px;
+    /* Element value font size */
+}
 
 .form-control.view-mode {
     border: none;
