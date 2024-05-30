@@ -583,7 +583,12 @@ router.delete('/api/offices/:id', (req, res) => {
 // Route to get city and state by zip code
 router.get('/get-agentzipcodes', (req, res) => {
   userid = req.session.userid;
-  const query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
+  userType = req.session.userType;
+  if (userType === 'Agent') {
+    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
+  } else if (userType === 'Buyer') {
+    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM BuyerZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
+  }
   db.query(query, [userid], (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
