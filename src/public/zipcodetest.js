@@ -4,6 +4,46 @@ document.addEventListener('DOMContentLoaded', function () {
     //    populateStates();
 });
 
+function saveChanges() {
+    const selected = document.querySelectorAll(".zipCodeSelected");
+
+    // Prepare the array of selected zip codes
+    const selectedZipCodes = Array.from(selected).map(node => node.textContent);
+
+    //document.getElementById('saveChanges').disabled = true;
+    // Prepare the data to be sent
+    const data = {
+        zipCodes: selectedZipCodes
+    };
+
+    // Send the data to the server using fetch
+    fetch('/process-zip-codes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+    selected.forEach(node => {
+        const data = {
+            zipCode: node.textContent
+        };
+    });
+};
+
 function populateUserZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const ownedZipCodes = document.getElementById("ownedZipCodes");

@@ -39,8 +39,10 @@
             <div class="col-md-2">
                 <select id="stateSelect" class="form-select-sm" onchange="populateCities();"></select>
             </div>
+        </div>
+        <div class="state-group row">
             <div class="col-md-3">
-                    <label for="citySelect">Cities:</label>
+                <label for="citySelect">Cities:</label>
             </div>
             <div class="col-md-3">
                 <select id="citySelect" class="form-select-sm" onchange="populateZipCodes();"></select>
@@ -66,12 +68,12 @@
                     <!-- JavaScript will populate this container -->
                 </div>
             </div>
+            <div class="form-group row align-items-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
 
-
-
+            </div>
         </div>
-    </div>
-    <script src="/zipcodetest.js"></script>
+        <script src="/zipcodetest.js"></script>
 </body>
 
 </html>
