@@ -39,40 +39,38 @@
             <div class="col-md-2">
                 <select id="stateSelect" class="form-select-sm" onchange="populateCities();"></select>
             </div>
+
             <div class="col-md-2">
                 <label for="citySelect">Cities:</label>
             </div>
             <div class="col-md-3">
-                <select id="citySelect"  class="form-select-sm" onchange="populateZipCodes();"></select>
+                <select id="citySelect" class="form-select-sm" onchange="populateZipCodes();"></select>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    <div class="form-group row">
-        <div class="zipCode-container col-md-4 justify-content-center">
-            <p>Select Zip Codes</p>
-            <div class="col-md-2 align-items-center"></div>
-            <div id="availabeZipCodesContainer" class="col-md justify-content-center">
-                <!-- JavaScript will populate this container -->
+        <div class="form-group row">
+            <div class="zipCode-container col-md-4 justify-content-center">
+                <p>Select Zip Codes</p>
+                <div class="col-md-2 align-items-center"></div>
+                <div id="availabeZipCodesContainer" class="col-md justify-content-center">
+                    <!-- JavaScript will populate this container -->
+                </div>
             </div>
-        </div>
-        <div class="zipCode-container col-md-4 justify-content-center">
-            <button type="button" class="btn btn-primary btn-sm" onclick="addSelection()">Add --> </button>
-            <button type="button" class="btn btn-primary btn-sm" onclick="removeSelection()"> <-- Remove</button>
-        </div>
-        <div class="zipCode-container col-md-4 justify-content-center">
-            <p>Your Zip Codes</p>
-            <div class="col-md-2"></div>
-            <div id="selectedZipCodesContainer" class="col-md justify-content-center">
+            <div class="zipCode-container col-md-4 justify-content-center">
+                <button type="button" class="btn btn-primary btn-sm" onclick="addSelection()">Add --> </button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="removeSelection()"> <-- Remove</button>
+            </div>
+            <div class="zipCode-container col-md-4 justify-content-center">
+                <p>Your Zip Codes</p>
                 <div class="col-md-2"></div>
-                <!-- JavaScript will populate this container -->
+                <div id="selectedZipCodesContainer" class="col-md justify-content-center">
+                    <div class="col-md-2"></div>
+                    <!-- JavaScript will populate this container -->
+                </div>
             </div>
+
+
+
         </div>
-
-
-
-    </div>
     </div>
     <script src="/zipcodetest.js"></script>
 </body>
