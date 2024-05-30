@@ -71,15 +71,6 @@ body {
     /* Element value font size */
     border: 1px solid #ccc;
 }
-.form-group .col-form-label {
-    padding: 0; 
-    /* Less padding inside input fields */
-    height: calc(1.5em + .5rem + 2px);
-    /* Adjust height */
-    font-size: 14px;
-    /* Element value font size */
-    border: 1px solid #ccc;
-}
 
 .form-control.view-mode {
     border: none;
