@@ -35,13 +35,14 @@
     <div class="container mt-5">
         <p>Container</p>
         <div class="state-group row">
-            <label for="stateSelect" class="col-md-2 col-form-label">States:</label>
+            <label for="stateSelect" class="col-md-2 test">States:</label>
             <div class="col-md-2">
-                <select id="stateSelect" class="form-select" onchange="populateCities();"></select>
+                <select id="stateSelect" class="form-select-sm" onchange="populateCities();"></select>
             </div>
-            <!-- <label for="citySelect" class="col-md-2 col-form-label">Cities:</label> -->
-            <!-- <div class="col-md-3 ">
-            </div> -->
+            <label for="citySelect" class="col-md-2 test">Cities:</label>
+            <div class="col-md-3 ">
+                <select id="citySelect"  class="form-select-sm" onchange="populateZipCodes();"></select>
+            </div>
         </div>
     </div>
     </div>
