@@ -130,6 +130,7 @@ function toggleFileUpload(show) {
 
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
+    populateBuyerZipCodes();
     var prequalified = document.getElementById('prequalified').value;
     if (prequalified === 'Y') {
         document.getElementById('prequalifiedY').checked = true;
@@ -138,11 +139,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('prequalifiedN').checked = true;
         toggleFileUpload(false);
     }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    populateBuyerZipCodes();
-    //    populateStates();
 });
 
 function getSelectedZipCodes() {
