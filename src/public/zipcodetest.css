@@ -59,7 +59,7 @@ body {
 #selectedZipCodesContainer {
     overflow: auto;
     width: 75px;
-    max-height: 100px;
+    max-height: 105px;
     text-align: center;
     border: 1px solid black;
 }
