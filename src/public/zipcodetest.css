@@ -145,9 +145,6 @@ body {
     max-height: fit-content;
     /* Less space between elements */
     border: 1px solid #ccc;
-    align-content: center;
-    align-items: center;
-    text-align: right;
 }
 
 .city-group {
