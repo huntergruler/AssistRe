@@ -74,6 +74,7 @@ body {
 #ownedZipCodes {
     max-height: 225px;
     overflow: auto;
+    text-align: center;
 }
 
 #zipCodeButton {
