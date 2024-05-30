@@ -49,16 +49,16 @@ body {
 
 #availabeZipCodesContainer {
     overflow: auto;
-    width: 75px;
-    max-height: 105px;
+    width: 80px;
+    max-height: 150px;
     text-align: center;
     border: 1px solid black;
 }
 
 #selectedZipCodesContainer {
     overflow: auto;
-    width: 75px;
-    max-height: 105px;
+    width: 80px;
+    max-height: 150px;
     text-align: center;
     border: 1px solid black;
 }
