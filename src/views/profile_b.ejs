@@ -115,7 +115,7 @@
                         <div class="zipCode-container" id="profileZips">
                             <div id="ownedZipCodes"></div>
                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#exampleModal" onclick="showZipCodes()">
+                                data-target="#exampleModal">
                                 Modify your Zip Codes
                             </button>
                         </div>
@@ -254,10 +254,12 @@
                 <div class="modal-body">
                     <form>
                         <div class="zipCode-container" id="profileZips">
-                            <h4 id>Your Zip Codes</h4>
+                            <h3 id>Zip Codes<button type="button" class="hoverStyle" id="zipCodeButton"
+                                    onclick="showZipCodes()">Edit</button></h3>
+                            <br>
                             <div id="ownedZipCodes"></div>
                             <div id="zipCodeForm">
-                                <p>Select the ideal Zip Codes for your next home</p>
+                                <p>Select Zip Codes in which you would like offers</p>
                                 <br>
                                 <label for="stateSelect">States:</label>
                                 <select id="stateSelect" onchange="populateCities();"></select>
