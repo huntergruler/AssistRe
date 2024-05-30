@@ -135,6 +135,10 @@ body {
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+. col-form-label {
+    padding: 0;
+    text-align: right;
+}
 
 .state-group {
     margin-top: 0px;
