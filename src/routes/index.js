@@ -49,6 +49,11 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
+// Landing page route
+router.get('/zipcodetest', (req, res) => {
+  res.render('zipcodetest');
+});
+
 // Register route
 router.get('/register', (req, res) => {
   res.render('register');

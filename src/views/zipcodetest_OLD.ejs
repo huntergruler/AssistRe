@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Zip Code</title>
+</head>
+<body>
+    <label for="stateSelect">State:</label>
+    <select id="stateSelect" onchange="updateCities(this.value)">
+        <!-- States will be populated here -->
+    </select>
+
+    <label for="citySelect">City:</label>
+    <select id="citySelect" onchange="updateZipCodes(this.value)">
+        <!-- Cities will be populated here -->
+    </select>
+
+    <label for="zipSelect">Zip Code:</label>
+    <select id="zipSelect">
+        <!-- Zip codes will be populated here -->
+    </select>
+
+    <button onclick="addZipCode()">Add Zip Code</button>
+
+    <div id="selectedZipCodes">
+        <!-- Selected zip codes will be displayed here -->
+    </div>
+
+    <script src="zipcode.js"></script>
+</body>
+</html>
