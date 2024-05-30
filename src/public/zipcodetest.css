@@ -54,14 +54,17 @@ body {
     min-height: 150px;
     text-align: center;
     border: 1px solid black;
+    border-radius: 5px;
 }
 
 #selectedZipCodesContainer {
     overflow: auto;
     width: 80px;
     max-height: 150px;
+    min-height: 150px;
     text-align: center;
     border: 1px solid black;
+    border-radius: 5px;
 }
 
 #ownedZipCodes {
