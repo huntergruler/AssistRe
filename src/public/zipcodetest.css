@@ -141,6 +141,7 @@ body {
     margin-right: 1px;
     padding-left: 0px;
     border: 1px solid black;
+    width: auto;
     /* Less space between elements */
 }
 
