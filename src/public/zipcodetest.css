@@ -68,7 +68,7 @@ body {
 }
 
 #ownedZipCodes {
-    max-height: 225px;
+    max-height: 250px;
     overflow: auto;
     text-align: center;
     margin: 0;
