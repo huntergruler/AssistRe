@@ -23,6 +23,10 @@ body::before {
     margin-top: 100px;
 }
 
+#regForm{
+    background-color: red;
+}
+
 .form-container {
     max-width: 550px;
     margin: auto;
