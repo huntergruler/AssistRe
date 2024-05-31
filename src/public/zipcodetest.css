@@ -142,7 +142,6 @@ body {
     width: 500px;
     max-height: fit-content;
     /* Less space between elements */
-    border: 1px solid #ccc;
     align-content: center;
     align-items: center;
     text-align: right;
@@ -156,10 +155,12 @@ body {
     width: 500px;
     max-height: fit-content;
     /* Less space between elements */
-    border: 1px solid #ccc;
     align-content: center;
     align-items: center;
     text-align: right;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
 }
 
 .city-group {
@@ -170,7 +171,9 @@ body {
     width: 500px;
     max-height: fit-content;
     /* Less space between elements */
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
     align-content: center;
     align-items: center;
     text-align: right;
