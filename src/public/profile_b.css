@@ -43,9 +43,9 @@ body {
 }
 
 .zipCodeOption, .userZipCodes {
-    padding: 2px;
+    padding: 1px;
     /* border: 1px solid #ddd; */
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     cursor: pointer;
     text-align: center;
 }
