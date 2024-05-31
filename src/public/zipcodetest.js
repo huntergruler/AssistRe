@@ -12,14 +12,12 @@ function saveChanges() {
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
     const selectedZipCodes2 = Array.from(selected2).map(node => node.textContent);
 
-    console.log(selectedZipCodes, selectedZipCodes2);
     //document.getElementById('saveChanges').disabled = true;
     // Prepare the data to be sent
     const userZipCodes = selectedZipCodes.concat(selectedZipCodes2);
     const data = {
         zipCodes: userZipCodes
     };
-    console.log(userZipCodes);
 
     // Send the data to the server using fetch
     fetch('/process-zip-codes', {
@@ -175,7 +173,7 @@ function addSelection() {
 function removeSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const selected = document.querySelectorAll(".zipCodeSelected.selected");
+    const selected = document.querySelectorAll(".zipCodeOption.selected");
     selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
