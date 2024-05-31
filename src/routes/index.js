@@ -609,6 +609,7 @@ router.post('/process-zip-codes', (req, res) => {
     }
   });
   // Now insert the new zip codes
+  if (zipCodes.length > 0) {
   if (userType === 'Agent') {
     var insertQuery = 'INSERT INTO AgentZipCodes (userid, zipCode) VALUES ?';
   }
@@ -622,6 +623,10 @@ router.post('/process-zip-codes', (req, res) => {
     }
     res.json({ success: true });
   });
+}
+else {
+  res.json({ success: true });
+}
 });
 
 router.post('/api/offices', (req, res) => {
