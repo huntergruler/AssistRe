@@ -166,10 +166,88 @@ document.addEventListener('DOMContentLoaded', function () {
     //     toggleFileUpload(false);
     // }
 });
+function saveChanges() {
+    const selected = document.querySelectorAll(".zipCodeSelected");
+    const selected2 = document.querySelectorAll(".userZipCodes");
 
-function getSelectedZipCodes() {
-    const selected = document.querySelectorAll(".zipCodeOption.selected");
+    // Prepare the array of selected zip codes
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
+    const selectedZipCodes2 = Array.from(selected2).map(node => node.textContent);
+
+    //document.getElementById('saveChanges').disabled = true;
+    // Prepare the data to be sent
+    const userZipCodes = selectedZipCodes.concat(selectedZipCodes2);
+    const data = {
+        zipCodes: userZipCodes
+    };
+
+    // Send the data to the server using fetch
+    fetch('/process-zip-codes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+    populateUserZipCodes();
+    selected.forEach(node => {
+        const data = {
+            zipCode: node.textContent
+        };
+    });
+};
+
+function populateUserZipCodes() {
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    const userZipCodes = document.getElementById("userZipCodes");
+    let htmlCodes = '';
+    fetch(`/get-userzipcodes`)
+        .then(response => response.json())
+        .then(data => {
+            if (selectedZipCodesContainer) {
+                selectedZipCodesContainer.innerHTML = '';
+            }
+            if (data.error) {
+                const div = document.createElement("div");
+                div.className = "userZipCodes zipCodeOption justify-content-center";
+                div.textContent = 'No zip codes selected';
+                if (selectedZipCodesContainer) {
+                    selectedZipCodesContainer.appendChild(div);
+                }
+                htmlCodes += `<p>No Zip Codes</p><br>`;
+            }
+            else {
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.textContent = code.zipCode;
+                    div.className = "userZipCodes zipCodeOption align-items-center";
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    if (selectedZipCodesContainer) {
+                        selectedZipCodesContainer.appendChild(div);
+                    }
+                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
+                });
+            }
+            if (userZipCodes) {
+                userZipCodes.innerHTML = htmlCodes;
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
 };
 
 function populateStates() {
@@ -318,50 +396,6 @@ function populateCityZipCodes() {
     }
 };
 
-function saveChanges() {
-    const selected = document.querySelectorAll(".zipCodeSelected");
-    const selected2 = document.querySelectorAll(".userZipCodes");
-
-    // Prepare the array of selected zip codes
-    const selectedZipCodes = Array.from(selected).map(node => node.textContent);
-    const selectedZipCodes2 = Array.from(selected2).map(node => node.textContent);
-
-    //document.getElementById('saveChanges').disabled = true;
-    // Prepare the data to be sent
-    const userZipCodes = selectedZipCodes.concat(selectedZipCodes2);
-    const data = {
-        zipCodes: userZipCodes
-    };
-
-    // Send the data to the server using fetch
-    fetch('/process-zip-codes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(result => {
-            console.log('Success:', result);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-
-    populateUserZipCodes();
-    selected.forEach(node => {
-        const data = {
-            zipCode: node.textContent
-        };
-    });
-};
-
 function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
@@ -420,44 +454,9 @@ function removeSelection() {
 //         .catch(error => console.error('Error checking user:', error));
 // };
 
-function populateUserZipCodes() {
-    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const userZipCodes = document.getElementById("userZipCodes");
-    let htmlCodes = '';
-    fetch(`/get-userzipcodes`)
-        .then(response => response.json())
-        .then(data => {
-            if (selectedZipCodesContainer) {
-                selectedZipCodesContainer.innerHTML = '';
-            }
-            if (data.error) {
-                const div = document.createElement("div");
-                div.className = "userZipCodes zipCodeOption justify-content-center";
-                div.textContent = 'No zip codes selected';
-                if (selectedZipCodesContainer) {
-                    selectedZipCodesContainer.appendChild(div);
-                }
-                htmlCodes += `<p>No Zip Codes</p><br>`;
-            }
-            else {
-                data.results.forEach(code => {
-                    const div = document.createElement("div");
-                    div.textContent = code.zipCode;
-                    div.className = "userZipCodes zipCodeOption align-items-center";
-                    div.onclick = function () {
-                        this.classList.toggle("selected");
-                    };
-                    if (selectedZipCodesContainer) {
-                        selectedZipCodesContainer.appendChild(div);
-                    }
-                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
-                });
-            }
-            if (userZipCodes) {
-                userZipCodes.innerHTML = htmlCodes;
-            }
-        })
-        .catch(error => console.error('Error checking user:', error));
-};
 
+// function getSelectedZipCodes() {
+//     const selected = document.querySelectorAll(".zipCodeOption.selected");
+//     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
+// };
 
