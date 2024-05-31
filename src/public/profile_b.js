@@ -261,7 +261,7 @@ function populateDisplayZipCodes() {
             }
             if (data.error) {
                 const div = document.createElement("div");
-                div.className = "userZipCodes zipCodeOption justify-content-center";
+                div.className = "userZipCodes justify-content-center";
                 div.textContent = 'No zip codes selected';
                 if (displayZipCodes) {
                     displayZipCodes.appendChild(div);
@@ -272,10 +272,7 @@ function populateDisplayZipCodes() {
                 data.results.forEach(code => {
                     const div = document.createElement("div");
                     div.textContent = code.zipCode;
-                    div.className = "userZipCodes zipCodeOption align-items-center";
-                    div.onclick = function () {
-                        this.classList.toggle("selected");
-                    };
+                    div.className = "userZipCodes align-items-center";
                     if (displayZipCodes) {
                         displayZipCodes.appendChild(div);
                     }
