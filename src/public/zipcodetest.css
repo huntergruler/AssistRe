@@ -21,10 +21,6 @@ body {
     text-align: center;
 }
 
-#zipCodeButton {
-    grid-column: 4;
-}
-
 .zipCodeSelected {
     padding: 1px;
     /* border: 1px solid #ddd; */
@@ -48,30 +44,6 @@ body {
     margin: 10px;
     border: 1px solid black;
     border-radius: 5px;
-}
-
-#zipCodeButton {
-    height: 32px;
-    background-color: rgba(19, 50, 109);
-    color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-left: 20px;
-    cursor: pointer;
-    width: 50px;
-    margin-top: 5px;
-}
-
-#licenseForm,
-#zipCodeForm,
-#transactionForm,
-#bioForm {
-    display: none;
-}
-
-
-.margin-top-100 {
-    margin-top: 0px;
 }
 
 .col-md-4 {
