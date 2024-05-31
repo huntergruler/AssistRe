@@ -132,6 +132,42 @@ function populateCities() {
         .catch(error => console.error('Error checking user:', error));
 };
 
+function populateCitiesCounties() {
+    const stateSelect = document.getElementById('stateSelect').value;
+    const citySelect = document.getElementById('citySelect');
+
+    fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
+        .then(response => response.json())
+        .then(data => {
+            // Clear existing options in citySelect
+            citySelect.innerHTML = '';
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = 'Select a City';
+            defaultOption.value = '';
+            citySelect.appendChild(defaultOption);
+            data.results.forEach(item => {
+                let option = new Option(item.city, item.city);
+                citySelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error checking user:', error));
+    fetch(`/get-counties?stateSelect=${encodeURIComponent(stateSelect)}`)
+        .then(response => response.json())
+        .then(data => {
+            // Clear existing options in citySelect
+            citySelect.innerHTML = '';
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = 'Select a County';
+            defaultOption.value = '';
+            citySelect.appendChild(defaultOption);
+            data.results.forEach(item => {
+                let option = new Option(item.city, item.city);
+                countySelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error checking user:', error));
+};
+
 function populateZipCodes() {
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect').value;

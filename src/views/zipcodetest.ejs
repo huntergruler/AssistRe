@@ -37,7 +37,13 @@
         <div class="state-group row">
             <label for="stateSelect" class="col-md-2 col-form-label">States:</label>
             <div class="col-md-2">
-                <select id="stateSelect" class="form-select-sm justify-content-left" onchange="populateCities();"></select>
+                <select id="stateSelect" class="form-select-sm justify-content-left" onchange="populateCitiesCounties();"></select>
+            </div>
+        </div>
+        <div class="state-group row">
+            <label for="citySelect" class="col-md-2 col-form-label">Counties:</label>
+            <div class="col-md-3">
+                <select id="citySelect" class="form-select-sm" onchange="populateZipCodes();"></select>
             </div>
         </div>
         <div class="state-group row">
