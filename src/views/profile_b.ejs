@@ -109,226 +109,217 @@
                         </div>
                     </form>
                 </div>
-                <div class="container mt-5">
-                    <div class="form-container">
-                        <div class="zipCode-container" id="profileZips">
-                            <h1 id>Zip Codes<button type="button" class="hoverStyle" id="zipCodeButton"
-                                    onclick="showZipCodes()">Edit</button></h1>
-                            <br>
-                            <div id="ownedZipCodes"></div>
-                            <div id="zipCodeForm">
-                                <p>Select Zip Codes in which you would like offers</p>
-                                <br>
-                                <label for="stateSelect">States:</label>
-                                <select id="stateSelect" onchange="populateCities();"></select>
-                                <label for="citySelect">Cities:</label>
-                                <select id="citySelect" onchange="populateZipCodes();"></select>
-                                <div class="grid-container">
-                                    <div class="grid-available">
-                                        <p>Available Zip Codes</p>
-                                        <div class="container">
-                                            <div id="availabeZipCodesContainer" class="box1">
-                                                <!-- JavaScript will populate this container -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid-action">
-                                        <button type="button" class="button" onclick="addSelection()">Add --> </button>
-                                        <button type="button" class="button" onclick="removeSelection()"> <--
-                                                Remove</button>
-                                    </div>
-                                    <div class="grid-selected">
-                                        <p>Selected Zip Codes</p>
-                                        <div class="container">
-                                            <div id="selectedZipCodesContainer" class="box2">
-                                                <!-- JavaScript will populate this container -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="container mt-5">
-                <div class="form-container">
-                    <h3 class="text-center">Property Info</h3>
-                    <form id="propertyForm">
-                        <div class="form-group row justify-content-center">
-                            <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control view-mode" id="propertyType" name="propertyType"
-                                    value="<%= buyer.propertyType %>" required disabled>
-                            </div>
+    </div>
+    <div class="col-md-4">
+        <div class="container mt-5">
+            <div class="form-container">
+                <h3 class="text-center">Property Info</h3>
+                <form id="propertyForm">
+                    <div class="form-group row justify-content-center">
+                        <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control view-mode" id="propertyType" name="propertyType"
+                                value="<%= buyer.propertyType %>" required disabled>
                         </div>
-
-                        <div class="form-group row justify-content-center">
-                            <label for="bedrooms_min" class="col-md-4 col-form-label">Bedroom Range</label>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control view-mode style=" background-color:
-                                    transparent;"" id="bedrooms_min" name="bedrooms_min"
-                                    value="<%= buyer.bedrooms_min %>" required disabled>
-                            </div>
-                            <div class="col-md-1">
-                                <label for="to" class="form-control view-mode">to</label>
-                            </div>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control view-mode" id="bedrooms_max" name="bedrooms_max"
-                                    value="<%= buyer.bedrooms_max %>" required disabled>
-                            </div>
-                            <div class="col-md-1"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="bedrooms_min" class="col-md-4 col-form-label">Bedroom Range</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control view-mode style=" background-color: transparent;""
+                                id="bedrooms_min" name="bedrooms_min" value="<%= buyer.bedrooms_min %>" required
+                                disabled>
                         </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="bathrooms" class="col-md-4 col-form-label">Bathroom Range</label>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control view-mode" id="bathrooms_min"
-                                    name="bathrooms_min" value="<%= buyer.bathrooms_min %>" required disabled>
-                            </div>
-                            <div class="col-md-1">
-                                <label for="to" class="form-control view-mode">to</label>
-                            </div>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control view-mode" id="bathrooms_max"
-                                    name="bathrooms_max" value="<%= buyer.bathrooms_max %>" required disabled>
-                            </div>
-                            <div class="col-md-1"></div>
+                        <div class="col-md-1">
+                            <label for="to" class="form-control view-mode">to</label>
                         </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="squareFootage" class="col-md-4 col-form-label">Square Foot Range</label>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control view-mode" id="squareFootage_min"
-                                    name="squareFootage_min" value="<%= buyer.squareFootage_min %>" required disabled>
-                            </div>
-                            <div class="col-md-1">
-                                <label for="to" class="form-control view-mode">to</label>
-                            </div>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control view-mode" id="squareFootage_max"
-                                    name="squareFootage_max" value="<%= buyer.squareFootage_max %>" required disabled>
-                            </div>
-                            <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control view-mode" id="bedrooms_max" name="bedrooms_max"
+                                value="<%= buyer.bedrooms_max %>" required disabled>
                         </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="priceRange" class="col-md-4 col-form-label">Price Range</label>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control view-mode" id="price_min" name="price_min"
-                                    value="<%= buyer.price_min %>" required disabled>
-                            </div>
-                            <div class="col-md-1">
-                                <label for="to" class="form-control view-mode">to</label>
-                            </div>
-                            <div class="col-md-2">
-                                <input type="text" class="form-control view-mode" id="price_max" name="price_max"
-                                    value="<%= buyer.price_max %>" required disabled>
-                            </div>
-                            <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="bathrooms" class="col-md-4 col-form-label">Bathroom Range</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control view-mode" id="bathrooms_min" name="bathrooms_min"
+                                value="<%= buyer.bathrooms_min %>" required disabled>
                         </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="timeFrame" class="col-md-4 col-form-label">Buying Timeframe</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control view-mode" id="timeFrame" name="timeFrame"
-                                    value="<%= buyer.timeFrame %>" required disabled>
-                            </div>
-                            <div class="col-md-2"></div>
+                        <div class="col-md-1">
+                            <label for="to" class="form-control view-mode">to</label>
                         </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="prequalified" class="col-md-4 col-form-label">Prequalified</label>
-                            <div class="col-md-3">
-                                <input type="radio" id="prequalifiedY" name="prequalified" required disabled>
-                                Yes
-                                <input type="radio" id="prequalifiedN" name="prequalified" required disabled>
-                                No
-                                <input type="hidden" id="prequalified" value="<%= buyer.prequalified %>">
-                            </div>
-                            <!-- <div class="form-group row justify-content-center" id="fileUploadDiv" style="display: none;">
+                        <div class="col-md-2">
+                            <input type="text" class="form-control view-mode" id="bathrooms_max" name="bathrooms_max"
+                                value="<%= buyer.bathrooms_max %>" required disabled>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="squareFootage" class="col-md-4 col-form-label">Square Foot Range</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control view-mode" id="squareFootage_min"
+                                name="squareFootage_min" value="<%= buyer.squareFootage_min %>" required disabled>
+                        </div>
+                        <div class="col-md-1">
+                            <label for="to" class="form-control view-mode">to</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control view-mode" id="squareFootage_max"
+                                name="squareFootage_max" value="<%= buyer.squareFootage_max %>" required disabled>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="priceRange" class="col-md-4 col-form-label">Price Range</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control view-mode" id="price_min" name="price_min"
+                                value="<%= buyer.price_min %>" required disabled>
+                        </div>
+                        <div class="col-md-1">
+                            <label for="to" class="form-control view-mode">to</label>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control view-mode" id="price_max" name="price_max"
+                                value="<%= buyer.price_max %>" required disabled>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="timeFrame" class="col-md-4 col-form-label">Buying Timeframe</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control view-mode" id="timeFrame" name="timeFrame"
+                                value="<%= buyer.timeFrame %>" required disabled>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="prequalified" class="col-md-4 col-form-label">Prequalified</label>
+                        <div class="col-md-3">
+                            <input type="radio" id="prequalifiedY" name="prequalified" required disabled>
+                            Yes
+                            <input type="radio" id="prequalifiedN" name="prequalified" required disabled>
+                            No
+                            <input type="hidden" id="prequalified" value="<%= buyer.prequalified %>">
+                        </div>
+                        <!-- <div class="form-group row justify-content-center" id="fileUploadDiv" style="display: none;">
                         <label for="dataFile" class="col-md-4 col-form-label">Upload Data File</label>
                         <div class="col-md-4">
                             <input type="file" class="form-control" id="dataFile" name="dataFile">
                         </div>
                     </div> -->
-                            <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <label for="preferredLanguages" class="col-md-4 col-form-label">Preferred Language</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control view-mode" id="preferredLanguages"
+                                name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required disabled>
                         </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="preferredLanguages" class="col-md-4 col-form-label">Preferred Language</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control view-mode" id="preferredLanguages"
-                                    name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required disabled>
-                            </div>
-                        </div>
-                        <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
-                        <div class="text-center">
-                            <button type="button" id="editButton2" class="btn btn-primary btn-sm">Edit</button>
-                            <button type="button" id="saveButton2" class="btn btn-success btn-sm"
-                                style="display:none;">Save</button>
-                            <button type="button" id="cancelButton2" class="btn btn-secondary btn-sm"
-                                style="display:none;">Cancel</button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
+                    <div class="text-center">
+                        <button type="button" id="editButton2" class="btn btn-primary btn-sm">Edit</button>
+                        <button type="button" id="saveButton2" class="btn btn-success btn-sm"
+                            style="display:none;">Save</button>
+                        <button type="button" id="cancelButton2" class="btn btn-secondary btn-sm"
+                            style="display:none;">Cancel</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+    <div class="col-md-4">
+        <div class="zipCode-container col-md-4 justify-content-center">
+            <p>Your Zip Codes</p>
+            <div class="col-md-2"></div>
+            <div id="selectedZipCodesContainer" class="col-md justify-content-center">
+                <!-- JavaScript will populate this container -->
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#zipCodeModal">
+            Modify Zip Codes
+        </button>
+    </div>
+
+    <div class="modal fade" id="zipCodeModal" tabindex="-1" aria-labelledby="zipCodeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Form Title</h5>
+                    <h5 class="modal-title" id="zipCodeModalLabel">Your Zip Codes</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="zipCode-container" id="profileZips">
-                            <h4 id>Zip Codes</h4>
-                            <div id="ownedZipCodes"></div>
-                            <div id="zipCodeForm">
-                                <p>Pick Zip Codes of your next home</p>
-                                <label for="stateSelect">States:</label>
-                                <select id="stateSelect" onchange="populateCities();"></select>
-                                <label for="citySelect">Cities:</label>
-                                <select id="citySelect" onchange="populateZipCodes();"></select>
-                                <div class="form-group row justify-content-center">
-                                    <div class="grid-container">
-                                        <div class="grid-available">
-                                            <div class="row">
-                                                <div class="col-md-4">Available Zip Codes</div>
-                                            </div>
-                                            <div class="row">
-                                                <div id="availabeZipCodesContainer" class="box1">
-                                                    <!-- JavaScript will populate this container -->
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="grid-action">
-        <button type="button" class="button" onclick="addSelection()">Add -->
-        </button>
-        <button type="button" class="button" onclick="removeSelection()"> <-- Remove</button>
-    </div>
-    <div class="grid-selected">
-        <p>Selected Zip Codes</p>
-        <div class="container">
-            <div id="selectedZipCodesContainer" class="box2">
-                <!-- JavaScript will populate this container -->
+                    <div class="container mt-5">
+                        <div class="selectContainer">
+                            <div class="state-group row">
+                                <label for="stateSelect" class="col-md-4 col-form-label">States:</label>
+                                <div class="col-md-2">
+                                    <select id="stateSelect" class="form-select-sm justify-content-left"
+                                        onchange="populateCitiesCounties();"></select>
+                                </div>
+                            </div>
+                            <div class="countycity-group row">
+                                <div class="col-md-2 d-flex align-items-center justify-content-center">
+                                    <p>OR</p>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="county-group row">
+                                        <label for="countySelect" class="col-md-2 col-form-label">County:</label>
+                                        <div class="col-md-3">
+                                            <select id="countySelect" class="form-select-sm"
+                                                onchange="populateCountyZipCodes();"></select>
+                                        </div>
+                                    </div>
+                                    <div class="city-group row">
+                                        <label for="citySelect" class="col-md-2 col-form-label">Cities:</label>
+                                        <div class="col-md-3">
+                                            <select id="citySelect" class="form-select-sm"
+                                                onchange="populateCityZipCodes();"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="zipCode-container col-md-4 justify-content-center">
+                                <p>Select Zip Codes</p>
+                                <div class="col-md-2 justify-content-center"></div>
+                                <div id="availabeZipCodesContainer" class="col-md justify-content-center">
+                                    <!-- JavaScript will populate this container -->
+                                </div>
+                            </div>
+                            <div class="zipCode-container col-md-4 justify-content-center">
+                                <div class="row"></div>
+                                <div class="row"></div>
+                                <div class="row justify-content-center">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="addSelection()">Add
+                                        --> </button>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="removeSelection()">
+                                        <-- Remove</button>
+                                </div>
+                            </div>
+                            <div class="zipCode-container col-md-4 justify-content-center">
+                                <p>Your Zip Codes</p>
+                                <div class="col-md-2"></div>
+                                <div id="selectedZipCodesContainer" class="col-md justify-content-center">
+                                    <!-- JavaScript will populate this container -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
+                            onclick="saveChanges()">Save</button>
+                        <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    <button type="button" class="hoverStyle" id="zipCodeButton" onclick="showZipCodes()">Edit</button>
-    </div>
-    </div>
-    </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    </div>
-    </div>
-    </div> -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
