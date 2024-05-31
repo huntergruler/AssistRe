@@ -48,18 +48,6 @@ body {
     border-radius: 5px;
 }
 
-#ownedZipCodes {
-    max-height: 250px;
-    overflow: auto;
-    text-align: center;
-    margin: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    
-}
-
 #zipCodeButton {
     height: 32px;
     background-color: rgba(19, 50, 109);
@@ -211,7 +199,7 @@ body {
 }
 
 .form-group .form-control {
-    padding: .2rem .25rem;
+    /* padding: .2rem .25rem; */
     /* Less padding inside input fields */
     height: calc(1.5em + .5rem + 2px);
     /* Adjust height */
