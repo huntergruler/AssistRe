@@ -225,7 +225,6 @@ function populateUserZipCodes() {
                 if (selectedZipCodesContainer) {
                     selectedZipCodesContainer.appendChild(div);
                 }
-                htmlCodes += `<p>No Zip Codes</p><br>`;
             }
             else {
                 data.results.forEach(code => {
@@ -427,6 +426,7 @@ function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
+    console.log(selectedZipCodesContainer.textContent[0]);
     selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
