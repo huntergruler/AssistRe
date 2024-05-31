@@ -686,7 +686,6 @@ router.get('/get-userzipcodes', (req, res) => {
   } else if (userType === 'Buyer') {
     var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM BuyerZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
   }
-  console.log('Query:', query, 'Userid:', userid);
   db.query(query, [userid], (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
