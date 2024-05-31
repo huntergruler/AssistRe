@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function saveChanges() {
     const selected = document.querySelectorAll(".zipCodeSelected");
-    const selected2 = document.querySelectorAll(".selectedZipCodesContainer");
+    const selected2 = document.querySelectorAll(".ownedZipCodes");
 
     // Prepare the array of selected zip codes
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
