@@ -217,9 +217,6 @@ function populateUserZipCodes() {
     fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
-            if (selectedZipCodesContainer) {
-                selectedZipCodesContainer.innerHTML = '';
-            }
             if (!data.results) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes zipCodeOption justify-content-center";
