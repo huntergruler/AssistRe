@@ -272,9 +272,9 @@ function populateDisplayZipCodes() {
                     htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p>`;
                 });
             }
-            if (displayZipCodes) {
-                displayZipCodes.innerHTML = htmlCodes;
-            }
+            // if (displayZipCodes) {
+            //     displayZipCodes.innerHTML = htmlCodes;
+            // }
         })
         .catch(error => console.error('Error checking user:', error));
 };
