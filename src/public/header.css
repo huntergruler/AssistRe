@@ -32,7 +32,7 @@
     list-style-type: none;
   }
   
-  #navlinks p a {
+  #navlinks a {
     margin: 0 10px;
     /* padding: 20px 0; */
     color: white;
