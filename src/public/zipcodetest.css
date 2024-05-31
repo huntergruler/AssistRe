@@ -8,6 +8,16 @@ body {
     width: auto;
     height: auto;
 }
+.modal-content {
+    font-size: 14px;
+    /* Base font size */
+    /* background-color: #666; */
+    /* margin: 50px 50px; */
+    padding: 0%;
+    border: 10px solid #ccc;
+    width: 600px;
+    height: auto;
+}
 .modal-body {
     font-size: 14px;
     /* Base font size */
