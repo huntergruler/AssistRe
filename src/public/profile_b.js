@@ -118,30 +118,30 @@ function lookupCityState() {
     }
 }
 
-var zipToggle = 1;
-function showZipCodes() {
-    const form = document.getElementById("zipCodeForm");
-    const disp = document.getElementById("zipCodeOption");
-    const zipButton = document.getElementById('zipCodeButton');
+// var zipToggle = 1;
+// function showZipCodes() {
+//     const form = document.getElementById("zipCodeForm");
+//     const disp = document.getElementById("zipCodeOption");
+//     const zipButton = document.getElementById('zipCodeButton');
 
-    if (zipToggle == 0) {
-        form.style.display = "none";
-        disp.style.display = "block";
-        zipButton.innerHTML = "Edit";
-        zipToggle = 1;
+//     if (zipToggle == 0) {
+//         form.style.display = "none";
+//         disp.style.display = "block";
+//         zipButton.innerHTML = "Edit";
+//         zipToggle = 1;
 
-        saveChanges();
-        populateUserZipCodes();
-    }
-    else {
-        form.style.display = "block";
-        disp.style.display = "none";
-        zipButton.innerHTML = "Done";
-        populateStates();
-        populateUserZipCodes();
-        zipToggle = 0;
-    }
-};
+//         saveChanges();
+//         populateUserZipCodes();
+//     }
+//     else {
+//         form.style.display = "block";
+//         disp.style.display = "none";
+//         zipButton.innerHTML = "Done";
+//         populateStates();
+//         populateUserZipCodes();
+//         zipToggle = 0;
+//     }
+// };
 
 // // Function to toggle the file upload input based on the selected radio button
 // function toggleFileUpload(show) {
@@ -156,6 +156,7 @@ function showZipCodes() {
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
     populateUserZipCodes();
+    populateStates();
     // var prequalified = document.getElementById('prequalified').value;
     // if (prequalified === 'Y') {
     //     document.getElementById('prequalifiedY').checked = true;
@@ -212,16 +213,124 @@ function populateCities() {
         .catch(error => console.error('Error checking user:', error));
 };
 
+function populateCitiesCounties() {
+    const stateSelect = document.getElementById('stateSelect').value;
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    if (stateSelect === '') {
+        citySelect.disabled = true;
+        countySelect.disabled = true;
+        availabeZipCodesContainer.innerHTML = '';
+        return;
+    } else {
+        const citySelect = document.getElementById('citySelect');
+
+        fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Clear existing options in citySelect
+                citySelect.innerHTML = '';
+                const defaultOption = document.createElement('option');
+                defaultOption.textContent = 'Select a City';
+                defaultOption.value = '';
+                citySelect.appendChild(defaultOption);
+                data.results.forEach(item => {
+                    let option = new Option(item.city, item.city);
+                    citySelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error checking user:', error));
+        fetch(`/get-counties?stateSelect=${encodeURIComponent(stateSelect)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Clear existing options in countySelect
+                countySelect.innerHTML = '';
+                const defaultOption = document.createElement('option');
+                defaultOption.textContent = 'Select a County';
+                defaultOption.value = '';
+                countySelect.appendChild(defaultOption);
+                data.results.forEach(item => {
+                    let option = new Option(item.county, item.county);
+                    countySelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error checking user:', error));
+    }
+};
+
+function populateCountyZipCodes() {
+    const countySelect = document.getElementById('countySelect').value;
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    if (countySelect === '') {
+        citySelect.disabled = false;
+        availabeZipCodesContainer.innerHTML = '';
+        return;
+    } else {
+        const stateSelect = document.getElementById('stateSelect').value;
+        const citySelect = document.getElementById('citySelect');
+        citySelect.disabled = true;
+
+        // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+        fetch(`/get-countyzipcodes?stateSelect=${encodeURIComponent(stateSelect)}&countySelect=${encodeURIComponent(countySelect)}`)
+            .then(response => response.json())
+            .then(data => {
+                availabeZipCodesContainer.innerHTML = '';
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.textContent = code.zipCode;
+                    div.className = "cityZipCodes zipCodeOption justify-content-center";
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    availabeZipCodesContainer.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Error checking user:', error));
+    }
+};
+
+function populateCityZipCodes() {
+    const citySelect = document.getElementById('citySelect').value;
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    if (citySelect === '') {
+        countySelect.disabled = false;
+        availabeZipCodesContainer.innerHTML = '';
+        return;
+    } else {
+        const stateSelect = document.getElementById('stateSelect').value;
+        const countySelect = document.getElementById('countySelect');
+        countySelect.disabled = true;
+        // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+        fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
+            .then(response => response.json())
+            .then(data => {
+                availabeZipCodesContainer.innerHTML = '';
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.textContent = code.zipCode;
+                    div.className = "cityZipCodes zipCodeOption justify-content-center";
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    availabeZipCodesContainer.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Error checking user:', error));
+    }
+};
+
 function saveChanges() {
     const selected = document.querySelectorAll(".zipCodeSelected");
+    const selected2 = document.querySelectorAll(".userZipCodes");
 
     // Prepare the array of selected zip codes
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
+    const selectedZipCodes2 = Array.from(selected2).map(node => node.textContent);
 
     //document.getElementById('saveChanges').disabled = true;
     // Prepare the data to be sent
+    const userZipCodes = selectedZipCodes.concat(selectedZipCodes2);
     const data = {
-        zipCodes: selectedZipCodes
+        zipCodes: userZipCodes
     };
 
     // Send the data to the server using fetch
@@ -245,6 +354,7 @@ function saveChanges() {
             console.error('Error:', error);
         });
 
+    populateUserZipCodes();
     selected.forEach(node => {
         const data = {
             zipCode: node.textContent
@@ -288,42 +398,41 @@ function removeSelection() {
     });
 };
 
-function populateZipCodes() {
-    const stateSelect = document.getElementById('stateSelect').value;
-    const citySelect = document.getElementById('citySelect').value;
-    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
-    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
-        .then(response => response.json())
-        .then(data => {
-            availabeZipCodesContainer.innerHTML = '';
-            data.results.forEach(code => {
-                const div = document.createElement("div");
-                div.textContent = code.zipCode;
-                div.className = "zipCodeOption";
-                div.onclick = function () {
-                    this.classList.toggle("selected");
-                };
-                availabeZipCodesContainer.appendChild(div);
-            });
-        })
-        .catch(error => console.error('Error checking user:', error));
-};
+// function populateZipCodes() {
+//     const stateSelect = document.getElementById('stateSelect').value;
+//     const citySelect = document.getElementById('citySelect').value;
+//     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+//     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+//     fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
+//         .then(response => response.json())
+//         .then(data => {
+//             availabeZipCodesContainer.innerHTML = '';
+//             data.results.forEach(code => {
+//                 const div = document.createElement("div");
+//                 div.textContent = code.zipCode;
+//                 div.className = "zipCodeOption";
+//                 div.onclick = function () {
+//                     this.classList.toggle("selected");
+//                 };
+//                 availabeZipCodesContainer.appendChild(div);
+//             });
+//         })
+//         .catch(error => console.error('Error checking user:', error));
+// };
 
 function populateUserZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const zipCodeOption = document.getElementById("zipCodeOption");
+    const userZipCodes = document.getElementById("userZipCodes");
     let htmlCodes = '';
-    console.log('populateUserZipCodes');
-    fetch(`/get-agentzipcodes`)
+    fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             if (selectedZipCodesContainer) {
                 selectedZipCodesContainer.innerHTML = '';
             }
             if (data.error) {
                 const div = document.createElement("div");
+                div.className = "userZipCodes zipCodeOption justify-content-center";
                 div.textContent = 'No zip codes selected';
                 if (selectedZipCodesContainer) {
                     selectedZipCodesContainer.appendChild(div);
@@ -334,7 +443,7 @@ function populateUserZipCodes() {
                 data.results.forEach(code => {
                     const div = document.createElement("div");
                     div.textContent = code.zipCode;
-                    div.className = "zipCodeSelected";
+                    div.className = "userZipCodes zipCodeOption align-items-center";
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
@@ -344,10 +453,11 @@ function populateUserZipCodes() {
                     htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
                 });
             }
-            if (zipCodeOption) {
-                zipCodeOption.innerHTML = htmlCodes;
+            if (userZipCodes) {
+                userZipCodes.innerHTML = htmlCodes;
             }
         })
         .catch(error => console.error('Error checking user:', error));
 };
+
 
