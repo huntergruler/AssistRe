@@ -682,9 +682,9 @@ router.get('/get-userzipcodes', (req, res) => {
   userid = req.session.userid;
   userType = req.session.userType;
   if (userType === 'Agent') {
-    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
+    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
   } else if (userType === 'Buyer') {
-    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM BuyerZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
+    var query = 'SELECT concat(u.zipCode," - ", z.city,", ", z.state) zipcode, z.stateName FROM BuyerZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
   }
   db.query(query, [userid], (error, results) => {
     if (error) {
