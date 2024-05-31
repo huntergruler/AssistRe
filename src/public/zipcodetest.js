@@ -171,6 +171,9 @@ function populateCitiesCounties() {
 function populateCountyZipCodes() {
     const stateSelect = document.getElementById('stateSelect').value;
     const countySelect = document.getElementById('countySelect').value;
+    const citySelect = document.getElementById('citySelect');
+    citySelect.disabled = false;
+
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     fetch(`/get-countyzipcodes?stateSelect=${encodeURIComponent(stateSelect)}&countySelect=${encodeURIComponent(countySelect)}`)
