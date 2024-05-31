@@ -45,7 +45,7 @@ body {
     border-radius: 5px;
 }
 
-#selectedZipCodesContainer {
+#selectedZipCodesContainer #availabeZipCodesContainer{
     overflow: auto;
     width: 100px;
     max-height: 150px;
