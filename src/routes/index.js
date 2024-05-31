@@ -476,6 +476,24 @@ router.get('/get-cities', (req, res) => {
   });
 });
 
+// Route to get city and state by zip code
+router.get('/get-counties', (req, res) => {
+  const stateSelect = req.query.stateSelect;
+  const query = 'SELECT distinct county FROM ZipCodes WHERE state = ? order by county';
+  db.query(query, [stateSelect], (error, results) => {
+    //    console.log('Results:', results);
+
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results.length > 0) {
+      res.json({ results });
+    } else {
+      res.status(404).json({ error: 'No zips found for this state' });
+    }
+  });
+});
+
 // Route to get states
 router.get('/get-states', (req, res) => {
   const stateSelect = req.query.stateSelect;

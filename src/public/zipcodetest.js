@@ -154,12 +154,12 @@ function populateCitiesCounties() {
     fetch(`/get-counties?stateSelect=${encodeURIComponent(stateSelect)}`)
         .then(response => response.json())
         .then(data => {
-            // Clear existing options in citySelect
-            citySelect.innerHTML = '';
+            // Clear existing options in countySelect
+            countySelect.innerHTML = '';
             const defaultOption = document.createElement('option');
             defaultOption.textContent = 'Select a County';
             defaultOption.value = '';
-            citySelect.appendChild(defaultOption);
+            countySelect.appendChild(defaultOption);
             data.results.forEach(item => {
                 let option = new Option(item.city, item.city);
                 countySelect.appendChild(option);
@@ -168,7 +168,29 @@ function populateCitiesCounties() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function populateZipCodes() {
+function populateCountyZipCodes() {
+    const stateSelect = document.getElementById('stateSelect').value;
+    const countySelect = document.getElementById('countySelect').value;
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    fetch(`/get-countyzipcodes?stateSelect=${encodeURIComponent(stateSelect)}&countySelect=${encodeURIComponent(countySelect)}`)
+        .then(response => response.json())
+        .then(data => {
+            availabeZipCodesContainer.innerHTML = '';
+            data.results.forEach(code => {
+                const div = document.createElement("div");
+                div.textContent = code.zipCode;
+                div.className = "cityZipCodes zipCodeOption justify-content-center";
+                div.onclick = function () {
+                    this.classList.toggle("selected");
+                };
+                availabeZipCodesContainer.appendChild(div);
+            });
+        })
+        .catch(error => console.error('Error checking user:', error));
+};
+
+function populateCityZipCodes() {
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect').value;
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
