@@ -221,7 +221,7 @@ function populateUserZipCodes() {
             if (!data.results) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes justify-content-center";
-                div.textContent = 'No zip codes selected';
+                div.textContent = 'No zip codes yet';
                 if (selectedZipCodesContainer) {
                     selectedZipCodesContainer.appendChild(div);
                 }
