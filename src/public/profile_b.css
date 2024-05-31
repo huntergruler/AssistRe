@@ -67,6 +67,18 @@ body {
     border-radius: 5px;
 }
 
+#displayZipCodes {
+    overflow: auto;
+    width: 300px;
+    max-height: 160px;
+    min-height: 160px;
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
 .col-md-4, .col-md-3, .col-md-2 {
     margin-left: 0px;
     align-items: center;
