@@ -46,11 +46,11 @@ body {
     border-radius: 5px;
 }
 
-.col-md-4 {
+.col-md-4, .col-md-3 {
     margin-left: 0px;
     align-items: center;
 }
-.col-md-3 {
+ {
     margin-left: 0px;
     align-items: center;
 }
