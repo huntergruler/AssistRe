@@ -161,7 +161,7 @@ function populateCitiesCounties() {
             defaultOption.value = '';
             countySelect.appendChild(defaultOption);
             data.results.forEach(item => {
-                let option = new Option(item.city, item.city);
+                let option = new Option(item.county, item.county);
                 countySelect.appendChild(option);
             });
         })
