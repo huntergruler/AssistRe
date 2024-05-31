@@ -692,8 +692,6 @@ router.get('/get-userzipcodes', (req, res) => {
     }
     if (results.length > 0) {
       res.json({ results });
-    } else {
-      res.status(404).json({ error: 'No zips found for this state' });
     }
   });
 });
