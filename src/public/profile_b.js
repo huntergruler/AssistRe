@@ -254,7 +254,10 @@ function populateDisplayZipCodes() {
             if (!data.results) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes justify-content-center";
-                displayZipCodes.innerHTML = 'No Zip Codes';
+                div.textContent = 'No zip codes yet';
+                displayZipCodes.appendChild(div);
+                htmlCodes += `<p>No Zip Codes</p><br>`;
+                displayZipCodes.innerHTML = htmlCodes;
             }
             else {
                 data.results.forEach(code => {
