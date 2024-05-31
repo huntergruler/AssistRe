@@ -681,12 +681,16 @@ router.get('/get-agentzipcodes', (req, res) => {
 router.get('/get-userzipcodes', (req, res) => {
   userid = req.session.userid;
   userType = req.session.userType;
+  console.log('User Type:', userType);
+
   if (userType === 'Agent') {
     var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
   } else if (userType === 'Buyer') {
     var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM BuyerZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
   }
+  console.log('Query:', query, 'User ID:', userid);
   db.query(query, [userid], (error, results) => {
+    console.log('Results:', results);
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
