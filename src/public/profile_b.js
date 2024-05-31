@@ -248,14 +248,10 @@ function populateUserZipCodes() {
 };
 function populateDisplayZipCodes() {
     const displayZipCodes = document.getElementById("displayZipCodes");
-    const userZipCodes = document.getElementById("userZipCodes");
     let htmlCodes = '';
     fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
-            if (displayZipCodes) {
-                displayZipCodes.innerHTML = '';
-            }
             if (!data.results) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes justify-content-center";
@@ -266,6 +262,9 @@ function populateDisplayZipCodes() {
                 htmlCodes += `<p>No Zip Codes</p><br>`;
             }
             else {
+                if (displayZipCodes) {
+                    displayZipCodes.innerHTML = '';
+                }
                 data.results.forEach(code => {
                     const div = document.createElement("div");
                     div.textContent = code.zipCode;
@@ -276,8 +275,8 @@ function populateDisplayZipCodes() {
                     htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
                 });
             }
-            if (userZipCodes) {
-                userZipCodes.innerHTML = htmlCodes;
+            if (displayZipCodes) {
+                displayZipCodes.innerHTML = htmlCodes;
             }
         })
         .catch(error => console.error('Error checking user:', error));
