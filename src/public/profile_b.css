@@ -6,7 +6,7 @@ body {
     max-width: auto;
 }
 
-.zipCode-container {
+.zipCode-container, .displayZipCodes {
     background-color: white;
     padding: 20px;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
