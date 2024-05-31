@@ -681,7 +681,10 @@ router.get('/get-agentzipcodes', (req, res) => {
 router.get('/get-userzipcodes', (req, res) => {
   userid = req.session.userid;
   userType = req.session.userType;
-
+  const nozips = [
+    {
+        zipCode: 'No Zip Codes Selected'
+    }];
   if (userType === 'Agent') {
     var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
   } else if (userType === 'Buyer') {
@@ -691,7 +694,7 @@ router.get('/get-userzipcodes', (req, res) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     } else if (results.length === 0) {
-           res.json({ zipCodes: 'No Zip Codes Selected' });
+           res.json(nozips);
         } else {
       res.json({ results });
     }
