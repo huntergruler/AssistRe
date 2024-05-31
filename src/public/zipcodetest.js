@@ -170,15 +170,16 @@ function populateCitiesCounties() {
 
 function populateCountyZipCodes() {
     const countySelect = document.getElementById('countySelect').value;
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     if (countySelect === '') {
         citySelect.disabled = false;
+        availabeZipCodesContainer.innerHTML = '';
         return;
     } else {
         const stateSelect = document.getElementById('stateSelect').value;
         const citySelect = document.getElementById('citySelect');
         citySelect.disabled = true;
 
-        const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
         // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
         fetch(`/get-countyzipcodes?stateSelect=${encodeURIComponent(stateSelect)}&countySelect=${encodeURIComponent(countySelect)}`)
             .then(response => response.json())
@@ -200,14 +201,15 @@ function populateCountyZipCodes() {
 
 function populateCityZipCodes() {
     const citySelect = document.getElementById('citySelect').value;
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     if (citySelect === '') {
         countySelect.disabled = false;
+        availabeZipCodesContainer.innerHTML = '';
         return;
     } else {
         const stateSelect = document.getElementById('stateSelect').value;
         const countySelect = document.getElementById('countySelect');
         countySelect.disabled = true;
-        const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
         // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
         fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
             .then(response => response.json())
