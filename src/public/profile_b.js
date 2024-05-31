@@ -436,9 +436,6 @@ function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
-    if selectedZipCodesContainer.value[0] === 'No zip codes selected') {
-        selectedZipCodesContainer.innerHTML = '';
-    }
     selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
