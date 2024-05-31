@@ -40,13 +40,13 @@ function saveChanges() {
             console.error('Error:', error);
         });
 
+    populateUserZipCodes();
+    populateZipCodes();
     selected.forEach(node => {
         const data = {
             zipCode: node.textContent
         };
     });
-    populateUserZipCodes();
-    populateZipCodes();
 };
 
 function populateUserZipCodes() {
