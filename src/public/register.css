@@ -33,10 +33,16 @@ body::before {
     border-radius: 5px;
     border: none;
     color: white;
+    cursor: pointer;
 }
 
 #submit_button:hover{
     opacity: 0.8;
+}
+
+#submit_button:disabled{
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .form-container {
