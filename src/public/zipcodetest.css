@@ -24,7 +24,7 @@ body {
 }
 
 .zipCodeSelected {
-    padding: 2px;
+    padding: 1px;
     /* border: 1px solid #ddd; */
     margin-bottom: 1px;
     cursor: pointer;
