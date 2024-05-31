@@ -14,10 +14,11 @@ function saveChanges() {
 
     //document.getElementById('saveChanges').disabled = true;
     // Prepare the data to be sent
-    console.log(selectedZipCodes, selectedZipCodes2);
+    const userZipCodes = selectedZipCodes.concat(selectedZipCodes2);
     const data = {
-        zipCodes: selectedZipCodes
+        zipCodes: userZipCodes
     };
+    console.log(userZipCodes);
 
     // Send the data to the server using fetch
     fetch('/process-zip-codes', {
