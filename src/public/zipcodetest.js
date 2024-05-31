@@ -174,7 +174,7 @@ function populateCountyZipCodes() {
     if (countySelect === 'Select a County') {
         citySelect.disabled = false;
         return;
-    }
+    } else {
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect');       
     citySelect.disabled = true;
@@ -196,6 +196,7 @@ function populateCountyZipCodes() {
             });
         })
         .catch(error => console.error('Error checking user:', error));
+    }
 };
 
 function populateCityZipCodes() {
