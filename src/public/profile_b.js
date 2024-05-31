@@ -269,12 +269,12 @@ function populateDisplayZipCodes() {
                     if (displayZipCodes) {
                         displayZipCodes.appendChild(div);
                     }
-                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p>`;
+                    htmlCodes += `${code.zipCode} - ${code.city}, ${code.state}`;
                 });
             }
-            // if (displayZipCodes) {
-            //     displayZipCodes.innerHTML = htmlCodes;
-            // }
+            if (displayZipCodes) {
+                displayZipCodes.innerHTML = htmlCodes;
+            }
         })
         .catch(error => console.error('Error checking user:', error));
 };
