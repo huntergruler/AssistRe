@@ -24,7 +24,7 @@ body::before {
 }
 
 #regForm div{
-    background-color: red;
+    margin: 2px 0;
 }
 
 .form-container {
