@@ -457,6 +457,7 @@ function removeSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeSelected.selected");
+    console.log(selectedZipCodesContainer);
     selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
