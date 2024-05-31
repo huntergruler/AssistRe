@@ -424,9 +424,11 @@ function populateCityZipCodes() {
 function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const selectedZip = document.querySelector(".selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
-    console.log("selectedZip",selectedZip.textContent.trim());
+    console.log(selectedZipCodesContainer.textContent);
+    if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
+        selectedZipCodesContainer.innerHTML = '';
+    }
         selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
