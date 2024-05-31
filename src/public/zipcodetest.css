@@ -5,7 +5,7 @@ body {
     /* margin: 50px 50px; */
     padding: 0%;
     border: 10px solid #ccc;
-    max-width: auto;
+    width: auto;
     height: auto;
 }
 
@@ -62,7 +62,7 @@ body {
     padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
-    width: 502px;
+    width: auto;
     /* border: 1px solid black;
     border-radius: 10px; */
 }
