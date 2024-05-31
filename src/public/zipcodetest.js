@@ -170,6 +170,10 @@ function populateCitiesCounties() {
 
 function populateCountyZipCodes() {
     const countySelect = document.getElementById('countySelect').value;
+    if (countySelect === 'Select a County') {
+        citySelect.disabled = false;
+        return;
+    }
     const stateSelect = document.getElementById('stateSelect').value;
     const citySelect = document.getElementById('citySelect');       
     citySelect.disabled = true;
@@ -195,8 +199,11 @@ function populateCountyZipCodes() {
 
 function populateCityZipCodes() {
     const citySelect = document.getElementById('citySelect').value;
+    if (citySelect === 'Select a City') {
+        citySelect.disabled = false;
+        return;
+    }
     const stateSelect = document.getElementById('stateSelect').value;
-    const citySelect = document.getElementById('citySelect').value;
     const countySelect = document.getElementById('countySelect');       
     countySelect.disabled = true;
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
