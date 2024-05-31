@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <header>
-    <h1 id="title"><a href="/">SeekingAgents</a></h1>
-    <div id="navlinks">
-        <a href="/profile_a">Profile</a>
-        <p>|</p>
-        <a href="/settings">Settings</a>
-        <p>|</p>
-        <a href="/logout">Logout</a>
+    <div class="row row-cols-2">
+        <div id="title" class="align-items-center">
+            <h1 class="mt-2"><a href="/">SeekingAgents</a></h1>
+        </div>
+        <nav id="navlinks" class="justify-content-end text-center">
+            <p id="navname"><%= firstname %> <%= lastname %></p>
+            <p>|</p>
+            <p><a href="/dashboard_a">Dashboard</a></p>
+            <p>|</p>
+            <p><a href="/profile_a">Profile</a></p>
+            <p>|</p>
+            <p><a href="/logout">Logout</a></p>
+        </nav>
     </div>
 </header>
 <body>
