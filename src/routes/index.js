@@ -554,6 +554,49 @@ router.get('/get-zipcodes', (req, res) => {
   });
 });
 
+// Route to get county and state by zip code
+router.get('/get-countyzipcodes', (req, res) => {
+  const stateSelect = req.query.stateSelect;
+  const countySelect = req.query.countySelect;
+  userid = req.session.userid;
+  userType = req.session.userType;
+  userid = '1000000002'
+  userType = 'Buyer'
+
+  if (userType === 'Agent') {
+  var query = `SELECT zipCode 
+                   FROM ZipCodes z 
+                  WHERE state = ? and county = ?
+                    and not exists(select 1 
+                                     from AgentZipCodes u 
+                                    where userid = ? 
+                                      and u.zipCode = z.zipCode) 
+                  order by zipCode`;
+  } else if (userType === 'Buyer') {
+    var query = `SELECT zipCode
+    FROM ZipCodes z 
+    WHERE state = ? and county = ?
+      and not exists(select 1 
+                       from BuyerZipCodes u 
+                      where userid = ? 
+                        and u.zipCode = z.zipCode) 
+    order by zipCode`;
+  }
+
+  db.query(query, [stateSelect, countySelect, userid], (error, results) => {
+    //    console.log('Results:', results);
+
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results.length > 0) {
+      res.json({ results });
+    } else {
+      res.status(404).json({ error: 'No zips found for this state' });
+    }
+  });
+});
+
 router.post('/process-zip-codes', (req, res) => {
   const { zipCodes } = req.body;
   // const userid = req.session.userid;
