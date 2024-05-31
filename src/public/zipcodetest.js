@@ -45,6 +45,8 @@ function saveChanges() {
             zipCode: node.textContent
         };
     });
+    populateUserZipCodes();
+    populateZipCodes();
 };
 
 function populateUserZipCodes() {
