@@ -202,8 +202,8 @@ function saveChanges() {
             console.error('Error:', error);
         });
 
-    populateUserZipCodes();
-    selected.forEach(node => {
+        populateDisplayZipCodes();
+        selected.forEach(node => {
         const data = {
             zipCode: node.textContent
         };
