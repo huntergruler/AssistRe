@@ -424,9 +424,7 @@ function populateCityZipCodes() {
 function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const selectedZip = document.querySelectorAll(".selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
-    console.log("selectedZip",selectedZip.textContent.trim);
     console.log(selectedZipCodesContainer.textContent);
         selected.forEach(node => {
         node.classList.remove("selected");
