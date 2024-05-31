@@ -171,9 +171,6 @@ body {
     align-content: center;
     align-items: center;
     text-align: right;
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
 }
 
 .city-group {
