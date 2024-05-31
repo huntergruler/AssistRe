@@ -250,6 +250,7 @@ function populateDisplayZipCodes() {
     fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
+            console.log(data, 'data', data.results);
             if (!data.results) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes justify-content-center";
