@@ -201,7 +201,7 @@ function populateCountyZipCodes() {
 function populateCityZipCodes() {
     const citySelect = document.getElementById('citySelect').value;
     if (citySelect === '') {
-        citySelect.disabled = false;
+        countySelect.disabled = false;
         return;
     } else {
         const stateSelect = document.getElementById('stateSelect').value;
