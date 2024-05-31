@@ -48,6 +48,11 @@ body {
 
 .col-md-4 {
     margin-left: 0px;
+    align-items: center;
+}
+.col-md-3 {
+    margin-left: 0px;
+    align-items: center;
 }
 
 .container {
@@ -163,10 +168,6 @@ body {
     /* Adjust height */
     font-size: 14px;
     /* Element value font size */
-}
-.col-md-3 {
-    margin-left: 0px;
-    align-items: center;
 }
 
 
