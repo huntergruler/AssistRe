@@ -255,6 +255,7 @@ function populateDisplayZipCodes() {
                 const div = document.createElement("div");
                 div.className = "userZipCodes justify-content-center";
                 div.textContent = 'No zip codes yet';
+                console.log(div);
                 displayZipCodes.appendChild(div);
                 console.log(displayZipCodes);
             }
