@@ -33,6 +33,13 @@ body::before {
     /* Less space between elements */
 }
 
+.container {
+    background-color: #f0f2f5;
+    width: 400px;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
 .form-group {
     margin-bottom: 5px;
     margin-top: 5px;
