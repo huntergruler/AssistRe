@@ -27,6 +27,12 @@ body::before {
     margin: 2px 0;
 }
 
+#submit_button{
+    background-color: aqua;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
 .form-container {
     max-width: 550px;
     margin: auto;
