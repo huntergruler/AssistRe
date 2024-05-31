@@ -21,10 +21,15 @@
     align-items: center;
   }
   
+  #title {
+    height: 75px;
+  }
   #title a {
     color: white;
     text-decoration: none;
     font-size: 24px;
+    background-color: purple;
+    padding: 20px 0;
   }
   
   #navlinks {
@@ -33,12 +38,12 @@
   }
 
   #navlinks p{
-    padding: 20px 0;
+    padding: 25px 0;
   }
   
-  #navlinks a {
+  #navlinks p a {
     margin: 0 10px;
-    /* padding: 20px 0; */
+    padding: 20px 0;
     color: white;
     text-decoration: none;
     font-size: 16px;
@@ -55,5 +60,6 @@
 
   #navname{
     margin: 0 10px;
+    height: 10px;
   }
   
