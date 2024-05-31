@@ -689,7 +689,7 @@ router.get('/get-userzipcodes', (req, res) => {
   }
   db.query(query, [userid], (error, results) => {
     if (results.length === 0) {
-      console.log('NO Results:');
+      res.json({ zipCode: 'No Zip Codes Selected' });
     }
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
