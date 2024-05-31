@@ -688,7 +688,7 @@ router.get('/get-userzipcodes', (req, res) => {
     var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM BuyerZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
   }
   db.query(query, [userid], (error, results) => {
-    if (results.length = 0) {
+    if (results.length === 0) {
       console.log('NO Results:');
     }
     if (error) {
