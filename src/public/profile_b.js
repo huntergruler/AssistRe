@@ -121,7 +121,7 @@ function lookupCityState() {
 var zipToggle = 1;
 function showZipCodes() {
     const form = document.getElementById("zipCodeForm");
-    const disp = document.getElementById("ownedZipCodes");
+    const disp = document.getElementById("zipCodeOption");
     const zipButton = document.getElementById('zipCodeButton');
 
     if (zipToggle == 0) {
@@ -312,7 +312,7 @@ function populateZipCodes() {
 
 function populateUserZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const ownedZipCodes = document.getElementById("ownedZipCodes");
+    const zipCodeOption = document.getElementById("zipCodeOption");
     let htmlCodes = '';
     console.log('populateUserZipCodes');
     fetch(`/get-agentzipcodes`)
@@ -344,8 +344,8 @@ function populateUserZipCodes() {
                     htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
                 });
             }
-            if (ownedZipCodes) {
-                ownedZipCodes.innerHTML = htmlCodes;
+            if (zipCodeOption) {
+                zipCodeOption.innerHTML = htmlCodes;
             }
         })
         .catch(error => console.error('Error checking user:', error));
