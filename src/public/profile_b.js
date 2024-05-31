@@ -257,7 +257,7 @@ function populateDisplayZipCodes() {
                 if (displayZipCodes) {
                     displayZipCodes.appendChild(div);
                 }
-                htmlCodes += `<p>No Zip Codes</p><br>`;
+                // htmlCodes += `<p>No Zip Codes</p><br>`;
             }
             else {
                 if (displayZipCodes) {
