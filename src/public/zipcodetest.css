@@ -200,15 +200,3 @@ body {
     /* Element value font size */
 }
 
-.form-control.view-mode {
-    border: none;
-    background-color: transparent;
-    box-shadow: none;
-    font-size: 5;
-    padding-left: 0;
-}
-
-.text-center button {
-    margin: 5px;
-    /* Less space between buttons */
-}
