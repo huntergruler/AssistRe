@@ -254,10 +254,7 @@ function populateDisplayZipCodes() {
             if (!data.results) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes justify-content-center";
-                div.textContent = 'No zip codes yet';
-                console.log(div);
-                displayZipCodes.appendChild(div);
-                console.log(displayZipCodes);
+                displayZipCodes.innerHTML = 'No Zip Codes';
             }
             else {
                 data.results.forEach(code => {
@@ -270,7 +267,9 @@ function populateDisplayZipCodes() {
                     htmlCodes += `${code.zipCode} - ${code.city}, ${code.state}<br>`;
                 });
             }
-            displayZipCodes.innerHTML = htmlCodes;
+            if (displayZipCodes) {
+                displayZipCodes.innerHTML = htmlCodes;
+            }
         })
         .catch(error => console.error('Error checking user:', error));
 };
