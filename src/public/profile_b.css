@@ -6,7 +6,7 @@ body {
     max-width: auto;
 }
 
-.zipCode-container, .displayZipCodes {
+.zipCode-container{
     background-color: white;
     padding: 20px;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
@@ -55,7 +55,7 @@ body {
     color: white;
 }
 
-#selectedZipCodesContainer, #availabeZipCodesContainer{
+#selectedZipCodesContainer, #availabeZipCodesContainer, #displayZipCodes {
     overflow: auto;
     width: 100px;
     max-height: 160px;
