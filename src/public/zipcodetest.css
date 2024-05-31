@@ -226,6 +226,8 @@ body {
 }
 
 .zipCodeSelected {
+    padding-left: 2px;
+    padding-right: 2px;
     padding: 2px;
     /* border: 1px solid #ddd; */
     margin-bottom: 2px;
