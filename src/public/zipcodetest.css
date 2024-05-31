@@ -37,7 +37,7 @@ body {
 
 #availabeZipCodesContainer {
     overflow: auto;
-    width: 90px;
+    width: 92px;
     max-height: 150px;
     min-height: 150px;
     text-align: center;
@@ -47,7 +47,7 @@ body {
 
 #selectedZipCodesContainer {
     overflow: auto;
-    width: 90px;
+    width: 92px;
     max-height: 150px;
     min-height: 150px;
     text-align: center;
@@ -125,15 +125,6 @@ body {
     /* padding: 20px; */
     border-radius: 5px;
     border: 1px solid #ccc;
-}
-.test{
-    text-align: right;
-    border: 1px solid #ccc;
-    margin-bottom: 2px;
-    margin-top: 0px;
-    margin-left: 1px;
-    margin-right: 1px;
-    padding-left: 0px;
 }
 
 .state-group {
