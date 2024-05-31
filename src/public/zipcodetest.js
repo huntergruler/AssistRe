@@ -171,7 +171,7 @@ function populateCitiesCounties() {
 function populateCountyZipCodes() {
     const stateSelect = document.getElementById('stateSelect').value;
     const countySelect = document.getElementById('countySelect').value;
-    const citySelect = document.getElementById('citySelect');
+    const citySelect = document.getElementById('citySelect');       
     citySelect.disabled = false;
 
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
