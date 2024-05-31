@@ -13,8 +13,15 @@
 
 <body>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Open Form
+    <div class="zipCode-container col-md-4 justify-content-center">
+        <p>Your Zip Codes</p>
+        <div class="col-md-2"></div>
+        <div id="selectedZipCodesContainer" class="col-md justify-content-center">
+            <!-- JavaScript will populate this container -->
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+        Modify Zip Codes
     </button>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
