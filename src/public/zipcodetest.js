@@ -12,6 +12,7 @@ function saveChanges() {
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
     const selectedZipCodes2 = Array.from(selected2).map(node => node.textContent);
 
+    console.log(selectedZipCodes, selectedZipCodes2);
     //document.getElementById('saveChanges').disabled = true;
     // Prepare the data to be sent
     const userZipCodes = selectedZipCodes.concat(selectedZipCodes2);
