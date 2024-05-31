@@ -254,9 +254,9 @@ function populateDisplayZipCodes() {
             if (!data.results) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes justify-content-center";
-                div.textContent = 'No zip codes yet';
+                div.textContent = 'Currently no zip codes yet';
                 displayZipCodes.appendChild(div);
-                htmlCodes += `<p>No Zip Codes</p><br>`;
+                htmlCodes += `<p>Currently no zip codes selected</p>`;
                 displayZipCodes.innerHTML = htmlCodes;
             }
             else {
