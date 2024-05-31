@@ -19,19 +19,21 @@
 
 
 <header>
-    <h1 id="title"><a href="/">SeekingAgents</a></h1>
-    <nav id="navlinks">
-        <p id="navname">
-            <%= buyer.firstName %>
-                <%= buyer.lastName %>
-        </p>
-        <p>|</p>
-        <a href="/dashboard_b">Dashboard</a>
-        <p>|</p>
-        <a href="/settings">Settings</a>
-        <p>|</p>
-        <a href="/logout">Logout</a>
-    </nav>
+    <div class="row row-cols-2">
+        <div id="title" class="align-items-center">
+            <h1 class="mt-2"><a href="/">SeekingAgents</a></h1>
+        </div>
+        <nav id="navlinks" class="justify-content-end text-center">
+            <p id="navname"><%= firstname %> <%= lastname %></p>
+            <p>|</p>
+            <p><a href="/dashboard_a" >Dashboard</a></p>
+            <p>|</p>
+            <p><a href="/settings">Settings</a></p>
+            <p>|</p>
+            <p><a href="/logout">Logout</a></p>
+        </nav>
+    </div>
+    
 </header>
 
 <body>
