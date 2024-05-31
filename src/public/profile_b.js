@@ -211,28 +211,21 @@ function saveChanges() {
 };
 
 function populateUserZipCodes() {
-    const selectedZipCodesContainer1 = document.getElementById("selectedZipCodesContainer1");
-    const selectedZipCodesContainer2 = document.getElementById("selectedZipCodesContainer2");
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const userZipCodes = document.getElementById("userZipCodes");
     let htmlCodes = '';
     fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
-            if (selectedZipCodesContainer1) {
-                selectedZipCodesContainer1.innerHTML = '';
-            }
-            if (selectedZipCodesContainer2) {
-                selectedZipCodesContainer2.innerHTML = '';
+            if (selectedZipCodesContainer) {
+                selectedZipCodesContainer.innerHTML = '';
             }
             if (data.error) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes zipCodeOption justify-content-center";
                 div.textContent = 'No zip codes selected';
-                if (selectedZipCodesContainer1) {
-                    selectedZipCodesContainer1.appendChild(div);
-                }
-                if (selectedZipCodesContainer2) {
-                    selectedZipCodesContainer2.appendChild(div);
+                if (selectedZipCodesContainer) {
+                    selectedZipCodesContainer.appendChild(div);
                 }
                 htmlCodes += `<p>No Zip Codes</p><br>`;
             }
@@ -244,11 +237,8 @@ function populateUserZipCodes() {
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
-                    if (selectedZipCodesContainer1) {
-                        selectedZipCodesContainer1.appendChild(div);
-                    }
-                    if (selectedZipCodesContainer2) {
-                        selectedZipCodesContainer2.appendChild(div);
+                    if (selectedZipCodesContainer) {
+                        selectedZipCodesContainer.appendChild(div);
                     }
                     htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
                 });
@@ -408,7 +398,7 @@ function populateCityZipCodes() {
 
 function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
-    const selectedZipCodesContainer2 = document.getElementById("selectedZipCodesContainer2");
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
     selected.forEach(node => {
         node.classList.remove("selected");
@@ -418,7 +408,7 @@ function addSelection() {
         div.onclick = function () {
             this.classList.toggle("selected");
         };
-        selectedZipCodesContainer2.appendChild(div);
+        selectedZipCodesContainer.appendChild(div);
         node.remove();
         //document.getElementById('saveChanges').disabled = false;
     });
@@ -426,7 +416,7 @@ function addSelection() {
 
 function removeSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
-    const selectedZipCodesContainer2 = document.getElementById("selectedZipCodesContainer2");
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeSelected.selected");
     selected.forEach(node => {
         node.classList.remove("selected");
