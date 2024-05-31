@@ -50,7 +50,7 @@ body {
 .col-md-4, .col-md-3, .col-md-2 {
     margin-left: 0px;
     align-items: center;
-    text-align: center;
+    align-content: center;
 }
 
 .container {
