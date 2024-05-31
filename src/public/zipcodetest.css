@@ -198,18 +198,6 @@ body {
     align-items: center;
 }
 
-.zipcoderow {
-    padding: 2px;
-    font-size: 14px;
-    margin-bottom: 1px;
-    cursor: pointer;
-}
-
-.zipcoderow.selected {
-    background-color: #007BFF;
-    color: white;
-    padding-right: 1px;
-}
 
 .zipCodeOption {
     padding: 2px;
