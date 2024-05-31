@@ -220,6 +220,8 @@ function populateUserZipCodes() {
         .then(data => {
             if (selectedZipCodesContainer1) {
                 selectedZipCodesContainer1.innerHTML = '';
+            }
+            if (selectedZipCodesContainer2) {
                 selectedZipCodesContainer2.innerHTML = '';
             }
             if (data.error) {
@@ -228,6 +230,8 @@ function populateUserZipCodes() {
                 div.textContent = 'No zip codes selected';
                 if (selectedZipCodesContainer1) {
                     selectedZipCodesContainer1.appendChild(div);
+                }
+                if (selectedZipCodesContainer2) {
                     selectedZipCodesContainer2.appendChild(div);
                 }
                 htmlCodes += `<p>No Zip Codes</p><br>`;
@@ -241,6 +245,9 @@ function populateUserZipCodes() {
                         this.classList.toggle("selected");
                     };
                     if (selectedZipCodesContainer1) {
+                        selectedZipCodesContainer1.appendChild(div);
+                    }
+                    if (selectedZipCodesContainer2) {
                         selectedZipCodesContainer2.appendChild(div);
                     }
                     htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
