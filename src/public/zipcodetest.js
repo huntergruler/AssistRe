@@ -170,61 +170,61 @@ function populateCitiesCounties() {
 
 function populateCountyZipCodes() {
     const countySelect = document.getElementById('countySelect').value;
-    console.log('HERE',countySelect);
     if (countySelect === '') {
         citySelect.disabled = false;
         return;
     } else {
-    const stateSelect = document.getElementById('stateSelect').value;
-    const citySelect = document.getElementById('citySelect');       
-    citySelect.disabled = true;
+        const stateSelect = document.getElementById('stateSelect').value;
+        const citySelect = document.getElementById('citySelect');
+        citySelect.disabled = true;
 
-    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
-    // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    fetch(`/get-countyzipcodes?stateSelect=${encodeURIComponent(stateSelect)}&countySelect=${encodeURIComponent(countySelect)}`)
-        .then(response => response.json())
-        .then(data => {
-            availabeZipCodesContainer.innerHTML = '';
-            data.results.forEach(code => {
-                const div = document.createElement("div");
-                div.textContent = code.zipCode;
-                div.className = "cityZipCodes zipCodeOption justify-content-center";
-                div.onclick = function () {
-                    this.classList.toggle("selected");
-                };
-                availabeZipCodesContainer.appendChild(div);
-            });
-        })
-        .catch(error => console.error('Error checking user:', error));
+        const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+        // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+        fetch(`/get-countyzipcodes?stateSelect=${encodeURIComponent(stateSelect)}&countySelect=${encodeURIComponent(countySelect)}`)
+            .then(response => response.json())
+            .then(data => {
+                availabeZipCodesContainer.innerHTML = '';
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.textContent = code.zipCode;
+                    div.className = "cityZipCodes zipCodeOption justify-content-center";
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    availabeZipCodesContainer.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Error checking user:', error));
     }
 };
 
 function populateCityZipCodes() {
     const citySelect = document.getElementById('citySelect').value;
-    if (citySelect === 'Select a City') {
+    if (citySelect === '') {
         citySelect.disabled = false;
         return;
+    } else {
+        const stateSelect = document.getElementById('stateSelect').value;
+        const countySelect = document.getElementById('countySelect');
+        countySelect.disabled = true;
+        const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+        // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+        fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
+            .then(response => response.json())
+            .then(data => {
+                availabeZipCodesContainer.innerHTML = '';
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.textContent = code.zipCode;
+                    div.className = "cityZipCodes zipCodeOption justify-content-center";
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    availabeZipCodesContainer.appendChild(div);
+                });
+            })
+            .catch(error => console.error('Error checking user:', error));
     }
-    const stateSelect = document.getElementById('stateSelect').value;
-    const countySelect = document.getElementById('countySelect');       
-    countySelect.disabled = true;
-    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
-    // const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
-        .then(response => response.json())
-        .then(data => {
-            availabeZipCodesContainer.innerHTML = '';
-            data.results.forEach(code => {
-                const div = document.createElement("div");
-                div.textContent = code.zipCode;
-                div.className = "cityZipCodes zipCodeOption justify-content-center";
-                div.onclick = function () {
-                    this.classList.toggle("selected");
-                };
-                availabeZipCodesContainer.appendChild(div);
-            });
-        })
-        .catch(error => console.error('Error checking user:', error));
 };
 
 function addSelection() {
