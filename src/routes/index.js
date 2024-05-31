@@ -688,13 +688,13 @@ router.get('/get-userzipcodes', (req, res) => {
     var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM BuyerZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
   }
   db.query(query, [userid], (error, results) => {
-    if (results.length === 0) {
-      res.json({ zipCode: 'No Zip Codes Selected' });
-    }
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
-    }
+    } else if (results.length === 0) {
+           res.json({ zipCodes: 'No Zip Codes Selected' });
+        } else {
       res.json({ results });
+    }
   });
 });
 
