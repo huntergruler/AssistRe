@@ -480,6 +480,7 @@ router.get('/get-cities', (req, res) => {
 router.get('/get-counties', (req, res) => {
   const stateSelect = req.query.stateSelect;
   const query = 'SELECT distinct county FROM ZipCodes WHERE state = ? order by county';
+  console.log('Query:', query, 'State:', stateSelect);
   db.query(query, [stateSelect], (error, results) => {
     //    console.log('Results:', results);
 
