@@ -237,7 +237,7 @@ function populateUserZipCodes() {
                     if (selectedZipCodesContainer) {
                         selectedZipCodesContainer.appendChild(div);
                     }
-                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
+                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}<p>`;
                 });
             }
             if (userZipCodes) {

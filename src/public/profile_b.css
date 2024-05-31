@@ -42,10 +42,11 @@ body {
     color: white;
 }
 
-.zipCodeOption, .userZipCodes {
-    padding: 2px;
+.zipCodeOption, .userZipCodes, .displayZipCodes {
+    padding: 0px;
     /* border: 1px solid #ddd; */
-    margin-bottom: 2px;
+    margin-bottom: 0px;
+    margin-top: 0px;
     cursor: pointer;
     text-align: center;
 }
