@@ -270,9 +270,7 @@ function populateDisplayZipCodes() {
                     htmlCodes += `${code.zipCode} - ${code.city}, ${code.state}<br>`;
                 });
             }
-            if (displayZipCodes) {
-                displayZipCodes.innerHTML = htmlCodes;
-            }
+            displayZipCodes.innerHTML = htmlCodes;
         })
         .catch(error => console.error('Error checking user:', error));
 };
