@@ -517,8 +517,6 @@ router.get('/get-zipcodes', (req, res) => {
   const citySelect = req.query.citySelect;
   userid = req.session.userid;
   userType = req.session.userType;
-  userid = '1000000002'
-  userType = 'Buyer'
 
   if (userType === 'Agent') {
   var query = `SELECT zipCode 
@@ -560,8 +558,6 @@ router.get('/get-countyzipcodes', (req, res) => {
   const countySelect = req.query.countySelect;
   userid = req.session.userid;
   userType = req.session.userType;
-  userid = '1000000002'
-  userType = 'Buyer'
 
   if (userType === 'Agent') {
   var query = `SELECT zipCode 
@@ -601,8 +597,6 @@ router.post('/process-zip-codes', (req, res) => {
   const { zipCodes } = req.body;
   // const userid = req.session.userid;
   // const userType = req.session.userType;
-  const userid = '1000000002';
-  const userType = 'Buyer';
   // First, delete all zip codes for this user
   if (userType === 'Agent') {
     var query = 'DELETE FROM AgentZipCodes WHERE userid = ?';
@@ -688,8 +682,6 @@ router.get('/get-agentzipcodes', (req, res) => {
 router.get('/get-userzipcodes', (req, res) => {
   userid = req.session.userid;
   userType = req.session.userType;
-  userid = '1000000002'
-  userType = 'Buyer'
   if (userType === 'Agent') {
     var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
   } else if (userType === 'Buyer') {
