@@ -229,15 +229,14 @@ function populateUserZipCodes() {
             else {
                 data.results.forEach(code => {
                     const div = document.createElement("div");
-                    div.textContent = code.zipCode;
                     div.className = "userZipCodes align-items-center";
+                    div.textContent = code.zipCode;
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
                     if (selectedZipCodesContainer) {
                         selectedZipCodesContainer.appendChild(div);
                     }
-                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}<p>`;
                 });
             }
         })
@@ -425,10 +424,11 @@ function populateCityZipCodes() {
 function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    const selectedZip = document.querySelectorAll(".selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
-    console.log(selectedZipCodesContainer);
+    console.log("selectedZip",selectedZip);
     console.log(selectedZipCodesContainer.textContent[0]);
-    selected.forEach(node => {
+        selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
         div.textContent = node.textContent;
