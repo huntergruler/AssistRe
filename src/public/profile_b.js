@@ -240,9 +240,6 @@ function populateUserZipCodes() {
                     htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}<p>`;
                 });
             }
-            if (userZipCodes) {
-                userZipCodes.innerHTML = htmlCodes;
-            }
         })
         .catch(error => console.error('Error checking user:', error));
 };
@@ -272,7 +269,7 @@ function populateDisplayZipCodes() {
                     if (displayZipCodes) {
                         displayZipCodes.appendChild(div);
                     }
-                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
+                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p>`;
                 });
             }
             if (displayZipCodes) {
