@@ -251,7 +251,7 @@ function populateDisplayZipCodes() {
         .then(response => response.json())
         .then(data => {
             console.log(data, 'data', data.results);
-            if (!data.results) {
+            if (!data.results[0]) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes justify-content-center";
                 div.textContent = 'No zip codes selected';
