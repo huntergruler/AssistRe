@@ -155,7 +155,7 @@ function lookupCityState() {
 
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
-    populateUserZipCodes();
+    populateDisplayZipCodes();
     populateStates();
     // var prequalified = document.getElementById('prequalified').value;
     // if (prequalified === 'Y') {
@@ -212,7 +212,6 @@ function saveChanges() {
 
 function populateUserZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const displayZipCodes = document.getElementById("displayZipCodes");
     const userZipCodes = document.getElementById("userZipCodes");
     let htmlCodes = '';
     fetch(`/get-userzipcodes`)
@@ -221,18 +220,12 @@ function populateUserZipCodes() {
             if (selectedZipCodesContainer) {
                 selectedZipCodesContainer.innerHTML = '';
             }
-            if (displayZipCodes) {
-                displayZipCodes.innerHTML = '';
-            }
             if (data.error) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes zipCodeOption justify-content-center";
                 div.textContent = 'No zip codes selected';
                 if (selectedZipCodesContainer) {
                     selectedZipCodesContainer.appendChild(div);
-                }
-                if (displayZipCodes) {
-                    displayZipCodes.appendChild(div);
                 }
                 htmlCodes += `<p>No Zip Codes</p><br>`;
             }
@@ -247,6 +240,42 @@ function populateUserZipCodes() {
                     if (selectedZipCodesContainer) {
                         selectedZipCodesContainer.appendChild(div);
                     }
+                    htmlCodes += `<p>${code.zipCode} - ${code.city}, ${code.state}</p><br>`;
+                });
+            }
+            if (userZipCodes) {
+                userZipCodes.innerHTML = htmlCodes;
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+};
+function populateDisplayZipCodes() {
+    const displayZipCodes = document.getElementById("displayZipCodes");
+    const userZipCodes = document.getElementById("userZipCodes");
+    let htmlCodes = '';
+    fetch(`/get-userzipcodes`)
+        .then(response => response.json())
+        .then(data => {
+            if (displayZipCodes) {
+                displayZipCodes.innerHTML = '';
+            }
+            if (data.error) {
+                const div = document.createElement("div");
+                div.className = "userZipCodes zipCodeOption justify-content-center";
+                div.textContent = 'No zip codes selected';
+                if (displayZipCodes) {
+                    displayZipCodes.appendChild(div);
+                }
+                htmlCodes += `<p>No Zip Codes</p><br>`;
+            }
+            else {
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.textContent = code.zipCode;
+                    div.className = "userZipCodes zipCodeOption align-items-center";
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
                     if (displayZipCodes) {
                         displayZipCodes.appendChild(div);
                     }
