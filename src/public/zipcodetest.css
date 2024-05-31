@@ -6,7 +6,7 @@ body {
     padding: 0%;
     border: 10px solid #ccc;
     max-width: auto;
-    height: auto;
+    height: 500px;
 }
 
 .zipCode-container {
