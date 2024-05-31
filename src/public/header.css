@@ -21,10 +21,7 @@
     align-items: center;
   }
     
-  #title {
-    flex-grow: 1;
 
-  }
   
   #title a {
     color: white;
