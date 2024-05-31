@@ -3,7 +3,8 @@ body {
     /* Base font size */
     /* background-color: #666; */
     /* margin: 50px 50px; */
-    border: 1px solid #ccc;
+    padding: 0%;
+    border: 10px solid #ccc;
     max-width: auto;
 }
 
