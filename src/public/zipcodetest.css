@@ -120,7 +120,7 @@ body {
     border: 1px solid #ccc;
 }
 
-.state-group, .county-group {
+.selectContainer {
     margin-top: 0px;
     margin-left: 2px;
     margin-right: 1px;

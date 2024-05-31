@@ -53,11 +53,9 @@ function populateUserZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const userZipCodes = document.getElementById("userZipCodes");
     let htmlCodes = '';
-    console.log('populateUserZipCodes');
     fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             if (selectedZipCodesContainer) {
                 selectedZipCodesContainer.innerHTML = '';
             }
