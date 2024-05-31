@@ -220,7 +220,7 @@ function populateUserZipCodes() {
             if (selectedZipCodesContainer) {
                 selectedZipCodesContainer.innerHTML = '';
             }
-            if (data.error) {
+            if (!data.results) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes zipCodeOption justify-content-center";
                 div.textContent = 'No zip codes selected';
