@@ -37,7 +37,7 @@ body {
 
 #availabeZipCodesContainer {
     overflow: auto;
-    width: 92px;
+    width: 100px;
     max-height: 150px;
     min-height: 150px;
     text-align: center;
@@ -47,7 +47,7 @@ body {
 
 #selectedZipCodesContainer {
     overflow: auto;
-    width: 95px;
+    width: 100px;
     max-height: 150px;
     min-height: 150px;
     text-align: center;
