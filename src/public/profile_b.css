@@ -22,7 +22,7 @@ body {
 .userZip-container{
     background-color: white;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
-    width: px;
+    width: 300px;
     margin: 0px 0px;
     border-radius: 8px;
     border: 1px solid black;
@@ -81,7 +81,7 @@ body {
 
 #displayZipCodes {
     overflow: auto;
-    width: 250px;
+    width: 300px;
     max-height: 160px;
     min-height: 160px;
     text-align: center;
