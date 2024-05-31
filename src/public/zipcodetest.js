@@ -12,6 +12,7 @@ function saveChanges() {
 
     //document.getElementById('saveChanges').disabled = true;
     // Prepare the data to be sent
+    console.log(selected, selectedZipCodes);
     const data = {
         zipCodes: selectedZipCodes
     };
