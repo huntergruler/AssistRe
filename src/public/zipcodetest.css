@@ -142,7 +142,7 @@ body {
     width: 475px;
     max-height: fit-content;
     /* Less space between elements */
-    border: 2px solid black;
+    border: 2px solid solid #ccc;
     border-radius: 8px;
     align-content: center;
     align-items: center;
