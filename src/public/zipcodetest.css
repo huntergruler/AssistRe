@@ -146,6 +146,20 @@ body {
     text-align: right;
 }
 
+.countycity-group {
+    margin-top: 0px;
+    margin-left: 2px;
+    margin-right: 1px;
+    padding-left: 2px;
+    width: 475px;
+    max-height: fit-content;
+    /* Less space between elements */
+    border: 1px solid #ccc;
+    align-content: center;
+    align-items: center;
+    text-align: right;
+
+}
 .county-group {
     margin-top: 0px;
     margin-left: 2px;
@@ -157,9 +171,9 @@ body {
     align-content: center;
     align-items: center;
     text-align: right;
-    border-top: 1px solid #ccc;
+    /* border-top: 1px solid #ccc;
     border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #ccc; */
 }
 
 .city-group {
@@ -170,9 +184,9 @@ body {
     width: 475px;
     max-height: fit-content;
     /* Less space between elements */
-    border-bottom: 1px solid #ccc;
+    /* border-bottom: 1px solid #ccc;
     border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #ccc; */
     align-content: center;
     align-items: center;
     text-align: right;
