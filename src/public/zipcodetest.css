@@ -143,6 +143,7 @@ body {
     max-height: fit-content;
     /* Less space between elements */
     border: 2px solid black;
+    border-radius: 8px;
     align-content: center;
     align-items: center;
     text-align: right;
@@ -199,7 +200,7 @@ body {
 }
 
 .form-group .form-control {
-    /* padding: .2rem .25rem; */
+    padding: .2rem .25rem;
     /* Less padding inside input fields */
     height: calc(1.5em + .5rem + 2px);
     /* Adjust height */
