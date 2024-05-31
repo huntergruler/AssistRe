@@ -269,7 +269,7 @@ function populateDisplayZipCodes() {
                     if (displayZipCodes) {
                         displayZipCodes.appendChild(div);
                     }
-                    htmlCodes += `${code.zipCode} - ${code.city}, ${code.state}`;
+                    htmlCodes += `${code.zipCode} - ${code.city}, ${code.state}<br>`;
                 });
             }
             if (displayZipCodes) {
