@@ -3,6 +3,7 @@ body {
     /* Base font size */
     /* background-color: #666; */
     /* margin: 50px 50px; */
+    margin-top: 0px;
     max-width: auto;
 }
 
@@ -77,7 +78,6 @@ body {
 }
 
 .container {
-    border-radius: 10px;
     opacity: 0.8;
     margin-left: 0px;
     margin-right: 0px;
@@ -89,6 +89,7 @@ body {
     padding-bottom: 0px;
     width: 502px;
     border: solid #ccc;
+    border-radius: 10px;
     /* border: 1px solid black; */
 }
 
