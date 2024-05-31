@@ -35,17 +35,8 @@ body {
     color: white;
 }
 
-#availabeZipCodesContainer {
-    overflow: auto;
-    width: 100px;
-    max-height: 150px;
-    min-height: 150px;
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 5px;
-}
 
-#selectedZipCodesContainer #availabeZipCodesContainer{
+#selectedZipCodesContainer, #availabeZipCodesContainer{
     overflow: auto;
     width: 100px;
     max-height: 150px;
