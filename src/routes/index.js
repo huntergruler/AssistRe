@@ -694,9 +694,7 @@ router.get('/get-userzipcodes', (req, res) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
-    if (results.length > 0) {
       res.json({ results });
-    }
   });
 });
 
