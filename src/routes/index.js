@@ -537,10 +537,10 @@ router.get('/get-zipcodes', (req, res) => {
 
 router.post('/process-zip-codes', (req, res) => {
   const { zipCodes } = req.body;
-  const userid = req.session.userid;
-  const userType = req.session.userType;
-  userid = '1000000002'
-  userType = 'Buyer'
+  // const userid = req.session.userid;
+  // const userType = req.session.userType;
+  const userid = '1000000002';
+  const userType = 'Buyer';
   // First, delete all zip codes for this user
   if (userType === 'Agent') {
     var query = 'DELETE FROM AgentZipCodes WHERE userid = ?';
