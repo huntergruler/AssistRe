@@ -209,7 +209,7 @@ body {
 .zipCodeOption.selected {
     background-color: #007BFF;
     color: white;
-    padding-right: 1px;
+    padding-left: 2px;
     padding-right: 2px;
 }
 
