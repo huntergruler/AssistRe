@@ -154,7 +154,7 @@ body {
     width: 475px;
     max-height: fit-content;
     /* Less space between elements */
-    border: 1px solid #ccc;
+    border: 2px solid black;
     align-content: center;
     align-items: center;
     text-align: right;
