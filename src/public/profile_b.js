@@ -259,7 +259,7 @@ function populateDisplayZipCodes() {
             if (displayZipCodes) {
                 displayZipCodes.innerHTML = '';
             }
-            if (data.results.length===0) {
+            if (!data.results) {
                 const div = document.createElement("div");
                 div.className = "userZipCodes justify-content-center";
                 div.textContent = 'No zip codes selected';
