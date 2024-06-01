@@ -215,6 +215,10 @@ function populateUserZipCodes() {
     const userZipCodes = document.getElementById("userZipCodes");
     let htmlCodes = '';
     selectedZipCodesContainer.innerHTML = '';
+    availabeZipCodesContainer.innerHTML = '';
+    citySelect.innerHTML = '';
+    countySelect.innerHTML = '';
+    // stateSelect.innerHTML = '';
     fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
@@ -447,7 +451,6 @@ function removeSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".userZipCodes.selected");
-    console.log(selected);
     selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
@@ -460,6 +463,11 @@ function removeSelection() {
         node.remove();
         //document.getElementById('saveChanges').disabled = false;
     });
+    console.log(selectedZipCodesContainer.textContent);
+    if (!selectedZipCodesContainer) {
+        selectedZipCodesContainer.innerHTML = 'No zip codes yet';
+    }
+
 };
 
 // function populateZipCodes() {
