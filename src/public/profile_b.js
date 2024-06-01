@@ -337,6 +337,8 @@ function populateCitiesCounties() {
     } else {
         const citySelect = document.getElementById('citySelect');
         // countycityContainer.style.display = "block";
+        citySelect.disabled = false;
+        countySelect.disabled = false;
 
         fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
             .then(response => response.json())
