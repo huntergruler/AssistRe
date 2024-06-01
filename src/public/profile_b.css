@@ -291,6 +291,7 @@ padding-right: 0px;
 }
 .form-row {
     width: 500px;
+    background-color: yellow;
 }
 .form-group {
     margin-bottom: 5px;
