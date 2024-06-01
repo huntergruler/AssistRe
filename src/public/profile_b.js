@@ -167,39 +167,39 @@ document.addEventListener('DOMContentLoaded', function () {
     // }
 });
 
+let zipChanges = 0;
 function addZipCode() {
     const zipSelect = document.getElementById("zipSelect");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    zipChanges = 1;
     if (zipSelect.value.length === 5) {
-    fetch(`/check-zipcode?stateSelect=${encodeURIComponent(zipSelect.value)}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.zipCodeResult === 'Valid') {
-                if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
-                    selectedZipCodesContainer.innerHTML = '';
+        fetch(`/check-zipcode?stateSelect=${encodeURIComponent(zipSelect.value)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.zipCodeResult === 'Valid') {
+                    if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
+                        selectedZipCodesContainer.innerHTML = '';
+                    }
+                    const div = document.createElement("div");
+                    div.textContent = zipSelect.value;
+                    div.className = "zipCodeSelected";
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    selectedZipCodesContainer.appendChild(div);
+                    zipSelect.value = '';
                 }
-                const div = document.createElement("div");
-                div.textContent = zipSelect.value;
-                div.className = "zipCodeSelected";
-                div.onclick = function () {
-                    this.classList.toggle("selected");
-                };
-                selectedZipCodesContainer.appendChild(div);
-                zipSelect.value = '';
-            }
-            else if (data.zipCodeResult === 'Invalid')
-            {
-                alert('Zip code not found');
-                zipSelect.value = '';
-            }
-            else if (data.zipCodeResult === 'Selected')
-            {
-                alert('Zip code already selected');
-                zipSelect.value = '';
-            }
-        })
-        .catch(error => console.error('Error checking user:', error));
-}
+                else if (data.zipCodeResult === 'Invalid') {
+                    alert('Zip code not found');
+                    zipSelect.value = '';
+                }
+                else if (data.zipCodeResult === 'Selected') {
+                    alert('Zip code already selected');
+                    zipSelect.value = '';
+                }
+            })
+            .catch(error => console.error('Error checking user:', error));
+    }
 };
 
 function saveChanges() {
@@ -468,7 +468,7 @@ function populateCityZipCodes() {
             .catch(error => console.error('Error checking user:', error));
     }
 };
-document.getElementById('zipSelect').addEventListener('keydown', function(event) {
+document.getElementById('zipSelect').addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         console.log('Enter key pressed');
         event.preventDefault();
@@ -486,7 +486,7 @@ function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
-    console.log(selectedZipCodesContainer.textContent);
+    zipChanges = 1;
     if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
         selectedZipCodesContainer.innerHTML = '';
     }
@@ -508,7 +508,7 @@ function removeSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".userZipCodes.selected");
-    console.log(selected);
+    zipChanges = 1;
     selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
