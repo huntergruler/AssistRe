@@ -10,10 +10,29 @@ body {
     /* Base font size */
     background-color: blue;
     max-width: 575px;
-    max-height: auto;
+    max-height: fit-content;
     margin: 50px 50px;
 }
-
+.modal-dialog {
+    background-color: #666;
+    width: 575px;
+}
+/* .modal-body {
+background-color: burlywood;
+padding-left: 0px;
+padding-right: 0px;
+}
+.modal {
+    background-color: green;
+    width: 575px;
+}
+.modal-content {
+    font-size: 14px;
+    background-color: #666;
+    padding: 0%;
+    width: 575px;
+    height: auto;
+} */
 .zipCode-container {
     background-color: white;
     padding: 20px;
@@ -308,24 +327,3 @@ body {
     font-size: 5;
     padding-left: 0;
 }
-
-.modal-dialog {
-    background-color: #666;
-    width: 575px;
-}
-/* .modal-body {
-background-color: burlywood;
-padding-left: 0px;
-padding-right: 0px;
-}
-.modal {
-    background-color: green;
-    width: 575px;
-}
-.modal-content {
-    font-size: 14px;
-    background-color: #666;
-    padding: 0%;
-    width: 575px;
-    height: auto;
-} */
