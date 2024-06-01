@@ -511,8 +511,8 @@ router.get('/get-states', (req, res) => {
 });
 
 // Route to get states
-router.post('/check-zipcode', (req, res) => {
-  const { zipCode } = req.body;
+router.get('/check-zipcode', (req, res) => {
+  const zipCode = req.query.stateSelect;
   console.log('Zip:', zipCode);
   const query = 'SELECT count(*) FROM ZipCodes where zipCode = ?';
   db.query(query,[zipCode], (error, results) => {
