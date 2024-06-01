@@ -170,10 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function addZipCode() {
     const zipSelect = document.getElementById("zipSelect");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    if (zipSelect.value.length !== 5) {
-        alert('Please enter a valid 5-digit zip code');
-        return;
-    }
+    if (zipSelect.value.length === 5) {
     fetch(`/check-zipcode?stateSelect=${encodeURIComponent(zipSelect.value)}`)
         .then(response => response.json())
         .then(data => {
@@ -197,6 +194,7 @@ function addZipCode() {
         })
         .catch(error => console.error('Error checking user:', error));
 }
+};
 
 function saveChanges() {
     const selected = document.querySelectorAll(".zipCodeSelected");
