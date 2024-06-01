@@ -215,6 +215,10 @@ function populateUserZipCodes() {
     const userZipCodes = document.getElementById("userZipCodes");
     let htmlCodes = '';
     selectedZipCodesContainer.innerHTML = '';
+    availabeZipCodesContainer.innerHTML = '';
+    citySelect.innerHTML = '';
+    countySelect.innerHTML = '';
+    stateSelect.innerHTML = '';
     fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
