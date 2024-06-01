@@ -16,6 +16,14 @@ body {
     border: 1px solid black;
     border-radius: 8px;
 }
+.modal-content {
+    font-size: 14px;
+    background-color: #666;
+    padding: 0%;
+    width: 575px;
+    height: auto;
+}
+
 .modal-dialog {
     /* background-color: w; */
     width: 575px;
