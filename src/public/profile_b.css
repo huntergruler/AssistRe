@@ -17,7 +17,7 @@ body {
 } */
 .modal-content {
     font-size: 14px;
-    background-color: #666;
+    /* background-color: #666; */
     padding: 0%;
     width: 600px;
     height: auto;
