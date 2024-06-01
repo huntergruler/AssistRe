@@ -166,6 +166,33 @@ document.addEventListener('DOMContentLoaded', function () {
     //     toggleFileUpload(false);
     // }
 });
+
+function addZipCode() {
+    const zipSelect = document.getElementById("zipSelect");
+    if (zipSelect.value.length !== 5) {
+        alert('Please enter a valid 5-digit zip code');
+        return;
+    }
+    fetch(`/check-zipcode`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ zipCode: zipSelect.value })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const div = document.createElement("div");
+                div.textContent = zipSelect.value;
+                div.className = "zipCodeOption";
+                availabeZipCodesContainer.appendChild(div);
+                zipSelect.value = '';
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+}
+
 function saveChanges() {
     const selected = document.querySelectorAll(".zipCodeSelected");
     const selected2 = document.querySelectorAll(".userZipCodes");

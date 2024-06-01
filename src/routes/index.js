@@ -510,6 +510,22 @@ router.get('/get-states', (req, res) => {
   });
 });
 
+// Route to get states
+router.get('/check-zipcode', (req, res) => {
+  const zipSelect = req.query.zipSelect;
+  const query = 'SELECT count(*) FROM ZipCodes where zipCode = ?';
+  db.query(query, (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results[0] > 0) {
+      res.json({ success: true });
+    } else {
+      res.json({ success: false });
+    }
+  });
+});
+
 // Route to get city and state by zip code
 router.get('/get-zipcodes', (req, res) => {
   const stateSelect = req.query.stateSelect;
@@ -609,7 +625,6 @@ router.post('/process-zip-codes', (req, res) => {
     }
   });
   // Now insert the new zip codes
-  console.log('Zip Codes:', zipCodes);
   if (zipCodes.length > 0) {
     if (userType === 'Agent') {
       var insertQuery = 'INSERT INTO AgentZipCodes (userid, zipCode) VALUES ?';
