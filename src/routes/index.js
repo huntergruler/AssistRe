@@ -512,7 +512,7 @@ router.get('/get-states', (req, res) => {
 
 // Route to get states
 router.get('/check-zipcode', (req, res) => {
-  const zipSelect = req.query.zipSelect;
+  const zipSelect = req.query.zipSelect.value;
   console.log('Zip:', zipSelect);
   const query = 'SELECT count(*) FROM ZipCodes where zipCode = ?';
   db.query(query,[zipSelect], (error, results) => {
