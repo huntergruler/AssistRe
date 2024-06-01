@@ -6,7 +6,7 @@ body {
     max-width: auto;
 }
 
-.zipCode-container{
+.zipCode-container {
     background-color: white;
     padding: 20px;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
@@ -19,7 +19,7 @@ body {
     text-align: center;
 }
 
-.userZip-container{
+.userZip-container {
     background-color: white;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     width: 300px;
@@ -31,8 +31,7 @@ body {
 }
 
 #dashboardContainer,
-#loginContainer
-{
+#loginContainer {
     margin: 50px 0;
     border-radius: 8px;
 }
@@ -53,7 +52,9 @@ body {
     color: white;
 }
 
-.zipCodeOption, .userZipCodes, .displayZipCodes {
+.zipCodeOption,
+.userZipCodes,
+.displayZipCodes {
     padding: 0px;
     /* border: 1px solid #ddd; */
     margin-bottom: 0px;
@@ -62,12 +63,14 @@ body {
     text-align: center;
 }
 
-.zipCodeOption.selected, .userZipCodes.selected{
+.zipCodeOption.selected,
+.userZipCodes.selected {
     background-color: #007BFF;
     color: white;
 }
 
-#selectedZipCodesContainer, #availabeZipCodesContainer {
+#selectedZipCodesContainer,
+#availabeZipCodesContainer {
     overflow: auto;
     width: 100px;
     max-height: 160px;
@@ -90,7 +93,9 @@ body {
     border-top: 1px solid black;
 }
 
-.col-md-4, .col-md-3, .col-md-2 {
+.col-md-4,
+.col-md-3,
+.col-md-2 {
     margin-left: 0px;
     align-items: center;
 }
@@ -152,6 +157,7 @@ body {
     text-align: right;
 
 }
+
 .county-group {
     margin-top: 0px;
     margin-left: 2px;
@@ -245,7 +251,7 @@ body {
     border: 1px solid #ccc;
 }
 
- .form-group {
+.form-group {
     margin-bottom: 5px;
     margin-top: 5px;
     margin-left: 1px;
@@ -254,6 +260,7 @@ body {
     padding-right: 0px;
     border: 1px solid black;
 }
+
 /*
 .col-form-label2 {
     margin-bottom: 2px;
@@ -292,6 +299,10 @@ body {
     box-shadow: none;
     font-size: 5;
     padding-left: 0;
+}
+
+.modal-body {
+background-color: burlywood;
 }
 
 .modal-content {
