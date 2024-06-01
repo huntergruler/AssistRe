@@ -300,8 +300,26 @@ body {
     font-size: 5;
     padding-left: 0;
 }
-
+.modal-content {
+    font-size: 14px;
+    /* Base font size */
+    /* background-color: #666; */
+    /* margin: 50px 50px; */
+    padding: 0%;
+    width: 600px;
+    height: auto;
+}
 .modal-body {
+    font-size: 14px;
+    /* Base font size */
+    /* background-color: #666; */
+    /* margin: 50px 50px; */
+    padding: 0%;
+    width: 600px;
+    height: auto;
+}
+
+/* .modal-body {
 background-color: burlywood;
 padding-left: 0px;
 padding-right: 0px;
@@ -316,10 +334,8 @@ padding-right: 0px;
 }
 .modal-content {
     font-size: 14px;
-    /* Base font size */
     background-color: #666;
-    /* margin: 50px 50px; */
     padding: 0%;
     width: 575px;
     height: auto;
-}
+} */
