@@ -301,28 +301,4 @@ body {
     height: auto;
     background-color: aqua;
 }
-.modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.modal-content {
-    font-size: 14px;
-    /* Base font size */
-    /* background-color: #666; */
-    /* margin: 50px 50px; */
-    padding: 0%;
-    width: 800px;
-    height: auto;
-    background-color: blueviolet;
-}
-.modal-body {
-    font-size: 14px;
-    /* Base font size */
-    /* background-color: #666; */
-    /* margin: 50px 50px; */
-    padding: 0%;
-    width: 600px;
-    height: auto;
-}
