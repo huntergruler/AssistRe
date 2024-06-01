@@ -468,6 +468,7 @@ document.getElementById('zipSelect').addEventListener('keydown', function(event)
     if (event.key === 'Enter') {
         console.log('Enter key pressed');
         event.preventDefault();
+        addZipCode();
         // Optionally, trigger form submission if needed
         // submitForm();
     }
