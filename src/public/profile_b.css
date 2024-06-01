@@ -192,7 +192,6 @@ padding-right: 0px;
     align-content: center;
     align-items: center;
     text-align: right;
-    display: none;
     background-color: violet;
 
 }
@@ -204,12 +203,10 @@ padding-right: 0px;
     padding-left: 2px;
     width: auto;
     max-height: fit-content;
-    border: 2px solid black;
-    border-radius: 8px;
+    /* Less space between elements */
     align-content: center;
     align-items: center;
     text-align: right;
-    display: none;
     background-color: violet;
 }
 
