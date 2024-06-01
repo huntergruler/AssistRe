@@ -309,6 +309,7 @@ padding-right: 0px;
 .modal-dialog {
     background-color: #666;
     border: 2px solid #ccc;
+    width: 575px;
 }
 .modal-content {
     font-size: 14px;
