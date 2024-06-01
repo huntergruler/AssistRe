@@ -306,7 +306,7 @@ background-color: burlywood;
 padding-left: 0px;
 padding-right: 0px;
 }
-.modal-content {
+.modal-body {
     background-color: #666;
     border: 2px solid #ccc;
 }
