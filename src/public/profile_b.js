@@ -183,7 +183,7 @@ function addZipCode() {
                 }
                 const div = document.createElement("div");
                 div.textContent = zipSelect.value;
-                div.className = "zipCodeOption";
+                div.className = "zipCodeSelected";
                 div.onclick = function () {
                     this.classList.toggle("selected");
                 };
