@@ -268,65 +268,62 @@
                                             onchange="populateCitiesCounties();"></select>
                                     </div>
                                 </div>
-
-
-
                             </form>
                         </div>
                     </div>
-                </div>
-                <div class="countycity-group row">
-                    <div class="col-md-2 d-flex align-items-center justify-content-center">
-                        <p>OR</p>
-                    </div>
-                    <div class="col-md-10">
-                        <div class="county-group row">
-                            <label for="countySelect" class="col-md-2 col-form-label">County:</label>
-                            <div class="col-md-3">
-                                <select id="countySelect" class="form-select-sm"
-                                    onchange="populateCountyZipCodes();"></select>
+                    <div class="countycity-group row">
+                        <div class="col-md-2 d-flex align-items-center justify-content-center">
+                            <p>OR</p>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="county-group row">
+                                <label for="countySelect" class="col-md-2 col-form-label">County:</label>
+                                <div class="col-md-3">
+                                    <select id="countySelect" class="form-select-sm"
+                                        onchange="populateCountyZipCodes();"></select>
+                                </div>
+                            </div>
+                            <div class="city-group row">
+                                <label for="citySelect" class="col-md-2 col-form-label">Cities:</label>
+                                <div class="col-md-3">
+                                    <select id="citySelect" class="form-select-sm"
+                                        onchange="populateCityZipCodes();"></select>
+                                </div>
                             </div>
                         </div>
-                        <div class="city-group row">
-                            <label for="citySelect" class="col-md-2 col-form-label">Cities:</label>
-                            <div class="col-md-3">
-                                <select id="citySelect" class="form-select-sm"
-                                    onchange="populateCityZipCodes();"></select>
+                        <div class="form-group row">
+                            <div class="zipCode-container col-md-4 justify-content-center">
+                                <p>Select Zip Codes</p>
+                                <div class="col-md-2 justify-content-center"></div>
+                                <div id="availabeZipCodesContainer" class="col-md justify-content-center">
+                                    <!-- JavaScript will populate this container -->
+                                </div>
+                            </div>
+                            <div class="zipCode-container col-md-4 justify-content-center">
+                                <div class="row"></div>
+                                <div class="row"></div>
+                                <div class="row align-items-center">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="addSelection()">Add
+                                        --> </button>
+                                </div>
+                                <div class="row align-items-center">
+                                    <button type="button" class="btn btn-primary btn-sm" onclick="removeSelection()">
+                                        <-- Remove</button>
+                                </div>
+                            </div>
+                            <div class="zipCode-container col-md-4 justify-content-center">
+                                <p>Your Zip Codes</p>
+                                <div class="col-md-2"></div>
+                                <div id="selectedZipCodesContainer" class="col-md justify-content-center">
+                                    <!-- JavaScript will populate this container -->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="zipCode-container col-md-4 justify-content-center">
-                            <p>Select Zip Codes</p>
-                            <div class="col-md-2 justify-content-center"></div>
-                            <div id="availabeZipCodesContainer" class="col-md justify-content-center">
-                                <!-- JavaScript will populate this container -->
-                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
+                                onclick="saveChanges()">Save</button>
+                            <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
                         </div>
-                        <div class="zipCode-container col-md-4 justify-content-center">
-                            <div class="row"></div>
-                            <div class="row"></div>
-                            <div class="row align-items-center">
-                                <button type="button" class="btn btn-primary btn-sm" onclick="addSelection()">Add
-                                    --> </button>
-                            </div>
-                            <div class="row align-items-center">
-                                <button type="button" class="btn btn-primary btn-sm" onclick="removeSelection()">
-                                    <-- Remove</button>
-                            </div>
-                        </div>
-                        <div class="zipCode-container col-md-4 justify-content-center">
-                            <p>Your Zip Codes</p>
-                            <div class="col-md-2"></div>
-                            <div id="selectedZipCodesContainer" class="col-md justify-content-center">
-                                <!-- JavaScript will populate this container -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
-                            onclick="saveChanges()">Save</button>
-                        <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
