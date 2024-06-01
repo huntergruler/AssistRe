@@ -303,6 +303,8 @@ body {
 
 .modal-body {
 background-color: burlywood;
+padding-left: 0px;
+padding-right: 0px;
 }
 
 .modal-content {
