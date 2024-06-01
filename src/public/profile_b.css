@@ -8,11 +8,12 @@ body {
 .modal {
     font-size: 14px;
     /* Base font size */
-    background-color: blue;
+    /* background-color: blue; */
     max-width: fit-content;
     max-height: fit-content;
     margin: 50px 50px;
     padding: 5px 5px;
+    border: 1px solid black;
 }
 .modal-dialog {
     background-color: #666;
