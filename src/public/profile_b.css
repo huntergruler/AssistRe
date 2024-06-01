@@ -191,6 +191,7 @@ padding-right: 0px;
     align-content: center;
     align-items: center;
     text-align: right;
+    background-color: grey opacity: 0.8;
 }
 
 .city-group {
