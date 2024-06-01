@@ -273,7 +273,6 @@ padding-right: 0px;
     border: 1px solid #ccc;
 }
 .zips {
-    max-width: 500px;
     margin-left: 40px;
     margin-right: 0px;
     margin-top: 5px;
@@ -283,7 +282,7 @@ padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
     font-size: 5;
-    width:500px;
+    width:400px;
     border-radius: 5px;
     border: 1px solid black;
     background-color: brown;
