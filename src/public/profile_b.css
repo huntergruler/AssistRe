@@ -316,14 +316,14 @@ body {
     padding-left: 0;
 }
 
+.modal-dialog {
+    background-color: #666;
+    width: 575px;
+}
 /* .modal-body {
 background-color: burlywood;
 padding-left: 0px;
 padding-right: 0px;
-}
-.modal-dialog {
-    background-color: #666;
-    width: 575px;
 }
 .modal {
     background-color: green;
