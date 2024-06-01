@@ -16,7 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-</style>
+    </style>
 </head>
 
 
@@ -26,14 +26,14 @@
             <h1 class="mt-2"><a href="/">SeekingAgents</a></h1>
         </div>
         <nav id="navlinks" class="justify-content-end text-center">
-            <p><a href="/dashboard_b" >Dashboard</a></p>
+            <p><a href="/dashboard_b">Dashboard</a></p>
             <p>|</p>
             <p><a href="/settings">Settings</a></p>
             <p>|</p>
             <p><a href="/logout">Logout</a></p>
         </nav>
     </div>
-    
+
 </header>
 
 <body>
@@ -239,7 +239,8 @@
                 <!-- JavaScript will populate this container -->
             </div>
         </div>
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#zipCodeModal"
+            onclick="populateUserZipCodes();">
             Modify Zip Codes
         </button>
     </div>
@@ -256,17 +257,19 @@
                 <div class="modal-body">
                     <div class="container mt-5">
                         <div class="selectContainer">
-                            <div class="state-group row">
-                                <label for="zipSelect" class="col-md-3 col-form-label2" >Zip Code:</label>
-                                <div class="col-md-2">
-                                    <input id="zipSelect" placeholder="Zip Code" type="text" maxlength="5" class="form-control-sm justify-content-left"
-                                        ></select>
-                                </div>
-                                OR
-                                <label for="stateSelect" class="col-md-2 col-form-label2">States:</label>
-                                <div class="col-md-2">
-                                    <select id="stateSelect" class="form-select-sm justify-content-left"
-                                        onchange="populateCitiesCounties();"></select>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="zipSelect" class="col-md-3 col-form-label2">Zip Code:</label>
+                                    <div class="col-md-2">
+                                        <input id="zipSelect" placeholder="Zip Code" type="text" maxlength="5"
+                                            class="form-control-sm justify-content-left"></select>
+                                    </div>
+                                    OR
+                                    <label for="stateSelect" class="col-md-2 col-form-label2">States:</label>
+                                    <div class="col-md-2">
+                                        <select id="stateSelect" class="form-control-sm justify-content-left"
+                                            onchange="populateCitiesCounties();"></select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="countycity-group row">
