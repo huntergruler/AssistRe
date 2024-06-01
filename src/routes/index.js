@@ -513,13 +513,11 @@ router.get('/get-states', (req, res) => {
 // Route to get states
 router.get('/check-zipcode', (req, res) => {
   const zipCode = req.query.stateSelect;
-  console.log('Zip:', zipCode);
   const query = 'SELECT count(*) cnt FROM ZipCodes where zipCode = ?';
   db.query(query,[zipCode], (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
-    console.log(results[0].cnt);
     if (results[0].cnt > 0) {
       res.json({ success: true });
     } else {
