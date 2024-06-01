@@ -464,7 +464,18 @@ function populateCityZipCodes() {
             .catch(error => console.error('Error checking user:', error));
     }
 };
+document.getElementById('modalForm').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        // Optionally, trigger form submission if needed
+        // submitForm();
+    }
+});
 
+function submitForm() {
+    alert('Form submitted!');
+    $('#myModal').modal('hide');
+}
 function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
