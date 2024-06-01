@@ -228,7 +228,7 @@ body {
 }
 
 .form-container {
-    max-width: 500px;
+    max-width: 900px;
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 0px;
@@ -316,6 +316,6 @@ body {
     /* background-color: #666; */
     /* margin: 50px 50px; */
     padding: 0%;
-    width: 800px;
+    width: 600px;
     height: auto;
 }
