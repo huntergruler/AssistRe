@@ -245,13 +245,12 @@ body {
     border: 1px solid #ccc;
 }
 
-.form-group {
+/* .form-group {
     margin-bottom: 5px;
     margin-top: 5px;
     margin-left: 1px;
     margin-right: 1px;
     padding-left: 0px;
-    /* Less space between elements */
 }
 
 .col-form-label2 {
@@ -272,25 +271,18 @@ body {
     padding: 0;
     margin: 0;
     font-size: 14px;
-    /* Element value font size */
 }
 .form-group .form-control {
     padding: .2rem .25rem;
-    /* Less padding inside input fields */
     height: calc(1.5em + .5rem + 2px);
-    /* Adjust height */
     font-size: 14px;
-    /* Element value font size */
 }
 
 .form-group .row {
     padding-left: 0px;
-    /* Less padding inside input fields */
     height: calc(1.5em + .5rem + 2px);
-    /* Adjust height */
     font-size: 14px;
-    /* Element value font size */
-}
+} */
 
 .form-control.view-mode {
     border: none;
