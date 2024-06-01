@@ -201,6 +201,7 @@ function saveChanges() {
         .catch(error => {
             console.error('Error:', error);
         });
+        console.log(userZipCodes);
 
         populateDisplayZipCodes();
         selected.forEach(node => {
@@ -218,7 +219,7 @@ function populateUserZipCodes() {
     availabeZipCodesContainer.innerHTML = '';
     citySelect.innerHTML = '';
     countySelect.innerHTML = '';
-    // stateSelect.innerHTML = '';
+    stateSelect.selectedIndex = 0;
     fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
