@@ -514,7 +514,7 @@ router.get('/get-states', (req, res) => {
 router.get('/check-zipcode', (req, res) => {
   const zipSelect = req.query.zipSelect;
   const query = 'SELECT count(*) FROM ZipCodes where zipCode = ?';
-  db.query(query, (error, results) => {
+  db.query(query,[zipSelect], (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
