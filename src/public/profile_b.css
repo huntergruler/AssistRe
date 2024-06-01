@@ -253,6 +253,13 @@ body {
     /* Less space between elements */
 }
 
+.col-form-label2 {
+    margin-bottom: 2px;
+    margin-top: 2px;
+    padding: 0;
+    text-align: right;
+    border: 1px solid black;
+}
 .form-group .col-form-label {
     margin-bottom: 2px;
     margin-top: 2px;
