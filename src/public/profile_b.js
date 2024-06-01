@@ -174,6 +174,7 @@ function addZipCode() {
         return;
     }
     fetch('/check-zipcode', {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
