@@ -163,7 +163,6 @@ padding-right: 0px;
     align-content: center;
     align-items: center;
     text-align: right;
-    background-color: violet;
 }
 
 .state-group {
@@ -295,7 +294,6 @@ padding-right: 0px;
     margin-right: 1px;
     padding-left: 0px;
     padding-right: 0px;
-    border: 1px solid black;
     width: auto;
 }
 
