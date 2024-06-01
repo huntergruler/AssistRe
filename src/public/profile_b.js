@@ -464,8 +464,9 @@ function populateCityZipCodes() {
             .catch(error => console.error('Error checking user:', error));
     }
 };
-document.getElementById('modal').addEventListener('keydown', function(event) {
+document.getElementById('zipSelect').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
+        console.log('Enter key pressed');
         event.preventDefault();
         // Optionally, trigger form submission if needed
         // submitForm();
