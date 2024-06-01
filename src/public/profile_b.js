@@ -363,6 +363,7 @@ function populateCities() {
 
 function populateCitiesCounties() {
     const stateSelect = document.getElementById('stateSelect').value;
+    const countymessage = document.getElementById('countymessage');
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     // const countycityContainer = document.getElementById("countyCityContainer");
     if (stateSelect === '') {
@@ -374,6 +375,7 @@ function populateCitiesCounties() {
         const citySelect = document.getElementById('citySelect');
         citySelect.disabled = false;
         countySelect.disabled = false;
+        countymessage.style.display = 'block';
 
         fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
             .then(response => response.json())
