@@ -370,6 +370,7 @@ function populateCitiesCounties() {
         citySelect.disabled = true;
         countySelect.disabled = true;
         availabeZipCodesContainer.innerHTML = '';
+        countymessage.style.display = 'none';
         return;
     } else {
         const citySelect = document.getElementById('citySelect');
