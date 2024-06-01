@@ -518,7 +518,7 @@ router.get('/get-zipcodes', (req, res) => {
   userType = req.session.userType;
 
   if (userType === 'Agent') {
-  var query = `SELECT zipCode 
+    var query = `SELECT zipCode 
                    FROM ZipCodes z 
                   WHERE state = ? and city = ?
                     and not exists(select 1 
@@ -559,7 +559,7 @@ router.get('/get-countyzipcodes', (req, res) => {
   userType = req.session.userType;
 
   if (userType === 'Agent') {
-  var query = `SELECT zipCode 
+    var query = `SELECT zipCode 
                    FROM ZipCodes z 
                   WHERE state = ? and county = ?
                     and not exists(select 1 
@@ -609,24 +609,25 @@ router.post('/process-zip-codes', (req, res) => {
     }
   });
   // Now insert the new zip codes
+  console.log('Zip Codes:', zipCodes);
   if (zipCodes.length > 0) {
-  if (userType === 'Agent') {
-    var insertQuery = 'INSERT INTO AgentZipCodes (userid, zipCode) VALUES ?';
-  }
-  else if (userType === 'Buyer') {
-    var insertQuery = 'INSERT INTO BuyerZipCodes (userid, zipCode) VALUES ?';
-  }
-  const values = zipCodes.map(zipCode => [userid, zipCode]);
-  db.query(insertQuery, [values], (error, results) => {
-    if (error) {
-      return res.status(500).json({ error: 'Internal server error' });
+    if (userType === 'Agent') {
+      var insertQuery = 'INSERT INTO AgentZipCodes (userid, zipCode) VALUES ?';
     }
+    else if (userType === 'Buyer') {
+      var insertQuery = 'INSERT INTO BuyerZipCodes (userid, zipCode) VALUES ?';
+    }
+    const values = zipCodes.map(zipCode => [userid, zipCode]);
+    db.query(insertQuery, [values], (error, results) => {
+      if (error) {
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      res.json({ success: true });
+    });
+  }
+  else {
     res.json({ success: true });
-  });
-}
-else {
-  res.json({ success: true });
-}
+  }
 });
 
 router.post('/api/offices', (req, res) => {
@@ -688,7 +689,7 @@ router.get('/get-userzipcodes', (req, res) => {
   userType = req.session.userType;
   const nozips = [
     {
-        zipCode: 'No Zip Codes Selected'
+      zipCode: 'No Zip Codes Selected'
     }];
   if (userType === 'Agent') {
     var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
@@ -699,8 +700,8 @@ router.get('/get-userzipcodes', (req, res) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     } else if (results.length === 0) {
-           res.json(nozips);
-        } else {
+      res.json(nozips);
+    } else {
       res.json({ results });
     }
   });
