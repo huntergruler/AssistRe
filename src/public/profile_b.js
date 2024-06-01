@@ -174,7 +174,7 @@ function addZipCode() {
     fetch(`/check-zipcode?stateSelect=${encodeURIComponent(zipSelect.value)}`)
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
+            if (data.zipCodeResult === 'Valid') {
                 if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
                     selectedZipCodesContainer.innerHTML = '';
                 }
@@ -187,8 +187,14 @@ function addZipCode() {
                 selectedZipCodesContainer.appendChild(div);
                 zipSelect.value = '';
             }
-            else {
+            else if (data.zipCodeResult === 'Invalid')
+            {
                 alert('Zip code not found');
+                zipSelect.value = '';
+            }
+            else if (data.zipCodeResult === 'Selected')
+            {
+                alert('Zip code already selected');
                 zipSelect.value = '';
             }
         })

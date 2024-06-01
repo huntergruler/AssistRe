@@ -525,7 +525,7 @@ router.get('/check-zipcode', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
     else if (results[0].cnt > 0) {
-      res.json({ zipCodeResult: 'Already Selected' });
+      res.json({ zipCodeResult: 'Selected' });
     } else {
       const query = 'SELECT count(*) cnt FROM ZipCodes where zipCode = ?';
       db.query(query, [zipCode], (error, results) => {
