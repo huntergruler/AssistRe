@@ -178,7 +178,7 @@ function addZipCode() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(zipSelect)
+        body: JSON.stringify(zipSelect.value)
     })
         .then(response => response.json())
         .then(data => {
