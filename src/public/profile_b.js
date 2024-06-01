@@ -169,21 +169,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function addZipCode() {
     const zipSelect = document.getElementById("zipSelect");
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     if (zipSelect.value.length !== 5) {
         alert('Please enter a valid 5-digit zip code');
         return;
     }
-    console.log('HERE',zipSelect.value);
     fetch(`/check-zipcode?stateSelect=${encodeURIComponent(zipSelect.value)}`)
         .then(response => response.json())
         .then(data => {
-            console.log('HERE',data);
             if (data.success) {
+                if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
+                    selectedZipCodesContainer.innerHTML = '';
+                }
                 const div = document.createElement("div");
                 div.textContent = zipSelect.value;
                 div.className = "zipCodeOption";
-                availabeZipCodesContainer.appendChild(div);
+                selectedZipCodesContainer.appendChild(div);
                 zipSelect.value = '';
+            }
+            else {
+                alert('Zip code not found');
             }
         })
         .catch(error => console.error('Error checking user:', error));
