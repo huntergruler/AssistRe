@@ -175,7 +175,6 @@ function addZipCode() {
     }
     fetch(`/check-zipcode?stateSelect=${encodeURIComponent(zipSelect.value)}`)
         .then(response => response.json())
-        .then(response => response.json())
         .then(data => {
             console.log(data);
             if (data.success) {
