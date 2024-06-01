@@ -298,6 +298,7 @@ body {
     padding: 0%;
     width: 600px;
     height: auto;
+    background-color: aqua;
 }
 .modal-content {
     font-size: 14px;
@@ -307,6 +308,7 @@ body {
     padding: 0%;
     width: 600px;
     height: auto;
+    background-color: blueviolet;
 }
 .modal-body {
     font-size: 14px;
