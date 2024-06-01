@@ -148,8 +148,7 @@ padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
     width: auto;
-    /* border: 1px solid black;
-    border-radius: 10px; */
+    justify-content: center;
 }
 
 .selectContainer {
@@ -285,7 +284,6 @@ padding-right: 0px;
     width:400px;
     border-radius: 5px;
     border: 1px solid black;
-    background-color: brown;
 }
 .form-group {
     margin-bottom: 5px;
