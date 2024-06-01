@@ -336,7 +336,7 @@ function populateCitiesCounties() {
         return;
     } else {
         const citySelect = document.getElementById('citySelect');
-        // countycityContainer.style.display = "block";
+        county-group.style.display = "block";
         citySelect.disabled = false;
         countySelect.disabled = false;
 
