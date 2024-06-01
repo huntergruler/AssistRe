@@ -296,20 +296,17 @@ body {
     /* background-color: #666; */
     /* margin: 50px 50px; */
     padding: 0%;
-    width: 800px;
+    max-width: 800px;
+    width: 80%;
     height: auto;
     background-color: aqua;
 }
 .modal {
-    font-size: 14px;
-    /* Base font size */
-    /* background-color: #666; */
-    /* margin: 50px 50px; */
-    padding: 0%;
-    width: 800px;
-    height: auto;
-    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .modal-content {
     font-size: 14px;
     /* Base font size */
