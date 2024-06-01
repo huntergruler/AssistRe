@@ -214,6 +214,10 @@ function saveChanges() {
 function populateUserZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const userZipCodes = document.getElementById("userZipCodes");
+    const stateSelect = document.getElementById("stateSelect");
+    const citySelect = document.getElementById("citySelect");
+    const countySelect = document.getElementById("countySelect");
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     let htmlCodes = '';
     selectedZipCodesContainer.innerHTML = '';
     availabeZipCodesContainer.innerHTML = '';
