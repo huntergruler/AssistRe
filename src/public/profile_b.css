@@ -293,17 +293,12 @@ body {
     padding-left: 0;
 }
 
-.text-center button {
-    margin: 5px;
-    /* Less space between buttons */
-}
-
 .modal-content {
     font-size: 14px;
     /* Base font size */
-    /* background-color: #666; */
+    background-color: #666;
     /* margin: 50px 50px; */
     padding: 0%;
-    width: 570px;
+    width: 600px;
     height: auto;
 }
