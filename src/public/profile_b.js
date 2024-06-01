@@ -177,6 +177,7 @@ function addZipCode() {
         .then(response => response.json())
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             if (data.success) {
                 const div = document.createElement("div");
                 div.textContent = zipSelect.value;
