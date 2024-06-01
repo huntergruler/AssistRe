@@ -218,7 +218,7 @@ function populateUserZipCodes() {
     availabeZipCodesContainer.innerHTML = '';
     citySelect.innerHTML = '';
     countySelect.innerHTML = '';
-    stateSelect.innerHTML = '';
+    // stateSelect.innerHTML = '';
     fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {
