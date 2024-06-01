@@ -5,13 +5,6 @@ body {
     margin: 50px 50px;
     max-width: auto;
 }
-.modal-dialog {
-    font-size: 14px;
-    /* Base font size */
-    background-color: green;
-    max-width: auto;
-
-}
 .modal {
     font-size: 14px;
     /* Base font size */
