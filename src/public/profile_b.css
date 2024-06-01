@@ -196,21 +196,6 @@ padding-right: 0px;
     background-color: violet;
 
 }
-.countyCityContainer2 {
-    margin-top: 0px;
-    margin-left: 2px;
-    margin-right: 1px;
-    padding-left: 2px;
-    width: auto;
-    max-height: fit-content;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    align-content: center;
-    align-items: center;
-    text-align: right;
-    display: none;
-
-}
 
 .county-group {
     margin-top: 0px;
@@ -223,6 +208,7 @@ padding-right: 0px;
     align-content: center;
     align-items: center;
     text-align: right;
+    background-color: violet;
 }
 
 .city-group {
