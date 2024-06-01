@@ -459,6 +459,7 @@ function removeSelection() {
         node.remove();
         //document.getElementById('saveChanges').disabled = false;
     });
+    console.log(selectedZipCodesContainer.textContent);
     if (!selectedZipCodesContainer) {
         selectedZipCodesContainer.innerHTML = 'No zip codes yet';
     }
