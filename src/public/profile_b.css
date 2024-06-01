@@ -272,6 +272,22 @@ padding-right: 0px;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
+.form-row {
+    max-width: 500px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 5;
+    /* Less space between elements */
+    /* padding: 20px; */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
 .form-group {
     margin-bottom: 5px;
