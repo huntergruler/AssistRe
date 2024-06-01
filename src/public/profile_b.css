@@ -163,6 +163,7 @@ padding-right: 0px;
     align-content: center;
     align-items: center;
     text-align: right;
+    border: 1px solid black;
 }
 
 .state-group {
