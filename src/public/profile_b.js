@@ -334,7 +334,9 @@ function populateCitiesCounties() {
         availabeZipCodesContainer.innerHTML = '';
         return;
     } else {
+        const countycityContainer = document.getElementById("countyCityContainer");
         const citySelect = document.getElementById('citySelect');
+        countycityContainer.style.display = "block";
 
         fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
             .then(response => response.json())
