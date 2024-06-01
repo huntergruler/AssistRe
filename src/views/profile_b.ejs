@@ -258,20 +258,21 @@
                     <div class="container mt-5">
                         <div class="selectContainer">
                             <form>
-                            <div class="form-row justify-content-left">
-                                <div class="form-group col-md-5">
-                                    <label for="zipSelect" class="col-md-3 col-form-label">Zip Code:</label>
-                                    <input id="zipSelect" placeholder="Zip Code" type="text" maxlength="5"
-                                        class="form-control-sm col-md-3 justify-content-left"></select>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-5">
-                                OR
-                                <label for="stateSelect" class="col-md-2 col-form-label">States:</label>
-                                <select id="stateSelect" class="form-control-sm col-md-3 justify-content-left"
-                                    onchange="populateCitiesCounties();"></select>
-                            </div>
-                            </form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputText">Text Input</label>
+                                        <input type="text" class="form-control" id="inputText" placeholder="Enter text">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputSelect">Select Input</label>
+                                        <select id="inputSelect" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <option value="1">Option 1</option>
+                                            <option value="2">Option 2</option>
+                                            <option value="3">Option 3</option>
+                                        </select>
+                                    </div>
+                                </div>                            </form>
                         </div>
                     </div>
                 </div>
