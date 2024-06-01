@@ -300,12 +300,6 @@ body {
     width: 80%;
     height: auto;
 }
-.modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .modal-content {
     font-size: 14px;
     /* Base font size */
