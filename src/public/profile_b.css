@@ -8,7 +8,7 @@ body {
 .modal {
     font-size: 14px;
     /* Base font size */
-    background-color: #ccc;
+    background-color: white;
     max-width: fit-content;
     max-height: fit-content;
     margin: 50px 50px;
