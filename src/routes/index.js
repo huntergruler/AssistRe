@@ -513,7 +513,7 @@ router.get('/get-states', (req, res) => {
 // Route to get states
 router.get('/check-zipcode', (req, res) => {
   const zipCode = req.query.stateSelect;
-  const userType = req.query.userType;
+  const userType = req.session.userType;
   console.log('Zip Code:', zipCode, 'User Type:', userType);
   if (userType === 'Agent') {
     var query = 'SELECT count(*) cnt FROM AgentZipCodes where zipCode = ?';
