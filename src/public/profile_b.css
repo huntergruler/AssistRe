@@ -305,6 +305,7 @@ padding-right: 0px;
     padding-right: 0px;
     width: 300px;
     text-align: center;
+    justify-items: center;
     background-color: turquoise;
 }
 
