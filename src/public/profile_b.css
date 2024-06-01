@@ -259,17 +259,15 @@ body {
     padding: 0;
     text-align: right;
 }
-.col-form-label2 {
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+.form-control2
+{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    font-size: 14px;
+    /* Element value font size */
 }
-
 .form-group .form-control {
     padding: .2rem .25rem;
     /* Less padding inside input fields */
