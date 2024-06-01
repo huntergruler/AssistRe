@@ -336,7 +336,6 @@ function populateCitiesCounties() {
         return;
     } else {
         const citySelect = document.getElementById('citySelect');
-        county-group.style.display = "block";
         citySelect.disabled = false;
         countySelect.disabled = false;
 
