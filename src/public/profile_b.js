@@ -328,7 +328,7 @@ function populateCities() {
 function populateCitiesCounties() {
     const stateSelect = document.getElementById('stateSelect').value;
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
-    const countycityContainer = document.getElementById("countyCityContainer");
+    // const countycityContainer = document.getElementById("countyCityContainer");
     if (stateSelect === '') {
         citySelect.disabled = true;
         countySelect.disabled = true;
@@ -336,7 +336,7 @@ function populateCitiesCounties() {
         return;
     } else {
         const citySelect = document.getElementById('citySelect');
-        countycityContainer.style.display = "block";
+        // countycityContainer.style.display = "block";
 
         fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
             .then(response => response.json())
