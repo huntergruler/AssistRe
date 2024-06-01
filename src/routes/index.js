@@ -520,7 +520,7 @@ router.get('/check-zipcode', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
     console.log(results[0].cnt);
-    if (results.cnt > 0) {
+    if (results[0].cnt > 0) {
       res.json({ success: true });
     } else {
       res.json({ success: false });
