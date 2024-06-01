@@ -12,6 +12,7 @@ body {
     max-width: fit-content;
     max-height: fit-content;
     margin: 50px 50px;
+    padding: 5px;
 }
 .modal-dialog {
     background-color: #666;
