@@ -513,15 +513,31 @@ router.get('/get-states', (req, res) => {
 // Route to get states
 router.get('/check-zipcode', (req, res) => {
   const zipCode = req.query.stateSelect;
-  const query = 'SELECT count(*) cnt FROM ZipCodes where zipCode = ?';
-  db.query(query,[zipCode], (error, results) => {
+  const userType = req.query.userType;
+  if (userType === 'Agent') {
+    var query = 'SELECT count(*) cnt FROM AgentZipCodes where zipCode = ?';
+  }
+  else if (userType === 'Buyer') {
+    var query = 'SELECT count(*) cnt FROM BuyerZipCodes where zipCode = ?';
+  }
+  db.query(query, [zipCode], (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
-    if (results[0].cnt > 0) {
-      res.json({ success: true });
+    else if (results[0].cnt > 0) {
+      res.json({ zipCodeResult: 'Already Selected' });
     } else {
-      res.json({ success: false });
+      const query = 'SELECT count(*) cnt FROM ZipCodes where zipCode = ?';
+      db.query(query, [zipCode], (error, results) => {
+        if (error) {
+          return res.status(500).json({ error: 'Internal server error' });
+        }
+        if (results[0].cnt > 0) {
+          res.json({ zipCodeResult: 'Valid' });
+        } else {
+          res.json({ zipCodeResult: 'Invalid' });
+        }
+      });
     }
   });
 });
