@@ -173,7 +173,12 @@ function addZipCode() {
         alert('Please enter a valid 5-digit zip code');
         return;
     }
-    fetch('/check-zipcode')
+    fetch('/check-zipcode', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
         .then(response => response.json())
         .then(data => {
             if (data.success) {
