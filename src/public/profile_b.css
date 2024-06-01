@@ -306,7 +306,9 @@ background-color: burlywood;
 padding-left: 0px;
 padding-right: 0px;
 }
-
+.modal-content {
+    background-color: #666;
+}
 .modal-content {
     font-size: 14px;
     /* Base font size */
