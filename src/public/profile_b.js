@@ -328,13 +328,13 @@ function populateCities() {
 function populateCitiesCounties() {
     const stateSelect = document.getElementById('stateSelect').value;
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    const countycityContainer = document.getElementById("countyCityContainer");
     if (stateSelect === '') {
         citySelect.disabled = true;
         countySelect.disabled = true;
         availabeZipCodesContainer.innerHTML = '';
         return;
     } else {
-        const countycityContainer = document.getElementById("countyCityContainer");
         const citySelect = document.getElementById('citySelect');
         countycityContainer.style.display = "block";
 
