@@ -295,6 +295,7 @@ padding-right: 0px;
     padding-right: 0px;
     width: auto;
     background-color: turquoise;
+    align-items: left;
 }
 .zipCode-group {
     margin-bottom: 5px;
