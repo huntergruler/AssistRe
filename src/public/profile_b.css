@@ -5,6 +5,14 @@ body {
     margin: 50px 50px;
     max-width: auto;
 }
+.modal{
+    font-size: 14px;
+    /* Base font size */
+    background-color: #666;
+    margin: 50px 50px;
+    max-width: auto;
+
+}
 
 .zipCode-container {
     background-color: white;
