@@ -184,11 +184,15 @@ function addZipCode() {
                 const div = document.createElement("div");
                 div.textContent = zipSelect.value;
                 div.className = "zipCodeOption";
+                div.onclick = function () {
+                    this.classList.toggle("selected");
+                };
                 selectedZipCodesContainer.appendChild(div);
                 zipSelect.value = '';
             }
             else {
                 alert('Zip code not found');
+                zipSelect.value = '';
             }
         })
         .catch(error => console.error('Error checking user:', error));
@@ -229,10 +233,10 @@ function saveChanges() {
         .catch(error => {
             console.error('Error:', error);
         });
-        console.log(userZipCodes);
+    console.log(userZipCodes);
 
-        populateDisplayZipCodes();
-        selected.forEach(node => {
+    populateDisplayZipCodes();
+    selected.forEach(node => {
         const data = {
             zipCode: node.textContent
         };
@@ -469,7 +473,7 @@ function addSelection() {
     if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
         selectedZipCodesContainer.innerHTML = '';
     }
-        selected.forEach(node => {
+    selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
         div.textContent = node.textContent;
