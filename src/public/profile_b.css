@@ -275,6 +275,7 @@ padding-right: 0px;
     padding-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
+    max-height: fit-content;
     background-color: blue;
 }
 .userZip-container {
