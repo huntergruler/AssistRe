@@ -309,11 +309,11 @@ function savePropertyChanges() {
     console.log(prequalifiedY,"Prequalified Y",prequalifiedN,"Prequalified N");
 
     if (prequalifiedY) {
-        let prequalified = 'Y';
+        var prequalified = 'Y';
     } else {
-        let prequalified = 'N';
+        var prequalified = 'N';
     }
-
+    console.log(prequalified,"Prequalified");
     const data = {
         propertyType: propertyType,
         bedrooms_min: bedrooms_min,
