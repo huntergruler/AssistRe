@@ -270,7 +270,6 @@ padding-right: 0px;
     max-width: fit-content;
     /* justify-items: center;
     text-align: center; */
-    background-color: wheat;
 }
 
 .form-row {
@@ -283,7 +282,6 @@ padding-right: 0px;
     padding-left: 0px;
     padding-right: 0px;
     height: fit-content;
-    background-color: violet;
 }
 
 .userZip-container {
