@@ -207,7 +207,52 @@ function addZipCode() {
     }
 };
 
-function saveChanges() {
+function saveZipChanges() {
+    const selected = document.querySelectorAll(".zipCodeSelected");
+    const selected2 = document.querySelectorAll(".userZipCodes");
+
+    // Prepare the array of selected zip codes
+    const selectedZipCodes = Array.from(selected).map(node => node.textContent);
+    const selectedZipCodes2 = Array.from(selected2).map(node => node.textContent);
+
+    //document.getElementById('saveChanges').disabled = true;
+    // Prepare the data to be sent
+    const userZipCodes = selectedZipCodes.concat(selectedZipCodes2);
+    const data = {
+        zipCodes: userZipCodes
+    };
+
+    // Send the data to the server using fetch
+    fetch('/process-zip-codes', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    console.log(userZipCodes);
+
+    populateDisplayZipCodes();
+    selected.forEach(node => {
+        const data = {
+            zipCode: node.textContent
+        };
+    });
+};
+
+function savePersonalChanges() {
     const selected = document.querySelectorAll(".zipCodeSelected");
     const selected2 = document.querySelectorAll(".userZipCodes");
 
