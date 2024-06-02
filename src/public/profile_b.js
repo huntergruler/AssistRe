@@ -325,7 +325,7 @@ function savePropertyChanges() {
         preferredLanguages: preferredLanguages,
         userid: userid
     };
-    return;
+
     // Send the data to the server using fetch
     fetch('/profile_b_property', {
         method: 'POST',
