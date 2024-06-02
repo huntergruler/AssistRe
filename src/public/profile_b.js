@@ -207,7 +207,6 @@ function saveZipChanges() {
         .catch(error => {
             console.error('Error:', error);
         });
-    console.log(userZipCodes);
 
     populateDisplayZipCodes();
     selected.forEach(node => {
