@@ -264,7 +264,6 @@ padding-right: 0px;
     max-width: fit-content;
     justify-items: center;
     text-align: center;
-    background-color: turquoise;
 }
 .form-row{
     margin-top: 0px;
@@ -276,7 +275,6 @@ padding-right: 0px;
     padding-left: 0px;
     padding-right: 0px;
     height: fit-content;
-    background-color: blue;
 }
 .userZip-container {
     background-color: white;
