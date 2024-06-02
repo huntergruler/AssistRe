@@ -307,8 +307,8 @@
                                 <div class="form-group row justify-content-center">
                                     <label for="firstName" class="col-md-4 col-form-label">Name</label>
                                     <div class="col-md">
-                                        <input type="text" class="form-control" id="firstName"
-                                            name="firstName" value="<%= buyer.firstName %>" required>
+                                        <input type="text" class="form-control" id="firstName" name="firstName"
+                                            value="<%= buyer.firstName %>" required>
                                     </div>
                                     <div class="col-md">
                                         <input type="text" class="form-control " id="lastName" name="lastName"
@@ -352,20 +352,20 @@
                                     <label for="phoneNumber" class="col-md-4 col-form-label">Phone
                                         Number</label>
                                     <div class="col-md-5">
-                                        <input type="text" class="form-control " id="phoneNumber"
-                                            name="phoneNumber" value="<%= buyer.phoneNumber %>" required>
+                                        <input type="text" class="form-control " id="phoneNumber" name="phoneNumber"
+                                            value="<%= buyer.phoneNumber %>" required>
                                     </div>
                                     <div class="col-md"></div>
                                 </div>
                                 <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
                             </form>
-                            <div form-row justify-content-center>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
-                                        onclick="savePersonalChanges()">Save</button>
-                                    <button type="button" class="btn btn-primary btn-sm"
-                                        data-dismiss="modal">Cancel</button>
-                                </div>
+                        </div>
+                        <div form-row justify-content-center>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
+                                    onclick="savePersonalChanges()">Save</button>
+                                <button type="button" class="btn btn-primary btn-sm"
+                                    data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </div>
