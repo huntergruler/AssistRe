@@ -293,6 +293,58 @@ function savePersonalChanges() {
         });
 };
 
+function savePropertyChanges() {
+    const propertyType = document.getElementById('propertyType').value;
+    const bedrooms_min = document.getElementById('bedrooms_min').value;
+    const bathrooms_min = document.getElementById('bathrooms_min').value;
+    const squareFootage_min = document.getElementById('squareFootage_min').value;
+    const squareFootage_max = document.getElementById('squareFootage_max').value;
+    const price_min = document.getElementById('price_min').value;
+    const price_max = document.getElementById('price_max').value;
+    const timeFrame = document.getElementById('timeFrame').value;
+    const prequalified = document.getElementById('prequalified');
+    const preferredLanguages = document.getElementById('preferredLanguages').value;
+    const userid = document.getElementById('userid').value;
+console.log(prequalified);
+
+    const data = {
+        propertyType: propertyType,
+        bedrooms_min: bedrooms_min,
+        bedrooms_max: bedrooms_max,
+        bathrooms_min: bathrooms_min,
+        bathrooms_max: bathrooms_max,
+        squareFootage_min: squareFootage_min,
+        squareFootage_max: squareFootage_max,
+        price_min: price_min,
+        price_max: price_max,
+        timeFrame: timeFrame,
+        prequalifiedY: prequalifiedY,
+        prequalifiedN: prequalifiedN,
+        preferredLanguages: preferredLanguages,
+        userid: userid
+    };
+    return;
+    // Send the data to the server using fetch
+    fetch('/profile_b_property', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+};
 function populateUserZipCodes() {
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const userZipCodes = document.getElementById("userZipCodes");
