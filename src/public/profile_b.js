@@ -306,6 +306,8 @@ function savePropertyChanges() {
     const prequalifiedN = document.getElementById('prequalifiedN').checked;
     const preferredLanguages = document.getElementById('preferredLanguages').value;
     const userid = document.getElementById('userid').value;
+    console.log(prequalifiedY,"Prequalified Y",prequalifiedN,"Prequalified N");
+
     if (prequalifiedY) {
         let prequalified = 'Y';
     } else {
