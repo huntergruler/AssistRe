@@ -218,30 +218,20 @@
                             <form id="propertyForm">
                                 <div class="form-row ">
                                     <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
-                                    <input type="text" class="form-control-sm col-md-8" placeholder="Property Type"
+                                    <input type="text" class="form-control-sm col-md-6" placeholder="Property Type"
                                         id="propertyType" name="propertyType" value="<%= buyer.propertyType %>"
                                         required>
                                 </div>
                                 <div class="form-row ">
                                     <label for="bedrooms_min" class="col-md-4 col-form-label">Minimum Bedrooms</label>
-                                    <input type="text" class="form-control col-md-1" 
+                                    <input type="text" class="form-control-sm col-md-1" 
                                         id="bedrooms_min" name="bedrooms_min" value="<%= buyer.bedrooms_min %>"
                                         required>
                                 </div>
                                 <div class="form-group row justify-content-center">
-                                    <label for="bathrooms" class="col-md-4 col-form-label">Bathroom Range</label>
-                                    <div class="col-md-2">
-                                        <input type="text" class="form-control " id="bathrooms_min" name="bathrooms_min"
+                                    <label for="bathrooms_min" class="col-md-4 col-form-label">Minimum Bathrooms</label>
+                                        <input type="text" class="form-control-sm col-md-1" id="bathrooms_min" name="bathrooms_min"
                                             value="<%= buyer.bathrooms_min %>" required>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <label for="to" class="form-control ">to</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="text" class="form-control " id="bathrooms_max" name="bathrooms_max"
-                                            value="<%= buyer.bathrooms_max %>" required>
-                                    </div>
-                                    <div class="col-md-1"></div>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <label for="squareFootage" class="col-md-4 col-form-label">Square Foot Range</label>
