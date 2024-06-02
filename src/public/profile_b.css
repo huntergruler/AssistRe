@@ -188,6 +188,7 @@ padding-right: 0px;
     align-content: center;
     align-items: center;
     text-align: right;
+    background-color: aqua;
 }
 .county-group, .zipstate-group {
     margin-top: 0px;
