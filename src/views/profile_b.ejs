@@ -39,14 +39,22 @@
     <div class="row row-cols-2">
         <div class="col-md-4">
             <div class="userZip-container mt-5">
-                <div class="form-container">
-                    <h3 class="text-center">Personal Info</h3>
-                    <div class="profile-group">
-                                    <p><%= buyer.firstName %> <%= buyer.lastName %></p>
-                                    <p><%= buyer.address %></p>
-                                    <p><%= buyer.city %>, <%= buyer.state %> <%= buyer.zip %></p> 
-                                    <p><%= buyer.phoneNumber %></p>  
-                    </div>
+                <h3 class="text-center">Personal Info</h3>
+                <div class="profile-group">
+                    <p>
+                        <%= buyer.firstName %>
+                            <%= buyer.lastName %>
+                    </p>
+                    <p>
+                        <%= buyer.address %>
+                    </p>
+                    <p>
+                        <%= buyer.city %>, <%= buyer.state %>
+                                <%= buyer.zip %>
+                    </p>
+                    <p>
+                        <%= buyer.phoneNumber %>
+                    </p>
                 </div>
             </div>
         </div>
