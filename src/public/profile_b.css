@@ -63,6 +63,11 @@ padding-right: 0px;
     margin: 0px 0px;
     margin-left: 0px;
     margin-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px; 
+    padding-top: 0px;
+    padding-bottom: 0px;
+
     border-radius: 8px;
     border: 1px solid black;
     align-items: center;
