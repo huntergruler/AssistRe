@@ -253,22 +253,26 @@ function saveZipChanges() {
 };
 
 function savePersonalChanges() {
-    const selected = document.querySelectorAll(".zipCodeSelected");
-    const selected2 = document.querySelectorAll(".userZipCodes");
-
-    // Prepare the array of selected zip codes
-    const selectedZipCodes = Array.from(selected).map(node => node.textContent);
-    const selectedZipCodes2 = Array.from(selected2).map(node => node.textContent);
-
-    //document.getElementById('saveChanges').disabled = true;
-    // Prepare the data to be sent
-    const userZipCodes = selectedZipCodes.concat(selectedZipCodes2);
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const address = document.getElementById('address').value;
+    const city = document.getElementById('city').value;
+    const state = document.getElementById('state').value;
+    const zip = document.getElementById('zip').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const userid = document.getElementById('userid').value;
     const data = {
-        zipCodes: userZipCodes
+        firstName: firstName,
+        lastName: lastName,
+        address: address,
+        city: city,
+        state: state,
+        zip: zip,
+        phoneNumber: phoneNumber,
+        userid: userid
     };
-
     // Send the data to the server using fetch
-    fetch('/process-zip-codes', {
+    fetch('/profile_b', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -287,14 +291,6 @@ function savePersonalChanges() {
         .catch(error => {
             console.error('Error:', error);
         });
-    console.log(userZipCodes);
-
-    populateDisplayZipCodes();
-    selected.forEach(node => {
-        const data = {
-            zipCode: node.textContent
-        };
-    });
 };
 
 function populateUserZipCodes() {
