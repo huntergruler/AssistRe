@@ -257,7 +257,7 @@
                                 <div class="form-row ">
                                     <label for="prequalified" id="prequalified" class="col-md-4 col-form-label">Prequalified</label>
                                     <div class="col-md-3" >
-                                        if (buyer.prequalified == 'Yes') {
+                                        <% if (buyer.prequalified == 'Yes') { %>
                                         <input type="radio" id="prequalifiedY" name="prequalified" required checked>
                                         Yes
                                         <input type="radio" id="prequalifiedN" name="prequalified" required>
@@ -269,7 +269,7 @@
                                         <input type="radio" id="prequalifiedN" name="prequalified" required checked>
                                         No
                                         <input type="hidden" id="prequalified" value="<%= buyer.prequalified %>">
-                                        }
+                                        <%} %>
                                     </div>
                                     <div class="col-md-3"></div>
                                 </div>
