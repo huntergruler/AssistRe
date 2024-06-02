@@ -130,11 +130,10 @@ padding-right: 0px;
     border-top: 1px solid black;
 }
 
-.col-md-4,
 .col-md-3,
 .col-md-2 {
     margin-left: 0px;
-    /* align-items: center; */
+    align-items: center;
 }
 
 .container {
