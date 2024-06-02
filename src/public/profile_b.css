@@ -5,7 +5,7 @@ body {
     margin: 50px 50px;
     max-width: auto;
 }
-/* .modal {
+.modal {
     font-size: 14px;
     background-color: white;
     max-width: fit-content;
@@ -14,7 +14,7 @@ body {
     padding: 5px 5px;
     border: 1px solid black;
     border-radius: 8px;
-} */
+}
 .modal-content {
     font-size: 14px;
     /* background-color: #666; */
