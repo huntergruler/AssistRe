@@ -56,17 +56,6 @@ padding-right: 0px;
     text-align: center;
 }
 
-.userZip-container {
-    background-color: white;
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
-    width: 300px;
-    border-radius: 8px;
-    border: 1px solid black;
-    /* align-items: center; */
-    text-align: center;
-    background-color: greenyellow;
-}
-
 #dashboardContainer,
 #loginContainer {
     margin: 50px 0;
@@ -285,6 +274,18 @@ padding-right: 0px;
     padding-bottom: 0px;
     background-color: blue;
 }
+.userZip-container {
+    background-color: white;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    width: 300px;
+    border-radius: 8px;
+    border: 1px solid black;
+    align-items: center;
+    text-align: center;
+    background-color: greenyellow;
+}
+
+
 .form-container {
     max-width: 500px;
     margin-left: 20px;
@@ -297,8 +298,6 @@ padding-right: 0px;
     padding-bottom: 0px;
     font-size: 14px;
     text-align: right;
-    /* Less space between elements */
-    /* padding: 20px; */
     border-radius: 5px;
     border: 1px solid black;
     background-color: red;}
