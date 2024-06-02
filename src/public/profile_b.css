@@ -62,7 +62,7 @@ padding-right: 0px;
     width: 300px;
     border-radius: 8px;
     border: 1px solid black;
-    align-items: center;
+    /* align-items: center; */
     text-align: center;
     background-color: greenyellow;
 }
