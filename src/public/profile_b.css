@@ -177,7 +177,7 @@ padding-right: 0px;
     align-items: center;
     text-align: right;
 }
-.profile-group {
+.profile-group, .property-group {
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
