@@ -313,6 +313,7 @@ padding-right: 0px;
     width: 300px;
     justify-items: center;
     text-align: center;
+    background-color: turquoise;
 }
 .zipCode-group {
     margin-bottom: 5px;
