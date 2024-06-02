@@ -60,14 +60,6 @@ padding-right: 0px;
     background-color: white;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     width: 300px;
-    margin: 0px 0px;
-    margin-left: 0px;
-    margin-top: 0px;
-    padding-left: 0px;
-    padding-right: 0px; 
-    padding-top: 0px;
-    padding-bottom: 0px;
-
     border-radius: 8px;
     border: 1px solid black;
     align-items: center;
@@ -185,10 +177,13 @@ padding-right: 0px;
     text-align: right;
 }
 .profile-group, .property-group {
-    margin-top: 0px;
+    margin: 0px 0px;
     margin-left: 0px;
-    margin-right: 0px;
+    margin-top: 0px;
     padding-left: 0px;
+    padding-right: 0px; 
+    padding-top: 0px;
+    padding-bottom: 0px;
     width: 300px;
     max-height: fit-content;
     /* Less space between elements */
