@@ -62,116 +62,27 @@
         <div class="container mt-5">
             <div class="form-container">
                 <h3 class="text-center">Property Info</h3>
-                <form id="propertyForm">
-                    <div class="form-group row justify-content-center">
-                        <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control view-mode" id="propertyType" name="propertyType"
-                                value="<%= buyer.propertyType %>" required disabled>
-                        </div>
-                    </div>
-                    <div class="form-group row justify-content-center">
-                        <label for="bedrooms_min" class="col-md-4 col-form-label">Bedroom Range</label>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control view-mode style=" background-color: transparent;""
-                                id="bedrooms_min" name="bedrooms_min" value="<%= buyer.bedrooms_min %>" required
-                                disabled>
-                        </div>
-                        <div class="col-md-1">
-                            <label for="to" class="form-control view-mode">to</label>
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control view-mode" id="bedrooms_max" name="bedrooms_max"
-                                value="<%= buyer.bedrooms_max %>" required disabled>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <div class="form-group row justify-content-center">
-                        <label for="bathrooms" class="col-md-4 col-form-label">Bathroom Range</label>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control view-mode" id="bathrooms_min" name="bathrooms_min"
-                                value="<%= buyer.bathrooms_min %>" required disabled>
-                        </div>
-                        <div class="col-md-1">
-                            <label for="to" class="form-control view-mode">to</label>
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control view-mode" id="bathrooms_max" name="bathrooms_max"
-                                value="<%= buyer.bathrooms_max %>" required disabled>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <div class="form-group row justify-content-center">
-                        <label for="squareFootage" class="col-md-4 col-form-label">Square Foot Range</label>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control view-mode" id="squareFootage_min"
-                                name="squareFootage_min" value="<%= buyer.squareFootage_min %>" required disabled>
-                        </div>
-                        <div class="col-md-1">
-                            <label for="to" class="form-control view-mode">to</label>
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control view-mode" id="squareFootage_max"
-                                name="squareFootage_max" value="<%= buyer.squareFootage_max %>" required disabled>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <div class="form-group row justify-content-center">
-                        <label for="priceRange" class="col-md-4 col-form-label">Price Range</label>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control view-mode" id="price_min" name="price_min"
-                                value="<%= buyer.price_min %>" required disabled>
-                        </div>
-                        <div class="col-md-1">
-                            <label for="to" class="form-control view-mode">to</label>
-                        </div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control view-mode" id="price_max" name="price_max"
-                                value="<%= buyer.price_max %>" required disabled>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <div class="form-group row justify-content-center">
-                        <label for="timeFrame" class="col-md-4 col-form-label">Buying Timeframe</label>
-                        <div class="col-md-4">
-                            <input type="text" class="form-control view-mode" id="timeFrame" name="timeFrame"
-                                value="<%= buyer.timeFrame %>" required disabled>
-                        </div>
-                        <div class="col-md-2"></div>
-                    </div>
-                    <div class="form-group row justify-content-center">
-                        <label for="prequalified" class="col-md-4 col-form-label">Prequalified</label>
-                        <div class="col-md-3">
-                            <input type="radio" id="prequalifiedY" name="prequalified" required disabled>
-                            Yes
-                            <input type="radio" id="prequalifiedN" name="prequalified" required disabled>
-                            No
-                            <input type="hidden" id="prequalified" value="<%= buyer.prequalified %>">
-                        </div>
-                        <!-- <div class="form-group row justify-content-center" id="fileUploadDiv" style="display: none;">
-                        <label for="dataFile" class="col-md-4 col-form-label">Upload Data File</label>
-                        <div class="col-md-4">
-                            <input type="file" class="form-control" id="dataFile" name="dataFile">
-                        </div>
-                    </div> -->
-                        <div class="col-md-3"></div>
-                    </div>
-                    <div class="form-group row justify-content-center">
-                        <label for="preferredLanguages" class="col-md-4 col-form-label">Preferred Language</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control view-mode" id="preferredLanguages"
-                                name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required disabled>
-                        </div>
-                    </div>
-                    <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
-                    <div class="text-center">
-                        <button type="button" id="editButton2" class="btn btn-primary btn-sm">Edit</button>
-                        <button type="button" id="saveButton2" class="btn btn-success btn-sm"
-                            style="display:none;">Save</button>
-                        <button type="button" id="cancelButton2" class="btn btn-secondary btn-sm"
-                            style="display:none;">Cancel</button>
-                    </div>
-                </form>
+                <div class="property-group">
+                    <p>Property Type: <%= buyer.propertyType %>
+                    </p>
+                    <p>Minimum Bedrooms: <%= buyer.bedrooms_min %>
+                    </p>
+                    <p>Minimum Batrooms: <%= buyer.bathrooms_min %>
+                    </p>
+                    <p>Square Footage Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %>
+                    </p>
+                    <p>Price Range: <%= buyer.price_min %> to <%= buyer.price_max %>
+                    </p>
+                    <p>Timeframe: <%= buyer.timeFrame %>
+                    </p>
+                    <p>Prequalified: <%= buyer.prequalified %>
+                    </p>
+                    <p>Preferred Languages: <%= buyer.preferredLanguages %>
+                    </p>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#personalModal">
+                    Modify Personal Info
+                </button>
             </div>
         </div>
     </div>
@@ -286,6 +197,136 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="propertyModal" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="propertyModalLabel">Property Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container mt-5">
+                        <div class="form-container">
+                            <h3 class="text-center">Property Info</h3>
+                            <form id="propertyForm">
+                                <div class="form-group row justify-content-center">
+                                    <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control " id="propertyType" name="propertyType"
+                                            value="<%= buyer.propertyType %>" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="bedrooms_min" class="col-md-4 col-form-label">Bedroom Range</label>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control  style=" background-color: transparent;""
+                                            id="bedrooms_min" name="bedrooms_min" value="<%= buyer.bedrooms_min %>"
+                                            required>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label for="to" class="form-control ">to</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control " id="bedrooms_max" name="bedrooms_max"
+                                            value="<%= buyer.bedrooms_max %>" required>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="bathrooms" class="col-md-4 col-form-label">Bathroom Range</label>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control " id="bathrooms_min" name="bathrooms_min"
+                                            value="<%= buyer.bathrooms_min %>" required>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label for="to" class="form-control ">to</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control " id="bathrooms_max" name="bathrooms_max"
+                                            value="<%= buyer.bathrooms_max %>" required>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="squareFootage" class="col-md-4 col-form-label">Square Foot Range</label>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control " id="squareFootage_min"
+                                            name="squareFootage_min" value="<%= buyer.squareFootage_min %>" required>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label for="to" class="form-control ">to</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control " id="squareFootage_max"
+                                            name="squareFootage_max" value="<%= buyer.squareFootage_max %>" required>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="priceRange" class="col-md-4 col-form-label">Price Range</label>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control " id="price_min" name="price_min"
+                                            value="<%= buyer.price_min %>" required>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <label for="to" class="form-control ">to</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control " id="price_max" name="price_max"
+                                            value="<%= buyer.price_max %>" required>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="timeFrame" class="col-md-4 col-form-label">Buying Timeframe</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control " id="timeFrame" name="timeFrame"
+                                            value="<%= buyer.timeFrame %>" required>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="prequalified" class="col-md-4 col-form-label">Prequalified</label>
+                                    <div class="col-md-3">
+                                        <input type="radio" id="prequalifiedY" name="prequalified" required>
+                                        Yes
+                                        <input type="radio" id="prequalifiedN" name="prequalified" required>
+                                        No
+                                        <input type="hidden" id="prequalified" value="<%= buyer.prequalified %>">
+                                    </div>
+                                    <!-- <div class="form-group row justify-content-center" id="fileUploadDiv" style="display: none;">
+                                    <label for="dataFile" class="col-md-4 col-form-label">Upload Data File</label>
+                                    <div class="col-md-4">
+                                        <input type="file" class="form-control" id="dataFile" name="dataFile">
+                                    </div>
+                                </div> -->
+                                    <div class="col-md-3"></div>
+                                </div>
+                                <div class="form-group row justify-content-center">
+                                    <label for="preferredLanguages" class="col-md-4 col-form-label">Preferred
+                                        Language</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control " id="preferredLanguages"
+                                            name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
+                                <div class="text-center">
+                                    <button type="button" id="editButton2" class="btn btn-primary btn-sm">Edit</button>
+                                    <button type="button" id="saveButton2" class="btn btn-success btn-sm"
+                                        style="display:none;">Save</button>
+                                    <button type="button" id="cancelButton2" class="btn btn-secondary btn-sm"
+                                        style="display:none;">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="personalModal" tabindex="-1" aria-labelledby="personalModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -305,7 +346,8 @@
                                     <label class="col-md-4" style="font-size: 12px;">Last</label>
                                 </div>
                                 <div class="form-group row ">
-                                    <label for="firstName" class="col-md-4 col-form-label justify-content-right">Name</label>
+                                    <label for="firstName"
+                                        class="col-md-4 col-form-label justify-content-right">Name</label>
                                     <div class="col-md">
                                         <input type="text" class="form-control" id="firstName" name="firstName"
                                             value="<%= buyer.firstName %>" required>
