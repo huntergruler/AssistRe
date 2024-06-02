@@ -302,24 +302,26 @@ function savePropertyChanges() {
     const price_min = document.getElementById('price_min').value;
     const price_max = document.getElementById('price_max').value;
     const timeFrame = document.getElementById('timeFrame').value;
-    const prequalified = document.getElementById('prequalified');
+    const prequalifiedY = document.getElementById('prequalifiedY').checked;
+    const prequalifiedN = document.getElementById('prequalifiedN').checked;
     const preferredLanguages = document.getElementById('preferredLanguages').value;
     const userid = document.getElementById('userid').value;
-console.log(prequalified);
+    if (prequalifiedY) {
+        let prequalified = 'Y';
+    } else {
+        let prequalified = 'N';
+    }
 
     const data = {
         propertyType: propertyType,
         bedrooms_min: bedrooms_min,
-        bedrooms_max: bedrooms_max,
         bathrooms_min: bathrooms_min,
-        bathrooms_max: bathrooms_max,
         squareFootage_min: squareFootage_min,
         squareFootage_max: squareFootage_max,
         price_min: price_min,
         price_max: price_max,
         timeFrame: timeFrame,
-        prequalifiedY: prequalifiedY,
-        prequalifiedN: prequalifiedN,
+        prequalified: prequalified,
         preferredLanguages: preferredLanguages,
         userid: userid
     };
