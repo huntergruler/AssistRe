@@ -253,10 +253,12 @@ padding-right: 0px;
     padding-bottom: 0px;
 }
 .form-group {
-    margin-bottom: 5px;
     margin-top: 0px;
+    margin-bottom: 0px;
     margin-left: 0px;
     margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
     max-width: fit-content;
@@ -266,12 +268,13 @@ padding-right: 0px;
 }
 .form-row{
     margin-top: 0px;
+    margin-bottom: 0px;
     margin-left: 0px;
     margin-right: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
     background-color: blue;
 }
 .userZip-container {
