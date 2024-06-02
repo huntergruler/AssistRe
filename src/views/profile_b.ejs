@@ -42,29 +42,8 @@
                 <div class="form-container">
                     <h3 class="text-center">Personal Info</h3>
                     <form id="profileForm">
-                        <div class="form-group row justify-content-center">
-                            <div class="col-md-4"></div>
-                            <label class="col-md-4" style="font-size: 12px;">First</label>
-                            <label class="col-md-4" style="font-size: 12px;">Last</label>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="firstName" class="col-md-4 col-form-label">Name</label>
-                            <div class="col-md">
-                                <input type="text" class="form-control view-mode" id="firstName" name="firstName"
-                                    value="<%= buyer.firstName %>" required disabled>
-                            </div>
-                            <div class="col-md">
-                                <input type="text" class="form-control view-mode" id="lastName" name="lastName"
-                                    value="<%= buyer.lastName %>" required disabled>
-                            </div>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="address" class="col-md-4 col-form-label">Address</label>
-                            <div class="col-md">
-                                <input type="text" class="form-control view-mode" id="address" name="address"
-                                    value="<%= buyer.address %>" required disabled>
-                            </div>
-                        </div>
+                                    <%= buyer.firstName %> <%= buyer.lastName %>
+                                    <%= buyer.address %>
                         <div class="form-group row justify-content-center">
                             <label for="city" class="col-md-4 col-form-label">City</label>
                             <div class="col-md">
@@ -280,7 +259,8 @@
                         <div class="county-group justify-content-center">
                             <form>
                                 <div class="form-row justify-content-center">
-                                    <div id="countymessage" style="display: none;">Select a City or County to display Zip Codes</div>
+                                    <div id="countymessage" style="display: none;">Select a City or County to display
+                                        Zip Codes</div>
                                 </div>
                                 <div class="form-row justify-content-center">
                                     <div class="form-group col-md-5">
@@ -341,7 +321,95 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="modal fade" id="personalInfoModal" tabindex="-1" aria-labelledby="zipCodeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="zipCodeModalLabel">Your Zip Codes</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container mt-5">
+                            <div class="form-container">
+                                <h3 class="text-center">Personal Info</h3>
+                                <form id="profileForm">
+                                    <div class="form-group row justify-content-center">
+                                        <div class="col-md-4"></div>
+                                        <label class="col-md-4" style="font-size: 12px;">First</label>
+                                        <label class="col-md-4" style="font-size: 12px;">Last</label>
+                                    </div>
+                                    <div class="form-group row justify-content-center">
+                                        <label for="firstName" class="col-md-4 col-form-label">Name</label>
+                                        <div class="col-md">
+                                            <input type="text" class="form-control view-mode" id="firstName"
+                                                name="firstName" value="<%= buyer.firstName %>" required disabled>
+                                        </div>
+                                        <div class="col-md">
+                                            <input type="text" class="form-control view-mode" id="lastName"
+                                                name="lastName" value="<%= buyer.lastName %>" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row justify-content-center">
+                                        <label for="address" class="col-md-4 col-form-label">Address</label>
+                                        <div class="col-md">
+                                            <input type="text" class="form-control view-mode" id="address"
+                                                name="address" value="<%= buyer.address %>" required disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row justify-content-center">
+                                        <label for="city" class="col-md-4 col-form-label">City</label>
+                                        <div class="col-md">
+                                            <input type="text" class="form-control view-mode" id="city" name="city"
+                                                value="<%= buyer.city %>" required disabled>
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                    </div>
+                                    <div class="form-group row justify-content-center">
+                                        <label for="state" class="col-md-4 col-form-label">State</label>
+                                        <div class="col-md">
+                                            <input class="form-control view-mode" id="state" name="state"
+                                                value="<%= buyer.state %>" required disabled>
+                                        </div>
+                                        <div class="col-md"></div>
+                                    </div>
+                                    <div class="form-group row justify-content-center">
+                                        <label for="zip" class="col-md-4 col-form-label">Zip</label>
+                                        <div class="col-md">
+                                            <input type="text" class="form-control view-mode" id="zip" name="zip"
+                                                value="<%= buyer.zip %>" required disabled
+                                                onmouseleave="lookupCityState()" onblur="lookupCityState()">
+                                            <span id="cityState"></span>
+                                        </div>
+                                        <div class="col-md"></div>
+                                    </div>
+                                    <div class="form-group row justify-content-center">
+                                        <label for="phoneNumber" class="col-md-4 col-form-label">Phone Number</label>
+                                        <div class="col-md">
+                                            <input type="text" class="form-control view-mode" id="phoneNumber"
+                                                name="phoneNumber" value="<%= buyer.phoneNumber %>" required disabled>
+                                        </div>
+                                        <div class="col-md"></div>
+                                    </div>
+                                    <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
+                                    <div class="text-center">
+                                        <button type="button" id="editButton"
+                                            class="btn btn-primary btn-sm">Edit</button>
+                                        <button type="button" id="saveButton" class="btn btn-success btn-sm"
+                                            style="display:none;">Save</button>
+                                        <button type="button" id="cancelButton" class="btn btn-secondary btn-sm"
+                                            style="display:none;">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="/profile_b.js"></script>

@@ -157,7 +157,12 @@ function lookupCityState() {
 document.addEventListener('DOMContentLoaded', function () {
     populateDisplayZipCodes();
     populateStates();
-    // var prequalified = document.getElementById('prequalified').value;
+    $('#myModal').on('hide.bs.modal', function (e) {
+        if (zipChanges === 1) {
+            handleUnsavedChanges(e);
+        }
+    });
+        // var prequalified = document.getElementById('prequalified').value;
     // if (prequalified === 'Y') {
     //     document.getElementById('prequalifiedY').checked = true;
     //     toggleFileUpload(true);
@@ -360,14 +365,6 @@ function populateCities() {
         })
         .catch(error => console.error('Error checking user:', error));
 };
-window.addEventListener('beforeunload', function(e) {
-    if (zipChanges === 1) {
-        const confirmationMessage = 'You have unsaved changes. Are you sure you want to leave?';
-        e.returnValue = confirmationMessage; // Standard for most browsers
-        return confirmationMessage; // For some browsers
-    }
-});
-
 
 function populateCitiesCounties() {
     const stateSelect = document.getElementById('stateSelect').value;
