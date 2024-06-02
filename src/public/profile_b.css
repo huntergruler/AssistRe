@@ -375,7 +375,7 @@ padding-right: 0px;
 */
 .form-group .row {
     padding-left: 0px;
-    height: calc(1.5em + .5rem + 2px);
+    height: calc(1.5em + .5rem);
     font-size: 14px;
 } 
 
