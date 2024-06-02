@@ -182,12 +182,12 @@ padding-right: 0px;
     margin-left: 2px;
     margin-right: 1px;
     padding-left: 2px;
-    width: 475px;
+    width: 300px;
     max-height: fit-content;
     /* Less space between elements */
     align-content: center;
     align-items: center;
-    text-align: right;
+    text-align: center;
     background-color: aqua;
 }
 .county-group, .zipstate-group {
