@@ -372,12 +372,12 @@ padding-right: 0px;
     height: calc(1.5em + .5rem + 2px);
     font-size: 14px;
 }
-
+*/
 .form-group .row {
     padding-left: 0px;
     height: calc(1.5em + .5rem + 2px);
     font-size: 14px;
-} */
+} 
 
 .form-control.view-mode {
     border: none;
