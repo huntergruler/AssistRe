@@ -262,7 +262,7 @@ padding-right: 0px;
     max-width: 300px;
     justify-items: center;
     text-align: center;
-    background-color: turquoise;
+    /* background-color: turquoise; */
 }
 .form-row{
     margin-top: 0px;
