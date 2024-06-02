@@ -118,41 +118,6 @@ function lookupCityState() {
     }
 }
 
-// var zipToggle = 1;
-// function showZipCodes() {
-//     const form = document.getElementById("zipCodeForm");
-//     const disp = document.getElementById("zipCodeOption");
-//     const zipButton = document.getElementById('zipCodeButton');
-
-//     if (zipToggle == 0) {
-//         form.style.display = "none";
-//         disp.style.display = "block";
-//         zipButton.innerHTML = "Edit";
-//         zipToggle = 1;
-
-//         saveChanges();
-//         populateUserZipCodes();
-//     }
-//     else {
-//         form.style.display = "block";
-//         disp.style.display = "none";
-//         zipButton.innerHTML = "Done";
-//         populateStates();
-//         populateUserZipCodes();
-//         zipToggle = 0;
-//     }
-// };
-
-// // Function to toggle the file upload input based on the selected radio button
-// function toggleFileUpload(show) {
-//     var fileUploadDiv = document.getElementById('fileUploadDiv');
-//     if (show) {
-//         fileUploadDiv.style.display = 'flex'; // Change to 'block' if 'flex' does not suit your layout
-//     } else {
-//         fileUploadDiv.style.display = 'none';
-//     }
-// }
-
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
     populateDisplayZipCodes();
@@ -283,8 +248,8 @@ function savePersonalChanges() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json();
-        })
+            window.location.reload();
+            })
         .then(result => {
             console.log('Success:', result);
         })
@@ -340,8 +305,8 @@ function savePropertyChanges() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json();
-        })
+            window.location.reload();
+                })
         .then(result => {
             console.log('Success:', result);
         })
