@@ -41,52 +41,12 @@
             <div class="container mt-5">
                 <div class="form-container">
                     <h3 class="text-center">Personal Info</h3>
-                    <form id="profile-group" class="profile-group">
+                    <div class="profile-group">
                                     <p><%= buyer.firstName %> <%= buyer.lastName %></p>
                                     <p><%= buyer.address %></p>
-                        <div class="form-group row justify-content-center">
-                            <label for="city" class="col-md-4 col-form-label">City</label>
-                            <div class="col-md">
-                                <input type="text" class="form-control view-mode" id="city" name="city"
-                                    value="<%= buyer.city %>" required disabled>
-                            </div>
-                            <div class="col-md-3"></div>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="state" class="col-md-4 col-form-label">State</label>
-                            <div class="col-md">
-                                <input class="form-control view-mode" id="state" name="state" value="<%= buyer.state %>"
-                                    required disabled>
-                            </div>
-                            <div class="col-md"></div>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="zip" class="col-md-4 col-form-label">Zip</label>
-                            <div class="col-md">
-                                <input type="text" class="form-control view-mode" id="zip" name="zip"
-                                    value="<%= buyer.zip %>" required disabled onmouseleave="lookupCityState()"
-                                    onblur="lookupCityState()">
-                                <span id="cityState"></span>
-                            </div>
-                            <div class="col-md"></div>
-                        </div>
-                        <div class="form-group row justify-content-center">
-                            <label for="phoneNumber" class="col-md-4 col-form-label">Phone Number</label>
-                            <div class="col-md">
-                                <input type="text" class="form-control view-mode" id="phoneNumber" name="phoneNumber"
-                                    value="<%= buyer.phoneNumber %>" required disabled>
-                            </div>
-                            <div class="col-md"></div>
-                        </div>
-                        <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
-                        <div class="text-center">
-                            <button type="button" id="editButton" class="btn btn-primary btn-sm">Edit</button>
-                            <button type="button" id="saveButton" class="btn btn-success btn-sm"
-                                style="display:none;">Save</button>
-                            <button type="button" id="cancelButton" class="btn btn-secondary btn-sm"
-                                style="display:none;">Cancel</button>
-                        </div>
-                    </form>
+                                    <p><%= buyer.city %>, <%= buyer.state %> <%= buyer.zip %></p> 
+                                    <p><%= buyer.phoneNumber %></p>  
+                    </div>
                 </div>
             </div>
         </div>
