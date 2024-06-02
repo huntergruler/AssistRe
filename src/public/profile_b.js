@@ -360,6 +360,14 @@ function populateCities() {
         })
         .catch(error => console.error('Error checking user:', error));
 };
+window.addEventListener('beforeunload', function(e) {
+    if (zipChanges === 1) {
+        const confirmationMessage = 'You have unsaved changes. Are you sure you want to leave?';
+        e.returnValue = confirmationMessage; // Standard for most browsers
+        return confirmationMessage; // For some browsers
+    }
+});
+
 
 function populateCitiesCounties() {
     const stateSelect = document.getElementById('stateSelect').value;
