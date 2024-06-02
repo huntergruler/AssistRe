@@ -241,20 +241,13 @@
                                         <input type="text" class="form-control-sm col-md-2" placeholder="Max" id="squareFootage_max"
                                             name="squareFootage_max" value="<%= buyer.squareFootage_max %>" required>
                                 </div>
-                                <div class="form-group row justify-content-center">
+                                <div class="form-row ">
                                     <label for="priceRange" class="col-md-4 col-form-label">Price Range</label>
-                                    <div class="col-md-2">
-                                        <input type="text" class="form-control " id="price_min" name="price_min"
-                                            value="<%= buyer.price_min %>" required>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <label for="to" class="form-control ">to</label>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input type="text" class="form-control " id="price_max" name="price_max"
-                                            value="<%= buyer.price_max %>" required>
-                                    </div>
-                                    <div class="col-md-1"></div>
+                                        <input type="text" class="form-control-sm col-md-2" placeholder="Min" id="price_min"
+                                            name="price_min" value="<%= buyer.price_min %>" required>
+                                        <label class="col-md-1 text-center">To</label>
+                                        <input type="text" class="form-control-sm col-md-2" placeholder="Max" id="price_max"
+                                            name="price_max" value="<%= buyer.price_max %>" required>
                                 </div>
                                 <div class="form-group row justify-content-center">
                                     <label for="timeFrame" class="col-md-4 col-form-label">Buying Timeframe</label>
@@ -295,7 +288,7 @@
                         <div form-row justify-content-center>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
-                                    onclick="savePersonalChanges()">Save</button>
+                                    onclick="savePropertyChanges()">Save</button>
                                 <button type="button" class="btn btn-primary btn-sm"
                                     data-dismiss="modal">Cancel</button>
                             </div>
