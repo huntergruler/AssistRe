@@ -113,7 +113,7 @@ router.get('/profile_b', (req, res) => {
 
     const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
                           ifnull(brd.bathrooms_min,0) bathrooms_min, ifnull(brd.bathrooms_max,0) bathrooms_max, ifnull(brd.bedrooms_min,0) bedrooms_min, ifnull(brd.bedrooms_max,0) bedrooms_max, brd.buyerType, ifnull(brd.preferredLanguages,'') preferredLanguages, if(brd.prequalified="Y",'Yes','No') prequalified, ifnull(brd.price_min,0) price_min, 
-                          ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, ifnull(brd.timeFrame,'') timeFrame, brd.prequalifiedFile
+                          ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, ifnull(brd.timeFrame,'') timeFrame, brd.prequalifiedFile, brd.levelOfService
                      from Buyers b
                           left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
                     where b.userid = ?`;
@@ -159,7 +159,6 @@ router.post('/profile_b_property', (req, res) => {
   }
   else {
     const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, levelOfService, userid } = req.body;
-    console.log('level of service:', levelOfService);
     const query = 'Replace Into BuyerRequestDetails SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelOfService = ?, userid = ?';
     db.query(query, [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, levelOfService, userid], (error, results) => {
       if (error) {
