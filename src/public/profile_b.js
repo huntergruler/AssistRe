@@ -424,7 +424,7 @@ console.log(levelOfServiceDisplay);
         .then(response => response.json())
         .then(data => {
             data.results.forEach(item => {
-                if (levelOfServiceDisplay === item.levelOfService) {
+                if (levelOfServiceDisplay.replace("Service Level: ", "") === item.levelOfService) {
                     option.selected = true;
                 }
                 let option = document.createElement('option');
