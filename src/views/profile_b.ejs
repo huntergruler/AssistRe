@@ -94,6 +94,8 @@
                     </p>
                     <p>Prequalified: <%= buyer.prequalified %>
                     </p>
+                    <p>Prequalified: <%= buyer.prequalifiedAmount %>
+                    </p>
                     <p>Preferred Languages: <%= buyer.preferredLanguages %>
                     </p>
                     <div id="levelOfServiceDisplay">
@@ -280,6 +282,11 @@
                                                 <% } %>
                                     </div>
                                     <div class="col-md-3"></div>
+                                </div>
+                                <div class="form-row ">
+                                    <label for="prequalifiedAmount" class="col-md-4 col-form-label">Prequalified Amount</label>
+                                    <input type="text" class="form-control-sm col-md-5" placeholder="Enter Prequalified Amount"
+                                        id="prequalifiedAmount" name="prequalifiedAmount" value="<%= buyer.prequalifiedAmount%>">
                                 </div>
                                 <div class="form-row ">
                                     <label for="preferredLanguages" class="col-md-4 col-form-label">Preferred
