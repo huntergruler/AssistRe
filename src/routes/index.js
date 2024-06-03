@@ -111,11 +111,12 @@ router.get('/profile_b', (req, res) => {
   else {
     const userid = req.session.userid;
 
-    const query = `select b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
-                          b.bathrooms_min, b.bathrooms_max, b.bedrooms_min, b.bedrooms_max, b.buyerType, b.preferredLanguages, if(b.prequalified="Y",'Yes','No') prequalified, b.price_min, 
-                          b.price_max, b.propertyType, b.squareFootage_min, b.squareFootage_max, b.state, b.timeFrame, b.userPhoto, b.prequalifiedFile
-                     from Buyers b
-                    where b.userid = ?`;
+    const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
+                          brd.bathrooms_min, brd.bathrooms_max, brd.bedrooms_min, brd.bedrooms_max, brd.buyerType, brd.preferredLanguages, if(brd.prequalified="Y",'Yes','No') prequalified, brd.price_min, 
+                          brd.price_max, brd.propertyType, brd.squareFootage_min, brd.squareFootage_max, brd.timeFrame, brd.userPhoto, brd.prequalifiedFile
+                     from Buyers b, BuyerRequestDetails brd
+                    where b.userid = brd.userid
+                      and b.userid = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);
@@ -157,9 +158,9 @@ router.post('/profile_b_property', (req, res) => {
     res.redirect('/');
   }
   else {
-    const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, userPhoto, userid } = req.body;
-    const query = 'UPDATE Buyers SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, userPhoto = ? WHERE userid = ?';
-    db.query(query, [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, userPhoto, userid], (error, results) => {
+    const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, levelOfService, userid } = req.body;
+    const query = 'UPDATE BuyersRequestDetails SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelOfService = ? WHERE userid = ?';
+    db.query(query, [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, levelOfService, userid], (error, results) => {
       if (error) {
         console.error('Error updating buyer profile:', error);
         return res.status(500).send('Server error');
@@ -517,7 +518,6 @@ router.get('/get-levelofservice', (req, res) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
-    console.log('Results:', results);
     if (results.length > 0) {
       res.json({ results });
     } else {
