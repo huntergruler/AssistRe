@@ -424,10 +424,10 @@ console.log(levelOfServiceDisplay);
         .then(response => response.json())
         .then(data => {
             data.results.forEach(item => {
+                let option = document.createElement('option');
                 if (levelOfServiceDisplay.replace("Service Level: ", "") === item.levelOfService) {
                     option.selected = true;
                 }
-                let option = document.createElement('option');
                 option.value = item.levelOfService;
                 option.textContent = item.levelOfService;
                 levelOfService.appendChild(option);
