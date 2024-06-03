@@ -556,3 +556,15 @@ insert into
         updatetimestamp
     )
 values ('Submitted', now(), now());
+
+CREATE TABLE `AgentDetails` (
+  `userid` int NOT NULL AUTO_INCREMENT,
+  `userphoto` varchar(255) NOT NULL,
+  `languages` varchar(200) DEFAULT NULL,
+  `bio` text,
+  `entrytimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatetimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`userid`),
+  KEY `email` (`email`)
+) ENGINE=InnoDB
+;
