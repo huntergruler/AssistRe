@@ -413,7 +413,7 @@ function populateLevelOfService() {
     const defaultOption = document.createElement('option');
     defaultOption.textContent = 'Select a Level';
     defaultOption.value = '';
-    stateSelect.appendChild(defaultOption);
+    levelOfService.appendChild(defaultOption);
 
     fetch(`/get-levelofservice`)
         .then(response => response.json())
@@ -422,7 +422,7 @@ function populateLevelOfService() {
                 let option = document.createElement('option');
                 option.value = item.levelOfService;
                 option.textContent = item.levelOfService;
-                stateSelect.appendChild(option);
+                levelOfService.appendChild(option);
             });
         })
 };
