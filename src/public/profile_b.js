@@ -412,7 +412,7 @@ function populateStates() {
 
 function populateLevelOfService() {
     const levelOfService = document.getElementById('levelOfService');
-    const levelOfServiceDisplay = document.getElementById('levelOfServiceDisplay');
+    const levelOfServiceDisplay = document.getElementById('levelOfServiceDisplay'.textContent);
 
     const defaultOption = document.createElement('option');
     defaultOption.textContent = 'Select a Level';
