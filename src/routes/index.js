@@ -114,9 +114,9 @@ router.get('/profile_b', (req, res) => {
     const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
                           brd.bathrooms_min, brd.bathrooms_max, brd.bedrooms_min, brd.bedrooms_max, brd.buyerType, brd.preferredLanguages, if(brd.prequalified="Y",'Yes','No') prequalified, brd.price_min, 
                           brd.price_max, brd.propertyType, brd.squareFootage_min, brd.squareFootage_max, brd.timeFrame, brd.userPhoto, brd.prequalifiedFile
-                     from Buyers b, BuyerRequestDetails brd
-                    where b.userid = brd.userid
-                      and b.userid = ?`;
+                     from Buyers b
+                          left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
+                    where b.userid = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);
