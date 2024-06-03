@@ -97,8 +97,9 @@
                     <p>Preferred Languages: <%= buyer.preferredLanguages %>
                     </p>
                 </div>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal"
-                    > Modify Property Info
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                    data-target="#propertyModal"></button>
+                Modify Property Info
                 </button>
             </div>
         </div>
@@ -249,9 +250,13 @@
                                 <div class="form-row ">
                                     <label for="levelOfService">Expected Level of Service:</label>
                                     <input id="levelOfService" class="form-select-sm col-md-5"
-                                        placeholder="Level Of Service" type="text">
-                                    </select>
-                        </div>
+                                        placeholder="Level Of Service"></select>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="stateSelect" class="col-md-5">State:</label>
+                                    <select id="stateSelect" class="form-select-sm col-md-5"
+                                        onchange="populateCitiesCounties();"></select>
+                                </div>
                                 <div class="form-row ">
                                     <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
                                     <input type="text" class="form-control-sm col-md-5" placeholder="Enter Time Frame"
