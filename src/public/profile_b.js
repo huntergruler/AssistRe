@@ -318,6 +318,7 @@ function savePropertyChanges() {
         });
 };
 function populateUserZipCodes() {
+    populateLevelOfService();
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const userZipCodes = document.getElementById("userZipCodes");
     const stateSelect = document.getElementById("stateSelect");
