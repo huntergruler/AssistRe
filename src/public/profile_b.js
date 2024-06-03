@@ -122,6 +122,7 @@ function lookupCityState() {
 document.addEventListener('DOMContentLoaded', function () {
     populateDisplayZipCodes();
     populateStates();
+    populateLevelOfService();
     $('#myModal').on('hide.bs.modal', function (e) {
         if (zipChanges === 1) {
             handleUnsavedChanges(e);
@@ -401,6 +402,26 @@ function populateStates() {
                 let option = document.createElement('option');
                 option.value = item.state;
                 option.textContent = item.stateName;
+                stateSelect.appendChild(option);
+            });
+        })
+};
+
+function populateLevelOfService() {
+    const levelOfService = document.getElementById('levelOfService');
+
+    const defaultOption = document.createElement('option');
+    defaultOption.textContent = 'Select a Level';
+    defaultOption.value = '';
+    stateSelect.appendChild(defaultOption);
+
+    fetch(`/get-levelofservice`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let option = document.createElement('option');
+                option.value = item.levelOfService;
+                option.textContent = item.levelOfService;
                 stateSelect.appendChild(option);
             });
         })

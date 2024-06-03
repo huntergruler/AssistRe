@@ -511,6 +511,21 @@ router.get('/get-states', (req, res) => {
 });
 
 // Route to get states
+router.get('/get-levelofservice', (req, res) => {
+  const query = 'SELECT levelOfService FROM LevelsOfService order by levelofserviceid';
+  db.query(query, (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results.length > 0) {
+      res.json({ results });
+    } else {
+      res.status(404).json({ error: 'No levels of service found' });
+    }
+  });
+});
+
+// Route to get states
 router.get('/check-zipcode', (req, res) => {
   const zipCode = req.query.stateSelect;
   const userType = req.session.userType;
