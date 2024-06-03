@@ -426,7 +426,7 @@ function populateLevelOfService() {
                 let option = document.createElement('option');
                 let value = levelOfServiceDisplay.replace("Service Level: ", "");
                 let value2 = item.levelOfService.replace('"', '');
-                console.log('value:',value, 'value2:',value2);
+                console.log("value:",value, "value2:",value2, "item:",item.levelOfService);
                 if (levelOfServiceDisplay.replace("Service Level: ", "") == item.levelOfService.replace('"', '')) {
                     option.selected = true;
                     console.log('Selected');
