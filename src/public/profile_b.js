@@ -270,6 +270,7 @@ function savePropertyChanges() {
     const prequalifiedY = document.getElementById('prequalifiedY').checked;
     const prequalifiedN = document.getElementById('prequalifiedN').checked;
     const preferredLanguages = document.getElementById('preferredLanguages').value;
+    const levelOfService = document.getElementById('levelOfService').value;
     const userid = document.getElementById('userid').value;
     console.log(prequalifiedY,"Prequalified Y",prequalifiedN,"Prequalified N");
 
