@@ -122,7 +122,6 @@ function lookupCityState() {
 document.addEventListener('DOMContentLoaded', function () {
     populateDisplayZipCodes();
     populateStates();
-    populateLevelOfService();
     var levelOfService = document.getElementById('levelOfService').value;
     $('#myModal').on('hide.bs.modal', function (e) {
         if (zipChanges === 1) {
@@ -426,7 +425,6 @@ function populateLevelOfService() {
                 let option = document.createElement('option');
                 if (levelOfServiceDisplay.replace("Service Level: ", "") == item.levelOfService) {
                     option.selected = true;
-                    console.log('Selected');
                 }
                 option.value = item.levelOfService;
                 option.textContent = item.levelOfService;
