@@ -414,7 +414,6 @@ function populateStates() {
 function populateLevelOfService() {
     const levelOfService = document.getElementById('levelOfService');
     const levelOfServiceDisplay = document.getElementById('levelOfServiceDisplay').textContent;
-console.log(levelOfServiceDisplay);
     const defaultOption = document.createElement('option');
     defaultOption.textContent = 'Select a Level';
     defaultOption.value = '';
@@ -425,6 +424,7 @@ console.log(levelOfServiceDisplay);
         .then(data => {
             data.results.forEach(item => {
                 let option = document.createElement('option');
+                console.log(levelOfServiceDisplay.replace("Service Level: ", ""), item.levelOfService);
                 if (levelOfServiceDisplay.replace("Service Level: ", "") === item.levelOfService) {
                     option.selected = true;
                 }
