@@ -427,6 +427,7 @@ function populateLevelOfService() {
                 console.log(levelOfServiceDisplay.replace("Service Level: ", ""), item.levelOfService);
                 if (levelOfServiceDisplay.replace("Service Level: ", "") === item.levelOfService) {
                     option.selected = true;
+                    console.log('Selected');
                 }
                 option.value = item.levelOfService;
                 option.textContent = item.levelOfService;
