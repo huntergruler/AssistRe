@@ -82,7 +82,11 @@
                 <div class="property-group">
                     <p>Property Type: <%= buyer.propertyType %>
                     </p>
-                    <p>Minimum Bedrooms: <%= buyer.bedrooms_min %>
+                    <div id="levelOfServiceDisplay">
+                        <p>Agent Service Level: <%= buyer.levelOfService %>
+                        </p>
+                        </div> 
+                        <p>Minimum Bedrooms: <%= buyer.bedrooms_min %>
                     </p>
                     <p>Minimum Batrooms: <%= buyer.bathrooms_min %>
                     </p>
@@ -98,10 +102,6 @@
                     </p>
                     <p>Preferred Languages: <%= buyer.preferredLanguages %>
                     </p>
-                    <div id="levelOfServiceDisplay">
-                    <p>Service Level: <%= buyer.levelOfService %>
-                    </p>
-                    </div> 
                 </div>
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal"
                     onclick="populateUserZipCodes();">
@@ -255,7 +255,7 @@
                                         name="price_max" value="<%= buyer.price_max %>" required>
                                 </div>
                                 <div class="form-row ">
-                                    <label for="levelOfService" class="col-md-4 col-form-label">Service Level</label>
+                                    <label for="levelOfService" class="col-md-4 col-form-label">Agent Service Level</label>
                                     <select id="levelOfService" class="form-select-sm col-md-6"
                                         placeholder="Level Of Service"></select>
                                 </div>
