@@ -413,7 +413,7 @@ function populateStates() {
 function populateLevelOfService() {
     const levelOfService = document.getElementById('levelOfService');
     const levelOfServiceDisplay = document.getElementById('levelOfServiceDisplay').textContent.trim();
-    const prequalified = document.getElementById('prequalified').value;
+    const prequalified = document.getElementById('prequalified');
     const prequalifiedAmount = document.getElementById('prequalifiedAmount');
     console.log(prequalified);
     if (prequalified === 'Yes') {
