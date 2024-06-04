@@ -110,7 +110,7 @@ router.get('/dashboard_a', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    const query = `select a.firstname, a.lastname, a.agentid, buyerid, bathrooms_min, bedrooms_min, buyerType, city, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, state, timeFrame, entrytimestamp, zipCodes
+    const query = `select a.firstname, a.lastname, agentid, buyerid, bathrooms_min, bedrooms_min, buyerType, city, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, state, timeFrame, entrytimestamp, zipCodes
                      from BuyerAgentMatch b, Agents a
                     where b.agentid = a.userid
                       and a.user = ?`;
