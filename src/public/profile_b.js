@@ -415,6 +415,7 @@ function populateLevelOfService() {
     const levelOfServiceDisplay = document.getElementById('levelOfServiceDisplay').textContent.trim();
     const prequalified = document.getElementById('prequalified').value;
     const prequalifiedAmount = document.getElementById('prequalifiedAmount');
+    console.log(prequalified);
     if (prequalified === 'Yes') {
         prequalifiedAmount.style.display = 'block';
     }
