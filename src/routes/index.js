@@ -110,9 +110,9 @@ router.get('/dashboard_a', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    const query = `select a.firstname, a.lastname, agentid, buyerid, bathrooms_min, bedrooms_min, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, entrytimestamp, zipCodes
-                     from BuyerAgentMatch b, Agents a
-                    where b.agentid = a.userid
+    const query = `select a.firstname, a.lastname, bam.agentid, bam.buyerid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, bam.price_min, bam.price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, bam.entrytimestamp, bam.zipCodes
+                     from BuyerAgentMatch bam, Agents a
+                    where bam.agentid = a.userid
                       and a.user = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
