@@ -110,7 +110,6 @@ router.get('/dashboard_a', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-
     const query = `select agentid, buyerid, bathrooms_min, bedrooms_min, buyerType, city, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, state, timeFrame, entrytimestamp, zipCodes
                      from BuyerAgentMatch b
                     where b.agentid = ?`;
@@ -122,7 +121,7 @@ router.get('/dashboard_a', (req, res) => {
       if (results.length === 0) {
         return res.status(404).send('NotFound');
       }
-      res.render('dashboard_a', { buyer: results[0] });
+      res.render('dashboard_a', { data: results[0] });
     });
   }
 });

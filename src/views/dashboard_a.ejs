@@ -32,5 +32,45 @@
     <div id="dashboardContainer">
         <h1>Agent Dashboard for <%= firstname %> <%= lastname %></h1>
     </div>
+    <div class="container mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Bathrooms Min</th>
+                    <th>Bedrooms Min</th>
+                    <th>Buyer Type</th>
+                    <th>Preferred Languages</th>
+                    <th>Prequalified</th>
+                    <th>Price Min</th>
+                    <th>Price Max</th>
+                    <th>Property Type</th>
+                    <th>Square Footage Min</th>
+                    <th>Square Footage Max</th>
+                    <th>Time Frame</th>
+                    <th>Entry Timestamp</th>
+                    <!-- Add more headers as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.bathrooms_min }}</td>
+                    <td>{{ row.bedrooms_min }}</td>
+                    <td>{{ row.buyerType }}</td>
+                    <td>{{ row.preferredLanguages }}</td>
+                    <td>{{ row.prequalified }}</td>
+                    <td>{{ row.price_min }}</td>
+                    <td>{{ row.price_max }}</td>
+                    <td>{{ row.propertyType }}</td>
+                    <td>{{ row.squareFootage_min }}</td>
+                    <td>{{ row.squareFootage_max }}</td>
+                    <td>{{ row.timeFrame }}</td>
+                    <td>{{ row.entrytimestamp }}</td>
+                    <!-- Add more cells as needed -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
