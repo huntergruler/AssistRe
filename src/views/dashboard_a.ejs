@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,20 +18,26 @@
             <h1 class="mt-2"><a href="/">SeekingAgents</a></h1>
         </div>
         <nav id="navlinks" class="justify-content-end text-center">
-            <p id="navname"><%= agent.firstname %> <%= agent.lastname %></p>
+            <p id="navname">
+                <%= agent.firstname %>
+                    <%= agent.lastname %>
+            </p>
             <p>|</p>
-            <p><a href="/profile_a" >Profile</a></p>
+            <p><a href="/profile_a">Profile</a></p>
             <p>|</p>
             <p><a href="/settings">Settings</a></p>
             <p>|</p>
             <p><a href="/logout">Logout</a></p>
         </nav>
     </div>
-    
+
 </header>
+
 <body id="dashboardBody">
     <div id="dashboardContainer">
-        <h1>Agent Dashboard for <%= agent.firstname %> <%= agent.lastname %></h1>
+        <h1>Agent Dashboard for <%= agent.firstname %>
+                <%= agent.lastname %>
+        </h1>
     </div>
     <div class="container mt-5">
         <table class="table">
@@ -52,25 +59,50 @@
                 </tr>
             </thead>
             <tbody>
-                {% for row in data %}
-                <tr>
-                    <td>{{ row.bathrooms_min }}</td>
-                    <td>{{ row.bedrooms_min }}</td>
-                    <td>{{ row.buyerType }}</td>
-                    <td>{{ row.preferredLanguages }}</td>
-                    <td>{{ row.prequalified }}</td>
-                    <td>{{ row.price_min }}</td>
-                    <td>{{ row.price_max }}</td>
-                    <td>{{ row.propertyType }}</td>
-                    <td>{{ row.squareFootage_min }}</td>
-                    <td>{{ row.squareFootage_max }}</td>
-                    <td>{{ row.timeFrame }}</td>
-                    <td>{{ row.entrytimestamp }}</td>
-                    <!-- Add more cells as needed -->
-                </tr>
-                {% endfor %}
+                <% for (let row of data) { %>
+                    <tr>
+                        <td>
+                            <%= row.bathrooms_min %>
+                        </td>
+                        <td>
+                            <%= row.bedrooms_min %>
+                        </td>
+                        <td>
+                            <%= row.buyerType %>
+                        </td>
+                        <td>
+                            <%= row.preferredLanguages %>
+                        </td>
+                        <td>
+                            <%= row.prequalified %>
+                        </td>
+                        <td>
+                            <%= row.price_min %>
+                        </td>
+                        <td>
+                            <%= row.price_max %>
+                        </td>
+                        <td>
+                            <%= row.propertyType %>
+                        </td>
+                        <td>
+                            <%= row.squareFootage_min %>
+                        </td>
+                        <td>
+                            <%= row.squareFootage_max %>
+                        </td>
+                        <td>
+                            <%= row.timeFrame %>
+                        </td>
+                        <td>
+                            <%= row.entrytimestamp %>
+                        </td>
+                        <!-- Add more cells as needed -->
+                    </tr>
+                    <% } %>
             </tbody>
         </table>
     </div>
 </body>
+
 </html>
