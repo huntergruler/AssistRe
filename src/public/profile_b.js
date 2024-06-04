@@ -415,6 +415,7 @@ function populateLevelOfService() {
     const levelOfServiceDisplay = document.getElementById('levelOfServiceDisplay').textContent.trim();
     const prequalified = document.getElementById('prequalified');
     const defaultOption = document.createElement('option');
+    levelOfService.innerHTML = '';
     defaultOption.textContent = 'Select a Level';
     defaultOption.value = '';
     levelOfService.appendChild(defaultOption);
