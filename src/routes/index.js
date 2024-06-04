@@ -103,6 +103,31 @@ router.post('/register', (req, res) => {
 });
 
 // Route to get the buyer's profile
+router.get('/dashboard_a', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+
+    const query = `select agentid, buyerid, bathrooms_min, bedrooms_min, buyerType, city, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, state, timeFrame, entrytimestamp, zipCodes
+                     from BuyerAgentMatch b
+                    where b.agentid = ?`;
+    db.query(query, [userid], (error, results) => {
+      if (error) {
+        console.error('Error fetching buyer profile:', error);
+        return res.status(500).send('Server error');
+      }
+      if (results.length === 0) {
+        return res.status(404).send('NotFound');
+      }
+      res.render('dashboard_a', { buyer: results[0] });
+    });
+  }
+});
+
+// Route to get the buyer's profile
 router.get('/profile_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';

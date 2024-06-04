@@ -7,12 +7,5 @@ document.addEventListener('DOMContentLoaded', function () {
             handleUnsavedChanges(e);
         }
     });
-    // var prequalified = document.getElementById('prequalified').value;
-    // if (prequalified === 'Y') {
-    //     document.getElementById('prequalifiedY').checked = true;
-    //     toggleFileUpload(true);
-    // } else {
-    //     document.getElementById('prequalifiedN').checked = true;
-    //     toggleFileUpload(false);
-    // }
 });
+
