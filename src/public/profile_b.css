@@ -20,7 +20,7 @@ body {
     font-size: 14px;
     /* background-color: #666; */
     padding: 0%;
-    width: 600px;
+    width: 900px;
     height: auto;
 }
 
@@ -341,7 +341,7 @@ padding-right: 0px;
     margin-right: 1px;
     padding-left: 0px;
     padding-right: 0px;
-    width: 200px;
+    width: 300px;
     text-align: center;
     justify-items: center;
 }
