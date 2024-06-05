@@ -1,3 +1,11 @@
 .margin-top-100 {
     margin-top: 100px;
 }
+
+body {
+    font-size: 14px;
+    /* Base font size */
+    /* background-color: #666; */
+    margin: 50px 50px;
+    max-width: auto;
+}
