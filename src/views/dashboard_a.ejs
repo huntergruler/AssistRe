@@ -45,17 +45,17 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Bathrooms Min</th>
-                    <th>Bedrooms Min</th>
-                    <th>Buyer Type</th>
-                    <th>Preferred Languages</th>
-                    <th>Prequalified</th>
+                    <th>Property Type</th>
+                    <th>Time Frame</th>
                     <th>Price Min</th>
                     <th>Price Max</th>
-                    <th>Property Type</th>
+                    <th>Prequalified</th>
+                    <th>Buyer Type</th>
                     <th>Square Footage Min</th>
                     <th>Square Footage Max</th>
-                    <th>Time Frame</th>
+                    <th>Bedrooms Min</th>
+                    <th>Bathrooms Min</th>
+                    <th>Preferred Languages</th>
                     <th>Entry Timestamp</th>
                     <!-- Add more headers as needed -->
                 </tr>
@@ -64,19 +64,10 @@
                 <% for (let row of data) { %>
                     <tr>
                         <td>
-                            <%= row.bathrooms_min %>
+                            <%= row.propertyType %>
                         </td>
                         <td>
-                            <%= row.bedrooms_min %>
-                        </td>
-                        <td>
-                            <%= row.buyerType %>
-                        </td>
-                        <td>
-                            <%= row.preferredLanguages %>
-                        </td>
-                        <td>
-                            <%= row.prequalified %>
+                            <%= row.timeFrame %>
                         </td>
                         <td>
                             <%= row.price_min %>
@@ -85,7 +76,10 @@
                             <%= row.price_max %>
                         </td>
                         <td>
-                            <%= row.propertyType %>
+                            <%= row.prequalified %>
+                        </td>
+                        <td>
+                            <%= row.buyerType %>
                         </td>
                         <td>
                             <%= row.squareFootage_min %>
@@ -94,7 +88,13 @@
                             <%= row.squareFootage_max %>
                         </td>
                         <td>
-                            <%= row.timeFrame %>
+                            <%= row.bedrooms_min %>
+                        </td>
+                        <td>
+                            <%= row.bathrooms_min %>
+                        </td>
+                        <td>
+                            <%= row.preferredLanguages %>
                         </td>
                         <td>
                             <%= row.entrytimestamp %>

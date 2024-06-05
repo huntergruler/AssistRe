@@ -119,7 +119,7 @@ router.get('/dashboard_a', (req, res) => {
         return res.status(500).send('Server error');
       }
     const query = `select bam.agentid, bam.buyerid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, bam.price_min, bam.price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, bam.entrytimestamp, bam.zipCodes
-                     from BuyerAgentMatch bam
+                     from AgentBuyerMatch bam
                     where bam.agentid = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
