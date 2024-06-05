@@ -168,6 +168,10 @@ padding-right: 0px;
     text-align: right;
 }
 
+.property-group {
+    height: 550px;
+    max-height: 550px;
+}
 .profile-group,
 .property-group {
     margin: 0px 0px;
@@ -176,12 +180,11 @@ padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
     width: 300px;
-    /* max-height: fit-content; */
+    max-height: fit-content;
     align-content: center;
     align-items: center;
     text-align: center;
     border-top: 1px solid black;
-    height: 600px;
 }
 
 .county-group,
