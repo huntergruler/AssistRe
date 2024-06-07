@@ -47,6 +47,7 @@ body {
     padding-top: 0px;
     padding-bottom: 0px;
     width: 300px;
+    height: fit-content;
     justify-content: center;
     align-items: center;
 }
