@@ -34,6 +34,7 @@ body {
     padding-left: 0px;
     padding-right: 0px;
     height: fit-content;
+    border: 1px solid black;
 }
 
 .container-left {
