@@ -43,7 +43,7 @@
     <br>
     <div class="container mt-5">
         <table class="table">
-            <thead>
+            <!-- <thead>
                 <tr style="text-align: center;">
                     <th>Property Type</th>
                     <th>Time Frame</th>
@@ -56,7 +56,19 @@
                     <th>Entry Timestamp</th>
                     <!-- Add more headers as needed -->
                 </tr>
-            </thead>
+            </thead> -->
+            <tbody>
+                <% for (let row of data) { %>
+                        <p> Looking for a 
+                            <%= row.propertyType %>
+ in the next <%= row.timeFrame %> in the price range of $<%= row.price_min %> to $<%= row.price_max %>. 
+                            <% if (row.prequalified == 1) { %>
+                                They are Pre-qualified
+                            <% } else { %>
+                                They are NOT Pre-qualified
+                            <% } %>
+                    <% } %>
+            </tbody>
             <tbody>
                 <% for (let row of data) { %>
                     <tr style="text-align: center;">
