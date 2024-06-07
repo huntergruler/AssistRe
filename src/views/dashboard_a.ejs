@@ -54,13 +54,12 @@
                     <th>Square Foot Min</th>
                     <th>Square Foot Max</th>
                     <th>Entry Timestamp</th>
-                    <!-- Add more headers as needed -->
                 </tr>
             </thead> -->
             <tbody>
                 <% for (let row of data) { %>
                         <p> Looking for a 
-                            <%= row.propertyType %>
+                            <%= row.propertyType %> residence
  in the next <%= row.timeFrame %> in the price range of $<%= row.price_min %> to $<%= row.price_max %>. 
                             <% if (row.prequalified == 1) { %>
                                 They are Pre-qualified
