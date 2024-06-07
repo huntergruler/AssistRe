@@ -45,12 +45,12 @@
         <div class="form-row col-md-4">
             <div class="form-group row justify-content-center">
                 <% for (let row of data) { %>
-                        <%= row.propertyType %> residence,
-in the next <%= row.timeFrame %>, $<%= row.price_min %> to $<%= row.price_max %>, 
+                        <%= row.propertyType %> residence <br>
+in the next <%= row.timeFrame %><br> $<%= row.price_min %> to $<%= row.price_max %> 
                         <br><% if (row.prequalified == 1) { %>
-                            Are Pre-qualified
+                            Pre-qualified
                         <% } else { %>
-                            Are NOT Pre-qualified
+                            NOT Pre-qualified
                         <% } %>
                 <% } %>
                 </div>
