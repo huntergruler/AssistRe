@@ -42,7 +42,23 @@
     </div>
     <br>
     <div class="container mt-5">
-        <table class="table">
+        <div class="form-row col-md-5">
+            <div class="form-group row justify-content-center">
+                <% for (let row of data) { %>
+                    <p> This buyer is looking for a 
+                        <%= row.propertyType %> residence
+in the next <%= row.timeFrame %> in the price range of $<%= row.price_min %> to $<%= row.price_max %>. 
+                        <% if (row.prequalified == 1) { %>
+                            They are Pre-qualified
+                        <% } else { %>
+                            They are NOT Pre-qualified
+                        <% } %>
+                <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table">
             <!-- <thead>
                 <tr style="text-align: center;">
                     <th>Property Type</th>
@@ -56,18 +72,6 @@
                     <th>Entry Timestamp</th>
                 </tr>
             </thead> -->
-            <tbody>
-                <% for (let row of data) { %>
-                        <p> Looking for a 
-                            <%= row.propertyType %> residence
- in the next <%= row.timeFrame %> in the price range of $<%= row.price_min %> to $<%= row.price_max %>. 
-                            <% if (row.prequalified == 1) { %>
-                                They are Pre-qualified
-                            <% } else { %>
-                                They are NOT Pre-qualified
-                            <% } %>
-                    <% } %>
-            </tbody>
             <tbody>
                 <% for (let row of data) { %>
                     <tr style="text-align: center;">
