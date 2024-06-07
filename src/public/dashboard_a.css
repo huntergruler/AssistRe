@@ -31,7 +31,7 @@ body {
     margin-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
-    padding-left: 0px;
+    padding-left: 2px;
     padding-right: 0px;
     height: fit-content;
     border: 1px solid black;
@@ -40,7 +40,7 @@ body {
 
 .container-left {
     opacity: 0.8;
-    margin-left: 2px;
+    margin-left: 0px;
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
