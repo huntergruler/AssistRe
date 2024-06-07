@@ -45,13 +45,13 @@
         <div class="form-row col-md-5">
             <div class="form-group row justify-content-center">
                 <% for (let row of data) { %>
-                    <p> This buyer is looking for a 
+                    <p>Buyer is looking for a 
                         <%= row.propertyType %> residence
 in the next <%= row.timeFrame %> in the price range of $<%= row.price_min %> to $<%= row.price_max %>. 
                         <% if (row.prequalified == 1) { %>
-                            They are Pre-qualified
+                            Are Pre-qualified
                         <% } else { %>
-                            They are NOT Pre-qualified
+                            Are NOT Pre-qualified
                         <% } %>
                 <% } %>
                 </div>
