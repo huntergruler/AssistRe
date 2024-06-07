@@ -45,9 +45,8 @@
         <div class="form-row col-md-3">
             <div class="form-group row justify-content-center">
                 <% for (let row of data) { %>
-                    <p>Buyer is looking for a 
                         <%= row.propertyType %> residence
-in the next <%= row.timeFrame %> in the price range of $<%= row.price_min %> to $<%= row.price_max %>. 
+in the next <%= row.timeFrame %> $<%= row.price_min %> to $<%= row.price_max %>. 
                         <% if (row.prequalified == 1) { %>
                             Are Pre-qualified
                         <% } else { %>
