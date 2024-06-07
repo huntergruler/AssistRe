@@ -35,3 +35,18 @@ body {
     padding-right: 0px;
     height: fit-content;
 }
+
+.container-left {
+    opacity: 0.8;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+}
