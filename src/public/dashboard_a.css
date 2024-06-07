@@ -20,8 +20,7 @@ body {
     padding-left: 0px;
     padding-right: 0px;
     max-width: fit-content;
-    /* justify-items: center;
-    text-align: center; */
+    text-align: center;
 }
 
 .form-row {
