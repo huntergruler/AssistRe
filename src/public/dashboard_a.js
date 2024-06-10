@@ -79,8 +79,6 @@ function newRequestDetail(buyerid) {
                     Preferred Language: ${request.preferredLanguages}<br>
                     User Zip Codes: ${request.zipCodes}<br>
                     Entered on ${request.entrytimestamp}<br>
-                    <button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject</button>
-                    <button id="acceptRequest" onclick="acceptRequest(${request.buyerid})">Accept</button>
                     `;
                 div.className = "form-row";
                 div.id = "buyerid" + request.buyerid;
@@ -88,6 +86,7 @@ function newRequestDetail(buyerid) {
 
                 const div2 = document.createElement("div");
                 div2.className = "form-row";
+                div2.innerHTML = `<button id="acceptRequest" onclick="acceptRequest(${request.buyerid})">Accept</button>`
                 div2.innerHTML = `<button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject</button>`
                 detailButtons.appendChild(div2);
             });
