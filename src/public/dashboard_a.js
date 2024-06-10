@@ -15,6 +15,7 @@ function getNewRequests() {
             }
             else {
                 data.forEach(request => {
+                    console.log(request);
                     const div = document.createElement("div");
                     div.textContent = request;
                     div.className = "form-group";
