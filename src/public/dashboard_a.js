@@ -99,6 +99,7 @@ function newRequestDetail(buyerid) {
                     buttonElement.id = button.id;
                     buttonElement.textContent = button.text;
                     buttonElement.style.border = "1px solid black";
+                    buttonElement.style.margin = "2px";
                     buttonElement.setAttribute("onclick", button.onclick);
                     buttonContainer.appendChild(buttonElement);
                 });
