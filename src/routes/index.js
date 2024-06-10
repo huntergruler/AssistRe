@@ -110,7 +110,7 @@ router.get('/dashboard_a', (req, res) => {
   }
   else {
     console.log('User:', req.session.user);
-    res.render('dasboard_a', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
+    res.render('dashboard_a', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
   }
   });
 
