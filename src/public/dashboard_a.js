@@ -68,7 +68,7 @@ function newRequestDetail(buyerid) {
             data.forEach(request => {
                 const div = document.createElement("div");
                 div.innerHTML = `${request.buyerType}<br>
-                    $${request.price_min} to $${request.price_max}<br>
+                    Price Range: $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}<br>
                     Property Type: ${request.propertyType}<br>
@@ -86,12 +86,17 @@ function newRequestDetail(buyerid) {
                 const div2 = document.createElement("div");
                 div2.className = "form-row container-right";
                 div2.className = "col-md-6";
-                div2.innerHTML = `<button id="acceptRequest" onclick="acceptRequest(${request.buyerid})">Accept</button>`
+                div2.innerHTML = `<button id="makeOffer" onclick="makeOffer(${request.buyerid})">Make Offer</button>`
                 detailButtons.appendChild(div2);
                 const div3 = document.createElement("div");
                 div3.className = "col-md-6";
-                div3.innerHTML = `<button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject</button>`
+                div3.innerHTML = `<button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject Request</button>`
                 detailButtons.appendChild(div3);
+                const div4 = document.createElement("div");
+                div4.className = "form-row container-right";
+                div4.className = "col-md-6";
+                div4.innerHTML = `<button id="ignoreRequest" onclick="ignoreRequest(${request.buyerid})">Ignore for Now</button>`
+                detailButtons.appendChild(div2);
             });
         })
         .catch(error => console.error('Error checking user:', error));
