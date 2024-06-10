@@ -34,6 +34,7 @@ function getNewRequests() {
                     Purchase Timline ${request.timeFrame}`;
                     div.addEventListener('click', () => selectItem(request.buyerid));
                     div.className = "form-row";
+                    div.id = "buyerid"+request.buyerid;
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
