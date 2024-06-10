@@ -85,16 +85,16 @@ function newRequestDetail(buyerid) {
 
                 const div2 = document.createElement("div");
                 div2.className = "form-row container-right";
-                div2.className = "col-md-6";
+                div2.className = "col-md-2";
                 div2.innerHTML = `<button id="makeOffer" onclick="makeOffer(${request.buyerid})">Make Offer</button>`
                 detailButtons.appendChild(div2);
                 const div3 = document.createElement("div");
-                div3.className = "col-md-6";
+                div3.className = "col-md-2";
                 div3.innerHTML = `<button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject Request</button>`
                 detailButtons.appendChild(div3);
                 const div4 = document.createElement("div");
                 div4.className = "form-row container-right";
-                div4.className = "col-md-6";
+                div4.className = "col-md-2";
                 div4.innerHTML = `<button id="ignoreRequest" onclick="ignoreRequest(${request.buyerid})">Ignore for Now</button>`
                 detailButtons.appendChild(div4);
             });
