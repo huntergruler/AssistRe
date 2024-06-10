@@ -21,7 +21,7 @@ function getNewRequests() {
                     div.innerHTML = `${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
-                    Purchase Timeframe ${request.timeFrame}`;
+                    Purchase Timline ${request.timeFrame}`;
                     div.className = "form-row";
                     div.onclick = function () {
                         this.classList.toggle("selected");
