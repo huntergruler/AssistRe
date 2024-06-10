@@ -1,6 +1,6 @@
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
-    getNewRequests
+    getNewRequests();
 });
 
 function getNewRequests() {
