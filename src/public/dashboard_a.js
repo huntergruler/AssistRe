@@ -21,17 +21,17 @@ function getNewRequests() {
             else {
                 data.forEach(request => {
                     console.log(request);
-                    const input = document.createElement("input");
-                    input.id = "buyerid"+request.buyerid;
-                    input.name = "buyerid";
-                    input.value = request.buyerid;
-                    input.type = "hidden";
+                    // const input = document.createElement("input");
+                    // input.name = "buyerid";
+                    // input.value = request.buyerid;
+                    // input.type = "hidden";
                     const div = document.createElement("div");
                     div.innerHTML = `${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timline ${request.timeFrame}`;
                     div.addEventListener('click', () => selectItem(request.buyerid));
+                    div.id = "buyerid"+request.buyerid;
                     div.className = "form-row";
                     div.onclick = function () {
                         this.classList.toggle("selected");
