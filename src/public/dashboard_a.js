@@ -83,21 +83,27 @@ function newRequestDetail(buyerid) {
                 div.id = "buyerid" + request.buyerid;
                 detailColumn.appendChild(div);
 
-                const div5 = document.createElement("div");
-                div5.className = "form-row ";
-                detailButtons.appendChild(div5);
-                const div2 = document.createElement("div");
-                div2.className = "form-group col-md-2";
-                div2.innerHTML = `<button id="makeOffer" onclick="makeOffer(${request.buyerid})">Make Offer</button>`
-                detailButtons.appendChild(div2);
-                const div3 = document.createElement("div");
-                div3.className = "form-group col-md-2";
-                div3.innerHTML = `<button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject Request</button>`
-                detailButtons.appendChild(div3);
-                const div4 = document.createElement("div");
-                div4.className = "form-group col-md-2";
-                div4.innerHTML = `<button id="ignoreRequest" onclick="ignoreRequest(${request.buyerid})">Ignore for Now</button>`
-                detailButtons.appendChild(div4);
+                // Create a container div to hold the buttons
+                const buttonContainer = document.createElement("div");
+                buttonContainer.className = "form-row"; // Apply any additional styling if needed
+
+                // Create each button and append them to the container
+                const buttons = [
+                    { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid})` },
+                    { id: "rejectRequest", text: "Reject Request", onclick: `rejectRequest(${request.buyerid})` },
+                    { id: "ignoreRequest", text: "Ignore for Now", onclick: `ignoreRequest(${request.buyerid})` }
+                ];
+
+                buttons.forEach(button => {
+                    const buttonElement = document.createElement("button");
+                    buttonElement.id = button.id;
+                    buttonElement.textContent = button.text;
+                    buttonElement.setAttribute("onclick", button.onclick);
+                    buttonContainer.appendChild(buttonElement);
+                });
+
+                // Append the container to the detailButtons element
+                detailButtons.appendChild(buttonContainer);
             });
         })
         .catch(error => console.error('Error checking user:', error));
