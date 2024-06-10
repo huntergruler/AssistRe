@@ -74,8 +74,7 @@ function newRequestDetail(buyerid) {
                     Property Type: ${request.propertyType}<br>
                     Minimum Bedrooms: ${request.bedrooms_min}<br>
                     Minimum Bathrooms: ${request.bathrooms_min}<br>
-                    Minimum Square Footage: ${request.squareFootage_min}<br>
-                    Maximum Square Footage: ${request.squareFootage_max}<br>
+                    Square Footage Range: ${request.squareFootage_min} to ${request.squareFootage_max}<br>
                     Preferred Language: ${request.preferredLanguages}<br>
                     User Zip Codes: ${request.zipCodes}<br>
                     Entered on ${request.entrytimestamp}<br>
