@@ -100,7 +100,7 @@ body {
     height: fit-content;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     border-radius: 8px;
     /* background-color: aqua; */
 }
