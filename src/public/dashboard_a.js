@@ -61,6 +61,7 @@ function newRequestDetail(buyerid) {
     const detailColumn = document.getElementById('newRequestDetail');
     const detailButtons = document.getElementById('detailButtons');
     detailColumn.innerHTML = "";
+    detailButtons.innerHTML = "";
     // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
     fetch(`/getNewRequests?buyerid=${encodeURIComponent(buyerid)}`)
         .then(response => response.json())
