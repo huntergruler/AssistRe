@@ -55,7 +55,7 @@ function selectItem(itemId) {
     });
     const selectedRow = document.querySelector(`#${selectedBuyerId}`);
     console.log(selectedRow);
-    selectedRow.id.add('selected');
+    // selectedRow.id.add('selected');
 
     const detailColumn = document.getElementById('newRequestDetail');
     detailColumn.innerHTML = "";
