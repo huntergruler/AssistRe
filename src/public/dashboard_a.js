@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function getNewRequests() {
     // fetch(`/getNewRequests?stateSelect=${encodeURIComponent(zipSelect.value)}`)
+    console.log('getNewRequests');
     fetch(`/getNewRequests`)
         .then(response => response.json())
         .then(data => {
