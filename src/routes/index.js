@@ -134,7 +134,7 @@ router.get('/getNewRequests', (req, res) => {
       if (results.length === 0) {
         return res.status(404).send('NotFound');
       }
-      res.render('dashboard_a', { data: results });
+      res.json(results);
     });
   }
 });
@@ -791,18 +791,6 @@ router.get('/get-userzipcodes', (req, res) => {
       res.json({ results });
     }
   });
-});
-
-// Route to serve the dashboard_a page
-router.get('/dashboard_a', (req, res) => {
-  if (!req.session.user) {
-    req.session.message = 'Please login to access your Dashboard';
-    //    console.log('Redirecting to:', redirectto);
-    res.redirect('/');
-  }
-  else {
-    res.render('dashboard_a', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
-  }
 });
 
 // Route to serve the dashboard_b page
