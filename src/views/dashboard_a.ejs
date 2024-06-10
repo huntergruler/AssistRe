@@ -43,22 +43,16 @@
     <br>
     <div class="container-left mt-5">
         <div class="form-row col-md-4">
-            <div class="form-group row justify-content-center">
-                <% for (let row of data) { %>
-                        <%= row.propertyType %> residence <br>
-in the next <%= row.timeFrame %><br> $<%= row.price_min %> to $<%= row.price_max %> 
-                        <br><% if (row.prequalified == 1) { %>
-                            Pre-qualified
-                        <% } else { %>
-                            NOT Pre-qualified
-                        <% } %>
-                <% } %>
+            <label for="newRequests" class="col-md col-form-label">New Requests</label>
+            <div class="container">
+                <div id="newRequests">
+                    <!-- JavaScript will populate this container -->
                 </div>
             </div>
         </div>
     </div>
     <table class="table">
-            <!-- <thead>
+        <!-- <thead>
                 <tr style="text-align: center;">
                     <th>Property Type</th>
                     <th>Time Frame</th>
@@ -71,41 +65,41 @@ in the next <%= row.timeFrame %><br> $<%= row.price_min %> to $<%= row.price_max
                     <th>Entry Timestamp</th>
                 </tr>
             </thead> -->
-            <tbody>
-                <% for (let row of data) { %>
-                    <tr style="text-align: center;">
-                        <td>
-                            <%= row.propertyType %>
-                        </td>
-                        <td>
-                            <%= row.timeFrame %>
-                        </td>
-                        <td>
-                            <%= row.price_min %>
-                        </td>
-                        <td>
-                            <%= row.price_max %>
-                        </td>
-                        <td>
-                            <%= row.prequalified %>
-                        </td>
-                        <td>
-                            <%= row.buyerType %>
-                        </td>
-                        <td>
-                            <%= row.squareFootage_min %>
-                        </td>
-                        <td>
-                            <%= row.squareFootage_max %>
-                        </td>
-                        <td>
-                            <%= row.entrytimestamp %>
-                        </td>
-                        <!-- Add more cells as needed -->
-                    </tr>
-                    <% } %>
-            </tbody>
-        </table>
+        <tbody>
+            <% for (let row of data) { %>
+                <tr style="text-align: center;">
+                    <td>
+                        <%= row.propertyType %>
+                    </td>
+                    <td>
+                        <%= row.timeFrame %>
+                    </td>
+                    <td>
+                        <%= row.price_min %>
+                    </td>
+                    <td>
+                        <%= row.price_max %>
+                    </td>
+                    <td>
+                        <%= row.prequalified %>
+                    </td>
+                    <td>
+                        <%= row.buyerType %>
+                    </td>
+                    <td>
+                        <%= row.squareFootage_min %>
+                    </td>
+                    <td>
+                        <%= row.squareFootage_max %>
+                    </td>
+                    <td>
+                        <%= row.entrytimestamp %>
+                    </td>
+                    <!-- Add more cells as needed -->
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
     </div>
 </body>
 

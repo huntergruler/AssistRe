@@ -110,14 +110,18 @@ router.get('/dashboard_a', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    const agentquery = `select a.firstname, a.lastname
-                          from Agents a
-                          where a.userid = ?`;
-    db.query(agentquery, [userid], (error, agentresults) => {
-      if (error) {
-        console.error('Error fetching agent profile:', error);
-        return res.status(500).send('Server error');
-      }
+    res.render('dasboard_a', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
+  }
+  });
+
+// Route to get the buyer's profile
+router.get('/getNewRequests', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
     const query = `select bam.agentid, bam.buyerid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, bam.price_min, bam.price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
                      from AgentBuyerMatch bam
                     where bam.agentid = ?`;
@@ -129,11 +133,9 @@ router.get('/dashboard_a', (req, res) => {
       if (results.length === 0) {
         return res.status(404).send('NotFound');
       }
-      res.render('dashboard_a', { data: results, agent: agentresults[0] });
-    });
+      res.render('dashboard_a', { data: results });
     });
   }
-
 });
 
 // Route to get the buyer's profile
