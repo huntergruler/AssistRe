@@ -64,7 +64,7 @@ function selectItem(itemId) {
 function newRequestDetail(buyerid) {
     const detailColumn = document.getElementById('newRequestDetail');
     detailColumn.innerHTML = "";
-    detailColumn.innerHTML = `<p><strong>ID:</strong>${itemId}</p><p><strong>Name:`;
+    detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
 }
 //     if (selectedBuyerId === buyerid) {
 //         return; // If already selected, do nothing
