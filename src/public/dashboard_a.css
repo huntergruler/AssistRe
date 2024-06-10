@@ -6,7 +6,7 @@
     display: flex;
     flex-wrap: wrap;
 margin-top: 0px;
-justify-content: center;
+align-items: top;
 }
 
 
