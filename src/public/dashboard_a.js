@@ -1,6 +1,7 @@
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
     getNewRequests();
+    document.querySelector('#newRequestDetail').innerHTML = 'Select a request to view details';
     var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     var time_zone = Date().time_zone;
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp

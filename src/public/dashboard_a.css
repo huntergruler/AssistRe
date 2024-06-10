@@ -2,6 +2,10 @@
     margin-top: 100px;
 }
 
+.hidden {
+    display: none;
+}
+
 body {
     font-size: 14px;
     /* Base font size */
@@ -60,6 +64,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .container-right {
     opacity: 0.8;
     margin-left: 0px;
