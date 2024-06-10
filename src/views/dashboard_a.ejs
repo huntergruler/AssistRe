@@ -64,27 +64,27 @@
                 <form id="offerForm" style="padding-top: 5px;">
                     <div class="form-row container-right">
                         <label for="offerType" class="col-md-4 col-form-label">Offer Type</label>
-                        <select  id="offerType" class="form-select-sm col-md-6" placeholder="Offer Type"
-                            name="offerType" required></select>
+                        <select id="offerType" class="form-select-sm col-md-6" placeholder="Offer Type" name="offerType"
+                            required></select>
                     </div>
                     <div class="form-row container-right">
                         <label for="levelOfService" class="col-md-4 col-form-label">Level of Service</label>
-                        <select id="levelOfService" class="form-select-sm col-md-6"
-                            placeholder="Level Of Service" required></select>
+                        <select id="levelOfService" class="form-select-sm col-md-6" placeholder="Level Of Service"
+                            required></select>
                     </div>
                     <div class="form-row container-right">
                         <label for="compensationType" class="col-md-4 col-form-label">Type of Comp</label>
-                        <select id="compensationType" class="form-select-sm col-md-6"
-                            placeholder="Type of Compensation" required></select>
+                        <select id="compensationType" class="form-select-sm col-md-6" placeholder="Type of Compensation"
+                            required></select>
                     </div>
                     <div class="form-row container-right">
-                        <label for="compensationAmount" class="col-md-5 col-form-label">Comp Amount ($ or %)</label>
-                        <input type="text" class="form-control-sm col-md-5" placeholder="Compensation Amount ($ or %)"
+                        <label for="compensationAmount" class="col-md-4 col-form-label">Comp Amount</label>
+                        <input type="text" class="form-control-sm col-md-5" placeholder="Comp Amount ($ or %)"
                             id="compensationAmount" name="compensationAmount" required>
                     </div>
                     <div class="form-row container-right">
-                        <label for="retainerFee" class="col-md-4 col-form-label">Retainer Fee</label>
-                        <input type="text" class="form-control-sm col-md-6" placeholder="Retainer Fee" id="retainerFee"
+                        <label for="retainerFee" class="col-md-4 col-form-label">Retainer Fee Amount</label>
+                        <input type="text" class="form-control-sm col-md-5" placeholder="Retainer Fee" id="retainerFee"
                             name="retainerFee" required>
                     </div>
                     <div class="form-row container-right">
@@ -93,7 +93,7 @@
                             id="retainerCredited" name="retainerCredited" required>
                     </div>
                     <div class="form-row container-right">
-                        <label for="lengthOfService" class="col-md-4 col-form-label">Length of Service</label>
+                        <label for="lengthOfService" class="col-md-4 col-form-label">Length of Contract</label>
                         <input type="text" class="form-control-sm col-md-6" placeholder="Length of Service"
                             id="lengthOfService" name="lengthOfService" required>
                     </div>
@@ -111,13 +111,9 @@
                     </div>
                     <div class="form-row container-right">
                         <label for="offerDesc" class="col-md-4 col-form-label">Offer Description</label>
-                        <input type="text" class="form-control-sm col-md-6" placeholder="Offer Description"
-                            id="offerDesc" name="offerDesc" required>
-                    </div>
-                    <div class="form-row container-right">
-                        <label for="offerStatus" class="col-md-4 col-form-label">Offer Status</label>
-                        <input type="text" class="form-control-sm col-md-6" placeholder="Offer Status" id="offerStatus"
-                            name="offerStatus" required>
+                        <textarea id="entryBox" rows="4" cols="50" maxlength="500" placeholder="Offer Description"
+                            oninput="updateCountdown()"></textarea>
+                        <div id="countdown"></div>
                     </div>
                 </form>
             </div>

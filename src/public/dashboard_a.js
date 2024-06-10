@@ -187,3 +187,11 @@ function populateCompensationTypes() {
             });
         })
 }
+
+function updateCountdown() {
+    const maxLength = 500;
+    const currentLength = document.getElementById('entryBox').value.length;
+    const remaining = maxLength - currentLength;
+    const countdownElement = document.getElementById('countdown');
+    countdownElement.textContent = `${remaining} characters remaining`;
+}
