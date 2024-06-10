@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // FROM your_table_name;
 });
 
+let selectedBuyerId = null; 
 function getNewRequests() {
     // fetch(`/getNewRequests?stateSelect=${encodeURIComponent(zipSelect.value)}`)
     fetch(`/getNewRequests`)
@@ -44,6 +45,20 @@ function getNewRequests() {
 };
 
 function newRequestDetail(buyerid) {
+    if (selectedBuyerId === buyerid) 
+        {           
+            return; // If already selected, do nothing
+        }
+        const rows = document.querySelectorAll('#newRequests .form-row');
+        rows.forEach(row => {
+            row.classList.remove('selected');
+        });
+    
+        // Add the 'selected' class to the clicked row
+        const selectedRow = document.querySelector(`#newRequests data-id="${buyerid}"`);
+        selectedRow.classList.add('selected');
+
+        selectedBuyerId = buyerid;
     const detailColumn = document.getElementById('newRequestDetail');
     detailColumn.innerHTML = "";
     detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
