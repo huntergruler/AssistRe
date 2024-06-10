@@ -109,7 +109,6 @@ router.get('/dashboard_a', (req, res) => {
     res.redirect('/');
   }
   else {
-    console.log('User:', req.session.user);
     res.render('dashboard_a', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
   }
   });
