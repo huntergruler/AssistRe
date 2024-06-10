@@ -70,11 +70,12 @@ function newRequestDetail(buyerid) {
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}<br>
-                    Minimum Bedrooms: ${request.bedrooms}<br>
-                    Minimum Bathrooms: ${request.bathrooms}<br>
-                    Minimum Square Footage: ${request.squareFootage}<br>
-                    Maximum Square Footage: ${request.squareFootageMax}<br>
-                    Preferred Language: ${request.language}<br>
+                    Property Type: ${request.propertyType}<br>
+                    Minimum Bedrooms: ${request.bedrooms_min}<br>
+                    Minimum Bathrooms: ${request.bathrooms_min}<br>
+                    Minimum Square Footage: ${request.squareFootage_min}<br>
+                    Maximum Square Footage: ${request.squareFootage_max}<br>
+                    Preferred Language: ${request.preferredLanguages}<br>
                     User Zip Codes: ${request.zipCodes}<br>
                     Entered on ${request.entrytimestamp}<br>
                     <button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject</button>
