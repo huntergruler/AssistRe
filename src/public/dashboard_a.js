@@ -54,6 +54,7 @@ function selectItem(itemId) {
         row.classList.remove('selected');
     });
     selectedBuyerId = 'buyerid'+itemId
+    console.log(selectedBuyerId);
     const selectedRow = document.querySelector(selectedBuyerId);
     selectedRow.classList.add('selected');
     selectedBuyerId = itemId;
