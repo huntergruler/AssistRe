@@ -40,6 +40,11 @@ body {
     cursor: pointer;
 }
 
+.form-row.selected {
+    background-color: #007BFF;
+    color: white;
+}
+
 .container-left {
     opacity: 0.8;
     margin-left: 0px;
