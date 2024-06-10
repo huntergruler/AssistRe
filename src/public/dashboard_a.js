@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     getNewRequests();
     populateLevelOfService();
     populateOfferTypes();
+    populateCompensationTypes();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
     document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
@@ -160,6 +161,29 @@ function populateOfferTypes() {
                 option.value = item.offerType;
                 option.textContent = item.offerType;
                 offerType.appendChild(option);
+            });
+        })
+}
+
+function populateCompensationTypes() {
+    const compensationType = document.getElementById('compensationType');
+    const defaultOption = document.createElement('option');
+    compensationType.innerHTML = '';
+    defaultOption.textContent = 'Select a Compensation Type';
+    defaultOption.value = '';
+    compensationType.appendChild(defaultOption);
+
+    fetch(`/get-compensationtypes`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let option = document.createElement('option');
+                // if (compensationTypeDisplay.replace("Compensation Type: ", "") == item.compensationType) {
+                //     option.selected = true;
+                // }
+                option.value = item.compensationType;
+                option.textContent = item.compensationType;
+                compensationType.appendChild(option);
             });
         })
 }

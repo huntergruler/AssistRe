@@ -595,6 +595,20 @@ router.get('/get-offertypes', (req, res) => {
   });
 });
 
+router.get('/get-compensationtypes', (req, res) => {
+  const query = 'SELECT compensationType FROM CompensationTypes order by compensationtypeid';
+  db.query(query, (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results.length > 0) {
+      res.json({ results });
+    } else {
+      res.status(404).json({ error: 'No compensation types found' });
+    }
+  });
+});
+
 // Route to get states
 router.get('/check-zipcode', (req, res) => {
   const zipCode = req.query.stateSelect;
