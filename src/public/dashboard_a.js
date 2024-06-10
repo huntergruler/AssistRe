@@ -86,8 +86,7 @@ function newRequestDetail(buyerid) {
                 div.id = "buyerid" + request.buyerid;
                 detailColumn.appendChild(div);
 
-                const div2 = document.createElement("div");
-                div2.className = "form-row";
+                div.className = "form-row";
                 div.innerHTML = `<button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject</button>`
                 detailButtons.appendChild(div);
             });
