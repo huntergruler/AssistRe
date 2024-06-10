@@ -86,6 +86,7 @@ function newRequestDetail(buyerid) {
                 // Create a container div to hold the buttons
                 const buttonContainer = document.createElement("div");
                 buttonContainer.className = "form-row"; // Apply any additional styling if needed
+                buttonContainer.style.border = 0px;
 
                 // Create each button and append them to the container
                 const buttons = [
