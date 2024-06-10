@@ -61,7 +61,7 @@ body {
     justify-content: center;
     text-align: center;
     cursor: pointer;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
 
 .form-row.selected {
@@ -81,9 +81,9 @@ body {
     padding-bottom: 2px;
     width: 300px;
     height: fit-content;
-    background-color: chartreuse;
     justify-content: center;
     align-items: center;
+    /* background-color: chartreuse; */
 }
 
 .container-right {
@@ -102,5 +102,5 @@ body {
     align-items: center;
     border: 1px solid black;
     border-radius: 8px;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
