@@ -96,7 +96,7 @@ function newRequestDetail(buyerid) {
                 div4.className = "form-row container-right";
                 div4.className = "col-md-6";
                 div4.innerHTML = `<button id="ignoreRequest" onclick="ignoreRequest(${request.buyerid})">Ignore for Now</button>`
-                detailButtons.appendChild(div2);
+                detailButtons.appendChild(div4);
             });
         })
         .catch(error => console.error('Error checking user:', error));
