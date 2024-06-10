@@ -45,6 +45,7 @@ body {
     justify-content: center;
     text-align: center;
     cursor: pointer;
+    background-color: blueviolet;
 }
 
 .form-row.container-right {
@@ -100,7 +101,7 @@ body {
     height: fit-content;
     justify-content: center;
     align-items: center;
-    border-bottom: 1px solid black;
+    border: 1px solid black;
     border-radius: 8px;
     /* background-color: aqua; */
 }
