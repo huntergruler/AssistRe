@@ -98,6 +98,7 @@ function newRequestDetail(buyerid) {
                     const buttonElement = document.createElement("button");
                     buttonElement.id = button.id;
                     buttonElement.textContent = button.text;
+                    buttonElement.style.border = "1px solid black";
                     buttonElement.setAttribute("onclick", button.onclick);
                     buttonContainer.appendChild(buttonElement);
                 });
