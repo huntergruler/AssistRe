@@ -114,13 +114,13 @@ router.get('/dashboard_a', (req, res) => {
 });
 
 // Route to get the buyer's profile
-router.get('/getNewRequests/:buyerid?', (req, res) => {
+router.get('/getNewRequests', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
   }
   else {
-    const buyerid = req.params.buyerid;
+    const buyerid = req.query.buyerid;
     const userid = req.session.userid;
     console.log('User ID:', userid, 'Buyer ID:', buyerid);
     if (!buyerid) {
