@@ -49,21 +49,21 @@ function getNewRequests() {
 function selectItem(itemId) {
    if (selectedBuyerId === itemId) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid'+itemId;
+    console.log(selectedBuyerId);
     const rows = document.querySelectorAll('#newRequests .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    newRequestDetail(itemId);
+    const selectedRow = document.querySelector(`#${selectedBuyerId}`);
+    const detailColumn = document.getElementById('newRequestDetail');
+    detailColumn.innerHTML = "";
+    detailColumn.innerHTML = `<p><strong>ID:</strong>${itemId}</p><p><strong>Name:`;
 }
 
 function newRequestDetail(buyerid) {
     if (selectedBuyerId === buyerid) {
         return; // If already selected, do nothing
     }
-    const selectedRow = document.querySelector(`#${selectedBuyerId}`);
-    const detailColumn = document.getElementById('newRequestDetail');
-    detailColumn.innerHTML = "";
-    detailColumn.innerHTML = `<p><strong>ID:</strong>${itemId}</p><p><strong>Name:`;
     const rows = document.querySelectorAll('#newRequests .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
