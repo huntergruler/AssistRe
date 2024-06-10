@@ -80,7 +80,7 @@ function newRequestDetail(buyerid) {
                     User Zip Codes: ${request.zipCodes}<br>
                     Entered on ${request.entrytimestamp}<br>
                     `;
-                div.className = "form-row";
+                div.className = "form-row container-right";
                 div.id = "buyerid" + request.buyerid;
                 detailColumn.appendChild(div);
 
