@@ -48,7 +48,7 @@ body {
     border: none;
 }
 
-.form-row {
+.form-row.container-left {
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
