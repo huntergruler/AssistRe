@@ -48,13 +48,12 @@ function getNewRequests() {
 function selectItem(itemId) {
     console.log(itemId);
     if (selectedBuyerId === itemId) return; // If already selected, do nothing
-    selectedBuyerId = itemId;
+    var selectedBuyerId = 'buyer'+itemId;
+    console.log(selectedBuyerId);
     const rows = document.querySelectorAll('#newRequests .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    selectedBuyerId = 'buyerid'+itemId
-    console.log(selectedBuyerId);
     const selectedRow = document.querySelector(selectedBuyerId);
     selectedRow.classList.add('selected');
     selectedBuyerId = itemId;
