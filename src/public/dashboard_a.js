@@ -123,7 +123,7 @@ function populateLevelOfService() {
     const levelOfService = document.getElementById('levelOfService');
     const defaultOption = document.createElement('option');
     levelOfService.innerHTML = '';
-    defaultOption.textContent = 'Select a Level';
+    defaultOption.textContent = 'Select a Level of Service';
     defaultOption.value = '';
     levelOfService.appendChild(defaultOption);
 
