@@ -18,7 +18,7 @@ function getNewRequests() {
                 data.forEach(request => {
                     console.log(request);
                     const div = document.createElement("div");
-                    div.textContent = request;
+                    div.textContent = request.buyerType + ' ' + request.price_min + ' ' + request.price_max  + ' ' + request.prequalified + ' ' + request.timeframe;
                     div.className = "form-group";
                     div.onclick = function () {
                         this.classList.toggle("selected");
