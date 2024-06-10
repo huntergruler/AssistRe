@@ -88,9 +88,13 @@
                             name="retainerFee" required>
                     </div>
                     <div class="form-row container-right">
-                        <label for="retainerCredited" class="col-md-4 col-form-label">Retainer Credited</label>
-                        <input type="text" class="form-control-sm col-md-6" placeholder="Retainer Credited"
-                            id="retainerCredited" name="retainerCredited" required>
+                        <div class="col-md-3">
+                            <label for="retainerFee" class="col-md-4 col-form-label">Retainer Fee Amount</label>
+                            <input type="radio" id="prequalifiedY" name="prequalified" required>
+                            Yes
+                            <input type="radio" id="prequalifiedN" name="prequalified" required>
+                            No
+                        </div>
                     </div>
                     <div class="form-row container-right">
                         <label for="lengthOfService" class="col-md-4 col-form-label">Length of Contract</label>
@@ -98,18 +102,21 @@
                             id="lengthOfService" name="lengthOfService" required>
                     </div>
                     <div class="form-row container-right">
-                        <label for="expirationCompTimeFrame" class="col-md-4 col-form-label">Comp after Expired Time Frame</label>
+                        <label for="expirationCompTimeFrame" class="col-md-4 col-form-label">Comp after Expired Time
+                            Frame</label>
                         <input type="text" class="form-control-sm col-md-6" placeholder="Expiration Comp Time Frame"
                             id="expirationCompTimeFrame" name="expirationCompTimeFrame" required>
                     </div>
                     <div class="form-row container-right">
-                        <label for="expirationCompensation" class="col-md-4 col-form-label">Comp AFTER Expiration</label>
+                        <label for="expirationCompensation" class="col-md-4 col-form-label">Comp Amount AFTER
+                            Expiration</label>
                         <input type="text" class="form-control-sm col-md-6" placeholder="Expiration Compensation"
                             id="expirationCompensation" name="expirationCompensation" required>
                     </div>
                     <div class="form-row container-right">
                         <label for="offerDesc" class="col-md-4 col-form-label">Offer Description</label>
-                        <textarea id="entryBox" rows="4" cols="50" maxlength="500" placeholder="Enter a verbal Description of the services you will provide (limit 500 characters)"
+                        <textarea id="entryBox" rows="4" cols="50" maxlength="500"
+                            placeholder="Enter a verbal Description of the services you will provide (limit 500 characters)"
                             oninput="updateCountdown()"></textarea>
                         <div id="countdown"></div>
                     </div>
