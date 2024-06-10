@@ -54,8 +54,8 @@ function selectItem(itemId) {
         row.classList.remove('selected');
     });
     const selectedRow = document.querySelector(`#${selectedBuyerId}`);
+    console.log(selectedRow);
     selectedRow.classList.add('selected');
-    selectedBuyerId = itemId;
 
     const detailColumn = document.getElementById('newRequestDetail');
     detailColumn.innerHTML = "";
