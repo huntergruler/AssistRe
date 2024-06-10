@@ -35,7 +35,6 @@ body {
     height: fit-content;
     border: 1px solid black;
     border-radius: 8px;
-    background-color: aqua;
     justify-content: center;
 }
 
@@ -53,5 +52,4 @@ body {
     height: fit-content;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }

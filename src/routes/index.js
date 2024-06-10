@@ -121,7 +121,7 @@ router.get('/getNewRequests', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    const query = `select bam.agentid, bam.buyerid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, bam.price_min, bam.price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
+    const query = `select bam.agentid, bam.buyerid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,2) price_min, bam.price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
                      from AgentBuyerMatch bam
                     where bam.agentid = ?`;
     db.query(query, [userid], (error, results) => {
