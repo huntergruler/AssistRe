@@ -120,7 +120,7 @@ router.get('/getNewRequests', (req, res) => {
     res.redirect('/');
   }
   else {
-    const { buyerid } = req.body
+    var { buyerid } = req.body
     const userid = req.session.userid;
     console.log('User ID:', userid, 'Buyer ID:', buyerid);
     if (buyerid == null) {
