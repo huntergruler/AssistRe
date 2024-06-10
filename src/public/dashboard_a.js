@@ -1,11 +1,14 @@
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
     getNewRequests();
+    var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
+    var time_zone = Date().time_zone;    
+    // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
+    // FROM your_table_name;
 });
 
 function getNewRequests() {
     // fetch(`/getNewRequests?stateSelect=${encodeURIComponent(zipSelect.value)}`)
-    console.log('getNewRequests');
     fetch(`/getNewRequests`)
         .then(response => response.json())
         .then(data => {
