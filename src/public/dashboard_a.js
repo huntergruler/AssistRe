@@ -46,9 +46,8 @@ function getNewRequests() {
         .catch(error => console.error('Error checking user:', error));
 };
 function selectItem(itemId) {
-    console.log(itemId);
-    if (selectedBuyerId === itemId) return; // If already selected, do nothing
-    var selectedBuyerId = 'buyer'+itemId;
+   if (selectedBuyerId === itemId) return; // If already selected, do nothing
+    var selectedBuyerId = 'buyerid'+itemId;
     console.log(selectedBuyerId);
     const rows = document.querySelectorAll('#newRequests .form-row');
     rows.forEach(row => {
