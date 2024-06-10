@@ -30,7 +30,7 @@ function getNewRequests() {
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timline ${request.timeFrame}`;
-                    div.addEventListener('click', () => newRequestDetail());
+                    div.addEventListener('click', () => newRequestDetail(request.buyerid));
                     div.className = "form-row";
                     div.onclick = function () {
                         this.classList.toggle("selected");
@@ -43,8 +43,8 @@ function getNewRequests() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function newRequestDetail() {
+function newRequestDetail(buyerid) {
     const detailColumn = document.getElementById('newRequestDetail');
     detailColumn.innerHTML = "";
-    detailColumn.innerHTML = `<p><strong>ID:</strong> HERE</p><p><strong>Name:`;
+    detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
 }
