@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 let selectedBuyerId = null;
 function getNewRequests() {
     // fetch(`/getNewRequests?stateSelect=${encodeURIComponent(zipSelect.value)}`)
-    fetch(`/getNewRequests?buyerid=1`)
+    fetch(`/getNewRequests`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {

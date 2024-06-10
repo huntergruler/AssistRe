@@ -114,16 +114,16 @@ router.get('/dashboard_a', (req, res) => {
 });
 
 // Route to get the buyer's profile
-router.get('/getNewRequests', (req, res) => {
+router.get('/getNewRequests/:buyerid?', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
   }
   else {
-    const buyerid = req.query.buyerid;
+    const buyerid = req.params.buyerid;
     const userid = req.session.userid;
     console.log('User ID:', userid, 'Buyer ID:', buyerid);
-    if (buyerid === 1) {
+    if (!buyerid) {
       var query = `select bam.agentid, bam.buyerid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
                      from AgentBuyerMatch bam
                     where bam.agentid = ? and ?`;
