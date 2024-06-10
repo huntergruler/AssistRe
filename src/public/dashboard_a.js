@@ -53,7 +53,8 @@ function selectItem(itemId) {
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    const selectedRow = document.querySelector(`#newRequests buyerid${itemId}`);
+    selectedBuyerId = 'buyerid${itemId}'
+    const selectedRow = document.querySelector(selectedBuyerId);
     selectedRow.classList.add('selected');
     selectedBuyerId = itemId;
 
