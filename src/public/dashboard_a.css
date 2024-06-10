@@ -7,6 +7,7 @@
     flex-wrap: wrap;
 margin-top: 0px;
 align-items: top;
+align-self: start;
 }
 
 
