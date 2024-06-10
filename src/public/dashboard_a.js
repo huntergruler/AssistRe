@@ -54,7 +54,7 @@ function selectItem(itemId) {
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    const selectedRow = document.querySelector(`#${selectedBuyerId}`);
+    // const selectedRow = document.querySelector(`#${selectedBuyerId}`);
     newRequestDetail(itemId);
     // const detailColumn = document.getElementById('newRequestDetail');
     // detailColumn.innerHTML = "";
