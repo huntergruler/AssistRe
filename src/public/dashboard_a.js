@@ -86,9 +86,10 @@ function newRequestDetail(buyerid) {
                 div.id = "buyerid" + request.buyerid;
                 detailColumn.appendChild(div);
 
-                div.className = "form-row";
-                div.innerHTML = `<button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject</button>`
-                detailButtons.appendChild(div);
+                const div2 = document.createElement("div");
+                div2.className = "form-row";
+                div2.innerHTML = `<button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject</button>`
+                detailButtons.appendChild(div2);
             });
         })
         .catch(error => console.error('Error checking user:', error));
