@@ -64,18 +64,15 @@
                 <form id="offerForm" style="padding-top: 5px;">
                     <div class="form-row container-right">
                         <label for="offerType" class="col-md-5 col-form-label">Offer Type</label>
-                        <select id="offerType" class="form-select-sm col-md-6" placeholder="Offer Type" name="offerType"
-                            required></select>
+                        <select id="offerType" class="form-select-sm col-md-6" required></select>
                     </div>
                     <div class="form-row container-right">
                         <label for="levelOfService" class="col-md-5 col-form-label">Level of Service</label>
-                        <select id="levelOfService" class="form-select-sm col-md-6" placeholder="Select a Level Of Service"
-                            required></select>
+                        <select id="levelOfService" class="form-select-sm col-md-6" required></select>
                     </div>
                     <div class="form-row container-right">
                         <label for="compensationType" class="col-md-5 col-form-label">Type of Comp</label>
-                        <select id="compensationType" class="form-select-sm col-md-6" placeholder="Type of Compensation"
-                            required></select>
+                        <select id="compensationType" class="form-select-sm col-md-6" required></select>
                     </div>
                     <div class="form-row container-right">
                         <label for="compensationAmount" class="col-md-5 col-form-label">Comp Amount</label>
@@ -106,8 +103,13 @@
                     <div class="form-row container-right">
                         <label for="expirationCompTimeFrame" class="col-md-4 col-form-label">Comp after Expired Time
                             Frame</label>
-                        <input type="text" class="form-control-sm col-md-6" placeholder="Expiration Comp Time Frame"
-                            id="expirationCompTimeFrame" name="expirationCompTimeFrame" required>
+                        <div class="help-icon" onclick="showHelp()">?</div>
+                        <div id="help-dialog" class="hidden">
+                            <p>This is some helpful information.</p>
+                            <button onclick="hideHelp()">Close</button>
+                        </div> <input type="text" class="form-control-sm col-md-6"
+                            placeholder="Expiration Comp Time Frame" id="expirationCompTimeFrame"
+                            name="expirationCompTimeFrame" required>
                     </div>
                     <div class="form-row container-right">
                         <label for="expirationCompensation" class="col-md-4 col-form-label">Comp Amount AFTER

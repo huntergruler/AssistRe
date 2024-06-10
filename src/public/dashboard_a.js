@@ -195,3 +195,11 @@ function updateCountdown() {
     const countdownElement = document.getElementById('countdown');
     countdownElement.textContent = `${remaining} characters remaining`;
 }
+
+function showHelp() {
+    document.getElementById('help-dialog').style.display = 'block';
+}
+
+function hideHelp() {
+    document.getElementById('help-dialog').style.display = 'none';
+}
