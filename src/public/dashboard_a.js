@@ -20,12 +20,6 @@ function getNewRequests() {
             }
             else {
                 data.forEach(request => {
-                    console.log(request);
-                    const input = document.createElement("input");
-                    input.id = "buyerid"+request.buyerid;
-                    input.name = "buyerid";
-                    input.value = request.buyerid;
-                    input.type = "hidden";
                     const div = document.createElement("div");
                     div.innerHTML = `${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
