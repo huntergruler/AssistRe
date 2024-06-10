@@ -22,7 +22,7 @@ function getNewRequests() {
                 data.forEach(request => {
                     console.log(request);
                     const input = document.createElement("input");
-                    input.id = "buyerid";
+                    input.id = "buyerid"+request.buyerid;
                     input.name = "buyerid";
                     input.value = request.buyerid;
                     input.type = "hidden";
@@ -51,7 +51,7 @@ function selectItem(itemId) {
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    const selectedRow = document.querySelector(`#newRequests buyerid="${itemId}"`);
+    const selectedRow = document.querySelector(`#newRequests buyerid"${itemId}"`);
     selectedRow.classList.add('selected');
     selectedBuyerId = itemId;
 
