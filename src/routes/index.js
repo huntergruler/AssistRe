@@ -104,7 +104,6 @@ router.post('/register', (req, res) => {
 
 // Route to get the buyer's profile
 router.get('/dashboard_a', (req, res) => {
-  console.log('User:', req.session.user, req.session.userid, req.session.firstname, req.session.lastname);
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
