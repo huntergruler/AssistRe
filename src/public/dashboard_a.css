@@ -5,7 +5,10 @@
 .row {
     display: flex;
     flex-wrap: wrap;
-margin-top: 0px;}
+margin-top: 0px;
+justify-content: center;
+}
+
 
 .hidden {
     display: none;
