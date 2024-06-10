@@ -2,12 +2,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     getNewRequests();
     var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
-    var time_zone = Date().time_zone;    
+    var time_zone = Date().time_zone;
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
     // FROM your_table_name;
 });
 
-let selectedBuyerId = null; 
+let selectedBuyerId = null;
 function getNewRequests() {
     // fetch(`/getNewRequests?stateSelect=${encodeURIComponent(zipSelect.value)}`)
     fetch(`/getNewRequests`)
@@ -31,7 +31,7 @@ function getNewRequests() {
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timline ${request.timeFrame}`;
-                    div.addEventListener('click', () => newRequestDetail(request.buyerid));
+                    div.addEventListener('click', () => selectItem(request.buyerid));
                     div.className = "form-row";
                     div.onclick = function () {
                         this.classList.toggle("selected");
@@ -43,22 +43,35 @@ function getNewRequests() {
         })
         .catch(error => console.error('Error checking user:', error));
 };
+function selectItem(itemId) {
+    console.log(itemId);
+    const rows = document.querySelectorAll('#newRequests .form-row');
+    rows.forEach(row => {
+        row.classList.remove('selected');
+    });
+    const selectedRow = document.querySelector(`#newRequests data-id="${itemId}"`);
+    selectedRow.classList.add('selected');
+    selectedBuyerId = itemId;
+
+    const detailColumn = document.getElementById('newRequestDetail');
+    detailColumn.innerHTML = "";
+    detailColumn.innerHTML = `<p><strong>ID:</strong>${itemId}</p><p><strong>Name:`;
+}
 
 function newRequestDetail(buyerid) {
-    if (selectedBuyerId === buyerid) 
-        {           
-            return; // If already selected, do nothing
-        }
-        const rows = document.querySelectorAll('#newRequests .form-row');
-        rows.forEach(row => {
-            row.classList.remove('selected');
-        });
-    
-        // Add the 'selected' class to the clicked row
-        const selectedRow = document.querySelector(`#newRequests data-id="${buyerid}"`);
-        selectedRow.classList.add('selected');
+    if (selectedBuyerId === buyerid) {
+        return; // If already selected, do nothing
+    }
+    const rows = document.querySelectorAll('#newRequests .form-row');
+    rows.forEach(row => {
+        row.classList.remove('selected');
+    });
 
-        selectedBuyerId = buyerid;
+    // Add the 'selected' class to the clicked row
+    const selectedRow = document.querySelector(`#newRequests data-id="${buyerid}"`);
+    selectedRow.classList.add('selected');
+
+    selectedBuyerId = buyerid;
     const detailColumn = document.getElementById('newRequestDetail');
     detailColumn.innerHTML = "";
     detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
