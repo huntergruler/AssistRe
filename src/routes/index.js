@@ -581,6 +581,20 @@ router.get('/get-levelofservice', (req, res) => {
   });
 });
 
+router.get('/get-offertypes', (req, res) => {
+  const query = 'SELECT offerType FROM OfferTypes order by offertypeid';
+  db.query(query, (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results.length > 0) {
+      res.json({ results });
+    } else {
+      res.status(404).json({ error: 'No offer types found' });
+    }
+  });
+});
+
 // Route to get states
 router.get('/check-zipcode', (req, res) => {
   const zipCode = req.query.stateSelect;

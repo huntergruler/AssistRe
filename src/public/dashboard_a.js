@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     getNewRequests();
     populateLevelOfService();
+    populateOfferTypes();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
     document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
@@ -139,3 +140,26 @@ function populateLevelOfService() {
             });
         })
 };
+
+function populateOfferTypes() {
+    const offerType = document.getElementById('offerType');
+    const defaultOption = document.createElement('option');
+    offerType.innerHTML = '';
+    defaultOption.textContent = 'Select an Offer Type';
+    defaultOption.value = '';
+    offerType.appendChild(defaultOption);
+
+    fetch(`/get-offertypes`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let option = document.createElement('option');
+                // if (offerTypeDisplay.replace("Offer Type: ", "") == item.offerType) {
+                //     option.selected = true;
+                // }
+                option.value = item.offerType;
+                option.textContent = item.offerType;
+                offerType.appendChild(option);
+            });
+        })
+}
