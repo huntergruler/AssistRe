@@ -20,6 +20,12 @@ function getNewRequests() {
             else {
                 data.forEach(request => {
                     console.log(request);
+                    const input = document.createElement("input");
+                    input.id = "buyerid";
+                    input.name = "buyerid";
+                    input.value = request.buyerid;
+                    input.type = "hidden";
+                    newRequests.appendChild(input);
                     const div = document.createElement("div");
                     div.innerHTML = `${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
@@ -39,5 +45,6 @@ function getNewRequests() {
 
 function newRequestDetail() {
     const detailColumn = document.getElementById('newRequestDetail');
+    detailColumn.innerHTML = "";
     detailColumn.innerHTML = `<p><strong>ID:</strong> HERE</p><p><strong>Name:`;
 }
