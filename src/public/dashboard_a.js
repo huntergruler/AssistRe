@@ -58,8 +58,8 @@ function selectItem(buyerid) {
 }
 
 function newRequestDetail(buyerid) {
-    // const detailColumn = document.getElementById('newRequestDetail');
-    // detailColumn.innerHTML = "";
+    const detailColumn = document.getElementById('newRequestDetail');
+    detailColumn.innerHTML = "";
     // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
     fetch(`/getNewRequests?buyerid=${buyerid}`)
         .then(response => response.json())
@@ -83,7 +83,7 @@ function newRequestDetail(buyerid) {
                 div.className = "form-row";
                 div.id = "buyerid" + request.buyerid;
                 // newRequests.appendChild(input);
-                newRequestDetail.appendChild(div);
+                detailColumn.appendChild(div);
             });
         })
         .catch(error => console.error('Error checking user:', error));
