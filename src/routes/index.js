@@ -104,12 +104,13 @@ router.post('/register', (req, res) => {
 
 // Route to get the buyer's profile
 router.get('/dashboard_a', (req, res) => {
+  console.log('User:', req.session.user, req.session.userid, req.session.firstname, req.session.lastname);
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
   }
   else {
-    const userid = req.session.userid;
+    console.log('User:', req.session.user);
     res.render('dasboard_a', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
   }
   });
