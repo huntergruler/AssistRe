@@ -25,7 +25,6 @@ function getNewRequests() {
                     input.name = "buyerid";
                     input.value = request.buyerid;
                     input.type = "hidden";
-                    newRequests.appendChild(input);
                     const div = document.createElement("div");
                     div.innerHTML = `${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
@@ -36,6 +35,7 @@ function getNewRequests() {
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
+                    newRequests.appendChild(input);
                     newRequests.appendChild(div);
                 });
             }
