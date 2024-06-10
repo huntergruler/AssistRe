@@ -126,26 +126,36 @@ router.get('/getNewRequests/:buyerid?', (req, res) => {
     if (!buyerid) {
       var query = `select bam.agentid, bam.buyerid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
                      from AgentBuyerMatch bam
-                    where bam.agentid = ? and ?`;
+                    where bam.agentid = ?`;
       console.log('Query1:', query);
-    }
+      db.query(query, [userid], (error, results) => {
+        if (error) {
+          console.error('Error fetching buyer profile:', error);
+          return res.status(500).send('Server error');
+        }
+        if (results.length === 0) {
+          return res.status(404).send('NotFound');
+        }
+        res.json(results);
+      });
+      }
     else {
       var query = `select bam.agentid, bam.buyerid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
                       from AgentBuyerMatch bam
                       where bam.agentid = ?
                       and bam.buyerid = ?`;
       console.log('Query2:', query);
-    }
-    db.query(query, [userid, buyerid], (error, results) => {
-      if (error) {
-        console.error('Error fetching buyer profile:', error);
-        return res.status(500).send('Server error');
+      db.query(query, [userid, buyerid], (error, results) => {
+        if (error) {
+          console.error('Error fetching buyer profile:', error);
+          return res.status(500).send('Server error');
+        }
+        if (results.length === 0) {
+          return res.status(404).send('NotFound');
+        }
+        res.json(results);
+      });
       }
-      if (results.length === 0) {
-        return res.status(404).send('NotFound');
-      }
-      res.json(results);
-    });
   }
 });
 
