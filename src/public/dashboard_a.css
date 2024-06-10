@@ -81,8 +81,8 @@ body {
     width: 300px;
     height: fit-content;
     background-color: chartreuse;
-    /* justify-content: center; */
-    /* align-items: center; */
+    justify-content: center;
+    align-items: center;
 }
 
 .container-right {
