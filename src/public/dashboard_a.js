@@ -1,7 +1,7 @@
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
     getNewRequests();
-    document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a request to view details </strong><br></c>';
+    document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br></c>';
     var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     var time_zone = Date().time_zone;
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
@@ -55,26 +55,31 @@ function selectItem(itemId) {
         row.classList.remove('selected');
     });
     const selectedRow = document.querySelector(`#${selectedBuyerId}`);
+    newRequestDetail(itemId);
+    // const detailColumn = document.getElementById('newRequestDetail');
+    // detailColumn.innerHTML = "";
+    // detailColumn.innerHTML = `<p><strong>ID:</strong>${itemId}</p><p><strong>Name:`;
+}
+
+function newRequestDetail(buyerid) {
     const detailColumn = document.getElementById('newRequestDetail');
     detailColumn.innerHTML = "";
     detailColumn.innerHTML = `<p><strong>ID:</strong>${itemId}</p><p><strong>Name:`;
 }
+//     if (selectedBuyerId === buyerid) {
+//         return; // If already selected, do nothing
+//     }
+//     const rows = document.querySelectorAll('#newRequests .form-row');
+//     rows.forEach(row => {
+//         row.classList.remove('selected');
+//     });
 
-function newRequestDetail(buyerid) {
-    if (selectedBuyerId === buyerid) {
-        return; // If already selected, do nothing
-    }
-    const rows = document.querySelectorAll('#newRequests .form-row');
-    rows.forEach(row => {
-        row.classList.remove('selected');
-    });
+//     // Add the 'selected' class to the clicked row
+//     const selectedRow = document.querySelector(`#newRequests data-id="${buyerid}"`);
+//     selectedRow.classList.add('selected');
 
-    // Add the 'selected' class to the clicked row
-    const selectedRow = document.querySelector(`#newRequests data-id="${buyerid}"`);
-    selectedRow.classList.add('selected');
-
-    selectedBuyerId = buyerid;
-    const detailColumn = document.getElementById('newRequestDetail');
-    detailColumn.innerHTML = "";
-    detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
-}
+//     selectedBuyerId = buyerid;
+//     const detailColumn = document.getElementById('newRequestDetail');
+//     detailColumn.innerHTML = "";
+//     detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
+// }
