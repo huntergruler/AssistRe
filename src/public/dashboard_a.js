@@ -99,6 +99,8 @@ function newRequestDetail(buyerid) {
                     buttonElement.id = button.id;
                     buttonElement.textContent = button.text;
                     buttonElement.style.border = "1px solid black";
+                    buttonElement.style.borderRadius = "5px";
+                    buttonElement.style.padding = "2px";
                     buttonElement.style.margin = "2px";
                     buttonElement.setAttribute("onclick", button.onclick);
                     buttonContainer.appendChild(buttonElement);
