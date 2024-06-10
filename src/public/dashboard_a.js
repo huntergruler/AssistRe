@@ -45,8 +45,8 @@ function getNewRequests() {
 };
 function selectItem(itemId) {
     console.log(itemId);
-    if (selectedItemId === itemId) return; // If already selected, do nothing
-    selectedItemId = itemId;
+    if (selectedBuyerId === itemId) return; // If already selected, do nothing
+    selectedBuyerId = itemId;
     const rows = document.querySelectorAll('#newRequests .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
