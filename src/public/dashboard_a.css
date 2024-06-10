@@ -57,6 +57,7 @@ body {
     padding-left: 2px;
     padding-right: 0px;
     height: fit-content;
+    width: auto;
     justify-content: center;
     text-align: center;
     cursor: pointer;
