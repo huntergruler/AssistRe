@@ -84,7 +84,7 @@ function newRequestDetail(buyerid) {
                 detailColumn.appendChild(div);
 
                 const div2 = document.createElement("div");
-                div2.className = "form-row container-right";
+                div2.className = "form-row ";
                 div2.className = "form-group col-md-2";
                 div2.innerHTML = `<button id="makeOffer" onclick="makeOffer(${request.buyerid})">Make Offer</button>`
                 detailButtons.appendChild(div2);
