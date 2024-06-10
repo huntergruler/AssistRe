@@ -35,7 +35,7 @@ function getNewRequests() {
                     Purchase Timeline: ${request.timeFrame}`;
                     div.addEventListener('click', () => selectItem(request.buyerid));
                     div.className = "form-row";
-                    div.id = "buyerid"+request.buyerid;
+                    div.id = "buyerid" + request.buyerid;
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
@@ -46,25 +46,47 @@ function getNewRequests() {
         })
         .catch(error => console.error('Error checking user:', error));
 };
-function selectItem(itemId) {
-   if (selectedBuyerId === itemId) return; // If already selected, do nothing
-    var selectedBuyerId = 'buyerid'+itemId;
+function selectItem(buyerid) {
+    if (selectedBuyerId === buyerid) return; // If already selected, do nothing
+    var selectedBuyerId = 'buyerid' + buyerid;
     console.log(selectedBuyerId);
     const rows = document.querySelectorAll('#newRequests .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    // const selectedRow = document.querySelector(`#${selectedBuyerId}`);
-    newRequestDetail(itemId);
-    // const detailColumn = document.getElementById('newRequestDetail');
-    // detailColumn.innerHTML = "";
-    // detailColumn.innerHTML = `<p><strong>ID:</strong>${itemId}</p><p><strong>Name:`;
+    newRequestDetail(buyerid);
 }
 
 function newRequestDetail(buyerid) {
     const detailColumn = document.getElementById('newRequestDetail');
     detailColumn.innerHTML = "";
     detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
+    fetch(`/getNewRequests?buyerid=${buyerid}`)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(request => {
+                const div = document.createElement("div");
+                div.innerHTML = `${request.buyerType}<br>
+                    $${request.price_min} to $${request.price_max}<br>
+                    Prequalified? ${request.prequalified}<br>
+                    Purchase Timeline: ${request.timeFrame}<br>
+                    Minimum Bedrooms: ${request.bedrooms}<br>
+                    Minimum Bathrooms: ${request.bathrooms}<br>
+                    Minimum Square Footage: ${request.squareFootage}<br>
+                    Maximum Square Footage: ${request.squareFootageMax}<br>
+                    Preferred Language: ${request.language}<br>
+                    User Zip Codes: ${request.zipCodes}<br>
+                    Entered on ${request.entrytimestamp}<br>
+                    <button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject</button>
+                    <button id="acceptRequest" onclick="acceptRequest(${request.buyerid})">Accept</button>
+                    `;
+                div.className = "form-row";
+                div.id = "buyerid" + request.buyerid;
+                // newRequests.appendChild(input);
+                newRequests.appendChild(div);
+            });
+        })
+        .catch(error => console.error('Error checking user:', error));
 }
 //     if (selectedBuyerId === buyerid) {
 //         return; // If already selected, do nothing
