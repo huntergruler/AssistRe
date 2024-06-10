@@ -93,7 +93,6 @@ function newRequestDetail(buyerid) {
                 div3.innerHTML = `<button id="rejectRequest" onclick="rejectRequest(${request.buyerid})">Reject Request</button>`
                 detailButtons.appendChild(div3);
                 const div4 = document.createElement("div");
-                div4.className = "form-row";
                 div4.className = "col-md-2";
                 div4.innerHTML = `<button id="ignoreRequest" onclick="ignoreRequest(${request.buyerid})">Ignore for Now</button>`
                 detailButtons.appendChild(div4);
