@@ -204,6 +204,11 @@ function hideHelp() {
     document.getElementById('help-dialog').style.display = 'none';
 }
 
+function cancel() {
+    const offerForm = document.getElementById('offerForm');
+    offerForm.style.display = 'none';
+}
+
 function saveOffer(event) {
     event.preventDefault();
     // Get values from input fields
