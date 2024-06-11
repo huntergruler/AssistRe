@@ -27,7 +27,8 @@ function openTab(evt, tabName) {
     evt.currentTarget.classList.add("active");
 }
 
-function savetest() {
+function savetest(event) {
+    event.preventDefault();
     console.log('Saving offer defaults');
     const offerType = document.getElementById('offerType').value;
     const levelOfService = document.getElementById('levelOfService').value;
@@ -48,8 +49,8 @@ function savetest() {
     //     }
     // });
     console.log('offerType: ' + offerType, 'levelOfService: ' + levelOfService, 'compensationType: ' + compensationType, 'compensationAmount: ' + compensationAmount, 'retainerFee: ' + retainerFee, 'lengthOfService: ' + lengthOfService, 'expirationCompTimeFrame: ' + expirationCompTimeFrame);
-    
-}   
+
+}
 
 // function saveOfferDefaults(event) {
 //     event.preventDefault();
