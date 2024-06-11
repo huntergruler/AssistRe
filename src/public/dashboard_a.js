@@ -242,18 +242,18 @@ function saveOffer(event) {
         },
         body: JSON.stringify(offerData)
     })
-    console.log('GOTHEREE TOOOO',response);
-    // .then(response => {
-    //     console.log('GOTHEREE TOOOO',response);
-    //     if (!response.ok) {
-    //         throw new Error('Network response was not ok');
-    //     }
-    //     window.location.reload();
-    //         })
-    // .then(result => {
-    //     console.log('Success:', result);
-    // })
-    // .catch(error => {
-    //     console.log('GOT HERE!!!!');
-    // });
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(result => {
+        console.log('Success:', result);
+        // Optionally, perform any actions here after successful submission
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Optionally, display an error message to the user
+    });
 }
