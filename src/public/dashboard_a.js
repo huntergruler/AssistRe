@@ -11,6 +11,25 @@ document.addEventListener('DOMContentLoaded', function () {
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
     // FROM your_table_name;
 });
+function openTab(evt, tabName) {
+    // Hide all tab content elements
+    var tabcontent = document.getElementsByClassName("tabcontent");
+    for (var i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Remove "active" class from all tab buttons
+    var tablinks = document.getElementsByClassName("tablinks");
+    for (var i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    // Show the selected tab content
+    document.getElementById(tabName).style.display = "block";
+
+    // Add "active" class to the clicked tab button
+    evt.currentTarget.classList.add("active");
+}
 
 let selectedBuyerId = null;
 function getNewBuyerRequests() {
