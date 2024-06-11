@@ -211,11 +211,11 @@ function saveOffer() {
     const compensationType = document.getElementById('compensationType').value;
     const compensationAmount = document.getElementById('compensationAmount').value;
     const retainerFee = document.getElementById('retainerFee').value;
-    const prequalified = document.querySelector('input[name="prequalified"]:checked').value;
+    const prequalified = document.querySelector('input[name="retainerCredit"]:checked').value;
     const lengthOfService = document.getElementById('lengthOfService').value;
     const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
     const expirationCompensation = document.getElementById('expirationCompensation').value;
-    const offerDesc = document.getElementById('entryBox').value;
+    const offerDesc = document.getElementById('offerDesc').value;
 
     // Create an object with the gathered data
     const offerData = {
@@ -234,8 +234,7 @@ function saveOffer() {
 
     console.log(offerData);
     // Send the data to your backend for saving it into a database
-    // For example, you can use AJAX to send a POST request to your backend endpoint
-    fetch('/saveOffer', {
+    fetch('/api-saveoffer', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
