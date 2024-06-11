@@ -3,12 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
-    getNewBuyerRequests()
+    getRequests()
     getOutstandingOffers();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
+    const offerDetail = document.getElementById('offerDetail');
+    offerDetail.style.display = 'none';
     document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
-    document.querySelector('#offeredRequestDetail').innerHTML = '<c><br><strong> <--- Select an oustanding offier to view details </strong><br><br></c>';
+    document.querySelector('#offeredDetail').innerHTML = '<c><br><strong> <--- Select an oustanding offier to view details </strong><br><br></c>';
     // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     // var time_zone = Date().time_zone;
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
@@ -35,11 +37,11 @@ function openTab(evt, tabName) {
 }
 
 let selectedBuyerId = null;
-function getNewBuyerRequests() {
+function getRequests(datatype) {
     const newRequests = document.getElementById('newRequests');
-    console.log('getNewBuyerRequests');
+    console.log('getRequests', datatype);
     newRequests.innerHTML = '';
-    fetch(`/getNewBuyerRequests`)
+    fetch(`/getRequests?datatype=${datatype}`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {
@@ -48,14 +50,13 @@ function getNewBuyerRequests() {
                 newRequests.appendChild(div);
             }
             else {
-
                 data.forEach(request => {
                     const div = document.createElement("div");
                     div.innerHTML = `${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}`;
-                    div.addEventListener('click', () => selectItem(request.buyerid, request.buyerrequestid));
+                    div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid));
                     div.className = "form-row container-left";
                     div.id = "buyerid" + request.buyerid;
                     div.onclick = function () {
@@ -69,40 +70,7 @@ function getNewBuyerRequests() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function getOutstandingOffers() {
-    const offeredRequests = document.getElementById('offeredRequests');
-    offeredRequests.innerHTML = '';
-    console.log('getOutstandingOffers');
-    fetch(`/getOutstandingOffers`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.length === 0) {
-                const div = document.createElement("div");
-                div.textContent = 'No outstanding offers';
-                offeredRequests.appendChild(div);
-            }
-            else {
-
-                data.forEach(request => {
-                    const div = document.createElement("div");
-                    div.innerHTML = `${request.buyerType}<br>
-                    $${request.price_min} to $${request.price_max}<br>
-                    Prequalified? ${request.prequalified}<br>
-                    Purchase Timeline: ${request.timeFrame}`;
-                    div.addEventListener('click', () => selectItem(request.buyerid, request.buyerrequestid));
-                    div.className = "form-row container-left";
-                    div.id = "buyerid" + request.buyerid;
-                    div.onclick = function () {
-                        this.classList.toggle("selected");
-                    };
-                    offeredRequests.appendChild(div);
-                });
-            }
-        })
-        .catch(error => console.error('Error checking user:', error));
-};
-
-function selectItem(buyerid, buyerrequestid) {
+function selectRequest(buyerid, buyerrequestid) {
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
     const rows = document.querySelectorAll('#newRequests .form-row');
@@ -110,6 +78,16 @@ function selectItem(buyerid, buyerrequestid) {
         row.classList.remove('selected');
     });
     newRequestDetail(buyerid, buyerrequestid);
+}
+
+function selectOffer(buyerid, buyerrequestid) {
+    if (selectedBuyerId === buyerid) return; // If already selected, do nothing
+    var selectedBuyerId = 'buyerid' + buyerid;
+    const rows = document.querySelectorAll('#offered .form-row');
+    rows.forEach(row => {
+        row.classList.remove('selected');
+    });
+    popu(buyerid, buyerrequestid);
 }
 
 function newRequestDetail(buyerid, buyerrequestid) {
@@ -343,7 +321,7 @@ function saveOffer(event) {
         detailButtons.display = 'none';
         clearForm();
 
-        getNewBuyerRequests();
+        getRequests();
         // Optionally, perform any actions here after successful submission
     })
     .catch(error => {
@@ -354,6 +332,35 @@ function saveOffer(event) {
 
 function populateOfferDefaults() {
     fetch(`/get-offerdefaults`)
+        .then(response => response.json())
+        .then(data => {
+            if (Object.keys(data).length === 0) {
+                console.log('No offer defaults found.'); // Handle no data case (e.g., display a message)
+                return; // Exit the function
+            }
+            document.getElementById('offerType').value = data.offerType;
+            document.getElementById('levelOfService').value = data.levelOfService;
+            document.getElementById('compensationType').value = data.compensationType;
+            document.getElementById('compensationAmount').value = data.compensationAmount;
+            document.getElementById('retainerFee').value = data.retainerFee;
+            document.getElementById('lengthOfService').value = data.lengthOfService;
+            document.getElementById('expirationCompTimeFrame').value = data.expirationCompTimeFrame;
+            document.getElementById('expirationCompensation').value = data.expirationCompensation;
+            document.getElementById('offerDesc').value = data.offerDesc;
+            const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
+            radioButtons.forEach(radioButton => {
+                if (data.retainerCredited === 1) {
+                    document.getElementById('retainerCreditedY').checked = true;
+                } 
+                if (data.retainerCredited === 0) {
+                    document.getElementById('retainerCreditedN').checked = true;
+                }
+            });
+        })
+}
+
+function populateOfferDetail() {
+    fetch(`/get-offerdetails`)
         .then(response => response.json())
         .then(data => {
             if (Object.keys(data).length === 0) {

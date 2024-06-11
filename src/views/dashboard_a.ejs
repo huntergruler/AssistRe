@@ -41,12 +41,16 @@
         </h2>
     </div>
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'getNewBuyerRequests')" id="defaultOpen">New Buyer
+        <button class="tablinks" onclick="getRequests('New')">New Buyer (new)
             Requests</button>
-        <button class="tablinks" onclick="openTab(event, 'getOutstandingOffers')">Outstanding Offers</button>
-        <button class="tablinks" onclick="openTab(event, 'page3')">Page 3</button>
+            <button class="tablinks" onclick="openTab(event, 'getRequests','New')" id="defaultOpen">New Buyer
+                Requests</button>
+            <button class="tablinks" onclick="openTab(event, 'getRequests','Offered')">Outstanding Offers</button>
+        <button class="tablinks" onclick="openTab(event, 'getConfirmedOffers')">Confirmed Offers</button>
+        <button class="tablinks" onclick="openTab(event, 'getDeclinedOffers')">Declined Offers</button>
+        <button class="tablinks" onclick="openTab(event, 'getRejectedOffers')">Rejected Offers</button>
     </div>
-    <div id="getNewBuyerRequests" class="tabcontent">
+    <div id="getRequests" class="tabcontent">
         <div class="row">
             <div class="container-left col-md-3">
                 <div id="newRequests">
@@ -146,26 +150,6 @@
             </div>
         </div>
     </div>
-    <div id="getOutstandingOffers" class="tabcontent">
-        <div class="row">
-            <div class="container-left col-md-3">
-                <div id="offeredRequests">
-                    <!-- JavaScript will populate this container -->
-                </div>
-            </div>
-            <div class="container-right col-md-3">
-                <div id="offeredRequestDetail">
-                    <!-- JavaScript will populate this container -->
-                </div>
-                <div class="form-row container-right" style="border:none">
-                    <div id="detailButtons">
-                        <!-- JavaScript will populate this container -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div id="page3" class="tabcontent">
         <h3>Page 3 Content</h3>
         <p>This is the content of Page 3.</p>
