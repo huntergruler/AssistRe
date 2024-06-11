@@ -220,39 +220,38 @@ function saveOffer() {
     // Create an object with the gathered data
     const offerData = {
         buyerid: document.getElementById('buyerid').value,
-        offerType,
-        levelOfService,
-        compensationType,
-        compensationAmount,
-        retainerFee,
-        prequalified,
-        lengthOfService,
-        expirationCompTimeFrame,
-        expirationCompensation,
-        offerDesc
+        offerType: offerType,
+        levelOfService: levelOfService,
+        compensationType: compensationType,
+        compensationAmount: compensationAmount,
+        retainerFee: retainerFee,
+        prequalified: prequalified,
+        lengthOfService: lengthOfService,
+        expirationCompTimeFrame: expirationCompTimeFrame,
+        expirationCompensation: expirationCompensation,
+        offerDesc: offerDesc
     };
 
     console.log(offerData);
     // Send the data to your backend for saving it into a database
     // For example, you can use AJAX to send a POST request to your backend endpoint
-    // fetch('/saveOffer', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(offerData)
-    // })
-    // .then(response => {
-    //     if (response.ok) {
-    //         console.log('Offer saved successfully');
-    //         document.getElementById('offerForm').style.display = 'none';
-    //         // Offer saved successfully, handle success
-    //     } else {
-    //         console.error('Offer saving failed');
-    //         // Offer saving failed, handle error
-    //     }
-    // })
-    // .catch(error => {
-    //     // Handle network errors
-    // });
+    fetch('/saveOffer', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(offerData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        window.location.reload();
+            })
+    .then(result => {
+        console.log('Success:', result);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
