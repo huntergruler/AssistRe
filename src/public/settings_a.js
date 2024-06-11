@@ -56,9 +56,9 @@ function populateOfferDefaults() {
                 console.log('Radio button id:', radioButton.id, 'Value:', radioButton.value);
                 if (data.retainerCredited === 1) {
                     console.log('Retainer credited:', data.retainerCredited);
-                    document.getElementById('retainerCreditedYes').checked = true;
+                    document.getElementById('retainerCreditedY').checked = true;
                 } else {
-                    document.getElementById('retainerCreditedNo').checked = true;
+                    document.getElementById('retainerCreditedN').checked = true;
                 }
             });
         })
