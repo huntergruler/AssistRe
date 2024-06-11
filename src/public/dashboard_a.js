@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     populateOfferTypes();
     populateCompensationTypes();
     getRequests()
-    getOutstandingOffers();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
     const offerDetail = document.getElementById('offerDetail');
