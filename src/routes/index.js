@@ -115,6 +115,7 @@ router.get('/dashboard_a', (req, res) => {
 
 // Route to get the buyer's profile
 router.get('/getNewBuyerRequests', (req, res) => {
+  var datatype = req.query.datatype;
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
@@ -126,8 +127,8 @@ router.get('/getNewBuyerRequests', (req, res) => {
       var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
                      from AgentBuyerMatch bam
                     where bam.agentid = ?
-                      and bam.matchStatus = 'New'`;
-      db.query(query, [userid], (error, results) => {
+                      and bam.matchStatus = ?`;
+      db.query(query, [userid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
           return res.status(500).send('Server error');
