@@ -41,7 +41,7 @@ function getRequests(datatype) {
     const newRequests = document.getElementById('newRequests');
     console.log('getRequests', datatype);
     newRequests.innerHTML = '';
-    fetch(`/getRequests?datatype=encodeURIComponent(datatype)`)
+    fetch(`/getRequests?${datatype}`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {
@@ -99,7 +99,7 @@ function newRequestDetail(buyerid, buyerrequestid) {
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
     // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
-    fetch(`/getNewBuyerRequests?${buyerid}`)
+    fetch(`/getNewBuyerRequests?buyerid=${encodeURIComponent(buyerid)}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
