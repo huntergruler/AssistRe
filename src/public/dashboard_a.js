@@ -219,6 +219,7 @@ function saveOffer() {
 
     // Create an object with the gathered data
     const offerData = {
+        buyerid: document.getElementById('buyerid').value,
         offerType,
         levelOfService,
         compensationType,

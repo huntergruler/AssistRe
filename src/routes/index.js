@@ -774,6 +774,7 @@ router.post('/api/offices', (req, res) => {
 });
 
 router.post('/saveOffer', (req, res) => {
+  console.log('Save Offer:', req.body);
   const userid = req.session.userid;
   const { buyerid, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments } = req.body;
   console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments);
