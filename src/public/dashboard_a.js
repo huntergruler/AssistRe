@@ -219,6 +219,13 @@ function saveOffer(event) {
     const expirationCompensation = document.getElementById('expirationCompensation').value;
     const offerDesc = document.getElementById('offerDesc').value;
 
+    console.log("retainerCreditY",retainerCreditY, "retainerCreditN",retainerCreditN);
+    if (retainerCreditY == "on") {
+        retainerCredit = "Yes";
+    }
+    else {
+        retainerCredit = "No";
+    }
     // Create an object with the gathered data
     const offerData = {
         buyerid: document.getElementById('buyerid').value,
@@ -234,7 +241,6 @@ function saveOffer(event) {
         offerDesc: offerDesc
     };
 
-    console.log("retainerCreditY",retainerCreditY, "retainerCreditN",retainerCreditN);
     // Send the data to your backend for saving it into a database
     fetch('/api/saveoffer', {
         method: 'POST',
