@@ -29,11 +29,6 @@ function openTab(evt, tabName) {
 }
 
 function populateOfferDefaults() {
-    const levelOfService = document.getElementById('levelOfService');
-    const defaultOption = document.createElement('option');
-    levelOfService.innerHTML = '';
-    defaultOption.textContent = 'Select a Level of Service';
-    defaultOption.value = '';
     fetch(`/get-offerdefaults`)
         .then(response => response.json())
         .then(data => {
@@ -136,9 +131,6 @@ function populateLevelOfService() {
         .then(data => {
             data.results.forEach(item => {
                 let option = document.createElement('option');
-                // if (levelOfServiceDisplay.replace("Service Level: ", "") == item.levelOfService) {
-                //     option.selected = true;
-                // }
                 option.value = item.levelOfService;
                 option.textContent = item.levelOfService;
                 levelOfService.appendChild(option);
