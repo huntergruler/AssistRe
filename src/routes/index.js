@@ -186,6 +186,33 @@ router.post('/saveoffer', (req, res) => {
   }
 });
 
+router.post('/saveOfferDefaults', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to save changes';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+    const { offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
+    // console.log('Offer:', userid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
+    insertQuery = 'REPLACE INTO AgentOfferDefaults (agentid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) values (?,?,?,?,?,?,?,?,?,?,?,?)';
+    db.query(insertQuery, [userid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus], (error, result) => {
+      if (error) {
+        console.error('Error saving offer:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      // updateBuyerMatch = 'UPDATE AgentBuyerMatch SET matchStatus = "Offered" WHERE agentid = ? and buyerid = ? and buyerrequestid = ?';
+      // db.query(updateBuyerMatch, [userid, buyerid, buyerrequestid], (error, result) => {
+      //   if (error) {
+      //     console.error('Error updating buyer match:', error);
+      //     return res.status(500).json({ error: 'Internal server error' });
+      //   }
+        res.json({ success: true });
+      // });
+    });
+  }
+});
+
 // Route to get the buyer's profile
 router.get('/profile_b', (req, res) => {
   if (!req.session.user) {
