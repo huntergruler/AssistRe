@@ -235,24 +235,24 @@ function saveOffer() {
     console.log(offerData);
     // Send the data to your backend for saving it into a database
     // For example, you can use AJAX to send a POST request to your backend endpoint
-    fetch('/saveOffer', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(offerData)
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log('Offer saved successfully');
-            document.getElementById('offerForm').style.display = 'none';
-            // Offer saved successfully, handle success
-        } else {
-            console.error('Offer saving failed');
-            // Offer saving failed, handle error
-        }
-    })
-    .catch(error => {
-        // Handle network errors
-    });
+    // fetch('/saveOffer', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(offerData)
+    // })
+    // .then(response => {
+    //     if (response.ok) {
+    //         console.log('Offer saved successfully');
+    //         document.getElementById('offerForm').style.display = 'none';
+    //         // Offer saved successfully, handle success
+    //     } else {
+    //         console.error('Offer saving failed');
+    //         // Offer saving failed, handle error
+    //     }
+    // })
+    // .catch(error => {
+    //     // Handle network errors
+    // });
 }
