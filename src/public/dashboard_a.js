@@ -31,9 +31,9 @@ function getNewRequests() {
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}`;
-                    div.addEventListener('click', () => selectItem(request.buyerid));
+                    div.addEventListener('click', () => selectItem(request.buyerUserId));
                     div.className = "form-row container-left";
-                    div.id = "buyerid" + request.buyerid;
+                    div.id = "buyerUserId" + request.buyerUserId;
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
@@ -44,25 +44,25 @@ function getNewRequests() {
         })
         .catch(error => console.error('Error checking user:', error));
 };
-function selectItem(buyerid) {
-    if (selectedBuyerId === buyerid) return; // If already selected, do nothing
-    var selectedBuyerId = 'buyerid' + buyerid;
+function selectItem(buyerUserId) {
+    if (selectedBuyerId === buyerUserId) return; // If already selected, do nothing
+    var selectedBuyerId = 'buyerUserId' + buyerUserId;
     const rows = document.querySelectorAll('#newRequests .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    newRequestDetail(buyerid);
+    newRequestDetail(buyerUserId);
 }
 
-function newRequestDetail(buyerid) {
+function newRequestDetail(buyerUserId) {
     const detailColumn = document.getElementById('newRequestDetail');
     const detailButtons = document.getElementById('detailButtons');
-    document.getElementById('buyerUserId').value = buyerid;
+    document.getElementById('buyerUserId').value = buyerUserId;
 
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
-    // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
-    fetch(`/getNewRequests?buyerid=${encodeURIComponent(buyerid)}`)
+    // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerUserId}</p><p><strong>Name:`;
+    fetch(`/getNewRequests?buyerUserId=${encodeURIComponent(buyerUserId)}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
@@ -80,7 +80,7 @@ function newRequestDetail(buyerid) {
                     Entered on ${request.entrytimestamp}<br>
                     `;
                 div.className = "form-row container-right";
-                div.id = "buyerid" + request.buyerid;
+                div.id = "buyerUserId" + request.buyerUserId;
                 detailColumn.appendChild(div);
 
                 // Create a container div to hold the buttons
@@ -90,9 +90,9 @@ function newRequestDetail(buyerid) {
 
                 // Create each button and append them to the container
                 const buttons = [
-                    { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid})` },
-                    { id: "rejectRequest", text: "Reject Request", onclick: `rejectRequest(${request.buyerid})` },
-                    { id: "ignoreRequest", text: "Ignore for Now", onclick: `ignoreRequest(${request.buyerid})` }
+                    { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerUserId})` },
+                    { id: "rejectRequest", text: "Reject Request", onclick: `rejectRequest(${request.buyerUserId})` },
+                    { id: "ignoreRequest", text: "Ignore for Now", onclick: `ignoreRequest(${request.buyerUserId})` }
                 ];
 
                 buttons.forEach(button => {
@@ -114,7 +114,7 @@ function newRequestDetail(buyerid) {
         .catch(error => console.error('Error checking user:', error));
 }
 
-function makeOffer(buyerid) {
+function makeOffer(buyerUserId) {
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'block';
 }
