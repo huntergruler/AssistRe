@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
-    getNewBuyerRequests()
+    // getNewBuyerRequests()
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
     document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
