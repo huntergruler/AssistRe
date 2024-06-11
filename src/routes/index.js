@@ -192,7 +192,7 @@ router.post('/saveOfferDefaults', (req, res) => {
     console.log('Save Offer Defaults:', req.body);
     const userid = req.session.userid;
     const { offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
-    insertQuery = 'REPLACE INTO AgentOfferDefaults (agentid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?)';
+    insertQuery = 'REPLACE INTO AgentOfferDefaults (agentid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?)';
     db.query(insertQuery, [userid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (error, result) => {
       if (error) {
         console.error('Error saving offer:', error);
