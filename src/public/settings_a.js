@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById("defaultOpen").click();
+    // document.getElementById("defaultOpen").click();
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
