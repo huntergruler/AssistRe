@@ -99,7 +99,7 @@ function newRequestDetail(buyerid, buyerrequestid) {
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
     // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
-    fetch(`/getNewBuyerRequests?buyerid=${encodeURIComponent(buyerid)}`)
+    fetch(`/getNewBuyerRequests?${buyerid}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
