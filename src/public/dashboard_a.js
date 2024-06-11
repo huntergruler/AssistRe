@@ -204,7 +204,8 @@ function hideHelp() {
     document.getElementById('help-dialog').style.display = 'none';
 }
 
-function saveOffer() {
+function saveOffer(event) {
+    event.preventDefault();
     // Get values from input fields
     const offerType = document.getElementById('offerType').value;
     const levelOfService = document.getElementById('levelOfService').value;
