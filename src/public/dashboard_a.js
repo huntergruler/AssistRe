@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     getRequests()
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
-    const offerDetail = document.getElementById('offerDetail');
-    offerDetail.style.display = 'none';
     document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
     document.querySelector('#offeredDetail').innerHTML = '<c><br><strong> <--- Select an oustanding offier to view details </strong><br><br></c>';
     // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
