@@ -212,7 +212,8 @@ function saveOffer(event) {
     const compensationType = document.getElementById('compensationType').value;
     const compensationAmount = document.getElementById('compensationAmount').value;
     const retainerFee = document.getElementById('retainerFee').value;
-    const retainerCredit = document.querySelector('input[name="retainerCredit"]:checked').value;
+    const retainerCreditY = document.getElementById('retainerCreditY').value;
+    const retainerCreditN = document.getElementById('retainerCreditN').value;
     const lengthOfService = document.getElementById('lengthOfService').value;
     const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
     const expirationCompensation = document.getElementById('expirationCompensation').value;
@@ -233,7 +234,7 @@ function saveOffer(event) {
         offerDesc: offerDesc
     };
 
-    console.log("retainerCreditY",retainerCredit);
+    console.log("retainerCreditY",retainerCreditY, "retainerCreditN",retainerCreditN);
     // Send the data to your backend for saving it into a database
     fetch('/api/saveoffer', {
         method: 'POST',
