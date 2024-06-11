@@ -174,7 +174,7 @@ router.post('/saveoffer', (req, res) => {
         console.error('Error saving offer:', error);
         return res.status(500).json({ error: 'Internal server error' });
       }
-      updateBuyerMatch = 'UPDATE AgentBuyerMatch SET matchstatus = "Offered" WHERE agentid = ? and buyerid = ? and buyerrequestid = ?';
+      updateBuyerMatch = 'UPDATE AgentBuyerMatch SET matchStatus = "Offered" WHERE agentid = ? and buyerid = ? and buyerrequestid = ?';
       db.query(updateBuyerMatch, [userid, buyerid, buyerrequestid], (error, result) => {
         if (error) {
           console.error('Error updating buyer match:', error);
