@@ -242,6 +242,7 @@ function saveOffer() {
         body: JSON.stringify(offerData)
     })
     .then(response => {
+        console.log('GOTHEREE TOOOO',response);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
