@@ -142,7 +142,8 @@ router.get('/getNewRequests', (req, res) => {
       var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
                       from AgentBuyerMatch bam
                       where bam.agentid = ?
-                      and bam.buyerid = ?`;
+                      and bam.buyerid = ?
+                      and bam.matchstatus = 'New'`;
       db.query(query, [userid, buyerid], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
