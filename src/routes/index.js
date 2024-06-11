@@ -892,6 +892,17 @@ router.get('/settings', (req, res) => {
   }
 });
 
+router.get('/settings_a', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access the Settings page';
+    //    console.log('Redirecting to:', redirectto);
+    res.redirect('/');
+  }
+  else {
+    res.render('settings_a');
+  }
+});
+
 // Password reset route
 router.get('/reset', (req, res) => {
   res.render('reset');
