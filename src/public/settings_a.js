@@ -37,6 +37,10 @@ function populateOfferDefaults() {
     fetch(`/get-offerdefaults`)
         .then(response => response.json())
         .then(data => {
+            if (Object.keys(data).length === 0) {
+                console.log('No offer defaults found.'); // Handle no data case (e.g., display a message)
+                return; // Exit the function
+            }
             document.getElementById('offerType').value = data.offerType;
             document.getElementById('levelOfService').value = data.levelOfService;
             document.getElementById('compensationType').value = data.compensationType;
