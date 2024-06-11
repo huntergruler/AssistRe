@@ -773,7 +773,7 @@ router.post('/api/offices', (req, res) => {
   });
 });
 
-router.post('/api/saveoffer', (req, res) => {
+router.post('/saveoffer', (req, res) => {
   // if (!req.session.user) {
   //   req.session.message = 'Please login to save changes';
   //   res.redirect('/');

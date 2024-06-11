@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     populateCompensationTypes();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
-    const makeoffercontainer = document.getElementById('makeoffercontainer');
-    makeoffercontainer.style.display = 'none';
     document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
     // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     // var time_zone = Date().time_zone;
@@ -17,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 let selectedBuyerId = null;
 function getNewRequests() {
+    const newRequests = document.getElementById('newRequests');
+    newRequests.innerHTML = '';
     fetch(`/getNewRequests`)
         .then(response => response.json())
         .then(data => {
@@ -46,6 +46,7 @@ function getNewRequests() {
         })
         .catch(error => console.error('Error checking user:', error));
 };
+
 function selectItem(buyerid) {
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
@@ -250,7 +251,7 @@ function saveOffer(event) {
     };
 
     // Send the data to your backend for saving it into a database
-    fetch('/api/saveoffer', {
+    fetch('/saveoffer', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -267,7 +268,9 @@ function saveOffer(event) {
         console.log('Success:', result);
         const offerForm = document.getElementById('offerForm');
         offerForm.style.display = 'none';
-            // Optionally, perform any actions here after successful submission
+
+        getNewRequests();
+        // Optionally, perform any actions here after successful submission
     })
     .catch(error => {
         console.error('Error:', error);
