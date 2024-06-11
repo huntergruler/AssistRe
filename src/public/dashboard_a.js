@@ -39,6 +39,9 @@ function openTab(evt, tabName) {
 let selectedBuyerId = null;
 function getRequests(datatype) {
     const newRequests = document.getElementById('newRequests');
+    const getRequests = document.getElementById('getRequests');
+    getRequests.innerHTML   = '';
+    getRequests.style.display = 'block';
     console.log('getRequests', datatype);
     newRequests.innerHTML = '';
     fetch(`/getRequests?datatype=${datatype}`)
