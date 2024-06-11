@@ -35,6 +35,7 @@ function openTab(evt, tabName) {
 let selectedBuyerId = null;
 function getNewBuyerRequests() {
     const newRequests = document.getElementById('newRequests');
+    console.log('getNewBuyerRequests');
     newRequests.innerHTML = '';
     fetch(`/getNewBuyerRequests`)
         .then(response => response.json())
