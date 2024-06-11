@@ -774,16 +774,21 @@ router.post('/api/offices', (req, res) => {
 });
 
 router.post('/api/saveoffer', (req, res) => {
-  console.log('Save Offer:', req.body);
-  const userid = req.session.userid;
-  const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
-  console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
-
-  insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
-  db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (err, result) => {
-    if (err) throw err;
-    agentofferid = result.insertId;});
+  console.log('Save Offer route reached');
+  res.sendStatus(200); // Send a simple response to test if the route is reached
 });
+
+// router.post('/api/saveoffer', (req, res) => {
+//   console.log('Save Offer:', req.body);
+//   const userid = req.session.userid;
+//   const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
+//   console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
+
+//   insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
+//   db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (err, result) => {
+//     if (err) throw err;
+//     agentofferid = result.insertId;});
+// });
 
 router.delete('/api/licenses/:id', (req, res) => {
   const { id } = req.params;
