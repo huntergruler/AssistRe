@@ -1,6 +1,5 @@
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
-    getNewRequests();
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
@@ -14,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 let selectedBuyerId = null;
-function getNewRequests() {
+function getNewBuyerRequests() {
     const newRequests = document.getElementById('newRequests');
     newRequests.innerHTML = '';
-    fetch(`/getNewRequests`)
+    fetch(`/getNewBuyerRequests`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {
@@ -66,7 +65,7 @@ function newRequestDetail(buyerid, buyerrequestid) {
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
     // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
-    fetch(`/getNewRequests?buyerid=${encodeURIComponent(buyerid)}`)
+    fetch(`/getNewBuyerRequests?buyerid=${encodeURIComponent(buyerid)}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
@@ -288,7 +287,7 @@ function saveOffer(event) {
         detailButtons.display = 'none';
         clearForm();
 
-        getNewRequests();
+        getNewBuyerRequests();
         // Optionally, perform any actions here after successful submission
     })
     .catch(error => {

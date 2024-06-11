@@ -114,7 +114,7 @@ router.get('/dashboard_a', (req, res) => {
 });
 
 // Route to get the buyer's profile
-router.get('/getNewRequests', (req, res) => {
+router.get('/getNewBuyerRequests', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
