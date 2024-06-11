@@ -230,16 +230,16 @@ function saveOffer(event) {
     const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
     const expirationCompensation = document.getElementById('expirationCompensation').value;
     const offerDesc = document.getElementById('offerDesc').value;
-    const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
+    const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
     const buyerrequestid = document.getElementById('buyerrequestid').value;
     const buyerid = document.getElementById('buyerid').value;
 
     // Loop through each radio button in the group
-    let retainerCredit = null;
+    let retainerCredited = null;
     radioButtons.forEach(radioButton => {
         if (radioButton.checked) {
             // This radio button is selected
-            retainerCredit = radioButton.value;
+            retainerCredited = radioButton.value;
         }
     });
    
@@ -252,7 +252,7 @@ function saveOffer(event) {
         compensationType: compensationType,
         compensationAmount: compensationAmount,
         retainerFee: retainerFee,
-        retainerCredit: retainerCredit,
+        retainerCredited: retainerCredited,
         lengthOfService: lengthOfService,
         expirationCompTimeFrame: expirationCompTimeFrame,
         expirationCompensation: expirationCompensation,

@@ -50,10 +50,10 @@ function populateOfferDefaults() {
             document.getElementById('expirationCompTimeFrame').value = data.expirationCompTimeFrame;
             document.getElementById('expirationCompensation').value = data.expirationCompensation;
             document.getElementById('offerDesc').value = data.offerDesc;
-            console.log(data.retainerCredit);
-            const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
+            console.log(data.retainerCredited);
+            const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
             radioButtons.forEach(radioButton => {
-                if (radioButton.value === data.retainerCredit) {
+                if (radioButton.value === data.retainerCredited) {
                     radioButton.checked = true;
                 }
             });
@@ -72,13 +72,13 @@ function saveOfferDefaults(event) {
     const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
     const expirationCompensation = document.getElementById('expirationCompensation').value;
     const offerDesc = document.getElementById('offerDesc').value;
-    const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
+    const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
     // Get values from input fields
-    let retainerCredit = null;
+    let retainerCredited = null;
     radioButtons.forEach(radioButton => {
         if (radioButton.checked) {
             // This radio button is selected
-            retainerCredit = radioButton.value;
+            retainerCredited = radioButton.value;
         }
     });
     // Create an object with the gathered data
@@ -88,7 +88,7 @@ function saveOfferDefaults(event) {
         compensationType: compensationType,
         compensationAmount: compensationAmount,
         retainerFee: retainerFee,
-        retainerCredit: retainerCredit,
+        retainerCredited: retainerCredited,
         lengthOfService: lengthOfService,
         expirationCompTimeFrame: expirationCompTimeFrame,
         expirationCompensation: expirationCompensation,
