@@ -27,7 +27,7 @@ function openTab(evt, tabName) {
     evt.currentTarget.classList.add("active");
 }
 
-function saveOfferDefaults(event) {
+function saveDefaults(event) {
     event.preventDefault();
     console.log('Saving offer defaults');
     const offerType = document.getElementById('offerType').value;
