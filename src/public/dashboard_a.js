@@ -213,6 +213,10 @@ function cancel() {
     makeoffercontainer.style.display = 'none';
 }
 
+function clearForm() {
+    document.getElementById('offerForm').reset();
+}
+
 function saveOffer(event) {
     event.preventDefault();
     // Get values from input fields
@@ -271,9 +275,14 @@ function saveOffer(event) {
     .then(result => {
         console.log('Success:', result);
         const offerForm = document.getElementById('offerForm');
+        alert('Offer saved successfully');
+        const newRequestDetail = document.getElementById('newRequestDetail');
+        const detailButtons = document.getElementById('detailButtons');
+
         offerForm.style.display = 'none';
-        const requestDetails = document.getElementById('requestDetails');
-        requestDetails.style.display = 'none';
+        newRequestDetail.innerHTML = '';
+        detailButtons.innerHTML = '';
+        clearForm();
 
         getNewRequests();
         // Optionally, perform any actions here after successful submission
