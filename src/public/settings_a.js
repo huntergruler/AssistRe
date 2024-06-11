@@ -33,14 +33,14 @@ function savetest() {
     const levelOfService = document.getElementById('levelOfService').value;
     const compensationType = document.getElementById('compensationType').value;
     const compensationAmount = document.getElementById('compensationAmount').value;
-    // const retainerFee = document.getElementById('retainerFee').value;
-    // const lengthOfService = document.getElementById('lengthOfService').value;
-    // const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
+    const retainerFee = document.getElementById('retainerFee').value;
+    const lengthOfService = document.getElementById('lengthOfService').value;
+    const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
     // const expirationCompensation = document.getElementById('expirationCompensation').value;
     // const offerDesc = document.getElementById('offerDesc').value;
     // const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
     // Get values from input fields
-    console.log('offerType: ' + offerType, 'levelOfService: ' + levelOfService, 'compensationType: ' + compensationType, 'compensationAmount: ' + compensationAmount);
+    console.log('offerType: ' + offerType, 'levelOfService: ' + levelOfService, 'compensationType: ' + compensationType, 'compensationAmount: ' + compensationAmount, 'retainerFee: ' + retainerFee, 'lengthOfService: ' + lengthOfService, 'expirationCompTimeFrame: ' + expirationCompTimeFrame);
     
 }   
 
