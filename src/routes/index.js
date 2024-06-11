@@ -785,10 +785,9 @@ router.post('/api/saveoffer', (req, res) => {
   insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
   db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (err, result) => {
     if (error) {
-      console.error('Error updating buyer profile:', error);
+      console.error('Error saving OFFER:', error);
       return res.status(500).send('Server error');
     }
-
     res.send({ success: true });
   });
 // }

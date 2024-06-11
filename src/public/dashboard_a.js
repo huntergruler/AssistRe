@@ -226,8 +226,7 @@ function saveOffer(event) {
             retainerCredit = radioButton.value;
         }
     });
-    
-    console.log("retainerCredit",retainerCredit);
+   
     // Create an object with the gathered data
     const offerData = {
         buyerid: document.getElementById('buyerid').value,
