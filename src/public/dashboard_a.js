@@ -33,7 +33,7 @@ function getNewRequests() {
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}`;
-                    div.addEventListener('click', () => selectItem(request.buyerid));
+                    div.addEventListener('click', () => selectItem(request.buyerid, request.buyerrequestid));
                     div.className = "form-row container-left";
                     div.id = "buyerid" + request.buyerid;
                     div.onclick = function () {
@@ -47,17 +47,17 @@ function getNewRequests() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function selectItem(buyerid) {
+function selectItem(buyerid, buyerrequestid) {
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
     const rows = document.querySelectorAll('#newRequests .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    newRequestDetail(buyerid);
+    newRequestDetail(buyerid, buyerrequestid);
 }
 
-function newRequestDetail(buyerid) {
+function newRequestDetail(buyerid, buyerrequestid) {
     const detailColumn = document.getElementById('newRequestDetail');
     const detailButtons = document.getElementById('detailButtons');
     document.getElementById('buyerid').value = buyerid;
