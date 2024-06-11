@@ -212,7 +212,7 @@ function saveOffer(event) {
     const compensationType = document.getElementById('compensationType').value;
     const compensationAmount = document.getElementById('compensationAmount').value;
     const retainerFee = document.getElementById('retainerFee').value;
-    const prequalified = document.querySelector('input[name="retainerCredit"]:checked').value;
+    const retainerCredit = document.querySelector('input[name="retainerCredit"]:checked').value;
     const lengthOfService = document.getElementById('lengthOfService').value;
     const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
     const expirationCompensation = document.getElementById('expirationCompensation').value;
@@ -226,7 +226,7 @@ function saveOffer(event) {
         compensationType: compensationType,
         compensationAmount: compensationAmount,
         retainerFee: retainerFee,
-        prequalified: prequalified,
+        retainerCredit: retainerCredit,
         lengthOfService: lengthOfService,
         expirationCompTimeFrame: expirationCompTimeFrame,
         expirationCompensation: expirationCompensation,
