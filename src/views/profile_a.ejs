@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="styles.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -19,9 +19,12 @@
             <h1 class="mt-2"><a href="/">SeekingAgents</a></h1>
         </div>
         <nav id="navlinks" class="justify-content-end text-center">
-            <p id="navname"><%= firstname %> <%= lastname %></p>
+            <p id="navname">
+                <%= firstname %>
+                    <%= lastname %>
+            </p>
             <p>|</p>
-            <p><a href="/dashboard_a" >Dashboard</a></p>
+            <p><a href="/dashboard_a">Dashboard</a></p>
             <p>|</p>
             <p><a href="/settings">Settings</a></p>
             <p>|</p>
@@ -33,230 +36,241 @@
 <body id="profileBody">
     <div id="profileContainer">
         <div id="profileGrid1">
-        <div id="officeContainer">
-            <h1>Current Office(s)<button type="button" id="officeButton" onclick="showOffice()">Edit</button></h1>
-            <table id="officeTable">
-                <thead>
-                    <tr>
-                        <th>Office Name</th>
-                        <th>Office License Number</th>
-                        <th>Office License State</th>
-                        <th>Office Address</th>
-                        <th>Office City</th>
-                        <th>Office State</th>
-                        <th>Office Zip</th>
-                        <th>Office Phone Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if (hasOffices) { %>
-                        <% offices.forEach(function(office) { %>
-                            <tr id="office-<%= office.agentofficeid %>">
-                                <td>
-                                    <%= office.officeName %>
-                                </td>
-                                <td>
-                                    <%= office.officeLicenseNumber %>
-                                </td>
-                                <td>
-                                    <%= office.officeLicenseState %>
-                                </td>
-                                <td>
-                                    <%= office.address %>
-                                </td>
-                                <td>
-                                    <%= office.city %>
-                                </td>
-                                <td>
-                                    <%= office.state %>
-                                </td>
-                                <td>
-                                    <%= office.zip %>
-                                </td>
-                                <td>
-                                    <%= office.phoneNumber %>
-                                </td>
-                            </tr>
-                            <% }); %>
-                                <% } else { %>
-                                    <tr id="noOfficeRow">
-                                        <td colspan="8">No offices found.</td>
-                                    </tr>
-                                    <% } %>
-                </tbody>
-            </table>
-            <form id="officeForm">
-                <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
-                <input type="text" id="officeLicenseNumber" name="officeLicenseNumber"
-                    placeholder="Office License Number" required>
-                <input type="text" id="officeLicenseState" name="officeLicenseState" placeholder="Office License State"
-                    maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required
-                    pattern="[A-Z]{2}" title="Enter a valid US state abbreviation">
-                <input type="text" id="address" name="address" placeholder="Office Address" required>
-                <input type="text" id="city" name="city" placeholder="Office City" required>
-                <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2"
-                    oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
-                    title="Enter a valid US state abbreviation">
-                <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
-                <button type="button" id="officeAdd">Add</button>
-                <span id="offStatus"></span>
-            </form>
+            <div id="officeContainer">
+                <h1>Current Office(s)<button type="button" id="officeButton" onclick="showOffice()">Edit</button></h1>
+                <table id="officeTable">
+                    <thead>
+                        <tr>
+                            <th>Office Name</th>
+                            <th>Office License Number</th>
+                            <th>Office License State</th>
+                            <th>Office Address</th>
+                            <th>Office City</th>
+                            <th>Office State</th>
+                            <th>Office Zip</th>
+                            <th>Office Phone Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (hasOffices) { %>
+                            <% offices.forEach(function(office) { %>
+                                <tr id="office-<%= office.agentofficeid %>">
+                                    <td>
+                                        <%= office.officeName %>
+                                    </td>
+                                    <td>
+                                        <%= office.officeLicenseNumber %>
+                                    </td>
+                                    <td>
+                                        <%= office.officeLicenseState %>
+                                    </td>
+                                    <td>
+                                        <%= office.address %>
+                                    </td>
+                                    <td>
+                                        <%= office.city %>
+                                    </td>
+                                    <td>
+                                        <%= office.state %>
+                                    </td>
+                                    <td>
+                                        <%= office.zip %>
+                                    </td>
+                                    <td>
+                                        <%= office.phoneNumber %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                                    <% } else { %>
+                                        <tr id="noOfficeRow">
+                                            <td colspan="8">No offices found.</td>
+                                        </tr>
+                                        <% } %>
+                    </tbody>
+                </table>
+                <form id="officeForm">
+                    <input type="text" id="officeName" name="officeName" placeholder="Office Name" required>
+                    <input type="text" id="officeLicenseNumber" name="officeLicenseNumber"
+                        placeholder="Office License Number" required>
+                    <input type="text" id="officeLicenseState" name="officeLicenseState"
+                        placeholder="Office License State" maxlength="2" minlength="2"
+                        oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
+                        title="Enter a valid US state abbreviation">
+                    <input type="text" id="address" name="address" placeholder="Office Address" required>
+                    <input type="text" id="city" name="city" placeholder="Office City" required>
+                    <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2"
+                        oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
+                        title="Enter a valid US state abbreviation">
+                    <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
+                    <button type="button" id="officeAdd">Add</button>
+                    <span id="offStatus"></span>
+                </form>
 
-        </div>
-        <div id="licenseContainer">
-            <p>
-            <h1>Current Licenses <button type="button" id="licenseButton" onclick="showLicense()">Edit</button></h1>
-            </p>
-            <table id="licensesTable">
-                <thead>
-                    <tr>
-                        <th>License State</th>
-                        <th>License Number</th>
-                        <th>Expiration Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if (hasLicenses) { %>
-                        <% licenses.forEach(function(license) { %>
-                            <tr id="license-<%= license.agentlicenseid %>">
-                                <td>
-                                    <%= license.licenseState %>
-                                </td>
-                                <td>
-                                    <%= license.licenseNumber %>
-                                </td>
-                                <td>
-                                    <%= license.licenseExpirationDate %>
-                                </td>
-                            </tr>
-                            <% }); %>
-                                <% } else { %>
-                                    <tr id="noLicenseRow">
-                                        <td colspan="3">No licenses found.</td>
-                                    </tr>
-                                    <% } %>
-                </tbody>
-            </table>
-            <form id="licenseForm">
-                <input type="text" id="licenseState" name="licenseState" placeholder="License State" maxlength="2"
-                    minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
-                    title="Enter a valid US state abbreviation">
-                <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
-                <input type="date" id="licenseExpirationDate" name="licenseExpirationDate"
-                    placeholder="License Expiration Date" required>
-                <button type="button" id="licenseAdd" disabled>Add</button>
-                <span id="licStatus"></span>
-            </form>
-        </div>
-        <div id="transactionContainer">
-            <p>
-            <h1>Current Transaction(s) <button type="button" class="hoverStyle" id="transactionButton"
-                onclick="showTransactions()">Edit</button></h1>
-            </p>
-            <table id="transactionTable">
-                <thead>
-                    <tr>
-                        <th>Transaction Date</th>
-                        <th>Transaction Amount</th>
-                        <th>Transaction Property Type</th>
-                        <th>Transaction Level Of Service</th>
-                        <th>Transaction Compensation Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if (hasTransactions) { %>
-                        <% transactions.forEach(function(transaction) { %>
-                            <tr id="transaction-<%= transaction.agenttransactionid %>">
-                                <td>
-                                    <%= transaction.transactionDate %>
-                                </td>
-                                <td>
-                                    <%= transaction.transactionAmount %>
-                                </td>
-                                <td>
-                                    <%= transaction.PropertyType %>
-                                </td>
-                                <td>
-                                    <%= transaction.LevelOfService %>
-                                </td>
-                                <td>
-                                    <%= transaction.CompensationType %>
-                                </td>
-                            </tr>
-                            <% }); %>
-                                <% } else { %>
-                                    <tr id="noTransactionRow">
-                                        <td colspan="5">No transactions found.</td>
-                                    </tr>
-                                    <% } %>
-                </tbody>
-            </table>
-            <form id="transactionForm">
-                <input type="date" id="transactionDate" name="transactionDate" placeholder="Transaction Date" required>
-                <input type="number" id="transactionAmount" name="transactionAmount" placeholder="Transaction Amount" required>
-                <input type="text" id="propertyType" name="PropertyType" placeholder="Transaction Property Type" required>
-                <input type="text" id="levelOfService" name="LevelOfService" placeholder="Transaction Level Of Service" required>
-                <input type="text" id="compensationType" name="CompensationType" placeholder="Transaction Compensation Type" required>
-                <button type="button" id="transactionAdd">Add</button>
-            </form>
-        </div>
-    </div>
-    <div id="profileGrid2">
-        <div id="BioContainer">
-            <h1>Profile for <%= firstname %> <%= lastname %></h1>
-            <h1>About <%= firstname %> <button type="button" class="hoverStyle" id="bioButton" onclick="showBio()">Edit</button></h1>
-            <div id="bioDiv">
-                <p id="bioText">No Biography</p><br>
-                <h3>Languages:</h3><br><p id="languagesText">No Languages</p>
             </div>
-            <div id="bioForm">
-                <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
-                    required></textarea>
-                <br>
-                <textarea id="languages" name="languages" rows="4" cols="50"
-                    placeholder="Enter the languages you speak here" required></textarea>
+            <div id="licenseContainer">
+                <p>
+                <h1>Current Licenses <button type="button" id="licenseButton" onclick="showLicense()">Edit</button></h1>
+                </p>
+                <table id="licensesTable">
+                    <thead>
+                        <tr>
+                            <th>License State</th>
+                            <th>License Number</th>
+                            <th>Expiration Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (hasLicenses) { %>
+                            <% licenses.forEach(function(license) { %>
+                                <tr id="license-<%= license.agentlicenseid %>">
+                                    <td>
+                                        <%= license.licenseState %>
+                                    </td>
+                                    <td>
+                                        <%= license.licenseNumber %>
+                                    </td>
+                                    <td>
+                                        <%= license.licenseExpirationDate %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                                    <% } else { %>
+                                        <tr id="noLicenseRow">
+                                            <td colspan="3">No licenses found.</td>
+                                        </tr>
+                                        <% } %>
+                    </tbody>
+                </table>
+                <form id="licenseForm">
+                    <input type="text" id="licenseState" name="licenseState" placeholder="License State" maxlength="2"
+                        minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
+                        title="Enter a valid US state abbreviation">
+                    <input type="text" id="licenseNumber" name="licenseNumber" placeholder="License Number" required>
+                    <input type="date" id="licenseExpirationDate" name="licenseExpirationDate"
+                        placeholder="License Expiration Date" required>
+                    <button type="button" id="licenseAdd" disabled>Add</button>
+                    <span id="licStatus"></span>
+                </form>
             </div>
-            <span id="bioStatus"></span>
+            <div id="transactionContainer">
+                <p>
+                <h1>Current Transaction(s) <button type="button" class="hoverStyle" id="transactionButton"
+                        onclick="showTransactions()">Edit</button></h1>
+                </p>
+                <table id="transactionTable">
+                    <thead>
+                        <tr>
+                            <th>Transaction Date</th>
+                            <th>Transaction Amount</th>
+                            <th>Transaction Property Type</th>
+                            <th>Transaction Level Of Service</th>
+                            <th>Transaction Compensation Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (hasTransactions) { %>
+                            <% transactions.forEach(function(transaction) { %>
+                                <tr id="transaction-<%= transaction.agenttransactionid %>">
+                                    <td>
+                                        <%= transaction.transactionDate %>
+                                    </td>
+                                    <td>
+                                        <%= transaction.transactionAmount %>
+                                    </td>
+                                    <td>
+                                        <%= transaction.PropertyType %>
+                                    </td>
+                                    <td>
+                                        <%= transaction.LevelOfService %>
+                                    </td>
+                                    <td>
+                                        <%= transaction.CompensationType %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                                    <% } else { %>
+                                        <tr id="noTransactionRow">
+                                            <td colspan="5">No transactions found.</td>
+                                        </tr>
+                                        <% } %>
+                    </tbody>
+                </table>
+                <form id="transactionForm">
+                    <input type="date" id="transactionDate" name="transactionDate" placeholder="Transaction Date"
+                        required>
+                    <input type="number" id="transactionAmount" name="transactionAmount"
+                        placeholder="Transaction Amount" required>
+                    <input type="text" id="propertyType" name="PropertyType" placeholder="Transaction Property Type"
+                        required>
+                    <input type="text" id="levelOfService" name="LevelOfService"
+                        placeholder="Transaction Level Of Service" required>
+                    <input type="text" id="compensationType" name="CompensationType"
+                        placeholder="Transaction Compensation Type" required>
+                    <button type="button" id="transactionAdd">Add</button>
+                </form>
+            </div>
         </div>
-        <div class="zipCode-container" id="profileZips">
-            <h1 id>Zip Codes<button type="button" class="hoverStyle" id="zipCodeButton"
-                    onclick="showZipCodes()">Edit</button></h1>
-            <br>
-            <div id="ownedZipCodes"></div>
-            <div id="zipCodeForm">
-                <p>Select Zip Codes in which you would like offers</p>
+        <div id="profileGrid2">
+            <div id="BioContainer">
+                <h1>Profile for <%= firstname %>
+                        <%= lastname %>
+                </h1>
+                <h1>About <%= firstname %> <button type="button" class="hoverStyle" id="bioButton"
+                            onclick="showBio()">Edit</button></h1>
+                <div id="bioDiv">
+                    <p id="bioText">No Biography</p><br>
+                    <h3>Languages:</h3><br>
+                    <p id="languagesText">No Languages</p>
+                </div>
+                <div id="bioForm">
+                    <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Enter your biography here"
+                        required></textarea>
+                    <br>
+                    <textarea id="languages" name="languages" rows="4" cols="50"
+                        placeholder="Enter the languages you speak here" required></textarea>
+                </div>
+                <span id="bioStatus"></span>
+            </div>
+            <div class="zipCode-container" id="profileZips">
+                <h1 id>Zip Codes<button type="button" class="hoverStyle" id="zipCodeButton"
+                        onclick="showZipCodes()">Edit</button></h1>
                 <br>
-                <label for="stateSelect">States:</label>
-                <select id="stateSelect" onchange="populateCities();"></select>
-                <label for="citySelect">Cities:</label>
-                <select id="citySelect" onchange="populateZipCodes();"></select>
-                <div class="grid-container">
-                    <div class="grid-available">
-                        <p>Available Zip Codes</p>
-                        <div class="container">
-                            <div id="availabeZipCodesContainer" class="box1">
-                                <!-- JavaScript will populate this container -->
+                <div id="ownedZipCodes"></div>
+                <div id="zipCodeForm">
+                    <p>Select Zip Codes in which you would like offers</p>
+                    <br>
+                    <label for="stateSelect">States:</label>
+                    <select id="stateSelect" onchange="populateCities();"></select>
+                    <label for="citySelect">Cities:</label>
+                    <select id="citySelect" onchange="populateZipCodes();"></select>
+                    <div class="grid-container">
+                        <div class="grid-available">
+                            <p>Available Zip Codes</p>
+                            <div class="container">
+                                <div id="availabeZipCodesContainer" class="box1">
+                                    <!-- JavaScript will populate this container -->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="grid-action">
-                        <button type="button" class="button" onclick="addSelection()">Add --> </button>
-                        <button type="button" class="button" onclick="removeSelection()"> <-- Remove</button>
-                    </div>
-                    <div class="grid-selected">
-                        <p>Selected Zip Codes</p>
-                        <div class="container">
-                            <div id="selectedZipCodesContainer" class="box2">
-                                <!-- JavaScript will populate this container -->
+                        <div class="grid-action">
+                            <button type="button" class="button" onclick="addSelection()">Add --> </button>
+                            <button type="button" class="button" onclick="removeSelection()"> <-- Remove</button>
+                        </div>
+                        <div class="grid-selected">
+                            <p>Selected Zip Codes</p>
+                            <div class="container">
+                                <div id="selectedZipCodesContainer" class="box2">
+                                    <!-- JavaScript will populate this container -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         <script src="/profile_a.js"></script>
+        <script src="/session.js"></script>
 </body>
 
 </html>
