@@ -258,7 +258,9 @@ function saveOffer(event) {
     })
     .then(result => {
         console.log('Success:', result);
-        // Optionally, perform any actions here after successful submission
+        const offerForm = document.getElementById('offerForm');
+        offerForm.style.display = 'none';
+            // Optionally, perform any actions here after successful submission
     })
     .catch(error => {
         console.error('Error:', error);
