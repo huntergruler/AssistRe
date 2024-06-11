@@ -67,15 +67,15 @@ function getNewBuyerRequests() {
 };
 
 function getOutstandingOffers() {
-    const newRequests = document.getElementById('newRequests');
-    newRequests.innerHTML = '';
+    const offeredRequests = document.getElementById('offeredRequests');
+    offeredRequests.innerHTML = '';
     fetch(`/getOutstandingOffers`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {
                 const div = document.createElement("div");
                 div.textContent = 'No outstanding offers';
-                newRequests.appendChild(div);
+                offeredRequests.appendChild(div);
             }
             else {
 
@@ -91,7 +91,6 @@ function getOutstandingOffers() {
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
-                    // newRequests.appendChild(input);
                     offeredRequests.appendChild(div);
                 });
             }
