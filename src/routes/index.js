@@ -165,11 +165,11 @@ router.post('/saveoffer', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    const matchStatus = 'Offered';
+    const offerStatus = 'Offered';
     const { buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
     // console.log('Offer:', userid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
     insertQuery = 'REPLACE INTO AgentOffers (agentid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-    db.query(insertQuery, [userid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, matchStatus], (error, result) => {
+    db.query(insertQuery, [userid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus], (error, result) => {
       if (error) {
         console.error('Error saving offer:', error);
         return res.status(500).json({ error: 'Internal server error' });
