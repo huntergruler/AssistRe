@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
-    const formcontainer = document.getElementById('form-container');
-    formcontainer.style.display = 'none';
+    const offerForm = document.getElementById('offerForm');
+    offerForm.style.display = 'none';
     document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
     // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     // var time_zone = Date().time_zone;
@@ -115,8 +115,8 @@ function newRequestDetail(buyerid) {
 }
 
 function makeOffer(buyerid) {
-    const formcontainer = document.getElementById('form-container');
-    formcontainer.style.display = 'block';
+    const offerForm = document.getElementById('offerForm');
+    offerForm.style.display = 'block';
 }
 
 function populateLevelOfService() {
@@ -258,8 +258,8 @@ function saveOffer(event) {
     })
     .then(result => {
         console.log('Success:', result);
-        const formcontainer = document.getElementById('form-container');
-        formcontainer.style.display = 'none';
+        const offerForm = document.getElementById('offerForm');
+        offerForm.style.display = 'none';
             // Optionally, perform any actions here after successful submission
     })
     .catch(error => {
