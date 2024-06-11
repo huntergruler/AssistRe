@@ -780,10 +780,10 @@ router.post('/api/saveoffer', (req, res) => {
   // }
   // else {
   const userid = req.session.userid;
-  const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
-  console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
-  insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
-  db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (err, result) => {
+  const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
+  console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
+  insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
+  db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (err, result) => {
     if (error) {
       console.error('Error updating buyer profile:', error);
       return res.status(500).send('Server error');
