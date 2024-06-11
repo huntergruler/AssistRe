@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
+    // Open the default active tab when the page loads
+    document.getElementById("defaultOpen").click();
 });
 
-// Open the default active tab when the page loads
-document.getElementById("defaultOpen").click();
 
 function openTab(evt, tabName) {
     // Hide all tab content elements
