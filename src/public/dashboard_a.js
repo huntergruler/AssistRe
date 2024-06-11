@@ -233,7 +233,7 @@ function saveOffer(event) {
         offerDesc: offerDesc
     };
 
-    console.log(offerData);
+    console.log("retainerCreditY",retainerCredit);
     // Send the data to your backend for saving it into a database
     fetch('/api/saveoffer', {
         method: 'POST',
