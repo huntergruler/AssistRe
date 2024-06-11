@@ -69,6 +69,7 @@ function getNewBuyerRequests() {
 function getOutstandingOffers() {
     const offeredRequests = document.getElementById('offeredRequests');
     offeredRequests.innerHTML = '';
+    console.log('getOutstandingOffers');
     fetch(`/getOutstandingOffers`)
         .then(response => response.json())
         .then(data => {
