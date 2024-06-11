@@ -774,15 +774,13 @@ router.post('/api/offices', (req, res) => {
 });
 
 router.post('/api/saveoffer', (req, res) => {
-  if (!req.session.user) {
-    req.session.message = 'Please login to save changes';
-    res.redirect('/');
-  }
-  else {
-  console.log('Save Offer:', req.body);
+  // if (!req.session.user) {
+  //   req.session.message = 'Please login to save changes';
+  //   res.redirect('/');
+  // }
+  // else {
   const userid = req.session.userid;
   const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
-  console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
 
   insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
   console.log('Insert Query:', insertQuery);
@@ -792,9 +790,9 @@ router.post('/api/saveoffer', (req, res) => {
   //     return res.status(500).send('Server error');
   //   }
 
-    res.send({ success: true });
+    // res.send({ success: true });
   // });
-}
+// }
 });
 
 router.delete('/api/licenses/:id', (req, res) => {
