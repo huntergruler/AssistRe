@@ -1,4 +1,4 @@
-/* Hide all content elements by default */
+/* Hide all tab content elements except the default active tab */
 .tabcontent {
     display: none;
   }
