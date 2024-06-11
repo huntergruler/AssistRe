@@ -27,6 +27,14 @@ function openTab(evt, tabName) {
     evt.currentTarget.classList.add("active");
 }
 
+function savetest() {
+    console.log('Saving offer defaults');
+    // Get values from input fields
+    const offerType = document.getElementById('offerType').value;
+    console.log(offerType);
+    
+}   
+
 function saveOfferDefaults(event) {
     event.preventDefault();
     console.log('Saving offer defaults');
