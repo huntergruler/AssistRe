@@ -775,9 +775,10 @@ router.post('/api/offices', (req, res) => {
 
 router.post('/saveOffer', (req, res) => {
   const userid = req.session.userid;
-  const { buyerUserId, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments } = req.body;
-  insertQuery = 'INSERT INTO AgentOffers (userid, buyerUserId, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-  db.query(insertQuery, [userid, buyerUserId, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments], (err, result) => {
+  const { buyerid, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments } = req.body;
+  console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments);
+  insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+  db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments], (err, result) => {
     if (err) throw err;
     agentofferid = result.insertId;});
 });

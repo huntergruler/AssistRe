@@ -57,7 +57,7 @@ function selectItem(buyerid) {
 function newRequestDetail(buyerid) {
     const detailColumn = document.getElementById('newRequestDetail');
     const detailButtons = document.getElementById('detailButtons');
-    document.getElementById('buyerUserId').value = buyerid;
+    document.getElementById('buyerid').value = buyerid;
 
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
