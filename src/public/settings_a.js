@@ -41,12 +41,12 @@ function savetest() {
     const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
     // Get values from input fields
     let retainerCredit = null;
-    radioButtons.forEach(radioButton => {
-        if (radioButton.checked) {
-            // This radio button is selected
-            retainerCredit = radioButton.value;
-        }
-    });
+    // radioButtons.forEach(radioButton => {
+    //     if (radioButton.checked) {
+    //         // This radio button is selected
+    //         retainerCredit = radioButton.value;
+    //     }
+    // });
     console.log('offerType: ' + offerType, 'levelOfService: ' + levelOfService, 'compensationType: ' + compensationType, 'compensationAmount: ' + compensationAmount, 'retainerFee: ' + retainerFee, 'lengthOfService: ' + lengthOfService, 'expirationCompTimeFrame: ' + expirationCompTimeFrame);
     
 }   
