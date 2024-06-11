@@ -66,6 +66,39 @@ function getNewBuyerRequests() {
         .catch(error => console.error('Error checking user:', error));
 };
 
+function getOutstandingOffers() {
+    const newRequests = document.getElementById('newRequests');
+    newRequests.innerHTML = '';
+    fetch(`/getOutstandingOffers`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length === 0) {
+                const div = document.createElement("div");
+                div.textContent = 'No outstanding offers';
+                newRequests.appendChild(div);
+            }
+            else {
+
+                data.forEach(request => {
+                    const div = document.createElement("div");
+                    div.innerHTML = `${request.buyerType}<br>
+                    $${request.price_min} to $${request.price_max}<br>
+                    Prequalified? ${request.prequalified}<br>
+                    Purchase Timeline: ${request.timeFrame}`;
+                    div.addEventListener('click', () => selectItem(request.buyerid, request.buyerrequestid));
+                    div.className = "form-row container-left";
+                    div.id = "buyerid" + request.buyerid;
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    // newRequests.appendChild(input);
+                    newRequests.appendChild(div);
+                });
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+};
+
 function selectItem(buyerid, buyerrequestid) {
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;

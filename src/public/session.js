@@ -17,7 +17,7 @@ function resetSessionTimer() {
 // Handle session timeout
 function sessionTimeout() {
     // Redirect the user to the login page
-    window.location.href = '/login';
+    window.location.href = '/';
 }
 
 // Start the session timer when the user is authenticated or interacts with the application
