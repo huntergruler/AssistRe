@@ -209,8 +209,9 @@ function hideHelp() {
 }
 
 function cancel() {
-    const makeoffercontainer = document.getElementById('makeoffercontainer');
+    const makeoffercontainer = document.getElementById('offerForm');
     makeoffercontainer.style.display = 'none';
+    clearForm()
 }
 
 function clearForm() {
