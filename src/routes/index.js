@@ -123,9 +123,10 @@ router.get('/getNewRequests', (req, res) => {
     const buyerid = req.query.buyerid;
     const userid = req.session.userid;
     if (!buyerid) {
-      var query = `select bam.agentid, bam.buyerid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
+      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
                      from AgentBuyerMatch bam
-                    where bam.agentid = ?`;
+                    where bam.agentid = ?
+                      and bam.matchstatus = 'New'`;
       db.query(query, [userid], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
@@ -774,23 +775,31 @@ router.post('/api/offices', (req, res) => {
 });
 
 router.post('/saveoffer', (req, res) => {
-  // if (!req.session.user) {
-  //   req.session.message = 'Please login to save changes';
-  //   res.redirect('/');
-  // }
-  // else {
-  const userid = req.session.userid;
-  const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
-  console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
-  insertQuery = 'REPLACE INTO AgentOffers (agentid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?)';
-  db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (error, result) => {
-    if (error) {
-      console.error('Error saving offer:', error);
-      return res.status(500).json({ error: 'Internal server error' });
-    }
-    res.json({ success: true });
-  });
-// }
+  if (!req.session.user) {
+    req.session.message = 'Please login to save changes';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+    const matchStatus = 'Offered';
+    const { buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
+    // console.log('Offer:', userid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
+    insertQuery = 'REPLACE INTO AgentOffers (agentid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, matchStatus) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+    db.query(insertQuery, [userid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, matchStatus], (error, result) => {
+      if (error) {
+        console.error('Error saving offer:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      updateBuyerMatch = 'UPDATE AgentBuyerMatch SET matchstatus = "Offered" WHERE agentid = ? and buyerid = ? and buyerrequestid = ?';
+      db.query(updateBuyerMatch, [userid, buyerid, buyerrequestid], (error, result) => {
+        if (error) {
+          console.error('Error updating buyer match:', error);
+          return res.status(500).json({ error: 'Internal server error' });
+        }
+        res.json({ success: true });
+      });
+    });
+  }
 });
 
 router.delete('/api/licenses/:id', (req, res) => {

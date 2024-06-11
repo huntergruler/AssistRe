@@ -225,6 +225,8 @@ function saveOffer(event) {
     const expirationCompensation = document.getElementById('expirationCompensation').value;
     const offerDesc = document.getElementById('offerDesc').value;
     const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
+    const buyerrequestid = document.getElementById('buyerrequestid').value;
+    const buyerid = document.getElementById('buyerid').value;
 
     // Loop through each radio button in the group
     let retainerCredit = null;
@@ -237,7 +239,8 @@ function saveOffer(event) {
    
     // Create an object with the gathered data
     const offerData = {
-        buyerid: document.getElementById('buyerid').value,
+        buyerid: buyerid,
+        buyerrequestid: buyerrequestid,
         offerType: offerType,
         levelOfService: levelOfService,
         compensationType: compensationType,
