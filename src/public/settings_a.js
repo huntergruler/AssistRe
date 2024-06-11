@@ -51,14 +51,16 @@ function populateOfferDefaults() {
             document.getElementById('expirationCompensation').value = data.expirationCompensation;
             document.getElementById('offerDesc').value = data.offerDesc;
             console.log(data.retainerCredited);
+            console.log('Retainer credited from server:', data.retainerCredited);
             const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
             radioButtons.forEach(radioButton => {
-                console.log(radioButton.id, radioButton.value, data.retainerCredited);
+                console.log('Radio button id:', radioButton.id, 'Value:', radioButton.value);
                 if (radioButton.value === data.retainerCredited) {
+                    console.log('Match found:', radioButton.id, radioButton.value);
                     radioButton.checked = true;
                 }
             });
-        })
+                })
 }
 
 function saveOfferDefaults(event) {
