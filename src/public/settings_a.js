@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', function () {
+    populateLevelOfService();
+    populateOfferTypes();
+    populateCompensationTypes();
+
 // Open the default active tab when the page loads
 document.getElementById("defaultOpen").click();
 
@@ -81,3 +86,99 @@ function openTab(evt, tabName) {
         // Optionally, display an error message to the user
     });
 }
+
+function populateLevelOfService() {
+    const levelOfService = document.getElementById('levelOfService');
+    const defaultOption = document.createElement('option');
+    levelOfService.innerHTML = '';
+    defaultOption.textContent = 'Select a Level of Service';
+    defaultOption.value = '';
+    levelOfService.appendChild(defaultOption);
+
+    fetch(`/get-levelofservice`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let option = document.createElement('option');
+                // if (levelOfServiceDisplay.replace("Service Level: ", "") == item.levelOfService) {
+                //     option.selected = true;
+                // }
+                option.value = item.levelOfService;
+                option.textContent = item.levelOfService;
+                levelOfService.appendChild(option);
+            });
+        })
+};
+
+function populateOfferTypes() {
+    const offerType = document.getElementById('offerType');
+    const defaultOption = document.createElement('option');
+    offerType.innerHTML = '';
+    defaultOption.textContent = 'Select an Offer Type';
+    defaultOption.value = '';
+    offerType.appendChild(defaultOption);
+
+    fetch(`/get-offertypes`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let option = document.createElement('option');
+                // if (offerTypeDisplay.replace("Offer Type: ", "") == item.offerType) {
+                //     option.selected = true;
+                // }
+                option.value = item.offerType;
+                option.textContent = item.offerType;
+                offerType.appendChild(option);
+            });
+        })
+}
+
+function populateCompensationTypes() {
+    const compensationType = document.getElementById('compensationType');
+    const defaultOption = document.createElement('option');
+    compensationType.innerHTML = '';
+    defaultOption.textContent = 'Select a Compensation Type';
+    defaultOption.value = '';
+    compensationType.appendChild(defaultOption);
+
+    fetch(`/get-compensationtypes`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let option = document.createElement('option');
+                // if (compensationTypeDisplay.replace("Compensation Type: ", "") == item.compensationType) {
+                //     option.selected = true;
+                // }
+                option.value = item.compensationType;
+                option.textContent = item.compensationType;
+                compensationType.appendChild(option);
+            });
+        })
+}
+
+function updateCountdown() {
+    const maxLength = 500;
+    const currentLength = document.getElementById('offerDesc').value.length;
+    const remaining = maxLength - currentLength;
+    const countdownElement = document.getElementById('countdown');
+    countdownElement.textContent = `${remaining} characters remaining`;
+}
+
+function showHelp() {
+    document.getElementById('help-dialog').style.display = 'block';
+}
+
+function hideHelp() {
+    document.getElementById('help-dialog').style.display = 'none';
+}
+
+function cancel() {
+    const makeoffercontainer = document.getElementById('offerForm');
+    makeoffercontainer.style.display = 'none';
+    clearForm()
+}
+
+function clearForm() {
+    document.getElementById('offerForm').reset();
+}
+
