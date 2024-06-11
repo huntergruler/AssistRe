@@ -899,7 +899,7 @@ router.get('/settings_a', (req, res) => {
     res.redirect('/');
   }
   else {
-    res.render('settings_a');
+    res.render('settings_a', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
   }
 });
 
