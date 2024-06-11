@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
-    loadOfferDefaults();
+    populateOfferDefaults();
     // Open the default active tab when the page loads
     document.getElementById("defaultOpen").click();
 });
@@ -28,26 +28,31 @@ function openTab(evt, tabName) {
     evt.currentTarget.classList.add("active");
 }
 
-function loadOfferDefaults() {
+function populateOfferDefaults() {
+    const levelOfService = document.getElementById('levelOfService');
+    const defaultOption = document.createElement('option');
+    levelOfService.innerHTML = '';
+    defaultOption.textContent = 'Select a Level of Service';
+    defaultOption.value = '';
     fetch(`/get-offerdefaults`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            document.getElementById('offerType').value = data.offerType;
-            document.getElementById('levelOfService').value = data.levelOfService;
-            document.getElementById('compensationType').value = data.compensationType;
-            document.getElementById('compensationAmount').value = data.compensationAmount;
-            document.getElementById('retainerFee').value = data.retainerFee;
-            document.getElementById('lengthOfService').value = data.lengthOfService;
-            document.getElementById('expirationCompTimeFrame').value = data.expirationCompTimeFrame;
-            document.getElementById('expirationCompensation').value = data.expirationCompensation;
-            document.getElementById('offerDesc').value = data.offerDesc;
-            const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
-            radioButtons.forEach(radioButton => {
-                if (radioButton.value === data.retainerCredit) {
-                    radioButton.checked = true;
-                }
-            });
+            // document.getElementById('offerType').value = data.offerType;
+            // document.getElementById('levelOfService').value = data.levelOfService;
+            // document.getElementById('compensationType').value = data.compensationType;
+            // document.getElementById('compensationAmount').value = data.compensationAmount;
+            // document.getElementById('retainerFee').value = data.retainerFee;
+            // document.getElementById('lengthOfService').value = data.lengthOfService;
+            // document.getElementById('expirationCompTimeFrame').value = data.expirationCompTimeFrame;
+            // document.getElementById('expirationCompensation').value = data.expirationCompensation;
+            // document.getElementById('offerDesc').value = data.offerDesc;
+            // const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
+            // radioButtons.forEach(radioButton => {
+            //     if (radioButton.value === data.retainerCredit) {
+            //         radioButton.checked = true;
+            //     }
+            // });
         })
 }
 
