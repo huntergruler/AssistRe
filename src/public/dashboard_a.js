@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
+    const offerForm = document.getElementById('offerForm');
+    offerForm.style.display = 'none';
     const makeoffercontainer = document.getElementById('makeoffercontainer');
     makeoffercontainer.style.display = 'none';
     document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
