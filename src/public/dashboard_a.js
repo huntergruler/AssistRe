@@ -212,20 +212,22 @@ function saveOffer(event) {
     const compensationType = document.getElementById('compensationType').value;
     const compensationAmount = document.getElementById('compensationAmount').value;
     const retainerFee = document.getElementById('retainerFee').value;
-    const retainerCreditY = document.getElementById('retainerCreditY').value;
-    const retainerCreditN = document.getElementById('retainerCreditN').value;
     const lengthOfService = document.getElementById('lengthOfService').value;
     const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
     const expirationCompensation = document.getElementById('expirationCompensation').value;
     const offerDesc = document.getElementById('offerDesc').value;
+    const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
 
-    console.log("retainerCreditY",retainerCreditY, "retainerCreditN",retainerCreditN);
-    if (retainerCreditY == "on") {
-        retainerCredit = "Yes";
-    }
-    else {
-        retainerCredit = "No";
-    }
+    // Loop through each radio button in the group
+    let retainerCredit = null;
+    radioButtons.forEach(radioButton => {
+        if (radioButton.checked) {
+            // This radio button is selected
+            retainerCredit = radioButton.value;
+        }
+    });
+    
+    console.log("retainerCredit",retainerCredit);
     // Create an object with the gathered data
     const offerData = {
         buyerid: document.getElementById('buyerid').value,
