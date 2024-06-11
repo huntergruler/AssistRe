@@ -272,6 +272,8 @@ function saveOffer(event) {
         console.log('Success:', result);
         const offerForm = document.getElementById('offerForm');
         offerForm.style.display = 'none';
+        const requestDetails = document.getElementById('requestDetails');
+        requestDetails.style.display = 'none';
 
         getNewRequests();
         // Optionally, perform any actions here after successful submission
