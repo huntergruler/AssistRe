@@ -241,14 +241,18 @@ function saveOffer() {
         },
         body: JSON.stringify(offerData)
     })
-    .then(response => {
-        console.log('GOTHEREE TOOOO',response);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        window.location.reload();
-            })
-    .then(result => {
-        console.log('Success:', result);
-    })
+    console.log('GOTHEREE TOOOO',response);
+    // .then(response => {
+    //     console.log('GOTHEREE TOOOO',response);
+    //     if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //     }
+    //     window.location.reload();
+    //         })
+    // .then(result => {
+    //     console.log('Success:', result);
+    // })
+    // .catch(error => {
+    //     console.log('GOT HERE!!!!');
+    // });
 }
