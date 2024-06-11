@@ -190,23 +190,23 @@ router.post('/saveOfferDefaults', (req, res) => {
   }
   else {
     console.log('Save Offer Defaults:', req.body);
-    const userid = req.session.userid;
-    const { offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
-    insertQuery = 'REPLACE INTO AgentOfferDefaults (agentid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) values (?,?,?,?,?,?,?,?,?,?,?,?)';
-    db.query(insertQuery, [userid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus], (error, result) => {
-      if (error) {
-        console.error('Error saving offer:', error);
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-      // updateBuyerMatch = 'UPDATE AgentBuyerMatch SET matchStatus = "Offered" WHERE agentid = ? and buyerid = ? and buyerrequestid = ?';
-      // db.query(updateBuyerMatch, [userid, buyerid, buyerrequestid], (error, result) => {
-      //   if (error) {
-      //     console.error('Error updating buyer match:', error);
-      //     return res.status(500).json({ error: 'Internal server error' });
-      //   }
-        res.json({ success: true });
-      // });
-    });
+    // const userid = req.session.userid;
+    // const { offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
+    // insertQuery = 'REPLACE INTO AgentOfferDefaults (agentid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) values (?,?,?,?,?,?,?,?,?,?,?,?)';
+    // db.query(insertQuery, [userid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus], (error, result) => {
+    //   if (error) {
+    //     console.error('Error saving offer:', error);
+    //     return res.status(500).json({ error: 'Internal server error' });
+    //   }
+    //   // updateBuyerMatch = 'UPDATE AgentBuyerMatch SET matchStatus = "Offered" WHERE agentid = ? and buyerid = ? and buyerrequestid = ?';
+    //   // db.query(updateBuyerMatch, [userid, buyerid, buyerrequestid], (error, result) => {
+    //   //   if (error) {
+    //   //     console.error('Error updating buyer match:', error);
+    //   //     return res.status(500).json({ error: 'Internal server error' });
+    //   //   }
+    //     res.json({ success: true });
+    //   // });
+    // });
   }
 });
 
