@@ -117,7 +117,7 @@ function newRequestDetail(buyerid) {
 function makeOffer(buyerid) {
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'block';
-    offerForm.querySelector('#buyerid').value = buyerid;
+    offerForm.querySelector('#buyerUserId').value = buyerid;
 }
 
 function populateLevelOfService() {
