@@ -102,6 +102,11 @@ router.post('/register', (req, res) => {
   });
 });
 
+router.post('/api/saveoffer', (req, res) => {
+  console.log('Save Offer route reached');
+  res.sendStatus(200); // Send a simple response to test if the route is reached
+});
+
 // Route to get the buyer's profile
 router.get('/dashboard_a', (req, res) => {
   if (!req.session.user) {
@@ -771,11 +776,6 @@ router.post('/api/offices', (req, res) => {
     agentofficeid = result.insertId;
     res.json({ agentofficeid, officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState, userid });
   });
-});
-
-router.post('/api/saveoffer', (req, res) => {
-  console.log('Save Offer route reached');
-  res.sendStatus(200); // Send a simple response to test if the route is reached
 });
 
 // router.post('/api/saveoffer', (req, res) => {
