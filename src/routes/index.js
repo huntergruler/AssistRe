@@ -780,7 +780,6 @@ router.post('/api/saveoffer', (req, res) => {
   // }
   // else {
   const userid = req.session.userid;
-  console.log('User ID:', userid);
   const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
 
   insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
