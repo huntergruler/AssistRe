@@ -159,7 +159,7 @@ router.get('/getNewBuyerRequests', (req, res) => {
 
 // Route to get the buyer's profile
 router.get('/getRequests', (req, res) => {
-  var datatype = req.query.datatype;
+  const datatype = req.query.datatype;
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
