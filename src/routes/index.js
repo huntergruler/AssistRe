@@ -202,7 +202,7 @@ router.post('/save-OfferDefaults', (req, res) => {
   }
 });
 
-router.post('/get-OfferDefaults', (req, res) => {
+router.get('/get-OfferDefaults', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to change setting';
     res.redirect('/');
