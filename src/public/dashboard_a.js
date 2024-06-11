@@ -233,24 +233,24 @@ function saveOffer() {
     };
 
     console.log(offerData);
-    // Send the data to your backend for saving it into a database
-    fetch('/api/saveoffer', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(offerData)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        window.location.reload();
-            })
-    .then(result => {
-        console.log('Success:', result);
-    })
-    .catch(error => {
-        console.log('GOT HERE!!!!');
-    });
+    // // Send the data to your backend for saving it into a database
+    // fetch('/api/saveoffer', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(offerData)
+    // })
+    // .then(response => {
+    //     if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //     }
+    //     window.location.reload();
+    //         })
+    // .then(result => {
+    //     console.log('Success:', result);
+    // })
+    // .catch(error => {
+    //     console.log('GOT HERE!!!!');
+    // });
 }
