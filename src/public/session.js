@@ -1,5 +1,5 @@
 // Set the session timeout duration in milliseconds (e.g., 30 minutes)
-const sessionTimeoutDuration = 30 * 60 * 1000; // 30 minutes
+const sessionTimeoutDuration = 5 * 60 * 1000; // 30 minutes
 
 let sessionTimer;
 
