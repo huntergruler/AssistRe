@@ -92,7 +92,7 @@ function getOutstandingOffers() {
                         this.classList.toggle("selected");
                     };
                     // newRequests.appendChild(input);
-                    newRequests.appendChild(div);
+                    offeredRequests.appendChild(div);
                 });
             }
         })
