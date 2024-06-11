@@ -279,9 +279,11 @@ function saveOffer(event) {
         const newRequestDetail = document.getElementById('newRequestDetail');
         const detailButtons = document.getElementById('detailButtons');
 
-        offerForm.style.display = 'none';
         newRequestDetail.innerHTML = '';
         detailButtons.innerHTML = '';
+        offerForm.style.display = 'none';
+        newRequestDetail.display = 'none';
+        detailButtons.display = 'none';
         clearForm();
 
         getNewRequests();
