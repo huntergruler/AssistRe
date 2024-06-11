@@ -205,7 +205,7 @@ function hideHelp() {
 }
 
 function saveOffer(event) {
-    // event.preventDefault();
+    event.preventDefault();
     // Get values from input fields
     const offerType = document.getElementById('offerType').value;
     const levelOfService = document.getElementById('levelOfService').value;
