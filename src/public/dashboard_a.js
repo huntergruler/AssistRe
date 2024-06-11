@@ -119,9 +119,9 @@ function newRequestDetail(buyerid, buyerrequestid) {
 }
 
 function makeOffer(buyerid) {
+    populateOfferDefaults();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'block';
-    populateOfferDefaults();
 }
 
 function populateLevelOfService() {
