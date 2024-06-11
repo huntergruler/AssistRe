@@ -53,7 +53,7 @@ function populateOfferDefaults() {
             console.log(data.retainerCredited);
             const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
             radioButtons.forEach(radioButton => {
-                console.log(radioButton.value, data.retainerCredited);
+                console.log(radioButton.id, radioButton.value, data.retainerCredited);
                 if (radioButton.value === data.retainerCredited) {
                     radioButton.checked = true;
                 }
