@@ -61,6 +61,7 @@
         </div>
         <div class="container-right col-md-4">
             <div class="form-container">
+                <input type="hidden" id="buyerUserId" name="buyerUserId">
                 <form id="offerForm" style="padding-top: 5px;">
                     <div class="form-row container-right">
                         <label for="offerType" class="col-md-5 col-form-label">Offer Type</label>
@@ -127,7 +128,7 @@
                     <div class="form-row container-right">
                         <div class="col-md-4">
                             <button type="submit" class="btn btn-primary btn-sm" id="submitOffer"
-                                onclick="saveOffer()">Submit Offer</button>
+                                >Submit Offer</button>
                         </div>
                         <div class="col-md-4">
                             <button type="button" class="btn btn-secondary btn-sm" id="clearOffer">Cancel</button>
