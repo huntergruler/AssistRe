@@ -215,6 +215,7 @@ router.post('/get-OfferDefaults', (req, res) => {
         console.error('Error fetching offer defaults:', error);
         return res.status(500).json({ error: 'Internal server error' });
       }
+      console.log('Offer Defaults:', results);
       res.json(results[0]);
     });
   }
