@@ -50,7 +50,7 @@ function populateOfferDefaults() {
             document.getElementById('expirationCompTimeFrame').value = data.expirationCompTimeFrame;
             document.getElementById('expirationCompensation').value = data.expirationCompensation;
             document.getElementById('offerDesc').value = data.offerDesc;
-            console.log(data);
+            console.log(data.retainerCredit);
             const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
             radioButtons.forEach(radioButton => {
                 if (radioButton.value === data.retainerCredit) {
