@@ -29,9 +29,18 @@ function openTab(evt, tabName) {
 
 function savetest() {
     console.log('Saving offer defaults');
-    // Get values from input fields
     const offerType = document.getElementById('offerType').value;
-    console.log(offerType);
+    const levelOfService = document.getElementById('levelOfService').value;
+    const compensationType = document.getElementById('compensationType').value;
+    const compensationAmount = document.getElementById('compensationAmount').value;
+    const retainerFee = document.getElementById('retainerFee').value;
+    const lengthOfService = document.getElementById('lengthOfService').value;
+    const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
+    const expirationCompensation = document.getElementById('expirationCompensation').value;
+    const offerDesc = document.getElementById('offerDesc').value;
+    const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
+    // Get values from input fields
+    console.log('Offer Type: ' + offerType, 'Level of Service: ' + levelOfService, 'Compensation Type: ' + compensationType, 'Compensation Amount: ' + compensationAmount, 'Retainer Fee: ' + retainerFee, 'Length of Service: ' + lengthOfService, 'Expiration Compensation Time Frame: ' + expirationCompTimeFrame, 'Expiration Compensation: ' + expirationCompensation, 'Offer Description: ' + offerDesc);
     
 }   
 
