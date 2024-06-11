@@ -47,7 +47,6 @@ function getNewRequests() {
 function selectItem(buyerid) {
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
-    console.log(selectedBuyerId);
     const rows = document.querySelectorAll('#newRequests .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
@@ -58,7 +57,7 @@ function selectItem(buyerid) {
 function newRequestDetail(buyerid) {
     const detailColumn = document.getElementById('newRequestDetail');
     const detailButtons = document.getElementById('detailButtons');
-    document.getElementById('buyerUserid').value = buyerid;
+    document.getElementById('buyerUserId').value = buyerid;
 
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
