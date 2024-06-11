@@ -75,44 +75,44 @@ function savetest() {
 //         }
 //     });
 
-    // Create an object with the gathered data
-    const offerData = {
-        offerType: offerType,
-        levelOfService: levelOfService,
-        compensationType: compensationType,
-        compensationAmount: compensationAmount,
-        retainerFee: retainerFee,
-        retainerCredit: retainerCredit,
-        lengthOfService: lengthOfService,
-        expirationCompTimeFrame: expirationCompTimeFrame,
-        expirationCompensation: expirationCompensation,
-        offerDesc: offerDesc
-    };
+//     // Create an object with the gathered data
+//     const offerData = {
+//         offerType: offerType,
+//         levelOfService: levelOfService,
+//         compensationType: compensationType,
+//         compensationAmount: compensationAmount,
+//         retainerFee: retainerFee,
+//         retainerCredit: retainerCredit,
+//         lengthOfService: lengthOfService,
+//         expirationCompTimeFrame: expirationCompTimeFrame,
+//         expirationCompensation: expirationCompensation,
+//         offerDesc: offerDesc
+//     };
 
-    // Send the data to your backend for saving it into a database
-    fetch('/saveOfferDefaults', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(offerData)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(result => {
-            console.log('Success:', result);
-            alert('Offer defaults saved successfully');
-            // Optionally, perform any actions here after successful submission
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Optionally, display an error message to the user
-        });
-}
+//     // Send the data to your backend for saving it into a database
+//     fetch('/saveOfferDefaults', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(offerData)
+//     })
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Network response was not ok');
+//             }
+//             return response.json();
+//         })
+//         .then(result => {
+//             console.log('Success:', result);
+//             alert('Offer defaults saved successfully');
+//             // Optionally, perform any actions here after successful submission
+//         })
+//         .catch(error => {
+//             console.error('Error:', error);
+//             // Optionally, display an error message to the user
+//         });
+// }
 
 function populateLevelOfService() {
     const levelOfService = document.getElementById('levelOfService');
