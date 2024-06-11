@@ -121,6 +121,7 @@ function newRequestDetail(buyerid, buyerrequestid) {
 function makeOffer(buyerid) {
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'block';
+    populateOfferDefaults();
 }
 
 function populateLevelOfService() {
@@ -294,4 +295,33 @@ function saveOffer(event) {
         console.error('Error:', error);
         // Optionally, display an error message to the user
     });
+}
+
+function populateOfferDefaults() {
+    fetch(`/get-offerdefaults`)
+        .then(response => response.json())
+        .then(data => {
+            if (Object.keys(data).length === 0) {
+                console.log('No offer defaults found.'); // Handle no data case (e.g., display a message)
+                return; // Exit the function
+            }
+            document.getElementById('offerType').value = data.offerType;
+            document.getElementById('levelOfService').value = data.levelOfService;
+            document.getElementById('compensationType').value = data.compensationType;
+            document.getElementById('compensationAmount').value = data.compensationAmount;
+            document.getElementById('retainerFee').value = data.retainerFee;
+            document.getElementById('lengthOfService').value = data.lengthOfService;
+            document.getElementById('expirationCompTimeFrame').value = data.expirationCompTimeFrame;
+            document.getElementById('expirationCompensation').value = data.expirationCompensation;
+            document.getElementById('offerDesc').value = data.offerDesc;
+            const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
+            radioButtons.forEach(radioButton => {
+                if (data.retainerCredited === 1) {
+                    document.getElementById('retainerCreditedY').checked = true;
+                } 
+                if (data.retainerCredited === 0) {
+                    document.getElementById('retainerCreditedN').checked = true;
+                }
+            });
+        })
 }
