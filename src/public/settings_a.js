@@ -174,8 +174,6 @@ function hideHelp() {
 }
 
 function cancel() {
-    const makeoffercontainer = document.getElementById('offerForm');
-    makeoffercontainer.style.display = 'none';
     clearForm()
 }
 
