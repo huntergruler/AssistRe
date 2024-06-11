@@ -251,6 +251,6 @@ function saveOffer() {
         console.log('Success:', result);
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.log('GOT HERE!!!!');
     });
 }
