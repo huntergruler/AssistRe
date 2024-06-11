@@ -29,6 +29,7 @@ function openTab(evt, tabName) {
 
 function saveOfferDefaults(event) {
     event.preventDefault();
+    console.log('Saving offer defaults');
     // Get values from input fields
     const offerType = document.getElementById('offerType').value;
     const levelOfService = document.getElementById('levelOfService').value;
