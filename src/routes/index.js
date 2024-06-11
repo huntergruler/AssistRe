@@ -209,6 +209,7 @@ router.post('/get-OfferDefaults', (req, res) => {
   }
   else {
     const userid = req.session.userid;
+    console.log('User ID:', userid);
     const query = 'SELECT offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc FROM AgentOfferDefaults WHERE agentid = ?';
     db.query(query, [userid], (error, results) => {
       if (error) {
