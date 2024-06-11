@@ -41,14 +41,11 @@
         </h2>
     </div>
     <div class="tab">
-        <button class="tablinks" onclick="getRequests('New')">New Buyer (new)
-            Requests</button>
-            <button class="tablinks" onclick="openTab(event, 'getRequests','New')" id="defaultOpen">New Buyer
-                Requests</button>
-            <button class="tablinks" onclick="getRequests('Offered')">Outstanding Offers</button>
-        <button class="tablinks" onclick="openTab(event, 'getConfirmedOffers')">Confirmed Offers</button>
-        <button class="tablinks" onclick="openTab(event, 'getDeclinedOffers')">Declined Offers</button>
-        <button class="tablinks" onclick="openTab(event, 'getRejectedOffers')">Rejected Offers</button>
+        <button class="tablinks" onclick="getRequests('New')">New Buyer Requests</button>
+        <button class="tablinks" onclick="getRequests('Offered')">Outstanding Offers</button>
+        <button class="tablinks" onclick="getRequests('Confirmed')">Confirmed Offers</button>
+        <button class="tablinks" onclick="getRequests('Declined')">Declined Offers</button>
+        <button class="tablinks" onclick="getRequests('Rejected')">Rejected Offers</button>
     </div>
     <div id="getRequests" class="tabcontent">
         <div class="row">
