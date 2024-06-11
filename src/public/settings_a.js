@@ -37,22 +37,21 @@ function populateOfferDefaults() {
     fetch(`/get-offerdefaults`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-            // document.getElementById('offerType').value = data.offerType;
-            // document.getElementById('levelOfService').value = data.levelOfService;
-            // document.getElementById('compensationType').value = data.compensationType;
-            // document.getElementById('compensationAmount').value = data.compensationAmount;
-            // document.getElementById('retainerFee').value = data.retainerFee;
-            // document.getElementById('lengthOfService').value = data.lengthOfService;
-            // document.getElementById('expirationCompTimeFrame').value = data.expirationCompTimeFrame;
-            // document.getElementById('expirationCompensation').value = data.expirationCompensation;
-            // document.getElementById('offerDesc').value = data.offerDesc;
-            // const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
-            // radioButtons.forEach(radioButton => {
-            //     if (radioButton.value === data.retainerCredit) {
-            //         radioButton.checked = true;
-            //     }
-            // });
+            document.getElementById('offerType').value = data.offerType;
+            document.getElementById('levelOfService').value = data.levelOfService;
+            document.getElementById('compensationType').value = data.compensationType;
+            document.getElementById('compensationAmount').value = data.compensationAmount;
+            document.getElementById('retainerFee').value = data.retainerFee;
+            document.getElementById('lengthOfService').value = data.lengthOfService;
+            document.getElementById('expirationCompTimeFrame').value = data.expirationCompTimeFrame;
+            document.getElementById('expirationCompensation').value = data.expirationCompensation;
+            document.getElementById('offerDesc').value = data.offerDesc;
+            const radioButtons = document.querySelectorAll('input[name="retainerCredit"]');
+            radioButtons.forEach(radioButton => {
+                if (radioButton.value === data.retainerCredit) {
+                    radioButton.checked = true;
+                }
+            });
         })
 }
 
