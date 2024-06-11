@@ -234,7 +234,7 @@ function saveOffer() {
 
     console.log(offerData);
     // Send the data to your backend for saving it into a database
-    fetch('/api-saveoffer', {
+    fetch('/api/saveoffer', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
