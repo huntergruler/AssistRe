@@ -780,8 +780,14 @@ router.post('/api/saveoffer', (req, res) => {
   // }
   // else {
   const userid = req.session.userid;
-  const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
-  console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
+  const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCreditedY, retainerCreditedN, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
+  console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCreditedY, retainerCreditedN, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
+  if (retainerCreditedY) {
+    retainerCredited = 'Y';
+  } 
+  else {
+    retainerCredited = 'N';
+  }
   insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
   // db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (err, result) => {
   //   if (error) {
