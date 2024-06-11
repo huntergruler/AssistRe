@@ -183,13 +183,12 @@ router.post('/saveoffer', (req, res) => {
   }
 });
 
-router.post('/saveOfferDefaults', (req, res) => {
+router.post('/save-OfferDefaults', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to save changes';
     res.redirect('/');
   }
   else {
-    console.log('Save Offer Defaults:', req.body);
     const userid = req.session.userid;
     const { offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
     insertQuery = 'REPLACE INTO AgentOfferDefaults (agentid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?)';
@@ -198,14 +197,28 @@ router.post('/saveOfferDefaults', (req, res) => {
         console.error('Error saving offer:', error);
         return res.status(500).json({ error: 'Internal server error' });
       }
-      // updateBuyerMatch = 'UPDATE AgentBuyerMatch SET matchStatus = "Offered" WHERE agentid = ? and buyerid = ? and buyerrequestid = ?';
-      // db.query(updateBuyerMatch, [userid, buyerid, buyerrequestid], (error, result) => {
-      //   if (error) {
-      //     console.error('Error updating buyer match:', error);
-      //     return res.status(500).json({ error: 'Internal server error' });
-      //   }
         res.json({ success: true });
-      // });
+    });
+  }
+});
+
+router.post('/get-OfferDefaults', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to change setting';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+    const query = 'SELECT offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc FROM AgentOfferDefaults WHERE agentid = ?';
+    db.query(query, [userid], (error, results) => {
+      if (error) {
+        console.error('Error fetching offer defaults:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      if (results.length === 0) {
+        return res.status(404).json({ error: 'No offer defaults found' });
+      }
+      res.json(results[0]);
     });
   }
 });
