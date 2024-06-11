@@ -773,6 +773,15 @@ router.post('/api/offices', (req, res) => {
   });
 });
 
+router.post('/saveOffer', (req, res) => {
+  const userid = req.session.userid;
+  const { buyerUserId, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments } = req.body;
+  insertQuery = 'INSERT INTO AgentTransactionHistory (userid, offerType, compensationType, levelOfService, transactionAmount, transactionDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, transactionComments) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  db.query(insertQuery, [userid, buyerUserId, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments], (err, result) => {
+    if (err) throw err;
+    agentofferid = result.insertId;});
+});
+
 router.delete('/api/licenses/:id', (req, res) => {
   const { id } = req.params;
   const deleteQuery = 'DELETE FROM AgentLicenses WHERE agentlicenseid = ?';

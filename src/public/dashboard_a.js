@@ -58,6 +58,8 @@ function selectItem(buyerid) {
 function newRequestDetail(buyerid) {
     const detailColumn = document.getElementById('newRequestDetail');
     const detailButtons = document.getElementById('detailButtons');
+    document.getElementById('buyerUserid').value = buyerid;
+
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
     // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
@@ -202,4 +204,53 @@ function showHelp() {
 
 function hideHelp() {
     document.getElementById('help-dialog').style.display = 'none';
+}
+
+function saveOffer() {
+    // Get values from input fields
+    const offerType = document.getElementById('offerType').value;
+    const levelOfService = document.getElementById('levelOfService').value;
+    const compensationType = document.getElementById('compensationType').value;
+    const compensationAmount = document.getElementById('compensationAmount').value;
+    const retainerFee = document.getElementById('retainerFee').value;
+    const prequalified = document.querySelector('input[name="prequalified"]:checked').value;
+    const lengthOfService = document.getElementById('lengthOfService').value;
+    const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
+    const expirationCompensation = document.getElementById('expirationCompensation').value;
+    const offerDesc = document.getElementById('entryBox').value;
+
+    // Create an object with the gathered data
+    const offerData = {
+        offerType,
+        levelOfService,
+        compensationType,
+        compensationAmount,
+        retainerFee,
+        prequalified,
+        lengthOfService,
+        expirationCompTimeFrame,
+        expirationCompensation,
+        offerDesc
+    };
+
+    // Send the data to your backend for saving it into a database
+    // For example, you can use AJAX to send a POST request to your backend endpoint
+    fetch('/saveOffer', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(offerData)
+    })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById('offerForm').style.display = 'none';
+            // Offer saved successfully, handle success
+        } else {
+            // Offer saving failed, handle error
+        }
+    })
+    .catch(error => {
+        // Handle network errors
+    });
 }
