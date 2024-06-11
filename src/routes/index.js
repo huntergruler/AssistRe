@@ -783,12 +783,11 @@ router.post('/api/saveoffer', (req, res) => {
   const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
   console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
   insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
-  db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (err, result) => {
+  db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredit, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (error, result) => {
     if (error) {
-      console.error('Error saving OFFER:', error);
-      return res.status(500).send('Server error');
+      return res.status(500).json({ error: 'Internal server error' });
     }
-    res.send({ success: true });
+    res.json({ success: true });
   });
 // }
 });
