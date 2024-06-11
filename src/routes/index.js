@@ -780,11 +780,11 @@ router.post('/api/saveoffer', (req, res) => {
   // }
   // else {
   const userid = req.session.userid;
+  console.log('User ID:', userid);
   const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
 
   insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
   console.log('Insert Query:', insertQuery);
-  console.log('User ID:', userid, 'Buyer ID:', buyerid, 'Offer Type:', offerType, 'Compensation Type:', compensationType, 'Level of Service:', levelOfService, 'Compensation Amount:', compensationAmount, 'Retainer Fee:', retainerFee, 'Retainer Credited:', retainerCredited, 'Length of Service:', lenghtOfService, 'Expiration Compensation:', expirationCompensation, 'Expiration Compensation Time Frame:', expirationCompTimeFrame, 'Offer Description:', offerDesc);
   // db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (err, result) => {
   //   if (error) {
   //     console.error('Error updating buyer profile:', error);
