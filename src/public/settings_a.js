@@ -48,7 +48,20 @@ function savetest(event) {
             retainerCredit = radioButton.value;
         }
     });
-    console.log('offerType: ' + offerType, 'levelOfService: ' + levelOfService, 'compensationType: ' + compensationType, 'compensationAmount: ' + compensationAmount, 'retainerFee: ' + retainerFee, 'lengthOfService: ' + lengthOfService, 'expirationCompTimeFrame: ' + expirationCompTimeFrame, 'expirationCompensation: ' + expirationCompensation, 'offerDesc: ' + offerDesc, 'retainerCredit: ' + retainerCredit);
+    // Create an object with the gathered data
+    const offerData = {
+        offerType: offerType,
+        levelOfService: levelOfService,
+        compensationType: compensationType,
+        compensationAmount: compensationAmount,
+        retainerFee: retainerFee,
+        retainerCredit: retainerCredit,
+        lengthOfService: lengthOfService,
+        expirationCompTimeFrame: expirationCompTimeFrame,
+        expirationCompensation: expirationCompensation,
+        offerDesc: offerDesc
+    };
+    console.log(offerData);
 
 }
 
