@@ -39,7 +39,7 @@ function openTab(evt, tabName) {
 let selectedBuyerId = null;
 function getRequests(datatype) {
     const newRequests = document.getElementById('newRequests');
-    console.log('getRequests', datatype);
+    console.log('getRequests', datatype.trim);
     newRequests.innerHTML = '';
     fetch(`/getRequests?${datatype}`)
         .then(response => response.json())
