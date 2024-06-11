@@ -41,7 +41,7 @@ function getRequests(datatype) {
     const newRequests = document.getElementById('newRequests');
     console.log('getRequests', datatype);
     newRequests.innerHTML = '';
-    fetch(`/getRequests?$datatype=encodeURIComponent(datatype)`)
+    fetch(`/getRequests?datatype=encodeURIComponent(datatype)`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {
