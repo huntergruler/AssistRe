@@ -425,28 +425,30 @@ Create table ZipCodes (
     primary key (zipcodeid)
 );
 
-Create table AgentOffers (
-    agentofferid int auto_increment not null,
-    buyerrequestid int not null,
-    buyerid int not null,
-    agentid int not null,
-    offertype varchar(255) not null,
-    levelofservice varchar(255) not null,
-    compensationtype varchar(255) not null,
-    compensationamount decimal(10, 2) not null,
-    retainerfee decimal(10, 2) not null,
-    retainercredited boolean not null,
-    lengthofservice varchar(255) not null,
-    expirationcompensation decimal(10, 2) not null,
-    expirationcomptimeframe varchar(255) not null,
-    offerdesc varchar(1000) not null,
-    offertimestamp timestamp not null,
-    offerstatus varchar(255) not null,
-    entrytimestamp timestamp not null,
-    updatetimestamp timestamp not null,
-    primary key (agentofferid),
-    foreign key (buyerid) references Agents (userid),
-    foreign key (agentid) references Agents (userid)
+CREATE TABLE AgentOffers (
+  agentofferid int NOT NULL AUTO_INCREMENT,
+  buyerrequestid int NOT NULL,
+  buyerid int NOT NULL,
+  agentid int NOT NULL,
+  offerType varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  levelOfService varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  compensationType varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  compensationAmount decimal(10,2) NOT NULL,
+  retainerFee decimal(10,2) NOT NULL,
+  retainerCredited tinyint(1) NOT NULL,
+  lengthOfService varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  expirationCompensation decimal(10,2) NOT NULL,
+  expirationCompTimeFrame varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  offerDesc varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  offerTimestamp timestamp NOT NULL,
+  offerStatus varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  entrytimestamp timestamp NOT NULL,
+  updatetimestamp timestamp NOT NULL,
+  PRIMARY KEY (agentofferid),
+  KEY buyerid (buyerid),
+  KEY agentid (agentid),
+  CONSTRAINT AgentOffers_ibfk_1 FOREIGN KEY (buyerid) REFERENCES Buyers (userid),
+  CONSTRAINT AgentOffers_ibfk_2 FOREIGN KEY (agentid) REFERENCES Agents (userid)
 );
 
 create table OfferTypes (
@@ -557,19 +559,19 @@ insert into
     )
 values ('Submitted', now(), now());
 
-CREATE TABLE `AgentDetails` (
-  `userid` int NOT NULL AUTO_INCREMENT,
-  `userphoto` varchar(255) NOT NULL,
-  `languages` varchar(200) DEFAULT NULL,
-  `bio` text,
-  `entrytimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatetimestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`userid`),
-  KEY `email` (`email`)
+CREATE TABLE AgentDetails (
+  userid int NOT NULL AUTO_INCREMENT,
+  userphoto varchar(255) NOT NULL,
+  languages varchar(200) DEFAULT NULL,
+  bio text,
+  entrytimestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updatetimestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (userid),
+  KEY email (email)
 ) ENGINE=InnoDB
 ;
 
-CREATE TABLE `BuyerTypes` (
+CREATE TABLE BuyerTypes (
     buyerTypeId INT PRIMARY KEY AUTO_INCREMENT,
     buyerType VARCHAR(255) NOT NULL
     entrytimestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
