@@ -428,8 +428,8 @@ Create table ZipCodes (
 Create table AgentOffers (
     agentofferid int auto_increment not null,
     buyerrequestid int not null,
-    buyeruserid int not null,
-    agentuserid int not null,
+    buyerid int not null,
+    agentid int not null,
     offertype varchar(255) not null,
     levelofservice varchar(255) not null,
     compensationtype varchar(255) not null,
@@ -445,8 +445,8 @@ Create table AgentOffers (
     entrytimestamp timestamp not null,
     updatetimestamp timestamp not null,
     primary key (agentofferid),
-    foreign key (buyeruserid) references Agents (userid),
-    foreign key (agentuserid) references Agents (userid)
+    foreign key (buyerid) references Agents (userid),
+    foreign key (agentid) references Agents (userid)
 );
 
 create table OfferTypes (
