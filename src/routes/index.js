@@ -776,10 +776,11 @@ router.post('/api/offices', (req, res) => {
 router.post('/saveOffer', (req, res) => {
   console.log('Save Offer:', req.body);
   const userid = req.session.userid;
-  const { buyerid, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments } = req.body;
-  console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments);
-  insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-  db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, offerAmount, offerDate, propertyType, propertyAddress, propertyCity, propertyState, propertyZip, offerComments], (err, result) => {
+  const {buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc} = req.body;
+  console.log('Offer:', userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
+
+  insertQuery = 'INSERT INTO AgentOffers (userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?,?,?)';
+  db.query(insertQuery, [userid, buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lenghtOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (err, result) => {
     if (err) throw err;
     agentofferid = result.insertId;});
 });
