@@ -155,7 +155,7 @@ body {
 }
 
 .container-right {
-    opacity: 0.8;
+    /* opacity: 0.8; */
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 0px;
@@ -185,5 +185,4 @@ body {
 
 #offerFormContainer select:disabled {
     opacity: 1 !important;
-    background-color: aqua;
 }
