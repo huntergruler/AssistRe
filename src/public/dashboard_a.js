@@ -252,6 +252,7 @@ function removeOffer() {
 function declineRequest() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
+    console.log('dataType:', dataType);
     fetch(`/declineRequest?buyerid=${buyerid}`)
 
         .then(response => response.json())
