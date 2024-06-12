@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
 
-    inputFields.forEach(input => input.setAttribute('readonly', 'false'));
-    selectFields.forEach(select => select.setAttribute('disabled', 'false'));
+    inputFields.forEach(input => input.setAttribute('readonly', 'true'));
+    selectFields.forEach(select => select.setAttribute('disabled', 'true'));
     // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     // var time_zone = Date().time_zone;
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
@@ -67,6 +67,9 @@ function getRequests(datatype) {
 };
 
 function selectRequest(buyerid, buyerrequestid) {
+    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
+    const selectFields = document.querySelectorAll('#offerFormContainer select');
+    const submitOfferButton = document.getElementById('submitOffer');
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
     const rows = document.querySelectorAll('#requests .form-row');
@@ -75,10 +78,15 @@ function selectRequest(buyerid, buyerrequestid) {
     });
     const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
-    console.log('datatype:',datatype);
+    console.log('datatype:', datatype);
     if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
+        inputFields.forEach(input => input.removeAttribute('readonly'));
+        selectFields.forEach(select => select.removeAttribute('disabled'));
+        submitOfferButton.textContent = 'Submit Offer';
+        submitOfferButton.removeEventListener('click', modifyOffer);
+        submitOfferButton.addEventListener('click', submitOffer);
     }
     if (datatype == "Offered") {
         populateOfferDetail(buyerid);
@@ -86,17 +94,16 @@ function selectRequest(buyerid, buyerrequestid) {
         offerForm.style.display = 'block';
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'none';
-    }
-}
 
-function selectOffer(buyerid, buyerrequestid) {
-    if (selectedBuyerId === buyerid) return; // If already selected, do nothing
-    var selectedBuyerId = 'buyerid' + buyerid;
-    const rows = document.querySelectorAll('#offered .form-row');
-    rows.forEach(row => {
-        row.classList.remove('selected');
-    });
-    populateOfferDetail(buyerid);
+        // Remove readonly attribute from input fields and enable select elements
+        inputFields.forEach(input => input.setAttribute('readonly', 'true'));
+        selectFields.forEach(select => select.setAttribute('disabled', 'true'));
+
+        // Change the button text to "Submit Offer"
+        submitOfferButton.textContent = 'Modify Offer';
+        submitOfferButton.addEventListener('click', modifyOffer);
+        submitOfferButton.removeEventListener('click', submitOffer);
+    }
 }
 
 function requestDetail(buyerid, buyerrequestid) {
@@ -165,7 +172,7 @@ function makeOffer(buyerid) {
     populateOfferDefaults();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'block';
-    
+
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const submitOfferButton = document.getElementById('submitOffer');
@@ -435,5 +442,5 @@ function cancel() {
 }
 
 // Disable input fields and select elements when the page loads
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 });
