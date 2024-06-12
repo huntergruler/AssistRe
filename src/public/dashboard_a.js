@@ -111,6 +111,10 @@ function selectRequest(buyerid, buyerrequestid) {
         selectFields.forEach(select => select.setAttribute('disabled', 'true'));
         detailButtons.style.display = 'none';
         offerButton.innerHTML = '';
+        const detailCont = getElementById('requestDetailContainer')
+        detailCont.style.borderTop = '1px solid black';
+        detailCont.style.borderRight = '1px solid black';
+        detailCont.style.borderBottom = '1px solid black';
 
         // create a button to modify the offer
         var buttonElement = document.createElement("button");
