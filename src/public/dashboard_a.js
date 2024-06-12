@@ -86,7 +86,7 @@ function selectRequest(buyerid, buyerrequestid) {
         selectFields.forEach(select => select.removeAttribute('disabled'));
         submitOfferButton.textContent = 'Submit Offer';
         submitOfferButton.removeEventListener('click', modifyOffer);
-        submitOfferButton.addEventListener('click', submitOffer);
+        submitOfferButton.addEventListener('click', saveOffer(event));
     }
     if (datatype == "Offered") {
         populateOfferDetail(buyerid);
@@ -102,7 +102,7 @@ function selectRequest(buyerid, buyerrequestid) {
         // Change the button text to "Submit Offer"
         submitOfferButton.textContent = 'Modify Offer';
         submitOfferButton.addEventListener('click', modifyOffer);
-        submitOfferButton.removeEventListener('click', submitOffer);
+        submitOfferButton.removeEventListener('click', saveOffer(event));
     }
 }
 
@@ -184,7 +184,7 @@ function makeOffer(buyerid) {
     // Change the button text to "Submit Offer"
     submitOfferButton.textContent = 'Submit Offer';
     submitOfferButton.removeEventListener('click', modifyOffer);
-    submitOfferButton.addEventListener('click', submitOffer);
+    submitOfferButton.addEventListener('click', saveOffer);
 }
 function modifyOffer() {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
@@ -198,7 +198,7 @@ function modifyOffer() {
     // Change the button text to "Submit Offer"
     submitOfferButton.textContent = 'Submit Offer';
     submitOfferButton.removeEventListener('click', modifyOffer);
-    submitOfferButton.addEventListener('click', submitOffer);
+    submitOfferButton.addEventListener('click', saveOffer);
 }
 
 function populateLevelOfService() {
