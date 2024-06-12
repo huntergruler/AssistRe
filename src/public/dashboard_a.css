@@ -175,6 +175,7 @@ body {
     /* width: 300px; */
     height: fit-content;
     justify-content: center;
+    text-align: center;
     align-items: center;
     border: 1px solid black;
     border-radius: 8px;
