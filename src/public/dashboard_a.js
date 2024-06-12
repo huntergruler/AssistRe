@@ -202,6 +202,7 @@ function modifyOffer(event) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
+    const dataType = document.getElementById('datatype').value;
 
     inputFields.forEach(input => input.removeAttribute('readonly'));
     selectFields.forEach(select => select.removeAttribute('disabled'));
@@ -218,7 +219,8 @@ function modifyOffer(event) {
 
 }
 function removeOffer() {
-    buyerid = document.getElementById('buyerid').value;
+    const buyerid = document.getElementById('buyerid').value;
+    const dataType = document.getElementById('datatype').value;
     fetch(`/removeOffer?buyerid=${buyerid}`)
 
         .then(response => response.json())
@@ -232,7 +234,7 @@ function removeOffer() {
                 requestDetail.innerHTML = '';
                 detailButtons.innerHTML = '';
                 offerForm.style.display = 'none';
-                getRequests();
+                getRequests(dataType);
                 clearForm()
             }
         })
@@ -349,6 +351,7 @@ function saveOffer(event) {
     const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
     const buyerrequestid = document.getElementById('buyerrequestid').value;
     const buyerid = document.getElementById('buyerid').value;
+    const dataType = document.getElementById('datatype').value;
 
     // Loop through each radio button in the group
     let retainerCredited = null;
@@ -403,7 +406,7 @@ function saveOffer(event) {
             detailButtons.display = 'none';
             clearForm();
 
-            getRequests();
+            getRequests(dataType);
             // Optionally, perform any actions here after successful submission
         })
         .catch(error => {
