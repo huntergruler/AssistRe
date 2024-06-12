@@ -142,6 +142,10 @@ function requestDetail(buyerid, buyerrequestid) {
     document.getElementById('buyerid').value = buyerid;
     document.getElementById('buyerrequestid').value = buyerrequestid;
 
+    detailCont.style.borderTop = '0';
+    detailCont.style.borderRight = '0';
+    detailCont.style.borderBottom = '0';
+
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
     // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
@@ -167,9 +171,9 @@ function requestDetail(buyerid, buyerrequestid) {
                 detailColumn.appendChild(div);
 
                 
-                // detailCont.style.borderTop = '1px solid black';
-                // detailCont.style.borderRight = '1px solid black';
-                // detailCont.style.borderBottom = '1px solid black';
+                detailCont.style.borderTop = '1px solid black';
+                detailCont.style.borderRight = '1px solid black';
+                detailCont.style.borderBottom = '1px solid black';
 
                 // Create a container div to hold the buttons
                 const buttonContainer = document.createElement("div");
