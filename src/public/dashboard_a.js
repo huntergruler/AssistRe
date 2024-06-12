@@ -69,7 +69,7 @@ function getRequests(datatype, element) {
             else {
                 data.forEach(request => {
                     const div = document.createElement("div");
-                    div.innerHTML = `${request.buyerType}<br>
+                    div.innerHTML = `<p>&#x2022;</p>${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}`;
