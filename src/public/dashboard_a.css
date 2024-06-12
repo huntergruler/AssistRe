@@ -30,13 +30,9 @@
   }
 
   #tabSelected {
-<<<<<<< Updated upstream
-    background-color: #8f1313; /* Example highlight style */
-=======
     background-color: var(--background-color);
     color: white;
     border-radius: 5px;
->>>>>>> Stashed changes
 }
 
   /* Style the active tab button */
@@ -137,10 +133,10 @@ body {
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
-    /* padding-left: 2px;
+    padding-left: 2px;
     padding-right: 2px;
     padding-top: 2px;
-    padding-bottom: 2px; */
+    padding-bottom: 2px;
     width: 300px;
     overflow: auto;
     height: fit-content;
@@ -156,10 +152,10 @@ body {
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
-    /* padding-left: 2px;
+    padding-left: 2px;
     padding-right: 2px;
     padding-top: 2px;
-    padding-bottom: 2px; */
+    padding-bottom: 2px;
     /* width: 300px; */
     height: fit-content;
     justify-content: center;
