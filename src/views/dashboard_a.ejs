@@ -40,13 +40,13 @@
                 <%= lastname %>
         </h2>
     </div>
-    <div class="row tab" id="tabcontainer">
-        <button class="tablinks col-md" onclick="getRequests('New', this)">New Requests</button>
-        <button class="tablinks col-md" onclick="getRequests('Read', this)">Read Requests</button>
-        <button class="tablinks col-md" onclick="getRequests('Offered', this)">Offered</button>
-        <button class="tablinks col-md" onclick="getRequests('Confirmed', this)">Confirmed</button>
-        <button class="tablinks col-md" onclick="getRequests('Declined', this)">Declined</button>
-        <button class="tablinks col-md" onclick="getRequests('Rejected', this)">Rejected</button>
+    <div class="tab" id="tabcontainer">
+        <button class="tablinks" onclick="getRequests('New', this)">New Requests</button>
+        <button class="tablinks" onclick="getRequests('Read', this)">Read Requests</button>
+        <button class="tablinks" onclick="getRequests('Offered', this)">Offered</button>
+        <button class="tablinks" onclick="getRequests('Confirmed', this)">Confirmed</button>
+        <button class="tablinks" onclick="getRequests('Declined', this)">Declined</button>
+        <button class="tablinks" onclick="getRequests('Rejected', this)">Rejected</button>
     </div>
         <div id="getRequests" class="tabcontent">
         <div class="row">
@@ -55,7 +55,7 @@
                     <!-- JavaScript will populate this container -->
                 </div>
             </div>
-            <div id="requestDetailContainer" class="container-right col-md-3 ">
+            <div id="requestDetailContainer" class="container-right col-md-3">
                 <div id="requestDetail">
                     <!-- JavaScript will populate this container -->
                 </div>
