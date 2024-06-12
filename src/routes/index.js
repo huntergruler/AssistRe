@@ -226,6 +226,29 @@ router.get('/get-OfferDefaults', (req, res) => {
   }
 });
 
+router.get('/get-offerdetails', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+    const buyerid = req.query.buyerid;
+    const query = `SELECT offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
+                     FROM AgentOffers WHERE agentid = ? and buyerid = ?`;
+    db.query(query, [userid, buyerid], (error, results) => {
+      if (error) {
+        console.error('Error fetching offer defaults:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      if (results.length === 0) {
+        return res.status(404).send('No Defaults');
+      }
+      res.json(results[0]);
+    });
+  }
+});
+
 // Route to get the buyer's profile
 router.get('/profile_b', (req, res) => {
   if (!req.session.user) {
