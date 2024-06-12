@@ -138,6 +138,7 @@ function requestDetail(buyerid, buyerrequestid) {
     const detailColumn = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
     const datatype = document.getElementById('datatype').value;
+    const detailCont = getElementById('requestDetailContainer')
     document.getElementById('buyerid').value = buyerid;
     document.getElementById('buyerrequestid').value = buyerrequestid;
 
@@ -164,7 +165,8 @@ function requestDetail(buyerid, buyerrequestid) {
                 div.className = "form-row container-right";
                 div.id = "buyerid" + request.buyerid;
                 detailColumn.appendChild(div);
-                const detailCont = getElementById('requestDetailContainer')
+
+                
                 detailCont.style.borderTop = '1px solid black';
                 detailCont.style.borderRight = '1px solid black';
                 detailCont.style.borderBottom = '1px solid black';
