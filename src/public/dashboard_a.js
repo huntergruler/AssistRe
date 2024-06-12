@@ -419,10 +419,11 @@ function setStatus(buyerid, status) {
         status: status
     };
 
-    const container = document.getElementById(buyerid);
-    console.log(buyerid)
-    container.classList.remove('new');
-    container.classList.add('read');
+    if(status == "Read") {
+        const container = document.getElementById("tabSelected");
+        container.classList.remove('new');
+        container.classList.add('read');
+    }
 
     fetch('/setStatus', {
         method: 'POST',
