@@ -73,13 +73,13 @@ function getRequests(datatype, element) {
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}`;
-                    div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid));
+                    div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
                     div.className = "form-row container-left col-md-9 align-self-end";
                     div.id = "buyerid" + request.buyerid;
-                    if (datatype == "New") {
+                    if (request.matchStatus == "New") {
                         div.classList.add("new");
                     }
-                    if (datatype == "Read") {
+                    if (request.matchStatus == "Read") {
                         div.classList.add("read");
                     }
                     div.onclick = function () {
@@ -93,10 +93,11 @@ function getRequests(datatype, element) {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function selectRequest(buyerid, buyerrequestid) {
+function selectRequest(buyerid, buyerrequestid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
+    console.log('element:', element);
 
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
@@ -110,11 +111,12 @@ function selectRequest(buyerid, buyerrequestid) {
     const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
     console.log('datatype:', datatype);
-    if (datatype == "New" || datatype == "Read") {
+    if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
         inputFields.forEach(input => input.removeAttribute('readonly'));
         selectFields.forEach(select => select.removeAttribute('disabled'));
+        setStatus(buyerid, 'Read');
     }
     if (datatype == "Offered") {
         populateOfferDetail(buyerid);
@@ -125,7 +127,7 @@ function selectRequest(buyerid, buyerrequestid) {
 
         offerForm.style.display = 'block';
         inputFields.forEach(input => {
-            input.setAttribute('readonly', 'true'); 
+            input.setAttribute('readonly', 'true');
             input.setAttribute('disabled', 'true')
         });
         selectFields.forEach(select => select.setAttribute('disabled', 'true'));
@@ -190,7 +192,7 @@ function requestDetail(buyerid, buyerrequestid) {
                 div.id = "buyerid" + request.buyerid;
                 detailColumn.appendChild(div);
 
-                
+
                 detailCont.style.border = '1px solid black';
 
                 // Create a container div to hold the buttons
@@ -297,7 +299,8 @@ function declineRequest() {
     fetch(`/declineRequest?buyerid=${buyerid}`)
 
         .then(response => response.json())
-        .then(data => { console.log('data:', data.success);
+        .then(data => {
+            console.log('data:', data.success);
             if (data.success) {
                 alert('Request Declined successfully');
                 const offerForm = document.getElementById('offerForm');
@@ -408,6 +411,33 @@ function cancel() {
 
 function clearForm() {
     document.getElementById('offerForm').reset();
+}
+
+function setStatus(buyerid, status) {
+    const data = {
+        buyerid: buyerid,
+        status: status
+    };
+
+    fetch('/setStatus', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result => {
+            console.log('SetStatus Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 function saveOffer(event) {

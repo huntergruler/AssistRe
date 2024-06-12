@@ -125,10 +125,11 @@ router.get('/getRequests', (req, res) => {
     const buyerid = req.query.buyerid;
     const userid = req.session.userid;
     if (!buyerid) {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
+      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.matchStatus
                      from AgentBuyerMatch bam
                     where bam.agentid = ?
-                      and bam.matchStatus = ?`;
+                      and if(bam.matchStatus = 'Read','New', bam.matchStatus) = ?
+                      order by bam.matchStatus, bam.entrytimestamp desc`;
       db.query(query, [userid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
@@ -138,11 +139,12 @@ router.get('/getRequests', (req, res) => {
       });
     }
     else {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
+      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.matchStatus
                       from AgentBuyerMatch bam
                       where bam.agentid = ?
                       and bam.buyerid = ?
-                      and bam.matchstatus = ?`;
+                      and if(bam.matchStatus = 'Read','New', bam.matchStatus) = ?
+                      order by bam.matchStatus, bam.entrytimestamp desc`;
       db.query(query, [userid, buyerid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
@@ -154,6 +156,25 @@ router.get('/getRequests', (req, res) => {
         res.json(results);
       });
     }
+  }
+});
+
+router.post('/setStatus', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to save changes';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+    const { buyerid, status } = req.body;
+    insertQuery = 'update AgentBuyerMatch set matchStatus = ? where agentid = ? and buyerid = ?';
+    db.query(insertQuery, [status, userid, buyerid], (error, result) => {
+      if (error) {
+        console.error('Error saving status:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      res.json({ success: true });
+    });
   }
 });
 
