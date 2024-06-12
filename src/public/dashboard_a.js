@@ -70,9 +70,9 @@ function selectRequest(buyerid, buyerrequestid) {
     const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
     console.log('datatype:',datatype);
-    if (datatype == "New") {
-        makeOffer(buyerid);
-    }
+    // if (datatype == "New") {
+    //     makeOffer(buyerid);
+    // }
     if (datatype == "Offered") {
         populateOfferDetail(buyerid);
         const offerForm = document.getElementById('offerForm');
