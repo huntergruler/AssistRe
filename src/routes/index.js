@@ -167,8 +167,8 @@ router.post('/setStatus', (req, res) => {
   else {
     const userid = req.session.userid;
     const { buyerid, status } = req.body;
-    insertQuery = 'update INTO AgentOffers (agentid, buyerid, matchStatus) values (?,?,?)';
-    db.query(insertQuery, [userid, buyerid, status], (error, result) => {
+    insertQuery = 'update AgentOffers set matchStatus = ? where agentid = ? and buyerid = ?';
+    db.query(insertQuery, [status, userid, buyerid], (error, result) => {
       if (error) {
         console.error('Error saving status:', error);
         return res.status(500).json({ error: 'Internal server error' });
