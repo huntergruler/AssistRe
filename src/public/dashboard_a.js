@@ -80,7 +80,7 @@ function selectRequest(buyerid, buyerrequestid) {
     const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
     console.log('datatype:', datatype);
-    if (datatype == "New") {
+    if (datatype == "New" || datatype == "Read") {
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
         inputFields.forEach(input => input.removeAttribute('readonly'));
