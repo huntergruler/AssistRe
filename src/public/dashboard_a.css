@@ -183,6 +183,6 @@ body {
     padding: 0;
 }
 
-#offerFormContainer select {
-    background-color: #007BFF;
+#offerFormContainer select:disabled {
+    opacity: 0.9;
 }
