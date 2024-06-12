@@ -72,8 +72,6 @@ function selectRequest(buyerid, buyerrequestid) {
     console.log('datatype:',datatype);
     if (datatype == "New") {
         makeOffer(buyerid);
-        const detailButtons = document.getElementById('detailButtons');
-        detailButtons.style.display = 'block';
     }
     if (datatype == "Offered") {
         populateOfferDetail(buyerid);
