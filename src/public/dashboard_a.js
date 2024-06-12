@@ -110,7 +110,10 @@ function selectRequest(buyerid, buyerrequestid) {
         const detailButtons = document.getElementById('detailButtons');
 
         offerForm.style.display = 'block';
-        inputFields.forEach(input => input.setAttribute('readonly', 'true'));
+        inputFields.forEach(input => {
+            input.setAttribute('readonly', 'true'); 
+            input.setAttribute('disabled', 'true')
+        });
         selectFields.forEach(select => select.setAttribute('disabled', 'true'));
         detailButtons.style.display = 'none';
         offerButton.innerHTML = '';
