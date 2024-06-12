@@ -28,9 +28,7 @@ function getRequests(datatype, element) {
     const offerForm = document.getElementById('offerForm');
 
     const detailCont = document.getElementById('requestDetailContainer');
-    detailCont.style.borderTop = '0';
-    detailCont.style.borderRight = '0';
-    detailCont.style.borderBottom = '0';
+    detailCont.style.border = '0';
 
     const buttons = document.querySelectorAll('.tablinks');
     buttons.forEach(button => {
