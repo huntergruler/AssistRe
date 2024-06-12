@@ -88,8 +88,11 @@ function selectRequest(buyerid, buyerrequestid) {
     if (datatype == "Offered") {
         populateOfferDetail(buyerid);
         const offerForm = document.getElementById('offerForm');
-        offerForm.style.display = 'block';
         const detailButtons = document.getElementById('detailButtons');
+
+        offerForm.style.display = 'block';
+        inputFields.forEach(input => input.addAttribute('readonly'));
+        selectFields.forEach(select => select.addAttribute('disabled'));
         detailButtons.style.display = 'none';
         offerButton.innerHTML = '';
 
