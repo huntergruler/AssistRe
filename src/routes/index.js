@@ -395,7 +395,7 @@ router.delete('/api/licenses/:id', (req, res) => {
 
 router.get('/removeOffer', (req, res) => {
   const buyerid = req.query.buyerid;
-  const updateQuery = 'Update AgentBuyerMatch SET matchStatus = "Read" WHERE agentid = ? and buyerid = ?';
+  const updateQuery = 'delete from AgentOffers WHERE agentid = ? and buyerid = ?';
   db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {
     if (err) throw err;
     res.json({ success: true });
