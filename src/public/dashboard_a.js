@@ -355,7 +355,7 @@ function populateOfferDefaults() {
 }
 
 function populateOfferDetail(buyerid) {
-    fetch(`/get-offerdetails`)
+    fetch(`/get-offerdetails?buyerid=${buyerid}`)
         .then(response => response.json())
         .then(data => {
             if (Object.keys(data).length === 0) {

@@ -234,6 +234,7 @@ router.get('/get-offerdetails', (req, res) => {
   else {
     const userid = req.session.userid;
     const buyerid = req.query.buyerid;
+    console.log('Buyer ID:', buyerid);
     const query = `SELECT offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
                      FROM AgentOffers WHERE agentid = ? and buyerid = ?`;
     db.query(query, [userid, buyerid], (error, results) => {
