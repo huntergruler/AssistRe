@@ -22,8 +22,8 @@ function getRequests(datatype) {
     requestDetail.innerHTML = '';
     requests.innerHTML = '';
 
-    requestDetail.style.display = 'none';
-    detailButtons.style.display = 'none';
+    // requestDetail.style.display = 'none';
+    // detailButtons.style.display = 'none';
     
     document.getElementById('datatype').value = datatype;
     const getRequests = document.getElementById('getRequests');
