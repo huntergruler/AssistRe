@@ -91,6 +91,10 @@ function selectRequest(buyerid, buyerrequestid) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
+    
+    const offerForm = document.getElementById('offerForm');
+    offerForm.style.display = 'none';
+
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
     const rows = document.querySelectorAll('#requests .form-row');
