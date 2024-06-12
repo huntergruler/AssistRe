@@ -62,7 +62,7 @@ function getRequests(datatype) {
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}`;
                     div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid));
-                    div.className = "form-row container-right justify-self-end";
+                    div.className = "form-row container-right col-md-6";
                     div.id = "buyerid" + request.buyerid;
                     div.onclick = function () {
                         this.classList.toggle("selected");
