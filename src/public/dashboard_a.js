@@ -231,7 +231,10 @@ function modifyOffer(event) {
     const offerButton = document.getElementById('offerButton');
     const dataType = document.getElementById('datatype').value;
 
-    inputFields.forEach(input => input.removeAttribute('readonly'));
+    inputFields.forEach(input => {
+        input.removeAttribute('readonly');
+        input.removeAttribute('disabled');
+    });
     selectFields.forEach(select => select.removeAttribute('disabled'));
 
     offerButton.innerHTML = '';
