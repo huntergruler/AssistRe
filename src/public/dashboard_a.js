@@ -256,8 +256,7 @@ function declineRequest() {
     fetch(`/declineRequest?buyerid=${buyerid}`)
 
         .then(response => response.json())
-        .then(data => {
-            console.log('Results:', data.results)
+        .then(data => { console.log('data:', data);
             if (data.results === "success") {
                 alert('Request Declined successfully');
                 const offerForm = document.getElementById('offerForm');
