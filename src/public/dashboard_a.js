@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
     offerForm.style.display = 'none';
     document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
 
+    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
+    const selectFields = document.querySelectorAll('#offerFormContainer select');
+
+    inputFields.forEach(input => input.setAttribute('readonly', 'false'));
+    selectFields.forEach(select => select.setAttribute('disabled', 'false'));
     // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     // var time_zone = Date().time_zone;
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
@@ -160,11 +165,19 @@ function makeOffer(buyerid) {
     populateOfferDefaults();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'block';
+    
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
+    const submitOfferButton = document.getElementById('submitOffer');
 
-    inputFields.forEach(input => input.setAttribute('readonly', 'false'));
-    selectFields.forEach(select => select.setAttribute('disabled', 'false'));
+    // Remove readonly attribute from input fields and enable select elements
+    inputFields.forEach(input => input.removeAttribute('readonly'));
+    selectFields.forEach(select => select.removeAttribute('disabled'));
+
+    // Change the button text to "Submit Offer"
+    submitOfferButton.textContent = 'Submit Offer';
+    submitOfferButton.removeEventListener('click', modifyOffer);
+    submitOfferButton.addEventListener('click', submitOffer);
 }
 
 function populateLevelOfService() {
