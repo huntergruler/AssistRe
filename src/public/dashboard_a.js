@@ -69,7 +69,7 @@ function getRequests(datatype, element) {
             else {
                 data.forEach(request => {
                     const div = document.createElement("div");
-                    div.innerHTML = `${request.buyerType}<br>
+                    div.innerHTML = `<p>&#x2022;</p>${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}`;
@@ -77,10 +77,10 @@ function getRequests(datatype, element) {
                     div.className = "form-row container-left col-md-9 align-self-end";
                     div.id = "buyerid" + request.buyerid;
                     if (request.matchStatus == "New") {
-                        div.style.backgroundColor = "lightblue";
+                        div.classList.add("new");
                     }
                     if (request.matchStatus == "Read") {
-                        div.style.backgroundColor = "lightgreen";
+                        div.classList.add("read");
                     }
                     div.onclick = function () {
                         this.classList.toggle("selected");
@@ -416,6 +416,12 @@ function setStatus(buyerid, status) {
         buyerid: buyerid,
         status: status
     };
+
+    if(status == "Read") {
+        const container = document.getElementById(`buyerid${buyerid}`);
+        container.classList.remove('new');
+        container.classList.add('read');
+    }
 
     fetch('/setStatus', {
         method: 'POST',

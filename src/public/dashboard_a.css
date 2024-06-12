@@ -187,3 +187,15 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.new {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+.read {
+    background-color: white;
+    color: black;
+    font-weight: normal;
+}
