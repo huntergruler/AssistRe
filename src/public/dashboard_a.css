@@ -154,13 +154,7 @@ body {
     /* background-color: chartreuse; */
 }
 
-
-#offerFormContainer select:disabled {
-    opacity: 1 !important;
-    color: black;
-}
-
-#offerFormContainer input:disabled {
+#offerFormContainer input:disabled, #offerFormContainer textarea:disabled, #offerFormContainer select:disabled{
     opacity: 1 !important;
     color: black;
 }
