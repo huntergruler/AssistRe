@@ -96,7 +96,6 @@ body {
 
 .form-row.container-left {
     margin-top: 0px;
-    overflow: auto;
     margin-bottom: 0px;
     margin-left: 0px;
     margin-right: 0px;
@@ -105,13 +104,12 @@ body {
     padding-left: 2px;
     padding-right: 0px;
     height: fit-content;
-    max-height: 300px;
     border: 1px solid black;
     border-radius: 8px;
     justify-content: center;
     text-align: center;
     cursor: pointer;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
 
 
@@ -131,7 +129,9 @@ body {
     padding-top: 2px;
     padding-bottom: 2px;
     width: 300px;
+    overflow: auto;
     height: fit-content;
+    max-height: 400px;
     justify-content: center;
     align-items: center;
     /* background-color: chartreuse; */
