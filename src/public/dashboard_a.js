@@ -420,7 +420,7 @@ function setStatus(buyerid, status) {
     };
 
     if(status == "Read") {
-        const container = document.getElementById("tabSelected");
+        const container = document.getElementById(`buyerid${buyerid}`);
         container.classList.remove('new');
         container.classList.add('read');
     }
