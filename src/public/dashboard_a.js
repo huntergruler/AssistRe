@@ -43,7 +43,7 @@ function getRequests(datatype) {
         .then(data => {
             if (data.length === 0) {
                 const div = document.createElement("div");
-                div.textContent = 'No new requests';
+                div.textContent = 'No '+data+'requests';
                 requests.appendChild(div);
             }
             else {
