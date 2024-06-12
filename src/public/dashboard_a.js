@@ -419,6 +419,10 @@ function setStatus(buyerid, status) {
         status: status
     };
 
+    const container = document.getElementById(buyerid);
+    container.classList.remove('new');
+    container.classList.add('read');
+
     fetch('/setStatus', {
         method: 'POST',
         headers: {
