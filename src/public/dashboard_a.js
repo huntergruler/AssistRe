@@ -167,9 +167,9 @@ function requestDetail(buyerid, buyerrequestid) {
                 detailColumn.appendChild(div);
 
                 
-                detailCont.style.borderTop = '1px solid black';
-                detailCont.style.borderRight = '1px solid black';
-                detailCont.style.borderBottom = '1px solid black';
+                // detailCont.style.borderTop = '1px solid black';
+                // detailCont.style.borderRight = '1px solid black';
+                // detailCont.style.borderBottom = '1px solid black';
 
                 // Create a container div to hold the buttons
                 const buttonContainer = document.createElement("div");
