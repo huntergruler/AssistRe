@@ -420,6 +420,7 @@ function setStatus(buyerid, status) {
     };
 
     const container = document.getElementById(buyerid);
+    console.log(buyerid)
     container.classList.remove('new');
     container.classList.add('read');
 
