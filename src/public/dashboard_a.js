@@ -186,6 +186,20 @@ function makeOffer(buyerid) {
     submitOfferButton.removeEventListener('click', modifyOffer);
     submitOfferButton.addEventListener('click', submitOffer);
 }
+function modifyOffer() {
+    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
+    const selectFields = document.querySelectorAll('#offerFormContainer select');
+    const submitOfferButton = document.getElementById('submitOffer');
+
+    // Remove readonly attribute from input fields and enable select elements
+    inputFields.forEach(input => input.removeAttribute('readonly'));
+    selectFields.forEach(select => select.removeAttribute('disabled'));
+
+    // Change the button text to "Submit Offer"
+    submitOfferButton.textContent = 'Submit Offer';
+    submitOfferButton.removeEventListener('click', modifyOffer);
+    submitOfferButton.addEventListener('click', submitOffer);
+}
 
 function populateLevelOfService() {
     const levelOfService = document.getElementById('levelOfService');
@@ -430,15 +444,7 @@ function modifyOffer() {
     // Change the button text to "Submit Offer"
     submitOfferButton.textContent = 'Submit Offer';
     submitOfferButton.removeEventListener('click', modifyOffer);
-    submitOfferButton.addEventListener('click', submitOffer);
-}
-
-function submitOffer() {
-    // Your submit offer logic here
-}
-
-function cancel() {
-    // Reset the form or perform any necessary cleanup
+    submitOfferButton.addEventListener('click', saveOffer);
 }
 
 // Disable input fields and select elements when the page loads
