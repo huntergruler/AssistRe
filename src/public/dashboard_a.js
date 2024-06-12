@@ -138,7 +138,7 @@ function requestDetail(buyerid, buyerrequestid) {
     const detailColumn = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
     const datatype = document.getElementById('datatype').value;
-    const detailCont = getElementById('requestDetailContainer')
+    const detailCont = getElementById('requestDetailContainer');
     document.getElementById('buyerid').value = buyerid;
     document.getElementById('buyerrequestid').value = buyerrequestid;
 
