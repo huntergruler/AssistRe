@@ -18,9 +18,11 @@ function getRequests(datatype) {
     const requests = document.getElementById('requests');
     const requestDetail = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
+    const offerForm = document.getElementById('offerForm');
     detailButtons.innerHTML = '';
     requestDetail.innerHTML = '';
     requests.innerHTML = '';
+    offerForm.style.display = 'none';
 
     // requestDetail.style.display = 'none';
     // detailButtons.style.display = 'none';
