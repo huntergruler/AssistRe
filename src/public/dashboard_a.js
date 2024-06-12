@@ -8,12 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     offerForm.style.display = 'none';
     document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
 
-    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
-    const selectFields = document.querySelectorAll('#offerFormContainer select');
-
-    inputFields.forEach(input => input.setAttribute('readonly', 'true'));
-    selectFields.forEach(select => select.setAttribute('disabled', 'true'));
-
     // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     // var time_zone = Date().time_zone;
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
