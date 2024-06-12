@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
     document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
+    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
+    const selectFields = document.querySelectorAll('#offerFormContainer select');
+
+    inputFields.forEach(input => input.setAttribute('readonly', 'true'));
+    selectFields.forEach(select => select.setAttribute('disabled', 'true'));
+
     // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     // var time_zone = Date().time_zone;
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
@@ -391,3 +397,30 @@ function populateOfferDetail(buyerid) {
             });
         })
 }
+
+function modifyOffer() {
+    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
+    const selectFields = document.querySelectorAll('#offerFormContainer select');
+    const submitOfferButton = document.getElementById('submitOffer');
+
+    // Remove readonly attribute from input fields and enable select elements
+    inputFields.forEach(input => input.removeAttribute('readonly'));
+    selectFields.forEach(select => select.removeAttribute('disabled'));
+
+    // Change the button text to "Submit Offer"
+    submitOfferButton.textContent = 'Submit Offer';
+    submitOfferButton.removeEventListener('click', modifyOffer);
+    submitOfferButton.addEventListener('click', submitOffer);
+}
+
+function submitOffer() {
+    // Your submit offer logic here
+}
+
+function cancel() {
+    // Reset the form or perform any necessary cleanup
+}
+
+// Disable input fields and select elements when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+});
