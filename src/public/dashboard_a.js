@@ -85,7 +85,7 @@ function selectRequest(buyerid, buyerrequestid) {
         inputFields.forEach(input => input.removeAttribute('readonly'));
         selectFields.forEach(select => select.removeAttribute('disabled'));
         submitOfferButton.textContent = 'Submit Offer';
-        submitOfferButton.removeEventListener('click', modifyOffer);
+        submitOfferButton.removeEventListener('click', modifyOffer(event));
         submitOfferButton.addEventListener('click', saveOffer(event));
     }
     if (datatype == "Offered") {
@@ -101,7 +101,7 @@ function selectRequest(buyerid, buyerrequestid) {
 
         // Change the button text to "Submit Offer"
         submitOfferButton.textContent = 'Modify Offer';
-        submitOfferButton.addEventListener('click', modifyOffer);
+        submitOfferButton.addEventListener('click', modifyOffer(event));
         submitOfferButton.removeEventListener('click', saveOffer(event));
     }
 }
@@ -183,10 +183,11 @@ function makeOffer(buyerid) {
 
     // Change the button text to "Submit Offer"
     submitOfferButton.textContent = 'Submit Offer';
-    submitOfferButton.removeEventListener('click', modifyOffer);
-    submitOfferButton.addEventListener('click', saveOffer);
+    submitOfferButton.removeEventListener('click', modifyOffer(event));
+    submitOfferButton.addEventListener('click', saveOffer(event));
 }
-function modifyOffer() {
+function modifyOffer(event) {
+    event.preventDefault();
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const submitOfferButton = document.getElementById('submitOffer');
@@ -197,8 +198,8 @@ function modifyOffer() {
 
     // Change the button text to "Submit Offer"
     submitOfferButton.textContent = 'Submit Offer';
-    submitOfferButton.removeEventListener('click', modifyOffer);
-    submitOfferButton.addEventListener('click', saveOffer);
+    submitOfferButton.removeEventListener('click', modifyOffer(event));
+    submitOfferButton.addEventListener('click', saveOffer(event));
 }
 
 function populateLevelOfService() {
@@ -431,22 +432,3 @@ function populateOfferDetail(buyerid) {
             });
         })
 }
-
-function modifyOffer() {
-    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
-    const selectFields = document.querySelectorAll('#offerFormContainer select');
-    const submitOfferButton = document.getElementById('submitOffer');
-
-    // Remove readonly attribute from input fields and enable select elements
-    inputFields.forEach(input => input.removeAttribute('readonly'));
-    selectFields.forEach(select => select.removeAttribute('disabled'));
-
-    // Change the button text to "Submit Offer"
-    submitOfferButton.textContent = 'Submit Offer';
-    submitOfferButton.removeEventListener('click', modifyOffer);
-    submitOfferButton.addEventListener('click', saveOffer);
-}
-
-// Disable input fields and select elements when the page loads
-document.addEventListener('DOMContentLoaded', function () {
-});
