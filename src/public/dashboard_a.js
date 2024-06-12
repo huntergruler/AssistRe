@@ -191,13 +191,22 @@ function makeOffer(buyerid) {
 
 function modifyOffer(event) {
     event.preventDefault();
-    const inputFields = document.querySelectorAll('#offerFormContainer input:not([readonly]), #offerFormContainer textarea:not([readonly])');
-    const selectFields = document.querySelectorAll('#offerFormContainer select:not([disabled])');
-    const submitOfferButton = document.getElementById('submitOffer');
+    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
+    const selectFields = document.querySelectorAll('#offerFormContainer select');
+    const offerButton = document.getElementById('offerButton');
 
-    // Remove readonly attribute from input fields and enable select elements
     inputFields.forEach(input => input.removeAttribute('readonly'));
     selectFields.forEach(select => select.removeAttribute('disabled'));
+
+    offerButton.innerHTML = '';
+    const buttonElement = document.createElement("button");
+    buttonElement.textContent = 'Save Changes';
+    buttonElement.style.border = "1px solid black";
+    buttonElement.style.borderRadius = "5px";
+    buttonElement.style.padding = "2px";
+    buttonElement.style.margin = "2px";
+    buttonElement.setAttribute("onclick", `saveOffer(event)`);
+    offerButton.appendChild(buttonElement);
 
 }
 
