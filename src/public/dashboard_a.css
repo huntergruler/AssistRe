@@ -30,13 +30,9 @@
   }
 
   #tabSelected {
-<<<<<<< Updated upstream
-    background-color: #8f1313; /* Example highlight style */
-=======
     background-color: var(--background-color);
     color: white;
     border-radius: 5px;
->>>>>>> Stashed changes
 }
 
   /* Style the active tab button */
