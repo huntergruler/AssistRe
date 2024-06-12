@@ -98,7 +98,6 @@ function selectRequest(buyerid, buyerrequestid) {
         offerButton.innerHTML = '';
 
         // create a button to modify the offer
-        console.log('create a button to modify the offer');
         const buttonElement = document.createElement("button");
         buttonElement.textContent = 'Modify Offer';
         buttonElement.style.border = "1px solid black";
@@ -106,6 +105,14 @@ function selectRequest(buyerid, buyerrequestid) {
         buttonElement.style.padding = "2px";
         buttonElement.style.margin = "2px";
         buttonElement.setAttribute("onclick", `modifyOffer(event)`);
+        offerButton.appendChild(buttonElement);
+        const buttonElement = document.createElement("button");
+        buttonElement.textContent = 'Remove Offer';
+        buttonElement.style.border = "1px solid black";
+        buttonElement.style.borderRadius = "5px";
+        buttonElement.style.padding = "2px";
+        buttonElement.style.margin = "2px";
+        buttonElement.setAttribute("onclick", `removeOffer(event)`);
         offerButton.appendChild(buttonElement);
     }
 }
@@ -150,7 +157,6 @@ function requestDetail(buyerid, buyerrequestid) {
                 const buttons = [
                     { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid})` },
                     { id: "rejectRequest", text: "Reject Request", onclick: `rejectRequest(${request.buyerid})` },
-                    { id: "ignoreRequest", text: "Ignore for Now", onclick: `ignoreRequest(${request.buyerid})` }
                 ];
 
                 buttons.forEach(button => {
