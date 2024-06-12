@@ -116,7 +116,7 @@ function selectRequest(buyerid, buyerrequestid, element) {
         detailButtons.style.display = 'block';
         inputFields.forEach(input => input.removeAttribute('readonly'));
         selectFields.forEach(select => select.removeAttribute('disabled'));
-        document.getElementByvalue('selectedBuyerId').value = 'New';
+        element.style.backgroundColor = "lightgreen";
         setStatus(buyerid, 'Read');
     }
     if (datatype == "Offered") {
