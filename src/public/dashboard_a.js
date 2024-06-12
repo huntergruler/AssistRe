@@ -27,6 +27,11 @@ function getRequests(datatype, element) {
     const detailButtons = document.getElementById('detailButtons');
     const offerForm = document.getElementById('offerForm');
 
+    const detailCont = document.getElementById('requestDetailContainer');
+    detailCont.style.borderTop = '0';
+    detailCont.style.borderRight = '0';
+    detailCont.style.borderBottom = '0';
+
     const buttons = document.querySelectorAll('.tablinks');
     buttons.forEach(button => {
         button.setAttribute('id', '');
