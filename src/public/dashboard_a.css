@@ -32,7 +32,6 @@
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 5px;
   }
 
   #tabSelected {
@@ -118,7 +117,7 @@ body {
     padding-right: 0px;
     height: fit-content;
     border: 1px solid black;
-    border-radius: 8px;
+    border-radius: 8px 0 0 8px;
     justify-content: center;
     text-align: center;
     cursor: pointer;
@@ -168,7 +167,9 @@ body {
     justify-content: center;
     text-align: center;
     align-items: center;
-    border: 1px solid black;
-    border-radius: 8px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    /* border-radius: 8px; */
     /* background-color: aqua; */
 }
