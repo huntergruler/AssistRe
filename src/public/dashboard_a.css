@@ -182,3 +182,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
+#offerFormContainer select {
+    background-color: #007BFF;
+}
