@@ -26,7 +26,7 @@ function getRequests(datatype) {
 
     // requestDetail.style.display = 'none';
     // detailButtons.style.display = 'none';
-    
+
     document.getElementById('datatype').value = datatype;
     const getRequests = document.getElementById('getRequests');
     getRequests.style.display = 'block';
@@ -70,8 +70,9 @@ function selectRequest(buyerid, buyerrequestid) {
     const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
     if (datatype == "Offered") {
-        makeOffer(buyerid);
         populateOfferDetail(buyerid);
+        const offerForm = document.getElementById('offerForm');
+        offerForm.style.display = 'block';
     }
 }
 
@@ -119,7 +120,7 @@ function requestDetail(buyerid, buyerrequestid) {
                 // Create a container div to hold the buttons
                 const buttonContainer = document.createElement("div");
                 buttonContainer.className = "form-row"; // Apply any additional styling if needed
-                buttonContainer.style.border ="none";
+                buttonContainer.style.border = "none";
 
                 // Create each button and append them to the container
                 const buttons = [
@@ -272,7 +273,7 @@ function saveOffer(event) {
             retainerCredited = radioButton.value;
         }
     });
-   
+
     // Create an object with the gathered data
     const offerData = {
         buyerid: buyerid,
@@ -297,33 +298,33 @@ function saveOffer(event) {
         },
         body: JSON.stringify(offerData)
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(result => {
-        console.log('Success:', result);
-        const offerForm = document.getElementById('offerForm');
-        alert('Offer saved successfully');
-        const requestDetail = document.getElementById('requestDetail');
-        const detailButtons = document.getElementById('detailButtons');
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result => {
+            console.log('Success:', result);
+            const offerForm = document.getElementById('offerForm');
+            alert('Offer saved successfully');
+            const requestDetail = document.getElementById('requestDetail');
+            const detailButtons = document.getElementById('detailButtons');
 
-        requestDetail.innerHTML = '';
-        detailButtons.innerHTML = '';
-        offerForm.style.display = 'none';
-        requestDetail.display = 'none';
-        detailButtons.display = 'none';
-        clearForm();
+            requestDetail.innerHTML = '';
+            detailButtons.innerHTML = '';
+            offerForm.style.display = 'none';
+            requestDetail.display = 'none';
+            detailButtons.display = 'none';
+            clearForm();
 
-        getRequests();
-        // Optionally, perform any actions here after successful submission
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        // Optionally, display an error message to the user
-    });
+            getRequests();
+            // Optionally, perform any actions here after successful submission
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Optionally, display an error message to the user
+        });
 }
 
 function populateOfferDefaults() {
@@ -347,7 +348,7 @@ function populateOfferDefaults() {
             radioButtons.forEach(radioButton => {
                 if (data.retainerCredited === 1) {
                     document.getElementById('retainerCreditedY').checked = true;
-                } 
+                }
                 if (data.retainerCredited === 0) {
                     document.getElementById('retainerCreditedN').checked = true;
                 }
@@ -376,7 +377,7 @@ function populateOfferDetail(buyerid) {
             radioButtons.forEach(radioButton => {
                 if (data.retainerCredited === 1) {
                     document.getElementById('retainerCreditedY').checked = true;
-                } 
+                }
                 if (data.retainerCredited === 0) {
                     document.getElementById('retainerCreditedN').checked = true;
                 }
