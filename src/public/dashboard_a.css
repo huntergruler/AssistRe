@@ -112,10 +112,10 @@ body {
     margin-bottom: 0px;
     margin-left: 0px;
     margin-right: 0px;
-    padding-top: 0px;
+    /* padding-top: 0px;
     padding-bottom: 0px;
     padding-left: 2px;
-    padding-right: 0px;
+    padding-right: 0px; */
     height: fit-content;
     border: 1px solid black;
     border-radius: 8px 0 0 8px;
@@ -140,10 +140,10 @@ body {
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
-    padding-left: 2px;
+    /* padding-left: 2px;
     padding-right: 2px;
     padding-top: 2px;
-    padding-bottom: 2px;
+    padding-bottom: 2px; */
     width: 300px;
     overflow: auto;
     height: fit-content;
