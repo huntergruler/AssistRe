@@ -32,9 +32,10 @@
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
   }
 
-  #tabSelected {
+  .tablinks:focus {
     background-color: var(--background-color);
     color: white;
     border-radius: 5px;
