@@ -129,7 +129,7 @@ router.get('/getRequests', (req, res) => {
                      from AgentBuyerMatch bam
                     where bam.agentid = ?
                       and if(bam.matchStatus = 'Read','New', bam.matchStatus) = ?
-                      order by b.matchStatus, b.entrytimestamp desc`;
+                      order by bam.matchStatus, bam.entrytimestamp desc`;
       db.query(query, [userid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
