@@ -175,7 +175,6 @@ function makeOffer(buyerid) {
     offerForm.style.display = 'block';
 
     const buttonElement = document.createElement("button");
-    buttonElement.textContent = button.text;
     buttonElement.textContent = 'Submit Offer';
     buttonElement.style.border = "1px solid black";
     buttonElement.style.borderRadius = "5px";
