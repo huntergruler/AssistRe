@@ -32,10 +32,9 @@
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    border-radius: 5px;
   }
 
-  .tablinks:focus {
+  #tabSelected {
     background-color: var(--background-color);
     color: white;
     border-radius: 5px;
@@ -118,16 +117,8 @@ body {
     padding-right: 0px;
     height: fit-content;
     border: 1px solid black;
-    border-radius: 8px;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    /* background-color: blueviolet; */
-}
-
-.form-row.container-right {
-    border: 1px solid black;
     border-radius: 8px 0 0 8px;
+    justify-content: center;
     text-align: center;
     cursor: pointer;
     /* background-color: blueviolet; */
@@ -177,7 +168,7 @@ body {
     text-align: center;
     align-items: center;
     border: 1px solid black;
-    border-radius: 8px 0 0 8px;
+    border-radius: 8px;
     /* background-color: aqua; */
 }
 
