@@ -98,6 +98,7 @@ function selectRequest(buyerid, buyerrequestid) {
         offerButton.innerHTML = '';
 
         // create a button to modify the offer
+        console.log('create a button to modify the offer');
         const buttonElement = document.createElement("button");
         buttonElement.textContent = 'Modify Offer';
         buttonElement.style.border = "1px solid black";
