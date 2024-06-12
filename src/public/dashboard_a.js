@@ -76,10 +76,10 @@ function getRequests(datatype, element) {
                     div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid));
                     div.className = "form-row container-left col-md-9 align-self-end";
                     div.id = "buyerid" + request.buyerid;
-                    if (datatype == "New") {
+                    if (request.matchStatus == "New") {
                         div.style.backgroundColor = "lightblue";
                     }
-                    if (datatype == "Read") {
+                    if (request.matchStatus == "Read") {
                         div.style.backgroundColor = "lightgreen";
                     }
                     div.onclick = function () {
