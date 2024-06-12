@@ -154,6 +154,12 @@ body {
     /* background-color: chartreuse; */
 }
 
+
+#offerFormContainer select:disabled {
+    opacity: 1 !important;
+    color: black;
+}
+
 .container-right {
     /* opacity: 0.8; */
     margin-left: 0px;
@@ -181,10 +187,4 @@ body {
 #request {
     margin: 0;
     padding: 0;
-}
-
-#offerFormContainer select:disabled {
-    opacity: 1 !important;
-    color: black;
-    border: 1px solid black;
 }
