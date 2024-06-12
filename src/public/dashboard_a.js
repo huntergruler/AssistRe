@@ -251,7 +251,7 @@ function removeOffer() {
 function declineOffer() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
-    fetch(`/removeOffer?buyerid=${buyerid}`)
+    fetch(`/declineOffer?buyerid=${buyerid}`)
 
         .then(response => response.json())
         .then(data => {

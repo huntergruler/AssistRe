@@ -131,7 +131,7 @@ body {
     width: 300px;
     overflow: auto;
     height: fit-content;
-    max-height: 450px;
+    max-height: 425px;
     justify-content: center;
     align-items: center;
     /* background-color: chartreuse; */
