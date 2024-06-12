@@ -152,7 +152,7 @@ function requestDetail(buyerid, buyerrequestid) {
     detailCont.style.border = '0';
 
     const detailsCont = document.getElementById('requestDetails');
-    detailConts.style.border = '0';
+    detailsCont.style.border = '0';
 
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
