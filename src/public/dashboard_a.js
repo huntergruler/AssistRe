@@ -108,6 +108,8 @@ function selectRequest(buyerid, buyerrequestid) {
         populateOfferDetail(buyerid);
         const offerForm = document.getElementById('offerForm');
         const detailButtons = document.getElementById('detailButtons');
+        const detailsCont = document.getElementById('requestDetails');
+        detailsCont.style.border = '1px solid black';
 
         offerForm.style.display = 'block';
         inputFields.forEach(input => {
