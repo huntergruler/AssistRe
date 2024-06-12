@@ -15,19 +15,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
 let selectedBuyerId = null;
 function getRequests(datatype) {
-    const Requests = document.getElementById('Requests');
+    const requests = document.getElementById('requests');
+    const requestDetail = document.getElementById('requestDetail');
+    const detailButtons = document.getElementById('detailButtons');
+    detailButtons.innerHTML = '';
+    requestDetail.innerHTML = '';
+    requests.innerHTML = '';
+
+    requestDetail.style.display = 'none';
+    detailButtons.style.display = 'none';
+    
     document.getElementById('datatype').value = datatype;
     const getRequests = document.getElementById('getRequests');
     getRequests.style.display = 'block';
     console.log('getRequests', datatype);
-    Requests.innerHTML = '';
+    requests.innerHTML = '';
     fetch(`/getRequests?datatype=${datatype}`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {
                 const div = document.createElement("div");
                 div.textContent = 'No new requests';
-                Requests.appendChild(div);
+                requests.appendChild(div);
             }
             else {
                 data.forEach(request => {
@@ -42,8 +51,8 @@ function getRequests(datatype) {
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
-                    // Requests.appendChild(input);
-                    Requests.appendChild(div);
+                    // requests.appendChild(input);
+                    requests.appendChild(div);
                 });
             }
         })
@@ -53,7 +62,7 @@ function getRequests(datatype) {
 function selectRequest(buyerid, buyerrequestid) {
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
-    const rows = document.querySelectorAll('#Requests .form-row');
+    const rows = document.querySelectorAll('#requests .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
     });
