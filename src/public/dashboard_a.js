@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
     document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
+
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
 
@@ -165,6 +166,11 @@ function makeOffer(buyerid) {
     populateOfferDefaults();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'block';
+    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
+    const selectFields = document.querySelectorAll('#offerFormContainer select');
+
+    inputFields.forEach(input => input.setAttribute('readonly', 'false'));
+    selectFields.forEach(select => select.setAttribute('disabled', 'false'));
 }
 
 function populateLevelOfService() {
