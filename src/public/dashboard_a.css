@@ -156,10 +156,12 @@ body {
 
 
 #offerFormContainer select:disabled {
+    opacity: 1 !important;
     color: black;
 }
 
 #offerFormContainer input:disabled {
+    opacity: 1 !important;
     color: black;
 }
 
