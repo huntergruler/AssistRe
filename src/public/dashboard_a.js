@@ -28,7 +28,6 @@ function getRequests(datatype) {
     document.getElementById('datatype').value = datatype;
     const getRequests = document.getElementById('getRequests');
     getRequests.style.display = 'block';
-    console.log('getRequests', datatype);
     requests.innerHTML = '';
     fetch(`/getRequests?datatype=${datatype}`)
         .then(response => response.json())

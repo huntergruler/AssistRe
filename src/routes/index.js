@@ -114,51 +114,6 @@ router.get('/dashboard_a', (req, res) => {
 });
 
 // Route to get the buyer's profile
-router.get('/getNewBuyerRequests', (req, res) => {
-  if (!req.session.user) {
-    req.session.message = 'Please login to access your Profile';
-    res.redirect('/');
-  }
-  else {
-    const datatype = req.query.datatype;
-    const buyerrequestid = req.query.buyerrequestid;
-    const buyerid = req.query.buyerid;
-    const userid = req.session.userid;
-    console.log('Buyer ID:', buyerid, 'User ID:', userid, 'Data Type:', datatype, 'Buyer Request ID:', buyerrequestid);
-    if (!buyerid) {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
-                     from AgentBuyerMatch bam
-                    where bam.agentid = ?
-                      and bam.matchStatus = ?`;
-      db.query(query, [userid, datatype], (error, results) => {
-        if (error) {
-          console.error('Error fetching buyer profile:', error);
-          return res.status(500).send('Server error');
-        }
-        res.json(results);
-      });
-    }
-    else {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
-                      from AgentBuyerMatch bam
-                      where bam.agentid = ?
-                      and bam.buyerid = ?
-                      and bam.matchstatus = ?`;
-      db.query(query, [userid, buyerid, datatype], (error, results) => {
-        if (error) {
-          console.error('Error fetching buyer profile:', error);
-          return res.status(500).send('Server error');
-        }
-        if (results.length === 0) {
-          return res.status(404).send('NotFound');
-        }
-        res.json(results);
-      });
-    }
-  }
-});
-
-// Route to get the buyer's profile
 router.get('/getRequests', (req, res) => {
   const datatype = req.query.datatype;
   if (!req.session.user) {
@@ -167,10 +122,8 @@ router.get('/getRequests', (req, res) => {
   }
   else {
     const datatype = req.query.datatype;
-    const buyerrequestid = req.query.buyerrequestid;
     const buyerid = req.query.buyerid;
     const userid = req.session.userid;
-    console.log('Buyer ID:', buyerid, 'User ID:', userid, 'Data Type:', datatype, 'Buyer Request ID:', buyerrequestid);
     if (!buyerid) {
       var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
                      from AgentBuyerMatch bam
@@ -204,48 +157,6 @@ router.get('/getRequests', (req, res) => {
   }
 });
 
-router.get('/getOutstandingOffers', (req, res) => {
-  if (!req.session.user) {
-    req.session.message = 'Please login to access your Profile';
-    res.redirect('/');
-  }
-  else {
-    const buyerid = req.query.buyerid;
-    const userid = req.session.userid;
-    if (!buyerid) {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
-                     from AgentBuyerMatch bam
-                    where bam.agentid = ?
-                      and bam.matchStatus = 'Offered'`;
-      db.query(query, [userid], (error, results) => {
-        if (error) {
-          console.error('Error fetching buyer profile:', error);
-          return res.status(500).send('Server error');
-        }
-        res.json(results);
-      });
-    }
-    else {
-      var query = `select ao.agentid, bam.buyerid, bam.buyerrequestid, ao.offerType, ao.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, ao.offerTimestamp
-                      from AgentOffers ao
-                      where bam.agentid = ?
-                      and bam.buyerid = ?
-                      and bam.matchstatus = 'Offered'`;
-
-
-      db.query(query, [userid, buyerid], (error, results) => {
-        if (error) {
-          console.error('Error fetching buyer profile:', error);
-          return res.status(500).send('Server error');
-        }
-        if (results.length === 0) {
-          return res.status(404).send('NotFound');
-        }
-        res.json(results);
-      });
-    }
-  }
-});
 
 router.post('/saveoffer', (req, res) => {
   if (!req.session.user) {
