@@ -124,6 +124,14 @@ body {
     /* background-color: blueviolet; */
 }
 
+.form-row.container-right {
+    border: 1px solid black;
+    border-radius: 8px 0 0 8px;
+    text-align: center;
+    cursor: pointer;
+    /* background-color: blueviolet; */
+}
+
 .tablinks-selected {
     background-color: #ccc; /* Example highlight style */
 }
