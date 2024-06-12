@@ -43,7 +43,15 @@ function getRequests(datatype) {
         .then(data => {
             if (data.length === 0) {
                 const div = document.createElement("div");
-                div.textContent = 'No '+data+'requests';
+                if (datatype == "New") {
+                    div.textContent = 'No new requests';
+                }
+                if (datatype == "Read") {
+                    div.textContent = 'No read requests';
+                }
+                if (datatype == "Offered") {
+                    div.textContent = 'No offered requests';
+                }
                 requests.appendChild(div);
             }
             else {
