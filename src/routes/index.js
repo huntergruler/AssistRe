@@ -128,7 +128,7 @@ router.get('/getRequests', (req, res) => {
       var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes
                      from AgentBuyerMatch bam
                     where bam.agentid = ?
-                      and bam.matchStatus = ?`;
+                      and if(bam.matchStatus = 'Read','New',bam.matchStatus) = ?`;
       db.query(query, [userid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
@@ -234,7 +234,6 @@ router.get('/get-offerdetails', (req, res) => {
   else {
     const userid = req.session.userid;
     const buyerid = req.query.buyerid;
-    console.log('Buyer ID:', buyerid);
     const query = `SELECT offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
                      FROM AgentOffers WHERE agentid = ? and buyerid = ?`;
     db.query(query, [userid, buyerid], (error, results) => {
