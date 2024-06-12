@@ -97,8 +97,8 @@ function selectRequest(buyerid, buyerrequestid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
-    console.log('element:', element);   
-    
+    console.log('element:', element);
+
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
 
@@ -116,7 +116,6 @@ function selectRequest(buyerid, buyerrequestid, element) {
         detailButtons.style.display = 'block';
         inputFields.forEach(input => input.removeAttribute('readonly'));
         selectFields.forEach(select => select.removeAttribute('disabled'));
-        element.style.backgroundColor = "lightgreen";
         setStatus(buyerid, 'Read');
     }
     if (datatype == "Offered") {
@@ -128,7 +127,7 @@ function selectRequest(buyerid, buyerrequestid, element) {
 
         offerForm.style.display = 'block';
         inputFields.forEach(input => {
-            input.setAttribute('readonly', 'true'); 
+            input.setAttribute('readonly', 'true');
             input.setAttribute('disabled', 'true')
         });
         selectFields.forEach(select => select.setAttribute('disabled', 'true'));
@@ -193,7 +192,7 @@ function requestDetail(buyerid, buyerrequestid) {
                 div.id = "buyerid" + request.buyerid;
                 detailColumn.appendChild(div);
 
-                
+
                 detailCont.style.border = '1px solid black';
 
                 // Create a container div to hold the buttons
@@ -300,7 +299,8 @@ function declineRequest() {
     fetch(`/declineRequest?buyerid=${buyerid}`)
 
         .then(response => response.json())
-        .then(data => { console.log('data:', data.success);
+        .then(data => {
+            console.log('data:', data.success);
             if (data.success) {
                 alert('Request Declined successfully');
                 const offerForm = document.getElementById('offerForm');
@@ -414,15 +414,31 @@ function clearForm() {
 }
 
 function setStatus(buyerid, status) {
-    fetch(`/setStatus?buyerid=${buyerid}&status=${status}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-            }
-        })
-        .catch(error => console.error('Error checking user:', error));
-}
+    const data = {
+        buyerid: buyerid,
+        status: status
+    };
 
+    fetch('/setStatus', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result => {
+            console.log('SetStatus Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
 
 function saveOffer(event) {
     event.preventDefault();

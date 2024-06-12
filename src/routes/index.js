@@ -159,6 +159,25 @@ router.get('/getRequests', (req, res) => {
   }
 });
 
+router.post('/setStatus', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to save changes';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+    const { buyerid, status } = req.body;
+    insertQuery = 'update INTO AgentOffers (agentid, buyerid, matchStatus) values (?,?,?)';
+    db.query(insertQuery, [userid, buyerid, status], (error, result) => {
+      if (error) {
+        console.error('Error saving status:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      res.json({ success: true });
+    });
+  }
+});
+
 
 router.post('/saveoffer', (req, res) => {
   if (!req.session.user) {
