@@ -91,6 +91,7 @@ function selectRequest(buyerid, buyerrequestid) {
         offerForm.style.display = 'block';
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'none';
+        offerButton.innerHTML = '';
 
         // create a button to modify the offer
         const buttonElement = document.createElement("button");
@@ -170,6 +171,7 @@ function makeOffer(buyerid) {
     populateOfferDefaults();
     const offerForm = document.getElementById('offerForm');
     const offerButton = document.getElementById('offerButton');
+    offerButton.innerHTML = '';
     offerForm.style.display = 'block';
 
     const buttonElement = document.createElement("button");
