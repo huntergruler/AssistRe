@@ -1,3 +1,17 @@
+:root {
+    --primary-color: #007BFF;
+    --secondary-color: #6C757D;
+    --success-color: #28A745;
+    --info-color: #17A2B8;
+    --warning-color: #FFC107;
+    --danger-color: #DC3545;
+    --light-color: #F8F9FA;
+    --dark-color: #343A40;
+    --background-color: rgba(19, 50, 109);
+
+}
+
+
 .margin-top-100 {
     margin-top: 100px;
 }
@@ -30,7 +44,7 @@
   }
 
   #tabSelected {
-    background-color: #8f1313; /* Example highlight style */
+    background-color: var(--background-color);
 }
 
   /* Style the active tab button */
