@@ -70,6 +70,7 @@ function getRequests(datatype) {
 function selectRequest(buyerid, buyerrequestid) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
+    const offerButton = document.getElementById('offerButton');
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
     const rows = document.querySelectorAll('#requests .form-row');
