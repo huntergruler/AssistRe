@@ -29,10 +29,9 @@ function getRequests(datatype, element) {
 
     const buttons = document.querySelectorAll('.tablinks');
     buttons.forEach(button => {
-        button.classList.remove('tabSelected');
+        button.setAttribute('id', '');
     });
-
-    element.classList.add('tabSelected');
+    element.setAttribute('id', 'tabSelected');
 
     detailButtons.innerHTML = '';
     requestDetail.innerHTML = '';
