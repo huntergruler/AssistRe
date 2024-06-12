@@ -26,6 +26,7 @@ function getRequests(datatype, element) {
     const requestDetail = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
     const offerForm = document.getElementById('offerForm');
+
     const buttons = document.querySelectorAll('.tablinks');
     buttons.forEach(button => {
         button.classList.remove('tablinks-selected');
