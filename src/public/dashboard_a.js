@@ -77,10 +77,10 @@ function getRequests(datatype, element) {
                     div.className = "form-row container-left col-md-9 align-self-end";
                     div.id = "buyerid" + request.buyerid;
                     if (datatype == "New") {
-                        div.style.backgroundColor = "lightblue";
+                        div.classList.add("new");
                     }
                     if (datatype == "Read") {
-                        div.style.backgroundColor = "lightgreen";
+                        div.classList.add("read");
                     }
                     div.onclick = function () {
                         this.classList.toggle("selected");
@@ -97,7 +97,7 @@ function selectRequest(buyerid, buyerrequestid) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
-    
+
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
 
