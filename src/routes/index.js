@@ -402,7 +402,7 @@ router.get('/removeOffer', (req, res) => {
   });
 });
 
-router.get('/declineOffer', (req, res) => {
+router.get('/declineRequest', (req, res) => {
   const buyerid = req.query.buyerid;
   const updateQuery = 'update AgentBuyerMatch set matchStatus = "Declined" WHERE agentid = ? and buyerid = ?';
   db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {

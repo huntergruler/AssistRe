@@ -248,15 +248,16 @@ function removeOffer() {
         })
         .catch(error => console.error('Error checking user:', error));
 }
-function declineOffer() {
+
+function declineRequest() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
-    fetch(`/declineOffer?buyerid=${buyerid}`)
+    fetch(`/declineRequest?buyerid=${buyerid}`)
 
         .then(response => response.json())
         .then(data => {
             if (data.results === "success") {
-                alert('Offer removed successfully');
+                alert('Request Declined successfully');
                 const offerForm = document.getElementById('offerForm');
                 const requestDetail = document.getElementById('requestDetail');
                 const detailButtons = document.getElementById('detailButtons');
