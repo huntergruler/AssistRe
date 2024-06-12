@@ -29,6 +29,8 @@ function getRequests(datatype, element) {
 
     const detailCont = document.getElementById('requestDetailContainer');
     detailCont.style.border = '0';
+    const detailsCont = document.getElementById('requestDetails');
+    detailsCont.style.border = '0';
 
     const buttons = document.querySelectorAll('.tablinks');
     buttons.forEach(button => {
