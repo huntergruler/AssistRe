@@ -217,6 +217,27 @@ function modifyOffer(event) {
     offerButton.appendChild(buttonElement);
 
 }
+function removeOffer() {
+    buyerid = document.getElementById('buyerid').value;
+    fetch(`/removeOffer?buyerid=${buyerid}`)
+
+        .then(response => response.json())
+        .then(data => {
+            if (data.results === "success") {
+                alert('Offer removed successfully');
+                const offerForm = document.getElementById('offerForm');
+                const requestDetail = document.getElementById('requestDetail');
+                const detailButtons = document.getElementById('detailButtons');
+
+                requestDetail.innerHTML = '';
+                detailButtons.innerHTML = '';
+                offerForm.style.display = 'none';
+                getRequests();
+                clearForm()
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+}
 
 function populateLevelOfService() {
     const levelOfService = document.getElementById('levelOfService');
