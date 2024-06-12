@@ -81,7 +81,7 @@ function selectOffer(buyerid, buyerrequestid) {
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    popu(buyerid, buyerrequestid);
+    populateOfferDetail(buyerid);
 }
 
 function requestDetail(buyerid, buyerrequestid) {
@@ -354,7 +354,7 @@ function populateOfferDefaults() {
         })
 }
 
-function populateOfferDetail() {
+function populateOfferDetail(buyerid) {
     fetch(`/get-offerdetails`)
         .then(response => response.json())
         .then(data => {
