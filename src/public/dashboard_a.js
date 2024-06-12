@@ -171,7 +171,19 @@ function requestDetail(buyerid, buyerrequestid) {
 function makeOffer(buyerid) {
     populateOfferDefaults();
     const offerForm = document.getElementById('offerForm');
+    const offerButton = document.getElementById('offerButton');
     offerForm.style.display = 'block';
+
+    const buttonElement = document.createElement("button");
+    buttonElement.textContent = button.text;
+    buttonElement.textContent = 'Submit Offer';
+    buttonElement.style.border = "1px solid black";
+    buttonElement.style.borderRadius = "5px";
+    buttonElement.style.padding = "2px";
+    buttonElement.style.margin = "2px";
+    buttonElement.setAttribute("onclick", `saveOffer(event)`);
+    offerButton.appendChild(buttonElement);
+
 
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
@@ -191,7 +203,7 @@ function modifyOffer(event) {
     const inputFields = document.querySelectorAll('#offerFormContainer input:not([readonly]), #offerFormContainer textarea:not([readonly])');
     const selectFields = document.querySelectorAll('#offerFormContainer select:not([disabled])');
     const submitOfferButton = document.getElementById('submitOffer');
-    
+
     // Remove readonly attribute from input fields and enable select elements
     inputFields.forEach(input => input.removeAttribute('readonly'));
     selectFields.forEach(select => select.removeAttribute('disabled'));
