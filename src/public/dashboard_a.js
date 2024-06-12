@@ -97,10 +97,9 @@ function selectRequest(buyerid, buyerrequestid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
-    console.log('element:', element);
-
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
+    const datatype = document.getElementById('datatype').value;
 
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
@@ -108,7 +107,6 @@ function selectRequest(buyerid, buyerrequestid, element) {
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
     console.log('datatype:', datatype);
     if (datatype == "New") {
@@ -509,6 +507,7 @@ function saveOffer(event) {
             requestDetail.display = 'none';
             detailButtons.display = 'none';
             clearForm();
+            console.log('dataType:', dataType);
 
             getRequests(dataType);
             // Optionally, perform any actions here after successful submission
