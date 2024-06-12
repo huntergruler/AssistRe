@@ -166,7 +166,7 @@ function requestDetail(buyerid, buyerrequestid) {
                 // Create each button and append them to the container
                 const buttons = [
                     { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid})` },
-                    { id: "rejectRequest", text: "Reject Request", onclick: `rejectRequest(${request.buyerid})` },
+                    { id: "declineRequest", text: "Decline Request", onclick: `declineRequest(${request.buyerid})` },
                 ];
 
                 buttons.forEach(button => {
@@ -248,6 +248,29 @@ function removeOffer() {
         })
         .catch(error => console.error('Error checking user:', error));
 }
+function declineOffer() {
+    const buyerid = document.getElementById('buyerid').value;
+    const dataType = document.getElementById('datatype').value;
+    fetch(`/removeOffer?buyerid=${buyerid}`)
+
+        .then(response => response.json())
+        .then(data => {
+            if (data.results === "success") {
+                alert('Offer removed successfully');
+                const offerForm = document.getElementById('offerForm');
+                const requestDetail = document.getElementById('requestDetail');
+                const detailButtons = document.getElementById('detailButtons');
+
+                requestDetail.innerHTML = '';
+                detailButtons.innerHTML = '';
+                offerForm.style.display = 'none';
+                getRequests(dataType);
+                clearForm()
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+}
+
 
 function populateLevelOfService() {
     const levelOfService = document.getElementById('levelOfService');
