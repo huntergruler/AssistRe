@@ -77,8 +77,8 @@ function selectRequest(buyerid, buyerrequestid) {
         populateOfferDetail(buyerid);
         const offerForm = document.getElementById('offerForm');
         offerForm.style.display = 'block';
-        const detailButtons = document.getElementById('detailButtons');
-        detailButtons.style.display = 'none';
+        // const detailButtons = document.getElementById('detailButtons');
+        // detailButtons.style.display = 'none';
     }
 }
 
