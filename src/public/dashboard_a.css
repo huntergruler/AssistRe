@@ -185,4 +185,6 @@ body {
 
 #offerFormContainer select:disabled {
     opacity: 1 !important;
+    color: black;
+    border: 1px solid black;
 }
