@@ -43,6 +43,7 @@
   /* Style the active tab button */
   .tab button.active {
     background-color: #ccc;
+    border-radius: 5px;
   }
 
 
