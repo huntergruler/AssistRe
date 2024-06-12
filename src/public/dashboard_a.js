@@ -188,10 +188,10 @@ function makeOffer(buyerid) {
 }
 function modifyOffer(event) {
     event.preventDefault();
-    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
-    const selectFields = document.querySelectorAll('#offerFormContainer select');
+    const inputFields = document.querySelectorAll('#offerFormContainer input:not([readonly]), #offerFormContainer textarea:not([readonly])');
+    const selectFields = document.querySelectorAll('#offerFormContainer select:not([disabled])');
     const submitOfferButton = document.getElementById('submitOffer');
-
+    
     // Remove readonly attribute from input fields and enable select elements
     inputFields.forEach(input => input.removeAttribute('readonly'));
     selectFields.forEach(select => select.removeAttribute('disabled'));
