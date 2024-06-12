@@ -27,10 +27,7 @@ function getRequests(datatype, element) {
     const detailButtons = document.getElementById('detailButtons');
     const offerForm = document.getElementById('offerForm');
 
-    const detailCont = document.getElementById('requestDetailContainer');
-    detailCont.style.borderTop = '0';
-    detailCont.style.borderRight = '0';
-    detailCont.style.borderBottom = '0';
+    document.getElementById('requestDetailContainer').detailCont.style.border = '0'
 
     const buttons = document.querySelectorAll('.tablinks');
     buttons.forEach(button => {
@@ -147,9 +144,7 @@ function requestDetail(buyerid, buyerrequestid) {
     document.getElementById('buyerid').value = buyerid;
     document.getElementById('buyerrequestid').value = buyerrequestid;
 
-    detailCont.style.borderTop = '0';
-    detailCont.style.borderRight = '0';
-    detailCont.style.borderBottom = '0';
+    detailCont.style.border = '0';
 
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
@@ -176,9 +171,7 @@ function requestDetail(buyerid, buyerrequestid) {
                 detailColumn.appendChild(div);
 
                 
-                detailCont.style.borderTop = '1px solid black';
-                detailCont.style.borderRight = '1px solid black';
-                detailCont.style.borderBottom = '1px solid black';
+                detailCont.style.border = '1px solid black';
 
                 // Create a container div to hold the buttons
                 const buttonContainer = document.createElement("div");
