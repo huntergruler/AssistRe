@@ -6,46 +6,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // getRequests()
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
-    document.querySelector('#newRequestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
+    document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
     // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     // var time_zone = Date().time_zone;
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
     // FROM your_table_name;
 });
-function openTab(evt, tabName) {
-    // Hide all tab content elements
-    var tabcontent = document.getElementsByClassName("tabcontent");
-    for (var i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Remove "active" class from all tab buttons
-    var tablinks = document.getElementsByClassName("tablinks");
-    for (var i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
-
-    // Show the selected tab content
-    document.getElementById(tabName).style.display = "block";
-
-    // Add "active" class to the clicked tab button
-    evt.currentTarget.classList.add("active");
-}
 
 let selectedBuyerId = null;
 function getRequests(datatype) {
-    const newRequests = document.getElementById('newRequests');
+    const Requests = document.getElementById('Requests');
+    document.getElementById('datatype').value = datatype;
     const getRequests = document.getElementById('getRequests');
     getRequests.style.display = 'block';
     console.log('getRequests', datatype);
-    newRequests.innerHTML = '';
+    Requests.innerHTML = '';
     fetch(`/getRequests?datatype=${datatype}`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {
                 const div = document.createElement("div");
                 div.textContent = 'No new requests';
-                newRequests.appendChild(div);
+                Requests.appendChild(div);
             }
             else {
                 data.forEach(request => {
@@ -60,8 +42,8 @@ function getRequests(datatype) {
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
-                    // newRequests.appendChild(input);
-                    newRequests.appendChild(div);
+                    // Requests.appendChild(input);
+                    Requests.appendChild(div);
                 });
             }
         })
@@ -71,11 +53,11 @@ function getRequests(datatype) {
 function selectRequest(buyerid, buyerrequestid) {
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
-    const rows = document.querySelectorAll('#newRequests .form-row');
+    const rows = document.querySelectorAll('#Requests .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    newRequestDetail(buyerid, buyerrequestid);
+    requestDetail(buyerid, buyerrequestid);
 }
 
 function selectOffer(buyerid, buyerrequestid) {
@@ -88,16 +70,17 @@ function selectOffer(buyerid, buyerrequestid) {
     popu(buyerid, buyerrequestid);
 }
 
-function newRequestDetail(buyerid, buyerrequestid) {
-    const detailColumn = document.getElementById('newRequestDetail');
+function requestDetail(buyerid, buyerrequestid) {
+    const detailColumn = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
+    const datatype = document.getElementById('datatype').value;
     document.getElementById('buyerid').value = buyerid;
     document.getElementById('buyerrequestid').value = buyerrequestid;
 
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
     // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
-    fetch(`/getNewBuyerRequests?buyerid=${encodeURIComponent(buyerid)}`)
+    fetch(`/getRequests?buyerid=${encodeURIComponent(buyerid)} &buyerrequestid=${encodeURIComponent(buyerrequestid)} &datatype=${encodeURIComponent(datatype)}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
@@ -309,13 +292,13 @@ function saveOffer(event) {
         console.log('Success:', result);
         const offerForm = document.getElementById('offerForm');
         alert('Offer saved successfully');
-        const newRequestDetail = document.getElementById('newRequestDetail');
+        const requestDetail = document.getElementById('requestDetail');
         const detailButtons = document.getElementById('detailButtons');
 
-        newRequestDetail.innerHTML = '';
+        requestDetail.innerHTML = '';
         detailButtons.innerHTML = '';
         offerForm.style.display = 'none';
-        newRequestDetail.display = 'none';
+        requestDetail.display = 'none';
         detailButtons.display = 'none';
         clearForm();
 
