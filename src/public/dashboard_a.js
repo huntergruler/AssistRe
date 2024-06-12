@@ -99,7 +99,7 @@ function selectRequest(buyerid, buyerrequestid) {
 
         // create a button to modify the offer
         var buttonElement = document.createElement("button");
-        buttonElement.className = "col-md-4";
+        buttonElement.className = "col-md-5";
         buttonElement.textContent = 'Modify Offer';
         buttonElement.style.border = "1px solid black";
         buttonElement.style.borderRadius = "5px";
@@ -108,7 +108,7 @@ function selectRequest(buyerid, buyerrequestid) {
         buttonElement.setAttribute("onclick", `modifyOffer(event)`);
         offerButton.appendChild(buttonElement);
         buttonElement = document.createElement("button");
-        buttonElement.className = "col-md-4";
+        buttonElement.className = "col-md-5";
         buttonElement.textContent = 'Remove Offer';
         buttonElement.style.border = "1px solid black";
         buttonElement.style.borderRadius = "5px";
