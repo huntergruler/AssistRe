@@ -233,7 +233,7 @@ function removeOffer() {
 
         .then(response => response.json())
         .then(data => {
-            if (data.results === "success") {
+            if (data.success) {
                 alert('Offer removed successfully');
                 const offerForm = document.getElementById('offerForm');
                 const requestDetail = document.getElementById('requestDetail');
@@ -257,7 +257,7 @@ function declineRequest() {
 
         .then(response => response.json())
         .then(data => { console.log('data:', data.success);
-            if (data.results === "success") {
+            if (data.success) {
                 alert('Request Declined successfully');
                 const offerForm = document.getElementById('offerForm');
                 const requestDetail = document.getElementById('requestDetail');
