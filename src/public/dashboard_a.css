@@ -189,13 +189,13 @@ body {
 }
 
 .new {
-    background-color: white;
+    background-color: lightblue;
     color: black;
     font-weight: bold;
 }
 
 .read {
-    background-color: white;
+    background-color: lightgreen;
     color: black;
     font-weight: normal;
 }
