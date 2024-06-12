@@ -69,6 +69,13 @@ function selectRequest(buyerid, buyerrequestid) {
     });
     const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
+    if (datatype == "New") {
+        populateOfferDefaults();
+        const offerForm = document.getElementById('offerForm');
+        offerForm.style.display = 'block';
+        const detailButtons = document.getElementById('detailButtons');
+        detailButtons.style.display = 'block';
+    }
     if (datatype == "Offered") {
         populateOfferDetail(buyerid);
         const offerForm = document.getElementById('offerForm');
@@ -148,12 +155,6 @@ function requestDetail(buyerid, buyerrequestid) {
             });
         })
         .catch(error => console.error('Error checking user:', error));
-}
-
-function makeOffer(buyerid) {
-    populateOfferDefaults();
-    const offerForm = document.getElementById('offerForm');
-    offerForm.style.display = 'block';
 }
 
 function populateLevelOfService() {
