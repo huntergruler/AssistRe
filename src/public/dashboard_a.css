@@ -118,6 +118,24 @@ body {
     color: white;
 }
 
+.requests {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    padding-right: 0px;
+    align-items: top;
+    align-self: start;
+    height: fit-content;
+    max-height: 200px;
+    overflow: auto;
+    /* background-color: yellow; */
+}
 .container-left {
     opacity: 0.8;
     margin-left: 0px;
@@ -129,12 +147,11 @@ body {
     padding-top: 2px;
     padding-bottom: 2px;
     width: 300px;
-    overflow: auto;
     height: fit-content;
     max-height: 400px;
     justify-content: center;
     align-items: center;
-    background-color: chartreuse;
+    /* background-color: chartreuse; */
 }
 
 .container-right {
