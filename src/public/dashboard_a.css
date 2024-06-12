@@ -28,7 +28,11 @@
     padding: 10px 20px;
     cursor: pointer;
   }
-  
+
+  .tablinks-selected {
+    background-color: #ccc; /* Example highlight style */
+}
+
   /* Style the active tab button */
   .tab button.active {
     background-color: #ccc;
