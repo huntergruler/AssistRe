@@ -35,7 +35,7 @@
     border-radius: 5px;
   }
 
-  .tablinks:focus {
+  #tabSelected {
     background-color: var(--background-color);
     color: white;
     border-radius: 5px;
@@ -171,14 +171,4 @@ body {
     border: 1px solid black;
     border-radius: 8px;
     /* background-color: aqua; */
-}
-
-#requestCont {
-    margin: 0px;
-    padding: 0px;
-}
-
-#request {
-    margin: 0px;
-    padding: 0px;
 }
