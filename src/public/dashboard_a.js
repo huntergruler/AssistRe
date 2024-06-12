@@ -70,9 +70,7 @@ function selectRequest(buyerid, buyerrequestid) {
     const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
     if (datatype == "New") {
-        populateOfferDefaults();
-        const offerForm = document.getElementById('offerForm');
-        offerForm.style.display = 'block';
+        makeOffer(buyerid);
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
     }
@@ -155,6 +153,12 @@ function requestDetail(buyerid, buyerrequestid) {
             });
         })
         .catch(error => console.error('Error checking user:', error));
+}
+
+function makeOffer(buyerid) {
+    populateOfferDefaults();
+    const offerForm = document.getElementById('offerForm');
+    offerForm.style.display = 'block';
 }
 
 function populateLevelOfService() {
