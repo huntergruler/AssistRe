@@ -8,6 +8,8 @@
     --light-color: #F8F9FA;
     --dark-color: #343A40;
     --background-color: rgba(19, 50, 109);
+    --button-color: rgba(19, 50, 109);
+    --button-color-hover: rgba(40, 71, 130, 0.8);
 
 }
 
@@ -45,6 +47,7 @@
 
   #tabSelected {
     background-color: var(--background-color);
+    color: white;
 }
 
   /* Style the active tab button */
