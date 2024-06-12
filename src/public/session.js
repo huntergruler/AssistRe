@@ -1,5 +1,5 @@
 // Set the session timeout duration in milliseconds (e.g., 30 minutes)
-const sessionTimeoutDuration = 5 * 60 * 1000; // 30 minutes
+const sessionTimeoutDuration = 30 * 60 * 1000; // 30 minutes
 
 let sessionTimer;
 
@@ -17,7 +17,7 @@ function resetSessionTimer() {
 // Handle session timeout
 function sessionTimeout() {
     // Redirect the user to the login page
-    window.location.href = '/';
+    window.location.href = '/login';
 }
 
 // Start the session timer when the user is authenticated or interacts with the application
