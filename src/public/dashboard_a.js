@@ -21,11 +21,18 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 let selectedBuyerId = null;
-function getRequests(datatype) {
+function getRequests(datatype, element) {
     const requests = document.getElementById('requests');
     const requestDetail = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
     const offerForm = document.getElementById('offerForm');
+    const buttons = document.querySelectorAll('.tablinks');
+    buttons.forEach(button => {
+        button.classList.remove('tablinks-selected');
+    });
+
+    element.classList.add('tablinks-selected');
+
     detailButtons.innerHTML = '';
     requestDetail.innerHTML = '';
     requests.innerHTML = '';

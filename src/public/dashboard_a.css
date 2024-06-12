@@ -130,6 +130,9 @@ body {
     /* background-color: blueviolet; */
 }
 
+.tablinks-selected {
+    background-color: #ccc; /* Example highlight style */
+}
 
 .form-row.selected {
     background-color: #007BFF;
