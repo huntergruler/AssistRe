@@ -257,6 +257,7 @@ function declineRequest() {
 
         .then(response => response.json())
         .then(data => {
+            console.log('Results:', data.results)
             if (data.results === "success") {
                 alert('Request Declined successfully');
                 const offerForm = document.getElementById('offerForm');
