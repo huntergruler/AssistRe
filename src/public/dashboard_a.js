@@ -70,6 +70,7 @@ function selectRequest(buyerid, buyerrequestid) {
     const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
     if (datatype == "Offered") {
+        makeOffer(buyerid);
         populateOfferDetail(buyerid);
     }
 }
