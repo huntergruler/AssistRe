@@ -149,8 +149,10 @@ function requestDetail(buyerid, buyerrequestid) {
     const detailCont = document.getElementById('requestDetailContainer');
     document.getElementById('buyerid').value = buyerid;
     document.getElementById('buyerrequestid').value = buyerrequestid;
-
     detailCont.style.border = '0';
+
+    const detailsCont = document.getElementById('requestDetails');
+    detailConts.style.border = '0';
 
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
@@ -215,6 +217,9 @@ function makeOffer(buyerid) {
     const offerButton = document.getElementById('offerButton');
     offerButton.innerHTML = '';
     offerForm.style.display = 'block';
+
+    const detailsCont = document.getElementById('requestDetails');
+    detailsCont.style.border = '1px solid black';
 
     const buttonElement = document.createElement("button");
     buttonElement.textContent = 'Submit Offer';
