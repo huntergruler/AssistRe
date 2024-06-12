@@ -73,7 +73,7 @@ function getRequests(datatype, element) {
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}`;
-                    div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid));
+                    div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
                     div.className = "form-row container-left col-md-9 align-self-end";
                     div.id = "buyerid" + request.buyerid;
                     if (request.matchStatus == "New") {
@@ -93,10 +93,11 @@ function getRequests(datatype, element) {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function selectRequest(buyerid, buyerrequestid) {
+function selectRequest(buyerid, buyerrequestid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
+    console.log('element:', element);   
     
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
@@ -110,11 +111,13 @@ function selectRequest(buyerid, buyerrequestid) {
     const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
     console.log('datatype:', datatype);
-    if (datatype == "New" || datatype == "Read") {
+    if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
         inputFields.forEach(input => input.removeAttribute('readonly'));
         selectFields.forEach(select => select.removeAttribute('disabled'));
+        document.getElementByvalue('selectedBuyerId').value = 'New';
+        setStatus(buyerid, 'Read');
     }
     if (datatype == "Offered") {
         populateOfferDetail(buyerid);
@@ -409,6 +412,17 @@ function cancel() {
 function clearForm() {
     document.getElementById('offerForm').reset();
 }
+
+function setStatus(buyerid, status) {
+    fetch(`/setStatus?buyerid=${buyerid}&status=${status}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+}
+
 
 function saveOffer(event) {
     event.preventDefault();
