@@ -167,7 +167,7 @@ router.post('/setStatus', (req, res) => {
   else {
     const userid = req.session.userid;
     const { buyerid, status } = req.body;
-    insertQuery = 'update AgentOffers set matchStatus = ? where agentid = ? and buyerid = ?';
+    insertQuery = 'update AgentBuyerMatch set matchStatus = ? where agentid = ? and buyerid = ?';
     db.query(insertQuery, [status, userid, buyerid], (error, result) => {
       if (error) {
         console.error('Error saving status:', error);
