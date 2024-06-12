@@ -1,3 +1,8 @@
+:root {
+    --background-color: rgba(19, 50, 109);
+    --text-color: white;
+}
+
 .margin-top-100 {
     margin-top: 100px;
 }
