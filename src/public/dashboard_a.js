@@ -67,7 +67,11 @@ function selectRequest(buyerid, buyerrequestid) {
     rows.forEach(row => {
         row.classList.remove('selected');
     });
+    const datatype = document.getElementById('datatype').value;
     requestDetail(buyerid, buyerrequestid);
+    if (datatype == "Offered") {
+        makeOffer(buyerid);
+    }
 }
 
 function selectOffer(buyerid, buyerrequestid) {
