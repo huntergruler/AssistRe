@@ -166,7 +166,7 @@ function requestDetail(buyerid, buyerrequestid) {
                 // Create each button and append them to the container
                 const buttons = [
                     { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid})` },
-                    { id: "declineRequest", text: "Decline Request", onclick: `declineRequest(${request.buyerid})` },
+                    { id: "declinerequest", text: "Decline Request", onclick: `declineRequest(${request.buyerid})` },
                 ];
 
                 buttons.forEach(button => {
