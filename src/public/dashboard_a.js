@@ -163,6 +163,10 @@ function selectRequest(buyerid, buyerrequestid, element) {
         buttonElement.setAttribute("onclick", `removeOffer(event)`);
         offerButton.appendChild(buttonElement);
     }
+    if (datatype == "Declined") {
+        const detailButtons = document.getElementById('detailButtons');
+        detailButtons.style.display = 'block';
+    }
 }
 
 function requestDetail(buyerid, buyerrequestid) {
@@ -210,10 +214,22 @@ function requestDetail(buyerid, buyerrequestid) {
                 buttonContainer.style.border = "none";
 
                 // Create each button and append them to the container
-                const buttons = [
-                    { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid})` },
-                    { id: "declinerequest", text: "Decline Request", onclick: `declineRequest(${request.buyerid})` },
-                ];
+                if (datatype == "Read" || datatype == "New") {
+                    var buttons = [
+                        { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid})` },
+                        { id: "declinerequest", text: "Decline Request", onclick: `declineRequest(${request.buyerid})` },
+                    ];
+                }
+                if (datatype == "Confirmed") {
+                    var buttons = [
+                        { id: "declinerequest", text: "Cancel Offer", onclick: `cancelOffer(${request.buyerid})` },
+                    ];
+                }
+                if (datatype == "Declined") {
+                    var buttons = [
+                        { id: "declinerequest", text: "Reopen Request", onclick: `reopenRequest(${request.buyerid})` },
+                    ];
+                }
 
                 buttons.forEach(button => {
                     const buttonElement = document.createElement("button");
