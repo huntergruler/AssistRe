@@ -75,7 +75,7 @@ function getRequests(datatype, element) {
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}`;
                     div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
-                    div.className = "form-row container-left col-md-9 align-self-end";
+                    div.className = "form-row container-left col-md-9 align-self-end d-flex flex-column";
                     div.style.backgroundColor = "aqua";
                     div.id = "buyerid" + request.buyerid;
                     if (request.matchStatus == "New") {
