@@ -121,7 +121,7 @@ router.get('/getRequestCounts', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    var query = `select os.offerStatus, concat('(',count(bam.agentid),')') cnt
+    var query = `select os.offerStatus matchStatus, concat('(',count(bam.agentid),')') cnt
                      from OfferStatus os 
                           left outer join AgentBuyerMatch bam on bam.matchStatus = os.offerStatus and bam.agentid = ?                    
                      group by os.offerStatus`;
