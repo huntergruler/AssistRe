@@ -114,7 +114,7 @@ router.get('/dashboard_a', (req, res) => {
 });
 
 
-router.get('/getRequestsCounts', (req, res) => {
+router.get('/getRequestCounts', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
@@ -125,7 +125,7 @@ router.get('/getRequestsCounts', (req, res) => {
                      from AgentBuyerMatch bam
                     where bam.agentid = ?
                     group by bam.matchStatus`;
-      db.query(query, [userid, datatype], (error, results) => {
+      db.query(query, [userid], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
           return res.status(500).send('Server error');
