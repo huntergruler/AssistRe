@@ -203,4 +203,5 @@ body {
 .newDot{
     align-self: start;
     background-color: red;
+    font-size: 20px;
 }
