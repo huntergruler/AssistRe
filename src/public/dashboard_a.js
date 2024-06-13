@@ -76,7 +76,6 @@ function getRequests(datatype, element) {
                     Purchase Timeline: ${request.timeFrame}<br></div>`;
                     div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
                     div.className = "form-row container-left col-md-9 align-self-end d-flex flex-row";
-                    div.style.backgroundColor = "aqua";
                     div.id = "buyerid" + request.buyerid;
                     if (request.matchStatus == "New") {
                         div.classList.add("new");
