@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
+    getRequestCounts();    
     // getRequests()
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
@@ -272,6 +273,7 @@ function modifyOffer(event) {
     offerButton.appendChild(buttonElement);
 
 }
+
 function removeOffer() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
@@ -290,6 +292,31 @@ function removeOffer() {
                 offerForm.style.display = 'none';
                 getRequests(dataType);
                 clearForm()
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+}
+
+function getRequestCounts() {
+    fetch(`/getRequestCounts`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                if (data.matchStatus == 'New') {
+                    document.getElementById('tabNew').textContent += data.cnt;
+                }
+                if (data.matchStatus == 'Offered') {
+                    document.getElementById('tabOffered').textContent += data.cnt;
+                }
+                if (data.matchStatus == 'Confirmed') {
+                    document.getElementById('tabConfirmed').textContent += data.cnt;
+                }
+                if (data.matchStatus == 'Declined') {
+                    document.getElementById('tabDeclined').textContent += data.cnt;
+                }
+                if (data.matchStatus == 'Rejected') {
+                    document.getElementById('tabRejected').textContent += data.cnt;
+                }
             }
         })
         .catch(error => console.error('Error checking user:', error));

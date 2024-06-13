@@ -113,6 +113,29 @@ router.get('/dashboard_a', (req, res) => {
   }
 });
 
+
+router.get('/getRequestsCounts', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+      var query = `select bam.matchStatus, concat('(',count(*),')') cnt
+                     from AgentBuyerMatch bam
+                    where bam.agentid = ?
+                    group by bam.matchStatus`;
+      db.query(query, [userid, datatype], (error, results) => {
+        if (error) {
+          console.error('Error fetching buyer profile:', error);
+          return res.status(500).send('Server error');
+        }
+        res.json(results);
+      });
+  }
+});
+
+
 // Route to get the buyer's profile
 router.get('/getRequests', (req, res) => {
   const datatype = req.query.datatype;
