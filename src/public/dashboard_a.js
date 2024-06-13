@@ -373,8 +373,8 @@ function reopenRequest() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = 'Declined';
     setStatus(buyerid, 'Read');
-    getRequestCounts();
     getRequests('Declined',null);
+    getRequestCounts();
 }
 
 
