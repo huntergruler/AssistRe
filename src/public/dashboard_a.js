@@ -1,3 +1,5 @@
+const { dot } = require("node:test/reporters");
+
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
@@ -65,6 +67,8 @@ function getRequests(datatype, element) {
                 }
                 if (datatype == "Offered") {
                     div.textContent = 'No offered requests';
+                    const dots = document.getElementsByClassName('newDot');
+                    dots.forEach(dot => dot.style.display = 'none');
                 }
                 requests.appendChild(div);
             }
