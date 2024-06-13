@@ -202,10 +202,10 @@ body {
 
 .newDot{
     align-self: start;
-    background-color: red;
     font-size: 40px;
     margin-top: 0px;
-    margin-left: 50px;
+    margin-left: 5px;
     padding-top: 0px;
     line-height: 20px;
+    color: #3F92E8;
 }
