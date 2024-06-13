@@ -203,5 +203,6 @@ body {
 .newDot{
     text-align: start;
     align-self: start;
+    justify-self: start;
     margin-right: 20px;
 }
