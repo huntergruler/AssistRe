@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
-    getRequestCounts();    
+    getRequestCounts();
     // getRequests()
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
@@ -308,7 +308,7 @@ function getRequestCounts() {
         .then(response => response.json())
         .then(data => {
             console.log('data:', data);
-            if (data.length >0 ) {
+            data.results.forEach(item => {
                 if (data.matchStatus == 'New') {
                     document.getElementById('tabNew').textContent += data.cnt;
                 }
@@ -324,7 +324,7 @@ function getRequestCounts() {
                 if (data.matchStatus == 'Rejected') {
                     document.getElementById('tabRejected').textContent += data.cnt;
                 }
-            }
+                })
         })
         .catch(error => console.error('Error checking user:', error));
 }
