@@ -69,6 +69,7 @@ function getRequests(datatype, element) {
                     div.textContent = 'No offered requests';
                     const dots = document.getElementsByClassName('newDot');
                     dots.forEach(dot => dot.style.display = 'none');
+                    console.log('dots:', dots);
                 }
                 requests.appendChild(div);
             }
