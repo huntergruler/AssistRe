@@ -311,7 +311,7 @@ function removeOffer() {
                 requestDetail.innerHTML = '';
                 detailButtons.innerHTML = '';
                 offerForm.style.display = 'none';
-                getRequests(dataType);
+                getRequests(dataType, null);
                 clearForm()
             }
         })
@@ -362,7 +362,8 @@ function declineRequest() {
                 requestDetail.innerHTML = '';
                 detailButtons.innerHTML = '';
                 offerForm.style.display = 'none';
-                getRequests(dataType);
+                getRequests(dataType, null);
+                getRequestCounts();
                 clearForm()
             }
         })
@@ -373,7 +374,7 @@ function reopenRequest() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = 'Declined';
     setStatus(buyerid, 'Read');
-    getRequests('Declined',null);
+    getRequests(dataType,null);
     getRequestCounts();
 }
 
