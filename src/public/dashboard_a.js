@@ -69,8 +69,11 @@ function getRequests(datatype, element) {
             }
             else {
                 data.forEach(request => {
+                    if(datatype == "New") {
+                        div.innerHTML = `<div class="newDot">&#x2022;</div><div class="flex-fill">`
+                    }
                     const div = document.createElement("div");
-                    div.innerHTML = `<div class="newDot">&#x2022;</div><div class="flex-fill">${request.buyerType}<br>
+                    div.innerHTML += `${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}<br></div>`;
