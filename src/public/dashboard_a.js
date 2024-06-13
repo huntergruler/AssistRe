@@ -307,8 +307,7 @@ function getRequestCounts() {
     fetch(`/getRequestCounts`)
         .then(response => response.json())
         .then(data => {
-            console.log('data:', data);
-            data.results.forEach(item => {
+            data.forEach(request => {
                 if (data.matchStatus == 'New') {
                     document.getElementById('tabNew').textContent += data.cnt;
                 }
