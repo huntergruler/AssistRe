@@ -301,7 +301,7 @@ function getRequestCounts() {
     fetch(`/getRequestCounts`)
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
+            if (data.length >0 ) {
                 if (data.matchStatus == 'New') {
                     document.getElementById('tabNew').textContent += data.cnt;
                 }
