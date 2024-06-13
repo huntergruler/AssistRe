@@ -73,7 +73,7 @@ function getRequests(datatype, element) {
                     div.innerHTML = `<div class="newDot align-self-start">&#x2022;</div>${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
-                    Purchase Timeline: ${request.timeFrame}<br>`;
+                    Purchase Timeline: ${request.timeFrame}<br> `;
                     div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
                     div.className = "form-row container-left col-md-9 align-self-end d-flex flex-column";
                     div.style.backgroundColor = "aqua";
