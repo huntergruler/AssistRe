@@ -85,7 +85,7 @@ function getRequests(datatype, element) {
                     }
                     if (request.matchStatus == "Read") {
                         div.classList.add("read");
-                        div.getElementsByClassName("newDot")[0].style.color = "red";
+                        div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
                     div.onclick = function () {
                         this.classList.toggle("selected");
