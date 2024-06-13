@@ -70,7 +70,7 @@ function getRequests(datatype, element) {
             else {
                 data.forEach(request => {
                     const div = document.createElement("div");
-                    if(datatype == "New") {
+                    if(request.matchStatus == "New") {
                         div.innerHTML = `<div class="newDot">&#x2022;</div><div class="flex-fill">`
                     }
                     div.innerHTML += `${request.buyerType}<br>
