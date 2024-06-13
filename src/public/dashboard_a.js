@@ -1,4 +1,4 @@
-const { dot } = require("node:test/reporters");
+// const { dot } = require("node:test/reporters");
 
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
