@@ -71,9 +71,9 @@ function getRequests(datatype, element) {
                 data.forEach(request => {
                     const div = document.createElement("div");
                     if(request.matchStatus == "New") {
-                        div.innerHTML = `<div class="newDot">&#x2022;</div>`
+                        div.innerHTML = ``
                     }
-                    div.innerHTML += `<div class="flex-fill">${request.buyerType}<br>
+                    div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}<br></div>`;
@@ -85,6 +85,7 @@ function getRequests(datatype, element) {
                     }
                     if (request.matchStatus == "Read") {
                         div.classList.add("read");
+                        div.getElementsByClassName("newDot")[0].style.color = "red";
                     }
                     div.onclick = function () {
                         this.classList.toggle("selected");
