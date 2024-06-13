@@ -201,6 +201,6 @@ body {
 }
 
 .newDot{
-    
+    align-self: start;
     background-color: red;
 }
