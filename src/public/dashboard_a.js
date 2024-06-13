@@ -298,7 +298,7 @@ function removeOffer() {
 }
 
 function getRequestCounts() {
-    fetch(`/getRequestCounts`)
+    fetch(`/getRequestsCounts`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
