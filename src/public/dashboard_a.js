@@ -515,7 +515,7 @@ function saveOffer(event) {
             clearForm();
             console.log('dataType:', dataType);
 
-            getRequests(dataType);
+            getRequests(dataType, null);
             // Optionally, perform any actions here after successful submission
         })
         .catch(error => {
