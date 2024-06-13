@@ -369,6 +369,12 @@ function declineRequest() {
         .catch(error => console.error('Error checking user:', error));
 }
 
+function reopenRequest() {
+    const buyerid = document.getElementById('buyerid').value;
+    const dataType = 'Declined';
+    setStatus(buyerid, 'Read');
+}
+
 
 function populateLevelOfService() {
     const levelOfService = document.getElementById('levelOfService');
