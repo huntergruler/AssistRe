@@ -67,9 +67,6 @@ function getRequests(datatype, element) {
                 }
                 if (datatype == "Offered") {
                     div.textContent = 'No offered requests';
-                    const dots = document.getElementsByClassName('newDot');
-                    dots.forEach(dot => dot.style.display = 'none');
-                    console.log('dots:', dots);
                 }
                 requests.appendChild(div);
             }
@@ -91,6 +88,9 @@ function getRequests(datatype, element) {
                     }
                     if (request.matchStatus == "Read") {
                         div.classList.add("read");
+                        div.getElementsByClassName("newDot")[0].style.display = "none";
+                    }
+                    if(request.matchStatus == "Offered") {
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
                     div.onclick = function () {
