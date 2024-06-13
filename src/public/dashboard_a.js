@@ -70,10 +70,10 @@ function getRequests(datatype, element) {
             else {
                 data.forEach(request => {
                     const div = document.createElement("div");
-                    div.innerHTML = `<div class="newDot justify-content-start">&#x2022;</div>${request.buyerType}<br>
+                    div.innerHTML = `<div class="newDot justify-content-start">&#x2022;</div><div>${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
-                    Purchase Timeline: ${request.timeFrame}<br><div></div>`;
+                    Purchase Timeline: ${request.timeFrame}<br></div>`;
                     div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
                     div.className = "form-row container-left col-md-9 align-self-end d-flex flex-row";
                     div.style.backgroundColor = "aqua";
