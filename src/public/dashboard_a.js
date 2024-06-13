@@ -303,25 +303,25 @@ function removeOffer() {
 }
 
 function getRequestCounts() {
-    console.log('getRequestCounts');
     fetch(`/getRequestCounts`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
-                if (data.matchStatus == 'New') {
-                    document.getElementById('tabNew').textContent += data.cnt;
+                console.log('request:', request);
+                if (request.matchStatus == 'New') {
+                    document.getElementById('tabNew').textContent += request.cnt;
                 }
-                if (data.matchStatus == 'Offered') {
-                    document.getElementById('tabOffered').textContent += data.cnt;
+                if (request.matchStatus == 'Offered') {
+                    document.getElementById('tabOffered').textContent += request.cnt;
                 }
-                if (data.matchStatus == 'Confirmed') {
-                    document.getElementById('tabConfirmed').textContent += data.cnt;
+                if (request.matchStatus == 'Confirmed') {
+                    document.getElementById('tabConfirmed').textContent += request.cnt;
                 }
-                if (data.matchStatus == 'Declined') {
-                    document.getElementById('tabDeclined').textContent += data.cnt;
+                if (request.matchStatus == 'Declined') {
+                    document.getElementById('tabDeclined').textContent += request.cnt;
                 }
-                if (data.matchStatus == 'Rejected') {
-                    document.getElementById('tabRejected').textContent += data.cnt;
+                if (request.matchStatus == 'Rejected') {
+                    document.getElementById('tabRejected').textContent += request.cnt;
                 }
                 })
         })
