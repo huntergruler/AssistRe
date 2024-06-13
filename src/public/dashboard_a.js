@@ -303,9 +303,11 @@ function removeOffer() {
 }
 
 function getRequestCounts() {
+    console.log('getRequestCounts');
     fetch(`/getRequestCounts`)
         .then(response => response.json())
         .then(data => {
+            console.log('data:', data);
             if (data.length >0 ) {
                 if (data.matchStatus == 'New') {
                     document.getElementById('tabNew').textContent += data.cnt;
