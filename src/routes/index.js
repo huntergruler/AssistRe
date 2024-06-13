@@ -121,20 +121,19 @@ router.get('/getRequestCounts', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-      var query = `select bam.matchStatus, concat('(',count(*),')') cnt
-                     from AgentBuyerMatch bam
-                    where bam.agentid = ?
-                    group by bam.matchStatus`;
-      db.query(query, [userid], (error, results) => {
-        if (error) {
-          console.error('Error fetching buyer profile:', error);
-          return res.status(500).send('Server error');
-        }
-        res.json(results);
-      });
+    var query = `select os.offerStatus, concat('(',count(bam.agentid),')') cnt
+                     from OfferStatus os 
+                          left outer join AgentBuyerMatch bam on bam.matchStatus = os.offerStatus and bam.agentid = ?                    
+                     group by os.offerStatus`;
+    db.query(query, [userid], (error, results) => {
+      if (error) {
+        console.error('Error fetching buyer profile:', error);
+        return res.status(500).send('Server error');
+      }
+      res.json(results);
+    });
   }
 });
-
 
 // Route to get the buyer's profile
 router.get('/getRequests', (req, res) => {
