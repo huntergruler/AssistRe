@@ -201,6 +201,7 @@ body {
 }
 
 .newDot{
-    text-align: left;
+    text-align: start;
     align-self: start;
+    margin-right: 20px;
 }
