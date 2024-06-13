@@ -424,8 +424,10 @@ function setStatus(buyerid, status) {
 
     if(status == "Read") {
         const container = document.getElementById(`buyerid${buyerid}`);
+        const newDot = container.getElementsByClassName('newDot')[0];
         container.classList.remove('new');
         container.classList.add('read');
+        newDot.style.display = 'none';
     }
 
     fetch('/setStatus', {
