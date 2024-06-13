@@ -36,7 +36,8 @@ function getRequests(datatype, element) {
     buttons.forEach(button => {
         button.setAttribute('id', '');
     });
-    element.setAttribute('id', 'tabSelected');
+    if (element) 
+        element.setAttribute('id', 'tabSelected');
 
     detailButtons.innerHTML = '';
     requestDetail.innerHTML = '';
