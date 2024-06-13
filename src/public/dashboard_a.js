@@ -90,7 +90,7 @@ function getRequests(datatype, element) {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
-                    if(request.matchStatus == "Offered") {
+                    if(request.matchStatus == "Offered" || request.matchStatus == "Confirmed" || request.matchStatus == "Declined" || request.matchStatus == "Rejected") {
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
                     div.onclick = function () {
