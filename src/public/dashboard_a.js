@@ -348,35 +348,53 @@ function getRequestCounts() {
         .catch(error => console.error('Error checking user:', error));
 }
 
+// function declineRequest() {
+//     const buyerid = document.getElementById('buyerid').value;
+//     const dataType = document.getElementById('datatype').value;
+//     console.log('dataType:', dataType);
+//     fetch(`/declineRequest?buyerid=${buyerid}`)
+
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log('data:', data.success);
+//             if (data.success) {
+//                 alert('Request Declined successfully');
+//                 const offerForm = document.getElementById('offerForm');
+//                 const requestDetail = document.getElementById('requestDetail');
+//                 const detailButtons = document.getElementById('detailButtons');
+
+//                 requestDetail.innerHTML = '';
+//                 detailButtons.innerHTML = '';
+//                 offerForm.style.display = 'none';
+//                 getRequests(dataType, null);
+//                 getRequestCounts();
+//                 clearForm()
+//             }
+//         })
+//         .catch(error => console.error('Error checking user:', error));
+// }
+
 function declineRequest() {
-    const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
-    console.log('dataType:', dataType);
-    fetch(`/declineRequest?buyerid=${buyerid}`)
+    const offerForm = document.getElementById('offerForm');
+    const requestDetail = document.getElementById('requestDetail');
+    const detailButtons = document.getElementById('detailButtons');
 
-        .then(response => response.json())
-        .then(data => {
-            console.log('data:', data.success);
-            if (data.success) {
-                alert('Request Declined successfully');
-                const offerForm = document.getElementById('offerForm');
-                const requestDetail = document.getElementById('requestDetail');
-                const detailButtons = document.getElementById('detailButtons');
-
-                requestDetail.innerHTML = '';
-                detailButtons.innerHTML = '';
-                offerForm.style.display = 'none';
-                getRequests(dataType, null);
-                getRequestCounts();
-                clearForm()
-            }
-        })
-        .catch(error => console.error('Error checking user:', error));
+    setStatus(buyerid, 'Declined');
+    alert('Request Declined successfully');
+    requestDetail.innerHTML = '';
+    detailButtons.innerHTML = '';
+    offerForm.style.display = 'none';
+    getRequests(dataType, null);
+    getRequestCounts();
+    clearForm()
 }
 
 function reopenRequest() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = 'Declined';
+    const dataType = 'Declined';
+    alert('Request Reopened successfully');
     setStatus(buyerid, 'Read');
     getRequests(dataType,null);
     getRequestCounts();
