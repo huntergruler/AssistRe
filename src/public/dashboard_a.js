@@ -325,6 +325,8 @@ function getRequestCounts() {
     const tabDeclined = document.getElementById('tabDeclined') ?? document.getElementById('tabDeclined tabSelected');
     const tabRejected = document.getElementById('tabRejected') ?? document.getElementById('tabRejected tabSelected');
 
+    console.log('tabNew',tabNew, 'tabDeclined:', tabDeclined);
+
     fetch(`/getRequestCounts`)
         .then(response => response.json())
         .then(data => {
