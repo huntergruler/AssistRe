@@ -319,13 +319,19 @@ function removeOffer() {
 }
 
 function getRequestCounts() {
+    const tabNew = document.getElementById('tabNew') ?? document.getElementById('tabNew tabSelected');
+    const tabOffered = document.getElementById('tabOffered') ?? document.getElementById('tabOffered tabSelected');
+    const tabConfirmed = document.getElementById('tabConfirmed') ?? document.getElementById('tabConfirmed tabSelected');
+    const tabDeclined = document.getElementById('tabDeclined') ?? document.getElementById('tabDeclined tabSelected');
+    const tabRejected = document.getElementById('tabRejected') ?? document.getElementById('tabRejected tabSelected');
+
     fetch(`/getRequestCounts`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
                 console.log('request:', request);
                 if (request.matchStatus == 'New') {
-                    document.getElementById('tabNew').textContent = request.matchStatus+request.cnt;
+                    tabNew.textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Offered') {
                     document.getElementById('tabOffered').textContent = request.matchStatus+request.cnt;
