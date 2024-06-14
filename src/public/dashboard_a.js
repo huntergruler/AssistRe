@@ -319,8 +319,6 @@ function removeOffer() {
 }
 
 function getRequestCounts() {
-    declined = document.getElementById('tabDeclined')
-    console.log('getRequestCounts', declined);
     fetch(`/getRequestCounts`)
         .then(response => response.json())
         .then(data => {
@@ -336,10 +334,10 @@ function getRequestCounts() {
                     document.getElementById('tabConfirmed').textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Declined') {
-                    declined.textContent += request.matchStatus+request.cnt;
+                    document.getElementById('tabDeclined') = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Rejected') {
-                    document.getElementById('tabRejected').textContent += request.matchStatus+request.cnt;
+                    document.getElementById('tabRejected').textContent = request.matchStatus+request.cnt;
                 }
             })
         })
