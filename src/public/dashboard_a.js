@@ -41,7 +41,8 @@ function getRequests(datatype, element) {
     });
 
     // Add the 'active' class to the clicked button
-    element.classList.add('active');
+    if (element) element.classList.add('active');
+    else document.getElementById('tab' + datatype).classList.add('active');
 
     // Your existing logic for handling requests based on the 'type' parameter
 
