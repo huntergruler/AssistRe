@@ -37,7 +37,7 @@ function getRequests(datatype, element) {
 
     const buttons = document.querySelectorAll('.tablinks');
     buttons.forEach(button => {
-        button.id.replace('tabSelected', '');
+        button.id.replace(' tabSelected', '');
     });
     if (element)
         element.id += ' tabSelected';
