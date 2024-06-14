@@ -44,7 +44,6 @@ function getRequests(datatype, element) {
     element.classList.add('active');
 
     // Your existing logic for handling requests based on the 'type' parameter
-    console.log(`Fetching ${type} requests`);
 
     detailButtons.innerHTML = '';
     requestDetail.innerHTML = '';
