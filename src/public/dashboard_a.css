@@ -35,6 +35,15 @@
     border-radius: 5px 5px 0 0;
   }
 
+  .tab {
+    background-color: #f2f2f2;
+    border: 1px solid blue;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+  }
+
+
   #tabSelected {
     background-color: var(--background-color);
     color: white;
