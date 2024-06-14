@@ -27,22 +27,13 @@
   }
   
   /* Style the tab buttons */
-  .button {
-    background-color: black; /*#f2f2f2;*/
+  .tab button {
+    background-color: #f2f2f2;
     border: 1px solid black;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px 5px 0 0;
   }
-
-  .tab {
-    background-color: black; /*#f2f2f2;*/
-    border: 1px solid blue;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px 5px 0 0;
-  }
-
 
   #tabSelected {
     background-color: var(--background-color);
