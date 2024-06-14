@@ -336,16 +336,16 @@ function getRequestCounts() {
                     tabNew.textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Offered') {
-                    document.getElementById('tabOffered').textContent = request.matchStatus+request.cnt;
+                    tabOffered.textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Confirmed') {
-                    document.getElementById('tabConfirmed').textContent = request.matchStatus+request.cnt;
+                    tabConfirmed.textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Declined') {
-                    document.getElementById('tabDeclined').textContent = request.matchStatus+request.cnt;
+                    tabDeclined.textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Rejected') {
-                    document.getElementById('tabRejected').textContent = request.matchStatus+request.cnt;
+                    tabRejected.textContent = request.matchStatus+request.cnt;
                 }
             })
         })
