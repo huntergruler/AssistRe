@@ -353,27 +353,28 @@ function getRequestCounts() {
 function declineRequest() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
-    console.log('dataType:', dataType);
-    fetch(`/declineRequest?buyerid=${buyerid}`)
+    setStatus(buyerid, 'Declined');
+    // fetch(`/declineRequest?buyerid=${buyerid}`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         if (data.success) {
+    //             alert('Request Declined successfully');
+    //             const offerForm = document.getElementById('offerForm');
+    //             const requestDetail = document.getElementById('requestDetail');
+    //             const detailButtons = document.getElementById('detailButtons');
 
-        .then(response => response.json())
-        .then(data => {
-            console.log('data:', data.success);
-            if (data.success) {
-                alert('Request Declined successfully');
-                const offerForm = document.getElementById('offerForm');
-                const requestDetail = document.getElementById('requestDetail');
-                const detailButtons = document.getElementById('detailButtons');
-
-                requestDetail.innerHTML = '';
-                detailButtons.innerHTML = '';
-                offerForm.style.display = 'none';
-                getRequests(dataType, null);
-                getRequestCounts();
-                clearForm()
-            }
-        })
-        .catch(error => console.error('Error checking user:', error));
+    //             requestDetail.innerHTML = '';
+    //             detailButtons.innerHTML = '';
+    //             offerForm.style.display = 'none';
+    //             getRequests(dataType, null);
+    //             getRequestCounts();
+    //             clearForm()
+    //         }
+    //     })
+    //     .catch(error => console.error('Error checking user:', error));
+        getRequests(dataType, null);
+        getRequestCounts();
+        clearForm()
 }
 
 function reopenRequest() {
