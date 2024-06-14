@@ -334,7 +334,7 @@ function getRequestCounts() {
                     document.getElementById('tabConfirmed').textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Declined') {
-                    document.getElementById('tabDeclined') = request.matchStatus+request.cnt;
+                    document.getElementById('tabDeclined').textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Rejected') {
                     document.getElementById('tabRejected').textContent = request.matchStatus+request.cnt;
