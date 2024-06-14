@@ -319,7 +319,8 @@ function removeOffer() {
 }
 
 function getRequestCounts() {
-    console.log('getRequestCounts');
+    declined = document.getElementById('tabDeclined')
+    console.log('getRequestCounts', declined);
     fetch(`/getRequestCounts`)
         .then(response => response.json())
         .then(data => {
@@ -335,7 +336,7 @@ function getRequestCounts() {
                 //     document.getElementById('tabConfirmed').textContent += request.cnt;
                 // }
                 if (request.matchStatus == 'Declined') {
-                    document.getElementById('tabDeclined').textContent += request.cnt;
+                    declined.textContent += request.cnt;
                 }
                 if (request.matchStatus == 'Rejected') {
                     document.getElementById('tabRejected').textContent += request.cnt;
