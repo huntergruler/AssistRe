@@ -329,19 +329,19 @@ function getRequestCounts() {
             data.forEach(request => {
                 console.log('request:', request);
                 if (request.matchStatus == 'New') {
-                    document.getElementById('tabNew').textContent += request.cnt;
+                    document.getElementById('tabNew').textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Offered') {
-                    document.getElementById('tabOffered').textContent += request.cnt;
+                    document.getElementById('tabOffered').textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Confirmed') {
-                    document.getElementById('tabConfirmed').textContent += request.cnt;
+                    document.getElementById('tabConfirmed').textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Declined') {
-                    document.getElementById('tabDeclined').textContent += request.cnt;
+                    document.getElementById('tabDeclined').textContent = request.matchStatus+request.cnt;
                 }
                 if (request.matchStatus == 'Rejected') {
-                    document.getElementById('tabRejected').textContent += request.cnt;
+                    document.getElementById('tabRejected').textContent = request.matchStatus+request.cnt;
                 }
                 })
         })
