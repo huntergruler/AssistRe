@@ -393,7 +393,6 @@ function declineRequest() {
 function reopenRequest() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = 'Declined';
-    const dataType = 'Declined';
     alert('Request Reopened successfully');
     setStatus(buyerid, 'Read');
     getRequests(dataType,null);
