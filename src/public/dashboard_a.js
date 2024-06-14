@@ -319,6 +319,7 @@ function removeOffer() {
 }
 
 function getRequestCounts() {
+    console.log('getRequestCounts');
     fetch(`/getRequestCounts`)
         .then(response => response.json())
         .then(data => {
@@ -330,9 +331,9 @@ function getRequestCounts() {
                 if (request.matchStatus == 'Offered') {
                     document.getElementById('tabOffered').textContent += request.cnt;
                 }
-                if (request.matchStatus == 'Confirmed') {
-                    document.getElementById('tabConfirmed').textContent += request.cnt;
-                }
+                // if (request.matchStatus == 'Confirmed') {
+                //     document.getElementById('tabConfirmed').textContent += request.cnt;
+                // }
                 if (request.matchStatus == 'Declined') {
                     document.getElementById('tabDeclined').textContent += request.cnt;
                 }
