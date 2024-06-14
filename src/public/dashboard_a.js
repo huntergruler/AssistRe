@@ -37,10 +37,14 @@ function getRequests(datatype, element) {
 
     const buttons = document.querySelectorAll('.tablinks');
     buttons.forEach(button => {
-        button.setAttribute('id', '');
+        button.classList.remove('active');
     });
-    if (element) 
-        element.setAttribute('id', 'tabSelected');
+
+    // Add the 'active' class to the clicked button
+    element.classList.add('active');
+
+    // Your existing logic for handling requests based on the 'type' parameter
+    console.log(`Fetching ${type} requests`);
 
     detailButtons.innerHTML = '';
     requestDetail.innerHTML = '';

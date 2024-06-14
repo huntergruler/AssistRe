@@ -33,6 +33,7 @@
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px 5px 0 0;
+    
   }
 
   #tabSelected {
@@ -125,10 +126,22 @@ body {
     /* background-color: blueviolet; */
 }
 
-
-.tablinks-selected {
-    background-color: #ccc; /* Example highlight style */
+.tablinks {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    color: black;
+    padding: 10px;
 }
+
+/* Define the style for the active button */
+.tablinks.active {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+}
+
+/* .tablinks-selected {
+    background-color: #ccc; /* Example highlight style */
+} */
 
 .form-row.selected {
     background-color: #007BFF;
