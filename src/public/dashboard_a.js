@@ -40,7 +40,7 @@ function getRequests(datatype, element) {
         button.id.replace('tabSelected', '');
     });
     if (element)
-        element.id += 'tabSelected';
+        element.id += ' tabSelected';
 
     detailButtons.innerHTML = '';
     requestDetail.innerHTML = '';
