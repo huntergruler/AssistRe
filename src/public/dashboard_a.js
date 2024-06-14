@@ -375,6 +375,7 @@ function getRequestCounts() {
 // }
 
 function declineRequest() {
+    const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
     const offerForm = document.getElementById('offerForm');
     const requestDetail = document.getElementById('requestDetail');
