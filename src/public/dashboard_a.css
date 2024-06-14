@@ -44,7 +44,7 @@
 
   /* Style the active tab button */
   .tab button.active {
-    background-color: #ccc;
+    background-color: var(--background-color);
     border-radius: 5px;
   }
 
@@ -139,9 +139,9 @@ body {
     color: white; /* White text */
 }
 
-/* .tablinks-selected {
-    background-color: #ccc; /* Example highlight style */
-} */
+.tablinks-selected {
+    background-color: #ccc; 
+}
 
 .form-row.selected {
     background-color: #007BFF;
