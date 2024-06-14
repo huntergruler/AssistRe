@@ -37,10 +37,10 @@ function getRequests(datatype, element) {
 
     const buttons = document.querySelectorAll('.tablinks');
     buttons.forEach(button => {
-        button.setAttribute('id', '');
+        button.id.replace('tabSelected', '');
     });
-    if (element) 
-        element.setAttribute('id', 'tabSelected');
+    if (element)
+        element.id += 'tabSelected';
 
     detailButtons.innerHTML = '';
     requestDetail.innerHTML = '';
@@ -73,7 +73,7 @@ function getRequests(datatype, element) {
             else {
                 data.forEach(request => {
                     const div = document.createElement("div");
-                    if(request.matchStatus == "New") {
+                    if (request.matchStatus == "New") {
                         div.innerHTML = ``
                     }
                     div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">${request.buyerType}<br>
@@ -90,7 +90,7 @@ function getRequests(datatype, element) {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
-                    if(request.matchStatus == "Offered" || request.matchStatus == "Confirmed" || request.matchStatus == "Declined" || request.matchStatus == "Rejected") {
+                    if (request.matchStatus == "Offered" || request.matchStatus == "Confirmed" || request.matchStatus == "Declined" || request.matchStatus == "Rejected") {
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
                     div.onclick = function () {
@@ -341,7 +341,7 @@ function getRequestCounts() {
                 if (request.matchStatus == 'Rejected') {
                     document.getElementById('tabRejected').textContent += request.cnt;
                 }
-                })
+            })
         })
         .catch(error => console.error('Error checking user:', error));
 }
@@ -376,7 +376,7 @@ function reopenRequest() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = 'Declined';
     setStatus(buyerid, 'Read');
-    getRequests(dataType,null);
+    getRequests(dataType, null);
     getRequestCounts();
 }
 
@@ -482,7 +482,7 @@ function setStatus(buyerid, status) {
         status: status
     };
 
-    if(status == "Read") {
+    if (status == "Read") {
         const container = document.getElementById(`buyerid${buyerid}`);
         const newDot = container.getElementsByClassName('newDot')[0];
         container.classList.remove('new');
