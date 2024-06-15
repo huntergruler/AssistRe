@@ -337,7 +337,7 @@ function getRequestCounts() {
             data.forEach(request => {
                 console.log('request:', request);
                 if (request.matchStatus == 'New') {
-                    document.getElementById('tabNew').textContent = request.matchStatus + request.cnt;
+                    document.getElementById('tabNew').textContent = 'Open Requests' + request.cnt;
                 }
                 if (request.matchStatus == 'Offered') {
                     document.getElementById('tabOffered').textContent = request.matchStatus + request.cnt;
