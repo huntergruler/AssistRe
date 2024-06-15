@@ -184,14 +184,14 @@ router.get('/getRequests', (req, res) => {
   }
 });
 
-router.get('/declineRequest', (req, res) => {
-  const buyerid = req.query.buyerid;
-  const updateQuery = 'update AgentBuyerMatch set matchStatus = "Declined" WHERE agentid = ? and buyerid = ?';
-  db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {
-    if (err) throw err;
-    res.json({ success: true });
-  });
-});
+// router.get('/declineRequest', (req, res) => {
+//   const buyerid = req.query.buyerid;
+//   const updateQuery = 'update AgentBuyerMatch set matchStatus = "Declined" WHERE agentid = ? and buyerid = ?';
+//   db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {
+//     if (err) throw err;
+//     res.json({ success: true });
+//   });
+// });
 
 router.post('/setStatus', (req, res) => {
   if (!req.session.user) {
@@ -457,14 +457,14 @@ router.get('/removeOffer', (req, res) => {
   });
 });
 
-router.get('/declineRequest', (req, res) => {
-  const buyerid = req.query.buyerid;
-  const updateQuery = 'update AgentBuyerMatch set matchStatus = "Declined" WHERE agentid = ? and buyerid = ?';
-  db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {
-    if (err) throw err;
-    res.json({ success: true });
-  });
-});
+// router.get('/declineRequest', (req, res) => {
+//   const buyerid = req.query.buyerid;
+//   const updateQuery = 'update AgentBuyerMatch set matchStatus = "Declined" WHERE agentid = ? and buyerid = ?';
+//   db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {
+//     if (err) throw err;
+//     res.json({ success: true });
+//   });
+// });
 
 
 // Login route

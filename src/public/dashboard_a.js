@@ -299,29 +299,6 @@ function modifyOffer(event) {
 
 }
 
-function removeOffer() {
-    const buyerid = document.getElementById('buyerid').value;
-    const dataType = document.getElementById('datatype').value;
-    fetch(`/removeOffer?buyerid=${buyerid}`)
-
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Offer removed successfully');
-                const offerForm = document.getElementById('offerForm');
-                const requestDetail = document.getElementById('requestDetail');
-                const detailButtons = document.getElementById('detailButtons');
-
-                requestDetail.innerHTML = '';
-                detailButtons.innerHTML = '';
-                offerForm.style.display = 'none';
-                getRequests(dataType, null);
-                clearForm()
-            }
-        })
-        .catch(error => console.error('Error checking user:', error));
-}
-
 function getRequestCounts() {
     fetch(`/getRequestCounts`)
         .then(response => response.json())
@@ -348,6 +325,22 @@ function getRequestCounts() {
         .catch(error => console.error('Error checking user:', error));
 }
 
+function removeOffer() {
+    const buyerid = document.getElementById('buyerid').value;
+    const dataType = document.getElementById('datatype').value;
+    const offerForm = document.getElementById('offerForm');
+    const requestDetail = document.getElementById('requestDetail');
+    const detailButtons = document.getElementById('detailButtons');
+
+    setStatus(buyerid, 'Deleted');
+    alert('Offer removed successfully');
+    requestDetail.innerHTML = '';
+    detailButtons.innerHTML = '';
+    offerForm.style.display = 'none';
+    getRequests(dataType, null);
+    getRequestCounts();
+    clearForm()
+    }
 
 function declineRequest() {
     const buyerid = document.getElementById('buyerid').value;
@@ -374,7 +367,6 @@ function reopenRequest() {
     getRequests(dataType,null);
     getRequestCounts();
 }
-
 
 function populateLevelOfService() {
     const levelOfService = document.getElementById('levelOfService');
