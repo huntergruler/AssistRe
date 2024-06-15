@@ -236,9 +236,9 @@ body {
     /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%;
+    width: fit-content;
     /* Full width */
-    height: 100%;
+    height: fit-content;
     /* Full height */
     overflow: auto;
     /* Enable scroll if needed */
