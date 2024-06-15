@@ -33,7 +33,7 @@
     align-content: center;
     align-items: center;
     text-align: center;
-    border-top: 1px solid black;
+    border: 1px solid black;
 }
 
 .property-group {
