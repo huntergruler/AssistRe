@@ -1,5 +1,36 @@
 const { dot } = require("node:test/reporters");
 
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("openModalButton");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function () {
+    showModal("This is a dynamic message.");
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Function to show the modal with a message
+function showModal(message) {
+    document.getElementById('modalMessage').textContent = message;
+    modal.style.display = "block";
+}
+
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
@@ -77,7 +108,7 @@ function getRequests(datatype, element) {
             else {
                 data.forEach(request => {
                     const div = document.createElement("div");
-                    if(request.matchStatus == "New") {
+                    if (request.matchStatus == "New") {
                         div.innerHTML = ``
                     }
                     div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">${request.buyerType}<br>
@@ -94,7 +125,7 @@ function getRequests(datatype, element) {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
-                    if(request.matchStatus == "Offered" || request.matchStatus == "Confirmed" || request.matchStatus == "Declined" || request.matchStatus == "Rejected") {
+                    if (request.matchStatus == "Offered" || request.matchStatus == "Confirmed" || request.matchStatus == "Declined" || request.matchStatus == "Rejected") {
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
                     div.onclick = function () {
@@ -306,21 +337,21 @@ function getRequestCounts() {
             data.forEach(request => {
                 console.log('request:', request);
                 if (request.matchStatus == 'New') {
-                    document.getElementById('tabNew').textContent = request.matchStatus+request.cnt;
+                    document.getElementById('tabNew').textContent = request.matchStatus + request.cnt;
                 }
                 if (request.matchStatus == 'Offered') {
-                    document.getElementById('tabOffered').textContent = request.matchStatus+request.cnt;
+                    document.getElementById('tabOffered').textContent = request.matchStatus + request.cnt;
                 }
                 if (request.matchStatus == 'Confirmed') {
-                    document.getElementById('tabConfirmed').textContent = request.matchStatus+request.cnt;
+                    document.getElementById('tabConfirmed').textContent = request.matchStatus + request.cnt;
                 }
                 if (request.matchStatus == 'Declined') {
-                    document.getElementById('tabDeclined').textContent = request.matchStatus+request.cnt;
+                    document.getElementById('tabDeclined').textContent = request.matchStatus + request.cnt;
                 }
                 if (request.matchStatus == 'Rejected') {
-                    document.getElementById('tabRejected').textContent = request.matchStatus+request.cnt;
+                    document.getElementById('tabRejected').textContent = request.matchStatus + request.cnt;
                 }
-                })
+            })
         })
         .catch(error => console.error('Error checking user:', error));
 }
@@ -340,7 +371,7 @@ function removeOffer() {
     getRequests(dataType, null);
     getRequestCounts();
     clearForm()
-    }
+}
 
 function declineRequest() {
     const buyerid = document.getElementById('buyerid').value;
@@ -364,7 +395,7 @@ function reopenRequest() {
     const dataType = document.getElementById('datatype').value;
     alert('Request Reopened successfully');
     setStatus(buyerid, 'Read');
-    getRequests(dataType,null);
+    getRequests(dataType, null);
     getRequestCounts();
 }
 
@@ -469,7 +500,7 @@ function setStatus(buyerid, status) {
         status: status
     };
 
-    if(status == "Read") {
+    if (status == "Read") {
         const container = document.getElementById(`buyerid${buyerid}`);
         const newDot = container.getElementsByClassName('newDot')[0];
         container.classList.remove('new');
