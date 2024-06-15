@@ -33,7 +33,7 @@ function showModal(message) {
 
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
-    getRequests('New', null);
+    getRequests('Offers', null);
     // getRequestCounts();
     // getRequests()
     const offerForm = document.getElementById('offerForm');
