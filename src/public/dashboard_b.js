@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
+    getRequests('New', null);
     getRequestCounts();
     // getRequests()
     const offerForm = document.getElementById('offerForm');
