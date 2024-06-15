@@ -496,20 +496,20 @@ router.get('/removeOffer', (req, res) => {
 
 
 // Login route
-router.get('/login', (req, res) => {
-  const message = req.session.message;
+// router.get('/login', (req, res) => {
+//   const message = req.session.message;
 
-  // Destroy the session or clear the cookie
-  if (req.session.killsession) {
-    req.session.destroy((err) => {
-      if (err) {
-        return console.error('Failed to destroy the session on logout', err);
-        res.clearCookie('connect.sid'); // If you're using session cookies, clear them
-      }
-    });
-  }
-  res.render('login', { query: req.query, message: message });
-});
+//   // Destroy the session or clear the cookie
+//   if (req.session.killsession) {
+//     req.session.destroy((err) => {
+//       if (err) {
+//         return console.error('Failed to destroy the session on logout', err);
+//         res.clearCookie('connect.sid'); // If you're using session cookies, clear them
+//       }
+//     });
+//   }
+//   res.render('login', { query: req.query, message: message });
+// });
 
 // Login route
 router.get('/login_a', (req, res) => {
@@ -1216,14 +1216,14 @@ router.get('/verify-email', (req, res) => {
       res.cookie('data', 'Email Verified', { maxAge: 900000, httpOnly: true });
       if (err) return res.status(500).send('Database error during email verification.');
       if (result.affectedRows === 0) return res.status(404).send('Token not found or email already verified.');
-      res.redirect('login');
+      res.redirect('login_a');
     });
   } else if (type == 'B') {
     db.query('UPDATE Buyers SET emailverified = 1 WHERE email = ? AND verificationtoken = ?', [email, token], (err, result) => {
       res.cookie('data', 'Email Verified', { maxAge: 900000, httpOnly: true });
       if (err) return res.status(500).send('Database error during email verification.');
       if (result.affectedRows === 0) return res.status(404).send('Token not found or email already verified.');
-      res.redirect('login');
+      res.redirect('login_b');
     });
   }
 });
