@@ -29,6 +29,7 @@ document.addEventListener('keyup', function (event) {
     if (event.target.id === 'email') {
         const Email = document.getElementById('email').value.trim();
         const selectedUserType = document.querySelector('input[name="userType"]:checked');
+        console.log('Email:', Email, 'User Type:', selectedUserType.value);
         if (!Email) {
             document.getElementById('userStatus').textContent = '';
             return;
