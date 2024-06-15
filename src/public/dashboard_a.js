@@ -332,7 +332,7 @@ function removeOffer() {
     const requestDetail = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
 
-    setStatus(buyerid, 'Deleted');
+    setStatus(buyerid, 'Declined');
     alert('Offer removed successfully');
     requestDetail.innerHTML = '';
     detailButtons.innerHTML = '';
