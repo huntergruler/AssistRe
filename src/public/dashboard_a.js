@@ -570,6 +570,7 @@ function saveOffer(event) {
             console.log('dataType:', dataType);
 
             getRequests(dataType, null);
+            getRequestCounts();
             // Optionally, perform any actions here after successful submission
         })
         .catch(error => {
