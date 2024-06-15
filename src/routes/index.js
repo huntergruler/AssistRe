@@ -1045,14 +1045,14 @@ router.get('/get-userzipcodes', (req, res) => {
 //   }
 // });
 
-router.get('/settings', (req, res) => {
+router.get('/settings_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access the Settings page';
     //    console.log('Redirecting to:', redirectto);
     res.redirect('/');
   }
   else {
-    res.render('settings');
+    res.render('settings_b');
   }
 });
 
