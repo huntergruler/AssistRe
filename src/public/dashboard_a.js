@@ -154,7 +154,6 @@ function selectRequest(buyerid, buyerrequestid, element) {
         row.classList.remove('selected');
     });
     requestDetail(buyerid, buyerrequestid);
-    console.log('datatype:', datatype);
     if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
@@ -335,7 +334,6 @@ function getRequestCounts() {
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
-                console.log('request:', request);
                 if (request.matchStatus == 'New') {
                     document.getElementById('tabNew').textContent = 'Open Requests' + request.cnt;
                 }
@@ -522,7 +520,6 @@ function setStatus(buyerid, status) {
             return response.json();
         })
         .then(result => {
-            console.log('SetStatus Success:', result);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -586,7 +583,6 @@ function saveOffer(event) {
             return response.json();
         })
         .then(result => {
-            console.log('Success:', result);
             const offerForm = document.getElementById('offerForm');
             showModal('Offer saved successfully');
             const requestDetail = document.getElementById('requestDetail');
@@ -598,7 +594,6 @@ function saveOffer(event) {
             requestDetail.display = 'none';
             detailButtons.display = 'none';
             clearForm();
-            console.log('dataType:', dataType);
 
             getRequests(dataType, null);
             getRequestCounts();
