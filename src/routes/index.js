@@ -333,6 +333,35 @@ router.get('/profile_b', (req, res) => {
   }
 });
 
+// Route to get the buyer's profile
+router.get('/dashboard_b', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+
+    const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
+                          ifnull(brd.bathrooms_min,0) bathrooms_min, ifnull(brd.bathrooms_max,0) bathrooms_max, ifnull(brd.bedrooms_min,0) bedrooms_min, ifnull(brd.bedrooms_max,0) bedrooms_max, brd.buyerType, ifnull(brd.preferredLanguages,'') preferredLanguages, if(brd.prequalified="Y",'Yes','No') prequalified, ifnull(brd.price_min,0) price_min, 
+                          ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, ifnull(brd.timeFrame,'') timeFrame, brd.prequalifiedFile, brd.levelOfService,
+                          ifnull(brd.prequalifiedAmount,0) prequalifiedAmount
+                     from Buyers b
+                          left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
+                    where b.userid = ?`;
+    db.query(query, [userid], (error, results) => {
+      if (error) {
+        console.error('Error fetching buyer profile:', error);
+        return res.status(500).send('Server error');
+      }
+      if (results.length === 0) {
+        return res.status(404).send('User not found');
+      }
+      res.render('dashboard_b', { buyer: results[0] });
+    });
+  }
+});
+
 // Route to update the buyer's profile
 router.post('/profile_b', (req, res) => {
   if (!req.session.user) {
@@ -1005,17 +1034,17 @@ router.get('/get-userzipcodes', (req, res) => {
   });
 });
 
-// Route to serve the dashboard_b page
-router.get('/dashboard_b', (req, res) => {
-  if (!req.session.user) {
-    req.session.message = 'Please login to access your Dashboard';
-    //    console.log('Redirecting to:', redirectto);
-    res.redirect('/');
-  }
-  else {
-    res.render('dashboard_b', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
-  }
-});
+// // Route to serve the dashboard_b page
+// router.get('/dashboard_b', (req, res) => {
+//   if (!req.session.user) {
+//     req.session.message = 'Please login to access your Dashboard';
+//     //    console.log('Redirecting to:', redirectto);
+//     res.redirect('/');
+//   }
+//   else {
+//     res.render('dashboard_b', { user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname });
+//   }
+// });
 
 router.get('/settings', (req, res) => {
   if (!req.session.user) {

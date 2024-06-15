@@ -40,13 +40,44 @@
                 <%= lastname %>
         </h2>
     </div>
-    <div class="row tab" id="tabcontainer">
-        <button id="tabNew" class="tablinks col-md btn-sm" onclick="getRequests('New', this)">Open Requests</button>
-        <button id="tabOffered" class="tablinks col-md btn-sm" onclick="getRequests('Offered', this)">Offered</button>
-        <button id="tabConfirmed" class="tablinks col-md btn-sm"
-            onclick="getRequests('Confirmed', this)">Confirmed</button>
-        <button id="tabDeclined" class="tablinks col-md btn-sm"
-            onclick="getRequests('Declined', this)">Declined</button>
+    <div class="form-group col-md-5">
+        <div class="userZip-container">
+            <h3 class="text-center">Property Info</h3>
+            <div class="property-group">
+                <p>Property Type: <%= buyer.propertyType %>
+                </p>
+                <div id="levelOfServiceDisplay">
+                    <p>Agent Service Level: <%= buyer.levelOfService %>
+                    </p>
+                </div>
+                <p>Minimum Bedrooms: <%= buyer.bedrooms_min %>
+                </p>
+                <p>Minimum Batrooms: <%= buyer.bathrooms_min %>
+                </p>
+                <p>Square Footage Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %>
+                </p>
+                <p>Price Range: <%= buyer.price_min %> to <%= buyer.price_max %>
+                </p>
+                <p>Timeframe: <%= buyer.timeFrame %>
+                </p>
+                <p>Prequalified: <%= buyer.prequalified %>
+                </p>
+                <p>Prequalified Amount: <%= buyer.prequalifiedAmount %>
+                </p>
+                <p>Preferred Languages: <%= buyer.preferredLanguages %>
+                </p>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal"
+                onclick="populateUserZipCodes();">
+
+                Modify Property Info
+            </button>
+        </div>
+    </div>
+<div class="row tab" id="tabcontainer">
+        <button id="tabOffers" class="tablinks col-md btn-sm" onclick="getRequests('Offers', this)">Offers</button>
+        <button id="tabFavorites" class="tablinks col-md btn-sm"
+            onclick="getRequests('Favorites', this)">Favorites</button>
         <button id="tabRejected" class="tablinks col-md btn-sm"
             onclick="getRequests('Rejected', this)">Rejected</button>
     </div>
