@@ -38,7 +38,7 @@ document.addEventListener('keyup', function (event) {
             document.getElementById('email').focus();
             return;
         } else {
-            fetch(`/check-user?email=${encodeURIComponent(Email)}`)
+            fetch(`/check-user?email=${encodeURIComponent(Email)}&userType=${selectedUserType.value}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.available) {
