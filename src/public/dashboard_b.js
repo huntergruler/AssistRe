@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // getRequests()
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
-    document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
+    // document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
 
     // Disable all input fields and select elements
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
