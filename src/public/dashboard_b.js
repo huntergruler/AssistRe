@@ -33,9 +33,8 @@ function showModal(message) {
 
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
-    getRequests('Offers', null);
-    // getRequestCounts();
-    // getRequests()
+    getOfferCounts('New', null);
+    // getOfferCounts();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
     // document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
@@ -53,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 let selectedBuyerId = null;
-function getRequests(datatype, element) {
+function getOffers(datatype, element) {
     const requests = document.getElementById('requests');
     const requestDetail = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
@@ -84,10 +83,10 @@ function getRequests(datatype, element) {
     // detailButtons.style.display = 'none';
 
     document.getElementById('datatype').value = datatype;
-    const getRequests = document.getElementById('getRequests');
-    getRequests.style.display = 'block';
+    const getOffers = document.getElementById('getOffers');
+    getOffers.style.display = 'block';
     requests.innerHTML = '';
-    fetch(`/getRequests?datatype=${datatype}`)
+    fetch(`/getOffers?datatype=${datatype}`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {
@@ -216,7 +215,7 @@ function requestDetail(buyerid, buyerrequestid) {
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
     // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
-    fetch(`/getRequests?buyerid=${encodeURIComponent(buyerid)} &buyerrequestid=${encodeURIComponent(buyerrequestid)} &datatype=${encodeURIComponent(datatype)}`)
+    fetch(`/getOffers?buyerid=${encodeURIComponent(buyerid)} &buyerrequestid=${encodeURIComponent(buyerrequestid)} &datatype=${encodeURIComponent(datatype)}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
@@ -365,7 +364,7 @@ function removeOffer() {
     requestDetail.innerHTML = '';
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
-    getRequests(dataType, null);
+    getOffers(dataType, null);
     getRequestCounts();
     clearForm()
 }
@@ -382,7 +381,7 @@ function declineRequest() {
     requestDetail.innerHTML = '';
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
-    getRequests(dataType, null);
+    getOffers(dataType, null);
     getRequestCounts();
     clearForm()
 }
@@ -392,7 +391,7 @@ function reopenRequest() {
     const dataType = document.getElementById('datatype').value;
     showModal('Request Reopened successfully');
     setStatus(buyerid, 'Read');
-    getRequests(dataType, null);
+    getOffers(dataType, null);
     getRequestCounts();
 }
 
@@ -594,7 +593,7 @@ function saveOffer(event) {
             detailButtons.display = 'none';
             clearForm();
 
-            getRequests(dataType, null);
+            getOffers(dataType, null);
             getRequestCounts();
             // Optionally, perform any actions here after successful submission
         })

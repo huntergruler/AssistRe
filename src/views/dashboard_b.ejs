@@ -69,13 +69,13 @@
             </div>
         </div>
         <div class="row tab" id="tabcontainer">
-            <button id="tabOffers" class="tablinks col-md btn-sm" onclick="getRequests('Offered', this)">Offers</button>
+            <button id="tabOffers" class="tablinks col-md btn-sm" onclick="getOffers('Offers', this)">Offers</button>
             <button id="tabFavorites" class="tablinks col-md btn-sm"
-                onclick="getRequests('Favorites', this)">Favorites</button>
+                onclick="getOffers('Favorites', this)">Favorites</button>
             <button id="tabRejected" class="tablinks col-md btn-sm"
-                onclick="getRequests('Rejected', this)">Rejected</button>
+                onclick="getOffers('Rejected', this)">Rejected</button>
         </div>
-        <div id="getRequests" class="tabcontent">
+        <div id="getOffers" class="tabcontent">
             <div class="row">
                 <div id="requestCont" class="container-left col-md-3">
                     <div id="requests" class="requests d-flex flex-column justify-content-between">
