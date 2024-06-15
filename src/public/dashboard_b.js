@@ -338,7 +338,7 @@ function getRequestCounts() {
                     document.getElementById('tabNew').textContent = 'Open Requests' + request.cnt;
                 }
                 if (request.matchStatus == 'Offered') {
-                    document.getElementById('tabOffered').textContent = request.matchStatus + '<b>'+request.cnt;
+                    document.getElementById('tabOffered').textContent = request.matchStatus + '<b>'+request.cnt+'</b>';
                 }
                 if (request.matchStatus == 'Confirmed') {
                     document.getElementById('tabConfirmed').textContent = request.matchStatus + request.cnt;
