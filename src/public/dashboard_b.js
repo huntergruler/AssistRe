@@ -33,9 +33,6 @@ function showModal(message) {
 
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
-    populateLevelOfService();
-    populateOfferTypes();
-    populateCompensationTypes();
     getRequests('New', null);
     getRequestCounts();
     // getRequests()
