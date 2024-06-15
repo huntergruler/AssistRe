@@ -126,7 +126,7 @@ router.get('/getOfferCounts', (req, res) => {
                           end buyerStatus, concat('(',count(bam.buyerid),')') cnt
                     from OfferStatus os 
                          left outer join AgentBuyerMatch bam on bam.buyerStatus = os.offerStatus and bam.buyerid = ?
-                   where os.statusType = 'Buyer'
+                   where os.userType = 'Buyer'
                    group by 1`;
     db.query(query, [userid], (error, results) => {
       if (error) {
@@ -197,7 +197,7 @@ router.get('/getRequestCounts', (req, res) => {
                           end agentStatus, concat('(',count(bam.agentid),')') cnt
                     from OfferStatus os 
                          left outer join AgentBuyerMatch bam on bam.agentStatus = os.offerStatus and bam.agentid = ?
-                   where os.statusType = 'Agent'
+                   where os.userType = 'Agent'
                    group by 1`;
     db.query(query, [userid], (error, results) => {
       if (error) {
