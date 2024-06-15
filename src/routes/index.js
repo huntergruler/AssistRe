@@ -124,9 +124,9 @@ router.get('/getRequestCounts', (req, res) => {
     var query = ` select case when os.offerStatus in ('New','Read')
                               then 'New'
                               else os.offerStatus
-                          end matchStatus, concat('(',count(bam.agentid),')') cnt
+                          end agentStatus, concat('(',count(bam.agentid),')') cnt
                     from OfferStatus os 
-                         left outer join AgentBuyerMatch bam on bam.matchStatus = os.offerStatus and bam.agentid = ?
+                         left outer join AgentBuyerMatch bam on bam.agentStatus = os.offerStatus and bam.agentid = ?
                    group by 1`;
     db.query(query, [userid], (error, results) => {
       if (error) {
@@ -150,11 +150,11 @@ router.get('/getRequests', (req, res) => {
     const buyerid = req.query.buyerid;
     const userid = req.session.userid;
     if (!buyerid) {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.matchStatus
+      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus
                      from AgentBuyerMatch bam
                     where bam.agentid = ?
-                      and if(bam.matchStatus = 'Read','New', bam.matchStatus) = ?
-                      order by bam.matchStatus, bam.entrytimestamp desc`;
+                      and if(bam.agentStatus = 'Read','New', bam.agentStatus) = ?
+                      order by bam.agentStatus, bam.entrytimestamp desc`;
       db.query(query, [userid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
@@ -164,12 +164,12 @@ router.get('/getRequests', (req, res) => {
       });
     }
     else {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.matchStatus
+      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus
                       from AgentBuyerMatch bam
                       where bam.agentid = ?
                       and bam.buyerid = ?
-                      and if(bam.matchStatus = 'Read','New', bam.matchStatus) = ?
-                      order by bam.matchStatus, bam.entrytimestamp desc`;
+                      and if(bam.agentStatus = 'Read','New', bam.agentStatus) = ?
+                      order by bam.agentStatus, bam.entrytimestamp desc`;
       db.query(query, [userid, buyerid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
@@ -186,7 +186,7 @@ router.get('/getRequests', (req, res) => {
 
 // router.get('/declineRequest', (req, res) => {
 //   const buyerid = req.query.buyerid;
-//   const updateQuery = 'update AgentBuyerMatch set matchStatus = "Declined" WHERE agentid = ? and buyerid = ?';
+//   const updateQuery = 'update AgentBuyerMatch set agentStatus = "Declined" WHERE agentid = ? and buyerid = ?';
 //   db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {
 //     if (err) throw err;
 //     res.json({ success: true });
@@ -201,7 +201,7 @@ router.post('/setStatus', (req, res) => {
   else {
     const userid = req.session.userid;
     const { buyerid, status } = req.body;
-    insertQuery = 'update AgentBuyerMatch set matchStatus = ? where agentid = ? and buyerid = ?';
+    insertQuery = 'update AgentBuyerMatch set agentStatus = ? where agentid = ? and buyerid = ?';
     db.query(insertQuery, [status, userid, buyerid], (error, result) => {
       if (error) {
         console.error('Error saving status:', error);
@@ -229,7 +229,7 @@ router.post('/saveoffer', (req, res) => {
         console.error('Error saving offer:', error);
         return res.status(500).json({ error: 'Internal server error' });
       }
-      // updateBuyerMatch = 'UPDATE AgentBuyerMatch SET matchStatus = "Offered" WHERE agentid = ? and buyerid = ? and buyerrequestid = ?';
+      // updateBuyerMatch = 'UPDATE AgentBuyerMatch SET agentStatus = "Offered" WHERE agentid = ? and buyerid = ? and buyerrequestid = ?';
       // db.query(updateBuyerMatch, [userid, buyerid, buyerrequestid], (error, result) => {
       //   if (error) {
       //     console.error('Error updating buyer match:', error);
@@ -487,7 +487,7 @@ router.get('/removeOffer', (req, res) => {
 
 // router.get('/declineRequest', (req, res) => {
 //   const buyerid = req.query.buyerid;
-//   const updateQuery = 'update AgentBuyerMatch set matchStatus = "Declined" WHERE agentid = ? and buyerid = ?';
+//   const updateQuery = 'update AgentBuyerMatch set agentStatus = "Declined" WHERE agentid = ? and buyerid = ?';
 //   db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {
 //     if (err) throw err;
 //     res.json({ success: true });

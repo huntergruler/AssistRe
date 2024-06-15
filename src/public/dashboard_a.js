@@ -108,7 +108,7 @@ function getRequests(datatype, element) {
             else {
                 data.forEach(request => {
                     const div = document.createElement("div");
-                    if (request.matchStatus == "New") {
+                    if (request.agentStatus == "New") {
                         div.innerHTML = ``
                     }
                     div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">${request.buyerType}<br>
@@ -118,14 +118,14 @@ function getRequests(datatype, element) {
                     div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
                     div.className = "form-row container-left col-md-9 align-self-end d-flex flex-row";
                     div.id = "buyerid" + request.buyerid;
-                    if (request.matchStatus == "New") {
+                    if (request.agentStatus == "New") {
                         div.classList.add("new");
                     }
-                    if (request.matchStatus == "Read") {
+                    if (request.agentStatus == "Read") {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
-                    if (request.matchStatus == "Offered" || request.matchStatus == "Confirmed" || request.matchStatus == "Declined" || request.matchStatus == "Rejected") {
+                    if (request.agentStatus == "Offered" || request.agentStatus == "Confirmed" || request.agentStatus == "Declined" || request.agentStatus == "Rejected") {
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
                     div.onclick = function () {
@@ -334,20 +334,20 @@ function getRequestCounts() {
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
-                if (request.matchStatus == 'New') {
+                if (request.agentStatus == 'New') {
                     document.getElementById('tabNew').textContent = 'Open Requests' + request.cnt;
                 }
-                if (request.matchStatus == 'Offered') {
-                    document.getElementById('tabOffered').textContent = request.matchStatus + request.cnt;
+                if (request.agentStatus == 'Offered') {
+                    document.getElementById('tabOffered').textContent = request.agentStatus + request.cnt;
                 }
-                if (request.matchStatus == 'Confirmed') {
-                    document.getElementById('tabConfirmed').textContent = request.matchStatus + request.cnt;
+                if (request.agentStatus == 'Confirmed') {
+                    document.getElementById('tabConfirmed').textContent = request.agentStatus + request.cnt;
                 }
-                if (request.matchStatus == 'Declined') {
-                    document.getElementById('tabDeclined').textContent = request.matchStatus + request.cnt;
+                if (request.agentStatus == 'Declined') {
+                    document.getElementById('tabDeclined').textContent = request.agentStatus + request.cnt;
                 }
-                if (request.matchStatus == 'Rejected') {
-                    document.getElementById('tabRejected').textContent = request.matchStatus + request.cnt;
+                if (request.agentStatus == 'Rejected') {
+                    document.getElementById('tabRejected').textContent = request.agentStatus + request.cnt;
                 }
             })
         })
