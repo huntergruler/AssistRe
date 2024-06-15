@@ -106,7 +106,7 @@ function getRequests(datatype, element) {
             else {
                 data.forEach(request => {
                     const div = document.createElement("div");
-                    if (request.matchStatus == "New") {
+                    if (request.buyerStatus == "New") {
                         div.innerHTML = ``
                     }
                     div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">${request.buyerType}<br>
@@ -116,14 +116,14 @@ function getRequests(datatype, element) {
                     div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
                     div.className = "form-row container-left col-md-9 align-self-end d-flex flex-row";
                     div.id = "buyerid" + request.buyerid;
-                    if (request.matchStatus == "New") {
+                    if (request.buyerStatus == "New") {
                         div.classList.add("new");
                     }
-                    if (request.matchStatus == "Read") {
+                    if (request.buyerStatus == "Read") {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
-                    if (request.matchStatus == "Offered" || request.matchStatus == "Confirmed" || request.matchStatus == "Declined" || request.matchStatus == "Rejected") {
+                    if (request.buyerStatus == "Offered" || request.buyerStatus == "Confirmed" || request.buyerStatus == "Declined" || request.buyerStatus == "Rejected") {
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
                     div.onclick = function () {
@@ -333,20 +333,20 @@ function getRequestCounts() {
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
-                if (request.matchStatus == 'New') {
+                if (request.buyerStatus == 'New') {
                     document.getElementById('tabNew').textContent = 'Open Requests' + request.cnt;
                 }
-                if (request.matchStatus == 'Offered') {
-                    document.getElementById('tabOffered').textContent = request.matchStatus + 'strong '+request.cnt+'</strong> JJJ';
+                if (request.buyerStatus == 'Offered') {
+                    document.getElementById('tabOffered').textContent = request.buyerStatus + 'strong '+request.cnt+'</strong> JJJ';
                 }
-                if (request.matchStatus == 'Confirmed') {
-                    document.getElementById('tabConfirmed').textContent = request.matchStatus + request.cnt;
+                if (request.buyerStatus == 'Confirmed') {
+                    document.getElementById('tabConfirmed').textContent = request.buyerStatus + request.cnt;
                 }
-                if (request.matchStatus == 'Declined') {
-                    document.getElementById('tabDeclined').textContent = request.matchStatus + request.cnt;
+                if (request.buyerStatus == 'Declined') {
+                    document.getElementById('tabDeclined').textContent = request.buyerStatus + request.cnt;
                 }
-                if (request.matchStatus == 'Rejected') {
-                    document.getElementById('tabRejected').textContent = request.matchStatus + request.cnt;
+                if (request.buyerStatus == 'Rejected') {
+                    document.getElementById('tabRejected').textContent = request.buyerStatus + request.cnt;
                 }
             })
         })
