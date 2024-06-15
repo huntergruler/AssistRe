@@ -1,31 +1,24 @@
 // const { dot } = require("node:test/reporters");
 
+// Modal logic
 var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-// var btn = document.getElementById("openModalButton");
-
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+var closeModalButton = document.getElementById("modalCloseButton");
 
-// When the user clicks the button, open the modal 
-// btn.onclick = function () {
-//     showModal("This is a dynamic message.");
-// }
-
-// When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+closeModalButton.onclick = function () {
+    modal.style.display = "none";
+}
+
 window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
 
-// Function to show the modal with a message
 function showModal(message) {
     document.getElementById('modalMessage').textContent = message;
     modal.style.display = "block";
