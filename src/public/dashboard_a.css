@@ -24,29 +24,29 @@
 
 .tabcontent {
     display: none;
-  }
-  
-  /* Style the tab buttons */
-  .tab button {
+}
+
+/* Style the tab buttons */
+.tab button {
     background-color: #f2f2f2;
     border: 1px solid black;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px 5px 0 0;
-    
-  }
 
-  #tabSelected {
+}
+
+#tabSelected {
     background-color: var(--background-color);
     color: white;
     border-radius: 5px;
 }
 
-  /* Style the active tab button */
-  .tab button.active {
+/* Style the active tab button */
+.tab button.active {
     background-color: var(--background-color);
     border-radius: 5px;
-  }
+}
 
 
 .hidden {
@@ -135,12 +135,14 @@ body {
 
 /* Define the style for the active button */
 .tablinks.active {
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
+    background-color: #4CAF50;
+    /* Green background */
+    color: white;
+    /* White text */
 }
 
 .tablinks-selected {
-    background-color: #ccc; 
+    background-color: #ccc;
 }
 
 .form-row.selected {
@@ -167,7 +169,9 @@ body {
     /* background-color: chartreuse; */
 }
 
-#offerFormContainer input:disabled, #offerFormContainer textarea:disabled, #offerFormContainer select:disabled{
+#offerFormContainer input:disabled,
+#offerFormContainer textarea:disabled,
+#offerFormContainer select:disabled {
     opacity: 1 !important;
     color: black;
 }
@@ -191,7 +195,7 @@ body {
     /* background-color: aqua; */
 }
 
-#requestCont{
+#requestCont {
     margin: 0;
     padding: 0;
 }
@@ -213,7 +217,7 @@ body {
     font-weight: normal;
 }
 
-.newDot{
+.newDot {
     align-self: start;
     font-size: 40px;
     margin-top: 0px;
@@ -221,4 +225,52 @@ body {
     padding-top: 0px;
     line-height: 20px;
     color: #3F92E8;
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
