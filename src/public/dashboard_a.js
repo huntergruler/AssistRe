@@ -3,15 +3,15 @@
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("openModalButton");
+// var btn = document.getElementById("openModalButton");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function () {
-    showModal("This is a dynamic message.");
-}
+// btn.onclick = function () {
+//     showModal("This is a dynamic message.");
+// }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
@@ -364,7 +364,7 @@ function removeOffer() {
     const detailButtons = document.getElementById('detailButtons');
 
     setStatus(buyerid, 'Declined');
-    alert('Offer removed successfully');
+    showModal('Offer removed successfully');
     requestDetail.innerHTML = '';
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
@@ -381,7 +381,7 @@ function declineRequest() {
     const detailButtons = document.getElementById('detailButtons');
 
     setStatus(buyerid, 'Declined');
-    alert('Request Declined successfully');
+    showModal('Request Declined successfully');
     requestDetail.innerHTML = '';
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
@@ -393,7 +393,7 @@ function declineRequest() {
 function reopenRequest() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
-    alert('Request Reopened successfully');
+    showModal('Request Reopened successfully');
     setStatus(buyerid, 'Read');
     getRequests(dataType, null);
     getRequestCounts();
@@ -588,7 +588,7 @@ function saveOffer(event) {
         .then(result => {
             console.log('Success:', result);
             const offerForm = document.getElementById('offerForm');
-            alert('Offer saved successfully');
+            showModal('Offer saved successfully');
             const requestDetail = document.getElementById('requestDetail');
             const detailButtons = document.getElementById('detailButtons');
 
