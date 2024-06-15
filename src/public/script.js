@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
                         })};
                         */
-    if (document.getElementById('message').innerText == '')
-        document.getElementById('message').style.display = 'none';
+    // if (document.getElementById('message').innerText == '')
+    //     document.getElementById('message').style.display = 'none';
     if (loginContainer) {    // Access the parent element by its ID
         document.body.addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent default form submission
