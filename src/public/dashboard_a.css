@@ -279,3 +279,8 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Close button in the modal content */
+.modal-close-btn {
+    margin-top: 20px;
+}

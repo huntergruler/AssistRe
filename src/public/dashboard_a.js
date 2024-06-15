@@ -3,18 +3,26 @@
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-// var btn = document.getElementById("openModalButton");
+var btn = document.getElementById("openModalButton");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
+// Get the close button inside the modal
+var closeModalButton = document.getElementById("modalCloseButton");
+
 // When the user clicks the button, open the modal 
-// btn.onclick = function () {
-//     showModal("This is a dynamic message.");
-// }
+btn.onclick = function () {
+    showModal("This is a dynamic message.");
+}
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks the close button inside the modal, close the modal
+closeModalButton.onclick = function () {
     modal.style.display = "none";
 }
 
@@ -28,7 +36,7 @@ window.onclick = function (event) {
 // Function to show the modal with a message
 function showModal(message) {
     document.getElementById('modalMessage').textContent = message;
-    modal.style.display = "block";
+    modal.style.display = "flex";
 }
 
 // Initialize the state based on the prequalified value
