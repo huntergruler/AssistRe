@@ -644,6 +644,7 @@ router.get('/get-city-state', (req, res) => {
 router.get('/check-user', (req, res) => {
   const email = req.query.email;
   const usertype = req.query.usertype;
+  console.log('Email:', email, 'User Type:', usertype);
   if (!email) {
     return res.status(400).json({ error: 'User Name is required' });
   }
