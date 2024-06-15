@@ -326,23 +326,17 @@ function modifyOffer(event) {
 
 }
 
-function getRequestCounts() {
+function getOfferCounts() {
     console.log('getting request counts');
-    fetch(`/getRequestCounts`)
+    fetch(`/getOfferCounts`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
                 if (request.buyerStatus == 'New') {
-                    document.getElementById('tabNew').textContent = 'Open Requests' + request.cnt;
+                    document.getElementById('tabOffers').textContent = request.buyerStatus + request.cnt;
                 }
-                if (request.buyerStatus == 'Offered') {
-                    document.getElementById('tabOffered').textContent = request.buyerStatus + 'strong '+request.cnt+'</strong> JJJ';
-                }
-                if (request.buyerStatus == 'Confirmed') {
-                    document.getElementById('tabConfirmed').textContent = request.buyerStatus + request.cnt;
-                }
-                if (request.buyerStatus == 'Declined') {
-                    document.getElementById('tabDeclined').textContent = request.buyerStatus + request.cnt;
+                if (request.buyerStatus == 'Favorite') {
+                    document.getElementById('tabFavorites').textContent = request.buyerStatus + request.cnt;
                 }
                 if (request.buyerStatus == 'Rejected') {
                     document.getElementById('tabRejected').textContent = request.buyerStatus + request.cnt;
