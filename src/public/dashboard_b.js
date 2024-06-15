@@ -331,6 +331,7 @@ function modifyOffer(event) {
 }
 
 function getRequestCounts() {
+    console.log('getting request counts');
     fetch(`/getRequestCounts`)
         .then(response => response.json())
         .then(data => {
