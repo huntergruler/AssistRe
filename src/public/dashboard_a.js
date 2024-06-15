@@ -1,4 +1,4 @@
-const { dot } = require("node:test/reporters");
+// const { dot } = require("node:test/reporters");
 
 var modal = document.getElementById("myModal");
 
