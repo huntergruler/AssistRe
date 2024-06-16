@@ -108,10 +108,10 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "New") {
                         div.innerHTML = ``
                     }
-                    div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">${request.buyerType}<br>
-                    $${request.price_min} to $${request.price_max}<br>
-                    Prequalified? ${request.prequalified}<br>
-                    Purchase Timeline: ${request.timeFrame}<br></div>`;
+                    div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">${request.levelOfService}<br>
+                    Compensation Type: {request.compensationType}<br>
+                    Compensation Amount ${request.compensationAmount}<br>
+                    Length of Agreement: ${request.lengthOfService}<br></div>`;
                     div.addEventListener('click', () => selectRequest(request.agentid, request.buyerrequestid, this));
                     div.className = "form-row";
                     div.id = "agentid" + request.agentid;
