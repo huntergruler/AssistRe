@@ -77,7 +77,7 @@
 
 .tabcontent {
     display: none;
-    padding: none;
+    padding-left: 0px;
 }
 
 /* Style the tab buttons */
