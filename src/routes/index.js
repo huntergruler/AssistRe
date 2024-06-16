@@ -227,8 +227,9 @@ router.get('/getRequests', (req, res) => {
     const buyerid = req.query.buyerid;
     const userid = req.session.userid;
     if (!buyerid) {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus
+      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyerrequestid) dispIdentifier
                      from AgentBuyerMatch bam
+                          join Buyers b on b.userid = bam.buyerid
                     where bam.agentid = ?
                       and if(bam.agentStatus = 'Read','New', bam.agentStatus) = ?
                       order by bam.agentStatus, bam.entrytimestamp desc`;
@@ -241,9 +242,10 @@ router.get('/getRequests', (req, res) => {
       });
     }
     else {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus
-                      from AgentBuyerMatch bam
-                      where bam.agentid = ?
+      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyerrequestid) dispIdentifier
+                     from AgentBuyerMatch bam
+                          join Buyers b on b.userid = bam.buyerid
+                    where bam.agentid = ?
                       and bam.buyerid = ?
                       and if(bam.agentStatus = 'Read','New', bam.agentStatus) = ?
                       order by bam.agentStatus, bam.entrytimestamp desc`;
