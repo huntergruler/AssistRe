@@ -152,11 +152,12 @@ router.get('/getOffers', (req, res) => {
     console.log('Buyer:', buyerid, 'User:', agentid, 'Type:', datatype);
 
     if (!agentid) {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offerType, ao.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
-      from AgentOffers ao
-           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
-           join Agents a on a.userid = ao.agentid
-where ao.buyerid = ?
+      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offerType, los.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
+                     from AgentOffers ao
+                          join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
+                          join Agents a on a.userid = ao.agentid
+                          join LevelsOfService los on los.levelofserviceid = bam.levelofserviceid
+                    where ao.buyerid = ?
                       and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
                     order by bam.buyerStatus, ao.entrytimestamp desc`;
       db.query(query, [buyerid, datatype], (error, results) => {
@@ -168,14 +169,15 @@ where ao.buyerid = ?
       });
     }
     else {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offerType, ao.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
-      from AgentOffers ao
-           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
-           join Agents a on a.userid = ao.agentid
-           where ao.buyerid = ?
-             and bam.agentid = ?
-           and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
-         order by bam.buyerStatus, ao.entrytimestamp desc`;
+      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offerType, los.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
+                     from AgentOffers ao
+                          join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
+                          join Agents a on a.userid = ao.agentid
+                          join LevelsOfService los on los.levelofserviceid = bam.levelofserviceid
+                    where ao.buyerid = ?
+                      and bam.agentid = ?
+                      and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
+                    order by bam.buyerStatus, ao.entrytimestamp desc`;
       db.query(query, [buyerid, agentid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
