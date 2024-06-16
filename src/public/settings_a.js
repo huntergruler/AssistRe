@@ -131,7 +131,7 @@ function populateLevelOfService() {
         .then(data => {
             data.results.forEach(item => {
                 let option = document.createElement('option');
-                option.value = item.levelOfService;
+                option.value = item.levelofserviceid;
                 option.textContent = item.levelOfService;
                 levelOfService.appendChild(option);
             });
