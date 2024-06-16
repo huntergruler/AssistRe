@@ -112,7 +112,7 @@ function getRequests(datatype, element) {
                         div.innerHTML = ``
                     }
                     div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">
-                    Buyer: ${request.dispIdentifier}
+                    Buyer: ${request.dispIdentifier}<br>
                     ${request.buyerType}<br>
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
