@@ -149,7 +149,7 @@ router.get('/getOffers', (req, res) => {
     const datatype = req.query.datatype;
     const agentid = req.query.agentid;
     const buyerid = req.session.userid;
-    console.log('Buyer:', buyerid, 'User:', userid, 'Type:', datatype);
+    console.log('Buyer:', buyerid, 'User:', agentid, 'Type:', datatype);
 
     if (!agentid) {
       var query = `select ao.agentofferid, ao.buyerrequestid, ao.agentid, ao.offerType, ao.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus
@@ -173,7 +173,7 @@ router.get('/getOffers', (req, res) => {
                       and bam.buyerid = ?
                       and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = ?
                       order by bam.buyerStatus, bam.entrytimestamp desc`;
-      db.query(query, [userid, buyerid, datatype], (error, results) => {
+      db.query(query, [agentid, buyerid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
           return res.status(500).send('Server error');
