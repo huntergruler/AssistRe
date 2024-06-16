@@ -156,7 +156,7 @@ router.get('/getOffers', (req, res) => {
                      from AgentOffers ao
                           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
                           join Agents a on a.userid = ao.agentid
-                          join LevelsOfService los on los.levelofserviceid = bam.levelofserviceid
+                          join LevelsOfService los on los.levelofserviceid = ao.levelofserviceid
                     where ao.buyerid = ?
                       and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
                     order by bam.buyerStatus, ao.entrytimestamp desc`;
@@ -173,7 +173,7 @@ router.get('/getOffers', (req, res) => {
                      from AgentOffers ao
                           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
                           join Agents a on a.userid = ao.agentid
-                          join LevelsOfService los on los.levelofserviceid = bam.levelofserviceid
+                          join LevelsOfService los on los.levelofserviceid = ao.levelofserviceid
                     where ao.buyerid = ?
                       and bam.agentid = ?
                       and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
