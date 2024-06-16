@@ -147,11 +147,11 @@ router.get('/getOffers', (req, res) => {
   }
   else {
     const datatype = req.query.datatype;
-    const buyerid = req.query.buyerid;
-    const userid = req.session.userid;
+    const agentid = req.query.agentid;
+    const buyerid = req.session.userid;
     console.log('Buyer:', buyerid, 'User:', userid, 'Type:', datatype);
 
-    if (!buyerid) {
+    if (!agentid) {
       var query = `select ao.agentofferid, ao.buyerrequestid, ao.agentid, ao.offerType, ao.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus
                      from AgentOffers ao
                           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
