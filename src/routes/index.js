@@ -152,10 +152,11 @@ router.get('/getOffers', (req, res) => {
     console.log('Buyer:', buyerid, 'User:', agentid, 'Type:', datatype);
 
     if (!agentid) {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.agentid, ao.offerType, ao.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus
-                     from AgentOffers ao
-                          join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
-                    where ao.buyerid = ?
+      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offerType, ao.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
+      from AgentOffers ao
+           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
+           join Agents a on a.userid = ao.agentid
+where ao.buyerid = ?
                       and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
                     order by bam.buyerStatus, ao.entrytimestamp desc`;
       db.query(query, [buyerid, datatype], (error, results) => {
@@ -167,13 +168,15 @@ router.get('/getOffers', (req, res) => {
       });
     }
     else {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.buyerStatus
-                     from AgentBuyerMatch bam
-                    where bam.agentid = ?
-                      and bam.buyerid = ?
-                      and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = ?
-                      order by bam.buyerStatus, bam.entrytimestamp desc`;
-      db.query(query, [agentid, buyerid, datatype], (error, results) => {
+      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offerType, ao.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
+      from AgentOffers ao
+           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
+           join Agents a on a.userid = ao.agentid
+           where ao.buyerid = ?
+             and bam.agentid = ?
+           and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
+         order by bam.buyerStatus, ao.entrytimestamp desc`;
+      db.query(query, [buyerid, agentid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
           return res.status(500).send('Server error');
