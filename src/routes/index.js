@@ -306,6 +306,7 @@ router.post('/saveoffer', (req, res) => {
     const userid = req.session.userid;
     const action = req.body.action;
     const offerStatus = 'Offered';
+    console.log('Action:', action);
     const { buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
     if (action === 'Update') {
       insertQuery = `UPDATE AgentOffers 
