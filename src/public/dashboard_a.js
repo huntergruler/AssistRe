@@ -461,7 +461,7 @@ function populateCompensationTypes() {
                 // if (compensationTypeDisplay.replace("Compensation Type: ", "") == item.compensationType) {
                 //     option.selected = true;
                 // }
-                option.value = item.compensationType;
+                option.value = item.compensationtypeid;
                 option.textContent = item.compensationType;
                 compensationType.appendChild(option);
             });
@@ -617,7 +617,7 @@ function populateOfferDefaults() {
             }
             document.getElementById('offerType').value = data.offerType;
             document.getElementById('levelOfService').value = data.levelofserviceid;
-            document.getElementById('compensationType').value = data.compensationType;
+            document.getElementById('compensationType').value = data.compensationtypeid;
             document.getElementById('compensationAmount').value = data.compensationAmount;
             document.getElementById('retainerFee').value = data.retainerFee;
             document.getElementById('lengthOfService').value = data.lengthOfService;
@@ -646,7 +646,7 @@ function populateOfferDetail(buyerid) {
             }
             document.getElementById('offerType').value = data.offerType;
             document.getElementById('levelOfService').value = data.levelofserviceid;
-            document.getElementById('compensationType').value = data.compensationType;
+            document.getElementById('compensationType').value = data.compensationtypeid;
             document.getElementById('compensationAmount').value = data.compensationAmount;
             document.getElementById('retainerFee').value = data.retainerFee;
             document.getElementById('lengthOfService').value = data.lengthOfService;
