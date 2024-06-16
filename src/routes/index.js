@@ -152,12 +152,13 @@ router.get('/getOffers', (req, res) => {
     console.log('Buyer:', buyerid, 'User:', agentid, 'Type:', datatype);
 
     if (!agentid) {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offertypeid, los.levelOfService, ao.compensationtypeid, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
+      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ot.offerType, los.levelOfService, ct.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
                      from AgentOffers ao
                           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
                           join Agents a on a.userid = ao.agentid
                           join LevelsOfService los on los.levelofserviceid = ao.levelofserviceid
                           join CompensationTypes ct on ct.compensationtypeid = ao.compensationtypeid
+                          join OfferTypes ot on ot.offertypeid = ao.offertypeid
                     where ao.buyerid = ?
                       and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
                     order by bam.buyerStatus, ao.entrytimestamp desc`;

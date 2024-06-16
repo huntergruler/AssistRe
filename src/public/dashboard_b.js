@@ -110,7 +110,7 @@ function getOffers(datatype, element) {
                     }
                     div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">
                     Agent: ${request.dispIdentifier}<br>
-                    ${request.levelOfService}<br>
+                    ${request.levelOfService} - ${request.compensationType}<br>
                     Compensation Amount ${request.compensationAmount}<br>
                     Length of Agreement: ${request.lengthOfService}<br></div>`;
                     div.addEventListener('click', () => selectRequest(request.agentid, request.buyerrequestid, this));
