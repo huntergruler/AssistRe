@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 let selectedBuyerId = null;
 function getOffers(datatype, element) {
-    const requests = document.getElementById('requests');
+    const offers = document.getElementById('offers');
     const requestDetail = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
     const offerForm = document.getElementById('offerForm');
@@ -72,11 +72,11 @@ function getOffers(datatype, element) {
     if (element) element.classList.add('active');
     else document.getElementById('tab' + datatype).classList.add('active');
 
-    // Your existing logic for handling requests based on the 'type' parameter
+    // Your existing logic for handling offers based on the 'type' parameter
 
     detailButtons.innerHTML = '';
     requestDetail.innerHTML = '';
-    requests.innerHTML = '';
+    offers.innerHTML = '';
     offerForm.style.display = 'none';
 
     // requestDetail.style.display = 'none';
@@ -85,22 +85,22 @@ function getOffers(datatype, element) {
     document.getElementById('datatype').value = datatype;
     const getOffers = document.getElementById('getOffers');
     getOffers.style.display = 'block';
-    requests.innerHTML = '';
+    offers.innerHTML = '';
     fetch(`/getOffers?datatype=${datatype}`)
         .then(response => response.json())
         .then(data => {
             if (data.length === 0) {
                 const div = document.createElement("div");
                 if (datatype == "New") {
-                    div.textContent = 'No new requests';
+                    div.textContent = 'No new offers';
                 }
                 if (datatype == "Read") {
-                    div.textContent = 'No read requests';
+                    div.textContent = 'No read offers';
                 }
                 if (datatype == "Offered") {
-                    div.textContent = 'No offered requests';
+                    div.textContent = 'No offered offers';
                 }
-                requests.appendChild(div);
+                offers.appendChild(div);
             }
             else {
                 data.forEach(request => {
@@ -128,8 +128,8 @@ function getOffers(datatype, element) {
                     div.onclick = function () {
                         this.classList.toggle("selected");
                     };
-                    // requests.appendChild(input);
-                    requests.appendChild(div);
+                    // offers.appendChild(input);
+                    offers.appendChild(div);
                 });
             }
         })
@@ -146,7 +146,7 @@ function selectRequest(buyerid, buyerrequestid, element) {
 
     if (selectedBuyerId === buyerid) return; // If already selected, do nothing
     var selectedBuyerId = 'buyerid' + buyerid;
-    const rows = document.querySelectorAll('#requests .form-row');
+    const rows = document.querySelectorAll('#offers .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
     });
