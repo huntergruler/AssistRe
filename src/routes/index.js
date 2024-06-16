@@ -844,7 +844,7 @@ router.get('/get-states', (req, res) => {
 
 // Route to get states
 router.get('/get-levelofservice', (req, res) => {
-  const query = 'SELECT levelOfService FROM LevelsOfService order by levelofserviceid';
+  const query = 'SELECT levelOfService, levelofserviceid FROM LevelsOfService order by levelofserviceid';
   db.query(query, (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
