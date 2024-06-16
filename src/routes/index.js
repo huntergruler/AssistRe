@@ -149,7 +149,6 @@ router.get('/getOffers', (req, res) => {
     const datatype = req.query.datatype;
     const agentid = req.query.agentid;
     const buyerid = req.session.userid;
-    console.log('Buyer:', buyerid, 'User:', agentid, 'Type:', datatype);
 
     if (!agentid) {
       var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ot.offerType, los.levelOfService, ct.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
@@ -744,7 +743,6 @@ router.get('/get-city-state', (req, res) => {
 router.get('/check-user', (req, res) => {
   const email = req.query.email;
   const usertype = req.query.usertype;
-  console.log('Email:', email, 'User Type:', usertype);
   if (!email) {
     return res.status(400).json({ error: 'User Name is required' });
   }
@@ -908,7 +906,6 @@ router.get('/get-compensationtypes', (req, res) => {
 router.get('/check-zipcode', (req, res) => {
   const zipCode = req.query.stateSelect;
   const userType = req.session.userType;
-  console.log('Zip Code:', zipCode, 'User Type:', userType);
   if (userType === 'Agent') {
     var query = 'SELECT count(*) cnt FROM AgentZipCodes where zipCode = ?';
   }
@@ -1188,7 +1185,6 @@ router.post('/reset', (req, res) => {
     else if (resetType == 'B') { // Buyer
       var updateQuery = 'UPDATE Buyers SET password = ? WHERE email = ? & resetToken = ?';
     }
-    console.log('Update Query:', updateQuery, 'Email:', email, 'Token:', token, 'Password:', password, 'Hashed Password:', hashedPassword);
     db.query(updateQuery, [hashedPassword, email, token], (error, results) => {
       if (error) {
         return res.status(500).send('Error accessing the database');
@@ -1215,7 +1211,6 @@ router.post('/sendreset', (req, res) => {
   const resetToken = crypto.randomBytes(20).toString('hex');
   const resetTokenExpire = Date.now() + 900000; // 15 minutes from now
   const resetTokenExpireDate = new Date(resetTokenExpire);
-  console.log(userType, email, resetToken, resetTokenExpireDate);
   if (userType == 'Agent') {
     // Store the reset token and its expiration in the database
     var updateQuery = 'UPDATE Agents SET resetToken=?, resetTokenExpire=? WHERE email=?';
@@ -1290,7 +1285,6 @@ router.post('/buyersubmit', upload.fields([{ name: 'prequalifiedFile' }, { name:
 router.get('/reset-password', (req, res) => {
   const { token, resetType } = req.query;
   // Verify the token and its expiration
-  console.log('Token:', token, 'Reset Type:', resetType);
   if (resetType == 'A') {
     var query = 'SELECT * FROM Agents WHERE resetToken=? AND resetTokenExpire > ?';
   } else if (resetType == 'B') {
