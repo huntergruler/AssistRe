@@ -36,7 +36,7 @@ function populateOfferDefaults() {
                 console.log('No offer defaults found.'); // Handle no data case (e.g., display a message)
                 return; // Exit the function
             }
-            document.getElementById('offerType').value = data.offerType;
+            document.getElementById('offerType').value = data.offertypeid;
             document.getElementById('levelOfService').value = data.levelofserviceid;
             document.getElementById('compensationType').value = data.compensationtypeid;
             document.getElementById('compensationAmount').value = data.compensationAmount;
@@ -154,7 +154,7 @@ function populateOfferTypes() {
                 // if (offerTypeDisplay.replace("Offer Type: ", "") == item.offerType) {
                 //     option.selected = true;
                 // }
-                option.value = item.offerType;
+                option.value = item.offertypeid;
                 option.textContent = item.offerType;
                 offerType.appendChild(option);
             });

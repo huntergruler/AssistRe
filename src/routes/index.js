@@ -152,11 +152,12 @@ router.get('/getOffers', (req, res) => {
     console.log('Buyer:', buyerid, 'User:', agentid, 'Type:', datatype);
 
     if (!agentid) {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offerType, los.levelOfService, ao.compensationtypeid, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
+      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offertypeid, los.levelOfService, ao.compensationtypeid, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
                      from AgentOffers ao
                           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
                           join Agents a on a.userid = ao.agentid
                           join LevelsOfService los on los.levelofserviceid = ao.levelofserviceid
+                          join CompensationTypes ct on ct.compensationtypeid = ao.compensationtypeid
                     where ao.buyerid = ?
                       and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
                     order by bam.buyerStatus, ao.entrytimestamp desc`;
@@ -169,11 +170,12 @@ router.get('/getOffers', (req, res) => {
       });
     }
     else {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offerType, los.levelOfService, ao.compensationtypeid, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
+      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offertypeid, los.levelOfService, ao.compensationtypeid, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
                      from AgentOffers ao
                           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
                           join Agents a on a.userid = ao.agentid
                           join LevelsOfService los on los.levelofserviceid = ao.levelofserviceid
+                          join CompensationTypes ct on ct.compensationtypeid = ao.compensationtypeid
                     where ao.buyerid = ?
                       and bam.agentid = ?
                       and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
@@ -303,7 +305,7 @@ router.post('/saveoffer', (req, res) => {
     const userid = req.session.userid;
     const offerStatus = 'Offered';
     const { buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
-    insertQuery = 'REPLACE INTO AgentOffers (agentid, buyerid, buyerrequestid, offerType, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+    insertQuery = 'REPLACE INTO AgentOffers (agentid, buyerid, buyerrequestid, offertypeid, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
     db.query(insertQuery, [userid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus], (error, result) => {
       if (error) {
         console.error('Error saving offer:', error);
@@ -322,7 +324,7 @@ router.post('/save-OfferDefaults', (req, res) => {
   else {
     const userid = req.session.userid;
     const { offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
-    insertQuery = 'REPLACE INTO AgentOfferDefaults (agentid, offerType, compensationtypeid, levelofserviceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?)';
+    insertQuery = 'REPLACE INTO AgentOfferDefaults (agentid, offertypeid, compensationtypeid, levelofserviceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?)';
     db.query(insertQuery, [userid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (error, result) => {
       if (error) {
         console.error('Error saving offer:', error);
@@ -340,7 +342,7 @@ router.get('/get-OfferDefaults', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    const query = `SELECT offerType, compensationtypeid, levelofserviceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
+    const query = `SELECT offertypeid, compensationtypeid, levelofserviceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
                      FROM AgentOfferDefaults 
                     WHERE agentid = ?`;
     db.query(query, [userid], (error, results) => {
@@ -364,7 +366,7 @@ router.get('/get-offerdetails', (req, res) => {
   else {
     const userid = req.session.userid;
     const buyerid = req.query.buyerid;
-    const query = `SELECT offerType, compensationtypeid, levelofserviceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
+    const query = `SELECT offertypeid, compensationtypeid, levelofserviceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
                      FROM AgentOffers 
                     WHERE agentid = ? and buyerid = ?`;
     db.query(query, [userid, buyerid], (error, results) => {
@@ -853,7 +855,7 @@ router.get('/get-levelofservice', (req, res) => {
 });
 
 router.get('/get-offertypes', (req, res) => {
-  const query = 'SELECT offerType FROM OfferTypes order by offertypeid';
+  const query = 'SELECT offerType, offertypeid FROM OfferTypes order by offertypeid';
   db.query(query, (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
