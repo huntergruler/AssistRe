@@ -191,10 +191,10 @@ router.get('/getRequestCounts', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    var query = ` select case when os.offerStatus in ('New','Read')
+    var query = `select case when os.offerStatus in ('New','Read')
                               then 'New'
                               else os.offerStatus
-                          end agentStatus, concat('(',count(bam.agentid),')') cnt
+                         end agentStatus, concat('(',count(bam.agentid),')') cnt
                     from OfferStatus os 
                          left outer join AgentBuyerMatch bam on bam.agentStatus = os.offerStatus and bam.agentid = ?
                    where os.userType = 'Agent'

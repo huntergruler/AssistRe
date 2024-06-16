@@ -68,12 +68,15 @@
                 </p>
             </div>
         </div>
-        <div class="row tab" id="tabcontainer">
-            <button id="tabOffers" class="tablinks col-md btn-sm" onclick="getOffers('New', this)">Offers</button>
-            <button id="tabFavorites" class="tablinks col-md btn-sm"
-                onclick="getOffers('Favorite', this)">Favorites</button>
-            <button id="tabRejected" class="tablinks col-md btn-sm"
-                onclick="getOffers('Rejected', this)">Rejected</button>
+        <div class="offer-group col-md-5">
+            <h3 class="text-center">Your Offers</h3>
+            <div class="row tab" id="tabcontainer">
+                <button id="tabOffers" class="tablinks col-md btn-sm" onclick="getOffers('New', this)">Offers</button>
+                <button id="tabFavorites" class="tablinks col-md btn-sm"
+                    onclick="getOffers('Favorite', this)">Favorites</button>
+                <button id="tabRejected" class="tablinks col-md btn-sm"
+                    onclick="getOffers('Rejected', this)">Rejected</button>
+            </div>
         </div>
         <div id="getOffers" class="tabcontent">
             <div class="row">
