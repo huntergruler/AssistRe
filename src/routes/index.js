@@ -323,7 +323,7 @@ router.post('/saveoffer', (req, res) => {
                         and buyerid = ? 
                         and buyerrequestid = ?`;
     } else {
-      insertQuery = `INSERT INTO AgentOffers (agentid, buyerid, buyerrequestid, offertypeid, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) 
+      insertQuery = `INSERT INTO AgentOffers (offertypeid, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, agentid, buyerid, buyerrequestid) 
                      values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
     }
     db.query(insertQuery, [offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, userid, buyerid, buyerrequestid], (error, result) => {
