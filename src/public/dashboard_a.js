@@ -616,7 +616,7 @@ function populateOfferDefaults() {
                 return; // Exit the function
             }
             document.getElementById('offerType').value = data.offerType;
-            document.getElementById('levelOfService').value = data.levelOfService;
+            document.getElementById('levelOfService').value = data.levelofserviceid;
             document.getElementById('compensationType').value = data.compensationType;
             document.getElementById('compensationAmount').value = data.compensationAmount;
             document.getElementById('retainerFee').value = data.retainerFee;
@@ -645,7 +645,7 @@ function populateOfferDetail(buyerid) {
                 return; // Exit the function
             }
             document.getElementById('offerType').value = data.offerType;
-            document.getElementById('levelOfService').value = data.levelOfService;
+            document.getElementById('levelOfService').value = data.levelofserviceid;
             document.getElementById('compensationType').value = data.compensationType;
             document.getElementById('compensationAmount').value = data.compensationAmount;
             document.getElementById('retainerFee').value = data.retainerFee;

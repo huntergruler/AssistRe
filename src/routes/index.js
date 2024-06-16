@@ -303,8 +303,7 @@ router.post('/saveoffer', (req, res) => {
     const userid = req.session.userid;
     const offerStatus = 'Offered';
     const { buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
-    // console.log('Offer:', userid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc);
-    insertQuery = 'REPLACE INTO AgentOffers (agentid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+    insertQuery = 'REPLACE INTO AgentOffers (agentid, buyerid, buyerrequestid, offerType, compensationType, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
     db.query(insertQuery, [userid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus], (error, result) => {
       if (error) {
         console.error('Error saving offer:', error);
@@ -330,7 +329,7 @@ router.post('/save-OfferDefaults', (req, res) => {
   else {
     const userid = req.session.userid;
     const { offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
-    insertQuery = 'REPLACE INTO AgentOfferDefaults (agentid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?)';
+    insertQuery = 'REPLACE INTO AgentOfferDefaults (agentid, offerType, compensationType, levelofserviceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc) values (?,?,?,?,?,?,?,?,?,?,?)';
     db.query(insertQuery, [userid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc], (error, result) => {
       if (error) {
         console.error('Error saving offer:', error);
@@ -348,7 +347,9 @@ router.get('/get-OfferDefaults', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    const query = 'SELECT offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc FROM AgentOfferDefaults WHERE agentid = ?';
+    const query = `SELECT offerType, compensationType, levelofserviceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
+                     FROM AgentOfferDefaults 
+                    WHERE agentid = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching offer defaults:', error);
@@ -370,8 +371,9 @@ router.get('/get-offerdetails', (req, res) => {
   else {
     const userid = req.session.userid;
     const buyerid = req.query.buyerid;
-    const query = `SELECT offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
-                     FROM AgentOffers WHERE agentid = ? and buyerid = ?`;
+    const query = `SELECT offerType, compensationType, levelofserviceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
+                     FROM AgentOffers 
+                    WHERE agentid = ? and buyerid = ?`;
     db.query(query, [userid, buyerid], (error, results) => {
       if (error) {
         console.error('Error fetching offer defaults:', error);
