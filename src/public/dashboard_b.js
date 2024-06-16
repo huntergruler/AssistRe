@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // FROM your_table_name;
 });
 
-let selectedBuyerId = null;
+let selectedagentid = null;
 function getOffers(datatype, element) {
     const offers = document.getElementById('offers');
     const offerDetail = document.getElementById('offerDetail');
@@ -112,9 +112,9 @@ function getOffers(datatype, element) {
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}<br></div>`;
-                    div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
+                    div.addEventListener('click', () => selectRequest(request.agentid, request.buyerrequestid, this));
                     div.className = "form-row";
-                    div.id = "buyerid" + request.buyerid;
+                    div.id = "agentid" + request.agentid;
                     if (request.buyerStatus == "New") {
                         div.classList.add("new");
                     }
@@ -136,7 +136,7 @@ function getOffers(datatype, element) {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function selectRequest(buyerid, buyerrequestid, element) {
+function selectRequest(agentid, buyerrequestid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
@@ -144,22 +144,22 @@ function selectRequest(buyerid, buyerrequestid, element) {
     offerForm.style.display = 'none';
     const datatype = document.getElementById('datatype').value;
 
-    if (selectedBuyerId === buyerid) return; // If already selected, do nothing
-    var selectedBuyerId = 'buyerid' + buyerid;
+    if (selectedAgentId === agentid) return; // If already selected, do nothing
+    var selectedAgentId = 'agentid' + agentid;
     const rows = document.querySelectorAll('#offers .form-row');
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    offerDetail(buyerid, buyerrequestid);
+    offerDetail(agentid, buyerrequestid);
     if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
         inputFields.forEach(input => input.removeAttribute('readonly'));
         selectFields.forEach(select => select.removeAttribute('disabled'));
-        setStatus(buyerid, 'Read');
+        setStatus(agentid, 'Read');
     }
     if (datatype == "Offered") {
-        populateOfferDetail(buyerid);
+        populateOfferDetail(agentid);
         const offerForm = document.getElementById('offerForm');
         const detailButtons = document.getElementById('detailButtons');
         const detailsCont = document.getElementById('offerDetails');
@@ -200,12 +200,12 @@ function selectRequest(buyerid, buyerrequestid, element) {
     }
 }
 
-function offerDetail(buyerid, buyerrequestid) {
+function offerDetail(agentid, buyerrequestid) {
     const detailColumn = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
     const datatype = document.getElementById('datatype').value;
     const detailCont = document.getElementById('offerDetailContainer');
-    document.getElementById('buyerid').value = buyerid;
+    document.getElementById('agentid').value = agentid;
     document.getElementById('buyerrequestid').value = buyerrequestid;
     detailCont.style.border = '0';
 
@@ -214,8 +214,8 @@ function offerDetail(buyerid, buyerrequestid) {
 
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
-    // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
-    fetch(`/getOffers?buyerid=${encodeURIComponent(buyerid)} &buyerrequestid=${encodeURIComponent(buyerrequestid)} &datatype=${encodeURIComponent(datatype)}`)
+    // detailColumn.innerHTML = `<p><strong>ID:</strong>${agentid}</p><p><strong>Name:`;
+    fetch(`/getOffers?agentid=${encodeURIComponent(agentid)} &buyerrequestid=${encodeURIComponent(buyerrequestid)} &datatype=${encodeURIComponent(datatype)}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
@@ -233,7 +233,7 @@ function offerDetail(buyerid, buyerrequestid) {
                     Entered on ${request.entrytimestamp}<br>
                     `;
                 div.className = "form-row container-right";
-                div.id = "buyerid" + request.buyerid;
+                div.id = "agentid" + request.agentid;
                 detailColumn.appendChild(div);
 
 
@@ -247,18 +247,18 @@ function offerDetail(buyerid, buyerrequestid) {
                 // Create each button and append them to the container
                 if (datatype == "Read" || datatype == "New") {
                     var buttons = [
-                        { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid})` },
-                        { id: "declinerequest", text: "Decline Request", onclick: `declineRequest(${request.buyerid})` },
+                        { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.agentid})` },
+                        { id: "declinerequest", text: "Decline Request", onclick: `declineRequest(${request.agentid})` },
                     ];
                 }
                 if (datatype == "Confirmed") {
                     var buttons = [
-                        { id: "declinerequest", text: "Cancel Offer", onclick: `cancelOffer(${request.buyerid})` },
+                        { id: "declinerequest", text: "Cancel Offer", onclick: `cancelOffer(${request.agentid})` },
                     ];
                 }
                 if (datatype == "Declined") {
                     var buttons = [
-                        { id: "declinerequest", text: "Reopen Request", onclick: `reopenRequest(${request.buyerid})` },
+                        { id: "declinerequest", text: "Reopen Request", onclick: `reopenRequest(${request.agentid})` },
                     ];
                 }
 
@@ -281,7 +281,7 @@ function offerDetail(buyerid, buyerrequestid) {
         .catch(error => console.error('Error checking user:', error));
 }
 
-function makeOffer(buyerid) {
+function makeOffer(agentid) {
     populateOfferDefaults();
     const offerForm = document.getElementById('offerForm');
     const offerButton = document.getElementById('offerButton');
@@ -346,13 +346,13 @@ function getOfferCounts() {
 }
 
 function removeOffer() {
-    const buyerid = document.getElementById('buyerid').value;
+    const agentid = document.getElementById('agentid').value;
     const dataType = document.getElementById('datatype').value;
     const offerForm = document.getElementById('offerForm');
     const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
 
-    setStatus(buyerid, 'Declined');
+    setStatus(agentid, 'Declined');
     showModal('Offer removed successfully');
     offerDetail.innerHTML = '';
     detailButtons.innerHTML = '';
@@ -363,13 +363,13 @@ function removeOffer() {
 }
 
 function declineRequest() {
-    const buyerid = document.getElementById('buyerid').value;
+    const agentid = document.getElementById('agentid').value;
     const dataType = document.getElementById('datatype').value;
     const offerForm = document.getElementById('offerForm');
     const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
 
-    setStatus(buyerid, 'Declined');
+    setStatus(agentid, 'Declined');
     showModal('Request Declined successfully');
     offerDetail.innerHTML = '';
     detailButtons.innerHTML = '';
@@ -380,10 +380,10 @@ function declineRequest() {
 }
 
 function reopenRequest() {
-    const buyerid = document.getElementById('buyerid').value;
+    const agentid = document.getElementById('agentid').value;
     const dataType = document.getElementById('datatype').value;
     showModal('Request Reopened successfully');
-    setStatus(buyerid, 'Read');
+    setStatus(agentid, 'Read');
     getOffers(dataType, null);
     getRequestCounts();
 }
@@ -483,14 +483,14 @@ function clearForm() {
     document.getElementById('offerForm').reset();
 }
 
-function setStatus(buyerid, status) {
+function setStatus(agentid, status) {
     const data = {
-        buyerid: buyerid,
+        agentid: agentid,
         status: status
     };
 
     if (status == "Read") {
-        const container = document.getElementById(`buyerid${buyerid}`);
+        const container = document.getElementById(`agentid${agentid}`);
         const newDot = container.getElementsByClassName('newDot')[0];
         container.classList.remove('new');
         container.classList.add('read');
@@ -531,7 +531,7 @@ function saveOffer(event) {
     const offerDesc = document.getElementById('offerDesc').value;
     const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
     const buyerrequestid = document.getElementById('buyerrequestid').value;
-    const buyerid = document.getElementById('buyerid').value;
+    const agentid = document.getElementById('agentid').value;
     const dataType = document.getElementById('datatype').value;
 
     // Loop through each radio button in the group
@@ -545,7 +545,7 @@ function saveOffer(event) {
 
     // Create an object with the gathered data
     const offerData = {
-        buyerid: buyerid,
+        agentid: agentid,
         buyerrequestid: buyerrequestid,
         offerType: offerType,
         levelOfService: levelOfService,
@@ -625,8 +625,8 @@ function populateOfferDefaults() {
         })
 }
 
-function populateOfferDetail(buyerid) {
-    fetch(`/get-offerdetails?buyerid=${buyerid}`)
+function populateOfferDetail(agentid) {
+    fetch(`/get-offerdetails?agentid=${agentid}`)
         .then(response => response.json())
         .then(data => {
             if (Object.keys(data).length === 0) {

@@ -152,7 +152,7 @@ router.get('/getOffers', (req, res) => {
     console.log('Buyer:', buyerid, 'User:', userid, 'Type:', datatype);
 
     if (!buyerid) {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ao.offerType, ao.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus
+      var query = `select ao.agentofferid, ao.buyerrequestid, ao.agentid, ao.offerType, ao.levelOfService, ao.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, ao.offerStatus
                      from AgentOffers ao
                           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentofferid = ao.agentofferid
                     where ao.buyerid = ?
