@@ -77,18 +77,16 @@
                 <button id="tabRejected" class="tablinks col-md btn-sm"
                     onclick="getOffers('Rejected', this)">Rejected</button>
             </div>
-            <div id="getOffers" class="tabcontent">
+            <div id="getOffers" class="tabcontent col-md">
                 <div class="row">
-                    <div id="offerCont" class="container-left col-md-3">
-                        <div id="offers" class="offers">
-                            <!-- JavaScript will populate this container -->
-                        </div>
+                    <div id="offers" class="offers">
+                        <!-- JavaScript will populate this container -->
                     </div>
                 </div>
             </div>
         </div>
-        <div id="requestDetailContainer" class="container-right col-md-3">
-            <div id="requestDetail">
+        <div id="offerDetailContainer" class="container-right col-md-3">
+            <div id="offerDetail">
                 <!-- JavaScript will populate this container -->
             </div>
             <div class="form-row container-right" style="border:none">
@@ -97,7 +95,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-right col-md-4" id="requestDetails">
+        <div class="container-right col-md-4" id="offerDetails">
             <div class="form-container" id="offerFormContainer">
                 <form id="offerForm" style="padding-top: 5px;">
                     <input type="hidden" id="buyerid" name="buyerid">

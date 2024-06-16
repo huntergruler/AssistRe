@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // getOfferCounts();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
-    // document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
+    // document.querySelector('#offerDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
 
     // Disable all input fields and select elements
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
@@ -54,13 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
 let selectedBuyerId = null;
 function getOffers(datatype, element) {
     const offers = document.getElementById('offers');
-    const requestDetail = document.getElementById('requestDetail');
+    const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
     const offerForm = document.getElementById('offerForm');
 
-    const detailCont = document.getElementById('requestDetailContainer');
+    const detailCont = document.getElementById('offerDetailContainer');
     detailCont.style.border = '0';
-    const detailsCont = document.getElementById('requestDetails');
+    const detailsCont = document.getElementById('offerDetails');
     detailsCont.style.border = '0';
 
     const buttons = document.querySelectorAll('.tablinks');
@@ -75,11 +75,11 @@ function getOffers(datatype, element) {
     // Your existing logic for handling offers based on the 'type' parameter
 
     detailButtons.innerHTML = '';
-    requestDetail.innerHTML = '';
+    offerDetail.innerHTML = '';
     offers.innerHTML = '';
     offerForm.style.display = 'none';
 
-    // requestDetail.style.display = 'none';
+    // offerDetail.style.display = 'none';
     // detailButtons.style.display = 'none';
 
     document.getElementById('datatype').value = datatype;
@@ -150,7 +150,7 @@ function selectRequest(buyerid, buyerrequestid, element) {
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    requestDetail(buyerid, buyerrequestid);
+    offerDetail(buyerid, buyerrequestid);
     if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
@@ -162,7 +162,7 @@ function selectRequest(buyerid, buyerrequestid, element) {
         populateOfferDetail(buyerid);
         const offerForm = document.getElementById('offerForm');
         const detailButtons = document.getElementById('detailButtons');
-        const detailsCont = document.getElementById('requestDetails');
+        const detailsCont = document.getElementById('offerDetails');
         detailsCont.style.border = '1px solid black';
 
         offerForm.style.display = 'block';
@@ -200,16 +200,16 @@ function selectRequest(buyerid, buyerrequestid, element) {
     }
 }
 
-function requestDetail(buyerid, buyerrequestid) {
-    const detailColumn = document.getElementById('requestDetail');
+function offerDetail(buyerid, buyerrequestid) {
+    const detailColumn = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
     const datatype = document.getElementById('datatype').value;
-    const detailCont = document.getElementById('requestDetailContainer');
+    const detailCont = document.getElementById('offerDetailContainer');
     document.getElementById('buyerid').value = buyerid;
     document.getElementById('buyerrequestid').value = buyerrequestid;
     detailCont.style.border = '0';
 
-    const detailsCont = document.getElementById('requestDetails');
+    const detailsCont = document.getElementById('offerDetails');
     detailsCont.style.border = '0';
 
     detailColumn.innerHTML = "";
@@ -288,7 +288,7 @@ function makeOffer(buyerid) {
     offerButton.innerHTML = '';
     offerForm.style.display = 'block';
 
-    const detailsCont = document.getElementById('requestDetails');
+    const detailsCont = document.getElementById('offerDetails');
     detailsCont.style.border = '1px solid black';
 
     const buttonElement = document.createElement("button");
@@ -350,12 +350,12 @@ function removeOffer() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
     const offerForm = document.getElementById('offerForm');
-    const requestDetail = document.getElementById('requestDetail');
+    const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
 
     setStatus(buyerid, 'Declined');
     showModal('Offer removed successfully');
-    requestDetail.innerHTML = '';
+    offerDetail.innerHTML = '';
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
     getOffers(dataType, null);
@@ -367,12 +367,12 @@ function declineRequest() {
     const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
     const offerForm = document.getElementById('offerForm');
-    const requestDetail = document.getElementById('requestDetail');
+    const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
 
     setStatus(buyerid, 'Declined');
     showModal('Request Declined successfully');
-    requestDetail.innerHTML = '';
+    offerDetail.innerHTML = '';
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
     getOffers(dataType, null);
@@ -577,13 +577,13 @@ function saveOffer(event) {
         .then(result => {
             const offerForm = document.getElementById('offerForm');
             showModal('Offer saved successfully');
-            const requestDetail = document.getElementById('requestDetail');
+            const offerDetail = document.getElementById('offerDetail');
             const detailButtons = document.getElementById('detailButtons');
 
-            requestDetail.innerHTML = '';
+            offerDetail.innerHTML = '';
             detailButtons.innerHTML = '';
             offerForm.style.display = 'none';
-            requestDetail.display = 'none';
+            offerDetail.display = 'none';
             detailButtons.display = 'none';
             clearForm();
 
