@@ -326,7 +326,7 @@ function modifyOffer(event) {
     buttonElement.style.borderRadius = "5px";
     buttonElement.style.padding = "2px";
     buttonElement.style.margin = "2px";
-    buttonElement.setAttribute("onclick", `saveOffer(event,'update')`);
+    buttonElement.setAttribute("onclick", `saveOffer(event,'Update')`);
     offerButton.appendChild(buttonElement);
 
 }
