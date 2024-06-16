@@ -415,7 +415,7 @@ function populateLevelOfService() {
                 // if (levelOfServiceDisplay.replace("Service Level: ", "") == item.levelOfService) {
                 //     option.selected = true;
                 // }
-                option.value = item.levelOfService;
+                option.value = item.levelofserviceid;
                 option.textContent = item.levelOfService;
                 levelOfService.appendChild(option);
             });
