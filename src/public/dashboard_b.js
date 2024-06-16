@@ -97,7 +97,7 @@ function getOffers(datatype, element) {
                 if (datatype == "Read") {
                     div.textContent = 'No read offers';
                 }
-                if (datatype == "Offered") {
+                if (datatype == "Offers") {
                     div.textContent = 'No offered offers';
                 }
                 offers.appendChild(div);
@@ -327,7 +327,6 @@ function modifyOffer(event) {
 }
 
 function getOfferCounts() {
-    console.log('getting request counts');
     fetch(`/getOfferCounts`)
         .then(response => response.json())
         .then(data => {
