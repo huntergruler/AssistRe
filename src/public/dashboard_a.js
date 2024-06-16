@@ -302,7 +302,7 @@ function makeOffer(buyerid) {
     buttonElement.style.borderRadius = "5px";
     buttonElement.style.padding = "2px";
     buttonElement.style.margin = "2px";
-    buttonElement.setAttribute("onclick", `saveOffer(event)`);
+    buttonElement.setAttribute("onclick", `saveOffer(event,'insert')`);
     offerButton.appendChild(buttonElement);
 }
 
@@ -326,7 +326,7 @@ function modifyOffer(event) {
     buttonElement.style.borderRadius = "5px";
     buttonElement.style.padding = "2px";
     buttonElement.style.margin = "2px";
-    buttonElement.setAttribute("onclick", `saveOffer(event)`);
+    buttonElement.setAttribute("onclick", `saveOffer(event,'update')`);
     offerButton.appendChild(buttonElement);
 
 }
@@ -528,7 +528,7 @@ function setStatus(buyerid, status) {
         });
 }
 
-function saveOffer(event) {
+function saveOffer(event, action) {
     event.preventDefault();
     // Get values from input fields
     const offerType = document.getElementById('offerType').value;
@@ -567,7 +567,8 @@ function saveOffer(event) {
         lengthOfService: lengthOfService,
         expirationCompTimeFrame: expirationCompTimeFrame,
         expirationCompensation: expirationCompensation,
-        offerDesc: offerDesc
+        offerDesc: offerDesc,
+        action: action
     };
 
     // Send the data to your backend for saving it into a database

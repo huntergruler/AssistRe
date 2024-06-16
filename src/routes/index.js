@@ -303,10 +303,30 @@ router.post('/saveoffer', (req, res) => {
   }
   else {
     const userid = req.session.userid;
+    const action = req.body.action;
     const offerStatus = 'Offered';
     const { buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
-    insertQuery = 'REPLACE INTO AgentOffers (agentid, buyerid, buyerrequestid, offertypeid, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-    db.query(insertQuery, [userid, buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus], (error, result) => {
+    if (action === 'Update') {
+      insertQuery = `UPDATE AgentOffers 
+                        set offertypeid = ?, 
+                            compensationtypeid = ?, 
+                            levelofServiceid = ?, 
+                            compensationAmount = ?, 
+                            retainerFee = ?, 
+                            retainerCredited = ?, 
+                            lengthOfService = ?, 
+                            expirationCompensation = ?, 
+                            expirationCompTimeFrame = ?, 
+                            offerDesc = ?, 
+                            offerStatus = ? 
+                      where agentid = ? 
+                        and buyerid = ? 
+                        and buyerrequestid = ?`;
+    } else {
+      insertQuery = `INSERT INTO AgentOffers (agentid, buyerid, buyerrequestid, offertypeid, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus) 
+                     values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+    }
+    db.query(insertQuery, [offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, userid, buyerid, buyerrequestid], (error, result) => {
       if (error) {
         console.error('Error saving offer:', error);
         return res.status(500).json({ error: 'Internal server error' });
