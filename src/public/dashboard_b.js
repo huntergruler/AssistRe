@@ -96,11 +96,11 @@ function getOffers(datatype, element) {
                 if (datatype == "New") {
                     div.textContent = 'No new offers';
                 }
-                if (datatype == "Read") {
-                    div.textContent = 'No read offers';
+                if (datatype == "Favorite") {
+                    div.textContent = 'No favorites';
                 }
-                if (datatype == "Offers") {
-                    div.textContent = 'No offered offers';
+                if (datatype == "Declined") {
+                    div.textContent = 'Nothing declined';
                 }
                 offers.appendChild(div);
             }
