@@ -127,7 +127,7 @@ function getOffers(datatype, element) {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
-                    if (request.buyerStatus == "Offered" || request.buyerStatus == "Confirmed" || request.buyerStatus == "Declined" || request.buyerStatus == "Rejected") {
+                    if (request.buyerStatus == "Favorite" || request.buyerStatus == "Rejected") {
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
                     div.onclick = function () {
