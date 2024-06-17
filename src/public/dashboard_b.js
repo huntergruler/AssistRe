@@ -115,7 +115,7 @@ function getOffers(datatype, element) {
                     ${request.levelOfService} - ${request.compensationType}<br>
                     Compensation ${request.compensationAmount}<br>
                     Agreement Length: ${request.lengthOfService}<br></div>`;
-                    div.addEventListener('click', () => selectRequest(request.agentid, request.buyerrequestid, this));
+                    div.addEventListener('click', () => selectOffer(request.agentid, request.buyerrequestid, this));
                     div.className = "form-row col-md-12";
                     div.id = "agentid" + request.agentid;
                     if (request.buyerStatus == "New") {
@@ -139,7 +139,7 @@ function getOffers(datatype, element) {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function selectRequest(agentid, buyerrequestid, element) {
+function selectOffer(agentid, buyerrequestid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
