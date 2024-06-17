@@ -159,7 +159,7 @@ router.get('/getOffers', (req, res) => {
                           join CompensationTypes ct on ct.compensationtypeid = ao.compensationtypeid
                           join OfferTypes ot on ot.offertypeid = ao.offertypeid
                     where ao.buyerid = ?
-                      and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
+                      and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = ?
                     order by bam.buyerStatus, ao.entrytimestamp desc`;
       db.query(query, [buyerid, datatype], (error, results) => {
         if (error) {
@@ -178,7 +178,7 @@ router.get('/getOffers', (req, res) => {
                           join CompensationTypes ct on ct.compensationtypeid = ao.compensationtypeid
                     where ao.buyerid = ?
                       and ao.agentid = ?
-                      and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
+                      and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = ?
                     order by bam.buyerStatus, ao.entrytimestamp desc`;
       db.query(query, [buyerid, agentid, datatype], (error, results) => {
         if (error) {
