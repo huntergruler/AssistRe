@@ -296,7 +296,7 @@ router.post('/setStatus', (req, res) => {
       insertQuery = 'update AgentBuyerMatch set agentStatus = ? where agentid = ? and buyerid = ?';
       var agentid = req.session.userid;
       var buyerid = req.body.buyerid;
-      console.log('Agentid:', agentid, 'Buyerid:', buyer
+      console.log('Agentid:', agentid, 'Buyerid:', buyer);
     }
     db.query(insertQuery, [status, agentid, buyerid], (error, result) => {
       if (error) {
