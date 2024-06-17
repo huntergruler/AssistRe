@@ -151,7 +151,14 @@ router.get('/getOffers', (req, res) => {
     const buyerid = req.session.userid;
 
     if (!agentid) {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ot.offerType, los.levelOfService, ct.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, bam.buyerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
+      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ot.offerType, los.levelOfService, case when ct.compensationType = 'Hourly Rate'
+      then concat('$',ct.compensationType,' ',ct.compensationTypeUnit)
+      when ct.compensationType = 'Flat Fee'
+      then concat('$',ct.compensationType)
+      when ct.compensationType = '% of Sales Price'
+      then concat(ct.compensationType,'%')
+      else ct.compensationType
+ end compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, bam.buyerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
                      from AgentOffers ao
                           join Agents a on a.userid = ao.agentid
                           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentid = a.userid
@@ -170,7 +177,14 @@ router.get('/getOffers', (req, res) => {
       });
     }
     else {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ot.offerType, los.levelOfService, ct.compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, bam.buyerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
+      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ot.offerType, los.levelOfService, case when ct.compensationType = 'Hourly Rate'
+      then concat('$',ct.compensationType,' ',ct.compensationTypeUnit)
+      when ct.compensationType = 'Flat Fee'
+      then concat('$',ct.compensationType)
+      when ct.compensationType = '% of Sales Price'
+      then concat(ct.compensationType,'%')
+      else ct.compensationType
+ end compensationType, ao.compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, bam.buyerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
                      from AgentOffers ao
                      join Agents a on a.userid = ao.agentid
                      join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentid = a.userid
