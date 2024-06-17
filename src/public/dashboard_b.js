@@ -115,7 +115,7 @@ function getOffers(datatype, element) {
                     Compensation ${request.compensationAmount}<br>
                     Agreement Length: ${request.lengthOfService}<br></div>`;
                     div.addEventListener('click', () => selectRequest(request.agentid, request.buyerrequestid, this));
-                    div.className = "form-row col-md";
+                    div.className = "form-row col-md-8";
                     div.id = "agentid" + request.agentid;
                     if (request.buyerStatus == "New") {
                         div.classList.add("new");
