@@ -322,7 +322,7 @@ function getOfferCounts() {
                     document.getElementById('tabOffers').textContent = 'Open Offers' + request.cnt;
                 }
                 if (request.buyerStatus == 'Favorite') {
-                    document.getElementById('tabFavorites').textContent = 'Favorites' + request.cnt;
+                    document.getElementById('tabFavorite').textContent = 'Favorites' + request.cnt;
                 }
                 if (request.buyerStatus == 'Declined') {
                     document.getElementById('tabDeclined').textContent = 'Declined' + request.cnt;
