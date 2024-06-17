@@ -332,28 +332,20 @@ function getOfferCounts() {
         .catch(error => console.error('Error checking user:', error));
 }
 
-function removeOffer() {
+function removeFavorite(agentid) {
     const agentid = document.getElementById('agentid').value;
     const dataType = document.getElementById('datatype').value;
     const offerForm = document.getElementById('offerForm');
     const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
-
-    setStatus(agentid, 'Declined');
-    showModal('Offer removed successfully');
+    setStatus(agentid, 'Read');
+    showModal('Offer removed from favorites');
     offerDetail.innerHTML = '';
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
     getOffers(dataType, null);
-    getRequestCounts();
+    getOfferCounts();
     clearForm()
-}
-
-function removeFavorite(agentid) {
-    setStatus(agentid, 'Read');
-    showModal('Offer removed from favorites');
-    getOffers('Favorite', null);
-    getRequestCounts();
 }
 
 function declineOffer() {
