@@ -108,14 +108,14 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "New") {
                         div.innerHTML = ``
                     }
-                    div.innerHTML += `<div class="newDot col-md-4">&#x2022;</div><br>
+                    div.innerHTML += `<div class="newDot">&#x2022;</div><br>
                     <div class="flex-fill ">
                     Agent: ${request.dispIdentifier}<br>
                     ${request.levelOfService} - ${request.compensationType}<br>
                     Compensation ${request.compensationAmount}<br>
                     Agreement Length: ${request.lengthOfService}<br></div>`;
                     div.addEventListener('click', () => selectRequest(request.agentid, request.buyerrequestid, this));
-                    div.className = "form-row";
+                    div.className = "form-row col-md-4";
                     div.id = "agentid" + request.agentid;
                     if (request.buyerStatus == "New") {
                         div.classList.add("new");
