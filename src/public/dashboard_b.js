@@ -221,18 +221,12 @@ function offerDetail(agentid, buyerrequestid) {
         .then(data => {
             data.forEach(request => {
                 const div = document.createElement("div");
-                div.innerHTML = `${request.buyerType}<br>
-                    Price Range: $${request.price_min} to $${request.price_max}<br>
-                    Prequalified? ${request.prequalified}<br>
-                    Purchase Timeline: ${request.timeFrame}<br>
-                    Property Type: ${request.propertyType}<br>
-                    Minimum Bedrooms: ${request.bedrooms_min}<br>
-                    Minimum Bathrooms: ${request.bathrooms_min}<br>
-                    Square Footage Range: ${request.squareFootage_min} to ${request.squareFootage_max}<br>
-                    Preferred Language: ${request.preferredLanguages}<br>
-                    User Zip Codes: ${request.zipCodes}<br>
-                    Entered on ${request.entrytimestamp}<br>
-                    `;
+                div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">
+                Agent: ${request.dispIdentifier}<br>
+                ${request.levelOfService} - ${request.compensationType}<br>
+                Compensation ${request.compensationAmount}<br>
+                Agreement Length: ${request.lengthOfService}<br></div>`;
+
                 div.className = "form-row container-right";
                 div.id = "agentid" + request.agentid;
                 detailColumn.appendChild(div);
