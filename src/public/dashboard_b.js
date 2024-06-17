@@ -239,7 +239,7 @@ function offerDetail(agentid, buyerrequestid) {
                 detailCont.style.border = '1px solid black';
                 detailCont.style.borderBottomLeftRadius = '5px';
                 detailCont.style.borderBottomRightRadius = '5px';
-                console.log(request.buyerStatus, datatype); 
+                console.log(request.buyerStatus, datatype);
 
                 // Create a container div to hold the buttons
                 const buttonContainer = document.createElement("div");
@@ -302,29 +302,19 @@ function makeFavorite(agentid) {
 
 }
 
-function modifyOffer(event) {
-    event.preventDefault();
-    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
-    const selectFields = document.querySelectorAll('#offerFormContainer select');
-    const offerButton = document.getElementById('offerButton');
+function removeFavorite(agentid) {
     const dataType = document.getElementById('datatype').value;
-
-    inputFields.forEach(input => {
-        input.removeAttribute('readonly');
-        input.removeAttribute('disabled');
-    });
-    selectFields.forEach(select => select.removeAttribute('disabled'));
-
-    offerButton.innerHTML = '';
-    const buttonElement = document.createElement("button");
-    buttonElement.textContent = 'Save Changes';
-    buttonElement.style.border = "1px solid black";
-    buttonElement.style.borderRadius = "5px";
-    buttonElement.style.padding = "2px";
-    buttonElement.style.margin = "2px";
-    buttonElement.setAttribute("onclick", `saveOffer(event)`);
-    offerButton.appendChild(buttonElement);
-
+    const offerForm = document.getElementById('offerForm');
+    const offerDetail = document.getElementById('offerDetail');
+    const detailButtons = document.getElementById('detailButtons');
+    setStatus(agentid, 'Read');
+    showModal('Offer removed from favorites');
+    offerDetail.innerHTML = '';
+    detailButtons.innerHTML = '';
+    offerForm.style.display = 'none';
+    getOffers(dataType, null);
+    getOfferCounts();
+    clearForm()
 }
 
 function getOfferCounts() {
@@ -344,21 +334,6 @@ function getOfferCounts() {
             })
         })
         .catch(error => console.error('Error checking user:', error));
-}
-
-function removeFavorite(agentid) {
-    const dataType = document.getElementById('datatype').value;
-    const offerForm = document.getElementById('offerForm');
-    const offerDetail = document.getElementById('offerDetail');
-    const detailButtons = document.getElementById('detailButtons');
-    setStatus(agentid, 'Read');
-    showModal('Offer removed from favorites');
-    offerDetail.innerHTML = '';
-    detailButtons.innerHTML = '';
-    offerForm.style.display = 'none';
-    getOffers(dataType, null);
-    getOfferCounts();
-    clearForm()
 }
 
 function declineOffer() {
@@ -385,75 +360,6 @@ function reopenOffer() {
     setStatus(agentid, 'Read');
     getOffers(dataType, null);
     getOfferCounts();
-}
-
-function populateLevelOfService() {
-    const levelOfService = document.getElementById('levelOfService');
-    const defaultOption = document.createElement('option');
-    levelOfService.innerHTML = '';
-    defaultOption.textContent = 'Select a Level of Service';
-    defaultOption.value = '';
-    levelOfService.appendChild(defaultOption);
-
-    fetch(`/get-levelofservice`)
-        .then(response => response.json())
-        .then(data => {
-            data.results.forEach(item => {
-                let option = document.createElement('option');
-                // if (levelOfServiceDisplay.replace("Service Level: ", "") == item.levelOfService) {
-                //     option.selected = true;
-                // }
-                option.value = item.levelOfService;
-                option.textContent = item.levelOfService;
-                levelOfService.appendChild(option);
-            });
-        })
-};
-
-function populateOfferTypes() {
-    const offerType = document.getElementById('offerType');
-    const defaultOption = document.createElement('option');
-    offerType.innerHTML = '';
-    defaultOption.textContent = 'Select an Offer Type';
-    defaultOption.value = '';
-    offerType.appendChild(defaultOption);
-
-    fetch(`/get-offertypes`)
-        .then(response => response.json())
-        .then(data => {
-            data.results.forEach(item => {
-                let option = document.createElement('option');
-                // if (offerTypeDisplay.replace("Offer Type: ", "") == item.offerType) {
-                //     option.selected = true;
-                // }
-                option.value = item.offerType;
-                option.textContent = item.offerType;
-                offerType.appendChild(option);
-            });
-        })
-}
-
-function populateCompensationTypes() {
-    const compensationType = document.getElementById('compensationType');
-    const defaultOption = document.createElement('option');
-    compensationType.innerHTML = '';
-    defaultOption.textContent = 'Select a Compensation Type';
-    defaultOption.value = '';
-    compensationType.appendChild(defaultOption);
-
-    fetch(`/get-compensationtypes`)
-        .then(response => response.json())
-        .then(data => {
-            data.results.forEach(item => {
-                let option = document.createElement('option');
-                // if (compensationTypeDisplay.replace("Compensation Type: ", "") == item.compensationType) {
-                //     option.selected = true;
-                // }
-                option.value = item.compensationType;
-                option.textContent = item.compensationType;
-                compensationType.appendChild(option);
-            });
-        })
 }
 
 function updateCountdown() {
@@ -514,141 +420,4 @@ function setStatus(agentid, status) {
         .catch(error => {
             console.error('Error:', error);
         });
-}
-
-function saveOffer(event) {
-    event.preventDefault();
-    // Get values from input fields
-    const offerType = document.getElementById('offerType').value;
-    const levelOfService = document.getElementById('levelOfService').value;
-    const compensationType = document.getElementById('compensationType').value;
-    const compensationAmount = document.getElementById('compensationAmount').value;
-    const retainerFee = document.getElementById('retainerFee').value;
-    const lengthOfService = document.getElementById('lengthOfService').value;
-    const expirationCompTimeFrame = document.getElementById('expirationCompTimeFrame').value;
-    const expirationCompensation = document.getElementById('expirationCompensation').value;
-    const offerDesc = document.getElementById('offerDesc').value;
-    const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
-    const buyerrequestid = document.getElementById('buyerrequestid').value;
-    const agentid = document.getElementById('agentid').value;
-    const dataType = document.getElementById('datatype').value;
-
-    // Loop through each radio button in the group
-    let retainerCredited = null;
-    radioButtons.forEach(radioButton => {
-        if (radioButton.checked) {
-            // This radio button is selected
-            retainerCredited = radioButton.value;
-        }
-    });
-
-    // Create an object with the gathered data
-    const offerData = {
-        agentid: agentid,
-        buyerrequestid: buyerrequestid,
-        offerType: offerType,
-        levelOfService: levelOfService,
-        compensationType: compensationType,
-        compensationAmount: compensationAmount,
-        retainerFee: retainerFee,
-        retainerCredited: retainerCredited,
-        lengthOfService: lengthOfService,
-        expirationCompTimeFrame: expirationCompTimeFrame,
-        expirationCompensation: expirationCompensation,
-        offerDesc: offerDesc
-    };
-
-    // Send the data to your backend for saving it into a database
-    fetch('/saveoffer', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(offerData)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(result => {
-            const offerForm = document.getElementById('offerForm');
-            showModal('Offer saved successfully');
-            const offerDetail = document.getElementById('offerDetail');
-            const detailButtons = document.getElementById('detailButtons');
-
-            offerDetail.innerHTML = '';
-            detailButtons.innerHTML = '';
-            offerForm.style.display = 'none';
-            offerDetail.display = 'none';
-            detailButtons.display = 'none';
-            clearForm();
-
-            getOffers(dataType, null);
-            getRequestCounts();
-            // Optionally, perform any actions here after successful submission
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Optionally, display an error message to the user
-        });
-}
-
-function populateOfferDefaults() {
-    fetch(`/get-offerdefaults`)
-        .then(response => response.json())
-        .then(data => {
-            if (Object.keys(data).length === 0) {
-                console.log('No offer defaults found.'); // Handle no data case (e.g., display a message)
-                return; // Exit the function
-            }
-            document.getElementById('offerType').value = data.offerType;
-            document.getElementById('levelOfService').value = data.levelOfService;
-            document.getElementById('compensationType').value = data.compensationType;
-            document.getElementById('compensationAmount').value = data.compensationAmount;
-            document.getElementById('retainerFee').value = data.retainerFee;
-            document.getElementById('lengthOfService').value = data.lengthOfService;
-            document.getElementById('expirationCompTimeFrame').value = data.expirationCompTimeFrame;
-            document.getElementById('expirationCompensation').value = data.expirationCompensation;
-            document.getElementById('offerDesc').value = data.offerDesc;
-            const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
-            radioButtons.forEach(radioButton => {
-                if (data.retainerCredited === 1) {
-                    document.getElementById('retainerCreditedY').checked = true;
-                }
-                if (data.retainerCredited === 0) {
-                    document.getElementById('retainerCreditedN').checked = true;
-                }
-            });
-        })
-}
-
-function populateOfferDetail(agentid) {
-    fetch(`/get-offerdetails?agentid=${agentid}`)
-        .then(response => response.json())
-        .then(data => {
-            if (Object.keys(data).length === 0) {
-                console.log('No offer defaults found.'); // Handle no data case (e.g., display a message)
-                return; // Exit the function
-            }
-            document.getElementById('offerType').value = data.offerType;
-            document.getElementById('levelOfService').value = data.levelOfService;
-            document.getElementById('compensationType').value = data.compensationType;
-            document.getElementById('compensationAmount').value = data.compensationAmount;
-            document.getElementById('retainerFee').value = data.retainerFee;
-            document.getElementById('lengthOfService').value = data.lengthOfService;
-            document.getElementById('expirationCompTimeFrame').value = data.expirationCompTimeFrame;
-            document.getElementById('expirationCompensation').value = data.expirationCompensation;
-            document.getElementById('offerDesc').value = data.offerDesc;
-            const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
-            radioButtons.forEach(radioButton => {
-                if (data.retainerCredited === 1) {
-                    document.getElementById('retainerCreditedY').checked = true;
-                }
-                if (data.retainerCredited === 0) {
-                    document.getElementById('retainerCreditedN').checked = true;
-                }
-            });
-        })
 }
