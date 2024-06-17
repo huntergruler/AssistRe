@@ -285,20 +285,16 @@ router.post('/setStatus', (req, res) => {
   else {
     const status = req.body.status;
     const userType = req.session.userType;
-    console.log('Status:', status, 'UserType:', userType);
     if (userType === 'Buyer') {
       var buyerid = req.session.userid;
       var agentid = req.body.agentid;
-      console.log('Buyerid:', buyerid, 'Agentid:', agentid);
       updateQuery = 'update AgentBuyerMatch set buyerStatus = ? where agentid = ? and buyerid = ?';
     }
     else {
       var agentid = req.session.userid;
       var buyerid = req.body.buyerid;
-      console.log('Agentid:', agentid, 'Buyerid:', buyer);
       updateQuery = 'update AgentBuyerMatch set agentStatus = ? where agentid = ? and buyerid = ?';
     }
-    console.log('UpdateQuery:', updateQuery, 'Status:', status, 'Agentid:', agentid, 'Buyerid:', buyerid);
     db.query(updateQuery, [status, agentid, buyerid], (error, result) => {
       if (error) {
         console.error('Error saving status:', error);
