@@ -329,7 +329,7 @@ function getOfferCounts() {
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
-                if (request.buyerStatus == 'Open') {
+                if (request.buyerStatus == 'New') {
                     document.getElementById('tabOffers').textContent = 'Open Offers' + request.cnt;
                 }
                 if (request.buyerStatus == 'Favorite') {
