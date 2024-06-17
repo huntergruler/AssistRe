@@ -108,7 +108,8 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "New") {
                         div.innerHTML = ``
                     }
-                    div.innerHTML += `<div class="newDot">&#x2022;</div><div class="flex-fill">
+                    div.innerHTML += `<div class="newDot">&#x2022;</div><br>
+                    <div class="flex-fill form-row container-left">
                     Agent: ${request.dispIdentifier}<br>
                     ${request.levelOfService} - ${request.compensationType}<br>
                     Compensation ${request.compensationAmount}<br>
