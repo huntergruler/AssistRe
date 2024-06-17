@@ -44,34 +44,35 @@
         <div class="form-group col-md-7">
             <h3 class="text-center">Your Property Request Info</h3>
             <div class="property-group">
-                <p>Property Type: <%= buyer.propertyType %>
-                </p>
-                <div id="levelOfServiceDisplay">
-                    <p>Agent Service Level: <%= buyer.levelOfService %>
+                Property Type: <%= buyer.propertyType %>
+
+                    <div id="levelOfServiceDisplay">
+                        Agent Service Level: <%= buyer.levelOfService %>
+                        
+                    </div>
+                    Minimum Bedrooms: <%= buyer.bedrooms_min %>
+                    
+                    <p>Minimum Batrooms: <%= buyer.bathrooms_min %>
                     </p>
-                </div>
-                <p>Minimum Bedrooms: <%= buyer.bedrooms_min %>
-                </p>
-                <p>Minimum Batrooms: <%= buyer.bathrooms_min %>
-                </p>
-                <p>Square Footage Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %>
-                </p>
-                <p>Price Range: <%= buyer.price_min %> to <%= buyer.price_max %>
-                </p>
-                <p>Timeframe: <%= buyer.timeFrame %>
-                </p>
-                <p>Prequalified: <%= buyer.prequalified %>
-                </p>
-                <p>Prequalified Amount: <%= buyer.prequalifiedAmount %>
-                </p>
-                <p>Preferred Languages: <%= buyer.preferredLanguages %>
-                </p>
+                    <p>Square Footage Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %>
+                    </p>
+                    <p>Price Range: <%= buyer.price_min %> to <%= buyer.price_max %>
+                    </p>
+                    <p>Timeframe: <%= buyer.timeFrame %>
+                    </p>
+                    <p>Prequalified: <%= buyer.prequalified %>
+                    </p>
+                    <p>Prequalified Amount: <%= buyer.prequalifiedAmount %>
+                    </p>
+                    <p>Preferred Languages: <%= buyer.preferredLanguages %>
+                    </p>
             </div>
         </div>
         <div class="offer-group col-md-8">
             <h3 class="text-center">Your Offers</h3>
             <div class="row tab" id="tabcontainer">
-                <button id="tabNew" class="tablinks col-md-4 btn-sm" onclick="getOffers('New', this)">Open Offers</button>
+                <button id="tabNew" class="tablinks col-md-4 btn-sm" onclick="getOffers('New', this)">Open
+                    Offers</button>
                 <button id="tabFavorite" class="tablinks col-md-4 btn-sm"
                     onclick="getOffers('Favorite', this)">Favorites</button>
                 <button id="tabDeclined" class="tablinks col-md-4 btn-sm"
