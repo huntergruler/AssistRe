@@ -39,7 +39,7 @@
 }
 
 .property-group {
-    height: 390px;
+    height: auto;
     max-height: 390px;
 }
 
