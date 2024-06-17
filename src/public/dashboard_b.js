@@ -250,12 +250,12 @@ function offerDetail(agentid, buyerrequestid) {
                         { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
                     ];
                 }
-                if (datatype == "Favorites") {
+                if (datatype == "Favorite") {
                     var buttons = [
                         { id: "declineOffer", text: "Cancel Offer", onclick: `cancelOffer(${request.agentid})` },
                     ];
                 }
-                if (datatype == "Declined") {
+                if (datatype == "Rejected") {
                     var buttons = [
                         { id: "declineOffer", text: "Reopen Offer", onclick: `reopenOffer(${request.agentid})` },
                     ];
