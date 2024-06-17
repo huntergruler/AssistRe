@@ -120,12 +120,12 @@ router.get('/getOfferCounts', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    var query = ` select case when os.offerStatus in ('New','Read')
+    var query = `select case when os.offerStatus in ('New','Read')
                               then 'New'
                               else os.offerStatus
                           end buyerStatus, concat('(',count(bam.buyerid),')') cnt
                     from OfferStatus os 
-                         left outer join AgentBuyerMatch bam on bam.buyerStatus = os.offerStatus and bam.buyerid = ? and bam.agentid = os.agentid
+                         left outer join AgentBuyerMatch bam on bam.buyerStatus = os.offerStatus and bam.buyerid = ?
                    where os.userType = 'Buyer'
                    group by 1`;
     db.query(query, [userid], (error, results) => {
@@ -177,7 +177,7 @@ router.get('/getOffers', (req, res) => {
                           join LevelsOfService los on los.levelofserviceid = ao.levelofserviceid
                           join CompensationTypes ct on ct.compensationtypeid = ao.compensationtypeid
                     where ao.buyerid = ?
-                      and bam.agentid = ?
+                      and ao.agentid = ?
                       and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = 'New'
                     order by bam.buyerStatus, ao.entrytimestamp desc`;
       db.query(query, [buyerid, agentid, datatype], (error, results) => {
