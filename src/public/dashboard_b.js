@@ -236,6 +236,7 @@ function offerDetail(agentid, buyerrequestid) {
 
 
                 detailCont.style.border = '1px solid black';
+                console.log(request.buyerStatus, datatype); 
 
                 // Create a container div to hold the buttons
                 const buttonContainer = document.createElement("div");
@@ -261,7 +262,6 @@ function offerDetail(agentid, buyerrequestid) {
                 }
 
                 buttons.forEach(button => {
-                    console.log(button);
                     const buttonElement = document.createElement("button");
                     buttonElement.id = button.id;
                     buttonElement.textContent = button.text;
