@@ -284,6 +284,7 @@ router.post('/setStatus', (req, res) => {
   }
   else {
     const status = req.body.status;
+    const userType = req.session.userType;
     if (userType === 'Buyer') {
       var buyerid = req.session.userid;
       var agentid = req.body.agentid;
