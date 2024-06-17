@@ -202,7 +202,7 @@ function selectRequest(agentid, buyerrequestid, element) {
 }
 
 function offerDetail(agentid, buyerrequestid) {
-    const detailColumn = document.getElementById('offerDetail');
+    const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
     const datatype = document.getElementById('datatype').value;
     const detailCont = document.getElementById('offerDetailContainer');
@@ -213,9 +213,8 @@ function offerDetail(agentid, buyerrequestid) {
     const detailsCont = document.getElementById('offerDetails');
     detailsCont.style.border = '0';
 
-    detailColumn.innerHTML = "";
+    offerDetail.innerHTML = "";
     detailButtons.innerHTML = "";
-    // detailColumn.innerHTML = `<p><strong>ID:</strong>${agentid}</p><p><strong>Name:`;
     fetch(`/getOffers?agentid=${encodeURIComponent(agentid)} &buyerrequestid=${encodeURIComponent(buyerrequestid)} &datatype=${encodeURIComponent(datatype)}`)
         .then(response => response.json())
         .then(data => {
@@ -229,7 +228,7 @@ function offerDetail(agentid, buyerrequestid) {
 
                 div.className = "form-row container-right";
                 div.id = "agentid" + request.agentid;
-                detailColumn.appendChild(div);
+                offerDetail.appendChild(div);
 
 
                 detailCont.style.border = '1px solid black';
