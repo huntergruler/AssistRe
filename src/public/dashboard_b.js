@@ -127,7 +127,7 @@ function getOffers(datatype, element) {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
-                    if (request.buyerStatus == "Favorite" || request.buyerStatus == "Rejected") {
+                    if (request.buyerStatus == "Favorite" || request.buyerStatus == "Declined") {
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
                     div.onclick = function () {
@@ -252,11 +252,13 @@ function offerDetail(agentid, buyerrequestid) {
                 }
                 if (datatype == "Favorite") {
                     var buttons = [
-                        { id: "declineOffer", text: "Cancel Offer", onclick: `cancelOffer(${request.agentid})` },
+                        { id: "removeFavorite", text: "Remove Favorite", onclick: `removeFavorite(${request.agentid})` },
+                        { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
                     ];
                 }
-                if (datatype == "Rejected") {
+                if (datatype == "Declined") {
                     var buttons = [
+                        { id: "makeFavorite", text: "Make Favorite", onclick: `makeFavorite(${request.agentid})` },
                         { id: "declineOffer", text: "Reopen Offer", onclick: `reopenOffer(${request.agentid})` },
                     ];
                 }
@@ -322,8 +324,8 @@ function getOfferCounts() {
                 if (request.buyerStatus == 'Favorite') {
                     document.getElementById('tabFavorites').textContent = 'Favorites' + request.cnt;
                 }
-                if (request.buyerStatus == 'Rejected') {
-                    document.getElementById('tabRejected').textContent = 'Rejected' + request.cnt;
+                if (request.buyerStatus == 'Declined') {
+                    document.getElementById('tabDeclined').textContent = 'Declined' + request.cnt;
                 }
             })
         })
@@ -345,6 +347,13 @@ function removeOffer() {
     getOffers(dataType, null);
     getRequestCounts();
     clearForm()
+}
+
+function removeFavorite(agentid) {
+    setStatus(agentid, 'Read');
+    showModal('Offer removed from favorites');
+    getOffers('Favorite', null);
+    getRequestCounts();
 }
 
 function declineOffer() {
