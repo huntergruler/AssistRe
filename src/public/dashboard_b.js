@@ -283,9 +283,20 @@ function offerDetail(agentid, buyerrequestid) {
 }
 
 function makeFavorite(agentid) {
+    const dataType = document.getElementById('datatype').value;
+    const offerForm = document.getElementById('offerForm');
+    const offerDetail = document.getElementById('offerDetail');
+    const detailButtons = document.getElementById('detailButtons');
     setStatus(agentid, 'Favorite');
     showModal('Offer added to favorites');
+    offerDetail.innerHTML = '';
+    detailButtons.innerHTML = '';
+    offerForm.style.display = 'none';
+    getOffers(dataType, null);
     getOfferCounts();
+    clearForm()
+
+
 }
 
 function modifyOffer(event) {
