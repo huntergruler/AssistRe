@@ -245,18 +245,18 @@ function offerDetail(agentid, buyerrequestid) {
                 // Create each button and append them to the container
                 if (datatype == "Read" || datatype == "New") {
                     var buttons = [
-                        { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.agentid})` },
-                        { id: "declinerequest", text: "Decline Request", onclick: `declineRequest(${request.agentid})` },
+                        { id: "makeFavorite", text: "Make Favorite", onclick: `makeFavorite(${request.agentid})` },
+                        { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
                     ];
                 }
-                if (datatype == "Confirmed") {
+                if (datatype == "Favorites") {
                     var buttons = [
-                        { id: "declinerequest", text: "Cancel Offer", onclick: `cancelOffer(${request.agentid})` },
+                        { id: "declineOffer", text: "Cancel Offer", onclick: `cancelOffer(${request.agentid})` },
                     ];
                 }
                 if (datatype == "Declined") {
                     var buttons = [
-                        { id: "declinerequest", text: "Reopen Request", onclick: `reopenRequest(${request.agentid})` },
+                        { id: "declineOffer", text: "Reopen Offer", onclick: `reopenOffer(${request.agentid})` },
                     ];
                 }
 
@@ -279,24 +279,10 @@ function offerDetail(agentid, buyerrequestid) {
         .catch(error => console.error('Error checking user:', error));
 }
 
-function makeOffer(agentid) {
-    populateOfferDefaults();
-    const offerForm = document.getElementById('offerForm');
-    const offerButton = document.getElementById('offerButton');
-    offerButton.innerHTML = '';
-    offerForm.style.display = 'block';
-
-    const detailsCont = document.getElementById('offerDetails');
-    detailsCont.style.border = '1px solid black';
-
-    const buttonElement = document.createElement("button");
-    buttonElement.textContent = 'Submit Offer';
-    buttonElement.style.border = "1px solid black";
-    buttonElement.style.borderRadius = "5px";
-    buttonElement.style.padding = "2px";
-    buttonElement.style.margin = "2px";
-    buttonElement.setAttribute("onclick", `saveOffer(event)`);
-    offerButton.appendChild(buttonElement);
+function makeFavorite(agentid) {
+    setStatus(agentid, 'Favorite');
+    showModal('Offer added to favorites');
+    getOfferCounts();
 }
 
 function modifyOffer(event) {
@@ -360,7 +346,7 @@ function removeOffer() {
     clearForm()
 }
 
-function declineRequest() {
+function declineOffer() {
     const agentid = document.getElementById('agentid').value;
     const dataType = document.getElementById('datatype').value;
     const offerForm = document.getElementById('offerForm');
@@ -368,7 +354,7 @@ function declineRequest() {
     const detailButtons = document.getElementById('detailButtons');
 
     setStatus(agentid, 'Declined');
-    showModal('Request Declined successfully');
+    showModal('Offer Declined successfully');
     offerDetail.innerHTML = '';
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
@@ -377,7 +363,7 @@ function declineRequest() {
     clearForm()
 }
 
-function reopenRequest() {
+function reopenOffer() {
     const agentid = document.getElementById('agentid').value;
     const dataType = document.getElementById('datatype').value;
     showModal('Request Reopened successfully');
