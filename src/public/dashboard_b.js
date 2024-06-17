@@ -333,7 +333,6 @@ function getOfferCounts() {
 }
 
 function removeFavorite(agentid) {
-    const agentid = document.getElementById('agentid').value;
     const dataType = document.getElementById('datatype').value;
     const offerForm = document.getElementById('offerForm');
     const offerDetail = document.getElementById('offerDetail');
