@@ -329,14 +329,14 @@ function getOfferCounts() {
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
-                if (request.buyerStatus == 'New') {
-                    document.getElementById('tabOffers').textContent = request.buyerStatus + request.cnt;
+                if (request.buyerStatus == 'Open') {
+                    document.getElementById('tabOffers').textContent = 'Open Offers' + request.cnt;
                 }
                 if (request.buyerStatus == 'Favorite') {
-                    document.getElementById('tabFavorites').textContent = request.buyerStatus + request.cnt;
+                    document.getElementById('tabFavorites').textContent = 'Favorites' + request.cnt;
                 }
                 if (request.buyerStatus == 'Rejected') {
-                    document.getElementById('tabRejected').textContent = request.buyerStatus + request.cnt;
+                    document.getElementById('tabRejected').textContent = 'Rejected' + request.cnt;
                 }
             })
         })
