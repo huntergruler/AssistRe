@@ -236,7 +236,7 @@ function offerDetail(agentid, buyerrequestid) {
                 offerDetail.appendChild(div);
 
 
-                detailCont.style.border = '2px solid black';
+                detailCont.style.border = '1px solid black';
                 detailCont.style.borderBottomLeftRadius = '5px';
                 detailCont.style.borderBottomRightRadius = '5px';
                 console.log(request.buyerStatus, datatype); 

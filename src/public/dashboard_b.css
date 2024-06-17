@@ -107,7 +107,8 @@
 #tabSelected {
     background-color: var(--background-color);
     color: white;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 /* Style the active tab button */
