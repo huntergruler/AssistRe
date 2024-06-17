@@ -68,6 +68,7 @@ function getOffers(datatype, element) {
     buttons.forEach(button => {
         button.classList.remove('active');
     });
+    console.log(datatype);
 
     // Add the 'active' class to the clicked button
     if (element) element.classList.add('active');
