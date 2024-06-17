@@ -109,7 +109,7 @@ function getOffers(datatype, element) {
                         div.innerHTML = ``
                     }
                     div.innerHTML += `<div class="newDot col-md-12">&#x2022;</div><br>
-                    <div class="flex-fill ">
+                    <div class="flex-fill offerSummary">
                     Agent: ${request.dispIdentifier}<br>
                     ${request.levelOfService} - ${request.compensationType}<br>
                     Compensation ${request.compensationAmount}<br>
