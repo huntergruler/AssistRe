@@ -289,7 +289,7 @@ body {
 }
 
 .newDot {
-    align-self: start;
+    align-self: center;
     font-size: 40px;
     margin-top: 0px;
     margin-left: 5px;
