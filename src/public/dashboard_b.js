@@ -331,7 +331,7 @@ function getOfferCounts() {
         .then(data => {
             data.forEach(request => {
                 if (request.buyerStatus == 'New') {
-                    document.getElementById('tabOffers').textContent = 'Open Offers' + request.cnt;
+                    document.getElementById('tabNew').textContent = 'Open Offers' + request.cnt;
                 }
                 if (request.buyerStatus == 'Favorite') {
                     document.getElementById('tabFavorite').textContent = 'Favorites' + request.cnt;
