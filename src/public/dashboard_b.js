@@ -261,6 +261,7 @@ function offerDetail(agentid, buyerrequestid) {
                 }
 
                 buttons.forEach(button => {
+                    console.log(button);
                     const buttonElement = document.createElement("button");
                     buttonElement.id = button.id;
                     buttonElement.textContent = button.text;
