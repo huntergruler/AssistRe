@@ -372,7 +372,7 @@ function declineOffer() {
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
     getOffers(dataType, null);
-    getRequestCounts();
+    getOfferCounts();
     clearForm()
 }
 
@@ -382,7 +382,7 @@ function reopenOffer() {
     showModal('Request Reopened successfully');
     setStatus(agentid, 'Read');
     getOffers(dataType, null);
-    getRequestCounts();
+    getOfferCounts();
 }
 
 function populateLevelOfService() {
