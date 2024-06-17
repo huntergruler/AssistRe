@@ -237,8 +237,8 @@ function offerDetail(agentid, buyerrequestid) {
 
 
                 detailCont.style.border = '1px solid black';
-                detailCont.style.border-bottom-left-radius = '5px';
-                detailCont.style.border-bottom-right-radius = '5px';
+                detailCont.style.borderbottomleftradius = '5px';
+                detailCont.style.borderbottomrightradius = '5px';
                 console.log(request.buyerStatus, datatype); 
 
                 // Create a container div to hold the buttons
