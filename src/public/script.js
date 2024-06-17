@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.getElementById('message').style.color = 'red';
                     return;
                 }
-                console.log(email, password, userType);
+                // console.log(email, password, userType);
                 fetch('/login', {
                     method: 'POST',
                     headers: {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                     .then(response => response.json())
                     .then(data => {
-                        console.log('Success:', data);
+                        // console.log('Success:', data);
                         if (data.success === false) {
                             // Display message if login failed
                             document.getElementById('message').style.display = 'block';
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             document.getElementById('email').focus();
                         } else {
                             // Redirect or handle successful login
-                            console.log('login successful', data);
+                            // console.log('login successful', data);
                             if (userType === 'Agent') {
                                 window.location.href = '/dashboard_a';
                             }
