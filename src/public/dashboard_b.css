@@ -59,7 +59,21 @@
     text-align: center;
 }
 
+.offerSummary{
+    margin: 0px 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 350px;
+    max-height: fit-content;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 8px;
 
+}
 .row {
     display: flex;
     flex-wrap: wrap;
