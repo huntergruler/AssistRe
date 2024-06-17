@@ -79,7 +79,7 @@
     display: none;
     padding-left: 0px;
     padding-right: 0px;
-    width: fit-content;
+    /* width: fit-content; */
 }
 
 /* Style the tab buttons */
