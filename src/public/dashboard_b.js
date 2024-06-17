@@ -100,7 +100,7 @@ function getOffers(datatype, element) {
                     div.textContent = 'No Favorite Offers';
                 }
                 if (datatype == "Declined") {
-                    div.textContent = 'No Offers Declined';
+                    div.textContent = 'No Declined Offers';
                 }
                 offers.appendChild(div);
             }
@@ -225,7 +225,7 @@ function offerDetail(agentid, buyerrequestid) {
         .then(data => {
             data.forEach(request => {
                 const div = document.createElement("div");
-                div.innerHTML += `<div class="flex-fill">
+                div.innerHTML += `<div class="offers">
                 Agent: ${request.dispIdentifier}<br>
                 ${request.levelOfService} - ${request.compensationType}<br>
                 Compensation ${request.compensationAmount}<br>
