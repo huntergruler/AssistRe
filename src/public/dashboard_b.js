@@ -94,13 +94,13 @@ function getOffers(datatype, element) {
             if (data.length === 0) {
                 const div = document.createElement("div");
                 if (datatype == "New") {
-                    div.textContent = 'No new offers';
+                    div.textContent = 'No Open Offers';
                 }
                 if (datatype == "Favorite") {
-                    div.textContent = 'No favorites';
+                    div.textContent = 'No Favorite Offers';
                 }
                 if (datatype == "Declined") {
-                    div.textContent = 'Nothing declined';
+                    div.textContent = 'No Offers Declined';
                 }
                 offers.appendChild(div);
             }
@@ -164,46 +164,46 @@ function selectOffer(agentid, buyerrequestid, element) {
         selectFields.forEach(select => select.removeAttribute('disabled'));
         setStatus(agentid, 'Read');
     }
-    if (datatype == "Offered") {
-        populateOfferDetail(agentid);
-        const offerForm = document.getElementById('offerForm');
-        const detailButtons = document.getElementById('detailButtons');
-        const detailsCont = document.getElementById('offerDetails');
-        detailsCont.style.border = '1px solid black';
+    // if (datatype == "Offered") {
+    //     populateOfferDetail(agentid);
+    //     const offerForm = document.getElementById('offerForm');
+    //     const detailButtons = document.getElementById('detailButtons');
+    //     const detailsCont = document.getElementById('offerDetails');
+    //     detailsCont.style.border = '1px solid black';
 
-        offerForm.style.display = 'block';
-        inputFields.forEach(input => {
-            input.setAttribute('readonly', 'true');
-            input.setAttribute('disabled', 'true')
-        });
-        selectFields.forEach(select => select.setAttribute('disabled', 'true'));
-        detailButtons.style.display = 'none';
-        offerButton.innerHTML = '';
+    //     offerForm.style.display = 'block';
+    //     inputFields.forEach(input => {
+    //         input.setAttribute('readonly', 'true');
+    //         input.setAttribute('disabled', 'true')
+    //     });
+    //     selectFields.forEach(select => select.setAttribute('disabled', 'true'));
+    //     detailButtons.style.display = 'none';
+    //     offerButton.innerHTML = '';
 
-        // create a button to modify the offer
-        var buttonElement = document.createElement("button");
-        buttonElement.className = "col-md-5";
-        buttonElement.textContent = 'Modify Offer';
-        buttonElement.style.border = "1px solid black";
-        buttonElement.style.borderRadius = "5px";
-        buttonElement.style.padding = "2px";
-        buttonElement.style.margin = "2px";
-        buttonElement.setAttribute("onclick", `modifyOffer(event)`);
-        offerButton.appendChild(buttonElement);
-        buttonElement = document.createElement("button");
-        buttonElement.className = "col-md-5";
-        buttonElement.textContent = 'Remove Offer';
-        buttonElement.style.border = "1px solid black";
-        buttonElement.style.borderRadius = "5px";
-        buttonElement.style.padding = "2px";
-        buttonElement.style.margin = "2px";
-        buttonElement.setAttribute("onclick", `removeOffer(event)`);
-        offerButton.appendChild(buttonElement);
-    }
-    if (datatype == "Declined") {
-        const detailButtons = document.getElementById('detailButtons');
-        detailButtons.style.display = 'block';
-    }
+    //     // create a button to modify the offer
+    //     var buttonElement = document.createElement("button");
+    //     buttonElement.className = "col-md-5";
+    //     buttonElement.textContent = 'Modify Offer';
+    //     buttonElement.style.border = "1px solid black";
+    //     buttonElement.style.borderRadius = "5px";
+    //     buttonElement.style.padding = "2px";
+    //     buttonElement.style.margin = "2px";
+    //     buttonElement.setAttribute("onclick", `modifyOffer(event)`);
+    //     offerButton.appendChild(buttonElement);
+    //     buttonElement = document.createElement("button");
+    //     buttonElement.className = "col-md-5";
+    //     buttonElement.textContent = 'Remove Offer';
+    //     buttonElement.style.border = "1px solid black";
+    //     buttonElement.style.borderRadius = "5px";
+    //     buttonElement.style.padding = "2px";
+    //     buttonElement.style.margin = "2px";
+    //     buttonElement.setAttribute("onclick", `removeOffer(event)`);
+    //     offerButton.appendChild(buttonElement);
+    // }
+    // if (datatype == "Declined") {
+    //     const detailButtons = document.getElementById('detailButtons');
+    //     detailButtons.style.display = 'block';
+    // }
 }
 
 function offerDetail(agentid, buyerrequestid) {
