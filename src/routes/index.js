@@ -290,15 +290,16 @@ router.post('/setStatus', (req, res) => {
       var buyerid = req.session.userid;
       var agentid = req.body.agentid;
       console.log('Buyerid:', buyerid, 'Agentid:', agentid);
-      insertQuery = 'update AgentBuyerMatch set buyerStatus = ? where agentid = ? and buyerid = ?';
+      updateQuery = 'update AgentBuyerMatch set buyerStatus = ? where agentid = ? and buyerid = ?';
     }
     else {
-      insertQuery = 'update AgentBuyerMatch set agentStatus = ? where agentid = ? and buyerid = ?';
       var agentid = req.session.userid;
       var buyerid = req.body.buyerid;
       console.log('Agentid:', agentid, 'Buyerid:', buyer);
+      updateQuery = 'update AgentBuyerMatch set agentStatus = ? where agentid = ? and buyerid = ?';
     }
-    db.query(insertQuery, [status, agentid, buyerid], (error, result) => {
+    console.log('UpdateQuery:', updateQuery, 'Status:', status, 'Agentid:', agentid, 'Buyerid:', buyerid);
+    db.query(updateQuery, [status, agentid, buyerid], (error, result) => {
       if (error) {
         console.error('Error saving status:', error);
         return res.status(500).json({ error: 'Internal server error' });
