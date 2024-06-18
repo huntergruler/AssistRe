@@ -65,7 +65,7 @@
                 <div class="form-row">
                     <h3 class="text-center col-md-8">Your Offers</h3>
                 </div>
-                
+
                 <div class="row tab" id="tabcontainer">
                     <button id="tabNew" class="tablinks col-md-4 btn-sm" onclick="getOffers('New', this)">Open
                         Offers</button>
@@ -99,10 +99,6 @@
                         <input type="hidden" id="agentid" name="agentid">
                         <input type="hidden" id="buyerrequestid" name="buyerrequestid">
                         <input type="hidden" id="datatype" name="datatype">
-                        <div id="buyerTypeCheckbox" class="form-row container-right">
-                            <label for="buyerType" class="col-md-5 col-form-label">Buyer Type</label>
-                            // JavaScript will populate this container
-                        </div>
                         <div class="form-row container-right">
                             <label for="offerType" class="col-md-5 col-form-label">Offer Type</label>
                             <select id="offerType" class="form-select-sm col-md-6" required></select>
@@ -206,6 +202,12 @@
                     <div class="container mt-5">
                         <div class="form-container">
                             <form id="propertyForm" style="padding-top: 5px;">
+                                <div class="form-row ">
+                                    <div id="buyerTypeCheckbox" class="form-row container-right">
+                                        <label for="buyerType" class="col-md-5 col-form-label">Buyer Type</label>
+                                        // JavaScript will populate this container
+                                    </div>
+                                </div>
                                 <div class="form-row ">
                                     <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
                                     <input type="text" class="form-control-sm col-md-6" placeholder="Property Type"
