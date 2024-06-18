@@ -534,7 +534,7 @@ function savePropertyChanges() {
 function getBuyerTypes() {
     buyerTypeCheckbox = document.getElementById('buyerTypeCheckbox');
     console.log('Getting buyer types');
-    fetch('/getBuyerTypes')
+    fetch(`getBuyerTypes`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
