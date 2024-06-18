@@ -107,6 +107,15 @@ function getRequests(datatype, element) {
             }
             else {
                 data.forEach(request => {
+                    const input = document.createElement("input");
+                    input.id = buyerrequestid;
+                    input.name = buyerrequestid;
+                    input.type = "hidden";
+                    input.value = request.buyerrequestid;
+                    requests.appendChild(input);
+
+                    document.getElementById('buyerrequestid').value = request.buyerrequestid;  
+
                     const div = document.createElement("div");
                     if (request.agentStatus == "New") {
                         div.innerHTML = ``
@@ -117,7 +126,7 @@ function getRequests(datatype, element) {
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}<br></div>`;
-                    div.addEventListener('click', () => selectRequest(request.buyerid, this));
+                    div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
                     div.className = "form-row container-left col-md-9 align-self-end d-flex flex-row";
                     div.id = "buyerid" + request.buyerid;
                     if (request.agentStatus == "New") {
@@ -141,7 +150,7 @@ function getRequests(datatype, element) {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function selectRequest(buyerid, element) {
+function selectRequest(buyerid, buyerrequestid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
@@ -155,7 +164,7 @@ function selectRequest(buyerid, element) {
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    requestDetail(buyerid);
+    requestDetail(buyerid, buyerrequestid);
     if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
@@ -205,7 +214,7 @@ function selectRequest(buyerid, element) {
     }
 }
 
-function requestDetail(buyerid) {
+function requestDetail(buyerid, buyerrequestid) {
     const detailColumn = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
     const datatype = document.getElementById('datatype').value;
@@ -285,7 +294,7 @@ function requestDetail(buyerid) {
         .catch(error => console.error('Error checking user:', error));
 }
 
-function makeOffer(buyerid) {
+function makeOffer(buyerid, buyerrequestid) {
     populateOfferDefaults();
     const offerForm = document.getElementById('offerForm');
     const offerButton = document.getElementById('offerButton');
@@ -301,7 +310,7 @@ function makeOffer(buyerid) {
     buttonElement.style.borderRadius = "5px";
     buttonElement.style.padding = "2px";
     buttonElement.style.margin = "2px";
-    buttonElement.setAttribute("onclick", `saveOffer(event,'insert')`);
+    buttonElement.setAttribute("onclick", `saveOffer(event,'insert',${buyerrequestid})`);
     offerButton.appendChild(buttonElement);
 }
 
@@ -325,7 +334,7 @@ function modifyOffer(event) {
     buttonElement.style.borderRadius = "5px";
     buttonElement.style.padding = "2px";
     buttonElement.style.margin = "2px";
-    buttonElement.setAttribute("onclick", `saveOffer(event,'Update')`);
+    buttonElement.setAttribute("onclick", `saveOffer(event,'Update',${buyerrequestid})`);
     offerButton.appendChild(buttonElement);
 
 }
@@ -527,7 +536,7 @@ function setStatus(buyerid, status) {
         });
 }
 
-function saveOffer(event, action) {
+function saveOffer(event, action, buyerrequestid) {
     event.preventDefault();
     // Get values from input fields
     const offerType = document.getElementById('offerType').value;
@@ -555,6 +564,7 @@ function saveOffer(event, action) {
     // Create an object with the gathered data
     const offerData = {
         buyerid: buyerid,
+        buyerrequestid: buyerrequestid,
         offerType: offerType,
         levelOfService: levelOfService,
         compensationType: compensationType,
