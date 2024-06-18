@@ -1372,7 +1372,7 @@ function sendVerificationEmail(req, email, token, userType) {
   });
 }
 
-router.get('getBuyerTypes', (req, res) => {
+router.get('/getBuyerTypes', (req, res) => {
   const query = 'SELECT buyertypeid, buyerType FROM BuyerTypes order by buyerType';
   console.log('Query:', query);
   // db.query(query,(error, results) => {
