@@ -1375,7 +1375,7 @@ function sendVerificationEmail(req, email, token, userType) {
 router.get('getBuyerTypes', (req, res) => {
   const query = 'SELECT buyertypeid, buyerType FROM BuyerTypes';
   console.log('Query:', query);
-  db.query(query, [userid], (error, results) => {
+  db.query(query,(error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
