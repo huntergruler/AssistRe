@@ -85,6 +85,7 @@ function showModal(message) {
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
     getOfferCounts('New', null);
+    getBuyerTypes();
     // getOfferCounts();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
@@ -529,3 +530,17 @@ function savePropertyChanges() {
             console.error('Error:', error);
         });
 };
+
+function getBuyerTypes() {
+    buyerTypeCheckbox = document.getElementById('buyerTypeCheckbox');
+    fetch(`/getBuyerTypes`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let checkbox = document.createElement('checkbox');
+                checkbox.value = item.buyertypeid;
+                checkbox.textContent = item.buyerType;
+                buyerTypeCheckbox.appendChild(checkbox);
+            });
+        })
+}

@@ -673,17 +673,3 @@ function populateOfferDetail(buyerid) {
             });
         })
 }
-
-function getBuyerTypes() {
-    buyerTypeCheckbox = document.getElementById('buyerTypeCheckbox');
-    fetch(`/getBuyerTypes`)
-        .then(response => response.json())
-        .then(data => {
-            data.results.forEach(item => {
-                let checkbox = document.createElement('checkbox');
-                checkbox.value = item.buyertypeid;
-                checkbox.textContent = item.buyerType;
-                buyerTypeCheckbox.appendChild(checkbox);
-            });
-        })
-}
