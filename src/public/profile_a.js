@@ -250,6 +250,39 @@ function populateCities() {
         .catch(error => console.error('Error checking user:', error));
 };
 
+function populateDisplayZipCodes() {
+    const displayZipCodes = document.getElementById("displayZipCodes");
+    let htmlCodes = '';
+    displayZipCodes.innerHTML = '';
+    fetch(`/get-userzipcodes`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.results) {
+                const div = document.createElement("div");
+                div.className = "userZipCodes justify-content-center";
+                div.textContent = 'Currently no zip codes yet';
+                displayZipCodes.appendChild(div);
+                htmlCodes += `<p>Currently no zip codes selected</p>`;
+                displayZipCodes.innerHTML = htmlCodes;
+            }
+            else {
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.textContent = code.zipCode;
+                    div.className = "userZipCodes align-items-center";
+                    if (displayZipCodes) {
+                        displayZipCodes.appendChild(div);
+                    }
+                    htmlCodes += `${code.zipCode} - ${code.city}, ${code.state}<br>`;
+                });
+            }
+            if (displayZipCodes) {
+                displayZipCodes.innerHTML = htmlCodes;
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+};
+
 function saveZipChanges() {
     const selected = document.querySelectorAll(".zipCodeSelected");
     const selected2 = document.querySelectorAll(".userZipCodes");
