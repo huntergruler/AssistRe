@@ -1375,7 +1375,7 @@ function sendVerificationEmail(req, email, token, userType) {
 router.get('getBuyerTypes', (req, res) => {
   const query = 'SELECT buyertypeid, buyerType FROM BuyerTypes';
   db.query(query, (err, results) => {
-    if (err) throw err;
+    if (err)  console.log('Error sending email:', error);
     res.json({ results });
   });
 });
