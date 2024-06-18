@@ -184,7 +184,7 @@ padding-right: 0px;
     border-top: 1px solid black;
 }
 .property-group {
-    height: 390px;
+    height: fit-content;
     max-height: 390px;
 }
 
