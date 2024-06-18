@@ -89,7 +89,6 @@ function getRequests(datatype, element) {
     const getRequests = document.getElementById('getRequests');
     getRequests.style.display = 'block';
     requests.innerHTML = '';
-    console.log(datatype);
     fetch(`/getRequests?datatype=${datatype}`)
         .then(response => response.json())
         .then(data => {
@@ -118,7 +117,7 @@ function getRequests(datatype, element) {
                     $${request.price_min} to $${request.price_max}<br>
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}<br></div>`;
-                    div.addEventListener('click', () => selectRequest(request.buyerid, request.buyerrequestid, this));
+                    div.addEventListener('click', () => selectRequest(request.buyerid, this));
                     div.className = "form-row container-left col-md-9 align-self-end d-flex flex-row";
                     div.id = "buyerid" + request.buyerid;
                     if (request.agentStatus == "New") {
@@ -142,7 +141,7 @@ function getRequests(datatype, element) {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function selectRequest(buyerid, buyerrequestid, element) {
+function selectRequest(buyerid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
@@ -156,7 +155,7 @@ function selectRequest(buyerid, buyerrequestid, element) {
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    requestDetail(buyerid, buyerrequestid);
+    requestDetail(buyerid);
     if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
@@ -206,13 +205,12 @@ function selectRequest(buyerid, buyerrequestid, element) {
     }
 }
 
-function requestDetail(buyerid, buyerrequestid) {
+function requestDetail(buyerid) {
     const detailColumn = document.getElementById('requestDetail');
     const detailButtons = document.getElementById('detailButtons');
     const datatype = document.getElementById('datatype').value;
     const detailCont = document.getElementById('requestDetailContainer');
     document.getElementById('buyerid').value = buyerid;
-    document.getElementById('buyerrequestid').value = buyerrequestid;
     detailCont.style.border = '0';
 
     const detailsCont = document.getElementById('requestDetails');
@@ -221,7 +219,7 @@ function requestDetail(buyerid, buyerrequestid) {
     detailColumn.innerHTML = "";
     detailButtons.innerHTML = "";
     // detailColumn.innerHTML = `<p><strong>ID:</strong>${buyerid}</p><p><strong>Name:`;
-    fetch(`/getRequests?buyerid=${encodeURIComponent(buyerid)} &buyerrequestid=${encodeURIComponent(buyerrequestid)} &datatype=${encodeURIComponent(datatype)}`)
+    fetch(`/getRequests?buyerid=${encodeURIComponent(buyerid)} &datatype=${encodeURIComponent(datatype)}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
@@ -542,7 +540,6 @@ function saveOffer(event, action) {
     const expirationCompensation = document.getElementById('expirationCompensation').value;
     const offerDesc = document.getElementById('offerDesc').value;
     const radioButtons = document.querySelectorAll('input[name="retainerCredited"]');
-    const buyerrequestid = document.getElementById('buyerrequestid').value;
     const buyerid = document.getElementById('buyerid').value;
     const dataType = document.getElementById('datatype').value;
 
@@ -558,7 +555,6 @@ function saveOffer(event, action) {
     // Create an object with the gathered data
     const offerData = {
         buyerid: buyerid,
-        buyerrequestid: buyerrequestid,
         offerType: offerType,
         levelOfService: levelOfService,
         compensationType: compensationType,
