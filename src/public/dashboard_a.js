@@ -273,7 +273,7 @@ function requestDetail(buyerid, buyerrequestid) {
                         { id: "declinerequest", text: "Reopen Request", onclick: `reopenRequest(${request.buyerid})` },
                     ];
                 }
-                if (datatype != "Read" && datatype != "New" && datatype != "Confirmed" && datatype != "Declined") {
+                if (datatype == "Read" || datatype == "New" || datatype == "Confirmed" || datatype == "Declined") {
 
                     buttons.forEach(button => {
                         const buttonElement = document.createElement("button");
@@ -285,11 +285,10 @@ function requestDetail(buyerid, buyerrequestid) {
                         buttonElement.style.margin = "2px";
                         buttonElement.setAttribute("onclick", button.onclick);
                         buttonContainer.appendChild(buttonElement);
+                        detailButtons.appendChild(buttonContainer);
                     });
                 }
 
-                // Append the container to the detailButtons element
-                detailButtons.appendChild(buttonContainer);
             });
         })
         .catch(error => console.error('Error checking user:', error));
