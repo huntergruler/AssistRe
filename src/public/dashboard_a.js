@@ -229,6 +229,7 @@ function requestDetail(buyerid, buyerrequestid) {
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
+                console.log(request);
                 const div = document.createElement("div");
                 div.innerHTML = `${request.buyerType}<br>
                     Price Range: $${request.price_min} to $${request.price_max}<br>
@@ -297,6 +298,7 @@ function makeOffer(buyerid, buyerrequestid) {
     const offerButton = document.getElementById('offerButton');
     offerButton.innerHTML = '';
     offerForm.style.display = 'block';
+    console.log(buyerid, buyerrequestid);
 
     const detailsCont = document.getElementById('requestDetails');
     detailsCont.style.border = '1px solid black';
