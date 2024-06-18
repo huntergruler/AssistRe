@@ -235,6 +235,7 @@ router.get('/getRequests', (req, res) => {
     const datatype = req.query.datatype;
     const buyerid = req.query.buyerid;
     const userid = req.session.userid;
+    console.log('Buyerid:', buyerid, 'Datatype:', datatype, 'Userid:', userid);
     if (!buyerid) {
       var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyerrequestid) dispIdentifier
                      from AgentBuyerMatch bam
