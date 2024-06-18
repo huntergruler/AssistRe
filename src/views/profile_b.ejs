@@ -70,7 +70,7 @@
                         <!-- JavaScript will populate this container -->
                     </div>
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#zipCodeModal"
-                        >
+                        onclick="populateUserZipCodes();">
                         Modify Zip Codes
                     </button>
                 </div>
@@ -103,8 +103,7 @@
                     <p>Preferred Languages: <%= buyer.preferredLanguages %>
                     </p>
                 </div>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal"
-                    onclick="populateUserZipCodes();">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal">
 
                     Modify Property Info
                 </button>
