@@ -588,6 +588,7 @@ function populateLevelOfService() {
                 let option = document.createElement('option');
                 option.value = item.levelofserviceid;
                 option.textContent = item.levelOfService;
+                option.selected = item.levelofserviceid == levelofservicevalue;
                 buyerLevelOfService.appendChild(option);
             });
         })
