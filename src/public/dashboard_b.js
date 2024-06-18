@@ -576,7 +576,6 @@ function populateLevelOfService() {
     defaultOption.textContent = 'Select a Level of Service';
     defaultOption.value = '';
     buyerLevelOfService.appendChild(defaultOption);
-    console.log(levelofservicevalue, "Level of Service Value")
 
     fetch(`/get-levelofservice`)
         .then(response => response.json())
@@ -590,4 +589,5 @@ function populateLevelOfService() {
             });
         })
     buyerLevelOfService.value = levelofservicevalue;
+    console.log(levelofservicevalue, "Level of Service Value", buyerLevelOfService.value);
 };
