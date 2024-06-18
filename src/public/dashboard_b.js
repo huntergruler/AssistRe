@@ -582,11 +582,11 @@ function populateLevelOfService() {
             console.log("GOTHERE");
             console.log(data.results);
             data.results.forEach(item => {
-                console.log("GOTHERE2");
                 console.log(item.levelOfService);
                 let option = document.createElement('option');
                 option.value = item.levelofserviceid;
                 option.textContent = item.levelOfService;
+                console.log(option);
                 buyerLevelOfService.appendChild(option);
             });
         })
