@@ -543,6 +543,8 @@ function getBuyerTypes() {
                 checkbox.name = 'buyerType';
                 checkbox.value = item.buyertypeid;
                 checkbox.textContent = item.buyerType;
+                checkbox.id = item.buyertypeid;
+                
                 buyerTypeCheckbox.appendChild(checkbox);
             });
         })
