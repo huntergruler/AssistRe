@@ -470,3 +470,62 @@ function setStatus(agentid, status) {
             console.error('Error:', error);
         });
 }
+
+function savePropertyChanges() {
+    const propertyType = document.getElementById('propertyType').value;
+    const bedrooms_min = document.getElementById('bedrooms_min').value;
+    const bathrooms_min = document.getElementById('bathrooms_min').value;
+    const squareFootage_min = document.getElementById('squareFootage_min').value;
+    const squareFootage_max = document.getElementById('squareFootage_max').value;
+    const price_min = document.getElementById('price_min').value;
+    const price_max = document.getElementById('price_max').value;
+    const timeFrame = document.getElementById('timeFrame').value;
+    const prequalifiedY = document.getElementById('prequalifiedY').checked;
+    const prequalifiedN = document.getElementById('prequalifiedN').checked;
+    const preferredLanguages = document.getElementById('preferredLanguages').value;
+    const levelOfService = document.getElementById('levelOfService').value;
+    const userid = document.getElementById('userid').value;
+    console.log(prequalifiedY,"Prequalified Y",prequalifiedN,"Prequalified N");
+
+    if (prequalifiedY) {
+        var prequalified = 'Y';
+    } else {
+        var prequalified = 'N';
+    }
+    console.log(prequalified,"Prequalified");
+    const data = {
+        propertyType: propertyType,
+        bedrooms_min: bedrooms_min,
+        bathrooms_min: bathrooms_min,
+        squareFootage_min: squareFootage_min,
+        squareFootage_max: squareFootage_max,
+        price_min: price_min,
+        price_max: price_max,
+        timeFrame: timeFrame,
+        prequalified: prequalified,
+        levelOfService: levelOfService,
+        preferredLanguages: preferredLanguages,
+        userid: userid
+    };
+
+    // Send the data to the server using fetch
+    fetch('/profile_b_property', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            window.location.reload();
+                })
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+};
