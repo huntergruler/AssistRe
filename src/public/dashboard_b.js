@@ -539,6 +539,8 @@ function getBuyerTypes() {
             data.results.forEach(item => {
                 console.log(item.buyertypeid, item.buyerType);
                 let checkbox = document.createElement('checkbox');
+                checkbox.type = 'checkbox';
+                checkbox.name = 'buyerType';
                 checkbox.value = item.buyertypeid;
                 checkbox.textContent = item.buyerType;
                 buyerTypeCheckbox.appendChild(checkbox);
