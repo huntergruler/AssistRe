@@ -200,7 +200,7 @@ function zipUpdate() {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-    populateAgentZipCodes();
+    populateDisplayZipCodes()
     //    populateStates();
 });
 
