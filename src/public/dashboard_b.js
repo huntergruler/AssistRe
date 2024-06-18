@@ -579,6 +579,7 @@ function populateLevelOfService() {
     fetch(`/get-levelofservice`)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             data.results.forEach(item => {
                 let option = document.createElement('option');
                 option.value = item.levelofserviceid;
