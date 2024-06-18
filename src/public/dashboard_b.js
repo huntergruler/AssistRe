@@ -573,7 +573,6 @@ function populateLevelOfService() {
     const buyerLevelOfService = document.getElementById('buyerLevelOfService');
     const levelofservicevalue = document.getElementById('levelofserviceid').value;
 
-    console.log(levelofservicevalue, "Level of Service Value");
     if (!levelofservicevalue) {
         const defaultOption = document.createElement('option');
         buyerLevelOfService.innerHTML = '';
@@ -586,7 +585,6 @@ function populateLevelOfService() {
         .then(response => response.json())
         .then(data => {
             data.results.forEach(item => {
-                console.log(item.levelOfService);
                 let option = document.createElement('option');
                 option.value = item.levelofserviceid;
                 option.textContent = item.levelOfService;
