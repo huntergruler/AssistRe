@@ -294,6 +294,41 @@ function saveZipChanges() {
     });
 };
 
+let zipChanges = 0;
+function addZipCode() {
+    const zipSelect = document.getElementById("zipSelect");
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    zipChanges = 1;
+    if (zipSelect.value.length === 5) {
+        fetch(`/check-zipcode?stateSelect=${encodeURIComponent(zipSelect.value)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.zipCodeResult === 'Valid') {
+                    if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
+                        selectedZipCodesContainer.innerHTML = '';
+                    }
+                    const div = document.createElement("div");
+                    div.textContent = zipSelect.value;
+                    div.className = "zipCodeSelected";
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    selectedZipCodesContainer.appendChild(div);
+                    zipSelect.value = '';
+                }
+                else if (data.zipCodeResult === 'Invalid') {
+                    alert('Zip code not found');
+                    zipSelect.value = '';
+                }
+                else if (data.zipCodeResult === 'Selected') {
+                    alert('Zip code already selected');
+                    zipSelect.value = '';
+                }
+            })
+            .catch(error => console.error('Error checking user:', error));
+    }
+};
+
 function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
