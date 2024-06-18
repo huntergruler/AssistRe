@@ -108,14 +108,11 @@ function getRequests(datatype, element) {
             else {
                 data.forEach(request => {
                     const input = document.createElement("input");
-                    input.id = buyerrequestid;
-                    input.name = buyerrequestid;
+                    input.id = "buyerrequestid";
+                    input.name = "buyerrequestid";
                     input.type = "hidden";
                     input.value = request.buyerrequestid;
                     requests.appendChild(input);
-
-                    document.getElementById('buyerrequestid').value = request.buyerrequestid;  
-
                     const div = document.createElement("div");
                     if (request.agentStatus == "New") {
                         div.innerHTML = ``
@@ -260,7 +257,7 @@ function requestDetail(buyerid, buyerrequestid) {
                 // Create each button and append them to the container
                 if (datatype == "Read" || datatype == "New") {
                     var buttons = [
-                        { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid})` },
+                        { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid},${request.buyerrequestid})` },
                         { id: "declinerequest", text: "Decline Request", onclick: `declineRequest(${request.buyerid})` },
                     ];
                 }
