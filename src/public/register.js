@@ -1,10 +1,11 @@
 function lookupCityState() {
-    let zipCode = document.getElementById('zipCode').value;
+    let zipCode = document.getElementById('zipCode');
+    let zipCodeValue = zipCode.value.trim();
     const cityState = document.getElementById('cityState');
-    if (zipCode) {
+    if (zipCodeValue) {
         // Create a new XMLHttpRequest object
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', '/get-city-state?zipCode=' + zipCode, true);
+        xhr.open('GET', '/get-city-state?zipCode=' + zipCodeValue, true);
         xhr.onreadystatechange = function () {
             console.log('ReadyState:', xhr.readyState, 'Status:', xhr.status);
             if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 404)) {
