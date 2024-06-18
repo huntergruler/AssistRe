@@ -65,29 +65,28 @@
                 <div class="form-row">
                     <h3 class="text-center">Your Offers</h3>
                 </div>
-                <div class="form-row col-md-8">
-                    <div class="row tab" id="tabcontainer">
-                        <button id="tabNew" class="tablinks col-md-4 btn-sm" onclick="getOffers('New', this)">Open
-                            Offers</button>
-                        <button id="tabFavorite" class="tablinks col-md-4 btn-sm"
-                            onclick="getOffers('Favorite', this)">Favorites</button>
-                        <button id="tabDeclined" class="tablinks col-md-4 btn-sm"
-                            onclick="getOffers('Declined', this)">Declined</button>
-                    </div>
+                
+                <div class="row tab" id="tabcontainer">
+                    <button id="tabNew" class="tablinks col-md-4 btn-sm" onclick="getOffers('New', this)">Open
+                        Offers</button>
+                    <button id="tabFavorite" class="tablinks col-md-4 btn-sm"
+                        onclick="getOffers('Favorite', this)">Favorites</button>
+                    <button id="tabDeclined" class="tablinks col-md-4 btn-sm"
+                        onclick="getOffers('Declined', this)">Declined</button>
+                </div>
 
-                    <div id="getOffers" class="tabcontent col-md-12">
-                        <div class="row">
-                            <div id="offers" class="offers col-md-4">
+                <div id="getOffers" class="tabcontent col-md-12">
+                    <div class="row">
+                        <div id="offers" class="offers col-md-4">
+                            <!-- JavaScript will populate this container -->
+                        </div>
+                        <div id="offerDetailContainer" class="container-right col-md-4">
+                            <div id="offerDetail">
                                 <!-- JavaScript will populate this container -->
                             </div>
-                            <div id="offerDetailContainer" class="container-right col-md-4">
-                                <div id="offerDetail">
+                            <div class="form-row container-right" style="border:none">
+                                <div id="detailButtons">
                                     <!-- JavaScript will populate this container -->
-                                </div>
-                                <div class="form-row container-right" style="border:none">
-                                    <div id="detailButtons">
-                                        <!-- JavaScript will populate this container -->
-                                    </div>
                                 </div>
                             </div>
                         </div>
