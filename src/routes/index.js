@@ -169,6 +169,7 @@ end compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService,
                     where ao.buyerid = ?
                       and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = ?
                     order by bam.buyerStatus, ao.entrytimestamp desc`;
+          console.log(query);
       db.query(query, [buyerid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
