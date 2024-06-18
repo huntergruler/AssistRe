@@ -151,7 +151,7 @@ router.get('/getOffers', (req, res) => {
     const buyerid = req.session.userid;
 
     if (!agentid) {
-      var query = `select ofb.agentid, ofb.agentofferid, ofb.buyerStatus, ofb.buyerid, ofb.buyerrequestid, ofb.compensationAmount, ofb.dispIdentifier, ofb.expirationCompTimeFrame, ofb.expirationCompensation, ofb.lengthOfService, ofb.levelOfService, ofb.offerDesc, ofb.offerText, ofb.offerTimestamp, ofb.offerType, ofb.retainerCredited, ofb.retainerFee
+      var query = `select ofb.agentid, ofb.agentofferid, ofb.buyerStatus, ofb.buyerid, ofb.buyeragentmatchid, ofb.compensationAmount, ofb.dispIdentifier, ofb.expirationCompTimeFrame, ofb.expirationCompensation, ofb.lengthOfService, ofb.levelOfService, ofb.offerDesc, ofb.offerText, ofb.offerTimestamp, ofb.offerType, ofb.retainerCredited, ofb.retainerFee
                      from OffersForBuyers ofb
                     where buyerid = ?
                       and if(buyerStatus = 'Read','New', buyerStatus) = ?
@@ -166,7 +166,7 @@ router.get('/getOffers', (req, res) => {
       });
     }
     else {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ot.offerType, los.levelOfService, ct.compensationType, 
+      var query = `select ao.agentofferid, ao.buyeragentmatchid, ao.buyerid, ao.agentid, ot.offerType, los.levelOfService, ct.compensationType, 
       case when ct.compensationType = 'Hourly Rate'
      then concat('$',ao.compensationAmount,' ',ct.compensationTypeUnit)
      when ct.compensationType = 'Flat Fee'
@@ -237,7 +237,7 @@ router.get('/getRequests', (req, res) => {
     const userid = req.session.userid;
     console.log('Buyerid:', buyerid, 'Datatype:', datatype, 'Userid:', userid);
     if (!buyerid) {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyerrequestid) dispIdentifier
+      var query = `select bam.agentid, bam.buyerid, bam.buyeragentmatchid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyeragentmatchid) dispIdentifier
                      from AgentBuyerMatch bam
                           join Buyers b on b.userid = bam.buyerid
                     where bam.agentid = ?
@@ -252,7 +252,7 @@ router.get('/getRequests', (req, res) => {
       });
     }
     else {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyerrequestid) dispIdentifier
+      var query = `select bam.agentid, bam.buyerid, bam.buyeragentmatchid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyeragentmatchid) dispIdentifier
                      from AgentBuyerMatch bam
                           join Buyers b on b.userid = bam.buyerid
                     where bam.agentid = ?
@@ -321,7 +321,7 @@ router.post('/saveoffer', (req, res) => {
     const action = req.body.action;
     const offerStatus = 'Offered';
     console.log('Action:', action);
-    const { buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
+    const { buyerid, buyeragentmatchid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
     if (action === 'Update') {
       insertQuery = `UPDATE AgentOffers 
                         set offertypeid = ?, 
@@ -337,12 +337,12 @@ router.post('/saveoffer', (req, res) => {
                             offerStatus = ? 
                       where agentid = ? 
                         and buyerid = ? 
-                        and buyerrequestid = ?`;
+                        and buyeragentmatchid = ?`;
     } else {
-      insertQuery = `INSERT INTO AgentOffers (offertypeid, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, agentid, buyerid, buyerrequestid) 
+      insertQuery = `INSERT INTO AgentOffers (offertypeid, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, agentid, buyerid, buyeragentmatchid) 
                      values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
     }
-    db.query(insertQuery, [offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, userid, buyerid, buyerrequestid], (error, result) => {
+    db.query(insertQuery, [offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, userid, buyerid, buyeragentmatchid], (error, result) => {
       if (error) {
         console.error('Error saving offer:', error);
         return res.status(500).json({ error: 'Internal server error' });
