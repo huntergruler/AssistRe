@@ -456,7 +456,8 @@ router.get('/dashboard_b', (req, res) => {
     const userid = req.session.userid;
     const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
                           ifnull(brd.bathrooms_min,0) bathrooms_min, ifnull(brd.bathrooms_max,0) bathrooms_max, ifnull(brd.bedrooms_min,0) bedrooms_min, ifnull(brd.bedrooms_max,0) bedrooms_max, brd.buyerType, ifnull(brd.preferredLanguages,'') preferredLanguages, if(brd.prequalified="Y",'Yes','No') prequalified, ifnull(brd.price_min,0) price_min, 
-                          ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, ifnull(brd.timeFrame,'') timeFrame, brd.prequalifiedFile, los.levelOfService levelOfServiceDisp, los.levelofserviceid                          ifnull(brd.prequalifiedAmount,0) prequalifiedAmount, brd.buyerrequestid
+                          ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, ifnull(brd.timeFrame,'') timeFrame, brd.prequalifiedFile, los.levelOfService levelOfServiceDisp, los.levelofserviceid,
+                          ifnull(brd.prequalifiedAmount,0) prequalifiedAmount, brd.buyerrequestid
                      from Buyers b
                           left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
                           join LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
