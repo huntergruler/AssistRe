@@ -250,16 +250,19 @@ function populateCities() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function saveChanges() {
+function saveZipChanges() {
     const selected = document.querySelectorAll(".zipCodeSelected");
+    const selected2 = document.querySelectorAll(".userZipCodes");
 
     // Prepare the array of selected zip codes
     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
+    const selectedZipCodes2 = Array.from(selected2).map(node => node.textContent);
 
     //document.getElementById('saveChanges').disabled = true;
     // Prepare the data to be sent
+    const userZipCodes = selectedZipCodes.concat(selectedZipCodes2);
     const data = {
-        zipCodes: selectedZipCodes
+        zipCodes: userZipCodes
     };
 
     // Send the data to the server using fetch
@@ -283,6 +286,7 @@ function saveChanges() {
             console.error('Error:', error);
         });
 
+    populateDisplayZipCodes();
     selected.forEach(node => {
         const data = {
             zipCode: node.textContent
