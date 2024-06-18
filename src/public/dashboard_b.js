@@ -110,6 +110,7 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "New") {
                         div.innerHTML = ``
                     }
+                    console.log('Offer summary',request.buyerStatus);
                     div.innerHTML += `
                     <div class="flex-fill offerSummary">
                     <div class="newDot col-md-12">&#x2022;</div>
