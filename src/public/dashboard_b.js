@@ -533,12 +533,11 @@ function savePropertyChanges() {
 
 function getBuyerTypes() {
     buyerTypeCheckbox = document.getElementById('buyerTypeCheckbox');
-    console.log('Getting buyer types');
     fetch(`getBuyerTypes`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             data.results.forEach(item => {
+                console.log(item.buyertypeid, item.buyerType);
                 let checkbox = document.createElement('checkbox');
                 checkbox.value = item.buyertypeid;
                 checkbox.textContent = item.buyerType;
