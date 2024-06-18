@@ -151,53 +151,11 @@ router.get('/getOffers', (req, res) => {
     const buyerid = req.session.userid;
 
     if (!agentid) {
-      var query = `SELECT 
-      ao.agentofferid, 
-      ao.buyerrequestid, 
-      ao.buyerid, 
-      ao.agentid, 
-      ot.offerType, 
-      los.levelOfService,
-      CASE 
-          WHEN ct.compensationType = 'Hourly Rate'
-          THEN CONCAT('$',ao.compensationAmount,' ',ct.compensationTypeUnit)
-          WHEN ct.compensationType = 'Flat Fee'
-          THEN CONCAT('$',ao.compensationAmount)
-          WHEN ct.compensationType = '% of Sales Price'
-          THEN CONCAT(ao.compensationAmount,' ',ct.compensationTypeUnit)
-          ELSE ao.compensationAmount
-      END compensationAmount, 
-      ao.retainerFee, 
-      ao.retainerCredited, 
-      ao.lengthOfService, 
-      ao.expirationCompensation, 
-      ao.expirationCompTimeFrame, 
-      ao.offerDesc, 
-      DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, 
-      bam.buyerStatus, 
-      CONCAT(SUBSTR(a.firstname,1,1), SUBSTR(a.lastname,1,1), ao.agentofferid) dispIdentifier ,
-      CONCAT('Agent ', CONCAT(SUBSTR(a.firstname,1,1), SUBSTR(a.lastname,1,1), ao.agentofferid), 
-      ' will provide ', ot.offerType,', ', los.levelOfService,' for a fee of ', 
-      CASE 
-          WHEN ct.compensationType = 'Hourly Rate'
-          THEN CONCAT('$',ao.compensationAmount,' ',ct.compensationTypeUnit)
-          WHEN ct.compensationType = 'Flat Fee'
-          THEN CONCAT('$',ao.compensationAmount)
-          WHEN ct.compensationType = '% of Sales Price'
-          THEN CONCAT(ao.compensationAmount,' ',ct.compensationTypeUnit)
-          ELSE ao.compensationAmount
-      END, ' for a term length of ', lengthOfService,
-      IF (retainerFee>0,CONCAT('. A retainer fee of ', retainerFee, ' is required and ', 
-          IF (retainerCredited =1,' will ',' will not '), ' be credited toward compensation.'),'No retainer fee.')) offerText 
-  FROM AgentOffers ao 
-       JOIN Agents a ON a.userid = ao.agentid
-       JOIN AgentBuyerMatch bam ON bam.buyerid = ao.buyerid AND bam.agentid = a.userid
-       JOIN LevelsOfService los ON los.levelofserviceid = ao.levelofserviceid
-       JOIN CompensationTypes ct ON ct.compensationtypeid = ao.compensationtypeid
-       JOIN OfferTypes ot ON ot.offertypeid = ao.offertypeid
-  WHERE ao.buyerid = ?
-  AND IF (bam.buyerStatus = 'Read','New', bam.buyerStatus)= 'New'
-  ORDER BY bam.buyerStatus, ao.entrytimestamp DESC;
+      var query = `select ofb.agentid, ofb.agentofferid, ofb.buyerStatus, ofb.buyerid, ofb.buyerrequestid, ofb.compensationAmount, ofb.dispIdentifier, ofb.expirationCompTimeFrame, ofb.expirationCompensation, ofb.lengthOfService, ofb.levelOfService, ofb.offerDesc, ofb.offerText, ofb.offerTimestamp, ofb.offerType, ofb.retainerCredited, ofb.retainerFee
+                     from OffersForBuyers ofb
+                    where buyerid = ?
+                      and buyerStatus = ?
+                    ORDER BY buyerStatus, entrytimestamp DESC;
   `;
       db.query(query, [buyerid, datatype], (error, results) => {
         if (error) {
