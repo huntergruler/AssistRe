@@ -15,7 +15,7 @@ function lookupCityState() {
                 } else {
                     cityState.textContent = 'Invalid zip code';
                     cityState.style.color = 'red';
-
+                    cityState.focus();
                 }
             }
         };
