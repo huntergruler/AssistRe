@@ -162,7 +162,7 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "New") {
                         div.innerHTML = ``
                     }
-                    console.log('Offer summary',request.buyerStatus);
+                    console.log('Offer summary', request.buyerStatus);
                     div.innerHTML += `
                     <div class="flex-fill offerSummary">
                     <div class="newDot col-md-12">&#x2022;</div>
@@ -486,14 +486,14 @@ function savePropertyChanges() {
     const preferredLanguages = document.getElementById('preferredLanguages').value;
     const levelOfService = document.getElementById('levelOfService').value;
     const userid = document.getElementById('userid').value;
-    console.log(prequalifiedY,"Prequalified Y",prequalifiedN,"Prequalified N");
+    console.log(prequalifiedY, "Prequalified Y", prequalifiedN, "Prequalified N");
 
     if (prequalifiedY) {
         var prequalified = 'Y';
     } else {
         var prequalified = 'N';
     }
-    console.log(prequalified,"Prequalified");
+    console.log(prequalified, "Prequalified");
     const data = {
         propertyType: propertyType,
         bedrooms_min: bedrooms_min,
@@ -522,7 +522,7 @@ function savePropertyChanges() {
                 throw new Error('Network response was not ok');
             }
             window.location.reload();
-                })
+        })
         .then(result => {
             console.log('Success:', result);
         })
@@ -538,15 +538,24 @@ function getBuyerTypes() {
         .then(data => {
             data.results.forEach(item => {
                 console.log(item.buyertypeid, item.buyerType);
-                // checkbox.label = item.buyerType+item.buyertypeid;
-                let checkbox = document.createElement('input');
+                // Create a label element
+                const label = document.createElement('label');
+                label.htmlFor = item.buyertypeid;
+                label.textContent = item.buyerType;
+
+                // Create a checkbox element
+                const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.name = 'buyerType';
                 checkbox.value = item.buyertypeid;
-                checkbox.textContent = item.buyerType;
                 checkbox.id = item.buyertypeid;
 
+                // Append the checkbox and label to the container
                 buyerTypeCheckbox.appendChild(checkbox);
+                buyerTypeCheckbox.appendChild(label);
+
+                // Append a line break for better readability
+                buyerTypeCheckbox.appendChild(document.createElement('br'));
             });
         })
 }
