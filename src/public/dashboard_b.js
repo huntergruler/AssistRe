@@ -538,13 +538,14 @@ function getBuyerTypes() {
         .then(data => {
             data.results.forEach(item => {
                 console.log(item.buyertypeid, item.buyerType);
-                let checkbox = document.createElement('checkbox');
+                checkbox.label = item.buyerType+item.buyertypeid;
+                let checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.name = 'buyerType';
                 checkbox.value = item.buyertypeid;
                 checkbox.textContent = item.buyerType;
                 checkbox.id = item.buyertypeid;
-                
+
                 buyerTypeCheckbox.appendChild(checkbox);
             });
         })
