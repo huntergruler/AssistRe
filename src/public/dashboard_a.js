@@ -193,7 +193,7 @@ function selectRequest(buyerid, buyerrequestid, element) {
         buttonElement.style.borderRadius = "5px";
         buttonElement.style.padding = "2px";
         buttonElement.style.margin = "2px";
-        buttonElement.setAttribute("onclick", `modifyOffer(event)`);
+        buttonElement.setAttribute("onclick", `modifyOffer(event, ${buyerrequestid})`);
         offerButton.appendChild(buttonElement);
         buttonElement = document.createElement("button");
         buttonElement.className = "col-md-5";
@@ -315,7 +315,7 @@ function makeOffer(buyerid, buyerrequestid) {
     offerButton.appendChild(buttonElement);
 }
 
-function modifyOffer(event) {
+function modifyOffer(event, buyerrequestid) {
     event.preventDefault();
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
