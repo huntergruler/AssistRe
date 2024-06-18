@@ -573,9 +573,11 @@ function populateLevelOfService() {
 
     const defaultOption = document.createElement('option');
     buyerLevelOfService.innerHTML = '';
-    defaultOption.textContent = 'Select a Level of Service';
-    defaultOption.value = '';
-    buyerLevelOfService.appendChild(defaultOption);
+    if (levelofservicevalue) {
+        defaultOption.textContent = 'Select a Level of Service';
+        defaultOption.value = '';
+        buyerLevelOfService.appendChild(defaultOption);
+    }
 
     fetch(`/get-levelofservice`)
         .then(response => response.json())
