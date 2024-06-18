@@ -6,9 +6,8 @@ function lookupCityState() {
         xhr.open('GET', '/get-city-state?zipCode=' + zipCode, true);
         xhr.onreadystatechange = function () {
             console.log('ReadyState:', xhr.readyState, 'Status:', xhr.status);
-            if (xhr.readyState == 4 && xhr.status == 200) {
+            if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 404)) {
                 let response = JSON.parse(xhr.responseText);
-                console.log('Response:', response);
                 if (response.city && response.state) {
                     document.getElementById('cityState').textContent = response.city + ', ' + response.state;
                 } else {
