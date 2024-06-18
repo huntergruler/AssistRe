@@ -273,18 +273,20 @@ function requestDetail(buyerid, buyerrequestid) {
                         { id: "declinerequest", text: "Reopen Request", onclick: `reopenRequest(${request.buyerid})` },
                     ];
                 }
+                if (datatype != "Read" && datatype != "New" && datatype != "Confirmed" && datatype != "Declined") {
 
-                buttons.forEach(button => {
-                    const buttonElement = document.createElement("button");
-                    buttonElement.id = button.id;
-                    buttonElement.textContent = button.text;
-                    buttonElement.style.border = "1px solid black";
-                    buttonElement.style.borderRadius = "5px";
-                    buttonElement.style.padding = "2px";
-                    buttonElement.style.margin = "2px";
-                    buttonElement.setAttribute("onclick", button.onclick);
-                    buttonContainer.appendChild(buttonElement);
-                });
+                    buttons.forEach(button => {
+                        const buttonElement = document.createElement("button");
+                        buttonElement.id = button.id;
+                        buttonElement.textContent = button.text;
+                        buttonElement.style.border = "1px solid black";
+                        buttonElement.style.borderRadius = "5px";
+                        buttonElement.style.padding = "2px";
+                        buttonElement.style.margin = "2px";
+                        buttonElement.setAttribute("onclick", button.onclick);
+                        buttonContainer.appendChild(buttonElement);
+                    });
+                }
 
                 // Append the container to the detailButtons element
                 detailButtons.appendChild(buttonContainer);
