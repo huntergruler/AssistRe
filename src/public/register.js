@@ -8,6 +8,7 @@ function lookupCityState() {
             console.log('ReadyState:', xhr.readyState, 'Status:', xhr.status);
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
+                console.log('Response:', response);
                 if (response.city && response.state) {
                     document.getElementById('cityState').textContent = response.city + ', ' + response.state;
                 } else {
