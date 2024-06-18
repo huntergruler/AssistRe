@@ -591,6 +591,7 @@ function populateLevelOfService() {
                 buyerLevelOfService.appendChild(option);
             });
         })
-    buyerLevelOfService.value = levelofservicevalue;
-    console.log(levelofservicevalue, "Level of Service Value", buyerLevelOfService.value);
+        const buyerLevelOfServ = document.getElementById('buyerLevelOfService');
+        buyerLevelOfServ.value = levelofservicevalue;
+    console.log(levelofservicevalue, "Level of Service Value", buyerLevelOfServ.value);
 };
