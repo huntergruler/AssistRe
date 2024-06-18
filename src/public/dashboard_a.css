@@ -45,7 +45,7 @@
 /* Style the active tab button */
 .tab button.active {
     background-color: var(--background-color);
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
 }
 
 
