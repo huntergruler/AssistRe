@@ -540,7 +540,7 @@ function getBuyerTypes() {
                 console.log(item.buyertypeid, item.buyerType);
                 // Create a div element for Bootstrap grid
                 const div = document.createElement('div');
-                div.className = 'col-sm-6'; // Adjust the column size as needed
+                div.className = 'col-sm-5'; // Adjust the column size as needed
 
                 // Create a label element
                 const label = document.createElement('label');
