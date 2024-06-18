@@ -546,7 +546,7 @@ function getBuyerTypes() {
                 // Create a label element
                 const label = document.createElement('label');
                 label.htmlFor = item.buyertypeid;
-                label.innerHTML = '&nbsp;'+item.buyerType+'&nbsp;';
+                label.innerHTML = '&nbsp;' + item.buyerType + '&nbsp;';
                 // label.style.marginRight = '10px';
 
                 // Create a checkbox element
@@ -569,6 +569,7 @@ function getBuyerTypes() {
 
 function populateLevelOfService() {
     const buyerLevelOfService = document.getElementById('buyerLevelOfService');
+    const buyerlevelofservicevalue = document.getElementById('buyerlevelofserviceid').value;
 
     const defaultOption = document.createElement('option');
     buyerLevelOfService.innerHTML = '';
@@ -587,4 +588,5 @@ function populateLevelOfService() {
                 buyerLevelOfService.appendChild(option);
             });
         })
+    buyerLevelOfService.value = buyerlevelofservicevalue;
 };
