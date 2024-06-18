@@ -1,5 +1,6 @@
 function lookupCityState() {
     let zipCode = document.getElementById('zipCode').value;
+    const cityState = document.getElementById('cityState');
     if (zipCode) {
         // Create a new XMLHttpRequest object
         let xhr = new XMLHttpRequest();
@@ -9,9 +10,11 @@ function lookupCityState() {
             if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 404)) {
                 let response = JSON.parse(xhr.responseText);
                 if (response.city && response.state) {
-                    document.getElementById('cityState').textContent = response.city + ', ' + response.state;
+                    cityState.textContent = response.city + ', ' + response.state;
                 } else {
-                    document.getElementById('cityState').textContent = 'City and state not found';
+                    cityState.textContent = 'Invalid zip code';
+                    cityState.style.color = 'red';
+
                 }
             }
         };
