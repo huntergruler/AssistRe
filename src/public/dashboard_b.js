@@ -538,7 +538,7 @@ function getBuyerTypes() {
         .then(data => {
             data.results.forEach(item => {
                 console.log(item.buyertypeid, item.buyerType);
-                checkbox.label = item.buyerType+item.buyertypeid;
+                // checkbox.label = item.buyerType+item.buyertypeid;
                 let checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.name = 'buyerType';
