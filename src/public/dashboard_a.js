@@ -108,14 +108,11 @@ function getRequests(datatype, element) {
             else {
                 data.forEach(request => {
                     const input = document.createElement("input");
-                    input.id = buyerrequestid;
-                    input.name = buyerrequestid;
+                    input.id = "buyerrequestid";
+                    input.name = "buyerrequestid";
                     input.type = "hidden";
                     input.value = request.buyerrequestid;
                     requests.appendChild(input);
-
-                    document.getElementById('buyerrequestid').value = request.buyerrequestid;  
-
                     const div = document.createElement("div");
                     if (request.agentStatus == "New") {
                         div.innerHTML = ``
@@ -196,7 +193,7 @@ function selectRequest(buyerid, buyerrequestid, element) {
         buttonElement.style.borderRadius = "5px";
         buttonElement.style.padding = "2px";
         buttonElement.style.margin = "2px";
-        buttonElement.setAttribute("onclick", `modifyOffer(event)`);
+        buttonElement.setAttribute("onclick", `modifyOffer(event, ${buyerrequestid})`);
         offerButton.appendChild(buttonElement);
         buttonElement = document.createElement("button");
         buttonElement.className = "col-md-5";
@@ -232,6 +229,7 @@ function requestDetail(buyerid, buyerrequestid) {
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
+                console.log(request);
                 const div = document.createElement("div");
                 div.innerHTML = `${request.buyerType}<br>
                     Price Range: $${request.price_min} to $${request.price_max}<br>
@@ -258,9 +256,10 @@ function requestDetail(buyerid, buyerrequestid) {
                 buttonContainer.style.border = "none";
 
                 // Create each button and append them to the container
+                console.log(datatype);
                 if (datatype == "Read" || datatype == "New") {
                     var buttons = [
-                        { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid})` },
+                        { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid},${request.buyerrequestid})` },
                         { id: "declinerequest", text: "Decline Request", onclick: `declineRequest(${request.buyerid})` },
                     ];
                 }
@@ -274,21 +273,22 @@ function requestDetail(buyerid, buyerrequestid) {
                         { id: "declinerequest", text: "Reopen Request", onclick: `reopenRequest(${request.buyerid})` },
                     ];
                 }
+                if (datatype == "Read" || datatype == "New" || datatype == "Confirmed" || datatype == "Declined") {
 
-                buttons.forEach(button => {
-                    const buttonElement = document.createElement("button");
-                    buttonElement.id = button.id;
-                    buttonElement.textContent = button.text;
-                    buttonElement.style.border = "1px solid black";
-                    buttonElement.style.borderRadius = "5px";
-                    buttonElement.style.padding = "2px";
-                    buttonElement.style.margin = "2px";
-                    buttonElement.setAttribute("onclick", button.onclick);
-                    buttonContainer.appendChild(buttonElement);
-                });
+                    buttons.forEach(button => {
+                        const buttonElement = document.createElement("button");
+                        buttonElement.id = button.id;
+                        buttonElement.textContent = button.text;
+                        buttonElement.style.border = "1px solid black";
+                        buttonElement.style.borderRadius = "5px";
+                        buttonElement.style.padding = "2px";
+                        buttonElement.style.margin = "2px";
+                        buttonElement.setAttribute("onclick", button.onclick);
+                        buttonContainer.appendChild(buttonElement);
+                        detailButtons.appendChild(buttonContainer);
+                    });
+                }
 
-                // Append the container to the detailButtons element
-                detailButtons.appendChild(buttonContainer);
             });
         })
         .catch(error => console.error('Error checking user:', error));
@@ -300,6 +300,7 @@ function makeOffer(buyerid, buyerrequestid) {
     const offerButton = document.getElementById('offerButton');
     offerButton.innerHTML = '';
     offerForm.style.display = 'block';
+    console.log(buyerid, buyerrequestid);
 
     const detailsCont = document.getElementById('requestDetails');
     detailsCont.style.border = '1px solid black';
@@ -314,7 +315,7 @@ function makeOffer(buyerid, buyerrequestid) {
     offerButton.appendChild(buttonElement);
 }
 
-function modifyOffer(event) {
+function modifyOffer(event, buyerrequestid) {
     event.preventDefault();
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
@@ -603,10 +604,10 @@ function saveOffer(event, action, buyerrequestid) {
             offerForm.style.display = 'none';
             requestDetail.display = 'none';
             detailButtons.display = 'none';
-            clearForm();
+            // clearForm();
 
-            getRequests(dataType, null);
-            getRequestCounts();
+            // getRequests(dataType, null);
+            // getRequestCounts();
             // Optionally, perform any actions here after successful submission
         })
         .catch(error => {
