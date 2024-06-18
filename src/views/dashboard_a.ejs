@@ -40,15 +40,17 @@
                 <%= lastname %>
         </h2>
     </div>
-    <div class="row tab col-md-10 d-flex justify-content-center" id="tabcontainer">
-        <button id="tabNew" class="tablinks col-md btn-sm" onclick="getRequests('New', this)">Open Requests</button>
-        <button id="tabOffered" class="tablinks col-md btn-sm" onclick="getRequests('Offered', this)">Offered</button>
-        <button id="tabConfirmed" class="tablinks col-md btn-sm"
-            onclick="getRequests('Confirmed', this)">Confirmed</button>
-        <button id="tabDeclined" class="tablinks col-md btn-sm"
-            onclick="getRequests('Declined', this)">Declined</button>
-        <button id="tabRejected" class="tablinks col-md btn-sm"
-            onclick="getRequests('Rejected', this)">Rejected</button>
+    <div class="d-flex justify-content-center">
+        <div class="row tab col-md-10" id="tabcontainer">
+            <button id="tabNew" class="tablinks col-md btn-sm" onclick="getRequests('New', this)">Open Requests</button>
+            <button id="tabOffered" class="tablinks col-md btn-sm" onclick="getRequests('Offered', this)">Offered</button>
+            <button id="tabConfirmed" class="tablinks col-md btn-sm"
+                onclick="getRequests('Confirmed', this)">Confirmed</button>
+            <button id="tabDeclined" class="tablinks col-md btn-sm"
+                onclick="getRequests('Declined', this)">Declined</button>
+            <button id="tabRejected" class="tablinks col-md btn-sm"
+                onclick="getRequests('Rejected', this)">Rejected</button>
+        </div>
     </div>
     <div id="getRequests" class="tabcontent">
         <div class="row">
