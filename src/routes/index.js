@@ -1374,10 +1374,17 @@ function sendVerificationEmail(req, email, token, userType) {
 
 router.get('getBuyerTypes', (req, res) => {
   const query = 'SELECT buyertypeid, buyerType FROM BuyerTypes';
-  db.query(query, (err, results) => {
-    if (err)  console.log('Error sending email:', error);
-    res.json({ results });
+  db.query(query, [userid], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results.length > 0) {
+      res.json({ results });
+    } else {
+      res.status(404).json({ error: 'No buyer types found' });
+    }
   });
+
 });
  
   
