@@ -508,7 +508,7 @@ function savePropertyChanges() {
         price_max: price_max,
         timeFrame: timeFrame,
         prequalified: prequalified,
-        levelOfService: levelOfService,
+        levelofserviceid: levelofserviceid,
         preferredLanguages: preferredLanguages,
         userid: userid
     };
