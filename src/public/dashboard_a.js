@@ -256,6 +256,7 @@ function requestDetail(buyerid, buyerrequestid) {
                 buttonContainer.style.border = "none";
 
                 // Create each button and append them to the container
+                console.log(datatype);
                 if (datatype == "Read" || datatype == "New") {
                     var buttons = [
                         { id: "makeOffer", text: "Make Offer", onclick: `makeOffer(${request.buyerid},${request.buyerrequestid})` },
