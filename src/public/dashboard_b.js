@@ -576,19 +576,14 @@ function populateLevelOfService() {
     defaultOption.value = '';
     buyerLevelOfService.appendChild(defaultOption);
 
-    console.log('Populating level of service');
-
     fetch(`/get-levelofservice`)
         .then(response => response.json())
         .then(data => {
-            console.log("GOTHERE");
-            console.log(data.results);
             data.results.forEach(item => {
                 console.log(item.levelOfService);
                 let option = document.createElement('option');
                 option.value = item.levelofserviceid;
                 option.textContent = item.levelOfService;
-                console.log(option);
                 buyerLevelOfService.appendChild(option);
             });
         })
