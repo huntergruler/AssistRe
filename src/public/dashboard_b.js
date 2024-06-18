@@ -569,7 +569,7 @@ function getBuyerTypes() {
 
 function populateLevelOfService() {
     const buyerLevelOfService = document.getElementById('buyerLevelOfService');
-    const buyerlevelofservicevalue = document.getElementById('buyerlevelofserviceid').value;
+    const levelofservicevalue = document.getElementById('levelofserviceid').value;
 
     const defaultOption = document.createElement('option');
     buyerLevelOfService.innerHTML = '';
@@ -588,5 +588,5 @@ function populateLevelOfService() {
                 buyerLevelOfService.appendChild(option);
             });
         })
-    buyerLevelOfService.value = buyerlevelofservicevalue;
+    buyerLevelOfService.value = levelofservicevalue;
 };
