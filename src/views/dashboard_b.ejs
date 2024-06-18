@@ -45,16 +45,21 @@
             <h3 class="text-center">Your Property Request Info</h3>
             <div class="property-group">
                 Property Type: <%= buyer.propertyType %><br>
-                Service Level: <%= buyer.levelOfService %><br>
-                Minimum Bedrooms: <%= buyer.bedrooms_min %><br>
-                Minimum Batrooms: <%= buyer.bathrooms_min %><br>
-                SqFt Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %><br>
-                Price Range: $<%= buyer.price_min %> to $<%= buyer.price_max %><br>
-                Timeframe: <%= buyer.timeFrame %><br>
-                Prequalified: <%= buyer.prequalified %><br>
-                Prequalified Amount: <%= buyer.prequalifiedAmount %><br>
-                Preferred Languages: <%= buyer.preferredLanguages %><br>
-            </div>
+                    Service Level: <%= buyer.levelOfService %><br>
+                        Minimum Bedrooms: <%= buyer.bedrooms_min %><br>
+                            Minimum Batrooms: <%= buyer.bathrooms_min %><br>
+                                SqFt Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %><br>
+                                        Price Range: $<%= buyer.price_min %> to $<%= buyer.price_max %><br>
+                                                Timeframe: <%= buyer.timeFrame %><br>
+                                                    Prequalified: <%= buyer.prequalified %><br>
+                                                        Prequalified Amount: <%= buyer.prequalifiedAmount %><br>
+                                                            Preferred Languages: <%= buyer.preferredLanguages %><br>
+                                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal"
+                                                            >
+                                        
+                                                            Modify Property Info
+                                                        </button>
+                                                    </div>
         </div>
         <div class="offer-group col-md-8">
             <h3 class="text-center">Your Offers</h3>
@@ -171,19 +176,124 @@
             </div>
         </div>
     </div>
-    </div>
 
     <div id="page3" class="tabcontent">
         <h3>Page 3 Content</h3>
         <p>This is the content of Page 3.</p>
     </div>
-    <div id="myModal" class="modal" style="display: none;">
+    <div id="messageModal" class="modal" style="display: none;">
         <div class="modal-content">
             <span class="close">&times;</span>
             <p id="modalMessage">Some text in the Modal..</p>
             <button class="modal-close-btn" id="modalCloseButton">Close</button>
         </div>
     </div>
+    <div id="propertyModal" class="modal fade" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="propertyModalLabel">Property Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container mt-5">
+                        <div class="form-container">
+                            <form id="propertyForm" style="padding-top: 5px;">
+                                <div class="form-row ">
+                                    <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
+                                    <input type="text" class="form-control-sm col-md-6" placeholder="Property Type"
+                                        id="propertyType" name="propertyType" value="<%= buyer.propertyType %>"
+                                        required>
+                                </div>
+                                <div class="form-row ">
+                                    <label for="bedrooms_min" class="col-md-4 col-form-label">Minimum Bedrooms</label>
+                                    <input type="text" class="form-control-sm col-md-2" id="bedrooms_min"
+                                        name="bedrooms_min" value="<%= buyer.bedrooms_min %>" required>
+                                </div>
+                                <div class="form-row">
+                                    <label for="bathrooms_min" class="col-md-4 col-form-label">Minimum Bathrooms</label>
+                                    <input type="text" class="form-control-sm col-md-2" id="bathrooms_min"
+                                        name="bathrooms_min" value="<%= buyer.bathrooms_min %>" required>
+                                </div>
+                                <div class="form-row ">
+                                    <label for="squareFootage" class="col-md-4 col-form-label">Square Foot Range</label>
+                                    <input type="text" class="form-control-sm col-md-2" placeholder="Min"
+                                        id="squareFootage_min" name="squareFootage_min"
+                                        value="<%= buyer.squareFootage_min %>" required>
+                                    <label class="col-md-1 text-center">To</label>
+                                    <input type="text" class="form-control-sm col-md-2" placeholder="Max"
+                                        id="squareFootage_max" name="squareFootage_max"
+                                        value="<%= buyer.squareFootage_max %>" required>
+                                </div>
+                                <div class="form-row ">
+                                    <label for="priceRange" class="col-md-4 col-form-label">Price Range</label>
+                                    <input type="text" class="form-control-sm col-md-2" placeholder="Min" id="price_min"
+                                        name="price_min" value="<%= buyer.price_min %>" required>
+                                    <label class="col-md-1 text-center">To</label>
+                                    <input type="text" class="form-control-sm col-md-2" placeholder="Max" id="price_max"
+                                        name="price_max" value="<%= buyer.price_max %>" required>
+                                </div>
+                                <div class="form-row ">
+                                    <label for="levelOfService" class="col-md-4 col-form-label">Agent Service
+                                        Level</label>
+                                    <select id="levelOfService" class="form-select-sm col-md-6"
+                                        placeholder="Level Of Service"></select>
+                                </div>
+                                <div class="form-row ">
+                                    <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
+                                    <input type="text" class="form-control-sm col-md-5" placeholder="Enter Time Frame"
+                                        id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
+                                </div>
+                                <div class="form-row ">
+                                    <label for="prequalified" id="prequalified"
+                                        class="col-md-4 col-form-label">Prequalified</label>
+                                    <div class="col-md-3">
+                                        <% if ( buyer.prequalified=='Yes' ) { %>
+                                            <input type="radio" id="prequalifiedY" name="prequalified" required checked>
+                                            Yes
+                                            <input type="radio" id="prequalifiedN" name="prequalified" required>
+                                            No
+                                            <% } else { %>
+                                                <input type="radio" id="prequalifiedY" name="prequalified" required>
+                                                Yes
+                                                <input type="radio" id="prequalifiedN" name="prequalified" required
+                                                    checked>
+                                                No
+                                                <% } %>
+                                    </div>
+                                    <div class="col-md-3"></div>
+                                </div>
+                                <div class="form-row ">
+                                    <label for="prequalifiedAmount" class="col-md-4 col-form-label">Prequalified
+                                        Amount</label>
+                                    <input type="text" class="form-control-sm col-md-5"
+                                        placeholder="Enter Prequalified Amount" id="prequalifiedAmount"
+                                        name="prequalifiedAmount" value="<%= buyer.prequalifiedAmount%>">
+                                </div>
+                                <div class="form-row ">
+                                    <label for="preferredLanguages" class="col-md-4 col-form-label">Preferred
+                                        Language</label>
+                                    <input type="text" class="form-control-sm col-md-6 "
+                                        placeholder="Preferred Language" id="preferredLanguages"
+                                        name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required>
+                                </div>
+                                <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
+                            </form>
+                        </div>
+                        <div form-row justify-content-center>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
+                                    onclick="savePropertyChanges()">Save</button>
+                                <button type="button" class="btn btn-primary btn-sm"
+                                    data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="/dashboard_b.js"></script>
     <script src="/session.js"></script>

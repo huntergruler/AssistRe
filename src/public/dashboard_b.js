@@ -1,6 +1,6 @@
 // const { dot } = require("node:test/reporters");
 
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("messageModal");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];

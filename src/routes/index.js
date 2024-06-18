@@ -724,6 +724,7 @@ router.post('/login', [
             });
             res.json({
               success: true,
+              firstLogin: false,
               message: "Successful Login"
             });
           }
