@@ -86,6 +86,8 @@ function showModal(message) {
 document.addEventListener('DOMContentLoaded', function () {
     getOfferCounts('New', null);
     getBuyerTypes();
+    populateLevelOfService();
+
     // getOfferCounts();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
