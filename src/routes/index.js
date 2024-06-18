@@ -320,7 +320,7 @@ router.post('/saveoffer', (req, res) => {
     const action = req.body.action;
     const offerStatus = 'Offered';
     console.log('Action:', action);
-    const { buyerid, buyerrequestid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
+    const { buyerid, offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc } = req.body;
     if (action === 'Update') {
       insertQuery = `UPDATE AgentOffers 
                         set offertypeid = ?, 
@@ -335,13 +335,12 @@ router.post('/saveoffer', (req, res) => {
                             offerDesc = ?, 
                             offerStatus = ? 
                       where agentid = ? 
-                        and buyerid = ? 
-                        and buyerrequestid = ?`;
+                        and buyerid = ?`;
     } else {
-      insertQuery = `INSERT INTO AgentOffers (offertypeid, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, agentid, buyerid, buyerrequestid) 
+      insertQuery = `INSERT INTO AgentOffers (offertypeid, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, agentid, buyerid) 
                      values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
     }
-    db.query(insertQuery, [offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, userid, buyerid, buyerrequestid], (error, result) => {
+    db.query(insertQuery, [offerType, compensationType, levelOfService, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, userid, buyerid], (error, result) => {
       if (error) {
         console.error('Error saving offer:', error);
         return res.status(500).json({ error: 'Internal server error' });
