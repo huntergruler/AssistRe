@@ -557,8 +557,8 @@ function getBuyerTypes() {
                 // checkbox.style.marginRight = '5px';
 
                 // Append the checkbox and label to the div
-                buyerTypeCheckbox.appendChild(checkbox);
                 buyerTypeCheckbox.appendChild(label);
+                buyerTypeCheckbox.appendChild(checkbox);
 
                 // Append the div to the row container
                 // buyerTypeCheckbox.appendChild(div);
