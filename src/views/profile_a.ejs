@@ -472,36 +472,36 @@
                                 <div class="form-row ">
                                     <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
                                     <input type="text" class="form-control-sm col-md-6" placeholder="Property Type"
-                                        id="propertyType" name="propertyType" value="<%= buyer.propertyType %>"
+                                        id="propertyType" name="propertyType" value="FIX"
                                         required>
                                 </div>
                                 <div class="form-row ">
                                     <label for="bedrooms_min" class="col-md-4 col-form-label">Minimum Bedrooms</label>
                                     <input type="text" class="form-control-sm col-md-2" id="bedrooms_min"
-                                        name="bedrooms_min" value="<%= buyer.bedrooms_min %>" required>
+                                        name="bedrooms_min" value="FIX>" required>
                                 </div>
                                 <div class="form-row">
                                     <label for="bathrooms_min" class="col-md-4 col-form-label">Minimum Bathrooms</label>
                                     <input type="text" class="form-control-sm col-md-2" id="bathrooms_min"
-                                        name="bathrooms_min" value="<%= buyer.bathrooms_min %>" required>
+                                        name="bathrooms_min" value="FIX" required>
                                 </div>
                                 <div class="form-row ">
                                     <label for="squareFootage" class="col-md-4 col-form-label">Square Foot Range</label>
                                     <input type="text" class="form-control-sm col-md-2" placeholder="Min"
                                         id="squareFootage_min" name="squareFootage_min"
-                                        value="<%= buyer.squareFootage_min %>" required>
+                                        value="FIX" required>
                                     <label class="col-md-1 text-center">To</label>
                                     <input type="text" class="form-control-sm col-md-2" placeholder="Max"
                                         id="squareFootage_max" name="squareFootage_max"
-                                        value="<%= buyer.squareFootage_max %>" required>
+                                        value="FIX" required>
                                 </div>
                                 <div class="form-row ">
                                     <label for="priceRange" class="col-md-4 col-form-label">Price Range</label>
                                     <input type="text" class="form-control-sm col-md-2" placeholder="Min" id="price_min"
-                                        name="price_min" value="<%= buyer.price_min %>" required>
+                                        name="price_min" value="FIX" required>
                                     <label class="col-md-1 text-center">To</label>
                                     <input type="text" class="form-control-sm col-md-2" placeholder="Max" id="price_max"
-                                        name="price_max" value="<%= buyer.price_max %>" required>
+                                        name="price_max" value="FIX" required>
                                 </div>
                                 <div class="form-row ">
                                     <label for="levelOfService" class="col-md-4 col-form-label">Agent Service
@@ -512,24 +512,13 @@
                                 <div class="form-row ">
                                     <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
                                     <input type="text" class="form-control-sm col-md-5" placeholder="Enter Time Frame"
-                                        id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
+                                        id="timeFrame" name="timeFrame" value="FIX" required>
                                 </div>
                                 <div class="form-row ">
                                     <label for="prequalified" id="prequalified"
                                         class="col-md-4 col-form-label">Prequalified</label>
                                     <div class="col-md-3">
-                                        <% if ( buyer.prequalified=='Yes' ) { %>
-                                            <input type="radio" id="prequalifiedY" name="prequalified" required checked>
-                                            Yes
-                                            <input type="radio" id="prequalifiedN" name="prequalified" required>
-                                            No
-                                            <% } else { %>
-                                                <input type="radio" id="prequalifiedY" name="prequalified" required>
-                                                Yes
-                                                <input type="radio" id="prequalifiedN" name="prequalified" required
-                                                    checked>
-                                                No
-                                                <% } %>
+                                        
                                     </div>
                                     <div class="col-md-3"></div>
                                 </div>
@@ -538,16 +527,16 @@
                                         Amount</label>
                                     <input type="text" class="form-control-sm col-md-5"
                                         placeholder="Enter Prequalified Amount" id="prequalifiedAmount"
-                                        name="prequalifiedAmount" value="<%= buyer.prequalifiedAmount%>">
+                                        name="prequalifiedAmount" value="FIX">
                                 </div>
                                 <div class="form-row ">
                                     <label for="preferredLanguages" class="col-md-4 col-form-label">Preferred
                                         Language</label>
                                     <input type="text" class="form-control-sm col-md-6 "
                                         placeholder="Preferred Language" id="preferredLanguages"
-                                        name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required>
+                                        name="preferredLanguages" value="FIX" required>
                                 </div>
-                                <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
+                                <input type="hidden" id="userid" name="userid" value="FIX">
                             </form>
                         </div>
                         <div form-row justify-content-center>
@@ -584,29 +573,29 @@
                                     <label for="firstName"
                                         class="col-md-3 col-form-label justify-content-right">Name</label>
                                     <input type="text" class="form-control-sm col-md-3" placeholder="First Name"
-                                        id="firstName" name="firstName" value="<%= buyer.firstName %>" required>
+                                        id="firstName" name="firstName" value="FIX" required>
                                     <input type="text" class="form-control-sm col-md-5" placeholder="Last Name"
-                                        id="lastName" name="lastName" value="<%= buyer.lastName %>" required>
+                                        id="lastName" name="lastName" value="FIX" required>
                                 </div>
                                 <div class="form-row">
                                     <label for="address" class="col-md-3 col-form-label">Address</label>
                                     <input type="text" class="form-control-sm col-md-8" placeholder="Address"
-                                        id="address" name="address" value="<%= buyer.address %>" required>
+                                        id="address" name="address" value="FIX" required>
                                 </div>
                                 <div class="form-row">
                                     <label for="city" class="col-md-3 col-form-label">City</label>
                                     <input type="text" class="form-control col-md-3 view-mode" id="city" name="city"
-                                        value="<%= buyer.city %>" required disabled>
+                                        value="FIX" required disabled>
                                 </div>
                                 <div class="form-row">
                                     <label for="state" class="col-md-3 col-form-label">State</label>
                                     <input class="form-control col-md-3 view-mode" id="state" name="state"
-                                        value="<%= buyer.state %>" required disabled>
+                                        value="FIX" required disabled>
                                 </div>
                                 <div class="form-row">
                                     <label for="zip" class="col-md-3 col-form-label">Zip</label>
                                     <input type="text" class="form-control-sm col-md-3" placeholder="Zip Code" id="zip"
-                                        name="zip" value="<%= buyer.zip %>" required onmouseleave="lookupCityState()"
+                                        name="zip" value="FIX" required onmouseleave="lookupCityState()"
                                         onblur="lookupCityState()">
                                     <span id="cityState"></span>
                                 </div>
@@ -614,9 +603,9 @@
                                     <label for="phoneNumber" class="col-md-3 col-form-label">Phone
                                         Number</label>
                                     <input type="text" class="form-control-sm col-md-4" placeholder="Phone Number"
-                                        id="phoneNumber" name="phoneNumber" value="<%= buyer.phoneNumber %>" required>
+                                        id="phoneNumber" name="phoneNumber" value="FIX" required>
                                 </div>
-                                <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
+                                <input type="hidden" id="userid" name="userid" value="FIX">
                             </form>
                         </div>
                         <div form-row justify-content-center>
