@@ -89,7 +89,6 @@ function getRequests(datatype, element) {
     const getRequests = document.getElementById('getRequests');
     getRequests.style.display = 'block';
     requests.innerHTML = '';
-    console.log(datatype);
     fetch(`/getRequests?datatype=${datatype}`)
         .then(response => response.json())
         .then(data => {
