@@ -20,6 +20,21 @@
     /* justify-items: center;
     text-align: center; */
 }
+.form-container {
+    max-width: 500px;
+    margin-left: 20px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 14px;
+    text-align: right;
+    border-radius: 5px;
+    border: 1px solid black;
+}
 
 .profile-group,
 .property-group {
