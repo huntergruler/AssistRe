@@ -35,6 +35,9 @@
     justify-content: center;
     align-items: center;
 }
+.buyertype {
+    padding: 0px;
+}
 
 .form-container {
     max-width: 600px;
