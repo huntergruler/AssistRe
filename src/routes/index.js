@@ -206,6 +206,7 @@ router.get('/getRequestCounts', (req, res) => {
   }
   else {
     const userid = req.session.userid;
+    console.log('Userid:', userid);
     var query = `select case when os.offerStatus in ('New','Read')
                               then 'New'
                               else os.offerStatus
