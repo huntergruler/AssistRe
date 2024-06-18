@@ -11,6 +11,7 @@ function lookupCityState() {
                 let response = JSON.parse(xhr.responseText);
                 if (response.city && response.state) {
                     cityState.textContent = response.city + ', ' + response.state;
+                    cityState.style.color = 'black';
                 } else {
                     cityState.textContent = 'Invalid zip code';
                     cityState.style.color = 'red';
