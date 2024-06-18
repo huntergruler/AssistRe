@@ -571,9 +571,10 @@ function populateLevelOfService() {
     const buyerLevelOfService = document.getElementById('buyerLevelOfService');
     const levelofservicevalue = document.getElementById('levelofserviceid').value;
 
-    const defaultOption = document.createElement('option');
-    buyerLevelOfService.innerHTML = '';
+    console.log(levelofservicevalue, "Level of Service Value");
     if (levelofservicevalue) {
+        const defaultOption = document.createElement('option');
+        buyerLevelOfService.innerHTML = '';
         defaultOption.textContent = 'Select a Level of Service';
         defaultOption.value = '';
         buyerLevelOfService.appendChild(defaultOption);
