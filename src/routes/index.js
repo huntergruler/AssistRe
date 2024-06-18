@@ -921,13 +921,14 @@ router.get('/get-compensationtypes', (req, res) => {
 router.get('/check-zipcode', (req, res) => {
   const zipCode = req.query.stateSelect;
   const userType = req.session.userType;
+  const userid = req.session.userid;
   if (userType === 'Agent') {
-    var query = 'SELECT count(*) cnt FROM AgentZipCodes where zipCode = ?';
+    var query = 'SELECT count(*) cnt FROM AgentZipCodes where zipCode = ? and userid = ?';
   }
   else if (userType === 'Buyer') {
-    var query = 'SELECT count(*) cnt FROM BuyerZipCodes where zipCode = ?';
+    var query = 'SELECT count(*) cnt FROM BuyerZipCodes where zipCode = ? and userid = ?';
   }
-  db.query(query, [zipCode], (error, results) => {
+  db.query(query, [zipCode, userid], (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
