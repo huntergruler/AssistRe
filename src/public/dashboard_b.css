@@ -20,7 +20,7 @@
     /* justify-items: center;
     text-align: center; */
 }
-/* .form-container {
+.form-container {
     max-width: 500px;
     margin-left: 20px;
     margin-right: 0px;
@@ -34,7 +34,7 @@
     text-align: right;
     border-radius: 5px;
     border: 1px solid black;
-} */
+}
 
 .profile-group,
 .property-group {
