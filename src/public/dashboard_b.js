@@ -26,8 +26,10 @@ $(document).ready(function () {
             prequalifiedY: $('#prequalifiedY').is(':checked'),
             prequalifiedN: $('#prequalifiedN').is(':checked'),
             preferredLanguages: $('#preferredLanguages').val(),
-            userid: $('#userid').val()
+            userid: $('#userid').val(),
+            levelofserviceid: $('#buyerLevelOfService').val()
         };
+        console.log(levelofserviceid, "Level of Service ID");
         if (formData.prequalifiedY) {
             formData.prequalified = 'Y';
         } else {
@@ -592,7 +594,4 @@ function populateLevelOfService() {
                 buyerLevelOfService.appendChild(option);
             });
         })
-        const buyerLevelOfServ = document.getElementById('buyerLevelOfService');
-        buyerLevelOfServ.value = levelofservicevalue;
-    console.log(levelofservicevalue, "Level of Service Value", buyerLevelOfServ.value);
 };
