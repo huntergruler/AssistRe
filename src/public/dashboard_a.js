@@ -604,10 +604,10 @@ function saveOffer(event, action, buyerrequestid) {
             offerForm.style.display = 'none';
             requestDetail.display = 'none';
             detailButtons.display = 'none';
-            clearForm();
+            // clearForm();
 
-            getRequests(dataType, null);
-            getRequestCounts();
+            // getRequests(dataType, null);
+            // getRequestCounts();
             // Optionally, perform any actions here after successful submission
         })
         .catch(error => {
