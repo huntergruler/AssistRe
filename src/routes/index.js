@@ -1372,4 +1372,14 @@ function sendVerificationEmail(req, email, token, userType) {
   });
 }
 
-module.exports = router;
+router.get('getBuyerTypes', (req, res) => {
+  const query = 'SELECT buyertypeid, buyerType FROM BuyerTypes';
+  db.query(query, (err, results) => {
+    if (err) throw err;
+    res.json({ results });
+  });
+});
+ 
+  
+  
+  module.exports = router;
