@@ -118,7 +118,7 @@ function getRequests(datatype, element) {
                     Prequalified? ${request.prequalified}<br>
                     Purchase Timeline: ${request.timeFrame}<br></div>`;
                     div.addEventListener('click', () => selectRequest(request.buyerid, this));
-                    div.className = "form-row container-left col-md-10 align-self-end d-flex flex-row";
+                    div.className = "form-row container-left col-md-12 align-self-end d-flex flex-row";
                     div.id = "buyerid" + request.buyerid;
                     if (request.agentStatus == "New") {
                         div.classList.add("new");
