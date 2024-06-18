@@ -546,3 +546,26 @@ function getBuyerTypes() {
             });
         })
 }
+
+function populateLevelOfService() {
+    const levelOfService = document.getElementById('levelOfService');
+    const defaultOption = document.createElement('option');
+    levelOfService.innerHTML = '';
+    defaultOption.textContent = 'Select a Level of Service';
+    defaultOption.value = '';
+    levelOfService.appendChild(defaultOption);
+
+    fetch(`/get-levelofservice`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let option = document.createElement('option');
+                // if (levelOfServiceDisplay.replace("Service Level: ", "") == item.levelOfService) {
+                //     option.selected = true;
+                // }
+                option.value = item.levelofserviceid;
+                option.textContent = item.levelOfService;
+                levelOfService.appendChild(option);
+            });
+        })
+};

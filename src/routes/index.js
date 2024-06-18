@@ -1373,21 +1373,38 @@ function sendVerificationEmail(req, email, token, userType) {
 }
 
 router.get('getBuyerTypes', (req, res) => {
-  const query = 'SELECT buyertypeid, buyerType FROM BuyerTypes';
+  const query = 'SELECT buyertypeid, buyerType FROM BuyerTypes order by buyerType';
   console.log('Query:', query);
-  db.query(query,(error, results) => {
+  // db.query(query,(error, results) => {
+  //   if (error) {
+  //     return res.status(500).json({ error: 'Internal server error' });
+  //   }
+  //   if (results.length > 0) {
+  //     res.json({ results });
+  //   } else {
+  //     res.status(404).json({ error: 'No buyer types found' });
+  //   }
+  // });
+
+});
+
+
+// Route to get states
+router.get('/get-levelofservice', (req, res) => {
+  const query = 'SELECT levelOfService, levelofserviceid FROM LevelsOfService order by levelofserviceid';
+  db.query(query, (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
       res.json({ results });
     } else {
-      res.status(404).json({ error: 'No buyer types found' });
+      res.status(404).json({ error: 'No levels of service found' });
     }
   });
-
 });
- 
+
+
   
   
   module.exports = router;
