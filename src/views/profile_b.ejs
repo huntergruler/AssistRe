@@ -70,7 +70,7 @@
                         <!-- JavaScript will populate this container -->
                     </div>
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#zipCodeModal"
-                        >
+                        onclick="populateUserZipCodes();">
                         Modify Zip Codes
                     </button>
                 </div>
@@ -80,31 +80,29 @@
             <div class="userZip-container">
                 <h3 class="text-center">Property Info</h3>
                 <div class="property-group">
-                    <p>Property Type: <%= buyer.propertyType %>
-                    </p>
+                    Property Type: <%= buyer.propertyType %>
+                    <br>
                     <div id="levelOfServiceDisplay">
-                        <p>Agent Service Level: <%= buyer.levelOfService %>
-                        </p>
+                        Agent Service Level: <%= buyer.levelOfService %>
+                     <br>   
                     </div>
-                    <p>Minimum Bedrooms: <%= buyer.bedrooms_min %>
-                    </p>
-                    <p>Minimum Bathrooms: <%= buyer.bathrooms_min %>
-                    </p>
-                    <p>Square Footage Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %>
-                    </p>
-                    <p>Price Range: <%= buyer.price_min %> to <%= buyer.price_max %>
-                    </p>
-                    <p>Timeframe: <%= buyer.timeFrame %>
-                    </p>
-                    <p>Prequalified: <%= buyer.prequalified %>
-                    </p>
-                    <p>Prequalified Amount: <%= buyer.prequalifiedAmount %>
-                    </p>
-                    <p>Preferred Languages: <%= buyer.preferredLanguages %>
-                    </p>
+                    Minimum Bedrooms: <%= buyer.bedrooms_min %>
+                    <br>
+                    Minimum Bathrooms: <%= buyer.bathrooms_min %>
+                    <br>
+                    Square Footage Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %>
+                    <br>
+                    Price Range: <%= buyer.price_min %> to <%= buyer.price_max %>
+                    <br>
+                    Timeframe: <%= buyer.timeFrame %>
+                    <br>
+                    Prequalified: <%= buyer.prequalified %>
+                    <br>
+                    Prequalified Amount: <%= buyer.prequalifiedAmount %>
+                    <br>
+                    Preferred Languages: <%= buyer.preferredLanguages %>
                 </div>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal"
-                    onclick="populateUserZipCodes();">
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal">
 
                     Modify Property Info
                 </button>
