@@ -539,7 +539,7 @@ function getBuyerTypes() {
             data.results.forEach(item => {
                 console.log(item.buyertypeid, item.buyerType);
                 // Create a div element for Bootstrap grid
-                const div = document.createElement('div');
+                // const div = document.createElement('div');
                 // div.className = 'col-sm-6 buyertype'; // Adjust the column size as needed
 
                 // Create a label element
@@ -561,7 +561,7 @@ function getBuyerTypes() {
                 div.appendChild(label);
 
                 // Append the div to the row container
-                buyerTypeCheckbox.appendChild(div);
+                // buyerTypeCheckbox.appendChild(div);
             });
         })
 }
