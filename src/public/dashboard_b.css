@@ -20,6 +20,22 @@
     /* justify-items: center;
     text-align: center; */
 }
+
+.container {
+    opacity: 0.8;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+
 .form-container {
     max-width: 500px;
     margin-left: 20px;
@@ -361,13 +377,11 @@ body {
 
 /* Modal content */
 .modal-content {
-    background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #888;
-    width: fit-content;
-    height: fit-content;
-    max-width: 90%;
-    max-height: 90%;
+    font-size: 14px;
+    /* background-color: #666; */
+    padding: 0%;
+    width: auto;
+    height: auto;
 }
 
 /* The Close Button */
