@@ -581,6 +581,7 @@ function populateLevelOfService() {
         .then(data => {
             console.log(data);
             data.results.forEach(item => {
+                console.log(item);
                 let option = document.createElement('option');
                 option.value = item.levelofserviceid;
                 option.textContent = item.levelOfService;
