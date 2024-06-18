@@ -358,13 +358,9 @@ body {
     padding: 20px;
     border: 1px solid #888;
     width: fit-content;
-    /* Adjust based on your requirement */
     height: fit-content;
-    /* Adjust based on your requirement */
     max-width: 90%;
-    /* Ensure it doesn't overflow the screen */
     max-height: 90%;
-    /* Ensure it doesn't overflow the screen */
 }
 
 /* The Close Button */
