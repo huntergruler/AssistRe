@@ -545,7 +545,7 @@ function getBuyerTypes() {
                 // Create a label element
                 const label = document.createElement('label');
                 label.htmlFor = item.buyertypeid;
-                label.textContent = item.buyerType;
+                label.textContent = ' '+item.buyerType+' ';
                 // label.style.marginRight = '10px';
 
                 // Create a checkbox element
