@@ -568,12 +568,14 @@ function getBuyerTypes() {
 }
 
 function populateLevelOfService() {
-    const buyerLevelOfService = document.getElementById('levelOfService');
+    const buyerLevelOfService = document.getElementById('buyerLevelOfService');
+
     const defaultOption = document.createElement('option');
     buyerLevelOfService.innerHTML = '';
     defaultOption.textContent = 'Select a Level of Service';
     defaultOption.value = '';
     buyerLevelOfService.appendChild(defaultOption);
+
     console.log('Populating level of service');
 
     fetch(`/get-levelofservice`)
