@@ -492,9 +492,7 @@ function savePropertyChanges(event) {
     const levelofserviceid = document.getElementById('buyerLevelOfService').value;
     const userid = document.getElementById('userid').value;
     const buyerTypeCheckbox = document.querySelectorAll('input[name="buyerType"]:checked');
-    console.log('buyerTypeCheckbox', buyerTypeCheckbox);
     const buyerType = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
-    console.log('buyertypes', buyerTypes);
 
     if (prequalifiedY) {
         var prequalified = 'Y';
