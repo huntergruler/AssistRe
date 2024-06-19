@@ -182,14 +182,12 @@ padding-right: 0px;
     align-items: center;
     text-align: center;
     border-top: 1px solid black;
+    border-radius: 8px;
 }
 
 .property-group {
     height: fit-content;
     max-height: 390px;
-    /* display: flex; */
-    justify-content: center; /* Horizontally centers the inner container */
-    /* align-items: center;     */
 }
 
 .county-group,

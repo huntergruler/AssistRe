@@ -57,7 +57,7 @@
 
 .buyertype-container {
     max-width: 90%;
-    margin-left: 16px;
+    margin-left: 13px;
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -80,18 +80,18 @@
     padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
-    width: 350px;
+    width: 300px;
+    line-height: 2;
     max-height: fit-content;
     align-content: center;
     align-items: center;
-    line-height: 2;
     text-align: center;
     border: 1px solid black;
     border-radius: 8px;
 }
 
 .property-group {
-    height: auto;
+    height: fit-content;
     max-height: 390px;
 }
 
