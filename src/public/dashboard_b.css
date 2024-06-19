@@ -542,3 +542,28 @@ body {
 .modal-close-btn {
     margin-top: 20px;
 }
+
+
+.collapsible-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 300px;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.more-info {
+    display: none; /* Hide the additional info by default */
+}
+
+.toggle-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+}

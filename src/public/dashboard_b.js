@@ -86,6 +86,19 @@ function showModal(message) {
 
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.querySelector('.toggle-button');
+    const moreInfo = document.querySelector('.more-info');
+
+    toggleButton.addEventListener('click', function() {
+        if (moreInfo.style.display === 'none') {
+            moreInfo.style.display = 'block';
+            toggleButton.textContent = 'Show Less';
+        } else {
+            moreInfo.style.display = 'none';
+            toggleButton.textContent = 'Show More';
+        }
+    });
+
     getOfferCounts('New', null);
     getBuyerTypes();
     populateStates();
