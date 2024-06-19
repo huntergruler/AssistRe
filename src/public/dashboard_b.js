@@ -92,9 +92,9 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('More info', moreInfo);
     toggleButton.addEventListener('click', function() {
         console.log('Toggle button clicked');
-        if (moreInfo.style.display === 'block') {
-            console.log('Displaying LESS info');
-            moreInfo.style.display = 'none';
+        if (moreInfo.style.display === 'None') {
+            console.log('Displaying More info');
+            moreInfo.style.display = 'block';
             toggleButton.innerHTML = '<i class="fas fa-chevron-down"></i>  Show More  <i class="fas fa-chevron-down"></i>';
         } else {
             console.log('Displaying more info');
