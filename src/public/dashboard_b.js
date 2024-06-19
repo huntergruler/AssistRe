@@ -563,7 +563,7 @@ function getBuyerTypes() {
                 checkbox.value = item.buyertypeid;
                 checkbox.id = item.buyertypeid;
                 // Check the checkbox if the buyer type is in the buyerTypesData array
-                checkbox.checked = buyerTypesData.includes(item.buyertypeid); 
+                checkbox.checked = buyerTypesData.includes(item.buyertypeid) || false; 
                 // Append the checkbox and label to the div
                 buyerTypeCheckbox.appendChild(label);
                 buyerTypeCheckbox.appendChild(checkbox);
