@@ -1383,6 +1383,7 @@ router.get('/getBuyerTypes', (req, res) => {
     if (buyerTypes.length > 0) {
       const typeQuery = 'SELECT buyertypeid, buyerType FROM BuyerRequestDetails WHERE userid = ?';
       db.query(typeQuery, [buyerid], (error, buyerTypeResults) => {
+        console.log('buyerTypeResults:', buyerTypeResults) 
         if (error) {
           return res.status(500).json({ error: 'Internal server error' });
         }
