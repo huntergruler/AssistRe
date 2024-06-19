@@ -491,8 +491,9 @@ function savePropertyChanges() {
     const levelofserviceid = document.getElementById('buyerLevelOfService').value;
     const userid = document.getElementById('userid').value;
     const buyerTypeCheckbox = document.querySelectorAll('input[name="buyerType"]:checked');
-    const buyerTypes = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
-    console.log('buyertypes',buyerTypes);
+    console.log('buyerTypeCheckbox', buyerTypeCheckbox);
+    // const buyerTypes = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
+    // console.log('buyertypes', buyerTypes);
 
     if (prequalifiedY) {
         var prequalified = 'Y';
@@ -538,7 +539,7 @@ function savePropertyChanges() {
 
 function getBuyerTypes() {
     buyerTypeCheckbox = document.getElementById('buyerTypeCheckbox');
-    buyerTypesData = []; 
+    buyerTypesData = [];
 
     fetch(`getBuyerTypes`)
         .then(response => response.json())
@@ -563,9 +564,8 @@ function getBuyerTypes() {
                 checkbox.value = item.buyertypeid;
                 checkbox.id = item.buyertypeid;
                 // Check the checkbox if the buyer type is in the buyerTypesData array
-                if (buyerTypesData)
-                {
-                    checkbox.checked = buyerTypesData.includes(item.buyertypeid); 
+                if (buyerTypesData) {
+                    checkbox.checked = buyerTypesData.includes(item.buyertypeid);
                 }
                 // Append the checkbox and label to the div
                 buyerTypeCheckbox.appendChild(label);
