@@ -493,7 +493,7 @@ function savePropertyChanges(event) {
     const userid = document.getElementById('userid').value;
     const buyerTypeCheckbox = document.querySelectorAll('input[name="buyerType"]:checked');
     console.log('buyerTypeCheckbox', buyerTypeCheckbox);
-    const buyerTypes = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
+    const buyerType = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
     console.log('buyertypes', buyerTypes);
 
     if (prequalifiedY) {
@@ -507,6 +507,7 @@ function savePropertyChanges(event) {
         bathrooms_min: bathrooms_min,
         squareFootage_min: squareFootage_min,
         squareFootage_max: squareFootage_max,
+        buyerType: buyerType,
         price_min: price_min,
         price_max: price_max,
         timeFrame: timeFrame,
@@ -516,26 +517,26 @@ function savePropertyChanges(event) {
         userid: userid
     };
 
-    // // Send the data to the server using fetch
-    // fetch('/profile_b_property', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(data)
-    // })
-    //     .then(response => {
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         window.location.reload();
-    //     })
-    //     .then(result => {
-    //         console.log('Success:', result);
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //     });
+    // Send the data to the server using fetch
+    fetch('/profile_b_property', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            window.location.reload();
+        })
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 };
 
 function getBuyerTypes() {
