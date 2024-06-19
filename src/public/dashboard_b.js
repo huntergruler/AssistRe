@@ -491,7 +491,7 @@ function savePropertyChanges() {
     const levelofserviceid = document.getElementById('buyerLevelOfService').value;
     const userid = document.getElementById('userid').value;
 
-    console.log("levelofserviceid", levelofserviceid);  
+    console.log("levelofserviceid", levelofserviceid);
 
     if (prequalifiedY) {
         var prequalified = 'Y';
@@ -537,7 +537,8 @@ function savePropertyChanges() {
 
 function getBuyerTypes() {
     buyerTypeCheckbox = document.getElementById('buyerTypeCheckbox');
-    
+    buyerTypesData = []; 
+
     fetch(`getBuyerTypes`)
         .then(response => response.json())
         .then(data => {
@@ -546,9 +547,9 @@ function getBuyerTypes() {
                 return;
             }
             data.buyerTypeResults.forEach(buyerTypeItem => {
-                var buyerTypes = buyerTypeItem.buyerType;
+                buyerTypesData = buyerTypeItem.buyerType;
             })
-            console.log('HeRE',buyerTypes);
+            console.log('HeRE', buyerTypesData);
             data.buyerTypes.forEach(item => {
                 // Create a label element
                 const label = document.createElement('label');
