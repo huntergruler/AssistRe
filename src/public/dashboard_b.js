@@ -522,12 +522,12 @@ function savePropertyChanges(event) {
     const buyerTypeCheckbox = document.querySelectorAll('input[name="buyerType"]:checked');
     const buyerTypeArray = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
     const buyerType = buyerTypeArray.join(',');
-    alert(prequalifiedAmount);
 
     if (prequalifiedY) {
         var prequalified = 'Yes';
         alert(prequalifiedY)
-        if (prequalifiedAmount === '' || prequalifiedAmount === null || prequalifiedAmount === undefined || prequalifiedAmount === 0) {
+        alert(prequalifiedAmount);
+        if (prequalifiedAmount === 0) {
             alert('Please enter a prequalified amount or select No');
             return;
         }
