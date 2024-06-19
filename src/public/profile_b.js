@@ -122,6 +122,7 @@ function lookupCityState() {
 document.addEventListener('DOMContentLoaded', function () {
     populateDisplayZipCodes();
     populateLevelOfService();
+    getBuyerTypes();
     populateStates();
     // var levelOfService = document.getElementById('levelOfService').value;
     $('#myModal').on('hide.bs.modal', function (e) {
@@ -624,3 +625,40 @@ function removeSelection() {
     }
 
 };
+
+function getBuyerTypes() {
+    buyerTypeCheckbox = document.getElementById('buyerTypeCheckbox');
+    buyerTypesData = [];
+
+    fetch(`getBuyerTypes`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error fetching buyer types:', data.error);
+                return;
+            }
+            data.buyerTypeResults.forEach(buyerTypeItem => {
+                buyerTypesData = buyerTypeItem.buyerType;
+            })
+            data.buyerTypes.forEach(item => {
+                // Create a label element
+                const label = document.createElement('label');
+                label.htmlFor = item.buyertypeid;
+                label.innerHTML = '&nbsp;' + item.buyerType + '&nbsp;';
+
+                // Create a checkbox element
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = 'buyerType';
+                checkbox.value = item.buyertypeid;
+                checkbox.id = item.buyertypeid;
+                // Check the checkbox if the buyer type is in the buyerTypesData array
+                if (buyerTypesData) {
+                    checkbox.checked = buyerTypesData.includes(item.buyertypeid);
+                }
+                // Append the checkbox and label to the div
+                buyerTypeCheckbox.appendChild(label);
+                buyerTypeCheckbox.appendChild(checkbox);
+            });
+        })
+}
