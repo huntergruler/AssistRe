@@ -86,19 +86,27 @@ function showModal(message) {
 
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
-    const toggleButton = document.querySelector('.toggle-button');
+    const toggle1 = document.getElementById('toggle1');
+    const toggle2 = document.getElementById('toggle2');
+
     const moreInfo = document.querySelector('.more-info');
 
-    console.log('More info', moreInfo);
-    toggleButton.addEventListener('click', function() {
+    toggle1.addEventListener('click', function() {
         if (moreInfo.style.display === 'none') {
-            console.log('Displaying More info');
             moreInfo.style.display = 'block';
-            toggleButton.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
+            toggle1.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
         } else {
-            console.log('Displaying less info');
             moreInfo.style.display = 'none';
-            toggleButton.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
+            toggle1.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
+        }
+    });
+    toggle2.addEventListener('click', function() {
+        if (moreInfo.style.display === 'none') {
+            moreInfo.style.display = 'block';
+            toggle2.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
+        } else {
+            moreInfo.style.display = 'none';
+            toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
         }
     });
 
