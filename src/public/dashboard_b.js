@@ -545,17 +545,15 @@ function getBuyerTypes() {
                 console.error('Error fetching buyer types:', data.error);
                 return;
             }
-          
+         
+            data.selectedBuyerTypes.forEach(buyerTypeItem => {
+                buyerTypes = buyerTypeItem.buyerType;
+            })
             data.buyerTypes.forEach(item => {
-                // Create a div element for Bootstrap grid
-                // const div = document.createElement('div');
-                // div.className = 'col-sm-6 buyertype'; // Adjust the column size as needed
-
                 // Create a label element
                 const label = document.createElement('label');
                 label.htmlFor = item.buyertypeid;
                 label.innerHTML = '&nbsp;' + item.buyerType + '&nbsp;';
-                // label.style.marginRight = '10px';
 
                 // Create a checkbox element
                 const checkbox = document.createElement('input');
@@ -563,14 +561,10 @@ function getBuyerTypes() {
                 checkbox.name = 'buyerType';
                 checkbox.value = item.buyertypeid;
                 checkbox.id = item.buyertypeid;
-                // checkbox.style.marginRight = '5px';
-
+                checkbox.checked = buyerTypes.includes(item.buyertypeid);
                 // Append the checkbox and label to the div
                 buyerTypeCheckbox.appendChild(label);
                 buyerTypeCheckbox.appendChild(checkbox);
-
-                // Append the div to the row container
-                // buyerTypeCheckbox.appendChild(div);
             });
         })
 }
