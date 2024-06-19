@@ -55,6 +55,82 @@
     border: 1px solid black;
 }
 
+/*  ZIP CODE CSS */
+.zipCode-container h1 {
+    margin-bottom: 20px;
+}
+
+.zipCodeSelected {
+    padding: 1px;
+    /* border: 1px solid #ddd; */
+    margin-bottom: 1px;
+    cursor: pointer;
+}
+
+.zipCodeSelected.selected {
+    background-color: #007BFF;
+    color: white;
+}
+
+.zipCodeOption,
+.userZipCodes,
+.displayZipCodes {
+    padding: 0px;
+    /* border: 1px solid #ddd; */
+    margin-bottom: 0px;
+    margin-top: 0px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.zipCodeOption.selected,
+.userZipCodes.selected {
+    background-color: #007BFF;
+    color: white;
+}
+
+#selectedZipCodesContainer,
+#availabeZipCodesContainer {
+    overflow: auto;
+    width: 100px;
+    max-height: 160px;
+    min-height: 160px;
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#displayZipCodes {
+    overflow: auto;
+    width: 300px;
+    max-height: 160px;
+    min-height: 160px;
+    text-align: center;
+    align-items: center;
+    margin: 0px;
+    border-top: 1px solid black;
+}
+
+.userZip-container {
+    background-color: white;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid black;
+    align-items: center;
+    text-align: center;
+}
+
 .buyertype-container {
     max-width: 90%;
     margin-left: 13px;
@@ -93,26 +169,6 @@
 .property-group {
     height: fit-content;
     max-height: 390px;
-}
-
-.userZip-container {
-    background-color: white;
-    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    width: 300px;
-    height: auto;
-    max-height: 250px;
-    border-radius: 8px;
-    border: 1px solid black;
-    align-items: center;
-    text-align: center;
-    min-height: 125px;
 }
 
 .offerSummary{
