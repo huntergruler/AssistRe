@@ -415,26 +415,26 @@ function populateStates() {
 };
 
 function populateLevelOfService() {
-    const levelOfService = document.getElementById('levelOfService');
-    const levelOfServiceDisplay = document.getElementById('levelOfServiceDisplay').textContent.trim();
-    const prequalified = document.getElementById('prequalified');
-    const defaultOption = document.createElement('option');
-    levelOfService.innerHTML = '';
-    defaultOption.textContent = 'Select a Level';
-    defaultOption.value = '';
-    levelOfService.appendChild(defaultOption);
+    const buyerLevelOfService = document.getElementById('buyerLevelOfService');
+    const levelofservicevalue = document.getElementById('levelofserviceid').value;
+
+    if (!levelofservicevalue) {
+        const defaultOption = document.createElement('option');
+        buyerLevelOfService.innerHTML = '';
+        defaultOption.textContent = 'Select a Level of Service';
+        defaultOption.value = '';
+        buyerLevelOfService.appendChild(defaultOption);
+    }
 
     fetch(`/get-levelofservice`)
         .then(response => response.json())
         .then(data => {
             data.results.forEach(item => {
                 let option = document.createElement('option');
-                if (levelOfServiceDisplay.replace("Service Level: ", "") == item.levelOfService) {
-                    option.selected = true;
-                }
-                option.value = item.levelOfService;
+                option.value = item.levelofserviceid;
                 option.textContent = item.levelOfService;
-                levelOfService.appendChild(option);
+                option.selected = item.levelofserviceid == levelofservicevalue;
+                buyerLevelOfService.appendChild(option);
             });
         })
 };
