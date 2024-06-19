@@ -515,6 +515,7 @@ function savePropertyChanges(event) {
     const timeFrame = document.getElementById('timeFrame').value;
     const prequalifiedY = document.getElementById('prequalifiedY').checked;
     const prequalifiedN = document.getElementById('prequalifiedN').checked;
+    const prequalifiedAmount = document.getElementById('prequalifiedAmount').value;
     const preferredLanguages = document.getElementById('preferredLanguages').value;
     const levelofserviceid = document.getElementById('buyerLevelOfService').value;
     const userid = document.getElementById('userid').value;
@@ -524,6 +525,10 @@ function savePropertyChanges(event) {
 
     if (prequalifiedY) {
         var prequalified = 'Yes';
+        if (prequalifiedAmount === '' || prequalifiedAmount === null || prequalifiedAmount === undefined || prequalifiedAmount === 0) {
+            showModal('Please enter a prequalified amount or select No');
+            return;
+        }
     } else {
         var prequalified = 'No';
     }
