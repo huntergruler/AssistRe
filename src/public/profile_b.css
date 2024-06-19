@@ -111,12 +111,12 @@ padding-right: 0px;
 
 #displayZipCodes {
     overflow: auto;
-    width: 300px;
-    max-height: 160px;
+    width: 280px;
+    max-height: 150px;
     min-height: 100px;
     text-align: center;
     align-items: center;
-    margin: 0px;
+    margin-left: 5px;
     border-top: 1px solid black;
 }
 
