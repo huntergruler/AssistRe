@@ -110,6 +110,7 @@
     border: 1px solid black;
     align-items: center;
     text-align: center;
+    min-height: 100px;
 }
 
 .offerSummary{
