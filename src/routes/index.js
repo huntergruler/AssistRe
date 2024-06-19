@@ -457,7 +457,7 @@ router.get('/dashboard_b', (req, res) => {
     const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
                           ifnull(brd.bathrooms_min,0) bathrooms_min, ifnull(brd.bathrooms_max,0) bathrooms_max, ifnull(brd.bedrooms_min,0) bedrooms_min, ifnull(brd.bedrooms_max,0) bedrooms_max, getBuyerTypesByIds(brd.buyerType) buyerType, ifnull(brd.preferredLanguages,'') preferredLanguages, if(brd.prequalified="Y",'Yes','No') prequalified, ifnull(brd.price_min,0) price_min, 
                           ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, ifnull(brd.timeFrame,'') timeFrame, brd.prequalifiedFile, los.levelOfService levelOfServiceDisp, los.levelofserviceid,
-                          ifnull(brd.prequalifiedAmount,0) prequalifiedAmount, brd.buyerrequestid
+                          ifnull(brd.prequalifiedAmount,0) prequalifiedAmount, brd.buyerrequestid, buyerType buyerTypeDisp
                      from Buyers b
                           left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
                           join LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
@@ -1375,12 +1375,19 @@ function sendVerificationEmail(req, email, token, userType) {
 
 router.get('/getBuyerTypes', (req, res) => {
   const query = 'SELECT buyertypeid, buyerType FROM BuyerTypes order by buyertypeid';
-  db.query(query, (error, results) => {
+  const buyerid = req.session.userid;
+  db.query(query, (error, buyerTypes) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
-    if (results.length > 0) {
-      res.json({ results });
+    if (buyerTypes.length > 0) {
+      const typeQuery = 'SELECT buyertypeid, buyerType FROM BuyerRequestDetails WHERE userid = ?';
+      db.query(typeQuery, [buyerid], (error, buyerTypeResults) => {
+        if (error) {
+          return res.status(500).json({ error: 'Internal server error' });
+        }
+          res.json({ buyerTypes, buyerTypeResults });
+      });
     } else {
       res.status(404).json({ error: 'No buyer types found' });
     }

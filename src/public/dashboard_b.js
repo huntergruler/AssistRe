@@ -537,10 +537,16 @@ function savePropertyChanges() {
 
 function getBuyerTypes() {
     buyerTypeCheckbox = document.getElementById('buyerTypeCheckbox');
+    
     fetch(`getBuyerTypes`)
         .then(response => response.json())
         .then(data => {
-            data.results.forEach(item => {
+            if (data.error) {
+                console.error('Error fetching buyer types:', data.error);
+                return;
+            }
+          
+            data.buyerTypes.forEach(item => {
                 // Create a div element for Bootstrap grid
                 // const div = document.createElement('div');
                 // div.className = 'col-sm-6 buyertype'; // Adjust the column size as needed
