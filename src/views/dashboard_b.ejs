@@ -43,24 +43,28 @@
             <div class="form-group col-md-7">
                 <h3 class="text-center">Property Search Criteria</h3>
                 <div class="property-group">
-                   <u>Buyer Type</u><br> <%= buyer.buyerType %><br>
-                    Property Type: <%= buyer.propertyType %><br>
-                        Service Level: <%= buyer.levelOfServiceDisp %><br>
-                            Minimum Bedrooms: <%= buyer.bedrooms_min %><br>
-                                Minimum Bathrooms: <%= buyer.bathrooms_min %><br>
-                                    SqFt Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %><br>
-                                            Price Range: $<%= buyer.price_min %> to $<%= buyer.price_max %><br>
-                                                    Timeframe: <%= buyer.timeFrame %><br>
-                                                        Prequalified: <%= buyer.prequalified %><br>
-                                                            Prequalified Amount: <%= buyer.prequalifiedAmount %><br>
-                                                                Preferred Languages: <%= buyer.preferredLanguages %><br>
-                                                                <div class="form-row justify-content-center">
-                                                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                                                        data-target="#propertyModal">
-                                                                        Modify Property Info
-                                                                    </button>
-                                                                </div>
-                                                                </div>
+                    <u>Buyer Type</u><br>
+                    <%= buyer.buyerType %><br>
+                     Property Type: <%= buyer.propertyType %><br>
+                     Service Level: <%= buyer.levelOfServiceDisp %><br>
+                     Minimum Bedrooms: <%= buyer.bedrooms_min %><br>
+                     Minimum Bathrooms: <%= buyer.bathrooms_min %><br>
+                     SqFt Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %><br>
+                     Price Range: $<%= buyer.price_min %> to $<%= buyer.price_max %><br>
+                     Timeframe: <%= buyer.timeFrame %><br>
+                     Prequalified: <%= buyer.prequalified %><br>
+                     Prequalified Amount: <%= buyer.prequalifiedAmount %><br>
+                     Preferred Languages: <%= buyer.preferredLanguages %>
+                     <br>
+                    <div class="form-row justify-content-center">
+                        <button type="button"
+                            class="btn btn-primary btn-sm"
+                            data-toggle="modal"
+                            data-target="#propertyModal">
+                            Modify Property Info
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="offer-group col-md-8">
                 <div class="form-row">
@@ -205,7 +209,7 @@
                             <form id="propertyForm" style="padding-top: 5px;">
                                 <div class="form-row"
                                     style="justify-content: center; border: 1px solid black; border-radius: 5px;">
-                                    <u>Buyer Type</u> 
+                                    <u>Buyer Type</u>
                                     <div class="form-row ">
                                         <div id="buyerTypeCheckbox" class="col-md-12">
                                             <!-- JavaScript will populate this container -->
@@ -251,7 +255,8 @@
                                         Level</label>
                                     <select id="buyerLevelOfService" class="form-select-sm col-md-6"
                                         placeholder="Level Of Service"></select>
-                                        <input type="hidden" id="levelofserviceid" name="levelofserviceid" value="<%= buyer.levelofserviceid %>">
+                                    <input type="hidden" id="levelofserviceid" name="levelofserviceid"
+                                        value="<%= buyer.levelofserviceid %>">
                                 </div>
                                 <div class="form-row ">
                                     <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
