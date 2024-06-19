@@ -91,15 +91,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log('More info', moreInfo);
     toggleButton.addEventListener('click', function() {
-        console.log('Toggle button clicked');
-        if (moreInfo.style.display === 'None') {
+        if (moreInfo.style.display === 'None' || !moreInfo) {
             console.log('Displaying More info');
             moreInfo.style.display = 'block';
-            toggleButton.innerHTML = '<i class="fas fa-chevron-down"></i>  Show More  <i class="fas fa-chevron-down"></i>';
-        } else {
-            console.log('Displaying more info');
-            moreInfo.style.display = 'none';
             toggleButton.innerHTML = '<i class="fas fa-chevron-up"></i>  Show Less  <i class="fas fa-chevron-up"></i>';
+        } else {
+            console.log('Displaying less info');
+            moreInfo.style.display = 'none';
+            toggleButton.innerHTML = '<i class="fas fa-chevron-down"></i>  Show More  <i class="fas fa-chevron-down"></i>';
         }
     });
 
