@@ -180,7 +180,6 @@ padding-right: 0px;
     max-height: fit-content;
     align-content: center;
     align-items: center;
-    justify-content: center;
     text-align: center;
     border-top: 1px solid black;
 }
@@ -188,6 +187,9 @@ padding-right: 0px;
 .property-group {
     height: fit-content;
     max-height: 390px;
+    display: flex;
+    justify-content: center; /* Horizontally centers the inner container */
+    align-items: center;    
 }
 
 .county-group,
