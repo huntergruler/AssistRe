@@ -89,17 +89,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggleButton = document.querySelector('.toggle-button');
     const moreInfo = document.querySelector('.more-info');
 
-    toggleButton.addEventListener('click', function () {
+    console.log('More info', moreInfo);
+    toggleButton.addEventListener('click', function() {
+        console.log('Toggle button clicked');
         if (moreInfo.style.display === 'none') {
             moreInfo.style.display = 'block';
-            buttonText.textContent = 'Show Less';
-            arrowIcon.classList.remove('fa-chevron-down');
-            arrowIcon.classList.add('fa-chevron-up');
+            toggleButton.innerHTML = '<i class="fas fa-chevron-down"></i> Show More <i class="fas fa-chevron-down"></i>';
         } else {
             moreInfo.style.display = 'none';
-            buttonText.textContent = 'Show More';
-            arrowIcon.classList.remove('fa-chevron-up');
-            arrowIcon.classList.add('fa-chevron-down');
+            toggleButton.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less <i class="fas fa-chevron-up"></i>';
         }
     });
 
