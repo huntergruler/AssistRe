@@ -122,7 +122,7 @@ function lookupCityState() {
 document.addEventListener('DOMContentLoaded', function () {
     populateDisplayZipCodes();
     populateStates();
-    var levelOfService = document.getElementById('levelOfService').value;
+    // var levelOfService = document.getElementById('levelOfService').value;
     $('#myModal').on('hide.bs.modal', function (e) {
         if (zipChanges === 1) {
             handleUnsavedChanges(e);
