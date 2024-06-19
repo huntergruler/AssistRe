@@ -262,14 +262,14 @@
                                         class="col-md-4 col-form-label">Prequalified</label>
                                     <div class="col-md-3">
                                         <% if ( buyer.prequalified=='Yes' ) { %>
-                                            <input type="radio" id="prequalifiedY" name="prequalified" required checked>
+                                            <input type="radio" id="prequalifiedY" value="Yes" name="prequalified" required checked>
                                             Yes
-                                            <input type="radio" id="prequalifiedN" name="prequalified" required>
+                                            <input type="radio" id="prequalifiedN" value="No" name="prequalified" required>
                                             No
                                             <% } else { %>
-                                                <input type="radio" id="prequalifiedY" name="prequalified" required>
+                                                <input type="radio" id="prequalifiedY" value="Yes" name="prequalified" required>
                                                 Yes
-                                                <input type="radio" id="prequalifiedN" name="prequalified" required
+                                                <input type="radio" id="prequalifiedN" value="No" name="prequalified" required
                                                     checked>
                                                 No
                                                 <% } %>

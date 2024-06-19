@@ -31,9 +31,9 @@ $(document).ready(function () {
         };
         console.log(levelofserviceid, "Level of Service ID");
         if (formData.prequalifiedY) {
-            formData.prequalified = 'Y';
+            formData.prequalified = 'Yes';
         } else {
-            formData.prequalified = 'N';
+            formData.prequalified = 'No';
         }
         $.ajax({
             type: 'POST',
@@ -498,9 +498,9 @@ function savePropertyChanges(event) {
     const buyerType = buyerTypeArray.join(',');
 
     if (prequalifiedY) {
-        var prequalified = 'Y';
+        var prequalified = 'Yes';
     } else {
-        var prequalified = 'N';
+        var prequalified = 'No';
     }
     const data = {
         propertyType: propertyType,
