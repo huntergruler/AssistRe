@@ -249,7 +249,7 @@ function savePersonalChanges() {
                 throw new Error('Network response was not ok');
             }
             window.location.reload();
-            })
+        })
         .then(result => {
             console.log('Success:', result);
         })
@@ -258,7 +258,8 @@ function savePersonalChanges() {
         });
 };
 
-function savePropertyChanges() {
+function savePropertyChanges(event) {
+    event.preventDefault()
     const propertyType = document.getElementById('propertyType').value;
     const bedrooms_min = document.getElementById('bedrooms_min').value;
     const bathrooms_min = document.getElementById('bathrooms_min').value;
@@ -270,27 +271,29 @@ function savePropertyChanges() {
     const prequalifiedY = document.getElementById('prequalifiedY').checked;
     const prequalifiedN = document.getElementById('prequalifiedN').checked;
     const preferredLanguages = document.getElementById('preferredLanguages').value;
-    const levelOfService = document.getElementById('levelOfService').value;
+    const levelofserviceid = document.getElementById('buyerLevelOfService').value;
     const userid = document.getElementById('userid').value;
-    console.log(prequalifiedY,"Prequalified Y",prequalifiedN,"Prequalified N");
+    const buyerTypeCheckbox = document.querySelectorAll('input[name="buyerType"]:checked');
+    const buyerTypeArray = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
+    const buyerType = buyerTypeArray.join(',');
 
     if (prequalifiedY) {
         var prequalified = 'Yes';
     } else {
         var prequalified = 'No';
     }
-    console.log(prequalified,"Prequalified");
     const data = {
         propertyType: propertyType,
         bedrooms_min: bedrooms_min,
         bathrooms_min: bathrooms_min,
         squareFootage_min: squareFootage_min,
         squareFootage_max: squareFootage_max,
+        buyerType: buyerType,
         price_min: price_min,
         price_max: price_max,
         timeFrame: timeFrame,
         prequalified: prequalified,
-        levelOfService: levelOfService,
+        levelofserviceid: levelofserviceid,
         preferredLanguages: preferredLanguages,
         userid: userid
     };
@@ -308,7 +311,7 @@ function savePropertyChanges() {
                 throw new Error('Network response was not ok');
             }
             window.location.reload();
-                })
+        })
         .then(result => {
             console.log('Success:', result);
         })
@@ -316,6 +319,7 @@ function savePropertyChanges() {
             console.error('Error:', error);
         });
 };
+
 function populateUserZipCodes() {
     populateLevelOfService();
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
