@@ -425,6 +425,7 @@ router.get('/profile_b', (req, res) => {
   }
   else {
     const userid = req.session.userid;
+    req.session.buyerrequestid = 0;
 
     const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
                           ifnull(brd.bathrooms_min,0) bathrooms_min, ifnull(brd.bathrooms_max,0) bathrooms_max, ifnull(brd.bedrooms_min,0) bedrooms_min, ifnull(brd.bedrooms_max,0) bedrooms_max, getBuyerTypesByIds(brd.buyerType) buyerType, ifnull(brd.preferredLanguages,'') preferredLanguages, brd.prequalified, ifnull(brd.price_min,0) price_min, 
@@ -442,6 +443,7 @@ router.get('/profile_b', (req, res) => {
       if (results.length === 0) {
         return res.status(404).send('User not found');
       }
+      req.session.buyerrequestid = results[0].buyerrequestid;
       res.render('profile_b', { buyer: results[0] });
     });
   }
@@ -504,9 +506,29 @@ router.post('/profile_b_property', (req, res) => {
     res.redirect('/');
   }
   else {
-    const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, levelofserviceid, prequalifiedAmount, userid } = req.body;
-    const query = 'Replace Into BuyerRequestDetails SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelofserviceid = ?, prequalifiedAmount = ?, userid = ?';
-    db.query(query, [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, levelofserviceid, prequalifiedAmount, userid], (error, results) => {
+    buyerrequestid = req.session.buyerrequestid;
+    const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, 
+            preferredLanguages, prequalified, price_min, price_max, propertyType, 
+            squareFootage_min, squareFootage_max, timeFrame, levelofserviceid, 
+            prequalifiedAmount, userid 
+          } = req.body;
+    let queryParams;
+    let query;
+
+    if (buyerrequestid === 0) {
+      query = 'INSERT Into BuyerRequestDetails SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelofserviceid = ?, prequalifiedAmount = ?, buyerrequestid = ?, userid = ?';
+      queryParams = [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType,
+                     preferredLanguages, prequalified, price_min, price_max, propertyType,
+                     squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
+                     prequalifiedAmount, buyerrequestid, userid];
+    } else {
+      query = 'UPDATE BuyerRequestDetails SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelofserviceid = ?, prequalifiedAmount = ? WHERE userid = ?';
+      queryParams = [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType,
+                     preferredLanguages, prequalified, price_min, price_max, propertyType,
+                     squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
+                     prequalifiedAmount, userid];
+    }
+    db.query(query, queryParams, (error, results) => {
       if (error) {
         console.error('Error updating buyer profile:', error);
         return res.status(500).send('Server error');
