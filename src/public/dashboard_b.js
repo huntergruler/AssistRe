@@ -545,11 +545,10 @@ function getBuyerTypes() {
                 console.error('Error fetching buyer types:', data.error);
                 return;
             }
-         
             data.selectedBuyerTypes.forEach(buyerTypeItem => {
-                buyerTypes = buyerTypeItem.buyerType;
+                var buyerTypes = buyerTypeItem.buyerType;
             })
-            console.log(buyerTypes);
+            console.log('HeRE',buyerTypes);
             data.buyerTypes.forEach(item => {
                 // Create a label element
                 const label = document.createElement('label');
