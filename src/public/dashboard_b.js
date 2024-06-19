@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log('More info', moreInfo);
     toggleButton.addEventListener('click', function() {
-        if (moreInfo.style.display === 'None' || !moreInfo) {
+        if (moreInfo.style.display === 'none') {
             console.log('Displaying More info');
             moreInfo.style.display = 'block';
             toggleButton.innerHTML = '<i class="fas fa-chevron-up"></i>  Show Less  <i class="fas fa-chevron-up"></i>';
