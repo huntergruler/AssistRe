@@ -59,8 +59,7 @@
             Price Range: $<%= buyer.price_min %> to $<%= buyer.price_max %><br>
             Timeframe: <%= buyer.timeFrame %><br>
             Prequalified: <%= buyer.prequalified %><br>
-            Prequalified Amount: <%= buyer.prequalifiedAmount %><br>
-            Preferred Languages: <%= buyer.preferredLanguages %>
+            <%= buyer.prequalifiedDisp %>
             <br>
             <div class="form-row justify-content-center">
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal">
