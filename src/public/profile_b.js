@@ -571,15 +571,9 @@ document.getElementById('zipSelect').addEventListener('keydown', function (event
         console.log('Enter key pressed');
         event.preventDefault();
         addZipCode();
-        // Optionally, trigger form submission if needed
-        // submitForm();
     }
 });
 
-function submitForm() {
-    alert('Form submitted!');
-    $('#myModal').modal('hide');
-}
 function addSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
@@ -624,32 +618,3 @@ function removeSelection() {
     }
 
 };
-
-// function populateZipCodes() {
-//     const stateSelect = document.getElementById('stateSelect').value;
-//     const citySelect = document.getElementById('citySelect').value;
-//     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
-//     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-//     fetch(`/get-zipcodes?stateSelect=${encodeURIComponent(stateSelect)}&citySelect=${encodeURIComponent(citySelect)}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             availabeZipCodesContainer.innerHTML = '';
-//             data.results.forEach(code => {
-//                 const div = document.createElement("div");
-//                 div.textContent = code.zipCode;
-//                 div.className = "zipCodeOption";
-//                 div.onclick = function () {
-//                     this.classList.toggle("selected");
-//                 };
-//                 availabeZipCodesContainer.appendChild(div);
-//             });
-//         })
-//         .catch(error => console.error('Error checking user:', error));
-// };
-
-
-// function getSelectedZipCodes() {
-//     const selected = document.querySelectorAll(".zipCodeOption.selected");
-//     const selectedZipCodes = Array.from(selected).map(node => node.textContent);
-// };
-
