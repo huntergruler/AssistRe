@@ -121,6 +121,7 @@ function lookupCityState() {
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
     populateDisplayZipCodes();
+    populateLevelOfService();
     populateStates();
     // var levelOfService = document.getElementById('levelOfService').value;
     $('#myModal').on('hide.bs.modal', function (e) {
