@@ -173,7 +173,9 @@
     justify-items: center;
 }
 
-.zipstate-group {
+.county-group,
+.zipstate-group,
+.zipselect-group {
     margin-top: 2px;
     margin-left: 2px;
     margin-right: 1px;
