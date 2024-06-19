@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleButton.innerHTML = '<i class="fas fa-chevron-down"></i> Show More <i class="fas fa-chevron-down"></i>';
         } else {
             moreInfo.style.display = 'none';
-            toggleButton.innerHTML = '<i class="fas fa-chevron-up"></i> Show More <i class="fas fa-chevron-up"></i>';
+            toggleButton.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less <i class="fas fa-chevron-up"></i>';
         }
     });
 
