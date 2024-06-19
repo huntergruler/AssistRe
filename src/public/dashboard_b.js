@@ -89,23 +89,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggle1 = document.getElementById('toggle1');
     const toggle2 = document.getElementById('toggle2');
 
-    const moreInfo = document.querySelector('.more-info');
+    const moreInfo1 = document.getElementById('more-info1');
+    const moreInfo2 = document.getElementById('more-info2');
 
     toggle1.addEventListener('click', function() {
-        if (moreInfo.style.display === 'none') {
-            moreInfo.style.display = 'block';
+        if (moreInfo1.style.display === 'none') {
+            moreInfo1.style.display = 'block';
             toggle1.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
         } else {
-            moreInfo.style.display = 'none';
+            moreInfo1.style.display = 'none';
             toggle1.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
         }
     });
     toggle2.addEventListener('click', function() {
-        if (moreInfo.style.display === 'none') {
-            moreInfo.style.display = 'block';
+        if (moreInfo2.style.display === 'none') {
+            moreInfo2.style.display = 'block';
             toggle2.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
         } else {
-            moreInfo.style.display = 'none';
+            moreInfo2.style.display = 'none';
             toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
         }
     });
