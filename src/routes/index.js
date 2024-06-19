@@ -1381,7 +1381,7 @@ router.get('/getBuyerTypes', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (buyerTypes.length > 0) {
-      res.json({ buyerTypes, buyerTypeResults });
+      res.json({ buyerTypes });
     } else {
       res.status(404).json({ error: 'No buyer types found' });
     }
