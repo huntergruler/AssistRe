@@ -571,7 +571,7 @@ body {
 .custom-button {
     display: flex;
     align-items: center;
-    background-color: #007BFF;
+    background-color: transparent;
     color: white;
     border: none;
     padding: 0px 0px;
