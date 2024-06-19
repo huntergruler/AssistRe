@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleButton.addEventListener('click', function() {
         console.log('Toggle button clicked');
         if (moreInfo.style.display === 'none') {
-            moreInfo.style.display = 'block';
-            toggleButton.innerHTML = '<i class="fas fa-chevron-down"></i> Show More <i class="fas fa-chevron-down"></i>';
-        } else {
             moreInfo.style.display = 'none';
             toggleButton.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less <i class="fas fa-chevron-up"></i>';
+        } else {
+            moreInfo.style.display = 'block';
+            toggleButton.innerHTML = '<i class="fas fa-chevron-down"></i> Show More <i class="fas fa-chevron-down"></i>';
         }
     });
 
