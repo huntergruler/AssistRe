@@ -189,7 +189,7 @@ padding-right: 0px;
     max-height: 390px;
     display: flex;
     justify-content: center; /* Horizontally centers the inner container */
-    align-items: center;    
+    /* align-items: center;     */
 }
 
 .county-group,
