@@ -119,7 +119,7 @@
     overflow: auto;
     width: 300px;
     max-height: 160px;
-    min-height: 160px;
+    min-height: 100px;
     text-align: center;
     align-items: center;
     margin: 0px;
