@@ -187,7 +187,7 @@ padding-right: 0px;
 .property-group {
     height: fit-content;
     max-height: 390px;
-    display: flex;
+    /* display: flex; */
     justify-content: center; /* Horizontally centers the inner container */
     /* align-items: center;     */
 }
