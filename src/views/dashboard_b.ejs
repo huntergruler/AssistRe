@@ -74,13 +74,17 @@
         </div>
         <div class="form-row">
           <div class="userZip-container" style="margin-top: 8px;">
-            <h3>Your Zip Codes</h3>
-            <div id="displayZipCodes" class="justify-content-center">
+            <div class="partial-info">
+                <h3>Your Zip Codes</h3>
+            </div>
+              <div class="more-info" style="display: none;">
+                <div id="displayZipCodes" class="justify-content-center">
               <!-- JavaScript will populate this container -->
             </div>
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
               Modify Zip Codes
             </button>
+            </div>  
           </div>
         </div>
       </div>
