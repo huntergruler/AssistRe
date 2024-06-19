@@ -582,6 +582,6 @@ body {
 }
 
 .custom-button .arrow-down {
-    margin-right: 5px;
-    font-size: 14px;
+    margin: 0px;
+    font-size: 12px;
 }
