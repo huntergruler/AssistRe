@@ -106,11 +106,13 @@
     padding-top: 0px;
     padding-bottom: 0px;
     width: 300px;
+    height: auto;
+    max-height: 250px;
     border-radius: 8px;
     border: 1px solid black;
     align-items: center;
     text-align: center;
-    min-height: 100px;
+    min-height: 125px;
 }
 
 .offerSummary{
