@@ -43,16 +43,16 @@
     <div class="form-row col-md-12 d-flex justify-content-center">
       <div class="form-group col-md">
         <div class="property-group">
+          <div class="partial-info">
             <h3 class="text-center">Your Search Criteria</h3>
-            <div class="partial-info">
+          </div>
+          <div class="more-info" style="display: none;">
             <div class="buyertype-container">
               <u>Buyer Type</u><br>
               <%= buyer.buyerType %><br>
             </div>
             Property Type: <%= buyer.propertyType %><br>
             Service Level: <%= buyer.levelOfServiceDisp %><br>
-          </div>
-          <div class="more-info" style="display: none;">
             Minimum Bedrooms: <%= buyer.bedrooms_min %><br>
             Minimum Bathrooms: <%= buyer.bathrooms_min %><br>
             SqFt Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %><br>
