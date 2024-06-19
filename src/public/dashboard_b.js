@@ -527,7 +527,7 @@ function savePropertyChanges(event) {
         var prequalified = 'Yes';
         alert(prequalifiedY)
         alert(prequalifiedAmount);
-        if (prequalifiedAmount === 0) {
+        if (prequalifiedAmount === '0') {
             alert('Please enter a prequalified amount or select No');
             return;
         }
