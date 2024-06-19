@@ -476,7 +476,8 @@ function setStatus(agentid, status) {
         });
 }
 
-function savePropertyChanges() {
+function savePropertyChanges(event) {
+    event.preventDefault()
     const propertyType = document.getElementById('propertyType').value;
     const bedrooms_min = document.getElementById('bedrooms_min').value;
     const bathrooms_min = document.getElementById('bathrooms_min').value;
