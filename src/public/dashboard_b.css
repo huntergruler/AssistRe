@@ -118,7 +118,7 @@
 #displayZipCodes {
     overflow: auto;
     width: 300px;
-    max-height: 160px;
+    max-height: 150px;
     min-height: 100px;
     text-align: center;
     align-items: center;
