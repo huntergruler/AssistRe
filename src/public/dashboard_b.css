@@ -556,7 +556,7 @@ body {
 }
 
 .toggle-button {
-    background-color: #007BFF;
+    background-color: black;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -565,7 +565,8 @@ body {
 }
 
 .toggle-button:hover {
-    background-color: #0056b3;
+    background-color: black;
+    color: white;
 }
 
 .custom-button {
