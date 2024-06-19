@@ -545,7 +545,7 @@ function getBuyerTypes() {
                 console.error('Error fetching buyer types:', data.error);
                 return;
             }
-            data.selectedBuyerTypes.forEach(buyerTypeItem => {
+            data.buyerTypeResults.forEach(buyerTypeItem => {
                 var buyerTypes = buyerTypeItem.buyerType;
             })
             console.log('HeRE',buyerTypes);
