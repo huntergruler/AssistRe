@@ -549,6 +549,7 @@ function getBuyerTypes() {
             data.selectedBuyerTypes.forEach(buyerTypeItem => {
                 buyerTypes = buyerTypeItem.buyerType;
             })
+            console.log(buyerTypes);
             data.buyerTypes.forEach(item => {
                 // Create a label element
                 const label = document.createElement('label');
@@ -561,6 +562,7 @@ function getBuyerTypes() {
                 checkbox.name = 'buyerType';
                 checkbox.value = item.buyertypeid;
                 checkbox.id = item.buyertypeid;
+                console.log(item.buyertypeid);
                 checkbox.checked = buyerTypes.includes(item.buyertypeid);
                 // Append the checkbox and label to the div
                 buyerTypeCheckbox.appendChild(label);
