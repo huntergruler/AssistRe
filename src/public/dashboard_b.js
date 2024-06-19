@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (moreInfo.style.display === 'none') {
             console.log('Displaying more info');
             moreInfo.style.display = 'none';
-            toggleButton.innerHTML = '<i class="fas fa-chevron-up"></i> Show Less <i class="fas fa-chevron-up"></i>';
+            toggleButton.innerHTML = '<i class="fas fa-chevron-up"></i> Show More <i class="fas fa-chevron-up"></i>';
         } else {
             moreInfo.style.display = 'block';
-            toggleButton.innerHTML = '<i class="fas fa-chevron-down"></i> Show More <i class="fas fa-chevron-down"></i>';
+            toggleButton.innerHTML = '<i class="fas fa-chevron-down"></i> Show Less <i class="fas fa-chevron-down"></i>';
         }
     });
 
