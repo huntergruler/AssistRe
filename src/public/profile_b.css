@@ -180,6 +180,7 @@ padding-right: 0px;
     max-height: fit-content;
     align-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
     border-top: 1px solid black;
 }
