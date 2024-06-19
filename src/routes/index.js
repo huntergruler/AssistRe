@@ -1381,13 +1381,7 @@ router.get('/getBuyerTypes', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (buyerTypes.length > 0) {
-      const typeQuery = 'SELECT buyertypeid, buyerType FROM BuyerRequestDetails WHERE userid = ?';
-      db.query(typeQuery, [buyerid], (error, buyerTypeResults) => {
-        if (error) {
-          return res.status(500).json({ error: 'Internal server error' });
-        }
-          res.json({ buyerTypes, buyerTypeResults });
-      });
+      res.json({ buyerTypes, buyerTypeResults });
     } else {
       res.status(404).json({ error: 'No buyer types found' });
     }
