@@ -75,7 +75,10 @@
             <div class="userZip-container">
                 <h3 class="text-center">Property Info</h3>
                 <div class="property-group">
-                    <u>Buyer Type</u><br> <%= buyer.buyerType %><br>
+                    <div class="buyertype-container">
+                        <u>Buyer Type</u><br>
+                        <%= buyer.buyerType %><br>
+                    </div>
                     Property Type: <%= buyer.propertyType %><br>
                         Service Level: <%= buyer.levelOfServiceDisp %><br>
                             Minimum Bedrooms: <%= buyer.bedrooms_min %><br>
