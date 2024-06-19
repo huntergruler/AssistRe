@@ -73,9 +73,9 @@ $(document).ready(function () {
             userid: $('#userid').val()
         };
         if (formData.prequalifiedY) {
-            formData.prequalified = 'Y';
+            formData.prequalified = 'Yes';
         } else {
-            formData.prequalified = 'N';
+            formData.prequalified = 'No';
         }
         $.ajax({
             type: 'POST',
@@ -275,9 +275,9 @@ function savePropertyChanges() {
     console.log(prequalifiedY,"Prequalified Y",prequalifiedN,"Prequalified N");
 
     if (prequalifiedY) {
-        var prequalified = 'Y';
+        var prequalified = 'Yes';
     } else {
-        var prequalified = 'N';
+        var prequalified = 'No';
     }
     console.log(prequalified,"Prequalified");
     const data = {
