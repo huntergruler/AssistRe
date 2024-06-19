@@ -522,6 +522,7 @@ function savePropertyChanges(event) {
     const buyerTypeCheckbox = document.querySelectorAll('input[name="buyerType"]:checked');
     const buyerTypeArray = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
     const buyerType = buyerTypeArray.join(',');
+    console.log(prequalifiedAmount, "Prequalified Amount", prequalifiedY, "Prequalified Y", prequalifiedN, "Prequalified N");
 
     if (prequalifiedY) {
         var prequalified = 'Yes';
