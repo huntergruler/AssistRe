@@ -526,7 +526,7 @@ function savePropertyChanges(event) {
     if (prequalifiedY) {
         var prequalified = 'Yes';
         if (prequalifiedAmount === '' || prequalifiedAmount === null || prequalifiedAmount === undefined || prequalifiedAmount === '0') {
-            showModal('Please enter a prequalified amount or select No');
+            // showModal('Please enter a prequalified amount or select No');
             document.getElementById('prequalifiedY').focus();
             return;
         }
