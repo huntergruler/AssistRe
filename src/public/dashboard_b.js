@@ -563,7 +563,7 @@ function getBuyerTypes() {
                 checkbox.value = item.buyertypeid;
                 checkbox.id = item.buyertypeid;
                 console.log(item.buyertypeid);
-                checkbox.checked = buyerTypes.includes(item.buyertypeid);
+                checkbox.checked = buyerTypesData.includes(item.buyertypeid);
                 // Append the checkbox and label to the div
                 buyerTypeCheckbox.appendChild(label);
                 buyerTypeCheckbox.appendChild(checkbox);
