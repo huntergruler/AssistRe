@@ -513,7 +513,7 @@ function savePropertyChanges(event) {
     const price_min = document.getElementById('price_min').value;
     const price_max = document.getElementById('price_max').value;
     const timeFrame = document.getElementById('timeFrame').value;
-    const timeframeUnit = document.getElementById('timeframeUnit').value;
+    const timeframeUnit = document.getElementById('timeframeUnit').selected;
     const prequalifiedY = document.getElementById('prequalifiedY').checked;
     const prequalifiedN = document.getElementById('prequalifiedN').checked;
     const prequalifiedAmount = document.getElementById('prequalifiedAmount').value;
