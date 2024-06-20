@@ -208,7 +208,7 @@
           <div class="container">
             <div class="form-container">
               <form id="propertyForm" style="padding-top: 5px;">
-                <div class="buyertype-container-edit" >
+                <div class="buyertype-container-edit">
                   <u>Buyer Type</u>
                   <div class="form-row ">
                     <div id="buyerTypeCheckbox" class="col-md-12">
@@ -248,7 +248,12 @@
                 </div>
                 <div class="form-row ">
                   <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
-                  <input type="text" class="form-control-sm col-md-5" placeholder="Enter Time Frame" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
+                  <input type="text" class="form-control-sm col-md-2" placeholder="Enter Time Frame" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
+                  <select id="timeunit" class="form-select-sm col-md-3" placeholder="Time Unit">
+                    <option value="Days" selected>Days</option>
+                    <option value="Weeks">Weeks</option>
+                    <option value="Months">Months</option>
+                  </select>
                 </div>
                 <div class="form-row ">
                   <label for="prequalified" id="prequalified" class="col-md-4 col-form-label">Prequalified</label>
