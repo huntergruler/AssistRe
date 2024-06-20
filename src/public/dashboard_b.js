@@ -634,7 +634,7 @@ function populateLevelOfService() {
 };
 
 function populateSearchInfoDisplay() {
-    const populateSearchInfoDisp = document.getElementById('populateSearchInfoDisp');
+    const populateSearchInfoDisplay = document.getElementById('populateSearchInfoDisplay');
     console.log('Populating search info display');
     fetch(`/populateSearchInfoDisplay`)
         .then(response => response.json())
@@ -644,7 +644,7 @@ function populateSearchInfoDisplay() {
                 return;
             }
             data.results.forEach(item => {
-                populateSearchInfoDisp.innerHTML = item.searchInfoDisplay;
+                populateSearchInfoDisplay.innerHTML = item.searchInfoDisplay;
             });
         })
 
