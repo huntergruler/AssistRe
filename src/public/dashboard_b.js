@@ -110,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
             toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
         }
     });
-    console.log('Document loaded');
     populateSearchInfoDisplay();
     getOfferCounts('New', null);
     getBuyerTypes();
@@ -644,9 +643,7 @@ function populateSearchInfoDisplay() {
                 console.error('Error fetching search info:', data.error);
                 return;
             }
-            console.log(data);
             data.results.forEach(item => {
-                console.log(item.searchInfoDisplay);
                 populateSearchInfoDisplay.innerHTML = item.searchInfoDisplay;
             });
         })
