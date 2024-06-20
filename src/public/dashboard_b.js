@@ -513,6 +513,7 @@ function savePropertyChanges(event) {
     const price_min = document.getElementById('price_min').value;
     const price_max = document.getElementById('price_max').value;
     const timeFrame = document.getElementById('timeFrame').value;
+    const timeframeUnit = document.getElementById('timeframeUnit').value;
     const prequalifiedY = document.getElementById('prequalifiedY').checked;
     const prequalifiedN = document.getElementById('prequalifiedN').checked;
     const prequalifiedAmount = document.getElementById('prequalifiedAmount').value;
@@ -522,7 +523,6 @@ function savePropertyChanges(event) {
     const buyerTypeCheckbox = document.querySelectorAll('input[name="buyerType"]:checked');
     const buyerTypeArray = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
     const buyerType = buyerTypeArray.join(',');
-    console.log(timeFrame);
 
     if (prequalifiedY) {
         var prequalified = 'Yes';
@@ -543,13 +543,12 @@ function savePropertyChanges(event) {
         buyerType: buyerType,
         price_min: price_min,
         price_max: price_max,
-        timeFrame: timeFrame,
+        timeFrame: timeFrame + ' ' + timeframeUnit,
         prequalified: prequalified,
         levelofserviceid: levelofserviceid,
         preferredLanguages: preferredLanguages,
         userid: userid
     };
-    console.log(data);
 
     // Send the data to the server using fetch
     fetch('/savePropertyChanges', {
