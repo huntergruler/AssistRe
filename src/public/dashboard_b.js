@@ -522,14 +522,15 @@ function savePropertyChanges(event) {
     const buyerTypeCheckbox = document.querySelectorAll('input[name="buyerType"]:checked');
     const buyerTypeArray = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
     const buyerType = buyerTypeArray.join(',');
+    console.log(timeFrame);
 
     if (prequalifiedY) {
         var prequalified = 'Yes';
-        if (prequalifiedAmount === '' || prequalifiedAmount === null || prequalifiedAmount === undefined || prequalifiedAmount === '0') {
-            // showModal('Please enter a prequalified amount or select No');
-            document.getElementById('prequalifiedY').focus();
-            return;
-        }
+        // if (prequalifiedAmount === '' || prequalifiedAmount === null || prequalifiedAmount === undefined || prequalifiedAmount === '0') {
+        //     // showModal('Please enter a prequalified amount or select No');
+        //     document.getElementById('prequalifiedY').focus();
+        //     return;
+        // }
     } else {
         var prequalified = 'No';
     }
