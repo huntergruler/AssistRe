@@ -150,21 +150,18 @@
             <div class="zipselect-group col-md-12">
               <form>
                 <div class="form-row justify-content-center">
-                  <div class="zipCode-group col-md-4 justify-content-center">
-                    <p>Select Zip Codes</p>
-                    <div class="col-md-2 justify-content-center"></div>
-                    <div id="availabeZipCodesContainer" class="col-md justify-content-center">
-                      <!-- JavaScript will populate this container -->
-                    </div>
-                  </div>
-                  <div class="zipCode-group col-md-3 align-items-center">
-                    <div class="row ">
-                      <button type="button" class="btn btn-primary btn-sm" onclick="addSelection()">Add
-                        --> </button>
-                    </div>
-                    <div class="row ">
-                      <button type="button" class="btn btn-primary btn-sm" onclick="removeSelection()">
-                        <-- Remove</button>
+                  <div class="zipCode-group col-md-2 zipAction">
+                    <div class="col-md testalign">
+                      <div class="row ">
+                        <button id="addZip" class="toggle-button custom-button">
+                          &nbsp;Add&nbsp;<i class="fas fa-chevron-right" onclick="addSelection()"></i>&nbsp;
+                        </button>
+                      </div>
+                      <div class="row ">
+                        <button id="removeZip" class="toggle-button custom-button">
+                          &nbsp;<i class="fas fa-chevron-left" onclick="addSelection()"></i>&nbsp;Remove&nbsp;
+                        </button>
+                      </div>
                     </div>
                   </div>
                   <div class="zipCode-group col-md-3 justify-content-center">
