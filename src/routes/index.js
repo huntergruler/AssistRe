@@ -545,7 +545,7 @@ router.post('/profile_b_property', (req, res) => {
     res.redirect('/');
   }
   else {
-    buyerrequestid = req.session.buyerrequestid;
+    const buyerrequestid = req.session.buyerrequestid;
     const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, 
             preferredLanguages, prequalified, price_min, price_max, propertyType, 
             squareFootage_min, squareFootage_max, timeFrame, levelofserviceid, 
@@ -555,17 +555,19 @@ router.post('/profile_b_property', (req, res) => {
     let query;
 
     if (buyerrequestid === 0) {
-      query = 'INSERT Into BuyerRequestDetails SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelofserviceid = ?, prequalifiedAmount = ?, buyerrequestid = ?, userid = ?';
-      queryParams = [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType,
-                     preferredLanguages, prequalified, price_min, price_max, propertyType,
-                     squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
-                     prequalifiedAmount, buyerrequestid, userid];
-    } else {
-      query = 'UPDATE BuyerRequestDetails SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelofserviceid = ?, prequalifiedAmount = ? WHERE userid = ?';
+      query = `INSERT Into BuyerRequestDetails (bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, preferredLanguages, prequalified, price_min, price_max, propertyType, squareFootage_min, squareFootage_max, timeFrame, levelofserviceid, prequalifiedAmount, userid)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+
       queryParams = [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType,
                      preferredLanguages, prequalified, price_min, price_max, propertyType,
                      squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
                      prequalifiedAmount, userid];
+    } else {
+      query = 'UPDATE BuyerRequestDetails SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelofserviceid = ?, prequalifiedAmount = ? WHERE buyerrequestid = ?';
+      queryParams = [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType,
+                     preferredLanguages, prequalified, price_min, price_max, propertyType,
+                     squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
+                     prequalifiedAmount, buyerrequestid];
     }
     console.log('Query:', query, 'Params:', queryParams);
     db.query(query, queryParams, (error, results) => {
