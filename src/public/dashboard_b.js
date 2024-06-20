@@ -523,8 +523,6 @@ function savePropertyChanges(event) {
     const buyerTypeArray = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
     const buyerType = buyerTypeArray.join(',');
 
-    console.log(timeFrame, "Time Frame");
-
     if (prequalifiedY) {
         var prequalified = 'Yes';
         if (prequalifiedAmount === '' || prequalifiedAmount === null || prequalifiedAmount === undefined || prequalifiedAmount === '0') {

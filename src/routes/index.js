@@ -545,6 +545,7 @@ router.post('/profile_b_property', (req, res) => {
     res.redirect('/');
   }
   else {
+    console.log('profile_b_property:', req.body)
     const buyerrequestid = req.session.buyerrequestid;
     const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, 
             preferredLanguages, prequalified, price_min, price_max, propertyType, 
