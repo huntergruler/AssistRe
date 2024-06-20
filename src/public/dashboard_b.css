@@ -185,7 +185,7 @@
     padding-left: 0px;
     padding-right: 0px;
     width: auto;
-    display: flex;
+    /* display: flex; */
     /* flex-direction: column; Stack items vertically */
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
