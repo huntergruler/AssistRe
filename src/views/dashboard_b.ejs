@@ -253,7 +253,7 @@
                     <option value="Weeks" {% if buyer.timeframeUnit == 'Weeks' %}selected{% endif %}>Weeks</option>
                     <option value="Months" {% if buyer.timeframeUnit == 'Months' %}selected{% endif %}>Months</option>
                   </select>
-                  <span class="col-md-1 text-center"><%= buyer.timeFrame %><%= buyer.timeframeUnit %></span>
+                  <span class="col-md-1 text-center">%<%= buyer.timeframeUnit %>%</span>
                 </div>
                 <div class="form-row ">
                   <label for="prequalifiedY" id="prequalified" class="col-md-4 col-form-label">Prequalified</label>
