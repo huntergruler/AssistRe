@@ -460,7 +460,7 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
     const buyerrequestid = req.session.buyerrequestid;
     const query = `select concat('<div class="buyertype-container">',
        '<u>Buyer Type</u><br>', getBuyerTypesByIds(brd.buyerType),'</div>',
-            'Property TType: ',propertyType,'<br>',
+            'Property Type: ',propertyType,'<br>',
             'Service Level: ',levelOfService,'<br>',
             'Minimum Bedrooms: ',bedrooms_min,'<br>',
             'Minimum Bathrooms: ',bathrooms_min,'<br>',
