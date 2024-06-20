@@ -468,7 +468,7 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
             'Timeframe: ',timeFrame,'<br>',           
             if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified'),            
             '<br>',
-            'Preferred Languages: ',preferredLanguages,'<br>') searchInfoDisplay
+            'Preferred Languages: ',preferredLanguages,'<br>') searchInfoDisplay, buyerrequestid
                      from Buyers b
                           left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
                           join LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
@@ -481,6 +481,9 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
       if (results.length === 0) {
         return res.status(404).send('No Defaults');
       }
+      if (buyerrequestid != 0 && buyerrequestid != results[0].buyerrequestid) {
+        req.session.buyerrequestid = results[0].buyerrequestid;
+      }
       res.json({ results });
     });
   }
@@ -488,7 +491,6 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
 
 // Route to get the buyer's profile
 router.get('/dashboard_b', (req, res) => {
-  console.log('Dashboard B:', req.session.user);
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
@@ -498,7 +500,7 @@ router.get('/dashboard_b', (req, res) => {
     req.session.buyerrequestid = 0;
     const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
                           ifnull(brd.bathrooms_min,0) bathrooms_min, ifnull(brd.bathrooms_max,0) bathrooms_max, ifnull(brd.bedrooms_min,0) bedrooms_min, ifnull(brd.bedrooms_max,0) bedrooms_max, getBuyerTypesByIds(brd.buyerType) buyerType, ifnull(brd.preferredLanguages,'') preferredLanguages, brd.prequalified, ifnull(brd.price_min,0) price_min, 
-                          ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, ifnull(brd.timeFrame,'') timeFrame, brd.prequalifiedFile, los.levelOfService levelOfServiceDisp, los.levelofserviceid,
+                          ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, ifnull(trim(replace(timeframe,substring_index(timeFrame,' ',-1),'')),'') timeFrame, brd.prequalifiedFile, los.levelOfService levelOfServiceDisp, los.levelofserviceid,
                           ifnull(brd.prequalifiedAmount,0) prequalifiedAmount, brd.buyerrequestid, brd.buyerType buyerTypeDisp, if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified') prequalifiedDisp,
                           substring_index(timeFrame,' ',-1) timeframeUnits
                      from Buyers b
@@ -571,7 +573,6 @@ router.post('/savePropertyChanges', (req, res) => {
                      squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
                      prequalifiedAmount, buyerrequestid];
     }
-    console.log('Query:', query, 'Params:', queryParams);
     db.query(query, queryParams, (error, results) => {
       if (error) {
         console.error('Error updating buyer profile:', error);
