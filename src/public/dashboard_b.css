@@ -576,6 +576,7 @@ body {
     align-content: center;
     justify-items: center;
     display: flex;
+    align-items: center;
     
 }
 
