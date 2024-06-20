@@ -270,18 +270,24 @@ function savePropertyChanges(event) {
     const price_min = document.getElementById('price_min').value;
     const price_max = document.getElementById('price_max').value;
     const timeFrame = document.getElementById('timeFrame').value;
+    const timeframeUnit = document.getElementById('timeframeUnit').value;
     const prequalifiedY = document.getElementById('prequalifiedY').checked;
     const prequalifiedN = document.getElementById('prequalifiedN').checked;
+    const prequalifiedAmount = document.getElementById('prequalifiedAmount').value;
     const preferredLanguages = document.getElementById('preferredLanguages').value;
     const levelofserviceid = document.getElementById('buyerLevelOfService').value;
     const userid = document.getElementById('userid').value;
     const buyerTypeCheckbox = document.querySelectorAll('input[name="buyerType"]:checked');
     const buyerTypeArray = Array.from(buyerTypeCheckbox).map(buyerType => buyerType.value);
     const buyerType = buyerTypeArray.join(',');
-    console.log(levelofserviceid);
 
     if (prequalifiedY) {
         var prequalified = 'Yes';
+        // if (prequalifiedAmount === '' || prequalifiedAmount === null || prequalifiedAmount === undefined || prequalifiedAmount === '0') {
+        //     // showModal('Please enter a prequalified amount or select No');
+        //     document.getElementById('prequalifiedY').focus();
+        //     return;
+        // }
     } else {
         var prequalified = 'No';
     }
@@ -294,15 +300,16 @@ function savePropertyChanges(event) {
         buyerType: buyerType,
         price_min: price_min,
         price_max: price_max,
-        timeFrame: timeFrame,
+        timeFrame: timeFrame + ' ' + timeframeUnit,
         prequalified: prequalified,
+        prequalifiedAmount: prequalifiedAmount,
         levelofserviceid: levelofserviceid,
         preferredLanguages: preferredLanguages,
         userid: userid
     };
 
     // Send the data to the server using fetch
-    fetch('/profile_b_property', {
+    fetch('/savePropertyChanges', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
