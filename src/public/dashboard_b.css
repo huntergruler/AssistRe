@@ -560,7 +560,7 @@ body {
 }
 
 .toggle-button:hover {
-    background-color: black;
+    background-color: grey;
     color: white;
 }
 
@@ -568,7 +568,7 @@ body {
     display: flex;
     align-items: center;
     background-color: transparent;
-    color: black;
+    color: lightgray;
     border: 1px solid black;
     padding: 0px 0px;
     font-size: 12px;
