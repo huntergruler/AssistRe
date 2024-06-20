@@ -301,24 +301,26 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="zipCodeContainer mt-5">
+          <div class="zipCodeContainer">
             <div class="zipstate-group justify-content-center">
               <form>
                 <div class="form-row">
                   <div class="form-row col-md-12 justify-content-center">
                     <div><b>Enter a Zip Code or Select a State</b></div>
                   </div>
-                  <div class="form-group col-md-5">
+                  <div class="form-row col-md-12 justify-content-center">
+                    <div class="form-group col-md-5">
                     <label for="zipSelect">Zip Code:</label>
                     <input id="zipSelect" class="form-select-sm col-md-5" placeholder="Zip Code" type="text" maxlength="5" onblur="addZipCode();">
                     </select>
                   </div>
+                  </div>
                   <div class="form-group col-md-1">
                     <b>OR</b>
                   </div>
-                  <div class="form-group col-md-5">
-                    <label for="stateSelect" class="col-md-5">State:</label>
-                    <select id="stateSelect" class="form-select-sm col-md-5" onchange="populateCitiesCounties();"></select>
+                  <div class="form-group col-md-7">
+                    <label for="stateSelect" class="col-md-4">State:</label>
+                    <select id="stateSelect" class="form-select-sm col-md-7" onchange="populateCitiesCounties();"></select>
                   </div>
                 </div>
               </form>
