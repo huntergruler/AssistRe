@@ -270,6 +270,7 @@ body {
 .property-group {
     height: fit-content;
     max-height: 490px;
+    border: none;
 }
 
 .row {
