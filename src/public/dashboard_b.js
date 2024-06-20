@@ -635,7 +635,7 @@ function populateLevelOfService() {
 };
 
 function populateSearchInfoDisplay() {
-    const populateSearchInfoDisplay = document.getElementById('populateSearchInfoDisplay');
+    const populateSearchInfoDisplay = document.getElementById('searchInfoDisplay');
     console.log('Populating search info display');
     fetch(`/populateSearchInfoDisplay`)
         .then(response => response.json())
