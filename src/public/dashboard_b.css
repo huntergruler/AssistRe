@@ -255,7 +255,7 @@
     padding-bottom: 0px;
     padding-left: 2px;
     padding-right: 0px;
-    align-items: top;
+    align-items: center;
     align-self: start;
 }
 
@@ -572,12 +572,10 @@ body {
     padding-bottom: 0px;
     width: auto;
     text-align: center;
-    justify-content: center;
-    align-content: center;
-    justify-items: center;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
 }
 
 .custom-button {
