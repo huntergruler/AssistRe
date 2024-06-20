@@ -249,11 +249,11 @@
                   <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
                   <input type="text" class="form-control-sm col-md-2" placeholder="Enter Time Frame" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
                   <select id="timeframeUnit" class="col-md-2" style="margin-left: 3px;" placeholder="Time Unit">
-                    <option value="Days" {% if buyer.timeframeUnit == 'Days' %}selected{% endif %}>Days</option>
-                    <option value="Weeks" {% if buyer.timeframeUnit == 'Weeks' %}selected{% endif %}>Weeks</option>
-                    <option value="Months" {% if buyer.timeframeUnit == 'Months' %}selected{% endif %}>Months</option>
+                    <option value="Days" {% if buyer.timeframeUnit === 'Days' %}selected{% endif %}>Days</option>
+                    <option value="Weeks" {% if buyer.timeframeUnit === 'Weeks' %}selected{% endif %}>Weeks</option>
+                    <option value="Months" {% if buyer.timeframeUnit === 'Months' %}selected{% endif %}>Months</option>
                   </select>
-                  <span class="col-md-1 text-center">%<%= buyer.timeframeUnit %>%</span>
+                  <span class="col-md-1 text-center"><%= buyer.timeframeUnit %></span>
                 </div>
                 <div class="form-row ">
                   <label for="prequalifiedY" id="prequalified" class="col-md-4 col-form-label">Prequalified</label>
