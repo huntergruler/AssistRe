@@ -250,6 +250,24 @@ body {
     border: 1px solid black;
 }
 
+.buyertype-container-edit {
+    max-width: 90%;
+    margin-left: 25px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 14px;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
 .profile-group,
 .property-group {
     margin: 0px 0px;
