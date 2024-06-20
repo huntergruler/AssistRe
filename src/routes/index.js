@@ -458,20 +458,20 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
     const userid = req.session.userid;
     const buyerrequestid = req.session.buyerrequestid;
     const query = `select concat('<div class="buyertype-container">',
-                         '<u>Buyer Type</u><br>', getBuyerTypesByIds(brd.buyerType),'</div>',
-                         'Property Type: ',propertyType,'<br>',
-                         'Service Level: ',levelOfService,'<br>',
-                         'Minimum Bedrooms: ',bedrooms_min,'<br>',
-                         'Minimum Bathrooms: ',bathrooms_min,'<br>',
-                         'SqFt Range: ',squareFootage_min,' to ',squareFootage_max,'<br>',
-                         'Price Range: ',CONCAT('$', FORMAT(brd.price_min, 0)),' to ',CONCAT('$', FORMAT(brd.price_max, 0)),'<br>',
-                         'Timeframe: ',timeFrame,'<br>',           
-                         if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified'),'<br>',
-                         'Preferred Languages: ',preferredLanguages,'<br>') searchInfoDisplay, buyerrequestid
+                          '<u>Buyer Type</u><br>', getBuyerTypesByIds(brd.buyerType),'</div>',
+                          'Property Type: ',propertyType,'<br>',
+                          'Service Level: ',levelOfService,'<br>',
+                          'Minimum Bedrooms: ',bedrooms_min,'<br>',
+                          'Minimum Bathrooms: ',bathrooms_min,'<br>',
+                          'SqFt Range: ',FORMAT(brd.squareFootage_min, 0),' to ',FORMAT(brd.squareFootage_max, 0),'<br>',
+                          'Price Range: ',CONCAT('$', FORMAT(brd.price_min, 0)),' to ',CONCAT('$', FORMAT(brd.price_max, 0)),'<br>',
+                          'Timeframe: ',timeFrame,'<br>',           
+                          if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified'),'<br>',
+                          'Preferred Languages: ',preferredLanguages,'<br>') searchInfoDisplay, buyerrequestid
                      from Buyers b
                           left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
                           join LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
-                     where b.userid = ?`;
+                    where b.userid = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching offer defaults:', error);
