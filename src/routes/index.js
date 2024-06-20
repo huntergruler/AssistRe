@@ -484,7 +484,7 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
       if (results.length === 0) {
         return res.status(404).send('No Defaults');
       }
-      res.json(results[0]);
+      res.json({ results });
     });
   }
 });
