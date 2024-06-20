@@ -148,40 +148,40 @@
               </form>
             </div>
             <div class="zipselect-group col-md-12">
-                <form>
-                  <div class="form-row justify-content-center">
-                    <div class="zipCode-group col-md-4 justify-content-center">
-                      <p>Select Zip Codes</p>
-                      <div class="col-md-2 justify-content-center"></div>
-                      <div id="availabeZipCodesContainer" class="col-md justify-content-center">
-                        <!-- JavaScript will populate this container -->
-                      </div>
+              <form>
+                <div class="form-row justify-content-center">
+                  <div class="zipCode-group col-md-4 justify-content-center">
+                    <p>Select Zip Codes</p>
+                    <div class="col-md-2 justify-content-center"></div>
+                    <div id="availabeZipCodesContainer" class="col-md justify-content-center">
+                      <!-- JavaScript will populate this container -->
                     </div>
-                    <div class="zipCode-group col-md-2 zipAction">
-                      <div class="col-md">
-                        <div class="row ">
-                          <button id="addZip" class="toggle-button custom-button">
-                            &nbsp;Add&nbsp;<i class="fas fa-chevron-right" onclick="addSelection()"></i>&nbsp;
-                          </button>
-                        </div>
-                        <div class="row ">
-                          <button id="removeZip" class="toggle-button custom-button">
-                            &nbsp;<i class="fas fa-chevron-left" onclick="addSelection()"></i>&nbsp;Remove&nbsp;
-                          </button>
-                        </div>
+                  </div>
+                  <div class="zipCode-group col-md-2 zipAction">
+                    <div class="col-md">
+                      <div class="row ">
+                        <button id="addZip" class="toggle-button custom-button">
+                          &nbsp;Add&nbsp;<i class="fas fa-chevron-right" onclick="addSelection()"></i>&nbsp;
+                        </button>
                       </div>
-                    </div>
-                    <div class="zipCode-group col-md-3 justify-content-center">
-                      <p>Your Zip Codes</p>
-                      <div class="col-md-4"></div>
-                      <div id="selectedZipCodesContainer" class="col-md justify-content-center">
-                        <!-- JavaScript will populate this container -->
+                      <div class="row ">
+                        <button id="removeZip" class="toggle-button custom-button">
+                          &nbsp;<i class="fas fa-chevron-left" onclick="addSelection()"></i>&nbsp;Remove&nbsp;
+                        </button>
                       </div>
                     </div>
                   </div>
-                </form>
-              </div>
-              <div form-row justify-content-center>
+                  <div class="zipCode-group col-md-3 justify-content-center">
+                    <p>Your Zip Codes</p>
+                    <div class="col-md-4"></div>
+                    <div id="selectedZipCodesContainer" class="col-md justify-content-center">
+                      <!-- JavaScript will populate this container -->
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div form-row justify-content-center>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" onclick="saveZipChanges()">Save</button>
                 <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
@@ -202,7 +202,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="container mt-5">
+          <div class="container">
             <div class="form-container">
               <form id="propertyForm" style="padding-top: 5px;">
                 <div class="form-row" style="justify-content: center; border: 1px solid black; border-radius: 5px;">
@@ -232,9 +232,9 @@
                   <input type="text" class="form-control-sm col-md-2" placeholder="Max" id="squareFootage_max" name="squareFootage_max" value="<%= buyer.squareFootage_max %>" required>
                 </div>
                 <div class="form-row ">
-                  <label for="priceRange" class="col-md-4 col-form-label">Price Range</label>
+                  <label for="price_min" class="col-md-4 col-form-label">Price Range ($)</label>
                   <input type="text" class="form-control-sm col-md-2" placeholder="Min" id="price_min" name="price_min" value="<%= buyer.price_min %>" required>
-                  <label class="col-md-1 text-center">To</label>
+                  <span class="col-md-1 text-center">To</span>
                   <input type="text" class="form-control-sm col-md-2" placeholder="Max" id="price_max" name="price_max" value="<%= buyer.price_max %>" required>
                 </div>
                 <div class="form-row ">
@@ -243,11 +243,16 @@
                   <select id="buyerLevelOfService" class="form-select-sm col-md-6" placeholder="Level Of Service"></select>
                   <input type="hidden" id="levelofserviceid" name="levelofserviceid" value="<%= buyer.levelofserviceid %>">
                 </div>
-                <div class="form-row ">
-                  <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
-                  <input type="text" class="form-control-sm col-md-5" placeholder="Enter Time Frame" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
-                </div>
-                <div class="form-row ">
+                <div class="form-row" style="align-items: center;">
+                    <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
+                    <input type="text" class="form-control-sm col-md-2" placeholder="Enter Time Frame" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
+                    <select id="timeframeUnit" class="col-md-2" style="margin-left: 3px;" placeholder="Time Unit">
+                      <option value="Days" <%= buyer.timeframeUnit === 'Days' ? 'selected' : '' %>>Days</option>
+                      <option value="Weeks" <%= buyer.timeframeUnit === 'Weeks' ? 'selected' : '' %>>Weeks</option>
+                      <option value="Months" <%= buyer.timeframeUnit === 'Months' ? 'selected' : '' %>>Months</option>
+                    </select>
+                  </div>
+                  <div class="form-row ">
                   <label for="prequalified" id="prequalified" class="col-md-4 col-form-label">Prequalified</label>
                   <div class="col-md-3">
                     <% if ( buyer.prequalified=='Yes' ) { %>
