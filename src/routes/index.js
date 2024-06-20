@@ -456,6 +456,7 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
     res.redirect('/');
   }
   else {
+    console.log('Populate Search Info Display');
     const userid = req.session.userid;
     const buyerrequestid = req.session.buyerrequestid;
     const query = `select concat('<div class="buyertype-container">',
