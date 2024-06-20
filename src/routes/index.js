@@ -456,12 +456,10 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
     res.redirect('/');
   }
   else {
-    console.log('Populate Search Info Display');
     const userid = req.session.userid;
     const buyerrequestid = req.session.buyerrequestid;
     const query = `select concat('<div class="buyertype-container">',
-       '<u>Buyer Type</u>',
-getBuyerTypesByIds(brd.buyerType),'</div><br>',
+       '<u>Buyer Type</u><br>', getBuyerTypesByIds(brd.buyerType),'</div><br>',
             'Property Type: ',propertyType,'<br>',
             'Service Level: ',levelOfService,'<br>',
             'Minimum Bedrooms: ',bedrooms_min,'<br>',
