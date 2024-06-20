@@ -543,7 +543,7 @@ function savePropertyChanges(event) {
         buyerType: buyerType,
         price_min: price_min,
         price_max: price_max,
-        timeFrame: timeframeUnit,
+        timeFrame: timeFrame + ' ' + timeframeUnit,
         prequalified: prequalified,
         levelofserviceid: levelofserviceid,
         preferredLanguages: preferredLanguages,
