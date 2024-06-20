@@ -576,8 +576,8 @@ body {
     align-content: center;
     justify-items: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    
 }
 
 .custom-button {
