@@ -567,6 +567,7 @@ body {
 
 .testalign {
     align-items: center;
+    align-self: center;
     justify-content: center;
 }
 
