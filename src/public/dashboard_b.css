@@ -639,7 +639,7 @@ body {
 
 }
 
-.modify-button {
+#modify-button {
     display: flex;
     align-items: center;
     justify-content: center;
