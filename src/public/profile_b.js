@@ -122,6 +122,7 @@ function lookupCityState() {
 document.addEventListener('DOMContentLoaded', function () {
     populateDisplayZipCodes();
     populateLevelOfService();
+    populateSearchInfoDisplay();
     getBuyerTypes();
     populateStates();
     // var levelOfService = document.getElementById('levelOfService').value;
@@ -329,6 +330,22 @@ function savePropertyChanges(event) {
             console.error('Error:', error);
         });
 };
+
+function populateSearchInfoDisplay() {
+    const populateSearchInfoDisplay = document.getElementById('searchInfoDisplay');
+    fetch(`/populateSearchInfoDisplay`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error fetching search info:', data.error);
+                return;
+            }
+            data.results.forEach(item => {
+                populateSearchInfoDisplay.innerHTML = item.searchInfoDisplay;
+            });
+        })
+
+}
 
 function populateUserZipCodes() {
     populateLevelOfService();

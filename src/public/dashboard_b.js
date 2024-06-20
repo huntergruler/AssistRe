@@ -651,7 +651,6 @@ function populateSearchInfoDisplay() {
 
 }
 
-
 function populateUserZipCodes() {
     populateLevelOfService();
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
