@@ -446,6 +446,7 @@ router.get('/profile_b', (req, res) => {
       }
       req.session.buyerrequestid = results[0].buyerrequestid;
       console('Buyer Request ID:', req.session.buyerrequestid);
+      res.json({ results });
     });
   }
 });
