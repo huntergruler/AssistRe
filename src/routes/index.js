@@ -460,18 +460,18 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
     const userid = req.session.userid;
     const buyerrequestid = req.session.buyerrequestid;
     const query = `select concat('<div class="buyertype-container">',
-                          '<u>Buyer Type</u><br>,buyerType,<br></div>',
-                          getBuyerTypesByIds(brd.buyerType),'<br>',
-                                'Property Type: ',propertyType,'<br>',
-                                'Service Level: ',levelOfService,'<br>',
-                                'Minimum Bedrooms: ',bedrooms_min,'<br>',
-                                'Minimum Bathrooms: ',bathrooms_min,'<br>',
-                                'SqFt Range: ',squareFootage_min,' to ',squareFootage_max,'<br>',
-                                'Price Range: $',price_min,' to $',price_max,'<br>',
-                                'Timeframe: ',timeFrame,'<br>',           
-                                if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified'),            
-                                '<br>',
-                                'Preferred Languages: ',preferredLanguages,'<br>') searchInfoDisplay
+       '<u>Buyer Type</u>',
+getBuyerTypesByIds(brd.buyerType),'</div><br>',
+            'Property Type: ',propertyType,'<br>',
+            'Service Level: ',levelOfService,'<br>',
+            'Minimum Bedrooms: ',bedrooms_min,'<br>',
+            'Minimum Bathrooms: ',bathrooms_min,'<br>',
+            'SqFt Range: ',squareFootage_min,' to ',squareFootage_max,'<br>',
+            'Price Range: $',price_min,' to $',price_max,'<br>',
+            'Timeframe: ',timeFrame,'<br>',           
+            if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified'),            
+            '<br>',
+            'Preferred Languages: ',preferredLanguages,'<br>') searchInfoDisplay
                      from Buyers b
                           left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
                           join LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
