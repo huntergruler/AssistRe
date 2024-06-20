@@ -250,6 +250,12 @@ body {
     border: 1px solid black;
 }
 
+.form-control-sm {
+    height: 15px;
+    padding: 2px;
+    font-size: 12px;
+}
+
 .buyertype-container-edit {
     max-width: 90%;
     margin-left: 25px;
