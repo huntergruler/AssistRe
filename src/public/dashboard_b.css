@@ -141,7 +141,8 @@ body {
     border-radius: 5px;
 }
 
-#displayZipCodes {
+#displayZipCodes,
+#searchInfoDisplay {
     overflow: auto;
     width: 280px;
     max-height: 150px;
