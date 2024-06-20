@@ -565,6 +565,11 @@ body {
     color: white;
 }
 
+.testalign {
+    align-items: center;
+    justify-content: center;
+}
+
 .zipAction {
     margin: 0px;
     padding-left: 0px;
