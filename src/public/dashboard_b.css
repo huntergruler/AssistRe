@@ -643,7 +643,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var (--background-color);
+    background-color: var(--background-color);
     color: white;
     border: 1px solid black;
     padding: 0px 5px;
