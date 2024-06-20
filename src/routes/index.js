@@ -444,6 +444,7 @@ router.get('/profile_b', (req, res) => {
         return res.status(404).send('User not found');
       }
       req.session.buyerrequestid = results[0].buyerrequestid;
+      console('Buyer Request ID:', req.session.buyerrequestid);
       res.render('profile_b', { buyer: results[0] });
     });
   }
