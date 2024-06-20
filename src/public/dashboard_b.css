@@ -257,6 +257,7 @@
     padding-right: 0px;
     align-items: center;
     align-self: start;
+    justify-content: center;
 }
 
 .tabcontent {
