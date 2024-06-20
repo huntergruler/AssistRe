@@ -50,19 +50,6 @@
             <div class="searchInfoDisplay" id="searchInfoDisplay">
                 <!-- JavaScript will populate this container -->
             </div>
-                <!-- <div class="buyertype-container">
-                <u>Buyer Type</u><br>
-                <%= buyer.buyerType %><br>
-                </div>
-            Property Type: <%= buyer.propertyType %><br>
-            Service Level: <%= buyer.levelOfServiceDisp %><br>
-            Minimum Bedrooms: <%= buyer.bedrooms_min %><br>
-            Minimum Bathrooms: <%= buyer.bathrooms_min %><br>
-            SqFt Range: <%= buyer.squareFootage_min %> to <%= buyer.squareFootage_max %><br>
-            Price Range: $<%= buyer.price_min %> to $<%= buyer.price_max %><br>
-            Timeframe: <%= buyer.timeFrame %><br>
-            <%= buyer.prequalifiedDisp %><br>
-            Preferred Languages: <%= buyer.preferredLanguages %><br> -->
             <div class="form-row justify-content-center">
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal">
                 Modify Property Info
@@ -369,8 +356,9 @@
                   </div>
                   <div class="zipCode-group col-md-3 align-items-center">
                     <div class="row ">
-                      <button type="button" class="btn btn-primary btn-sm" onclick="addSelection()">Add
-                        --> </button>
+                        <button id="addZip" class="toggle-button custom-button">
+                            </i>&nbsp;Add&nbsp;<i class="fas fa-chevron-right" onclick="addSelection()"></i>
+                          </button>
                     </div>
                     <div class="row ">
                       <button type="button" class="btn btn-primary btn-sm" onclick="removeSelection()">
