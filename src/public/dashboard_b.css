@@ -582,6 +582,7 @@ body {
 .custom-button {
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: lightgray;
     color: black;
     border: 1px solid black;
