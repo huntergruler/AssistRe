@@ -433,7 +433,7 @@ router.get('/profile_b', (req, res) => {
                      from Buyers b
                           left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
                           join LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
-                    where b.userid = = ?`;
+                    where b.userid = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);
