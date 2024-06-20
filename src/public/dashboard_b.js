@@ -551,26 +551,26 @@ function savePropertyChanges(event) {
     };
     console.log(data);
 
-    // // Send the data to the server using fetch
-    // fetch('/savePropertyChanges', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(data)
-    // })
-    //     .then(response => {
-    //         if (!response.ok) {
-    //             throw new Error('Network response was not ok');
-    //         }
-    //         window.location.reload();
-    //     })
-    //     .then(result => {
-    //         console.log('Success:', result);
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //     });
+    // Send the data to the server using fetch
+    fetch('/savePropertyChanges', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            window.location.reload();
+        })
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 };
 
 function getBuyerTypes() {
