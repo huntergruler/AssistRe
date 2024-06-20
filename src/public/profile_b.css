@@ -338,7 +338,7 @@ body {
 }
 
 /* The Modal CSS */
-.modal {
+/* .modal {
     display: none;
     position: fixed;
     left: 0;
@@ -350,7 +350,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 /* Modal content */
 .modal-content {
