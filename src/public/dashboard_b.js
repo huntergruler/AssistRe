@@ -644,6 +644,7 @@ function populateSearchInfoDisplay() {
                 console.error('Error fetching search info:', data.error);
                 return;
             }
+            console.log(data);
             data.results.forEach(item => {
                 console.log(item.searchInfoDisplay);
                 populateSearchInfoDisplay.innerHTML = item.searchInfoDisplay;
