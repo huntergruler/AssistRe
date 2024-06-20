@@ -426,6 +426,7 @@ router.get('/profile_b', (req, res) => {
   else {
     const userid = req.session.userid;
     req.session.buyerrequestid = 0;
+    console.log('Buyer Request ID:', req.session.buyerrequestid);
 
     // res.render('profile_b', { buyer: results[0] });
     const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
@@ -444,6 +445,7 @@ router.get('/profile_b', (req, res) => {
       if (results.length === 0) {
         return res.status(404).send('User not found');
       }
+      console.log('Results:', results);
       req.session.buyerrequestid = results[0].buyerrequestid;
       console('Buyer Request ID:', req.session.buyerrequestid);
       res.json({ results });
@@ -550,6 +552,7 @@ router.post('/savePropertyChanges', (req, res) => {
   else {
     console.log('savePropertyChanges 2:')
     const buyerrequestid = req.session.buyerrequestid;
+    console.log('savePropertyChanges 2:',buyerrequestid)
     const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, 
             preferredLanguages, prequalified, price_min, price_max, propertyType, 
             squareFootage_min, squareFootage_max, timeFrame, levelofserviceid, 
