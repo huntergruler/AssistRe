@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
             toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
         }
     });
-    populateSearchInfoDisp();
+    populateSearchInfoDisplay();
     getOfferCounts('New', null);
     getBuyerTypes();
     populateStates();
