@@ -548,6 +548,7 @@ function savePropertyChanges(event) {
         preferredLanguages: preferredLanguages,
         userid: userid
     };
+    console.log(data);
 
     // Send the data to the server using fetch
     fetch('/savePropertyChanges', {
