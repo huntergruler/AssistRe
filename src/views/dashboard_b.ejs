@@ -152,8 +152,7 @@
             </div>
             <div class="form-row container-right">
               <label for="expirationCompTimeFrame" class="col-md-4 col-form-label">Comp after Expired
-                Time
-                Frame</label>
+                Time Frame</label>
               <input type="text" class="form-control-sm col-md-6" placeholder="Expiration Comp Time Frame" id="expirationCompTimeFrame" name="expirationCompTimeFrame" required>
               <div class="help-icon" onclick="showHelp()">?</div>
               <div id="help-dialog" class="hidden">
@@ -249,7 +248,7 @@
                 <div class="form-row" style="align-items: center;">
                   <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
                   <input type="text" class="form-control-sm col-md-2" placeholder="Enter Time Frame" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
-                  <select id="timeframeUnit" class="col-md-2" style="margin-left: 3px;" placeholder="Time Unit">
+                  <select id="timeframeUnit" class="col-md-2" style="margin-left: 3px;" placeholder="Time Unit" value="<%= buyer.timeframeUnit %>">
                     <option value="Days" selected>Days</option>
                     <option value="Weeks">Weeks</option>
                     <option value="Months">Months</option>
