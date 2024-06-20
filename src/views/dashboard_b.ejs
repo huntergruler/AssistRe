@@ -47,10 +47,13 @@
             <h4 class="text-center">Your Search Criteria</h4>
           </div>
           <div class="more-info" id="more-info1" style="display: none;">
-            <div class="buyertype-container">
-              <u>Buyer Type</u><br>
-              <%= buyer.buyerType %><br>
+            <div class="searchInfoDisplay" id="searchInfoDisplay">
+                <!-- JavaScript will populate this container -->
             </div>
+                <!-- <div class="buyertype-container">
+                <u>Buyer Type</u><br>
+                <%= buyer.buyerType %><br>
+                </div>
             Property Type: <%= buyer.propertyType %><br>
             Service Level: <%= buyer.levelOfServiceDisp %><br>
             Minimum Bedrooms: <%= buyer.bedrooms_min %><br>
@@ -59,7 +62,7 @@
             Price Range: $<%= buyer.price_min %> to $<%= buyer.price_max %><br>
             Timeframe: <%= buyer.timeFrame %><br>
             <%= buyer.prequalifiedDisp %><br>
-            Preferred Languages: <%= buyer.preferredLanguages %><br>
+            Preferred Languages: <%= buyer.preferredLanguages %><br> -->
             <div class="form-row justify-content-center">
               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#propertyModal">
                 Modify Property Info

@@ -450,6 +450,45 @@ router.get('/profile_b', (req, res) => {
 });
 
 // Route to get the buyer's profile
+router.get('/populateSearchInfoDisplay', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+    const buyerrequestid = req.session.buyerrequestid;
+    const query = `select concat('<div class="buyertype-container">',
+                          '<u>Buyer Type</u><br>',buyerType,'<br></div>',
+                          getBuyerTypesByIds(brd.buyerType),'<br>',
+                                'Property Type: ',propertyType,'<br>',
+                                'Service Level: ',levelOfService,'<br>',
+                                'Minimum Bedrooms: ',bedrooms_min,'<br>',
+                                'Minimum Bathrooms: ',bathrooms_min,'<br>',
+                                'SqFt Range: ',squareFootage_min,' to ',squareFootage_max,'<br>',
+                                'Price Range: $',price_min,' to $',price_max,'<br>',
+                                'Timeframe: ',timeFrame,'<br>',           
+                                if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified'),            
+                                '<br>',
+                                'Preferred Languages: ',preferredLanguages,'<br>') searchInfoDisplay
+                     from Buyers b
+                          left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
+                          join LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
+                     where b.userid = ?`;
+    db.query(query, [userid], (error, results) => {
+      if (error) {
+        console.error('Error fetching offer defaults:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      if (results.length === 0) {
+        return res.status(404).send('No Defaults');
+      }
+      res.json(results[0]);
+    });
+  }
+});
+
+// Route to get the buyer's profile
 router.get('/dashboard_b', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';

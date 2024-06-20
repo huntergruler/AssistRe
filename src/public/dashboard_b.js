@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
             toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
         }
     });
-
+    populateSearchInfoDisp();
     getOfferCounts('New', null);
     getBuyerTypes();
     populateStates();
@@ -632,6 +632,24 @@ function populateLevelOfService() {
             });
         })
 };
+
+function populateSearchInfoDisplay() {
+    const populateSearchInfoDisp = document.getElementById('populateSearchInfoDisp');
+    console.log('Populating search info display');
+    fetch(`/populateSearchInfoDisplay`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error fetching search info:', data.error);
+                return;
+            }
+            data.searchInfoResults.forEach(item => {
+                populateSearchInfoDisp.innerHTML = item.searchInfoDisplay;
+            });
+        })
+
+}
+
 
 function populateUserZipCodes() {
     populateLevelOfService();
