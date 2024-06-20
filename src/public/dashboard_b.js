@@ -545,6 +545,7 @@ function savePropertyChanges(event) {
         price_max: price_max,
         timeFrame: timeFrame + ' ' + timeframeUnit,
         prequalified: prequalified,
+        prequalifiedAmount: prequalifiedAmount,
         levelofserviceid: levelofserviceid,
         preferredLanguages: preferredLanguages,
         userid: userid
