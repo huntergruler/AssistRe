@@ -148,33 +148,40 @@
               </form>
             </div>
             <div class="zipselect-group col-md-12">
-              <form>
-                <div class="form-row justify-content-center">
-                  <div class="zipCode-group col-md-2 zipAction">
-                    <div class="col-md testalign">
-                      <div class="row ">
-                        <button id="addZip" class="toggle-button custom-button">
-                          &nbsp;Add&nbsp;<i class="fas fa-chevron-right" onclick="addSelection()"></i>&nbsp;
-                        </button>
+                <form>
+                  <div class="form-row justify-content-center">
+                    <div class="zipCode-group col-md-4 justify-content-center">
+                      <p>Select Zip Codes</p>
+                      <div class="col-md-2 justify-content-center"></div>
+                      <div id="availabeZipCodesContainer" class="col-md justify-content-center">
+                        <!-- JavaScript will populate this container -->
                       </div>
-                      <div class="row ">
-                        <button id="removeZip" class="toggle-button custom-button">
-                          &nbsp;<i class="fas fa-chevron-left" onclick="addSelection()"></i>&nbsp;Remove&nbsp;
-                        </button>
+                    </div>
+                    <div class="zipCode-group col-md-2 zipAction">
+                      <div class="col-md">
+                        <div class="row ">
+                          <button id="addZip" class="toggle-button custom-button">
+                            &nbsp;Add&nbsp;<i class="fas fa-chevron-right" onclick="addSelection()"></i>&nbsp;
+                          </button>
+                        </div>
+                        <div class="row ">
+                          <button id="removeZip" class="toggle-button custom-button">
+                            &nbsp;<i class="fas fa-chevron-left" onclick="addSelection()"></i>&nbsp;Remove&nbsp;
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="zipCode-group col-md-3 justify-content-center">
+                      <p>Your Zip Codes</p>
+                      <div class="col-md-4"></div>
+                      <div id="selectedZipCodesContainer" class="col-md justify-content-center">
+                        <!-- JavaScript will populate this container -->
                       </div>
                     </div>
                   </div>
-                  <div class="zipCode-group col-md-3 justify-content-center">
-                    <p>Your Zip Codes</p>
-                    <div class="col-md-4"></div>
-                    <div id="selectedZipCodesContainer" class="col-md justify-content-center">
-                      <!-- JavaScript will populate this container -->
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div form-row justify-content-center>
+                </form>
+              </div>
+              <div form-row justify-content-center>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" onclick="saveZipChanges()">Save</button>
                 <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
