@@ -419,7 +419,6 @@ router.get('/get-offerdetails', (req, res) => {
 
 // Route to get the buyer's profile
 router.get('/profile_b', (req, res) => {
-  console.log('Profile_b:', req.session.user);
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
@@ -494,6 +493,7 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
 
 // Route to get the buyer's profile
 router.get('/dashboard_b', (req, res) => {
+  console.log('Dashboard B:', req.session.user);
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
