@@ -668,7 +668,7 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.modify-button:hover {
+#modify-button:hover {
     background-color: grey;
     color: white;
 }
