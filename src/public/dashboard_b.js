@@ -643,7 +643,7 @@ function populateSearchInfoDisplay() {
                 console.error('Error fetching search info:', data.error);
                 return;
             }
-            data.searchInfoResults.forEach(item => {
+            data.results.forEach(item => {
                 populateSearchInfoDisp.innerHTML = item.searchInfoDisplay;
             });
         })
