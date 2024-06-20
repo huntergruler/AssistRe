@@ -246,10 +246,10 @@
                   <select id="buyerLevelOfService" class="form-select-sm col-md-6" placeholder="Level Of Service"></select>
                   <input type="hidden" id="levelofserviceid" name="levelofserviceid" value="<%= buyer.levelofserviceid %>">
                 </div>
-                <div class="form-row ">
+                <div class="form-row" style="align-items: center;">
                   <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
-                  <input type="text" class="form-control-sm col-md-2" placeholder="Enter Time Frame" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
-                  <select id="timeunit" class="form-select-sm col-md-3" placeholder="Time Unit">
+                  <input type="text" class="form-control-sm col-md-1" placeholder="Enter Time Frame" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
+                  <select id="timeunit" class="form-select-sm col-md-2" placeholder="Time Unit">
                     <option value="Days" selected>Days</option>
                     <option value="Weeks">Weeks</option>
                     <option value="Months">Months</option>
