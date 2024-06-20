@@ -644,6 +644,7 @@ function populateSearchInfoDisplay() {
                 return;
             }
             data.results.forEach(item => {
+                console.log(item.searchInfoDisplay);
                 populateSearchInfoDisplay.innerHTML = item.searchInfoDisplay;
             });
         })
