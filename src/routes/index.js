@@ -539,13 +539,14 @@ router.post('/profile_b', (req, res) => {
 });
 
 // Route to update the buyer's profile
-router.post('/profile_b_property', (req, res) => {
+router.post('/savePropertyChanges', (req, res) => {
+  console.log('savePropertyChanges:', req.body)
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
   }
   else {
-    console.log('profile_b_property:', req.body)
+    console.log('savePropertyChanges 2:')
     const buyerrequestid = req.session.buyerrequestid;
     const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, 
             preferredLanguages, prequalified, price_min, price_max, propertyType, 

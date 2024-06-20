@@ -550,7 +550,7 @@ function savePropertyChanges(event) {
     };
 
     // Send the data to the server using fetch
-    fetch('/profile_b_property', {
+    fetch('/savePropertyChanges', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
