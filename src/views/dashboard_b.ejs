@@ -51,7 +51,7 @@
               <!-- JavaScript will populate this container -->
             </div>
             <div class="form-row justify-content-center">
-              <button class="modify-button" type="button" data-toggle="modal" data-target="#propertyModal">
+              <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#propertyModal">
                 Modify Property Info
               </button>
             </div>
@@ -69,7 +69,7 @@
               <div id="displayZipCodes" class="justify-content-center">
                 <!-- JavaScript will populate this container -->
               </div>
-              <button type="button" class="modify-button"  data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
+              <button type="button" id="modify-button" class="modify-button"  data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
                 Modify Zip Codes
               </button>
             </div>
@@ -286,8 +286,8 @@
             </div>
             <div form-row justify-content-center>
               <div class="modal-footer">
-                <button type="button" class="modify-button" data-dismiss="modal" onclick="savePropertyChanges(event)">Save</button>
-                <button type="button" class="modify-button" data-dismiss="modal">Cancel</button>
+                <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="savePropertyChanges(event)">Save</button>
+                <button type="button" id="modify-button" class="modify-button" data-dismiss="modal">Cancel</button>
               </div>
             </div>
           </div>
@@ -386,8 +386,8 @@
             </div>
             <div form-row justify-content-center>
               <div class="modal-footer">
-                <button type="button" class="modify-button" data-dismiss="modal" onclick="saveZipChanges()">Save</button>
-                <button type="button" class="modify-button" data-dismiss="modal">Cancel</button>
+                <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="saveZipChanges()">Save</button>
+                <button type="button" id="modify-button" class="modify-button" data-dismiss="modal">Cancel</button>
               </div>
             </div>
           </div>
