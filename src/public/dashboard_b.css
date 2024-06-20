@@ -567,8 +567,8 @@ body {
 .custom-button {
     display: flex;
     align-items: center;
-    background-color: transparent;
-    color: lightgray;
+    background-color: lightgray;
+    color: black;
     border: 1px solid black;
     padding: 0px 0px;
     font-size: 12px;
