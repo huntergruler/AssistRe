@@ -245,13 +245,7 @@ function getOffers(datatype, element) {
                             e.preventDefault();
                             e.stopPropagation(); // Prevent the click event from bubbling up to the card
                             var heartIcon = icon.querySelector('i');
-                            var isFavorite = false;
-                            if (request.buyerStatus == "Favorite") {
-                                isFavorite = heartIcon.classList.toggle('favorite');
-                            }
-                            else {
-                                isFavorite = heartIcon.classList.toggle('fas');
-                            }
+                            const isFavorite = heartIcon.classList.toggle('fas');
                             heartIcon.classList.toggle('far', !isFavorite);
                             heartIcon.classList.toggle('favorite', isFavorite);
                             if (isFavorite) {
@@ -269,6 +263,9 @@ function getOffers(datatype, element) {
                             alert('Card clicked!');
                         });
                     });
+                    if (request.buyerStatus == "Favorite") {
+                        heartIcon.classList.toggle('favorite', isFavorite);
+                    }
                 });
             }
         })
