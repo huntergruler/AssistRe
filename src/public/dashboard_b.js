@@ -15,7 +15,7 @@ $(document).ready(function () {
     });
 
     // Handle the click on the card
-    $('.card').on('click', function() {
+    $('.offerSummary').on('click', function() {
         // Your card click handling code here
         alert('Card clicked!');
     });
@@ -214,7 +214,7 @@ function getOffers(datatype, element) {
                     <i class="far fa-heart"></i>
                 </a>
                     ${request.offerText}<br></div>`;
-                    div.addEventListener('click', () => selectOffer(request.agentid, request.buyerrequestid, this));
+                    // div.addEventListener('click', () => selectOffer(request.agentid, request.buyerrequestid, this));
                     div.className = "form-row offers col-md-12";
                     div.id = "agentid" + request.agentid;
                     console.log(request.buyerStatus);
