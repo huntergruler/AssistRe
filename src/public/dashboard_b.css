@@ -307,7 +307,7 @@ body {
     align-content: center;
     align-items: center;
     text-align: center;
-    line-height: 2;
+    line-height: 1.5;
 
 }
 
@@ -486,10 +486,10 @@ body {
     cursor: pointer;
 }
 
-/* .card {
+.card {
     position: relative;
     cursor: pointer;
-} */
+}
 
 .favorite-icon {
     position: absolute;
