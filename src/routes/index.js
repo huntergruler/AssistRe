@@ -54,6 +54,11 @@ router.get('/zipcodetest', (req, res) => {
   res.render('zipcodetest');
 });
 
+// Route to get the user's session data
+router.get('/session-data', (req, res) => {
+  res.json(req.session.user, req.session.firstname, req.session.userid, req.session.lastname);
+});
+
 // Register route
 router.get('/register', (req, res) => {
   res.render('register');

@@ -98,8 +98,15 @@ function showModal(message) {
     modal.style.display = "flex";
 }
 
+let userid = null;
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
+    fetch('/session-data')
+        .then(response => response.json())
+        .then(sessionData => {
+            userid = sessionData.userid; 
+        });
+
     const toggle1 = document.getElementById('toggle1');
     const toggle2 = document.getElementById('toggle2');
 
@@ -235,13 +242,18 @@ function getOffers(datatype, element) {
                     offers.appendChild(div);
                     document.querySelectorAll('.favorite-icon').forEach(function (icon) {
                         icon.addEventListener('click', function (e) {
-                            console.log("favorite Icon clicked");
                             e.preventDefault();
                             e.stopPropagation(); // Prevent the click event from bubbling up to the card
                             var heartIcon = icon.querySelector('i');
                             heartIcon.classList.toggle('far');
-                            heartIcon.classList.toggle('fas');
-                            heartIcon.classList.toggle('favorite');
+                            heartIcon.classList.toggle('fas',!isFavorite);
+                            heartIcon.classList.toggle('favorite',isFavorite);
+                            if (isFavorite) {
+                                makeFavorite(request.agentid);
+                            }
+                            else {
+                                removeFavorite(request.agentid);
+                            }
                         });
                     });
                     // Handle the click on the card

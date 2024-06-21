@@ -29,7 +29,7 @@ app.use(session({
   saveUninitialized: true,
   cookie: {
     secure: false, // set to true if you're using HTTPS
-    maxAge: 1000 * 60 * 15 // sets the cookie to expire after 15 minutes
+    maxAge: 1000 * 60 * 30 // sets the cookie to expire after 15 minutes
 }
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
