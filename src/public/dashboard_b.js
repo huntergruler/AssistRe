@@ -170,14 +170,14 @@ function getOffers(datatype, element) {
     const detailsCont = document.getElementById('offerDetails');
     detailsCont.style.border = '0';
 
-    const buttons = document.querySelectorAll('.tablinks');
-    buttons.forEach(button => {
-        button.classList.remove('active');
-    });
+    // const buttons = document.querySelectorAll('.tablinks');
+    // buttons.forEach(button => {
+    //     button.classList.remove('active');
+    // });
 
     // Add the 'active' class to the clicked button
-    if (element) element.classList.add('active');
-    else document.getElementById('tab' + datatype).classList.add('active');
+    // if (element) element.classList.add('active');
+    // else document.getElementById('tab' + datatype).classList.add('active');
 
     // Your existing logic for handling offers based on the 'type' parameter
 
