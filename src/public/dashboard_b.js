@@ -196,6 +196,7 @@ function getOffers(datatype, element) {
     fetch(`/getOffers?datatype=${datatype}`)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             if (data.length === 0) {
                 const div = document.createElement("div");
                 if (datatype == "New") {
