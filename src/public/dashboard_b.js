@@ -9,7 +9,7 @@ $(document).ready(function () {
     });
 
     // Handle the click on the card
-    $('.offerSummary').on('click', function() {
+    $('.card').on('click', function() {
         // Your card click handling code here
         alert('Card clicked!');
     });
