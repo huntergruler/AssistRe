@@ -4,6 +4,15 @@
     box-sizing: border-box;
   }
   
+  .logo-container{
+    width: 300px;
+    height: 200px;
+    background-image: url('/images/SeekingAgents.gif');
+    background-size: cover; /* or 'background-size: contain;' */
+    background-position: center; /* you can change this to 'top', 'right', etc. */
+    background-repeat: no-repeat;
+}
+
   header {
     /* background-color: rgba(0,72,138); */
     background-color: rgba(19, 50, 109);
