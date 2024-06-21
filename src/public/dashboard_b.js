@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     document.querySelectorAll('.favorite-icon').forEach(function (icon) {
         icon.addEventListener('click', function (e) {
+            console.log("favorite Icon clicked");
             e.preventDefault();
             e.stopPropagation(); // Prevent the click event from bubbling up to the card
             var heartIcon = icon.querySelector('i');
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     // Handle the click on the card
-    document.querySelectorAll('.card').forEach(function (card) {
+    document.querySelectorAll('.offerSummary').forEach(function (card) {
         card.addEventListener('click', function () {
             // Your card click handling code here
             alert('Card clicked!');
