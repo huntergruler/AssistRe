@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     populateSearchInfoDisplay();
+    getOffers('AllAvailable', null);
     // getOfferCounts('New', null);
     getBuyerTypes();
     populateStates();

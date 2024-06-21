@@ -156,13 +156,20 @@ router.get('/getOffers', (req, res) => {
     const buyerid = req.session.userid;
 
     if (!agentid) {
-      var query = `select ofb.agentid, ofb.agentofferid, ofb.buyerStatus, ofb.buyerid, ofb.buyerrequestid, ofb.compensationAmount, ofb.dispIdentifier, ofb.expirationCompTimeFrame, ofb.expirationCompensation, ofb.lengthOfService, ofb.levelOfService, ofb.offerDesc, ofb.offerText, ofb.offerTimestamp, ofb.offerType, ofb.retainerCredited, ofb.retainerFee
+      var query = `select ofb.agentid, ofb.agentofferid, ofb.buyerStatus, ofb.buyerid, ofb.buyerrequestid, ofb.compensationAmount, ofb.dispIdentifier, ofb.expirationCompTimeFrame, ofb.expirationCompensation, ofb.lengthOfService, ofb.levelOfService, ofb.offerDesc, ofb.offerText, ofb.offerTimestamp, ofb.offerType, ofb.retainerCredited, ofb.retainerFee,
+                          case when 'New' = 'AllAvailable'
+                               then filterstatus
+                               else buyerstatus
+                          end
                      from OffersForBuyers ofb
-                    where buyerid = ?
-                      and if(buyerStatus in ('Read','Favorite'),'New', buyerStatus) = ?
-                    ORDER BY buyerStatus, entrytimestamp DESC;
-  `;
-      db.query(query, [buyerid, datatype], (error, results) => {
+                    where buyerid =  ?
+                      and case when ? = 'AllAvailable'
+                               then filterstatus
+                               else buyerstatus
+                           end = ?
+                    ORDER BY buyerStatus, entrytimestamp DESC
+                    ;`;
+      db.query(query, [buyerid, datatype, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
           return res.status(500).send('Server error');
