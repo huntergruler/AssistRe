@@ -3,6 +3,14 @@
     --text-color: white;
 }
 
+.crop-container{
+    width: 300px;
+    height: 200px;
+    background-image: url('/images/SeekingAgents.gif');
+    background-size: cover; /* or 'background-size: contain;' */
+    background-position: center; /* you can change this to 'top', 'right', etc. */
+    background-repeat: no-repeat;
+}
 .margin-top-100 {
     margin-top: 100px;
 }
