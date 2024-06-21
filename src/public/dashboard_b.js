@@ -211,8 +211,7 @@ function getOffers(datatype, element) {
                     <div class="flex-fill offerSummary">
                     <div class="newDot col-md-12">&#x2022;</div>
                     <a href="#" class="favorite-icon" data-item-id="1">
-                    <i class="far fa-heart"></i>
-                </a>
+                    <i class="far fa-heart"></i></a>
                     ${request.offerText}<br></div>`;
                     // div.addEventListener('click', () => selectOffer(request.agentid, request.buyerrequestid, this));
                     div.className = "form-row offers col-md-12";
@@ -228,9 +227,9 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "Favorite" || request.buyerStatus == "Declined") {
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
-                    div.onclick = function () {
-                        this.classList.toggle("selected");
-                    };
+                    // div.onclick = function () {
+                    //     this.classList.toggle("selected");
+                    // };
                     // offers.appendChild(input);
                     offers.appendChild(div);
                 });
