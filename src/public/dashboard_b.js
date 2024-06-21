@@ -1,6 +1,7 @@
 // const { dot } = require("node:test/reporters");
 $(document).ready(function () {
     $('.favorite-icon').on('click', function(e) {
+        console.log('Favorite icon clicked!');
         e.preventDefault();
         e.stopPropagation(); // Prevent the click event from bubbling up to the card
         var $icon = $(this).find('i');
