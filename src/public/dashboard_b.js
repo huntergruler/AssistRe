@@ -218,7 +218,7 @@ function getOffers(datatype, element) {
                     }
                     div.innerHTML += `
                     <div class="flex-fill offersummary card">
-                    <div class="newDot col-md-12">&#x2022;</div>
+                    <div class="newDot col-md">&#x2022;</div>
                     <a href="#" class="favorite-icon" data-item-id="1">
                     <i class="far fa-heart"></i></a>
                     ${request.offerText}<br></div>`;
