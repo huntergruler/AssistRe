@@ -227,19 +227,10 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "New") {
                         div.classList.add("new");
                     }
-                    if (request.buyerStatus == "Read") {
+                    if (request.buyerStatus in ["Read", "Favorite", "Declined"]) {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
-                    if (request.buyerStatus == "Favorite" || request.buyerStatus == "Declined") {
-                        div.getElementsByClassName("newDot")[0].style.display = "none";
-                    }
-                    // div.onclick = function () {
-                    //     this.classList.toggle("selected");
-                    // };
-                    // offers.appendChild(input);
-                    console.log(div, "Div")
-
                     offers.appendChild(div);
 
                     // Add event listener to the favorite icon
