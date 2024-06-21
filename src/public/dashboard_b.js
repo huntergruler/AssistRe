@@ -7,12 +7,19 @@ $(document).ready(function () {
         $('#cancelButton2').show();
     });
 
-    $('.favorite-icon').on('click', function (e) {
+    $('.favorite-icon').on('click', function(e) {
         e.preventDefault();
+        e.stopPropagation(); // Prevent the click event from bubbling up to the card
         var $icon = $(this).find('i');
         $icon.toggleClass('far fa-heart fas fa-heart favorite');
     });
 
+    // Handle the click on the card
+    $('.card').on('click', function() {
+        // Your card click handling code here
+        alert('Card clicked!');
+    });
+    
     $('#cancelButton2').click(function () {
         location.reload();
     });
