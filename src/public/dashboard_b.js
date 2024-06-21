@@ -240,33 +240,37 @@ function getOffers(datatype, element) {
                     console.log(div, "Div")
 
                     offers.appendChild(div);
-                    document.querySelectorAll('.favorite-icon').forEach(function (icon) {
-                        icon.addEventListener('click', function (e) {
-                            e.preventDefault();
-                            e.stopPropagation(); // Prevent the click event from bubbling up to the card
-                            var heartIcon = icon.querySelector('i');
-                            const isFavorite = heartIcon.classList.toggle('fas');
-                            heartIcon.classList.toggle('far', !isFavorite);
-                            heartIcon.classList.toggle('favorite', isFavorite);
-                            if (isFavorite) {
-                                makeFavorite(request.agentid);
-                            }
-                            else {
-                                removeFavorite(request.agentid);
-                            }
-                        });
-                        if (request.buyerStatus == "Favorite") {
-                            heartIcon.classList.toggle('favorite', isFavorite);
+
+                    // Add event listener to the favorite icon
+                    const favoriteIcon = div.querySelector('.favorite-icon');
+                    const heartIcon = favoriteIcon.querySelector('i');
+                    favoriteIcon.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation(); // Prevent the click event from bubbling up to the card
+                        const isFavorite = heartIcon.classList.toggle('fas');
+                        heartIcon.classList.toggle('far', !isFavorite);
+                        heartIcon.classList.toggle('favorite', isFavorite);
+                        if (isFavorite) {
+                            makeFavorite(request.agentid);
+                        } else {
+                            removeFavorite(request.agentid);
                         }
                     });
-                    // Handle the click on the card
-                    document.querySelectorAll('.offersummary').forEach(function (card) {
-                        card.addEventListener('click', function () {
-                            // Your card click handling code here
-                            alert('Card clicked!');
-                        });
+
+                    // Set initial favorite state
+                    if (request.buyerStatus == "Favorite") {
+                        heartIcon.classList.add('fas', 'favorite');
+                        heartIcon.classList.remove('far');
+                    }
+
+                    // Add event listener to the card
+                    const card = div.querySelector('.offersummary');
+                    card.addEventListener('click', function () {
+                        // Your card click handling code here
+                        alert('Card clicked!');
                     });
                 });
+
             }
         })
         .catch(error => console.error('Error checking user:', error));
