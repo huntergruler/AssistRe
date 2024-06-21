@@ -488,7 +488,7 @@ body {
     padding-left: 0;
 }
 
-.custom-button {
+.zipmove-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -501,4 +501,23 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
     
+}
+
+#modify-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color);
+    color: white;
+    border: 1px solid black;
+    padding: 0px 5px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    /* transition: background-color 0.3s ease; */
+}
+
+#modify-button:hover {
+    background-color: grey;
+    color: white;
 }
