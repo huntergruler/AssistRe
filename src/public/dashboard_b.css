@@ -1,6 +1,5 @@
 :root {
-    /* --background-color: rgba(19, 50, 109); */
-    --background-color: rgba(126,172,171);
+    --background-color: rgba(19, 50, 109);
     --text-color: white;
 }
 
@@ -697,19 +696,4 @@ line-height: 2;
 #modify-button:hover {
     background-color: grey;
     color: white;
-}
-
-.offerFilter{
-    margin-top: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    font-size: 20px;
-    max-width: 50%;
-    justify-content: start;
-    /* text-align: center; */
 }
