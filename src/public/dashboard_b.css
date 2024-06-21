@@ -486,10 +486,10 @@ body {
     cursor: pointer;
 }
 
-.card {
+/* .card {
     position: relative;
     cursor: pointer;
-}
+} */
 
 .favorite-icon {
     position: absolute;
