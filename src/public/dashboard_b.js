@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('/session-data')
         .then(response => response.json())
         .then(sessionData => {
-            userid = sessionData.userid; 
+            userid = sessionData.userid;
         });
 
     const toggle1 = document.getElementById('toggle1');
@@ -245,8 +245,15 @@ function getOffers(datatype, element) {
                             e.preventDefault();
                             e.stopPropagation(); // Prevent the click event from bubbling up to the card
                             var heartIcon = icon.querySelector('i');
-                            var isFavorite = heartIcon.classList.toggle('fas');                            heartIcon.classList.toggle('far',!isFavorite);
-                            heartIcon.classList.toggle('favorite',isFavorite);
+                            var isFavorite = false;
+                            if (request.buyerStatus == "Favorite") {
+                                isFavorite = true;
+                            }
+                            else {
+                                isFavorite = heartIcon.classList.toggle('fas');
+                            }
+                            heartIcon.classList.toggle('far', !isFavorite);
+                            heartIcon.classList.toggle('favorite', isFavorite);
                             if (isFavorite) {
                                 makeFavorite(request.agentid);
                             }
