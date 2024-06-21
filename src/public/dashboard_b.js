@@ -247,7 +247,7 @@ function getOffers(datatype, element) {
                             var heartIcon = icon.querySelector('i');
                             var isFavorite = false;
                             if (request.buyerStatus == "Favorite") {
-                                isFavorite = true;
+                                isFavorite = heartIcon.classList.toggle('favorite');
                             }
                             else {
                                 isFavorite = heartIcon.classList.toggle('fas');
