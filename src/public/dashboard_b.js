@@ -420,33 +420,35 @@ function offerDetail(agentid, buyerrequestid) {
 }
 
 function makeFavorite(agentid) {
-    const dataType = document.getElementById('datatype').value;
-    const offerForm = document.getElementById('offerForm');
-    const offerDetail = document.getElementById('offerDetail');
-    const detailButtons = document.getElementById('detailButtons');
     setStatus(agentid, 'Favorite');
-    offerDetail.innerHTML = '';
-    detailButtons.innerHTML = '';
-    offerForm.style.display = 'none';
-    getOffers(dataType, null);
-    getOfferCounts();
-    clearForm()
+    // const dataType = document.getElementById('datatype').value;
+    // const offerForm = document.getElementById('offerForm');
+    // const offerDetail = document.getElementById('offerDetail');
+    // const detailButtons = document.getElementById('detailButtons');
+    // setStatus(agentid, 'Favorite');
+    // offerDetail.innerHTML = '';
+    // detailButtons.innerHTML = '';
+    // offerForm.style.display = 'none';
+    // getOffers(dataType, null);
+    // getOfferCounts();
+    // clearForm()
 
 
 }
 
 function removeFavorite(agentid) {
-    const dataType = document.getElementById('datatype').value;
-    const offerForm = document.getElementById('offerForm');
-    const offerDetail = document.getElementById('offerDetail');
-    const detailButtons = document.getElementById('detailButtons');
     setStatus(agentid, 'Read');
-    offerDetail.innerHTML = '';
-    detailButtons.innerHTML = '';
-    offerForm.style.display = 'none';
-    getOffers(dataType, null);
-    getOfferCounts();
-    clearForm()
+    // const dataType = document.getElementById('datatype').value;
+    // const offerForm = document.getElementById('offerForm');
+    // const offerDetail = document.getElementById('offerDetail');
+    // const detailButtons = document.getElementById('detailButtons');
+    // setStatus(agentid, 'Read');
+    // offerDetail.innerHTML = '';
+    // detailButtons.innerHTML = '';
+    // offerForm.style.display = 'none';
+    // getOffers(dataType, null);
+    // getOfferCounts();
+    // clearForm()
 }
 
 function getOfferCounts() {
