@@ -626,6 +626,7 @@ body {
 
 .offerlist{
 justify-content: left;
+line-height: 2;
 }
 
 .moreless-button {
