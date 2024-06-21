@@ -624,6 +624,10 @@ body {
     color: white;
 }
 
+#offerlist{
+justify-content: left;
+}
+
 .moreless-button {
     display: flex;
     align-items: center;
