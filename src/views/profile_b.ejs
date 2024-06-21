@@ -52,9 +52,11 @@
             <br>
             <%= buyer.phoneNumber %>
           </div>
-          <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#personalModal">
+          <div class="form-row justify-content-center">
+            <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#personalModal">
             Modify Personal Info
           </button>
+          </div>
         </div>
       </div>
       <div class="form-row">
@@ -63,9 +65,11 @@
           <div id="displayZipCodes" class="justify-content-center">
             <!-- JavaScript will populate this container -->
           </div>
-          <button type="button" id="modify-button" class="modify-button" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
+          <div class="form-row justify-content-center">
+            <button type="button" id="modify-button" class="modify-button" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
             Modify Zip Codes
           </button>
+          </div>
         </div>
       </div>
     </div>
