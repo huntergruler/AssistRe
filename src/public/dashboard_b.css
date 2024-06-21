@@ -482,6 +482,19 @@ body {
 .offers {
     margin: 0;
     padding: 0;
+    position: relative;
+}
+
+.favorite-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red;
+    font-size: 24px;
+    cursor: pointer;
+}
+.favorite {
+    color: red;
 }
 
 #offer {
