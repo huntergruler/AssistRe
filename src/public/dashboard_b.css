@@ -498,7 +498,7 @@ body {
     color: red;
     font-size: 24px;
     cursor: pointer;
-    height: fit-content;
+    height: 24;
 }
 .favorite {
     color: red;
