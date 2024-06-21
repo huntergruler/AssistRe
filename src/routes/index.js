@@ -125,7 +125,7 @@ router.get('/getOfferCounts', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    var query = `select case when os.offerStatus in ('New','Read')
+    var query = `select case when os.offerStatus in ('New','Read','Favorite')
                               then 'New'
                               else os.offerStatus
                           end buyerStatus, concat('(',count(bam.buyerid),')') cnt
