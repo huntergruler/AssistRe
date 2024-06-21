@@ -251,9 +251,9 @@ function getOffers(datatype, element) {
                         heartIcon.classList.toggle('far', !isFavorite);
                         heartIcon.classList.toggle('favorite', isFavorite);
                         if (isFavorite) {
-                            makeFavorite(request.agentid);
+                            setStatus(request.agentid, 'Favorite');
                         } else {
-                            removeFavorite(request.agentid);
+                            setStatus(request.agentid, 'Read');
                         }
                     });
 
@@ -383,19 +383,16 @@ function offerDetail(agentid, buyerrequestid) {
                 // Create each button and append them to the container
                 if (datatype == "Read" || datatype == "New") {
                     var buttons = [
-                        { id: "makeFavorite", text: "Make Favorite", onclick: `makeFavorite(${request.agentid})` },
                         { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
                     ];
                 }
                 if (datatype == "Favorite") {
                     var buttons = [
-                        { id: "removeFavorite", text: "Remove Favorite", onclick: `removeFavorite(${request.agentid})` },
                         { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
                     ];
                 }
                 if (datatype == "Declined") {
                     var buttons = [
-                        { id: "makeFavorite", text: "Make Favorite", onclick: `makeFavorite(${request.agentid})` },
                         { id: "declineOffer", text: "Reopen Offer", onclick: `reopenOffer(${request.agentid})` },
                     ];
                 }
@@ -417,38 +414,6 @@ function offerDetail(agentid, buyerrequestid) {
             });
         })
         .catch(error => console.error('Error checking user:', error));
-}
-
-function makeFavorite(agentid) {
-    setStatus(agentid, 'Favorite');
-    // const dataType = document.getElementById('datatype').value;
-    // const offerForm = document.getElementById('offerForm');
-    // const offerDetail = document.getElementById('offerDetail');
-    // const detailButtons = document.getElementById('detailButtons');
-    // setStatus(agentid, 'Favorite');
-    // offerDetail.innerHTML = '';
-    // detailButtons.innerHTML = '';
-    // offerForm.style.display = 'none';
-    // getOffers(dataType, null);
-    // getOfferCounts();
-    // clearForm()
-
-
-}
-
-function removeFavorite(agentid) {
-    setStatus(agentid, 'Read');
-    // const dataType = document.getElementById('datatype').value;
-    // const offerForm = document.getElementById('offerForm');
-    // const offerDetail = document.getElementById('offerDetail');
-    // const detailButtons = document.getElementById('detailButtons');
-    // setStatus(agentid, 'Read');
-    // offerDetail.innerHTML = '';
-    // detailButtons.innerHTML = '';
-    // offerForm.style.display = 'none';
-    // getOffers(dataType, null);
-    // getOfferCounts();
-    // clearForm()
 }
 
 function getOfferCounts() {
