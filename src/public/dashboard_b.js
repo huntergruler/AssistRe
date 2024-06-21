@@ -124,25 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
             toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
         }
     });
-    document.querySelectorAll('.favorite-icon').forEach(function (icon) {
-        icon.addEventListener('click', function (e) {
-            console.log("favorite Icon clicked");
-            e.preventDefault();
-            e.stopPropagation(); // Prevent the click event from bubbling up to the card
-            var heartIcon = icon.querySelector('i');
-            heartIcon.classList.toggle('far');
-            heartIcon.classList.toggle('fas');
-            heartIcon.classList.toggle('favorite');
-        });
-    });
-    // Handle the click on the card
-    document.querySelectorAll('.offerSummary').forEach(function (card) {
-        card.addEventListener('click', function () {
-            // Your card click handling code here
-            alert('Card clicked!');
-        });
-    });
-
 
     populateSearchInfoDisplay();
     getOfferCounts('New', null);
@@ -227,7 +208,7 @@ function getOffers(datatype, element) {
                         div.innerHTML = ``
                     }
                     div.innerHTML += `
-                    <div class="flex-fill offerSummary card">
+                    <div class="flex-fill offersummary card">
                     <div class="newDot col-md-12">&#x2022;</div>
                     <a href="#" class="favorite-icon" data-item-id="1">
                     <i class="far fa-heart"></i></a>
@@ -252,6 +233,24 @@ function getOffers(datatype, element) {
                     console.log(div, "Div")
 
                     offers.appendChild(div);
+                    document.querySelectorAll('.favorite-icon').forEach(function (icon) {
+                        icon.addEventListener('click', function (e) {
+                            console.log("favorite Icon clicked");
+                            e.preventDefault();
+                            e.stopPropagation(); // Prevent the click event from bubbling up to the card
+                            var heartIcon = icon.querySelector('i');
+                            heartIcon.classList.toggle('far');
+                            heartIcon.classList.toggle('fas');
+                            heartIcon.classList.toggle('favorite');
+                        });
+                    });
+                    // Handle the click on the card
+                    document.querySelectorAll('.offersummary').forEach(function (card) {
+                        card.addEventListener('click', function () {
+                            // Your card click handling code here
+                            alert('Card clicked!');
+                        });
+                    });
                 });
             }
         })
