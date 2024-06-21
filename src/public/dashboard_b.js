@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     populateSearchInfoDisplay();
-    getOfferCounts('New', null);
+    // getOfferCounts('New', null);
     getBuyerTypes();
     populateStates();
     populateDisplayZipCodes();
