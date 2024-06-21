@@ -480,9 +480,16 @@ body {
 }
 
 .offers {
+    margin: 0;
+    padding: 0;
     position: relative;
     cursor: pointer;
 }
+
+.card {
+    position: relative;
+    cursor: pointer;
+  }
 
 .favorite-icon {
     position: absolute;

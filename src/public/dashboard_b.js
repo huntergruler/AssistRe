@@ -207,7 +207,7 @@ function getOffers(datatype, element) {
                         div.innerHTML = ``
                     }
                     div.innerHTML += `
-                    <div class="flex-fill offerSummary">
+                    <div class="flex-fill offerSummary card">
                     <div class="newDot col-md-12">&#x2022;</div>
                     <a href="#" class="favorite-icon" data-item-id="1">
                     <i class="far fa-heart"></i></a>
@@ -230,7 +230,7 @@ function getOffers(datatype, element) {
                     // };
                     // offers.appendChild(input);
                     console.log(div, "Div")
-                    
+
                     offers.appendChild(div);
                 });
             }
