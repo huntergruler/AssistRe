@@ -225,6 +225,7 @@ function getOffers(datatype, element) {
                     // div.addEventListener('click', () => selectOffer(request.agentid, request.buyerrequestid, this));
                     div.className = "form-row offers col-md-12";
                     div.id = "agentid" + request.agentid;
+                    console.log(request.buyerStatus);
                     if (request.buyerStatus == "New") {
                         div.classList.add("new");
                     }
