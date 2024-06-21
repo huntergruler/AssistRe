@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     document.querySelectorAll('.favorite-icon').forEach(function (icon) {
-        console.log("favorite Icon found");
         icon.addEventListener('click', function (e) {
+            console.log("favorite Icon clicked");
             e.preventDefault();
             e.stopPropagation(); // Prevent the click event from bubbling up to the card
             var heartIcon = icon.querySelector('i');
@@ -249,7 +249,7 @@ function getOffers(datatype, element) {
                     //     this.classList.toggle("selected");
                     // };
                     // offers.appendChild(input);
-                    // console.log(div, "Div")
+                    console.log(div, "Div")
 
                     offers.appendChild(div);
                 });
