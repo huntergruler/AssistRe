@@ -1,73 +1,72 @@
 // const { dot } = require("node:test/reporters");
-$(document).ready(function () {
-    $('.favorite-icon').on('click', function(e) {
-        console.log('Favorite icon clicked!');
-        e.preventDefault();
-        e.stopPropagation(); // Prevent the click event from bubbling up to the card
-        var $icon = $(this).find('i');
-        $icon.toggleClass('far fa-heart fas fa-heart favorite');
-        alert('Favorite icon clicked!');
-    });
+// $(document).ready(function () {
+//     $('.favorite-icon').on('click', function(e) {
+//         e.preventDefault();
+//         e.stopPropagation(); // Prevent the click event from bubbling up to the card
+//         var $icon = $(this).find('i');
+//         $icon.toggleClass('far fa-heart fas fa-heart favorite');
+//         alert('Favorite icon clicked!');
+//     });
 
-    // Handle the click on the card
-    $('.card').on('click', function() {
-        // Your card click handling code here
-        alert('Card clicked!');
-    });
-    
-    // $('#editButton2').click(function () {
-    //     $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
-    //     $('#editButton2').hide();
-    //     $('#saveButton2').show();
-    //     $('#cancelButton2').show();
-    // });
+//     // Handle the click on the card
+//     $('.card').on('click', function() {
+//         // Your card click handling code here
+//         alert('Card clicked!');
+//     });
 
-    // $('#cancelButton2').click(function () {
-    //     location.reload();
-    // });
+// $('#editButton2').click(function () {
+//     $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
+//     $('#editButton2').hide();
+//     $('#saveButton2').show();
+//     $('#cancelButton2').show();
+// });
 
-    // $('#saveButton2').click(function () {
-    //     const formData = {
-    //         propertyType: $('#propertyType').val(),
-    //         bedrooms_min: $('#bedrooms_min').val(),
-    //         bedrooms_max: $('#bedrooms_max').val(),
-    //         bathrooms_min: $('#bathrooms_min').val(),
-    //         bathrooms_max: $('#bathrooms_max').val(),
-    //         squareFootage_min: $('#squareFootage_min').val(),
-    //         squareFootage_max: $('#squareFootage_max').val(),
-    //         price_min: $('#price_min').val(),
-    //         price_max: $('#price_max').val(),
-    //         timeFrame: $('#timeFrame').val(),
-    //         prequalifiedY: $('#prequalifiedY').is(':checked'),
-    //         prequalifiedN: $('#prequalifiedN').is(':checked'),
-    //         preferredLanguages: $('#preferredLanguages').val(),
-    //         userid: $('#userid').val(),
-    //         levelofserviceid: $('#buyerLevelOfService').val()
-    //     };
-    //     console.log(levelofserviceid, "Level of Service ID");
-    //     if (formData.prequalifiedY) {
-    //         formData.prequalified = 'Yes';
-    //     } else {
-    //         formData.prequalified = 'No';
-    //     }
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '/profile_b_property',
-    //         data: formData,
-    //         success: function (response) {
-    //             if (response.success) {
-    //                 alert('Profile updated successfully!');
-    //                 location.reload();
-    //             } else {
-    //                 alert('Error updating profile.');
-    //             }
-    //         },
-    //         error: function () {
-    //             alert('Error updating profile.');
-    //         }
-    //     });
-    // });
-});
+// $('#cancelButton2').click(function () {
+//     location.reload();
+// });
+
+// $('#saveButton2').click(function () {
+//     const formData = {
+//         propertyType: $('#propertyType').val(),
+//         bedrooms_min: $('#bedrooms_min').val(),
+//         bedrooms_max: $('#bedrooms_max').val(),
+//         bathrooms_min: $('#bathrooms_min').val(),
+//         bathrooms_max: $('#bathrooms_max').val(),
+//         squareFootage_min: $('#squareFootage_min').val(),
+//         squareFootage_max: $('#squareFootage_max').val(),
+//         price_min: $('#price_min').val(),
+//         price_max: $('#price_max').val(),
+//         timeFrame: $('#timeFrame').val(),
+//         prequalifiedY: $('#prequalifiedY').is(':checked'),
+//         prequalifiedN: $('#prequalifiedN').is(':checked'),
+//         preferredLanguages: $('#preferredLanguages').val(),
+//         userid: $('#userid').val(),
+//         levelofserviceid: $('#buyerLevelOfService').val()
+//     };
+//     console.log(levelofserviceid, "Level of Service ID");
+//     if (formData.prequalifiedY) {
+//         formData.prequalified = 'Yes';
+//     } else {
+//         formData.prequalified = 'No';
+//     }
+//     $.ajax({
+//         type: 'POST',
+//         url: '/profile_b_property',
+//         data: formData,
+//         success: function (response) {
+//             if (response.success) {
+//                 alert('Profile updated successfully!');
+//                 location.reload();
+//             } else {
+//                 alert('Error updating profile.');
+//             }
+//         },
+//         error: function () {
+//             alert('Error updating profile.');
+//         }
+//     });
+// });
+// });
 var modal = document.getElementById("messageModal");
 
 // Get the <span> element that closes the modal
@@ -125,6 +124,25 @@ document.addEventListener('DOMContentLoaded', function () {
             toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
         }
     });
+    document.querySelectorAll('.favorite-icon').forEach(function (icon) {
+        icon.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation(); // Prevent the click event from bubbling up to the card
+            var heartIcon = icon.querySelector('i');
+            heartIcon.classList.toggle('far');
+            heartIcon.classList.toggle('fas');
+            heartIcon.classList.toggle('favorite');
+        });
+    });
+    // Handle the click on the card
+    document.querySelectorAll('.card').forEach(function (card) {
+        card.addEventListener('click', function () {
+            // Your card click handling code here
+            alert('Card clicked!');
+        });
+    });
+
+
     populateSearchInfoDisplay();
     getOfferCounts('New', null);
     getBuyerTypes();
@@ -208,7 +226,7 @@ function getOffers(datatype, element) {
                         div.innerHTML = ``
                     }
                     div.innerHTML += `
-                    <div class="card">
+                    <div class="flex-fill offerSummary card">
                     <div class="newDot col-md-12">&#x2022;</div>
                     <a href="#" class="favorite-icon" data-item-id="1">
                     <i class="far fa-heart"></i></a>
