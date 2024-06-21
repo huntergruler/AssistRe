@@ -245,8 +245,7 @@ function getOffers(datatype, element) {
                             e.preventDefault();
                             e.stopPropagation(); // Prevent the click event from bubbling up to the card
                             var heartIcon = icon.querySelector('i');
-                            heartIcon.classList.toggle('far');
-                            heartIcon.classList.toggle('fas',!isFavorite);
+                            var isFavorite = heartIcon.classList.toggle('fas');                            heartIcon.classList.toggle('far',!isFavorite);
                             heartIcon.classList.toggle('favorite',isFavorite);
                             if (isFavorite) {
                                 makeFavorite(request.agentid);
