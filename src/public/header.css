@@ -5,7 +5,7 @@
   }
   
   .logo-container{
-    width: 300px;
+    width: 200px;
     height: 200px;
     background-image: url('/images/SeekingAgents.gif');
     background-size: cover; /* or 'background-size: contain;' */
