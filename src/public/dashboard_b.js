@@ -197,6 +197,9 @@ function getOffers(datatype, element) {
                     div.innerHTML += `
                     <div class="flex-fill offerSummary">
                     <div class="newDot col-md-12">&#x2022;</div>
+                    <a href="#" class="favorite-icon" data-item-id="1">
+                    <i class="far fa-heart"></i>
+                </a>
                     ${request.offerText}<br></div>`;
                     div.addEventListener('click', () => selectOffer(request.agentid, request.buyerrequestid, this));
                     div.className = "form-row offers col-md-12";
