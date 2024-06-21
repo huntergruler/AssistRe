@@ -7,6 +7,12 @@ $(document).ready(function () {
         $('#cancelButton2').show();
     });
 
+    $('.favorite-icon').on('click', function (e) {
+        e.preventDefault();
+        var $icon = $(this).find('i');
+        $icon.toggleClass('far fa-heart fas fa-heart favorite');
+    });
+
     $('#cancelButton2').click(function () {
         location.reload();
     });
@@ -92,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const moreInfo1 = document.getElementById('more-info1');
     const moreInfo2 = document.getElementById('more-info2');
 
-    toggle1.addEventListener('click', function() {
+    toggle1.addEventListener('click', function () {
         if (moreInfo1.style.display === 'none') {
             moreInfo1.style.display = 'block';
             toggle1.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
@@ -101,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             toggle1.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
         }
     });
-    toggle2.addEventListener('click', function() {
+    toggle2.addEventListener('click', function () {
         if (moreInfo2.style.display === 'none') {
             moreInfo2.style.display = 'block';
             toggle2.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
