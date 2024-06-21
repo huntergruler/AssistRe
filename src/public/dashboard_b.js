@@ -12,6 +12,7 @@ $(document).ready(function () {
         e.stopPropagation(); // Prevent the click event from bubbling up to the card
         var $icon = $(this).find('i');
         $icon.toggleClass('far fa-heart fas fa-heart favorite');
+        alert('Favorite icon clicked!');
     });
 
     // Handle the click on the card
