@@ -255,6 +255,9 @@ function getOffers(datatype, element) {
                                 removeFavorite(request.agentid);
                             }
                         });
+                        if (request.buyerStatus == "Favorite") {
+                            heartIcon.classList.toggle('favorite', isFavorite);
+                        }
                     });
                     // Handle the click on the card
                     document.querySelectorAll('.offersummary').forEach(function (card) {
@@ -263,9 +266,6 @@ function getOffers(datatype, element) {
                             alert('Card clicked!');
                         });
                     });
-                    if (request.buyerStatus == "Favorite") {
-                        heartIcon.classList.toggle('favorite', isFavorite);
-                    }
                 });
             }
         })
