@@ -229,8 +229,7 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "New") {
                         div.classList.add("new");
                     }
-                    if (request.buyerStatus === "Favorite") {
-                        console.log('Read, Favorite, Declined');
+                    if (request.buyerStatus === "Favorite" || request.buyerStatus === "Read" || request.buyerStatus === "Declined") {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
