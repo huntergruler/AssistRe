@@ -493,8 +493,8 @@ body {
 
 .favorite-icon {
     position: absolute;
-    top: 1px;
-    right: 10px;
+    top: 0px;
+    right: 0px;
     color: red;
     font-size: 24px;
     cursor: pointer;
