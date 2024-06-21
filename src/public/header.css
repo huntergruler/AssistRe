@@ -22,6 +22,7 @@
   }
   .header img {
     height: 10px; /* Adjust the height as needed */
+    margin-top: -30px; /* Adjust the margin as needed */
     margin-right: 20px; /* Adjust the margin as needed */
 }
   #title {
