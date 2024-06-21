@@ -159,7 +159,7 @@ router.get('/getOffers', (req, res) => {
       var query = `select ofb.agentid, ofb.agentofferid, ofb.buyerStatus, ofb.buyerid, ofb.buyerrequestid, ofb.compensationAmount, ofb.dispIdentifier, ofb.expirationCompTimeFrame, ofb.expirationCompensation, ofb.lengthOfService, ofb.levelOfService, ofb.offerDesc, ofb.offerText, ofb.offerTimestamp, ofb.offerType, ofb.retainerCredited, ofb.retainerFee
                      from OffersForBuyers ofb
                     where buyerid = ?
-                      and if(buyerStatus = 'Read','New', buyerStatus) = ?
+                      and if(buyerStatus in ('Read','Favorite'),'New', buyerStatus) = ?
                     ORDER BY buyerStatus, entrytimestamp DESC;
   `;
       db.query(query, [buyerid, datatype], (error, results) => {
