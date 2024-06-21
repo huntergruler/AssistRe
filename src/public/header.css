@@ -5,7 +5,9 @@
   }
   
   header {
-    background-color: rgba(0,72,138);
+    /* background-color: rgba(0,72,138); */
+    background-color: rgba(126,172,171);
+
     width: 100%;
     color: white;
     text-align: start;
