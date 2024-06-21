@@ -425,7 +425,6 @@ function makeFavorite(agentid) {
     const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
     setStatus(agentid, 'Favorite');
-    showModal('Offer added to favorites');
     offerDetail.innerHTML = '';
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
@@ -442,7 +441,6 @@ function removeFavorite(agentid) {
     const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
     setStatus(agentid, 'Read');
-    showModal('Offer removed from favorites');
     offerDetail.innerHTML = '';
     detailButtons.innerHTML = '';
     offerForm.style.display = 'none';
