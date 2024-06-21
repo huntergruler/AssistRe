@@ -169,7 +169,6 @@ router.get('/getOffers', (req, res) => {
                            end = ?
                     ORDER BY buyerStatus, entrytimestamp DESC
                     ;`;
-                    console.log('Query:', query, [buyerid, datatype, datatype]);
       db.query(query, [buyerid, datatype, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);

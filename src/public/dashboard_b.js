@@ -196,7 +196,6 @@ function getOffers(datatype, element) {
     fetch(`/getOffers?datatype=${datatype}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             if (data.length === 0) {
                 const div = document.createElement("div");
                 if (datatype == "New") {
@@ -225,7 +224,6 @@ function getOffers(datatype, element) {
                     // div.addEventListener('click', () => selectOffer(request.agentid, request.buyerrequestid, this));
                     div.className = "form-row offers col-md-12";
                     div.id = "agentid" + request.agentid;
-                    console.log(request.buyerStatus);
                     if (request.buyerStatus == "New") {
                         div.classList.add("new");
                     }
