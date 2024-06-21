@@ -1,12 +1,5 @@
 // const { dot } = require("node:test/reporters");
 $(document).ready(function () {
-    $('#editButton2').click(function () {
-        $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
-        $('#editButton2').hide();
-        $('#saveButton2').show();
-        $('#cancelButton2').show();
-    });
-
     $('.favorite-icon').on('click', function(e) {
         e.preventDefault();
         e.stopPropagation(); // Prevent the click event from bubbling up to the card
@@ -21,51 +14,58 @@ $(document).ready(function () {
         alert('Card clicked!');
     });
     
-    $('#cancelButton2').click(function () {
-        location.reload();
-    });
+    // $('#editButton2').click(function () {
+    //     $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
+    //     $('#editButton2').hide();
+    //     $('#saveButton2').show();
+    //     $('#cancelButton2').show();
+    // });
 
-    $('#saveButton2').click(function () {
-        const formData = {
-            propertyType: $('#propertyType').val(),
-            bedrooms_min: $('#bedrooms_min').val(),
-            bedrooms_max: $('#bedrooms_max').val(),
-            bathrooms_min: $('#bathrooms_min').val(),
-            bathrooms_max: $('#bathrooms_max').val(),
-            squareFootage_min: $('#squareFootage_min').val(),
-            squareFootage_max: $('#squareFootage_max').val(),
-            price_min: $('#price_min').val(),
-            price_max: $('#price_max').val(),
-            timeFrame: $('#timeFrame').val(),
-            prequalifiedY: $('#prequalifiedY').is(':checked'),
-            prequalifiedN: $('#prequalifiedN').is(':checked'),
-            preferredLanguages: $('#preferredLanguages').val(),
-            userid: $('#userid').val(),
-            levelofserviceid: $('#buyerLevelOfService').val()
-        };
-        console.log(levelofserviceid, "Level of Service ID");
-        if (formData.prequalifiedY) {
-            formData.prequalified = 'Yes';
-        } else {
-            formData.prequalified = 'No';
-        }
-        $.ajax({
-            type: 'POST',
-            url: '/profile_b_property',
-            data: formData,
-            success: function (response) {
-                if (response.success) {
-                    alert('Profile updated successfully!');
-                    location.reload();
-                } else {
-                    alert('Error updating profile.');
-                }
-            },
-            error: function () {
-                alert('Error updating profile.');
-            }
-        });
-    });
+    // $('#cancelButton2').click(function () {
+    //     location.reload();
+    // });
+
+    // $('#saveButton2').click(function () {
+    //     const formData = {
+    //         propertyType: $('#propertyType').val(),
+    //         bedrooms_min: $('#bedrooms_min').val(),
+    //         bedrooms_max: $('#bedrooms_max').val(),
+    //         bathrooms_min: $('#bathrooms_min').val(),
+    //         bathrooms_max: $('#bathrooms_max').val(),
+    //         squareFootage_min: $('#squareFootage_min').val(),
+    //         squareFootage_max: $('#squareFootage_max').val(),
+    //         price_min: $('#price_min').val(),
+    //         price_max: $('#price_max').val(),
+    //         timeFrame: $('#timeFrame').val(),
+    //         prequalifiedY: $('#prequalifiedY').is(':checked'),
+    //         prequalifiedN: $('#prequalifiedN').is(':checked'),
+    //         preferredLanguages: $('#preferredLanguages').val(),
+    //         userid: $('#userid').val(),
+    //         levelofserviceid: $('#buyerLevelOfService').val()
+    //     };
+    //     console.log(levelofserviceid, "Level of Service ID");
+    //     if (formData.prequalifiedY) {
+    //         formData.prequalified = 'Yes';
+    //     } else {
+    //         formData.prequalified = 'No';
+    //     }
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '/profile_b_property',
+    //         data: formData,
+    //         success: function (response) {
+    //             if (response.success) {
+    //                 alert('Profile updated successfully!');
+    //                 location.reload();
+    //             } else {
+    //                 alert('Error updating profile.');
+    //             }
+    //         },
+    //         error: function () {
+    //             alert('Error updating profile.');
+    //         }
+    //     });
+    // });
 });
 var modal = document.getElementById("messageModal");
 
@@ -165,7 +165,6 @@ function getOffers(datatype, element) {
     buttons.forEach(button => {
         button.classList.remove('active');
     });
-    console.log(datatype);
 
     // Add the 'active' class to the clicked button
     if (element) element.classList.add('active');
@@ -207,7 +206,6 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "New") {
                         div.innerHTML = ``
                     }
-                    console.log('Offer summary', request.buyerStatus);
                     div.innerHTML += `
                     <div class="flex-fill offerSummary">
                     <div class="newDot col-md-12">&#x2022;</div>
@@ -217,7 +215,6 @@ function getOffers(datatype, element) {
                     // div.addEventListener('click', () => selectOffer(request.agentid, request.buyerrequestid, this));
                     div.className = "form-row offers col-md-12";
                     div.id = "agentid" + request.agentid;
-                    console.log(request.buyerStatus);
                     if (request.buyerStatus == "New") {
                         div.classList.add("new");
                     }
@@ -232,6 +229,8 @@ function getOffers(datatype, element) {
                     //     this.classList.toggle("selected");
                     // };
                     // offers.appendChild(input);
+                    console.log(div, "Div")
+                    
                     offers.appendChild(div);
                 });
             }
