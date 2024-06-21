@@ -20,7 +20,10 @@
     height: 75px;
     align-items: center;
   }
-  
+  .header img {
+    height: 50px; /* Adjust the height as needed */
+    margin-right: 20px; /* Adjust the margin as needed */
+}
   #title {
     height: 75px;
   }
