@@ -18,9 +18,9 @@
     <div id="title" class="align-items-center">
       <h1 class="mt-2">
         <!-- <a href="/">SeekingAgents</a></h1> -->
-        <a href="/">
-          <img src="/images/Seeking-smaller.png" alt="Logo" width="150" height="70">
-        </a>
+      <a href="/">
+        <img src="/images/Seeking-smaller.png" alt="Logo"  width="150" height="70">
+    </a>
     </div>
     <nav id="navlinks" class="justify-content-end text-center">
       <p id="navname">
@@ -74,10 +74,10 @@
                 <!-- JavaScript will populate this container -->
               </div>
               <div class="form-row justify-content-center">
-                <button type="button" id="modify-button" class="modify-button" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
-                  Modify Zip Codes
-                </button>
-              </div>
+                <button type="button" id="modify-button" class="modify-button"  data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
+                Modify Zip Codes
+              </button>
+              </div>    
             </div>
             <button id="toggle2" class="toggle-button moreless-button">
               <i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>
@@ -91,14 +91,14 @@
         </div>
 
         <div class="row tab" id="tabcontainer">
-          <div class="row tab" id="tabcontainer">
-            <label for="tabSelect" class="col-md-4 col-form-label">Filter Offers</label>
-            <select id="tabSelect" class="form-select-sm col-md-4" onchange="getOffers(this.value)">
-              <option value="New">Open Offers</option>
-              <option value="Favorite">Favorites</option>
-              <option value="Declined">Declined</option>
-            </select>
-          </div>
+        <div class="row tab" id="tabcontainer">
+          <label for="tabSelect" class="col-md-4 col-form-label">Filter Offers</label>
+          <select id="tabSelect" class="form-select-sm col-md-4" onchange="getOffers(this.value, this)">
+            <option value="New">Open Offers</option>
+            <option value="Favorite">Favorites</option>
+            <option value="Declined">Declined</option>
+          </select>
+        </div>
         </div>
 
         <div id="getOffers" class="tabcontent col-md-12">
