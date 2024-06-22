@@ -136,14 +136,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     populateSearchInfoDisplay();
+    getOfferCounts();
     getOffers('AllAvailable', null);
-    // getOfferCounts('New', null);
     getBuyerTypes();
     populateStates();
     populateDisplayZipCodes();
     populateLevelOfService();
 
-    // getOfferCounts();
     const offerForm = document.getElementById('offerForm');
     offerForm.style.display = 'none';
     // document.querySelector('#offerDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
@@ -423,14 +422,17 @@ function getOfferCounts() {
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
+                if (request.buyerStatus == 'AllAvailable') {
+                    document.getElementById('allavailablefilter').textContent = 'All Available Offers' + request.cnt;
+                }
                 if (request.buyerStatus == 'New') {
-                    document.getElementById('tabNew').textContent = 'Open Offers' + request.cnt;
+                    document.getElementById('newfilter').textContent = 'New Offers' + request.cnt;
                 }
                 if (request.buyerStatus == 'Favorite') {
-                    document.getElementById('tabFavorite').textContent = 'Favorites' + request.cnt;
+                    document.getElementById('favoritefilter').textContent = 'Favorite Offers' + request.cnt;
                 }
                 if (request.buyerStatus == 'Declined') {
-                    document.getElementById('tabDeclined').textContent = 'Declined' + request.cnt;
+                    document.getElementById('declinedfilter').textContent = 'Declined Offers' + request.cnt;
                 }
             })
         })
