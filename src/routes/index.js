@@ -125,6 +125,9 @@ router.get('/getOfferCounts', (req, res) => {
   }
   else {
     const userid = req.session.userid;
+    const userType = req.session.userType;
+    const buyerid = req.session.buyerid;
+    if (userType === 'Buyer') {
     var query = `select case when os.offerStatus in ('New','Read')
                               then 'New'
                               else os.offerStatus
@@ -141,7 +144,8 @@ router.get('/getOfferCounts', (req, res) => {
                                                                 bam.buyerid = ?)
                   where os.userType = ?
                     and os.offerStatus not in ('Declined');`;
-    db.query(query, [userid], (error, results) => {
+    }
+    db.query(query, [buyerid, userType, buyerid, userType], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);
         return res.status(500).send('Server error');
@@ -799,6 +803,8 @@ router.post('/login', [
             req.session.firstname = firstname;
             req.session.lastname = lastname;
             req.session.userType = userType;
+            req.session.agentid = 0;
+            req.session.buyerid = 0;
             req.session.paymentSuccessful = paymentSuccessful;
             console.log('User logged in:', email, userType);
             if (userType === 'Agent') {
