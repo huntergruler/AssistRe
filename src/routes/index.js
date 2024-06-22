@@ -785,6 +785,7 @@ router.post('/login', [
         });
       } else {
         const { userid, firstname, lastname, emailverified, paymentSuccessful } = results[0];
+        console.log('paymentSuccessful:', paymentSuccessful);
         bcrypt.compare(password, results[0].password, (err, isMatch) => {
           if (!isMatch || err) {
             res.json({
