@@ -3,7 +3,7 @@ const express = require('express');
 //const session = require('express-session');
 const app = express();
 
-const stripe = require('stripe')('sk_test_51PUWl0DidT8L3PDwVnfxBbiUpJEhLUje8HDkvRbbNeAF7JF0xqnymSWK1uZX03PtcuY9JCna7B59awJfHUFTtgxY00yxLiMJDl');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const router = express.Router();
 const nodemailer = require('nodemailer');
 const cookierParser = require('cookie-parser');
