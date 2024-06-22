@@ -247,6 +247,7 @@ function getOffers(datatype, element) {
                         } else {
                             setStatus(request.agentid, 'Read');
                         }
+                        console.log('data type:', datatype);    
                         getOffer(datatype, null);
                     });
 
