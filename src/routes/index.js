@@ -79,8 +79,8 @@ router.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: `/success.html`,
-    cancel_url: `/cancel.html`,
+    success_url: `${YOUR_DOMAIN}/success.html`,
+    cancel_url: `${YOUR_DOMAIN}/cancel.html`,
   });
   res.redirect(303, session.url);
 });
