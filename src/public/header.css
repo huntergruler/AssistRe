@@ -5,8 +5,8 @@
   }
   
   .logo-container{
-    width: 100%; /* Scales the image to 50% of its original width */
-    height: 100px; 
+    width: 300px;
+    height: 132px; 
     background-image: url('/images/seekingagentssmcrop.gif');
     background-size: cover; /* or 'background-size: contain;' */
     background-position: center; /* you can change this to 'top', 'right', etc. */
