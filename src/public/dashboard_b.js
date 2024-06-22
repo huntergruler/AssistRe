@@ -426,7 +426,7 @@ function getOfferCounts() {
                     document.getElementById('allavailablefilter').textContent = 'All Available Offers' + request.cnt;
                 }
                 if (request.buyerStatus == 'New') {
-                    document.getElementById('newfilter').textContent = 'New Offers' + request.cnt;
+                    document.getElementById('newfilter').textContent = 'Unread Offers' + request.cnt;
                 }
                 if (request.buyerStatus == 'Favorite') {
                     document.getElementById('favoritefilter').textContent = 'Favorite Offers' + request.cnt;
