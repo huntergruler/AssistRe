@@ -244,8 +244,12 @@ function getOffers(datatype, element) {
                         heartIcon.classList.toggle('favorite', isFavorite);
                         if (isFavorite) {
                             setStatus(request.agentid, 'Favorite');
+
                         } else {
                             setStatus(request.agentid, 'Read');
+                            if (request.buyerStatus == "New") {
+                                getOffer(datatype, null);
+                            }
                         }
                     });
 
