@@ -431,6 +431,9 @@ function getOfferCounts() {
                 if (request.buyerStatus == 'Favorite') {
                     document.getElementById('favoritefilter').textContent = 'Favorite Offers' + request.cnt;
                 }
+                if (request.buyerStatus == 'Read') {
+                    document.getElementById('readfilter').textContent = 'Read Offers' + request.cnt;
+                }
                 if (request.buyerStatus == 'Declined') {
                     document.getElementById('declinedfilter').textContent = 'Declined Offers' + request.cnt;
                 }

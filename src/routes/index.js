@@ -127,25 +127,20 @@ router.get('/getOfferCounts', (req, res) => {
     const userid = req.session.userid;
     const userType = req.session.userType;
     const buyerid = req.session.buyerid;
-    if (userType === 'Buyer') {
-    var query = `select case when os.offerStatus in ('New','Read')
-                              then 'New'
-                              else os.offerStatus
-                          end buyerStatus, concat('(',count(bam.buyerid),')') cnt
-                   from OfferStatus os 
+    var query = `select os.offerStatus buyerStatus, concat('(',count(bam.buyerid),')') cnt
+                   from OfferStatuses os 
                         left outer join AgentBuyerMatch bam on (bam.buyerStatus = os.offerStatus and 
                                                                 bam.buyerid = ?)
-                  where os.userType = ?
+                  where os.userType = 'Buyer'
                   group by 1
                  union
                  select 'AllAvailable', concat('(',count(bam.buyerid),')') cnt
-                   from OfferStatus os 
+                   from OfferStatuses os 
                         left outer join AgentBuyerMatch bam on (bam.buyerStatus = os.offerStatus and 
                                                                 bam.buyerid = ?)
-                  where os.userType = ?
+                  where os.userType = 'Buyer'
                     and os.offerStatus not in ('Declined');`;
-    }
-    db.query(query, [buyerid, userType, buyerid, userType], (error, results) => {
+    db.query(query, [buyerid, buyerid], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);
         return res.status(500).send('Server error');
@@ -234,7 +229,7 @@ router.get('/getRequestCounts', (req, res) => {
                               then 'New'
                               else os.offerStatus
                          end agentStatus, concat('(',count(bam.agentid),')') cnt
-                    from OfferStatus os 
+                    from OfferStatuses os 
                          left outer join AgentBuyerMatch bam on bam.agentStatus = os.offerStatus and bam.agentid = ?
                    where os.userType = 'Agent'
                    group by 1`;
