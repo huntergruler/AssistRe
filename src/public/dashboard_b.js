@@ -173,25 +173,10 @@ function getOffers(datatype, element) {
     detailCont.style.border = '0';
     const detailsCont = document.getElementById('offerDetails');
     detailsCont.style.border = '0';
-
-    // const buttons = document.querySelectorAll('.tablinks');
-    // buttons.forEach(button => {
-    //     button.classList.remove('active');
-    // });
-
-    // Add the 'active' class to the clicked button
-    // if (element) element.classList.add('active');
-    // else document.getElementById('tab' + datatype).classList.add('active');
-
-    // Your existing logic for handling offers based on the 'type' parameter
-
     detailButtons.innerHTML = '';
     offerDetail.innerHTML = '';
     offers.innerHTML = '';
     offerForm.style.display = 'none';
-
-    // offerDetail.style.display = 'none';
-    // detailButtons.style.display = 'none';
 
     document.getElementById('datatype').value = datatype;
     const getOffers = document.getElementById('getOffers');
@@ -203,13 +188,16 @@ function getOffers(datatype, element) {
             if (data.length === 0) {
                 const div = document.createElement("div");
                 if (datatype == "New") {
-                    div.textContent = 'No Open Offers';
+                    div.textContent = '<h4>No Unread Offers</h4>';
+                }
+                if (datatype == "Read") {
+                    div.textContent = '<h4>No Read Offers</h4>';
                 }
                 if (datatype == "Favorite") {
-                    div.textContent = 'No Favorite Offers';
+                    div.innerHTML = '<h4>No Favorite Offers</h4>';
                 }
                 if (datatype == "Declined") {
-                    div.textContent = 'No Declined Offers';
+                    div.textContent = '<h4>No Declined Offers</h4>';
                 }
                 offers.appendChild(div);
             }
