@@ -188,16 +188,16 @@ function getOffers(datatype, element) {
             if (data.length === 0) {
                 const div = document.createElement("div");
                 if (datatype == "New") {
-                    div.textContent = '<h4>No Unread Offers</h4>';
+                    div.innerHTML = '<h4>No Unread Offers</h4>';
                 }
                 if (datatype == "Read") {
-                    div.textContent = '<h4>No Read Offers</h4>';
+                    div.innerHTML = '<h4>No Read Offers</h4>';
                 }
                 if (datatype == "Favorite") {
                     div.innerHTML = '<h4>No Favorite Offers</h4>';
                 }
                 if (datatype == "Declined") {
-                    div.textContent = '<h4>No Declined Offers</h4>';
+                    div.innerHTML = '<h4>No Declined Offers</h4>';
                 }
                 offers.appendChild(div);
             }
