@@ -247,8 +247,8 @@ function getOffers(datatype, element) {
 
                         } else {
                             setStatus(request.agentid, 'Read');
-                                getOffer(datatype, null);
-                       }
+                            getOffer(datatype, null);
+                        }
                     });
 
                     // Set initial favorite state
