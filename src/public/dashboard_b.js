@@ -247,7 +247,6 @@ function getOffers(datatype, element) {
                         } else {
                             setStatus(request.agentid, 'Read');
                         }
-                        console.log('data type:', datatype);    
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     });

@@ -7,7 +7,7 @@
   .logo-container{
     width: 200px;
     height: 200px;
-    background-image: url('/images/SeekingAgents.gif');
+    background-image: url('/images/seekingagentscrop.gif');
     background-size: cover; /* or 'background-size: contain;' */
     background-position: center; /* you can change this to 'top', 'right', etc. */
     background-repeat: no-repeat;
