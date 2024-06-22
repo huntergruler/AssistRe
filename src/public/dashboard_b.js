@@ -248,7 +248,8 @@ function getOffers(datatype, element) {
                             setStatus(request.agentid, 'Read');
                         }
                         console.log('data type:', datatype);    
-                        getOffers(datatype, null);
+                        div.classList.add("read");
+                        div.getElementsByClassName("newDot")[0].style.display = "none";
                     });
 
                     // Set initial favorite state
