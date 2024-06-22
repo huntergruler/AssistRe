@@ -171,8 +171,8 @@ function getOffers(datatype, element) {
 
     const detailCont = document.getElementById('offerDetailContainer');
     detailCont.style.border = '0';
-    const detailsCont = document.getElementById('offerDetails');
-    detailsCont.style.border = '0';
+    // const detailsCont = document.getElementById('offerDetails');
+    // detailsCont.style.border = '0';
     detailButtons.innerHTML = '';
     offerDetail.innerHTML = '';
     offers.innerHTML = '';
@@ -223,6 +223,10 @@ function getOffers(datatype, element) {
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     }
                     offers.appendChild(div);
+                    if (!paymentSuccessful) {
+                        offerDetail.innerHTML = '<h5>To connect with an agent follow this link and complete payment</h5>';
+                    }
+
 
                     // Add event listener to the favorite icon
                     const favoriteIcon = div.querySelector('.favorite-icon');
@@ -252,7 +256,6 @@ function getOffers(datatype, element) {
                     const card = div.querySelector('.offersummary');
                     card.addEventListener('click', function () {
                         // Your card click handling code here
-                        console.log('paymentSuccessful:', paymentSuccessful, 'getOffers');
                         if (paymentSuccessful) {
                             selectOffer(request.agentid, request.buyeragentmatchid, this);
                         }
@@ -340,8 +343,8 @@ function offerDetail(agentid, buyeragentmatchid) {
     document.getElementById('buyeragentmatchid').value = buyeragentmatchid;
     detailCont.style.border = '0';
 
-    const detailsCont = document.getElementById('offerDetails');
-    detailsCont.style.border = '0';
+    // const detailsCont = document.getElementById('offerDetails');
+    // detailsCont.style.border = '0';
 
     offerDetail.innerHTML = "";
     detailButtons.innerHTML = "";
@@ -364,7 +367,6 @@ function offerDetail(agentid, buyeragentmatchid) {
                 detailCont.style.border = '1px solid black';
                 detailCont.style.borderBottomLeftRadius = '5px';
                 detailCont.style.borderBottomRightRadius = '5px';
-                console.log(request.buyerStatus, datatype);
 
                 // Create a container div to hold the buttons
                 const buttonContainer = document.createElement("div");
