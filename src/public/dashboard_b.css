@@ -645,10 +645,10 @@ body {
     color: white;
 }
 
-.offerlist {
+/* .offerlist {
     justify-content: left;
     line-height: 2;
-}
+} */
 
 .moreless-button {
     display: flex;
