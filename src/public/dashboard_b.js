@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
             userid = sessionData.userid;
             paymentSuccessful = sessionData.paymentSuccessful;
         });
-        console.log('paymentSuccessful:', paymentSuccessful,'addeventlistener');
+        console.log('paymentSuccessful:', paymentSuccessful,'addeventlistener', userid);
 
     const toggle1 = document.getElementById('toggle1');
     const toggle2 = document.getElementById('toggle2');
