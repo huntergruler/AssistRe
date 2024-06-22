@@ -248,7 +248,7 @@ function getOffers(datatype, element) {
                             setStatus(request.agentid, 'Read');
                         }
                         console.log('data type:', datatype);    
-                        getOffer(datatype, null);
+                        getOffers(datatype, null);
                     });
 
                     // Set initial favorite state
