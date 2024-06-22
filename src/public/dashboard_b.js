@@ -225,7 +225,6 @@ function getOffers(datatype, element) {
                     <a href="#" class="favorite-icon" data-item-id="1">
                     <i class="far fa-heart"></i></a>
                     ${request.offerText}<br></div>`;
-                    // div.addEventListener('click', () => selectOffer(request.agentid, request.buyerrequestid, this));
                     div.className = "form-row offers col-md-12";
                     div.id = "agentid" + request.agentid;
                     if (request.buyerStatus == "New") {
@@ -267,7 +266,7 @@ function getOffers(datatype, element) {
                         // Your card click handling code here
                         console.log('paymentSuccessful:', paymentSuccessful,'getOffers');
                         if (paymentSuccessful) {
-                            selectOffer(request.agentid, request.buyerrequestid, this);
+                            selectOffer(request.agentid, request.buyeragentmatchid, this);
                         }
                         else {
                             showModal('Please complete payment to view offers');
@@ -280,7 +279,7 @@ function getOffers(datatype, element) {
         .catch(error => console.error('Error checking user:', error));
 };
 
-function selectOffer(agentid, buyerrequestid, element) {
+function selectOffer(agentid, buyeragentmatchid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
@@ -294,7 +293,7 @@ function selectOffer(agentid, buyerrequestid, element) {
     rows.forEach(row => {
         row.classList.remove('selected');
     });
-    offerDetail(agentid, buyerrequestid);
+    offerDetail(agentid, buyeragentmatchid);
     if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
         detailButtons.style.display = 'block';
@@ -344,13 +343,13 @@ function selectOffer(agentid, buyerrequestid, element) {
     // }
 }
 
-function offerDetail(agentid, buyerrequestid) {
+function offerDetail(agentid, buyeragentmatchid) {
     const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
     const datatype = document.getElementById('datatype').value;
     const detailCont = document.getElementById('offerDetailContainer');
     document.getElementById('agentid').value = agentid;
-    document.getElementById('buyerrequestid').value = buyerrequestid;
+    document.getElementById('buyeragentmatchid').value = buyeragentmatchid;
     detailCont.style.border = '0';
 
     const detailsCont = document.getElementById('offerDetails');
@@ -358,7 +357,7 @@ function offerDetail(agentid, buyerrequestid) {
 
     offerDetail.innerHTML = "";
     detailButtons.innerHTML = "";
-    fetch(`/getOffers?agentid=${encodeURIComponent(agentid)} &buyerrequestid=${encodeURIComponent(buyerrequestid)} &datatype=${encodeURIComponent(datatype)}`)
+    fetch(`/getOffers?agentid=${encodeURIComponent(agentid)} &buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)} &datatype=${encodeURIComponent(datatype)}`)
         .then(response => response.json())
         .then(data => {
             data.forEach(request => {
