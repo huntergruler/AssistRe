@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
             paymentSuccessful = sessionData.paymentSuccessful;
         })
         .catch(error => console.error('Error fetching session data:', error));
-        console.log('paymentSuccessful:', paymentSuccessful,'addeventlistener', userid);
+    console.log('paymentSuccessful:', paymentSuccessful, 'addeventlistener', userid);
 
     const toggle1 = document.getElementById('toggle1');
     const toggle2 = document.getElementById('toggle2');
@@ -264,7 +264,7 @@ function getOffers(datatype, element) {
                     const card = div.querySelector('.offersummary');
                     card.addEventListener('click', function () {
                         // Your card click handling code here
-                        console.log('paymentSuccessful:', paymentSuccessful,'getOffers');
+                        console.log('paymentSuccessful:', paymentSuccessful, 'getOffers');
                         if (paymentSuccessful) {
                             selectOffer(request.agentid, request.buyeragentmatchid, this);
                         }
@@ -384,21 +384,24 @@ function offerDetail(agentid, buyeragentmatchid) {
                 buttonContainer.style.border = "none";
 
                 // Create each button and append them to the container
-                if (datatype == "Read" || datatype == "New") {
-                    var buttons = [
-                        { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
-                    ];
-                }
-                if (datatype == "Favorite") {
-                    var buttons = [
-                        { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
-                    ];
-                }
-                if (datatype == "Declined") {
-                    var buttons = [
-                        { id: "declineOffer", text: "Reopen Offer", onclick: `reopenOffer(${request.agentid})` },
-                    ];
-                }
+                // if (datatype == "Read" || datatype == "New") {
+                //     var buttons = [
+                //         { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
+                //     ];
+                // }
+                // if (datatype == "Favorite") {
+                //     var buttons = [
+                //         { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
+                //     ];
+                // }
+                // if (datatype == "Declined") {
+                //     var buttons = [
+                //         { id: "declineOffer", text: "Reopen Offer", onclick: `reopenOffer(${request.agentid})` },
+                //     ];
+                // }
+                var buttons = [
+                    { id: "contactagent", text: "Contact Agent", onclick: `contactAgent(${request.agentid})` },
+                ];
 
                 buttons.forEach(button => {
                     const buttonElement = document.createElement("button");
