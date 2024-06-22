@@ -98,18 +98,21 @@ function showModal(message) {
     modal.style.display = "flex";
 }
 
+// create global variables to store session values
 let userid = null;
-// Initialize the state based on the prequalified value
+let paymentSuccessful = null;
+
+// DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', function () {
     fetch('/session-data')
         .then(response => response.json())
         .then(sessionData => {
             userid = sessionData.userid;
+            paymentSuccessful = sessionData.paymentSuccessful;
         });
 
     const toggle1 = document.getElementById('toggle1');
     const toggle2 = document.getElementById('toggle2');
-
     const moreInfo1 = document.getElementById('more-info1');
     const moreInfo2 = document.getElementById('more-info2');
 
@@ -261,7 +264,12 @@ function getOffers(datatype, element) {
                     const card = div.querySelector('.offersummary');
                     card.addEventListener('click', function () {
                         // Your card click handling code here
-                        alert('Card clicked!');
+                        if (paymentSuccessful) {
+                            selectOffer(request.agentid, request.buyerrequestid, this);
+                        }
+                        else {
+                            showModal('Please complete payment to view offers');
+                        }
                     });
                 });
 
