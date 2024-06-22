@@ -411,6 +411,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                     buttonElement.style.borderRadius = "5px";
                     buttonElement.style.padding = "2px";
                     buttonElement.style.margin = "2px";
+                    buttonElement.className = "modify-button";
                     buttonElement.setAttribute("onclick", button.onclick);
                     buttonContainer.appendChild(buttonElement);
                 });
