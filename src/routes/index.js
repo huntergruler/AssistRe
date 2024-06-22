@@ -24,7 +24,7 @@ router.use(cookierParser());
 const upload = multer({ dest: 'uploads/' });
 
 const YOUR_DOMAIN = 'http://3.129.42.126:3000';
-const PRICE_ID = 'prod_QLKHQ6VIY1Xihe'
+const PRICE_ID = 'price_1PUdczDidT8L3PDw6wpnXHLf'
 
 // Database connection setup
 const db = mysql.createConnection({
