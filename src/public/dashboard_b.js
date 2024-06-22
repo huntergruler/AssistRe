@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
             userid = sessionData.userid;
             paymentSuccessful = sessionData.paymentSuccessful;
         });
+        console.log('paymentSuccessful:', paymentSuccessful,'addeventlistener');
 
     const toggle1 = document.getElementById('toggle1');
     const toggle2 = document.getElementById('toggle2');
@@ -263,6 +264,7 @@ function getOffers(datatype, element) {
                     const card = div.querySelector('.offersummary');
                     card.addEventListener('click', function () {
                         // Your card click handling code here
+                        console.log('paymentSuccessful:', paymentSuccessful,'getOffers');
                         if (paymentSuccessful) {
                             selectOffer(request.agentid, request.buyerrequestid, this);
                         }
