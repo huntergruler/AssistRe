@@ -5,7 +5,7 @@
   }
   
   .logo-container{
-    width: 50%; /* Scales the image to 50% of its original width */
+    width: 100%; /* Scales the image to 50% of its original width */
     height: auto; 
     background-image: url('/images/seekingagentscrop.gif');
     background-size: cover; /* or 'background-size: contain;' */
