@@ -68,7 +68,7 @@ router.get('/register', (req, res) => {
 });
 
 // Payment route
-app.post('/create-checkout-session', async (req, res) => {
+router.post('/create-checkout-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: [
       {
@@ -78,8 +78,8 @@ app.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: `${YOUR_DOMAIN}/success.html`,
-    cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+    success_url: `/success.html`,
+    cancel_url: `/cancel.html`,
   });
   res.redirect(303, session.url);
 });
