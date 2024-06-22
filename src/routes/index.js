@@ -110,7 +110,7 @@ router.post('/register', (req, res) => {
 // Route to get the buyer's profile
 router.get('/dashboard_a', (req, res) => {
   if (!req.session.user) {
-    req.session.message = 'Please login to access your Profile';
+    req.session.message = 'Please login to access your Dashboard';
     res.redirect('/');
   }
   else {
@@ -120,19 +120,27 @@ router.get('/dashboard_a', (req, res) => {
 
 router.get('/getOfferCounts', (req, res) => {
   if (!req.session.user) {
-    req.session.message = 'Please login to access your Profile';
+    req.session.message = 'Please login';
     res.redirect('/');
   }
   else {
     const userid = req.session.userid;
-    var query = `select case when os.offerStatus in ('New','Read','Favorite')
+    var query = `select case when os.offerStatus in ('New','Read')
                               then 'New'
                               else os.offerStatus
                           end buyerStatus, concat('(',count(bam.buyerid),')') cnt
-                    from OfferStatus os 
-                         left outer join AgentBuyerMatch bam on bam.buyerStatus = os.offerStatus and bam.buyerid = ?
-                   where os.userType = 'Buyer'
-                   group by 1`;
+                   from OfferStatus os 
+                        left outer join AgentBuyerMatch bam on (bam.buyerStatus = os.offerStatus and 
+                                                                bam.buyerid = ?)
+                  where os.userType = ?
+                  group by 1
+                 union
+                 select 'AllAvailable', concat('(',count(bam.buyerid),')') cnt
+                   from OfferStatus os 
+                        left outer join AgentBuyerMatch bam on (bam.buyerStatus = os.offerStatus and 
+                                                                bam.buyerid = ?)
+                  where os.userType = ?
+                    and os.offerStatus not in ('Declined');`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);
@@ -503,7 +511,7 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
 // Route to get the buyer's profile
 router.get('/dashboard_b', (req, res) => {
   if (!req.session.user) {
-    req.session.message = 'Please login to access your Profile';
+    req.session.message = 'Please login to access your Dashboard';
     res.redirect('/');
   }
   else {
