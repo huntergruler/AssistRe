@@ -247,10 +247,8 @@ function getOffers(datatype, element) {
 
                         } else {
                             setStatus(request.agentid, 'Read');
-                            if (request.buyerStatus == "New") {
                                 getOffer(datatype, null);
-                            }
-                        }
+                       }
                     });
 
                     // Set initial favorite state
