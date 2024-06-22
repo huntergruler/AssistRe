@@ -203,9 +203,8 @@ router.get('/getOffers', (req, res) => {
                      join OfferTypes ot on ot.offertypeid = ao.offertypeid
                     where bam.buyeragentmatchid = ?
                       and ao.agentid = ?
-                      and if(bam.buyerStatus = 'Read','New', bam.buyerStatus) = ?
                     order by bam.buyerStatus, ao.entrytimestamp desc`;
-      db.query(query, [buyeragentmatchid, agentid, datatype], (error, results) => {
+      db.query(query, [buyeragentmatchid, agentid], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
           return res.status(500).send('Server error');
