@@ -109,7 +109,8 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(sessionData => {
             userid = sessionData.userid;
             paymentSuccessful = sessionData.paymentSuccessful;
-        });
+        })
+        .catch(error => console.error('Error fetching session data:', error));
         console.log('paymentSuccessful:', paymentSuccessful,'addeventlistener', userid);
 
     const toggle1 = document.getElementById('toggle1');
