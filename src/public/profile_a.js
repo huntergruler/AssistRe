@@ -251,6 +251,31 @@ function populateCities() {
         .catch(error => console.error('Error checking user:', error));
 };
 
+function populateLevelOfService() {
+    const buyerLevelOfService = document.getElementById('buyerLevelOfService');
+    const levelofservicevalue = document.getElementById('levelofserviceid').value;
+
+    if (!levelofservicevalue) {
+        const defaultOption = document.createElement('option');
+        buyerLevelOfService.innerHTML = '';
+        defaultOption.textContent = 'Select a Level of Service';
+        defaultOption.value = '';
+        buyerLevelOfService.appendChild(defaultOption);
+    }
+
+    fetch(`/get-levelofservice`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let option = document.createElement('option');
+                option.value = item.levelofserviceid;
+                option.textContent = item.levelOfService;
+                option.selected = item.levelofserviceid == levelofservicevalue;
+                buyerLevelOfService.appendChild(option);
+            });
+        })
+};
+
 function populateCitiesCounties() {
     const stateSelect = document.getElementById('stateSelect').value;
     const countymessage = document.getElementById('countymessage');
@@ -363,7 +388,6 @@ function populateCityZipCodes() {
 };
 
 function populateUserZipCodes() {
-    populateLevelOfService();
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const userZipCodes = document.getElementById("userZipCodes");
     const stateSelect = document.getElementById("stateSelect");
@@ -516,7 +540,8 @@ function addZipCode() {
     }
 };
 
-function addSelection() {
+function addSelection(event) {
+    event.preventDefault();
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
@@ -534,7 +559,8 @@ function addSelection() {
     });
 };
 
-function removeSelection() {
+function removeSelection(event) {
+    event.preventDefault();
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeSelected.selected");
@@ -613,43 +639,40 @@ function populateAgentZipCodes() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-// function populateMonths() {
-//     const monthSelect = document.getElementById('monthSelect');
-//     const months = [
-//         'January', 'February', 'March', 'April', 'May', 'June',
-//         'July', 'August', 'September', 'October', 'November', 'December'
-//     ];
-//     months.forEach((month, index) => {
-//         let option = new Option(month, index + 1);
-//         monthSelect.appendChild(option);
-//     });
-// };
-
-// function populateYears() {
-//     const yearSelect = document.getElementById('yearSelect');
-//     const year = new Date().getFullYear();
-//     for (let i = year; i <= year + 10; i++) {
-//         let option = new Option(i, i);
-//         yearSelect.appendChild(option);
-//     }
-// };
-
-// function updateDays() {
-//     const monthSelect = document.getElementById('monthSelect');
-//     const yearSelect = document.getElementById('yearSelect');
-//     const daySelect = document.getElementById('daySelect');
-
-//     const month = monthSelect.value;
-//     const year = yearSelect.value;
-//     const daysInMonth = new Date(year, month, 0).getDate();
-
-//     daySelect.innerHTML = '';
-
-//     for (let i = 1; i <= daysInMonth; i++) {
-//         let option = new Option(i, i);
-//         daySelect.appendChild(option);
-//     }
-// };
+function savePersonalChanges() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const bio = document.getElementById('bio').value;
+    const languages = document.getElementById('languages').value;
+    const userid = document.getElementById('userid').value;
+    const data = {
+        firstName: firstName,
+        lastName: lastName,
+        bio: bio,
+        languages: languages,
+        userid: userid
+    };
+    // Send the data to the server using fetch
+    fetch('/profile_a', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            window.location.reload();
+        })
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+};
 
 var officeToggle = 1;
 function showOffice() {

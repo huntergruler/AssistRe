@@ -715,6 +715,17 @@ router.get('/profile_a', (req, res) => {
   }
 });
 
+router.post('/profile_a', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/');
+  }
+  else {
+    // const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
+    console.log(req.body);
+  }
+});
+
 router.get('/api/profile_a', (req, res) => {
   userid = req.session.userid;
   const query = `SELECT a.agentlicenseid, date_format(a.licenseExpirationDate,"%m/%d/%Y") licenseExpirationDate, a.licenseNumber, a.licenseState, a.userid 
