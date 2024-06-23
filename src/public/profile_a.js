@@ -644,7 +644,7 @@ function savePersonalChanges() {
     const lastName = document.getElementById('lastName').value;
     const bio = document.getElementById('bio').value;
     const languages = document.getElementById('languages').value;
-    const userid = document.getElementById('userid').value;
+    const userid = document.getElementById('personaluserid').value;
     const data = {
         firstName: firstName,
         lastName: lastName,
