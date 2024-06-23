@@ -652,6 +652,7 @@ function savePersonalChanges() {
         languages: languages,
         userid: userid
     };
+    console.log("savePersonalChanges data: ", data);
     // Send the data to the server using fetch
     fetch('/profile_a', {
         method: 'POST',
