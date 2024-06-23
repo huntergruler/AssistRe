@@ -390,21 +390,6 @@ padding-right: 0px;
     padding-left: 0;
 }
 
-.zipmove-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: lightgray;
-    color: black;
-    border: 1px solid black;
-    padding: 0px 0px;
-    font-size: 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-}
-
 .zipCodeContainer {
     opacity: 0.8;
     margin-left: 0px;
@@ -574,4 +559,19 @@ padding-right: 0px;
     width: 400px;
     border-radius: 5px;
     border: 1px solid black;
+}
+
+.zipmove-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    color: black;
+    border: 1px solid black;
+    padding: 0px 0px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
 }
