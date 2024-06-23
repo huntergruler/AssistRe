@@ -212,7 +212,7 @@ router.get('/getOffers', (req, res) => {
                           case when 'New' = 'AllAvailable'
                                then filterstatus
                                else buyerstatus
-                          end
+                          end buyerStatus,  concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentid) dispIdentifier
                      from OffersForBuyers ofb
                     where buyerid =  ?
                       and case when ? = 'AllAvailable'
