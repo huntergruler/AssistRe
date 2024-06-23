@@ -251,6 +251,31 @@ function populateCities() {
         .catch(error => console.error('Error checking user:', error));
 };
 
+function populateLevelOfService() {
+    const buyerLevelOfService = document.getElementById('buyerLevelOfService');
+    const levelofservicevalue = document.getElementById('levelofserviceid').value;
+
+    if (!levelofservicevalue) {
+        const defaultOption = document.createElement('option');
+        buyerLevelOfService.innerHTML = '';
+        defaultOption.textContent = 'Select a Level of Service';
+        defaultOption.value = '';
+        buyerLevelOfService.appendChild(defaultOption);
+    }
+
+    fetch(`/get-levelofservice`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                let option = document.createElement('option');
+                option.value = item.levelofserviceid;
+                option.textContent = item.levelOfService;
+                option.selected = item.levelofserviceid == levelofservicevalue;
+                buyerLevelOfService.appendChild(option);
+            });
+        })
+};
+
 function populateCitiesCounties() {
     const stateSelect = document.getElementById('stateSelect').value;
     const countymessage = document.getElementById('countymessage');
