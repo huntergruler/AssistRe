@@ -16,11 +16,6 @@ body {
     height: auto;
 }
 
-#officeModal {
-    min-width: 550px;
-    width: fit-content;
-}
-
 #dashboardContainer,
 #loginContainer {
     margin: 50px 0;
