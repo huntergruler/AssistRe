@@ -25,10 +25,12 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Session data fetched:', sessionData);
         })
         .catch(error => console.error('Error fetching session data:', error));
+        console.log('before setpaymentstatus',buyerid);
     setPaymentStatus();
 });
 
 setPaymentStatus = () => {
+    console.log('inside setpaymentstatus',buyerid);
     const data = {
         buyerid: buyerid,
         userType: 'buyer',

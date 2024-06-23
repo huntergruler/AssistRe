@@ -374,14 +374,17 @@ router.post('/setPaymentStatus', (req, res) => {
   else {
     var userType = req.body.userType;
     var paymentSuccessful = req.body.paymentSuccessful;
+    console.log('Payment Status:', paymentSuccessful, userType);
     if (userType === 'Buyer') {
       var buyerid = req.body.buyerid;
       params = [paymentSuccessful, buyerid];
+      console.log('Buyerid:', buyerid);
+      var updateQuery = 'update Buyers set paymentSuccessful = ? where userid = ?';
     } else {
       var agentid = req.body.agentid;
       params = [paymentSuccessful, agentid];
+      var updateQuery = 'update Agents set paymentSuccessful = ? where userid = ?';
     }
-    var updateQuery = 'update Buyers set paymentSuccessful = ? where userid = ?';
     db.query(updateQuery, params, (error, result) => {
       if (error) {
         console.error('Error saving status:', error);
