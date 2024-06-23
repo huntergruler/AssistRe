@@ -591,8 +591,8 @@ function populateAgentInfo(agentid) {
         .then(data => {
             data.results.forEach(item => {
                 const div = document.createElement("div");
-                div.innerHTML = `<div class="row col-md-4 justify-content-right agentcontact">
-                Name: </div><div  class="row col-md-5"> <b>${item.fullName}</b><br></div>
+                div.innerHTML = `<div class="row col-md-4 agentcontactlabel">
+                Name: </div><div  class="row col-md-5 agentcontactdata"> <b>${item.fullName}</b><br></div>
                 </div>`;
                 div.className = "form-row container-right";
                 agentInfo.appendChild(div);

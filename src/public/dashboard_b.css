@@ -343,8 +343,11 @@ body {
     justify-content: center;
 }
 
-.agentcontact{
+.agentcontactlabel{
     justify-content: right;
+}
+.agentcontactdata{
+    justify-content: left;
 }
 
 .tabcontent {
