@@ -103,7 +103,7 @@
             <div id="offers" class="offers col-md-4">
               <!-- JavaScript will populate this container -->
             </div>
-            <div id="offerDetailContainer" class="container-right col-md-5">
+            <div id="offerDetailContainer" class="container-right col-md-4">
               <div id="offerDetail">
                 <!-- JavaScript will populate this container -->
               </div>
@@ -116,7 +116,81 @@
           </div>
         </div>
       </div>
+      <div class="container-right col-md-4" id="offerDetails">
+        <div id="offerFormContainer">
+          <form id="offerForm" style="padding-top: 5px;">
+            <input type="hidden" id="agentid" name="agentid">
+            <input type="hidden" id="buyeragentmatchid" name="buyeragentmatchid">
+            <input type="hidden" id="datatype" name="datatype">
+            <div class="form-row container-right">
+              <label for="offerType" class="col-md-5 col-form-label">Offer Type</label>
+              <select id="offerType" class="form-select-sm col-md-6" required></select>
+            </div>
+            <div class="form-row container-right">
+              <label for="levelOfService" class="col-md-5 col-form-label">Level of Service</label>
+              <select id="levelOfService" class="form-select-sm col-md-6" required></select>
+            </div>
+            <div class="form-row container-right">
+              <label for="compensationType" class="col-md-5 col-form-label">Type of Comp</label>
+              <select id="compensationType" class="form-select-sm col-md-6" required></select>
+            </div>
+            <div class="form-row container-right">
+              <label for="compensationAmount" class="col-md-5 col-form-label">Comp Amount</label>
+              <input type="text" class="form-control-sm col-md-5" placeholder="Comp Amount ($ or %)" id="compensationAmount" name="compensationAmount" required>
+            </div>
+            <div class="form-row container-right">
+              <label for="retainerFee" class="col-md-5 col-form-label">Retainer Fee Amount</label>
+              <input type="text" class="form-control-sm col-md-5" placeholder="Retainer Fee" id="retainerFee" name="retainerFee" required>
+            </div>
+            <div class="form-row container-right">
+              <label for="retainerFee" class="col-md-5 col-form-label">Retainer Fee Credited</label>
+              <div class="col-md-3">
+                <input type="radio" id="retainerCreditedY" name="retainerCredited" value="1" required>
+                Yes
+                <input type="radio" id="retainerCreditedN" name="retainerCredited" value="0" required>
+                No
+              </div>
+              <div class="col-md-3">
+              </div>
+            </div>
+            <div class="form-row container-right">
+              <label for="lengthOfService" class="col-md-4 col-form-label">Length of Contract</label>
+              <input type="text" class="form-control-sm col-md-6" placeholder="Length of Service" id="lengthOfService" name="lengthOfService" required>
+            </div>
+            <div class="form-row container-right">
+              <label for="expirationCompTimeFrame" class="col-md-4 col-form-label">Comp after Expired
+                Time Frame</label>
+              <input type="text" class="form-control-sm col-md-6" placeholder="Expiration Comp Time Frame" id="expirationCompTimeFrame" name="expirationCompTimeFrame" required>
+              <div class="help-icon" onclick="showHelp()">?</div>
+              <div id="help-dialog" class="hidden">
+                <p>This is some helpful information.</p>
+                <button onclick="hideHelp()">Close</button>
+              </div>
+            </div>
+            <div class="form-row container-right">
+              <label for="expirationCompensation" class="col-md-4 col-form-label">Comp Amount AFTER
+                Expiration</label>
+              <input type="text" class="form-control-sm col-md-6" placeholder="Expiration Compensation" id="expirationCompensation" name="expirationCompensation" required>
+            </div>
+            <div class="form-row container-right">
+              <label for="offerDesc" class="col-md-4 col-form-label">Offer Description</label>
+              <textarea id="offerDesc" rows="4" cols="50" maxlength="500" placeholder="Enter a verbal Description of the services you will provide (limit 500 characters)" oninput="updateCountdown()"></textarea>
+              <div id="countdown"></div>
+            </div>
+            <div class="form-row container-right">
+              <div class="col-md-8">
+                <div id="offerButton">
+                  <!-- JavaScript will populate this container -->
+                </div>
+              </div>
+              <div class="col-md-4">
+                <button type="button" class="col-md-5" style="border: 1px solid black; border-radius: 5px; padding: 2px;   margin: 2px;"="clearOffer" onclick="cancel()">Cancel</button>
+              </div>
+            </div>
 
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 
