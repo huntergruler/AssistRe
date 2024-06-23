@@ -21,11 +21,12 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(sessionData => {
             userid = sessionData.userid;
             paymentSuccessful = sessionData.paymentSuccessful;
+            console.log('Session data fetched:', sessionData);
         })
         .catch(error => console.error('Error fetching session data:', error));
  setPaymentStatus();
     });
-    
+
 setPaymentStatus = () => {
     req.session.paymentSuccessful = 1;
 }
