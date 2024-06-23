@@ -1595,7 +1595,8 @@ router.get('/getBuyerTypes', (req, res) => {
 router.get('/getagentinfo', (req, res) => {
   const agentid = req.query.agentid;
   console.log('Agent ID:', agentid);
-  const query = `select concat(a.firstName,' ',a.lastName) fullName, concat(a.address,' ',a.city,', ',a.state,' ',a.zip) address, a.bio, a.email, 
+  const query = `select concat(a.firstName,' ',a.lastName) fullName, a.address, 
+                        concat(a.city,', ',a.state,' ',a.zip) cityStateZip, a.bio, a.email, 
                         a.languages, a.phoneNumber, al.licenseNumber, al.licenseState, al.licenseExpirationDate
                    from Agents a
                         join AgentLicenses al on a.userid = al.userid

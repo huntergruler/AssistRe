@@ -596,6 +596,7 @@ function populateAgentInfo(agentid) {
                 Phone: <b>${item.phoneNumber}</b><br>
                 Email: <b>${item.email}</b><br>
                 Address: <b>${item.address}</b><br>
+                         <b>${item.cityStateZip}</b><br>
                 License: <b>${item.licenseNumber} - ${item.licenseState}</b><br>
                 Languages Spoken: <b>${item.languages}</b><br>
                 Agent Bio: <b>${item.bio}</b><br>
