@@ -722,7 +722,7 @@ router.post('/profile_a', (req, res) => {
   }
   else {
     // const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
-    console.log(req.body);
+    console.log(req);
   }
 });
 
