@@ -607,7 +607,6 @@ document.getElementById('zipSelect').addEventListener('keydown', function (event
 });
 function addSelection(event) {
     event.preventDefault();
-    console.log('addSelection');
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
@@ -633,6 +632,7 @@ function addSelection(event) {
 
 function removeSelection(event) {
     event.preventDefault();
+    console.log('removeSelection');
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".userZipCodes.selected");
