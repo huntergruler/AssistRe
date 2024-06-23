@@ -166,13 +166,13 @@ function getOffers(datatype, element) {
     const offers = document.getElementById('offers');
     const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
-    const offerForm = document.getElementById('offerForm');
+    // const offerForm = document.getElementById('offerForm');
     const detailCont = document.getElementById('offerDetailContainer');
     detailCont.style.border = '0';
     detailButtons.innerHTML = '';
     offerDetail.innerHTML = '';
     offers.innerHTML = '';
-    offerForm.style.display = 'none';
+    // offerForm.style.display = 'none';
 
     document.getElementById('datatype').value = datatype;
     const getOffers = document.getElementById('getOffers');
@@ -306,8 +306,8 @@ function selectOffer(agentid, buyeragentmatchid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
-    const offerForm = document.getElementById('offerForm');
-    offerForm.style.display = 'none';
+    // const offerForm = document.getElementById('offerForm');
+    // offerForm.style.display = 'none';
     const datatype = document.getElementById('datatype').value;
 
     if (selectedAgentId === agentid) return; // If already selected, do nothing
@@ -416,7 +416,7 @@ function getOfferCounts() {
 function declineOffer() {
     const agentid = document.getElementById('agentid').value;
     const dataType = document.getElementById('datatype').value;
-    const offerForm = document.getElementById('offerForm');
+    // const offerForm = document.getElementById('offerForm');
     const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
 
@@ -424,7 +424,7 @@ function declineOffer() {
     showModal('Offer Declined successfully');
     offerDetail.innerHTML = '';
     detailButtons.innerHTML = '';
-    offerForm.style.display = 'none';
+    // offerForm.style.display = 'none';
     getOffers(dataType, null);
     getOfferCounts();
     clearForm()
@@ -455,15 +455,15 @@ function hideHelp() {
     document.getElementById('help-dialog').style.display = 'none';
 }
 
-function cancel() {
-    const makeoffercontainer = document.getElementById('offerForm');
-    makeoffercontainer.style.display = 'none';
-    clearForm()
-}
+// function cancel() {
+//     const makeoffercontainer = document.getElementById('offerForm');
+//     makeoffercontainer.style.display = 'none';
+//     clearForm()
+// }
 
-function clearForm() {
-    document.getElementById('offerForm').reset();
-}
+// function clearForm() {
+//     document.getElementById('offerForm').reset();
+// }
 
 function setStatus(agentid, status) {
     const data = {
