@@ -495,7 +495,7 @@ body {
     position: absolute;
     top: -6px;
     right: 0px;
-    color: red;
+    color: rgb(53, 51, 51);
     font-size: 20px;
     cursor: pointer;
     height: 20px;
