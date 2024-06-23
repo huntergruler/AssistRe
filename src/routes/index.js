@@ -70,6 +70,7 @@ router.get('/register', (req, res) => {
 
 // Payment route
 router.post('/create-checkout-session', async (req, res) => {
+  console.log('Create checkout session');
   try {
     const stripesession = await stripe.checkout.sessions.create({
       line_items: [
