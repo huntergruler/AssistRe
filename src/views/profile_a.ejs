@@ -321,13 +321,13 @@
                     <h3 class="text-center">Personal Info</h3>
                     <div class="profile-group d-flex">
                         <div id="BioContainer" class="text-center">
-                            <h3>Profile for <%= firstname %>
-                                    <%= lastname %>
+                            <!-- <h3>Profile for <%= firstname %>
+                                    <%= lastname %> -->
                                         </h31>
                                         <h3>About <%= firstname %>
                                         </h3>
                                         <div id="bioDiv">
-                                            <p id="bioText" class="text-align">
+                                            <p id="bioText" class="text-center">
                                                 <% if(hasBio) {%>
                                                 <%= bioInfo[0].bio %>
                                                 <% } else { %>
@@ -505,11 +505,11 @@
           </div>
         </div>
       </div>
-    <div class="modal fade" id="propertyModal" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal fade" id="officeModal" tabindex="-1" aria-labelledby="officeModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="propertyModalLabel">Property Info</h5>
+                    <h5 class="modal-title" id="officeModalLabel">Office Info</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -517,11 +517,11 @@
                 <div class="modal-body">
                     <div class="container mt-5">
                         <div class="form-container">
-                            <form id="propertyForm" style="padding-top: 5px;">
+                            <form id="officeForm" style="padding-top: 5px;">
                                 <div class="form-row ">
-                                    <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
-                                    <input type="text" class="form-control-sm col-md-6" placeholder="Property Type"
-                                        id="propertyType" name="propertyType" value="FIX" required>
+                                    <label for="officeName" class="col-md-4 col-form-label">Office Name</label>
+                                    <input type="text" class="form-control-sm col-md-6" placeholder="Office Name"
+                                        id="officeName" name="officeName" value="FIX" required>
                                 </div>
                                 <div class="form-row ">
                                     <label for="bedrooms_min" class="col-md-4 col-form-label">Minimum Bedrooms</label>
