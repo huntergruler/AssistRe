@@ -121,113 +121,11 @@
       </div>
     </div>
   </div>
-
   <div id="messageModal" class="modal" style="display: none;">
     <div class="modal-content">
       <span class="close">&times;</span>
       <p id="modalMessage">Some text in the Modal..</p>
       <button class="modal-close-btn" id="modalCloseButton">Close</button>
-    </div>
-  </div>
-  <div id="propertyModal" class="modal fade" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="propertyModalLabel">Property Info</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="container">
-            <div class="form-container">
-              <form id="propertyForm" style="padding-top: 5px;">
-                <div class="buyertype-container-edit">
-                  <u>Buyer Type</u>
-                  <div class="form-row ">
-                    <div id="buyerTypeCheckbox" class="col-md-12">
-                      <!-- JavaScript will populate this container -->
-                    </div>
-                  </div>
-                </div>
-                <div class="form-row ">
-                  <label for="propertyType" class="col-md-4 col-form-label">Property Type</label>
-                  <input type="text" class="form-control-sm col-md-6" placeholder="Property Type" id="propertyType" name="propertyType" value="<%= buyer.propertyType %>" required>
-                </div>
-                <div class="form-row ">
-                  <label for="bedrooms_min" class="col-md-4 col-form-label">Minimum Bedrooms</label>
-                  <input type="text" class="form-control-sm col-md-2" id="bedrooms_min" name="bedrooms_min" value="<%= buyer.bedrooms_min %>" required>
-                </div>
-                <div class="form-row">
-                  <label for="bathrooms_min" class="col-md-4 col-form-label">Minimum Bathrooms</label>
-                  <input type="text" class="form-control-sm col-md-2" id="bathrooms_min" name="bathrooms_min" value="<%= buyer.bathrooms_min %>" required>
-                </div>
-                <div class="form-row ">
-                  <label for="squareFootage_min" class="col-md-4 col-form-label">Square Foot Range</label>
-                  <input type="text" class="form-control-sm col-md-2" placeholder="Min" id="squareFootage_min" name="squareFootage_min" value="<%= buyer.squareFootage_min %>" required>
-                  <span class="col-md-1 text-center">To</span>
-                  <input type="text" class="form-control-sm col-md-2" placeholder="Max" id="squareFootage_max" name="squareFootage_max" value="<%= buyer.squareFootage_max %>" required>
-                </div>
-                <div class="form-row ">
-                  <label for="price_min" class="col-md-4 col-form-label">Price Range ($)</label>
-                  <input type="text" class="form-control-sm col-md-2" placeholder="Min" id="price_min" name="price_min" value="<%= buyer.price_min %>" required>
-                  <span class="col-md-1 text-center">To</span>
-                  <input type="text" class="form-control-sm col-md-2" placeholder="Max" id="price_max" name="price_max" value="<%= buyer.price_max %>" required>
-                </div>
-                <div class="form-row" style="align-items: center;">
-                  <label for="buyerLevelOfService" class="col-md-4 col-form-label">Agent Service
-                    Level</label>
-                  <select id="buyerLevelOfService" class="form-select-sm col-md-6" placeholder="Level Of Service"></select>
-                  <input type="hidden" id="levelofserviceid" name="levelofserviceid" value="<%= buyer.levelofserviceid %>">
-                </div>
-                <div class="form-row" style="align-items: center;">
-                  <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
-                  <input type="text" class="form-control-sm col-md-2" placeholder="Enter Time Frame" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
-                  <select id="timeframeUnit" class="col-md-2" style="margin-left: 3px;" placeholder="Time Unit">
-                    <option value="Days" <%= buyer.timeframeUnit === 'Days' ? 'selected' : '' %>>Days</option>
-                    <option value="Weeks" <%= buyer.timeframeUnit === 'Weeks' ? 'selected' : '' %>>Weeks</option>
-                    <option value="Months" <%= buyer.timeframeUnit === 'Months' ? 'selected' : '' %>>Months</option>
-                  </select>
-                </div>
-                <div class="form-row ">
-                  <label for="prequalifiedY" id="prequalified" class="col-md-4 col-form-label">Prequalified</label>
-                  <div class="col-md-3">
-                    <% if ( buyer.prequalified=='Yes' ) { %>
-                    <input type="radio" id="prequalifiedY" value="Yes" name="prequalified" required checked>
-                    Yes
-                    <input type="radio" id="prequalifiedN" value="No" name="prequalified" required>
-                    No
-                    <% } else { %>
-                    <input type="radio" id="prequalifiedY" value="Yes" name="prequalified" required>
-                    Yes
-                    <input type="radio" id="prequalifiedN" value="No" name="prequalified" required checked>
-                    No
-                    <% } %>
-                  </div>
-                  <div class="col-md-3"></div>
-                </div>
-                <div class="form-row ">
-                  <label for="prequalifiedAmount" class="col-md-4 col-form-label">Prequalified
-                    Amount</label>
-                  <input type="text" class="form-control-sm col-md-5" placeholder="Enter Prequalified Amount" id="prequalifiedAmount" name="prequalifiedAmount" value="<%= buyer.prequalifiedAmount%>">
-                </div>
-                <div class="form-row ">
-                  <label for="preferredLanguages" class="col-md-4 col-form-label">Preferred
-                    Language</label>
-                  <input type="text" class="form-control-sm col-md-6 " placeholder="Preferred Language" id="preferredLanguages" name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required>
-                </div>
-                <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
-              </form>
-            </div>
-            <div form-row justify-content-center>
-              <div class="modal-footer">
-                <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="savePropertyChanges(event)">Save</button>
-                <button type="button" id="modify-button" class="modify-button" data-dismiss="modal">Cancel</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <div id="zipCodeModal" class="modal fade" tabindex="-1" aria-labelledby="zipCodeModalLabel" aria-hidden="true" style="display: none;">
@@ -329,6 +227,7 @@
       </div>
     </div>
   </div>
+  <%- include('property_modal') %>
   <script src="/dashboard_b.js"></script>
   <script src="/session.js"></script>
   <script src="https://js.stripe.com/v3/"></script>
