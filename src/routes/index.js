@@ -60,7 +60,7 @@ router.get('/zipcodetest', (req, res) => {
 
 // Route to get the user's session data
 router.get('/session-data', (req, res) => {
-  res.json({user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname, userType: req.session.userType, buyerid: req.session.buyerid, agentid: req.session.agentid, paymentSuccessful: req.session.paymentSuccessful});
+  res.json({ user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname, userType: req.session.userType, buyerid: req.session.buyerid, agentid: req.session.agentid, paymentSuccessful: req.session.paymentSuccessful });
 });
 
 // Register route
@@ -372,16 +372,17 @@ router.post('/setPaymentStatus', (req, res) => {
     res.redirect('/');
   }
   else {
-      var buyerid = req.session.userid;
-      var agentid = req.body.agentid;
-      updateQuery = 'update AgentBuyerMatch set buyerStatus = ? where agentid = ? and buyerid = ?';
-    }
-    else {
-      var agentid = req.session.userid;
+    var userType = req.body.userType;
+    var paymentSuccessful = req.body.paymentSuccessful;
+    if (userType === 'Buyer') {
       var buyerid = req.body.buyerid;
-      updateQuery = 'update AgentBuyerMatch set agentStatus = ? where agentid = ? and buyerid = ?';
+      params = [paymentSuccessful, buyerid];
+    } else {
+      var agentid = req.body.agentid;
+      params = [paymentSuccessful, agentid];
     }
-    db.query(updateQuery, [status, agentid, buyerid], (error, result) => {
+    var updateQuery = 'update Buyers set paymentSuccessful = ? where userid = ?';
+    db.query(updateQuery, params, (error, result) => {
       if (error) {
         console.error('Error saving status:', error);
         return res.status(500).json({ error: 'Internal server error' });
@@ -630,11 +631,11 @@ router.post('/savePropertyChanges', (req, res) => {
   }
   else {
     const buyerrequestid = req.session.buyerrequestid;
-    const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType, 
-            preferredLanguages, prequalified, price_min, price_max, propertyType, 
-            squareFootage_min, squareFootage_max, timeFrame, levelofserviceid, 
-            prequalifiedAmount, userid 
-          } = req.body;
+    const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType,
+      preferredLanguages, prequalified, price_min, price_max, propertyType,
+      squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
+      prequalifiedAmount, userid
+    } = req.body;
     let queryParams;
     let query;
 
@@ -643,15 +644,15 @@ router.post('/savePropertyChanges', (req, res) => {
                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
 
       queryParams = [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType,
-                     preferredLanguages, prequalified, price_min, price_max, propertyType,
-                     squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
-                     prequalifiedAmount, userid];
+        preferredLanguages, prequalified, price_min, price_max, propertyType,
+        squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
+        prequalifiedAmount, userid];
     } else {
       query = 'UPDATE BuyerRequestDetails SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelofserviceid = ?, prequalifiedAmount = ? WHERE buyerrequestid = ?';
       queryParams = [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType,
-                     preferredLanguages, prequalified, price_min, price_max, propertyType,
-                     squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
-                     prequalifiedAmount, buyerrequestid];
+        preferredLanguages, prequalified, price_min, price_max, propertyType,
+        squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
+        prequalifiedAmount, buyerrequestid];
     }
     db.query(query, queryParams, (error, results) => {
       if (error) {

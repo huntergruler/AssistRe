@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
 setPaymentStatus = () => {
     const data = {
         buyerid: buyerid,
-        userType: 'buyer'
+        userType: 'buyer',
+        paymentSuccessful: 1
     };
     fetch('/setPaymentStatus', {
         method: 'POST',
