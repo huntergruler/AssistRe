@@ -1,6 +1,6 @@
 $(function () {
     $('#declineicon').tooltip({
-        delay: { "show": 100, "hide": 100 } // Adjust the delay times as needed
+        delay: { "show": 1, "hide": 100 } // Adjust the delay times as needed
     });
 });
 
