@@ -507,8 +507,8 @@ body {
 
 .decline-icon {
     position: absolute;
-    top: 14px;
-    right: 10px;
+    top: -6px;
+    right: 300px;
     color: red;
     font-size: 20px;
     cursor: pointer;
