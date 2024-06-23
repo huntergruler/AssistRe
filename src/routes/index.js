@@ -74,7 +74,6 @@ router.post('/create-checkout-session', async (req, res) => {
   try {
     const stripesession = await stripe.checkout.sessions.create({
       customer_email: req.session.user,
-      customer_name: req.session.firstname + ' ' + req.session.lastname,
       line_items: [
         {
           price: 'price_1PUdczDidT8L3PDw6wpnXHLf', // Replace with your actual Price ID
