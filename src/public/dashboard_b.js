@@ -1015,7 +1015,8 @@ function createCheckoutSession(event) {
         });
 };
     
-function addSelection() {
+function addSelection(event) {
+    event.preventDefault();
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
@@ -1037,7 +1038,8 @@ function addSelection() {
     });
 };
 
-function removeSelection() {
+function removeSelection(event) {
+    event.preventDefault();
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".userZipCodes.selected");

@@ -16,7 +16,7 @@
 <header>
   <div class="row row-cols-2">
     <div id="title" class="align-items-center">
-         <div class="logo-container"></div>
+      <div class="logo-container"></div>
     </div>
     <nav id="navlinks" class="justify-content-end text-center">
       <p id="navname">
@@ -85,8 +85,10 @@
         <!-- <div class="form-row" style="margin-top: 40px;">
           <h3 class="col-md-6">Your Offers</h3>
         </div> -->
-        <div class="offerFilter row col-md-12" id="filtercontainer" >
-          <label for="offerFilter" class="col-md-5 col-form-label"><span><h4>Your Offers</h4></span></label>
+        <div class="offerFilter row col-md-12" id="filtercontainer">
+          <label for="offerFilter" class="col-md-5 col-form-label"><span>
+              <h4>Your Offers</h4>
+            </span></label>
           <select id="offerFilter" class="form-select-sm col-md-5" onchange="getOffers(this.value, this)">
             <option id="allavailablefilter" value="AllAvailable">All Available Offers</option>
             <option id="newfilter" value="New">Unread Offers</option>
@@ -321,7 +323,6 @@
                     <div class="form-group col-md-4">
                       <label for="zipSelect">Zip Code:</label>
                       <input id="zipSelect" class="form-select-sm col-md-5" placeholder="Zip Code" type="text" maxlength="5" onblur="addZipCode();">
-                      </select>
                     </div>
                     <div class="form-group col-md-1">
                       <b>OR</b>
@@ -367,14 +368,14 @@
                   </div>
                   <div class="zipCode-group col-md-2 zipAction">
                     <div class="col-md">
-                      <div class="row ">
-                        <button id="addZip" class="toggle-button zipmove-button">
-                          &nbsp;Add&nbsp;<i class="fas fa-chevron-right" onclick="addSelection()"></i>&nbsp;
+                      <div class="row">
+                        <button id="addZip" class="toggle-button zipmove-button" onclick="addSelection(event)">
+                          &nbsp;Add&nbsp;<i class="fas fa-chevron-right"></i>&nbsp;
                         </button>
                       </div>
-                      <div class="row ">
-                        <button id="removeZip" class="toggle-button zipmove-button">
-                          &nbsp;<i class="fas fa-chevron-left" onclick="addSelection()"></i>&nbsp;Remove&nbsp;
+                      <div class="row">
+                        <button id="removeZip" class="toggle-button zipmove-button" onclick="removeSelection(event)">
+                          &nbsp;<i class="fas fa-chevron-left"></i>&nbsp;Remove&nbsp;
                         </button>
                       </div>
                     </div>
@@ -389,7 +390,7 @@
                 </div>
               </form>
             </div>
-            <div form-row justify-content-center>
+            <div class="form-row justify-content-center">
               <div class="modal-footer">
                 <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="saveZipChanges()">Save</button>
                 <button type="button" id="modify-button" class="modify-button" data-dismiss="modal">Cancel</button>
