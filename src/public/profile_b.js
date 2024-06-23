@@ -178,7 +178,6 @@ function addZipCode() {
 
 function saveZipChanges(event) {
     event.preventDefault();
-    alert('saveZipChanges');
     const selected = document.querySelectorAll(".zipCodeSelected");
     const selected2 = document.querySelectorAll(".userZipCodes");
 
@@ -606,7 +605,8 @@ document.getElementById('zipSelect').addEventListener('keydown', function (event
         addZipCode();
     }
 });
-function addSelection() {
+function addSelection(event) {
+    preventDefault();
     alert('addSelection');
 }
 // function addSelection() {
