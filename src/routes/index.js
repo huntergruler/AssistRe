@@ -736,7 +736,8 @@ router.post('/profile_a', (req, res) => {
         console.error('Error updating agent profile:', error);
         return res.status(500).send('Server error');
       }
-
+      req.session.firstname = firstName;
+      req.session.lastname = lastName;
       res.send({ success: true });
     });
   }
