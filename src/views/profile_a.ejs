@@ -540,7 +540,7 @@
                                 <div class="form-row">
                                     <label for="officeLicenseState" class="col-md-4 col-form-label">Office License State</label>
                                     <input type="text" class="form-control-sm col-md-1" id="officeLicenseState"
-                                        name="officeLicenseState" placeholder="Office License State" value="FI" maxlength="2" minlength="2"
+                                        name="officeLicenseState" value="FI" maxlength="2" minlength="2"
                                         oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
                                         title="Enter a valid US state abbreviation" required>
                                 </div>
@@ -555,33 +555,17 @@
                                 </div>
                                 <div class="form-row ">
                                     <label for="state" class="col-md-4 col-form-label">Office State</label>
-                                    <input type="text" id="state" class="form-control-sm col-md-1" placeholder="Office State"  maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"title="Enter a valid US state abbreviation">
+                                    <input type="text" id="state" class="form-control-sm col-md-1" maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"title="Enter a valid US state abbreviation">
                                 </div>
                                 <div class="form-row ">
                                     <label for="zip" class="col-md-4 col-form-label">Office Zip Code</label>
-                                    <input type="zip" class="form-control-sm col-md-2" placeholder="Office Zip Code" id="zip" name="zip" value="FIX" required>
+                                    <input type="zip" class="form-control-sm col-md-2" placeholder="Zip Code" id="zip" name="zip" value="FIX" required>
                                 </div>
                                 <div class="form-row ">
-                                    <label for="prequalified" id="prequalified"
-                                        class="col-md-4 col-form-label">Prequalified</label>
-                                    <div class="col-md-3">
-
-                                    </div>
-                                    <div class="col-md-3"></div>
-                                </div>
-                                <div class="form-row ">
-                                    <label for="prequalifiedAmount" class="col-md-4 col-form-label">Prequalified
-                                        Amount</label>
-                                    <input type="text" class="form-control-sm col-md-5"
-                                        placeholder="Enter Prequalified Amount" id="prequalifiedAmount"
-                                        name="prequalifiedAmount" value="FIX">
-                                </div>
-                                <div class="form-row ">
-                                    <label for="preferredLanguages" class="col-md-4 col-form-label">Preferred
-                                        Language</label>
-                                    <input type="text" class="form-control-sm col-md-6 "
-                                        placeholder="Preferred Language" id="preferredLanguages"
-                                        name="preferredLanguages" value="FIX" required>
+                                    <label for="phoneNumber" class="col-md-4 col-form-label">Office Phone Number</label>
+                                    <input type="text" class="form-control-sm col-md-6"
+                                        placeholder="Office Phone Number" id="phoneNumber"
+                                        name="phoneNumber" value="FIX">
                                 </div>
                                 <input type="hidden" id="userid" name="userid" value="FIX">
                             </form>
@@ -589,7 +573,7 @@
                         <div form-row justify-content-center>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
-                                    onclick="savePropertyChanges()">Save</button>
+                                    onclick="saveOfficeChanges()">Save</button>
                                 <button type="button" class="btn btn-primary btn-sm"
                                     data-dismiss="modal">Cancel</button>
                             </div>
