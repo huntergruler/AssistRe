@@ -246,7 +246,7 @@ router.get('/getOffers', (req, res) => {
                            end compensationAmount, 
                            ao.retainerFee, ao.retainerCredited, ao.lengthOfService, 
                            ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, 
-                           DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, bam.buyerStatus, 
+                           DATE_FORMAT(ao.entryTimestamp, '%m/%d/%Y') offerTimestamp, bam.buyerStatus, 
                            concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentid) dispIdentifier
                      from AgentOffers ao
                           join Agents a on a.userid = ao.agentid

@@ -354,7 +354,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Expiration Compensation: ${request.expirationCompTimeFrame}<br>
                 Expiration Compensation Amount: ${request.expirationCompAmount}<br>
                 Offer Description: ${request.offerDesc}<br>
-                Offer Timestamp: ${request.offerTimestamp}<br>
+                Offer Date: ${request.offerTimestamp}<br>
                 </div>`;
 
                 div.className = "form-row container-right";
