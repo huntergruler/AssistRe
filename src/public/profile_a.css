@@ -74,22 +74,25 @@ body {
 }
 
 .profile-group,
-.property-group {
+.office-group,
+.license-group,
+.transaction-group {
     margin: 0px 0px;
     padding-left: 0px;
     padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
-    /* width: 300px; */
     max-height: fit-content;
     align-content: center;
     align-items: center;
     text-align: center;
     border-top: 1px solid black;
 }
-.property-group {
-    height: 390px;
+.office-group,
+.license-group,
+.transaction-group {
     max-height: 390px;
+    overflow: auto;
 }
 
 #licenseForm,
