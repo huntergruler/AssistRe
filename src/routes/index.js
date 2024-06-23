@@ -205,15 +205,8 @@ router.get('/getOffers', (req, res) => {
 
     if (!agentid) {
       var query = `select ofb.buyeragentmatchid, ofb.agentid, ofb.agentofferid, ofb.buyerStatus, 
-                          ofb.buyerid, ofb.buyerrequestid, ofb.compensationAmount, ofb.dispIdentifier, 
-                          ofb.expirationCompTimeFrame, ofb.expirationCompensation, ofb.lengthOfService, 
-                          ofb.levelOfService, ofb.offerDesc, ofb.offerText, ofb.offerTimestamp, 
-                          ofb.offerType, ofb.retainerCredited, ofb.retainerFee,
-                          case when 'New' = 'AllAvailable'
-                               then filterstatus
-                               else buyerstatus
-                          end buyerStatus,  concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentid) dispIdentifier
-                     from OffersForBuyers ofb
+                          ofb.buyerid, ofb.buyerrequestid, ofb.offerText
+                                              from OffersForBuyers ofb
                     where buyerid =  ?
                       and case when ? = 'AllAvailable'
                                then filterstatus
