@@ -525,9 +525,7 @@
                                         <!-- 
                     
                     
-                    <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2"
-                        oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
-                        title="Enter a valid US state abbreviation">
+                    
                     <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
                     <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
                     <button type="button" id="officeAdd">Add</button>
@@ -557,12 +555,11 @@
                                 </div>
                                 <div class="form-row ">
                                     <label for="state" class="col-md-4 col-form-label">Office State</label>
-                                    <input type="text" id="state" class="form-control-sm col-md-6" placeholder="Office State"></select>
+                                    <input type="text" id="state" class="form-control-sm col-md-2" placeholder="Office State"  maxlength="2" minlength="2" oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"title="Enter a valid US state abbreviation">
                                 </div>
                                 <div class="form-row ">
-                                    <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
-                                    <input type="text" class="form-control-sm col-md-5" placeholder="Enter Time Frame"
-                                        id="timeFrame" name="timeFrame" value="FIX" required>
+                                    <label for="zip" class="col-md-4 col-form-label">Office Zip Code</label>
+                                    <input type="zip" class="form-control-sm col-md-4" placeholder="Office Zip Code" id="zip" name="zip" value="FIX" required>
                                 </div>
                                 <div class="form-row ">
                                     <label for="prequalified" id="prequalified"
