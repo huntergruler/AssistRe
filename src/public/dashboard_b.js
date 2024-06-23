@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', function () {
             // document.querySelector('#offerDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
 
             // Disable all input fields and select elements
-            const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
-            const selectFields = document.querySelectorAll('#offerFormContainer select');
-            inputFields.forEach(input => input.setAttribute('readonly', 'true'));
-            selectFields.forEach(select => select.setAttribute('disabled', 'true'));
+            // const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
+            // const selectFields = document.querySelectorAll('#offerFormContainer select');
+            // inputFields.forEach(input => input.setAttribute('readonly', 'true'));
+            // selectFields.forEach(select => select.setAttribute('disabled', 'true'));
         })
         .catch(error => console.error('Error fetching session data:', error));
 
