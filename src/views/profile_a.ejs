@@ -328,7 +328,13 @@
                                         <h3>About <%= firstname %>
                                         </h3>
                                         <div id="bioDiv">
-                                            <p id="bioText">No Biography</p><br>
+                                            <p id="bioText">
+                                                <% if(hasBio) {%>
+                                                <%= bioInfo[0].bio %>
+                                                <% } else { %>
+                                                No Biography
+                                                <% } %>
+                                                </p><br>
                                             <h3>Languages:</h3><br>
                                             <p id="languagesText">No Languages</p>
                                         </div>
