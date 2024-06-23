@@ -109,9 +109,9 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(sessionData => {
             userid = sessionData.userid;
             paymentSuccessful = sessionData.paymentSuccessful;
+            console.log('paymentSuccessful:', paymentSuccessful, 'addeventlistener', userid);
         })
         .catch(error => console.error('Error fetching session data:', error));
-    console.log('paymentSuccessful:', paymentSuccessful, 'addeventlistener', userid);
 
     const toggle1 = document.getElementById('toggle1');
     const toggle2 = document.getElementById('toggle2');
