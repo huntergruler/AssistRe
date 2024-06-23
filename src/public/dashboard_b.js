@@ -593,13 +593,6 @@ function populateAgentInfo(agentid) {
                 const div = document.createElement("div");
                 div.innerHTML = `<div class="row col-md-4 justify-text-right">
                 Name: </div><div  class="row col-md-5"> <b>${item.fullName}</b><br></div>
-                Phone: <b>${item.phoneNumber}</b><br>
-                Email: <b>${item.email}</b><br>
-                Address: <b>${item.address}</b><br>
-                         <b>${item.cityStateZip}</b><br>
-                License: <b>${item.licenseNumber} - ${item.licenseState}</b><br>
-                Languages Spoken: <b>${item.languages}</b><br>
-                Agent Bio: <b>${item.bio}</b><br>
                 </div>`;
                 div.className = "form-row container-right";
                 agentInfo.appendChild(div);
@@ -607,6 +600,13 @@ function populateAgentInfo(agentid) {
         })
         .catch(error => console.error('Error checking user:', error));
 }
+// Phone: <b>${item.phoneNumber}</b><br>
+// Email: <b>${item.email}</b><br>
+// Address: <b>${item.address}</b><br>
+//          <b>${item.cityStateZip}</b><br>
+// License: <b>${item.licenseNumber} - ${item.licenseState}</b><br>
+// Languages Spoken: <b>${item.languages}</b><br>
+// Agent Bio: <b>${item.bio}</b><br>
 
 function getBuyerTypes() {
     buyerTypeCheckbox = document.getElementById('buyerTypeCheckbox');
