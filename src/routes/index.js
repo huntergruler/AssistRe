@@ -1603,6 +1603,7 @@ function getAgentInfo(){
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
+    console.log('Results:', results);
     if (results.length > 0) {
       res.json({ results });
     } else {
