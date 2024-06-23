@@ -1593,7 +1593,7 @@ router.get('/getBuyerTypes', (req, res) => {
 });
 
 router.get('/getagentinfo', (req, res) => {
-  const agentid = req.session.agentid;
+  const agentid = req.body.agentid;
   console.log('Agent ID:', agentid);
   const query = `select concat(a.firstname,' ',a.lastname) agentname, concat(a.address,' ',a.city,', ',a.state,' ',a.zip) address, a.bio, a.email, 
                         a.languages, a.phonenumber, a.state, a.zip, al.licenseNumber, al.licenseState, al.licenseExpirationDate
