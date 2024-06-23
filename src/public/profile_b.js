@@ -615,6 +615,7 @@ function addSelection() {
         selectedZipCodesContainer.innerHTML = '';
     }
     console.log(selected, selectedZipCodesContainer, availabeZipCodesContainer);
+    alert('selected');
     selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
