@@ -251,6 +251,56 @@ function populateCities() {
         .catch(error => console.error('Error checking user:', error));
 };
 
+function populateCitiesCounties() {
+    const stateSelect = document.getElementById('stateSelect').value;
+    const countymessage = document.getElementById('countymessage');
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    // const countycityContainer = document.getElementById("countyCityContainer");
+    if (stateSelect === '') {
+        citySelect.disabled = true;
+        countySelect.disabled = true;
+        availabeZipCodesContainer.innerHTML = '';
+        countymessage.style.display = 'none';
+        return;
+    } else {
+        const citySelect = document.getElementById('citySelect');
+        citySelect.disabled = false;
+        countySelect.disabled = false;
+        countymessage.style.display = 'block';
+
+        fetch(`/get-cities?stateSelect=${encodeURIComponent(stateSelect)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Clear existing options in citySelect
+                citySelect.innerHTML = '';
+                const defaultOption = document.createElement('option');
+                defaultOption.textContent = 'Select a City';
+                defaultOption.value = '';
+                citySelect.appendChild(defaultOption);
+                data.results.forEach(item => {
+                    let option = new Option(item.city, item.city);
+                    citySelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error checking user:', error));
+        fetch(`/get-counties?stateSelect=${encodeURIComponent(stateSelect)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Clear existing options in countySelect
+                countySelect.innerHTML = '';
+                const defaultOption = document.createElement('option');
+                defaultOption.textContent = 'Select a County';
+                defaultOption.value = '';
+                countySelect.appendChild(defaultOption);
+                data.results.forEach(item => {
+                    let option = new Option(item.county, item.county);
+                    countySelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error checking user:', error));
+    }
+};
+
 function populateDisplayZipCodes() {
     const displayZipCodes = document.getElementById("displayZipCodes");
     let htmlCodes = '';
