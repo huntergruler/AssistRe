@@ -80,7 +80,7 @@ router.post('/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: `${YOUR_DOMAIN}/success`,
+      success_url: `${YOUR_DOMAIN}/success_b`,
       cancel_url: `${YOUR_DOMAIN}/cancel.html`,
     });
 
@@ -99,7 +99,7 @@ router.post('/create-checkout-session', async (req, res) => {
 // Success route
 router.get('/success_b', (req, res) => {
   req.session.paymentSuccessful = 1;
-  res.render('/success_b');
+  res.render('success_b');
 });
 
 // Handle registration with city and state lookup
