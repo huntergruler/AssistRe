@@ -344,7 +344,8 @@ function offerDetail(agentid, buyeragentmatchid) {
                 const div = document.createElement("div");
                 div.innerHTML += `<div class="flex-fill offersummary">
                 Agent: ${request.dispIdentifier} - ${request.agentname}<br>
-                Agent License: ${request.licenseNumber} - ${request.licenseState}<br>
+                Agent Contact: ${request.email} - ${request.phonenumber}<br>
+                License Info: ${request.licenseNumber} - ${request.licenseState}<br>
                 ${request.levelOfService} - ${request.compensationType}<br>
                 Compensation ${request.compensationAmount}<br>
                 Agreement Length: ${request.lengthOfService}<br></div>`;
