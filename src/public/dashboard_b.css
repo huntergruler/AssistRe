@@ -505,6 +505,20 @@ body {
     color: red;
 }
 
+.decline-icon {
+    position: absolute;
+    top: 12px;
+    right: 0px;
+    color: red;
+    font-size: 24px;
+    cursor: pointer;
+    height: 24px;
+}
+
+.decline {
+    color: red;
+}
+
 #offer {
     margin: 0;
     padding: 0;

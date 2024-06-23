@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(sessionData => {
             userid = sessionData.userid;
             paymentSuccessful = sessionData.paymentSuccessful;
-            console.log('paymentSuccessful:', paymentSuccessful, 'addeventlistener', userid);
         })
         .catch(error => console.error('Error fetching session data:', error));
 
@@ -212,6 +211,8 @@ function getOffers(datatype, element) {
                     <div class="newDot col-md">&#x2022;</div>
                     <a href="#" class="favorite-icon" data-item-id="1">
                     <i class="far fa-heart"></i></a>
+                    <a href="#" class="decline-icon" data-item-id="1">
+                    <i class="far fa-ban"></i></a>
                     ${request.offerText}<br></div>`;
                     div.className = "form-row offers col-md-12";
                     div.id = "agentid" + request.agentid;
