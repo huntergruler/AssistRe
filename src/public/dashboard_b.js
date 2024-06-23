@@ -595,19 +595,20 @@ function populateAgentInfo(agentid) {
                 <div class="row col-md-3 agentcontactlabel">Name: </div>
                 <div class="row col-md-7 agentcontactdata"> <b>${item.fullName}</b></div>
                 <div class="row col-md-3 agentcontactlabel">Phone: </div>
-                <div class="row col-md-7 agentcontactdata"> <b>${item.phoneNumber}</b><br></div>
+                <div class="row col-md-7 agentcontactdata"> <b>${item.phoneNumber}</b></div>
                 <div class="row col-md-3 agentcontactlabel">Email: </div>
-                <div  class="row col-md-7 agentcontactdata"> <b>${item.email}</b><br></div>
+                <div  class="row col-md-7 agentcontactdata"> <b>${item.email}</b></div>
                 <div class="row col-md-3 agentcontactlabel">Address: </div>
-                <div  class="row col-md-7 agentcontactdata"> <b>${item.address}</b><br></div>
+                <div  class="row col-md-7 agentcontactdata"> <b>${item.address}</b></div>
                 <div class="row col-md-3 agentcontactlabel"></div>
-                <div class="row col-md-7 agentcontactdata"> <b>${item.cityStateZip}</b><br></div>
+                <div class="row col-md-7 agentcontactdata"> <b>${item.cityStateZip}</b></div>
                 <div class="row col-md-3 agentcontactlabel">License: </div>
                 <div class="row col-md-7 agentcontactdata"> <b>${item.licenseNumber} - ${item.licenseState}</b><br></div>
                 <div class="row col-md-3 agentcontactlabel">Languages: </div>
-                <div  class="row col-md-7 agentcontactdata"> <b>${item.languages}</b><br></div>
+                <div  class="row col-md-7 agentcontactdata"> <b>${item.languages}</b></div>
+                <div class="row col-md-10 agentcontactlabel"></div>
                 <div class="row col-md-10" style="justify-content-center">Agent Biography: </div>
-                <div  class="row col-md-10 agentcontactdata"> <b>${item.bio}</b><br></div>
+                <div  class="row col-md-10 agentcontactdata"> ${item.bio}<br></div>
                 </div>`;
                 div.className = "form-row container-right";
                 agentInfo.appendChild(div);
