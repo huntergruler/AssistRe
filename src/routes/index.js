@@ -1592,7 +1592,7 @@ router.get('/getBuyerTypes', (req, res) => {
   });
 });
 
-function getAgentInfo(){
+router.get('/getagentinfo', (req, res) => {
   const agentid = req.session.agentid;
   const query = `select concat(a.firstname,' ',a.lastname) agentname, concat(a.address,' ',a.city,', ',a.state,' ',a.zip) address, a.bio, a.email, 
                         a.languages, a.phonenumber, a.state, a.zip, al.licenseNumber, al.licenseState, al.licenseExpirationDate
@@ -1610,6 +1610,6 @@ function getAgentInfo(){
       res.status(404).json({ error: 'No agent found' });
     }
   });
-}
+});
 
 module.exports = router;
