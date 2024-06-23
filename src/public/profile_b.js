@@ -606,7 +606,7 @@ document.getElementById('zipSelect').addEventListener('keydown', function (event
     }
 });
 function addSelection(event) {
-    preventDefault();
+    event.preventDefault();
     alert('addSelection');
 }
 // function addSelection() {
