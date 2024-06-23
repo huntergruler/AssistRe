@@ -604,17 +604,19 @@ document.getElementById('zipSelect').addEventListener('keydown', function (event
         addZipCode();
     }
 });
-
 function addSelection() {
-    console.log('addSelection');
-    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
-    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
-    const selected = document.querySelectorAll(".zipCodeOption.selected");
-    zipChanges = 1;
-    if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
-        selectedZipCodesContainer.innerHTML = '';
-    }
-    console.log(selected, selectedZipCodesContainer, availabeZipCodesContainer);
+    alert('addSelection');
+}
+// function addSelection() {
+//     console.log('addSelection');
+//     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+//     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+//     const selected = document.querySelectorAll(".zipCodeOption.selected");
+//     zipChanges = 1;
+//     if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
+//         selectedZipCodesContainer.innerHTML = '';
+//     }
+//     console.log(selected, selectedZipCodesContainer, availabeZipCodesContainer);
     // selected.forEach(node => {
     //     node.classList.remove("selected");
     //     const div = document.createElement("div");
@@ -627,7 +629,7 @@ function addSelection() {
     //     node.remove();
     //     //document.getElementById('saveChanges').disabled = false;
     // });
-};
+// };
 
 function removeSelection() {
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
