@@ -84,10 +84,6 @@ router.post('/create-checkout-session', async (req, res) => {
       success_url: `${YOUR_DOMAIN}/success_b`,
       cancel_url: `${YOUR_DOMAIN}/cancel_b`,
     });
-    // Log stripesession details
-    console.log('Checkout stripesession ID:', stripesession.id);
-    console.log('Payment Status:', stripesession.payment_status);
-
     // Redirect to the stripesession URL
     res.redirect(303, stripesession.url);
   } catch (error) {
@@ -857,7 +853,6 @@ router.post('/login', [
         });
       } else {
         const { userid, firstname, lastname, emailverified, paymentSuccessful } = results[0];
-        console.log('paymentSuccessful:', paymentSuccessful);
         bcrypt.compare(password, results[0].password, (err, isMatch) => {
           if (!isMatch || err) {
             res.json({

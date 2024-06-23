@@ -167,13 +167,8 @@ function getOffers(datatype, element) {
     const offerDetail = document.getElementById('offerDetail');
     const detailButtons = document.getElementById('detailButtons');
     const offerForm = document.getElementById('offerForm');
-
-    console.log('PaymentSuccessful', paymentSuccessful);
-
     const detailCont = document.getElementById('offerDetailContainer');
     detailCont.style.border = '0';
-    // const detailsCont = document.getElementById('offerDetails');
-    // detailsCont.style.border = '0';
     detailButtons.innerHTML = '';
     offerDetail.innerHTML = '';
     offers.innerHTML = '';
@@ -385,7 +380,6 @@ function offerDetail(agentid, buyeragentmatchid) {
 
     offerDetail.innerHTML = "";
     detailButtons.innerHTML = "";
-    console.log('agentid:', agentid, 'buyeragentmatchid:', buyeragentmatchid, 'datatype:', datatype);
     fetch(`/getOffers?agentid=${encodeURIComponent(agentid)}&buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)}&datatype=${encodeURIComponent(datatype)}`)
         .then(response => response.json())
         .then(data => {
