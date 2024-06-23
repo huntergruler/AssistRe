@@ -1,100 +1,100 @@
-$(document).ready(function () {
-    $('#editButton').click(function () {
-        $('#profileForm input').prop('disabled', false).removeClass('view-mode');
-        $('#editButton').hide();
-        $('#saveButton').show();
-        $('#cancelButton').show();
-        $('#state').prop('disabled', true).addClass('view-mode');
-        $('#city').prop('disabled', true).addClass('view-mode');
-    });
+// $(document).ready(function () {
+//     $('#editButton').click(function () {
+//         $('#profileForm input').prop('disabled', false).removeClass('view-mode');
+//         $('#editButton').hide();
+//         $('#saveButton').show();
+//         $('#cancelButton').show();
+//         $('#state').prop('disabled', true).addClass('view-mode');
+//         $('#city').prop('disabled', true).addClass('view-mode');
+//     });
 
-    $('#cancelButton').click(function () {
-        location.reload();
-    });
+//     $('#cancelButton').click(function () {
+//         location.reload();
+//     });
 
-    $('#saveButton').click(function () {
-        const formData = {
-            firstName: $('#firstName').val(),
-            lastName: $('#lastName').val(),
-            address: $('#address').val(),
-            city: $('#city').val(),
-            state: $('#state').val(),
-            zip: $('#zip').val(),
-            phoneNumber: $('#phoneNumber').val(),
-            userid: $('#userid').val()
-        };
+//     $('#saveButton').click(function () {
+//         const formData = {
+//             firstName: $('#firstName').val(),
+//             lastName: $('#lastName').val(),
+//             address: $('#address').val(),
+//             city: $('#city').val(),
+//             state: $('#state').val(),
+//             zip: $('#zip').val(),
+//             phoneNumber: $('#phoneNumber').val(),
+//             userid: $('#userid').val()
+//         };
 
-        $.ajax({
-            type: 'POST',
-            url: '/profile_b',
-            data: formData,
-            success: function (response) {
-                if (response.success) {
-                    alert('Profile updated successfully!');
-                    location.reload();
-                } else {
-                    alert('Error updating profile.');
-                }
-            },
-            error: function () {
-                alert('Error updating profile.');
-            }
-        });
-    });
-});
+//         $.ajax({
+//             type: 'POST',
+//             url: '/profile_b',
+//             data: formData,
+//             success: function (response) {
+//                 if (response.success) {
+//                     alert('Profile updated successfully!');
+//                     location.reload();
+//                 } else {
+//                     alert('Error updating profile.');
+//                 }
+//             },
+//             error: function () {
+//                 alert('Error updating profile.');
+//             }
+//         });
+//     });
+// });
 
-$(document).ready(function () {
-    $('#editButton2').click(function () {
-        $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
-        $('#editButton2').hide();
-        $('#saveButton2').show();
-        $('#cancelButton2').show();
-    });
+// $(document).ready(function () {
+//     $('#editButton2').click(function () {
+//         $('#propertyForm input').prop('disabled', false).removeClass('view-mode');
+//         $('#editButton2').hide();
+//         $('#saveButton2').show();
+//         $('#cancelButton2').show();
+//     });
 
-    $('#cancelButton2').click(function () {
-        location.reload();
-    });
+//     $('#cancelButton2').click(function () {
+//         location.reload();
+//     });
 
-    $('#saveButton2').click(function () {
-        const formData = {
-            propertyType: $('#propertyType').val(),
-            bedrooms_min: $('#bedrooms_min').val(),
-            bedrooms_max: $('#bedrooms_max').val(),
-            bathrooms_min: $('#bathrooms_min').val(),
-            bathrooms_max: $('#bathrooms_max').val(),
-            squareFootage_min: $('#squareFootage_min').val(),
-            squareFootage_max: $('#squareFootage_max').val(),
-            price_min: $('#price_min').val(),
-            price_max: $('#price_max').val(),
-            timeFrame: $('#timeFrame').val(),
-            prequalifiedY: $('#prequalifiedY').is(':checked'),
-            prequalifiedN: $('#prequalifiedN').is(':checked'),
-            preferredLanguages: $('#preferredLanguages').val(),
-            userid: $('#userid').val()
-        };
-        if (formData.prequalifiedY) {
-            formData.prequalified = 'Yes';
-        } else {
-            formData.prequalified = 'No';
-        }
-        $.ajax({
-            type: 'POST',
-            url: '/profile_b_property',
-            data: formData,
-            success: function (response) {
-                if (response.success) {
-                    alert('Profile updated successfully!');
-                    location.reload();
-                } else {
-                    alert('Error updating profile.');
-                }
-            },
-            error: function () {
-                alert('Error updating profile.');
-            }
-        });
-    });
-});
+//     $('#saveButton2').click(function () {
+//         const formData = {
+//             propertyType: $('#propertyType').val(),
+//             bedrooms_min: $('#bedrooms_min').val(),
+//             bedrooms_max: $('#bedrooms_max').val(),
+//             bathrooms_min: $('#bathrooms_min').val(),
+//             bathrooms_max: $('#bathrooms_max').val(),
+//             squareFootage_min: $('#squareFootage_min').val(),
+//             squareFootage_max: $('#squareFootage_max').val(),
+//             price_min: $('#price_min').val(),
+//             price_max: $('#price_max').val(),
+//             timeFrame: $('#timeFrame').val(),
+//             prequalifiedY: $('#prequalifiedY').is(':checked'),
+//             prequalifiedN: $('#prequalifiedN').is(':checked'),
+//             preferredLanguages: $('#preferredLanguages').val(),
+//             userid: $('#userid').val()
+//         };
+//         if (formData.prequalifiedY) {
+//             formData.prequalified = 'Yes';
+//         } else {
+//             formData.prequalified = 'No';
+//         }
+//         $.ajax({
+//             type: 'POST',
+//             url: '/profile_b_property',
+//             data: formData,
+//             success: function (response) {
+//                 if (response.success) {
+//                     alert('Profile updated successfully!');
+//                     location.reload();
+//                 } else {
+//                     alert('Error updating profile.');
+//                 }
+//             },
+//             error: function () {
+//                 alert('Error updating profile.');
+//             }
+//         });
+//     });
+// });
 
 function lookupCityState() {
     let zipCode = document.getElementById('zip').value;
