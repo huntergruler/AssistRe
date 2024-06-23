@@ -6,16 +6,6 @@ body {
     max-width: auto;
 }
 
-/* .modal {
-    font-size: 14px;
-    background-color: white;
-    max-width: fit-content;
-    max-height: fit-content;
-    margin: 50px 50px;
-    padding: 5px 5px;
-    border: 1px solid black;
-    border-radius: 8px;
-} */
 .modal-content {
     font-size: 14px;
     /* background-color: #666; */
@@ -24,101 +14,11 @@ body {
     height: auto;
 }
 
-/* .modal-dialog {
-    width: 575px;
-} */
-
-/* .modal-body {
-background-color: burlywood;
-padding-left: 0px;
-padding-right: 0px;
-}
-.modal {
-    background-color: green;
-    width: 575px;
-}
-.modal-content {
-    font-size: 14px;
-    background-color: #666;
-    padding: 0%;
-    width: 575px;
-    height: auto;
-} */
-/* .zipCode-container {
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 200px;
-    margin: 0px 0px;
-    border-radius: 8px;
-    border: 1px solid black;
-    width: auto;
-    align-items: center;
-    text-align: center;
-} */
-
 #dashboardContainer,
 #loginContainer {
     margin: 50px 0;
     border-radius: 8px;
 }
-
-/* .zipCode-container h1 {
-    margin-bottom: 20px;
-} */
-
-/* .zipCodeSelected {
-    padding: 1px;
-    border: 1px solid #ddd;
-    margin-bottom: 1px;
-    cursor: pointer;
-}
-
-.zipCodeSelected.selected {
-    background-color: #007BFF;
-    color: white;
-}
-
-.zipCodeOption,
-.userZipCodes,
-.displayZipCodes {
-    padding: 0px;
-    border: 1px solid #ddd;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    cursor: pointer;
-    text-align: center;
-}
-
-.zipCodeOption.selected,
-.userZipCodes.selected {
-    background-color: #007BFF;
-    color: white;
-}
-
-#selectedZipCodesContainer,
-#availabeZipCodesContainer {
-    overflow: auto;
-    width: 100px;
-    max-height: 160px;
-    min-height: 160px;
-    text-align: center;
-    align-items: center;
-    margin: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-#displayZipCodes {
-    overflow: auto;
-    width: 300px;
-    max-height: 160px;
-    min-height: 160px;
-    text-align: center;
-    align-items: center;
-    margin: 0px;
-    border-top: 1px solid black;
-} */
 
 .col-md-4,
 .col-md-3,
@@ -187,57 +87,6 @@ padding-right: 0px;
     max-height: 390px;
 }
 
-/* .county-group,
-.zipstate-group,
-.zipselect-group {
-    margin-top: 2px;
-    margin-left: 2px;
-    margin-right: 1px;
-    padding-left: 2px;
-    width: auto;
-    max-height: fit-content;
-    border: 1px solid black;
-    border-radius: 8px;
-    Less space between elements
-    align-content: center;
-    align-items: center;
-    text-align: right;
-}
-
-.city-group {
-    margin-top: 0px;
-    margin-left: 2px;
-    margin-right: 1px;
-    padding-left: 2px;
-    width: 400px;
-    max-height: fit-content;
-    Less space between elements */
-    /* border-bottom: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    align-content: center;
-    align-items: center;
-    text-align: right;
-}
-
-
-#ownedZipCodes {
-    max-height: 225px;
-    overflow: auto;
-}
-
-#zipCodeButton {
-    height: 32px;
-    background-color: rgba(19, 50, 109);
-    color: white;
-    border: 1px solid black;
-    border-radius: 5px;
-    margin-left: 20px;
-    cursor: pointer;
-    width: 50px;
-    margin-top: 5px;
-} */
-
 #licenseForm,
 #zipCodeForm,
 #transactionForm,
@@ -288,24 +137,6 @@ padding-right: 0px;
     height: fit-content;
 }
 
-/* .userZip-container {
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    width: 300px;
-    border-radius: 8px;
-    border: 1px solid black;
-    align-items: center;
-    text-align: center;
-} */
-
-
 .form-container {
     max-width: 500px;
     margin-left: 20px;
@@ -322,59 +153,6 @@ padding-right: 0px;
     border: 1px solid black;
 }
 
-/* .zips {
-    margin-left: 80px;
-    margin-right: 0px;
-    margin-top: 5px;
-    margin-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    font-size: 5;
-    width: 400px;
-    border-radius: 5px;
-    border: 1px solid black;
-}
-
-.zipCode-group {
-    margin-bottom: 5px;
-    margin-top: 5px;
-    margin-left: 13px;
-    margin-right: 1px;
-    padding-left: 0px;
-    padding-right: 0px;
-    width: auto;
-    text-align: center;
-    justify-items: center;
-} */
-
-/*
-.col-form-label2 {
-    margin-bottom: 2px;
-    margin-top: 2px;
-    padding: 0;
-    text-align: right;
-    border: 1px solid black;
-}
-.form-group .col-form-label {
-    margin-bottom: 2px;
-    margin-top: 2px;
-    padding: 0;
-    text-align: right;
-}
-.form-control2
-{
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-}
-.form-group .form-control {
-    padding: .2rem .25rem;
-    height: calc(1.5em + .5rem + 2px);
-    font-size: 14px;
-}
-*/
 .row {
     display: flex;
     flex-wrap: wrap;
