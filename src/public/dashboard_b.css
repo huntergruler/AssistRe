@@ -493,7 +493,7 @@ body {
 
 .favorite-icon {
     position: absolute;
-    top: -8px;
+    top: -6px;
     right: 0px;
     color: red;
     font-size: 20px;
@@ -507,7 +507,7 @@ body {
 
 .decline-icon {
     position: absolute;
-    top: 12px;
+    top: 14px;
     right: 0px;
     color: red;
     font-size: 20px;
