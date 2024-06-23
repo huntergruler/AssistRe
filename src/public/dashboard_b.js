@@ -1,10 +1,3 @@
-$(document).ready(function() {
-    console.log("jQuery is loaded and ready.");
-    $('#declineicon').tooltip({
-        delay: { "show": 1, "hide": 10 } // Adjust the delay times as needed
-    });
-});
-
 // const { dot } = require("node:test/reporters");
 // $(document).ready(function () {
 //     $('.favorite-icon').on('click', function(e) {
@@ -265,6 +258,32 @@ function getOffers(datatype, element) {
                         heartIcon.classList.remove('far');
                     }
 
+                                        // Add event listener to the decline icon
+                                        const declineIcon = div.querySelector('.decline-icon');
+                                        const banIcon = declineIcon.querySelector('i');
+                                        declineIcon.addEventListener('click', function (e) {
+                                            e.preventDefault();
+                                            e.stopPropagation(); // Prevent the click event from bubbling up to the card
+                                            const isDecline = banIcon.classList.toggle('fas');
+                                            banIcon.classList.toggle('far', !isDecline);
+                                            banIcon.classList.toggle('decline', isDecline);
+                                            if (isDecline) {
+                                                setStatus(request.agentid, 'Decline');
+                                                getOfferCounts();
+                                            } else {
+                                                setStatus(request.agentid, 'Read');
+                                                getOfferCounts();
+                                            }
+                                            div.classList.add("read");
+                                            div.getElementsByClassName("newDot")[0].style.display = "none";
+                                        });
+                    
+                                        // Set initial favorite state
+                                        if (request.buyerStatus == "Decline") {
+                                            banIcon.classList.add('fas', 'decline');
+                                            banIcon.classList.remove('far');
+                                        }
+                    
                     // Add event listener to the card
                     const card = div.querySelector('.offersummary');
                     card.addEventListener('click', function () {
