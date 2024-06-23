@@ -711,6 +711,7 @@ router.get('/profile_a', (req, res) => {
           const query = 'SELECT bio, languages FROM Agents WHERE userid = ?';
           db.query(query, [userid], (err, bioresults) => {
             if (err) throw err;
+            console.log('Bio:', bioresults);
             res.render('profile_a', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, agentid: req.session.agentid, lastname: req.session.lastname, bioInfo: bioresults });
           });
           
