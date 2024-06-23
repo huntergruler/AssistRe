@@ -840,7 +840,7 @@ router.post('/login', [
             req.session.agentid = 0;
             req.session.buyerid = 0;
             req.session.paymentSuccessful = paymentSuccessful;
-            console.log('User logged in:', email, userType);
+            console.log('User logged in:', email, userType, req.session.paymentSuccessful);
             if (userType === 'Agent') {
               req.session.agentid = userid;
               var updateQuery = 'update Agents set lastlogin = now() WHERE email = ?';
