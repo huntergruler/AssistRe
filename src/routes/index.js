@@ -96,6 +96,12 @@ router.post('/create-checkout-session', async (req, res) => {
   }
 });
 
+// Success route
+router.get('/success', (req, res) => {
+  req.session.paymentSuccessful = 1;
+  res.redirect('/dashboard_b');
+});
+
 // Handle registration with city and state lookup
 router.post('/register', (req, res) => {
   const { firstName, lastName, email, phoneNumber, address, zipCode, userType, password } = req.body;
