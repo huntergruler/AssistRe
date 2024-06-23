@@ -560,7 +560,8 @@ function addSelection(event) {
     });
 };
 
-function removeSelection() {
+function removeSelection(event) {
+    event.preventDefault();
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeSelected.selected");
