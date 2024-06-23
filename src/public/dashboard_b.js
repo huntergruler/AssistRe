@@ -348,11 +348,11 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Level of Service: <b>${request.levelOfService}</b><br>
                 Compensation Type: <b>${request.compensationType}</b><br>
                 Compensation Amount: <b>${request.compensationAmount}</b><br>
-                Agreement Length: ${request.lengthOfService}<br>
-                Retainer Fee: ${request.retainerFee}<br>
-                Retainer Fee will be Credited: ${request.retainerCredited}<br>
-                Expiration Compensation: ${request.expirationCompTimeFrame}<br>
-                Expiration Compensation Amount: ${request.expirationCompAmount}<br>
+                Agreement Length: <b>${request.lengthOfService}</b><br>
+                Retainer Fee: <b>${request.retainerFee}</b><br>
+                Retainer Fee will be Credited: <b>${request.retainerCredited}</b><br>
+                Expiration Compensation: <b>${request.expirationCompTimeFrame}</b><br>
+                Expiration Compensation Amount: <b>${request.expirationCompAmount}</b><br>
                 Offer Description: ${request.offerDesc}<br>
                 Offer Date: ${request.offerTimestamp}<br>
                 </div>`;
