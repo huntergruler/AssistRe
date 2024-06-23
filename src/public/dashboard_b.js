@@ -606,7 +606,7 @@ function populateAgentInfo(agentid) {
                 <div class="row col-md-7 agentcontactdata"> <b>${item.licenseNumber} - ${item.licenseState}</b><br></div>
                 <div class="row col-md-3 agentcontactlabel">Languages Spoken: </div>
                 <div  class="row col-md-7 agentcontactdata"> <b>${item.languages}</b><br></div>
-                <div class="row col-md-3 agentcontactlabel">Agent Bio: </div>
+                <div class="row col-md-10 agentcontactlabel" style="justify-content-center">Agent Bio: </div>
                 <div  class="row col-md-7 agentcontactdata"> <b>${item.bio}</b><br></div>
                 </div>`;
                 div.className = "form-row container-right";
