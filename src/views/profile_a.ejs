@@ -523,12 +523,8 @@
                                     <input type="text" class="form-control-sm col-md-6" placeholder="Office Name"
                                         id="officeName" name="officeName" value="FIX" required>
                                         <!-- 
-                    <input type="text" id="officeLicenseState" name="officeLicenseState"
-                        placeholder="Office License State" maxlength="2" minlength="2"
-                        oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
-                        title="Enter a valid US state abbreviation">
-                    <input type="text" id="address" name="address" placeholder="Office Address" required>
-                    <input type="text" id="city" name="city" placeholder="Office City" required>
+                    
+                    
                     <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2"
                         oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
                         title="Enter a valid US state abbreviation">
@@ -550,27 +546,18 @@
                                         oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
                                         title="Enter a valid US state abbreviation" required>
                                 </div>
-                                <div class="form-row ">
-                                    <label for="squareFootage" class="col-md-4 col-form-label">Square Foot Range</label>
-                                    <input type="text" class="form-control-sm col-md-2" placeholder="Min"
-                                        id="squareFootage_min" name="squareFootage_min" value="FIX" required>
-                                    <label class="col-md-1 text-center">To</label>
-                                    <input type="text" class="form-control-sm col-md-2" placeholder="Max"
-                                        id="squareFootage_max" name="squareFootage_max" value="FIX" required>
+                                <div class="form-row">
+                                    <label for="address" class="col-md-4 col-form-label">Office Address</label>
+                                    <input type="text" class="form-control-sm col-md-6" placeholder="Office Address"
+                                        id="address" name="address" value="FIX" required>
                                 </div>
                                 <div class="form-row ">
-                                    <label for="priceRange" class="col-md-4 col-form-label">Price Range</label>
-                                    <input type="text" class="form-control-sm col-md-2" placeholder="Min" id="price_min"
-                                        name="price_min" value="FIX" required>
-                                    <label class="col-md-1 text-center">To</label>
-                                    <input type="text" class="form-control-sm col-md-2" placeholder="Max" id="price_max"
-                                        name="price_max" value="FIX" required>
+                                    <label for="city" class="col-md-4 col-form-label">Office City</label>
+                                    <input type="text" class="form-control-sm col-md-6" placeholder="Office City" id="city" name="city" value="FIX" required>
                                 </div>
                                 <div class="form-row ">
-                                    <label for="levelOfService" class="col-md-4 col-form-label">Agent Service
-                                        Level</label>
-                                    <select id="levelOfService" class="form-select-sm col-md-6"
-                                        placeholder="Level Of Service"></select>
+                                    <label for="state" class="col-md-4 col-form-label">Office State</label>
+                                    <input type="text" id="state" class="form-control-sm col-md-6" placeholder="Office State"></select>
                                 </div>
                                 <div class="form-row ">
                                     <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
