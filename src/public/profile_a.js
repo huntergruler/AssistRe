@@ -642,15 +642,15 @@ function populateAgentZipCodes() {
 function savePersonalChanges() {
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
-    const bio = document.getElementById('bio').value;
-    const languages = document.getElementById('languages').value;
-    const userid = document.getElementById('personalagentid').value;
+    const bio = document.getElementById('personalBio').value;
+    const languages = document.getElementById('personalLanguages').value;
+    const agentid = document.getElementById('personalAgentid').value;
     const data = {
         firstName: firstName,
         lastName: lastName,
         bio: bio,
         languages: languages,
-        userid: userid
+        agentid: agentid
     };
     console.log("savePersonalChanges data: ", data);
     // Send the data to the server using fetch
