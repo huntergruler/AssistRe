@@ -235,6 +235,8 @@ function getOffers(datatype, element) {
                     // Add event listener to the favorite icon
                     const favoriteIcon = div.querySelector('.favorite-icon');
                     const heartIcon = favoriteIcon.querySelector('i');
+                    const declineIcon = div.querySelector('.decline-icon');
+                    const banIcon = declineIcon.querySelector('i');
                     favoriteIcon.addEventListener('click', function (e) {
                         e.preventDefault();
                         e.stopPropagation(); // Prevent the click event from bubbling up to the card
@@ -242,6 +244,8 @@ function getOffers(datatype, element) {
                         heartIcon.classList.toggle('far', !isFavorite);
                         heartIcon.classList.toggle('favorite', isFavorite);
                         if (isFavorite) {
+                            declineIcon.classList.remove('fas', 'decline');
+                            declineIcon.classList.add('far');
                             setStatus(request.agentid, 'Favorite');
                             getOfferCounts();
                         } else {
@@ -251,16 +255,7 @@ function getOffers(datatype, element) {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     });
-
-                    // Set initial favorite state
-                    if (request.buyerStatus == "Favorite") {
-                        heartIcon.classList.add('fas', 'favorite');
-                        heartIcon.classList.remove('far');
-                    }
-
                     // Add event listener to the decline icon
-                    const declineIcon = div.querySelector('.decline-icon');
-                    const banIcon = declineIcon.querySelector('i');
                     declineIcon.addEventListener('click', function (e) {
                         e.preventDefault();
                         e.stopPropagation(); // Prevent the click event from bubbling up to the card
@@ -279,6 +274,12 @@ function getOffers(datatype, element) {
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
                     });
+
+                    // Set initial favorite state
+                    if (request.buyerStatus == "Favorite") {
+                        heartIcon.classList.add('fas', 'favorite');
+                        heartIcon.classList.remove('far');
+                    }
 
                     // Set initial favorite state
                     if (request.buyerStatus == "Declined") {
