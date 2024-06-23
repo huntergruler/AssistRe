@@ -582,6 +582,31 @@ function savePropertyChanges(event) {
         });
 };
 
+function populateAgentInfo(agentid) {
+    const agentInfo = document.getElementById('agentInfo');
+    agentInfo.innerHTML = '';
+    fetch(`/get-agentinfo?agentid=${encodeURIComponent(agentid)}`)
+        .then(response => response.json())
+        .then(data => {
+            data.results.forEach(item => {
+                const div = document.createElement("div");
+                div.innerHTML = `<div class="flex-fill offersummary">
+                <u>Agent Contact Information</u><br>
+                Agent Name: <b>${item.agentName}</b><br>
+                Agent Phone: <b>${item.agentPhone}</b><br>
+                Agent Email: <b>${item.agentEmail}</b><br>
+                Agent Address: <b>${item.agentAddress}</b><br>
+                Agent City: <b>${item.agentCity}</b><br>
+                Agent State: <b>${item.agentState}</b><br>
+                Agent Zip Code: <b>${item.agentZip}</b><br>
+                </div>`;
+                div.className = "form-row container-right";
+                agentInfo.appendChild(div);
+            });
+        })
+        .catch(error => console.error('Error checking user:', error));
+}
+
 function getBuyerTypes() {
     buyerTypeCheckbox = document.getElementById('buyerTypeCheckbox');
     buyerTypesData = [];
