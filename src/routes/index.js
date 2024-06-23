@@ -72,7 +72,7 @@ router.get('/register', (req, res) => {
 router.post('/create-checkout-session', async (req, res) => {
   console.log('Create checkout session');
   try {
-    const session = await stripe.checkout.sessions.create({
+    const stripesession = await stripe.checkout.sessions.create({
       customer_email: req.session.user,
       line_items: [
         {
