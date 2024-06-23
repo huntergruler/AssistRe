@@ -6,7 +6,8 @@
 
 .logo-container {
   width: 175px;
-  height: 68px;
+  height: 70px;
+  margin: 5px;
   background-image: url('/images/SeekingLogo-175x70.png');
   background-size: cover;
   /* or 'background-size: contain;' */
