@@ -591,16 +591,23 @@ function populateAgentInfo(agentid) {
         .then(data => {
             data.results.forEach(item => {
                 const div = document.createElement("div");
-                div.innerHTML = `<div class="row col-md-4 agentcontactlabel">
-                Name: </div><div  class="row col-md-5 agentcontactdata"> <b>${item.fullName}</b><br></div><div>
-                Phone: </div><div  class="row col-md-5 agentcontactdata"> <b>${item.phoneNumber}</b><br></div><div>
-Email: </div><div  class="row col-md-5 agentcontactdata"> <b>${item.email}</b><br></div><div>
-Address: </div><div  class="row col-md-5 agentcontactdata"> <b>${item.address}</b><br></div><div>
-         </div><div  class="row col-md-5 agentcontactdata"> <b>${item.cityStateZip}</b><br></div><div>
-License: </div><div  class="row col-md-5 agentcontactdata"> <b>${item.licenseNumber} - ${item.licenseState}</b><br></div><div>
-Languages Spoken: </div><div  class="row col-md-5 agentcontactdata"> <b>${item.languages}</b><br></div><div>
-Agent Bio: </div><div  class="row col-md-5 agentcontactdata"> <b>${item.bio}</b><br></div>
-
+                div.innerHTML = `
+                <div class="row col-md-4 agentcontactlabel">Name: </div>
+                <div class="row col-md-5 agentcontactdata"> <b>${item.fullName}</b></div>
+                <div class="row col-md-4 agentcontactlabel">Phone: </div>
+                <div class="row col-md-5 agentcontactdata"> <b>${item.phoneNumber}</b><br></div>
+                <div class="row col-md-4 agentcontactlabel">Email: </div>
+                <div  class="row col-md-5 agentcontactdata"> <b>${item.email}</b><br></div>
+                <div class="row col-md-4 agentcontactlabel">Address: </div>
+                <div  class="row col-md-5 agentcontactdata"> <b>${item.address}</b><br></div>
+                <div class="row col-md-4 agentcontactlabel"></div>
+                <div class="row col-md-5 agentcontactdata"> <b>${item.cityStateZip}</b><br></div>
+                <div class="row col-md-4 agentcontactlabel">License: </div>
+                <div class="row col-md-5 agentcontactdata"> <b>${item.licenseNumber} - ${item.licenseState}</b><br></div>
+                <div class="row col-md-4 agentcontactlabel">Languages Spoken: </div>
+                <div  class="row col-md-5 agentcontactdata"> <b>${item.languages}</b><br></div>
+                <div class="row col-md-4 agentcontactlabel">Agent Bio: </div>
+                <div  class="row col-md-5 agentcontactdata"> <b>${item.bio}</b><br></div>
                 </div>`;
                 div.className = "form-row container-right";
                 agentInfo.appendChild(div);
