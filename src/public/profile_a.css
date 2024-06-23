@@ -80,7 +80,7 @@ body {
     padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
-    width: 300px;
+    /* width: 300px; */
     max-height: fit-content;
     align-content: center;
     align-items: center;
