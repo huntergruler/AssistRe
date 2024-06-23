@@ -639,43 +639,40 @@ function populateAgentZipCodes() {
         .catch(error => console.error('Error checking user:', error));
 };
 
-// function populateMonths() {
-//     const monthSelect = document.getElementById('monthSelect');
-//     const months = [
-//         'January', 'February', 'March', 'April', 'May', 'June',
-//         'July', 'August', 'September', 'October', 'November', 'December'
-//     ];
-//     months.forEach((month, index) => {
-//         let option = new Option(month, index + 1);
-//         monthSelect.appendChild(option);
-//     });
-// };
-
-// function populateYears() {
-//     const yearSelect = document.getElementById('yearSelect');
-//     const year = new Date().getFullYear();
-//     for (let i = year; i <= year + 10; i++) {
-//         let option = new Option(i, i);
-//         yearSelect.appendChild(option);
-//     }
-// };
-
-// function updateDays() {
-//     const monthSelect = document.getElementById('monthSelect');
-//     const yearSelect = document.getElementById('yearSelect');
-//     const daySelect = document.getElementById('daySelect');
-
-//     const month = monthSelect.value;
-//     const year = yearSelect.value;
-//     const daysInMonth = new Date(year, month, 0).getDate();
-
-//     daySelect.innerHTML = '';
-
-//     for (let i = 1; i <= daysInMonth; i++) {
-//         let option = new Option(i, i);
-//         daySelect.appendChild(option);
-//     }
-// };
+function savePersonalChanges() {
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const bio = document.getElementById('bio').value;
+    const languages = document.getElementById('languages').value;
+    const userid = document.getElementById('userid').value;
+    const data = {
+        firstName: firstName,
+        lastName: lastName,
+        bio: bio,
+        languages: languages,
+        userid: userid
+    };
+    // Send the data to the server using fetch
+    fetch('/profile_a', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            window.location.reload();
+        })
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+};
 
 var officeToggle = 1;
 function showOffice() {
