@@ -202,7 +202,7 @@ function zipUpdate() {
 document.addEventListener('DOMContentLoaded', function () {
     populateAgentZipCodes();
     populateDisplayZipCodes()
-    //    populateStates();
+    populateStates();
 });
 
 function getSelectedZipCodes() {
