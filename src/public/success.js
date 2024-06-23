@@ -23,10 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
             buyerid = sessionData.userid;
             paymentSuccessful = sessionData.paymentSuccessful;
             console.log('Session data fetched:', sessionData);
+            setPaymentStatus();
         })
         .catch(error => console.error('Error fetching session data:', error));
-        console.log('before setpaymentstatus',buyerid);
-    setPaymentStatus();
 });
 
 setPaymentStatus = () => {
