@@ -127,8 +127,8 @@ body {
     padding-left: 0px;
     padding-right: 0px;
     max-height: fit-content;
-    /* justify-items: center;
-    text-align: center; */
+    justify-items: center;
+    text-align: center;
 }
 
 .form-row {
