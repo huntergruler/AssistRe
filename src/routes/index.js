@@ -237,7 +237,7 @@ router.get('/getOffers', (req, res) => {
                                then concat(ao.compensationAmount,' ',ct.compensationTypeUnit)
                                else ao.compensationAmount
                            end compensationAmount, 
-                           ao.retainerFee, ao.retainerCredited, ao.lengthOfService, 
+                           ao.retainerFee, if(ao.retainerCredited,'Yes','No) retainerCredited, ao.lengthOfService, 
                            ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, 
                            DATE_FORMAT(ao.entryTimestamp, '%m/%d/%Y') offerTimestamp, bam.buyerStatus, 
                            concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentid) dispIdentifier
