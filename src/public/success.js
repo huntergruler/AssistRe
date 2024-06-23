@@ -14,6 +14,7 @@ setTimeout(redirectToPage, delayTime);
 
 let userid = null;
 let paymentSuccessful = null;
+let buyerid = null;
 
 document.addEventListener('DOMContentLoaded', function () {
     fetch('/session-data')
