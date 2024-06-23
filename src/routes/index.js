@@ -374,7 +374,7 @@ router.post('/setPaymentStatus', (req, res) => {
   else {
     var userType = req.body.userType;
     var paymentSuccessful = req.body.paymentSuccessful;
-    console.log('Payment Status:', paymentSuccessful, userType);
+    console.log('body', req.body);
     if (userType === 'Buyer') {
       var buyerid = req.body.buyerid;
       params = [paymentSuccessful, buyerid];
