@@ -522,16 +522,33 @@
                                     <label for="officeName" class="col-md-4 col-form-label">Office Name</label>
                                     <input type="text" class="form-control-sm col-md-6" placeholder="Office Name"
                                         id="officeName" name="officeName" value="FIX" required>
+                                        <!-- 
+                    <input type="text" id="officeLicenseState" name="officeLicenseState"
+                        placeholder="Office License State" maxlength="2" minlength="2"
+                        oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
+                        title="Enter a valid US state abbreviation">
+                    <input type="text" id="address" name="address" placeholder="Office Address" required>
+                    <input type="text" id="city" name="city" placeholder="Office City" required>
+                    <input type="text" id="state" name="state" placeholder="Office State" maxlength="2" minlength="2"
+                        oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
+                        title="Enter a valid US state abbreviation">
+                    <input type="text" id="zip" name="zip" placeholder="Office Zip" required>
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Office Phone Number" required>
+                    <button type="button" id="officeAdd">Add</button>
+                    <span id="offStatus"></span> -->
                                 </div>
                                 <div class="form-row ">
-                                    <label for="bedrooms_min" class="col-md-4 col-form-label">Minimum Bedrooms</label>
-                                    <input type="text" class="form-control-sm col-md-2" id="bedrooms_min"
-                                        name="bedrooms_min" value="FIX>" required>
+                                    
+                                    <label for="officeLicenseNumber" class="col-md-4 col-form-label">Office License Number</label>
+                                    <input type="text" class="form-control-sm col-md-2" id="officeLicenseNumber"
+                                        name="officeLicenseNumber" placeholder="Office License Number" value="FIX>" required>
                                 </div>
                                 <div class="form-row">
-                                    <label for="bathrooms_min" class="col-md-4 col-form-label">Minimum Bathrooms</label>
-                                    <input type="text" class="form-control-sm col-md-2" id="bathrooms_min"
-                                        name="bathrooms_min" value="FIX" required>
+                                    <label for="officeLicenseState" class="col-md-4 col-form-label">Office License State</label>
+                                    <input type="text" class="form-control-sm col-md-2" id="officeLicenseState"
+                                        name="officeLicenseState" placeholder="Office License State" value="FI" maxlength="2" minlength="2"
+                                        oninput="this.value = this.value.toUpperCase()" required pattern="[A-Z]{2}"
+                                        title="Enter a valid US state abbreviation" required>
                                 </div>
                                 <div class="form-row ">
                                     <label for="squareFootage" class="col-md-4 col-form-label">Square Foot Range</label>
