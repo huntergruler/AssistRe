@@ -204,7 +204,11 @@ router.get('/getOffers', (req, res) => {
     const buyerid = req.session.userid;
 
     if (!agentid) {
-      var query = `select ofb.buyeragentmatchid, ofb.agentid, ofb.agentofferid, ofb.buyerStatus, ofb.buyerid, ofb.buyerrequestid, ofb.compensationAmount, ofb.dispIdentifier, ofb.expirationCompTimeFrame, ofb.expirationCompensation, ofb.lengthOfService, ofb.levelOfService, ofb.offerDesc, ofb.offerText, ofb.offerTimestamp, ofb.offerType, ofb.retainerCredited, ofb.retainerFee,
+      var query = `select ofb.buyeragentmatchid, ofb.agentid, ofb.agentofferid, ofb.buyerStatus, 
+                          ofb.buyerid, ofb.buyerrequestid, ofb.compensationAmount, ofb.dispIdentifier, 
+                          ofb.expirationCompTimeFrame, ofb.expirationCompensation, ofb.lengthOfService, 
+                          ofb.levelOfService, ofb.offerDesc, ofb.offerText, ofb.offerTimestamp, 
+                          ofb.offerType, ofb.retainerCredited, ofb.retainerFee,
                           case when 'New' = 'AllAvailable'
                                then filterstatus
                                else buyerstatus
@@ -226,7 +230,12 @@ router.get('/getOffers', (req, res) => {
       });
     }
     else {
-      var query = `select ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, ot.offerType, los.levelOfService, ct.compensationType, 
+      var query = `select concat(a.firstname,' ',a.lastname) agentname, 
+                          concat(a.address,' ',a.city,', ',a.state,' ',a.zip) address, 
+                          a.bio, a.email, a.languages, a.phonenumber, a.state, a.zip,
+                          al.licenseNumber, al.licenseState, al.licenseExpirationDate,
+                          ao.agentofferid, ao.buyerrequestid, ao.buyerid, ao.agentid, 
+                          ot.offerType, los.levelOfService, ct.compensationType, 
                           case when ct.compensationType = 'Hourly Rate'
                                then concat('$',ao.compensationAmount,' ',ct.compensationTypeUnit)
                                when ct.compensationType = 'Flat Fee'
@@ -234,16 +243,21 @@ router.get('/getOffers', (req, res) => {
                                when ct.compensationType = '% of Sales Price'
                                then concat(ao.compensationAmount,' ',ct.compensationTypeUnit)
                                else ao.compensationAmount
-                           end compensationAmount, ao.retainerFee, ao.retainerCredited, ao.lengthOfService, ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, bam.buyerStatus, concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentofferid) dispIdentifier
+                           end compensationAmount, 
+                           ao.retainerFee, ao.retainerCredited, ao.lengthOfService, 
+                           ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, 
+                           DATE_FORMAT(ao.offerTimestamp, '%m/%d/%Y %r') offerTimestamp, bam.buyerStatus, 
+                           concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentid) dispIdentifier
                      from AgentOffers ao
-                     join Agents a on a.userid = ao.agentid
-                     join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentid = a.userid
-                     join LevelsOfService los on los.levelofserviceid = ao.levelofserviceid
-                     join CompensationTypes ct on ct.compensationtypeid = ao.compensationtypeid
-                     join OfferTypes ot on ot.offertypeid = ao.offertypeid
+                          join Agents a on a.userid = ao.agentid
+                          join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentid = a.userid
+                          join LevelsOfService los on los.levelofserviceid = ao.levelofserviceid
+                          join CompensationTypes ct on ct.compensationtypeid = ao.compensationtypeid
+                          join OfferTypes ot on ot.offertypeid = ao.offertypeid
+                          join AgentLicenses al on al.userid = a.userid
                     where bam.buyeragentmatchid = ?
                       and ao.agentid = ?
-                    order by bam.buyerStatus, ao.entrytimestamp desc`;
+                    order by bam.buyerStatus, ao.entrytimestamp desc;`;
       db.query(query, [buyeragentmatchid, agentid], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
@@ -268,11 +282,11 @@ router.get('/getRequestCounts', (req, res) => {
     var query = `select case when os.offerStatus in ('New','Read')
                               then 'New'
                               else os.offerStatus
-                         end agentStatus, concat('(',count(bam.agentid),')') cnt
-                    from OfferStatuses os 
-                         left outer join AgentBuyerMatch bam on bam.agentStatus = os.offerStatus and bam.agentid = ?
-                   where os.userType = 'Agent'
-                   group by 1`;
+                        end agentStatus, concat('(',count(bam.agentid),')') cnt
+                   from OfferStatuses os 
+                        left outer join AgentBuyerMatch bam on bam.agentStatus = os.offerStatus and bam.agentid = ?
+                  where os.userType = 'Agent'
+                  group by 1`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);

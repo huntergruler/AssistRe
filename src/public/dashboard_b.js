@@ -324,46 +324,6 @@ function selectOffer(agentid, buyeragentmatchid, element) {
         selectFields.forEach(select => select.removeAttribute('disabled'));
         setStatus(agentid, 'Read');
     }
-    // if (datatype == "Offered") {
-    //     populateOfferDetail(agentid);
-    //     const offerForm = document.getElementById('offerForm');
-    //     const detailButtons = document.getElementById('detailButtons');
-    //     const detailsCont = document.getElementById('offerDetails');
-    //     detailsCont.style.border = '1px solid black';
-
-    //     offerForm.style.display = 'block';
-    //     inputFields.forEach(input => {
-    //         input.setAttribute('readonly', 'true');
-    //         input.setAttribute('disabled', 'true')
-    //     });
-    //     selectFields.forEach(select => select.setAttribute('disabled', 'true'));
-    //     detailButtons.style.display = 'none';
-    //     offerButton.innerHTML = '';
-
-    //     // create a button to modify the offer
-    //     var buttonElement = document.createElement("button");
-    //     buttonElement.className = "col-md-5";
-    //     buttonElement.textContent = 'Modify Offer';
-    //     buttonElement.style.border = "1px solid black";
-    //     buttonElement.style.borderRadius = "5px";
-    //     buttonElement.style.padding = "2px";
-    //     buttonElement.style.margin = "2px";
-    //     buttonElement.setAttribute("onclick", `modifyOffer(event)`);
-    //     offerButton.appendChild(buttonElement);
-    //     buttonElement = document.createElement("button");
-    //     buttonElement.className = "col-md-5";
-    //     buttonElement.textContent = 'Remove Offer';
-    //     buttonElement.style.border = "1px solid black";
-    //     buttonElement.style.borderRadius = "5px";
-    //     buttonElement.style.padding = "2px";
-    //     buttonElement.style.margin = "2px";
-    //     buttonElement.setAttribute("onclick", `removeOffer(event)`);
-    //     offerButton.appendChild(buttonElement);
-    // }
-    // if (datatype == "Declined") {
-    //     const detailButtons = document.getElementById('detailButtons');
-    //     detailButtons.style.display = 'block';
-    // }
 }
 
 function offerDetail(agentid, buyeragentmatchid) {
@@ -374,9 +334,6 @@ function offerDetail(agentid, buyeragentmatchid) {
     document.getElementById('agentid').value = agentid;
     document.getElementById('buyeragentmatchid').value = buyeragentmatchid;
     detailCont.style.border = '0';
-
-    // const detailsCont = document.getElementById('offerDetails');
-    // detailsCont.style.border = '0';
 
     offerDetail.innerHTML = "";
     detailButtons.innerHTML = "";
@@ -402,25 +359,9 @@ function offerDetail(agentid, buyeragentmatchid) {
 
                 // Create a container div to hold the buttons
                 const buttonContainer = document.createElement("div");
-                buttonContainer.className = "form-row"; // Apply any additional styling if needed
+                buttonContainer.className = "form-row";
                 buttonContainer.style.border = "none";
 
-                // Create each button and append them to the container
-                // if (datatype == "Read" || datatype == "New") {
-                //     var buttons = [
-                //         { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
-                //     ];
-                // }
-                // if (datatype == "Favorite") {
-                //     var buttons = [
-                //         { id: "declineOffer", text: "Decline Offer", onclick: `declineOffer(${request.agentid})` },
-                //     ];
-                // }
-                // if (datatype == "Declined") {
-                //     var buttons = [
-                //         { id: "declineOffer", text: "Reopen Offer", onclick: `reopenOffer(${request.agentid})` },
-                //     ];
-                // }
                 var buttons = [
                     { id: "contactagent", text: "Contact Agent", onclick: `contactAgent(${request.agentid})` },
                 ];
