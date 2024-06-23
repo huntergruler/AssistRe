@@ -353,8 +353,14 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Retainer Fee will be Credited: <b>${request.retainerCredited}</b><br>
                 Expiration Compensation: <b>${request.expirationCompTimeFrame}</b><br>
                 Expiration Compensation Amount: <b>${request.expirationCompensation}</b><br>
-                Offer Description: ${request.offerDesc}<br>
+                <u>Offer Description</u><br>
+                ${request.offerDesc}<br>
                 Offer Date: ${request.offerTimestamp}<br>
+                </div>
+                <div class="form-row" style="border: none">
+                <button type="button" id="agentinfo-button" class="modify-button" data-toggle="modal" data-target="#agentInfo" onclick="populateAgentInfo(${request.agentid});">
+                  Agent Contact Info
+                </button>
                 </div>`;
 
                 div.className = "form-row container-right";
@@ -366,30 +372,30 @@ function offerDetail(agentid, buyeragentmatchid) {
                 detailCont.style.borderBottomLeftRadius = '5px';
                 detailCont.style.borderBottomRightRadius = '5px';
 
-                // Create a container div to hold the buttons
-                const buttonContainer = document.createElement("div");
-                buttonContainer.className = "form-row";
-                buttonContainer.style.border = "none";
+                // // Create a container div to hold the buttons
+                // const buttonContainer = document.createElement("div");
+                // buttonContainer.className = "form-row";
+                // buttonContainer.style.border = "none";
 
-                var buttons = [
-                    { id: "contactagent", text: "Contact Agent", onclick: `contactAgent(${request.agentid})` },
-                ];
+                // var buttons = [
+                //     { id: "contactagent", text: "Agent Contact Info", onclick: `contactAgent(${request.agentid})` },
+                // ];
 
-                buttons.forEach(button => {
-                    const buttonElement = document.createElement("button");
-                    buttonElement.id = button.id;
-                    buttonElement.textContent = button.text;
-                    buttonElement.style.border = "1px solid black";
-                    buttonElement.style.borderRadius = "5px";
-                    buttonElement.style.padding = "2px";
-                    buttonElement.style.margin = "2px";
-                    buttonElement.className = "modify-button";
-                    buttonElement.setAttribute("onclick", button.onclick);
-                    buttonContainer.appendChild(buttonElement);
-                });
+                // buttons.forEach(button => {
+                //     const buttonElement = document.createElement("button");
+                //     buttonElement.id = button.id;
+                //     buttonElement.textContent = button.text;
+                //     buttonElement.style.border = "1px solid black";
+                //     buttonElement.style.borderRadius = "5px";
+                //     buttonElement.style.padding = "2px";
+                //     buttonElement.style.margin = "2px";
+                //     buttonElement.className = "modify-button";
+                //     buttonElement.setAttribute("onclick", button.onclick);
+                //     buttonContainer.appendChild(buttonElement);
+                // });
 
-                // Append the container to the detailButtons element
-                detailButtons.appendChild(buttonContainer);
+                // // Append the container to the detailButtons element
+                // detailButtons.appendChild(buttonContainer);
             });
         })
         .catch(error => console.error('Error checking user:', error));
