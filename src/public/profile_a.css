@@ -243,7 +243,6 @@ body {
 
 #displayZipCodes {
     overflow: auto;
-    width: 280px;
     max-height: 150px;
     min-height: 100px;
     text-align: center;
