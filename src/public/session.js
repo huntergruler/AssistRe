@@ -17,7 +17,8 @@ function resetSessionTimer() {
 // Handle session timeout
 function sessionTimeout() {
     // Redirect the user to the login page
-    alert('Session timeout. Please login', sessionTimer );
+    alertmsg = sessionTimer+"Session timeout. Please login";
+    alert(alertmsg);
     window.location.href = '/';
 }
 
