@@ -614,7 +614,6 @@ function addSelection(event) {
     if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
         selectedZipCodesContainer.innerHTML = '';
     }
-    console.log(selected, selectedZipCodesContainer, availabeZipCodesContainer);
     selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
@@ -623,7 +622,6 @@ function addSelection(event) {
         div.onclick = function () {
             this.classList.toggle("selected");
         };
-        alert(div.textContent);
         selectedZipCodesContainer.appendChild(div);
         node.remove();
         //document.getElementById('saveChanges').disabled = false;
@@ -632,7 +630,6 @@ function addSelection(event) {
 
 function removeSelection(event) {
     event.preventDefault();
-    console.log('removeSelection');
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".userZipCodes.selected");
