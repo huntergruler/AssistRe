@@ -224,7 +224,10 @@ function getOffers(datatype, element) {
                     }
                     offers.appendChild(div);
                     if (!paymentSuccessful) {
-                        offerDetail.innerHTML = '<h5>To connect with an agent follow this link and complete payment</h5>';
+                        offerDetail.innerHTML = `<h5>To connect with an agent complete payment</h5>
+                        <form action="create-checkout-session" method="POST">
+                        <button type="submit" id="checkout-button">Checkout</button>
+                      </form>`;
                     }
 
 
