@@ -268,8 +268,8 @@ function getOffers(datatype, element) {
                         banIcon.classList.toggle('far', !isDecline);
                         banIcon.classList.toggle('decline', isDecline);
                         if (isDecline) {
-                            heartIcon.classList.add('favorite');
-                            heartIcon.classList.remove('fas');
+                            heartIcon.classList.add('fas', 'favorite');
+                            // heartIcon.classList.remove('fas');
                             setStatus(request.agentid, 'Declined');
                             getOfferCounts();
                         } else {
