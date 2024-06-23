@@ -1,4 +1,4 @@
-$(function () {
+$(document).ready(function () {
     $('#declineicon').tooltip({
         delay: { "show": 1, "hide": 100 } // Adjust the delay times as needed
     });
