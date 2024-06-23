@@ -268,6 +268,8 @@ function getOffers(datatype, element) {
                         banIcon.classList.toggle('far', !isDecline);
                         banIcon.classList.toggle('decline', isDecline);
                         if (isDecline) {
+                            heartIcon.classList.add('far', 'favorite');
+                            heartIcon.classList.remove('fas');
                             setStatus(request.agentid, 'Declined');
                             getOfferCounts();
                         } else {
@@ -282,8 +284,6 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "Declined") {
                         banIcon.classList.add('fas', 'decline');
                         banIcon.classList.remove('far');
-                        heartIcon.classList.add('far', 'favorite');
-                        heartIcon.classList.remove('fas');
                     }
 
                     // Add event listener to the card
