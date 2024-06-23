@@ -23,7 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
             paymentSuccessful = sessionData.paymentSuccessful;
         })
         .catch(error => console.error('Error fetching session data:', error));
-    console.log('paymentSuccessful:', paymentSuccessful, 'addeventlistener', userid);
+ setPaymentStatus();
     });
-
     
+setPaymentStatus = () => {
+    req.session.paymentSuccessful = 1;
+}
+
+
