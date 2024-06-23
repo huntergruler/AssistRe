@@ -282,7 +282,7 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "Declined") {
                         banIcon.classList.add('fas', 'decline');
                         banIcon.classList.remove('far');
-                        heartIcon.classList.remove('far');
+                        heartIcon.classList.remove('fas');
                     }
 
                     // Add event listener to the card
