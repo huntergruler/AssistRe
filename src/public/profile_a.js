@@ -541,7 +541,8 @@ function addZipCode() {
     }
 };
 
-function addSelection() {
+function addSelection(event) {
+    event.preventDefault();
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
