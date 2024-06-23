@@ -388,7 +388,7 @@ function populateCityZipCodes() {
 };
 
 function populateUserZipCodes() {
-    populateLevelOfService();
+    //populateLevelOfService();
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const userZipCodes = document.getElementById("userZipCodes");
     const stateSelect = document.getElementById("stateSelect");
