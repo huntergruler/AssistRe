@@ -708,7 +708,12 @@ router.get('/profile_a', (req, res) => {
         db.query(query, [userid], (err, transactionresults) => {
           if (err) throw err;
           let hasTransactions = transactionresults.length > 0;
-          res.render('profile_a', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, agentid: req.session.agentid, lastname: req.session.lastname });
+          const query = 'SELECT bio, languages FROM Agents WHERE userid = ?';
+          db.query(query, [userid], (err, bioresults) => {
+            if (err) throw err;
+            res.render('profile_a', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, agentid: req.session.agentid, lastname: req.session.lastname, bioInfo: bioresults });
+          });
+          
         });
       });
     });
@@ -722,8 +727,17 @@ router.post('/profile_a', (req, res) => {
     res.redirect('/');
   }
   else {
-    // const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
-    console.log(req.body);
+    const { firstName, lastName, bio, languages, agentid } = req.body;
+
+    const query = 'UPDATE Agents SET firstName = ?, lastName = ?, bio = ?, languages = ? WHERE userid = ?';
+    db.query(query, [firstName, lastName, bio, languages, agentid], (error, results) => {
+      if (error) {
+        console.error('Error updating agent profile:', error);
+        return res.status(500).send('Server error');
+      }
+
+      res.send({ success: true });
+    });
   }
 });
 
