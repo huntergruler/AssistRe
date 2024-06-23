@@ -336,7 +336,11 @@
                                                 <% } %>
                                                 </p><br>
                                             <h3>Languages:</h3><br>
-                                            <p id="languagesText">No Languages</p>
+                                            <p id="languagesText"><% if(hasBio) {%>
+                                                <%= bioInfo[0].languages %>
+                                                <% } else { %>
+                                                No Languages
+                                                <% } %></p>
                                         </div>
                                         <div id="bioForm">
                                             <textarea id="bio" name="bio" rows="4" cols="50"
