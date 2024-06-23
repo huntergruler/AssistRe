@@ -33,7 +33,7 @@ setPaymentStatus = () => {
     console.log('inside setpaymentstatus',buyerid);
     const data = {
         buyerid: buyerid,
-        userType: 'buyer',
+        userType: 'Buyer',
         paymentSuccessful: 1
     };
     fetch('/setPaymentStatus', {
