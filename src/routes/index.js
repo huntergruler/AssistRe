@@ -82,7 +82,7 @@ router.post('/create-checkout-session', async (req, res) => {
       ],
       mode: 'payment',
       success_url: `${YOUR_DOMAIN}/success_b`,
-      cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+      cancel_url: `${YOUR_DOMAIN}/cancel_b`,
     });
     // Log stripesession details
     console.log('Checkout stripesession ID:', stripesession.id);
@@ -100,6 +100,12 @@ router.post('/create-checkout-session', async (req, res) => {
 router.get('/success_b', (req, res) => {
   req.session.paymentSuccessful = 1;
   res.render('success_b');
+});
+
+// Success route
+router.get('/cancel_b', (req, res) => {
+  req.session.paymentSuccessful = 0;
+  res.render('cancel_b');
 });
 
 // Handle registration with city and state lookup
