@@ -1,3 +1,8 @@
+:root {
+    --background-color: rgba(19, 50, 109);
+    --text-color: white;
+}
+
 body {
     font-size: 14px;
     /* Base font size */
