@@ -97,9 +97,9 @@ router.post('/create-checkout-session', async (req, res) => {
 });
 
 // Success route
-router.get('/success', (req, res) => {
+router.get('/success_b', (req, res) => {
   req.session.paymentSuccessful = 1;
-  res.redirect('/success_b');
+  res.render('/success_b');
 });
 
 // Handle registration with city and state lookup
