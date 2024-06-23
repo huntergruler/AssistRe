@@ -142,8 +142,8 @@ document.addEventListener('DOMContentLoaded', function () {
             populateDisplayZipCodes();
             populateLevelOfService();
 
-            const offerForm = document.getElementById('offerForm');
-            offerForm.style.display = 'none';
+            // const offerForm = document.getElementById('offerForm');
+            // offerForm.style.display = 'none';
             // document.querySelector('#offerDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
 
             // Disable all input fields and select elements
