@@ -180,6 +180,7 @@
               <div form-row justify-content-center>
                 <div class="modal-footer">
                   <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="saveZipChanges(event)">Save</button>
+                  <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="addSelection(event)">add</button>
                   <button type="button" id="modify-button" class="modify-button" data-dismiss="modal">Cancel</button>
                 </div>
               </div>
@@ -348,11 +349,6 @@
       </div>
     </div>
   </div>
-  <script>
-    function addSelection(event) {
-      event.preventDefault();
-      alert('addSelection');
-    }
   </script>  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="/profile_b.js"></script>
   <script src="/session.js"></script>
