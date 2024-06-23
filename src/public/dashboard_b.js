@@ -591,7 +591,7 @@ function populateAgentInfo(agentid) {
         .then(data => {
             data.results.forEach(item => {
                 const div = document.createElement("div");
-                div.innerHTML = `<div class="row col-md-5">
+                div.innerHTML = `<div class="row col-md-4 justify-text-right">
                 Name: </div><div  class="row col-md-5"> <b>${item.fullName}</b><br></div>
                 Phone: <b>${item.phoneNumber}</b><br>
                 Email: <b>${item.email}</b><br>
