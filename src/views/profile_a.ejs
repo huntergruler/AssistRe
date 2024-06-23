@@ -615,10 +615,10 @@
                                         id="lastName" name="lastName" value="FIX" required>
                                 </div>
                                 <div class="form-row">
-                                    <textarea id="personalBio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" value = "<%= bioInfo.bio %>" required></textarea>
+                                    <textarea id="personalBio" name="bio" rows="4" cols="50" placeholder="Enter your biography here" required><%= bioInfo.bio %></textarea>
                                 </div>
                                 <div class="form-row">
-                                    <textarea id="personalLanguages" name="languages" rows="4" cols="50" placeholder="Enter the languages you speak here" value = "<%= bioInfo.languages %>" required></textarea>
+                                    <textarea id="personalLanguages" name="languages" rows="4" cols="50" placeholder="Enter the languages you speak here" required><%= bioInfo.languages %></textarea>
                                 </div>
                                 <input type="hidden" id="personalAgentid" name="agentid" value="<%= agentid %>">
                             </form>
