@@ -585,6 +585,7 @@ function savePropertyChanges(event) {
 function populateAgentInfo(agentid) {
     const agentInfo = document.getElementById('agentInfo');
     agentInfo.innerHTML = '';
+    console.log('Agentid',agentid);
     fetch(`/get-agentinfo?agentid=${encodeURIComponent(agentid)}`)
         .then(response => response.json())
         .then(data => {
