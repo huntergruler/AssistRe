@@ -87,8 +87,6 @@ router.post('/create-checkout-session', async (req, res) => {
     // Log stripesession details
     console.log('Checkout stripesession ID:', stripesession.id);
     console.log('Payment Status:', stripesession.payment_status);
-    console.log('Amount Total:', stripesession.amount_total);
-    console.log('Customer Email:', stripesession.customer_details.email);
 
     // Redirect to the stripesession URL
     res.redirect(303, stripesession.url);
