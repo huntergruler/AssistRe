@@ -593,7 +593,7 @@ function populateAgentInfo(agentid) {
                 const div = document.createElement("div");
                 div.innerHTML = `<div class="flex-fill offersummary">
                 Name: <b>${item.fullName}</b><br>
-                Phone: <b>${item.phonenumber}</b><br>
+                Phone: <b>${item.phoneNumber}</b><br>
                 Email: <b>${item.email}</b><br>
                 Address: <b>${item.address}</b><br>
                 License: <b>${item.licenseNumber} - ${item.licenseState}</b><br>
