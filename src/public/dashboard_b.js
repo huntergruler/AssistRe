@@ -258,32 +258,33 @@ function getOffers(datatype, element) {
                         heartIcon.classList.remove('far');
                     }
 
-                                        // Add event listener to the decline icon
-                                        const declineIcon = div.querySelector('.decline-icon');
-                                        const banIcon = declineIcon.querySelector('i');
-                                        declineIcon.addEventListener('click', function (e) {
-                                            e.preventDefault();
-                                            e.stopPropagation(); // Prevent the click event from bubbling up to the card
-                                            const isDecline = banIcon.classList.toggle('fas');
-                                            banIcon.classList.toggle('far', !isDecline);
-                                            banIcon.classList.toggle('decline', isDecline);
-                                            if (isDecline) {
-                                                setStatus(request.agentid, 'Declined');
-                                                getOfferCounts();
-                                            } else {
-                                                setStatus(request.agentid, 'Read');
-                                                getOfferCounts();
-                                            }
-                                            div.classList.add("read");
-                                            div.getElementsByClassName("newDot")[0].style.display = "none";
-                                        });
-                    
-                                        // Set initial favorite state
-                                        if (request.buyerStatus == "Declined") {
-                                            banIcon.classList.add('fas', 'decline');
-                                            banIcon.classList.remove('far');
-                                        }
-                    
+                    // Add event listener to the decline icon
+                    const declineIcon = div.querySelector('.decline-icon');
+                    const banIcon = declineIcon.querySelector('i');
+                    declineIcon.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation(); // Prevent the click event from bubbling up to the card
+                        const isDecline = banIcon.classList.toggle('fas');
+                        banIcon.classList.toggle('far', !isDecline);
+                        banIcon.classList.toggle('decline', isDecline);
+                        if (isDecline) {
+                            setStatus(request.agentid, 'Declined');
+                            getOfferCounts();
+                        } else {
+                            setStatus(request.agentid, 'Read');
+                            getOfferCounts();
+                        }
+                        div.classList.add("read");
+                        div.getElementsByClassName("newDot")[0].style.display = "none";
+                    });
+
+                    // Set initial favorite state
+                    if (request.buyerStatus == "Declined") {
+                        banIcon.classList.add('fas', 'decline');
+                        banIcon.classList.remove('far');
+                        heartIcon.classList.remove('fas');
+                    }
+
                     // Add event listener to the card
                     const card = div.querySelector('.offersummary');
                     card.addEventListener('click', function () {
@@ -382,7 +383,7 @@ function offerDetail(agentid, buyeragentmatchid) {
     detailButtons.innerHTML = "";
     console.log('agentid:', agentid, 'buyeragentmatchid:', buyeragentmatchid, 'datatype:', datatype);
     fetch(`/getOffers?agentid=${encodeURIComponent(agentid)}&buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)}&datatype=${encodeURIComponent(datatype)}`)
-    .then(response => response.json())
+        .then(response => response.json())
         .then(data => {
             data.forEach(request => {
                 const div = document.createElement("div");
@@ -1045,7 +1046,7 @@ function createCheckoutSession(event) {
             console.error('Error:', error);
         });
 };
-    
+
 function addSelection(event) {
     event.preventDefault();
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
