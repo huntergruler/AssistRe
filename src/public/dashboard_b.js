@@ -168,6 +168,8 @@ function getOffers(datatype, element) {
     const detailButtons = document.getElementById('detailButtons');
     const offerForm = document.getElementById('offerForm');
 
+    console.log('PaymentSuccessful',paymentSuccessful);
+    
     const detailCont = document.getElementById('offerDetailContainer');
     detailCont.style.border = '0';
     // const detailsCont = document.getElementById('offerDetails');
