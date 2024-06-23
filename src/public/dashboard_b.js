@@ -239,8 +239,10 @@ function getOffers(datatype, element) {
                         heartIcon.classList.toggle('favorite', isFavorite);
                         if (isFavorite) {
                             setStatus(request.agentid, 'Favorite');
+                            getOfferCounts();
                         } else {
                             setStatus(request.agentid, 'Read');
+                            getOfferCounts();
                         }
                         div.classList.add("read");
                         div.getElementsByClassName("newDot")[0].style.display = "none";
