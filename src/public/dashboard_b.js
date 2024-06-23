@@ -349,7 +349,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Compensation Type: <b>${request.compensationType}</b><br>
                 Compensation Amount: <b>${request.compensationAmount}</b><br>
                 Agreement Length: <b>${request.lengthOfService}</b><br>
-                Retainer Fee: <b>${request.retainerFee}</b><br>
+                Retainer Fee: <b>$${request.retainerFee}</b><br>
                 Retainer Fee will be Credited: <b>${request.retainerCredited}</b><br>
                 Expiration Compensation: <b>${request.expirationCompTimeFrame}</b><br>
                 Expiration Compensation Amount: <b>${request.expirationCompensation}</b><br>
