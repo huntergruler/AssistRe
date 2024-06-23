@@ -382,7 +382,7 @@ body {
 
 }
 
-#modify-button {
+/* #modify-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -393,10 +393,10 @@ body {
     font-size: 12px;
     border-radius: 4px;
     cursor: pointer;
-    /* transition: background-color 0.3s ease; */
+    /* transition: background-color 0.3s ease; 
 }
 
 #modify-button:hover {
     background-color: grey;
     color: white;
-}
+} */
