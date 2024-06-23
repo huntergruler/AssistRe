@@ -574,3 +574,17 @@ padding-right: 0px;
     transition: background-color 0.3s ease;
 
 }
+
+.toggle-button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.toggle-button:hover {
+    background-color: grey;
+    color: white;
+}
