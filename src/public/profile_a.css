@@ -13,7 +13,8 @@ body {
 .modal-content {
     font-size: 14px;
     padding: 0%;
-    /* width: auto; */
+    min-width: 100px;
+    max-width: 500px;
     height: auto;
 }
 
