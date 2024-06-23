@@ -560,6 +560,20 @@ padding-right: 0px;
     border: 1px solid black;
 }
 
+.toggle-button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.toggle-button:hover {
+    background-color: grey;
+    color: white;
+}
+
 .zipmove-button {
     display: flex;
     align-items: center;
@@ -575,16 +589,3 @@ padding-right: 0px;
 
 }
 
-.toggle-button {
-    background-color: grey;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.toggle-button:hover {
-    background-color: grey;
-    color: white;
-}
