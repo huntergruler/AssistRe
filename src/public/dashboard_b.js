@@ -1,3 +1,9 @@
+$(function () {
+    $('#declineicon').tooltip({
+        delay: { "show": 100, "hide": 100 } // Adjust the delay times as needed
+    });
+});
+
 // const { dot } = require("node:test/reporters");
 // $(document).ready(function () {
 //     $('.favorite-icon').on('click', function(e) {
@@ -209,9 +215,9 @@ function getOffers(datatype, element) {
                     div.innerHTML += `
                     <div class="flex-fill offersummary card">
                     <div class="newDot col-md">&#x2022;</div>
-                    <a href="#" class="favorite-icon" data-item-id="1" title="Click to favorite this offer">
+                    <a href="#" class="favorite-icon" id="favicon" data-item-id="1" title="Click to favorite this offer">
                     <i class="far fa-heart"></i></a>
-                    <a href="#" class="decline-icon" data-item-id="1" title="Click to decline this offer">
+                    <a href="#" class="decline-icon" id="declineicon" data-item-id="2" title="Click to decline this offer">
                     <i class="far fa-ban"></i></a>
                     ${request.offerText}<br></div>`;
                     div.className = "form-row offers col-md-12";
