@@ -605,7 +605,8 @@ document.getElementById('zipSelect').addEventListener('keydown', function (event
         addZipCode();
     }
 });
-function addSelection() {
+function addSelection(event) {
+    event.preventDefault();
     console.log('addSelection');
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
