@@ -343,11 +343,11 @@ function offerDetail(agentid, buyeragentmatchid) {
             data.forEach(request => {
                 const div = document.createElement("div");
                 div.innerHTML += `<div class="flex-fill offersummary">
-                <u>Agent ${request.dispIdentifier} Full Offer Detail</u><br>
-                Offer Type: ${request.offerType}<br>
-                Level of Service: ${request.levelOfService}<br>
-                Compensation Type: ${request.compensationType}<br>
-                Compensation Amount: ${request.compensationAmount}<br>
+                <u>Agent ${request.dispIdentifier} Full Offer Details</u><br>
+                Offer Type: <b>${request.offerType}</b><br>
+                Level of Service: <b>${request.levelOfService}</b><br>
+                Compensation Type: <b>${request.compensationType}</b><br>
+                Compensation Amount: <b>${request.compensationAmount}</b><br>
                 Agreement Length: ${request.lengthOfService}<br>
                 Retainer Fee: ${request.retainerFee}<br>
                 Retainer Fee will be Credited: ${request.retainerCredited}<br>
