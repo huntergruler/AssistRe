@@ -279,7 +279,7 @@ function getOffers(datatype, element) {
                                         });
                     
                                         // Set initial favorite state
-                                        if (request.buyerStatus == "Decline") {
+                                        if (request.buyerStatus == "Declined") {
                                             banIcon.classList.add('fas', 'decline');
                                             banIcon.classList.remove('far');
                                         }
