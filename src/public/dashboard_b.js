@@ -363,13 +363,6 @@ function offerDetail(agentid, buyeragentmatchid) {
                 </button>
                 </div>`;
 
-                <div class="form-row justify-content-center">
-                <button type="button" id="modify-button" class="modify-button" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
-                  Modify Zip Codes
-                </button>
-              </div>
-
-
                 div.className = "form-row container-right";
                 div.id = "agentid" + request.agentid;
                 offerDetail.appendChild(div);
