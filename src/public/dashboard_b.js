@@ -353,8 +353,9 @@ function offerDetail(agentid, buyeragentmatchid) {
 
     offerDetail.innerHTML = "";
     detailButtons.innerHTML = "";
-    fetch(`/getOffers?agentid=${encodeURIComponent(agentid)} &buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)} &datatype=${encodeURIComponent(datatype)}`)
-        .then(response => response.json())
+    console.log('agentid:', agentid, 'buyeragentmatchid:', buyeragentmatchid, 'datatype:', datatype);
+    fetch(`/getOffers?agentid=${encodeURIComponent(agentid)}&buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)}&datatype=${encodeURIComponent(datatype)}`)
+    .then(response => response.json())
         .then(data => {
             data.forEach(request => {
                 const div = document.createElement("div");
