@@ -362,6 +362,48 @@ function populateCityZipCodes() {
     }
 };
 
+function populateUserZipCodes() {
+    populateLevelOfService();
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    const userZipCodes = document.getElementById("userZipCodes");
+    const stateSelect = document.getElementById("stateSelect");
+    const citySelect = document.getElementById("citySelect");
+    const countySelect = document.getElementById("countySelect");
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    let htmlCodes = '';
+    selectedZipCodesContainer.innerHTML = '';
+    availabeZipCodesContainer.innerHTML = '';
+    citySelect.innerHTML = '';
+    countySelect.innerHTML = '';
+    stateSelect.selectedIndex = 0;
+    fetch(`/get-userzipcodes`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.results) {
+                const div = document.createElement("div");
+                div.className = "userZipCodes justify-content-center";
+                div.textContent = 'No zip codes yet';
+                if (selectedZipCodesContainer) {
+                    selectedZipCodesContainer.appendChild(div);
+                }
+            }
+            else {
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.className = "userZipCodes align-items-center";
+                    div.textContent = code.zipCode;
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    if (selectedZipCodesContainer) {
+                        selectedZipCodesContainer.appendChild(div);
+                    }
+                });
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+};
+
 function populateDisplayZipCodes() {
     const displayZipCodes = document.getElementById("displayZipCodes");
     let htmlCodes = '';
