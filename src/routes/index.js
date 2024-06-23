@@ -72,10 +72,10 @@ router.get('/register', (req, res) => {
 router.post('/create-checkout-session', async (req, res) => {
   console.log('Create checkout session');
   try {
-    const stripesession = await stripe.checkout.sessions.create({
+    const session = await stripe.checkout.sessions.create({
+      customer_email: req.session.user,
       line_items: [
         {
-          customer_email: req.session.user,
           price: 'price_1PUdczDidT8L3PDw6wpnXHLf', // Replace with your actual Price ID
           quantity: 1,
         },
@@ -83,8 +83,7 @@ router.post('/create-checkout-session', async (req, res) => {
       mode: 'payment',
       success_url: `${YOUR_DOMAIN}/success_b`,
       cancel_url: `${YOUR_DOMAIN}/cancel.html`,
-    }
-  );
+    });
     // Log stripesession details
     console.log('Checkout stripesession ID:', stripesession.id);
     console.log('Payment Status:', stripesession.payment_status);
