@@ -716,13 +716,14 @@ router.get('/profile_a', (req, res) => {
 });
 
 router.post('/profile_a', (req, res) => {
+  console.log('Profile_a:', req.body);
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
   }
   else {
     // const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
-    console.log(req);
+    console.log(req.body);
   }
 });
 
