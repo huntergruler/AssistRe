@@ -177,6 +177,7 @@ function addZipCode() {
 };
 
 function saveZipChanges() {
+    alert('saveZipChanges');
     const selected = document.querySelectorAll(".zipCodeSelected");
     const selected2 = document.querySelectorAll(".userZipCodes");
 
