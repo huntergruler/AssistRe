@@ -70,19 +70,31 @@ router.get('/register', (req, res) => {
 
 // Payment route
 router.post('/create-checkout-session', async (req, res) => {
-  const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {
-        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-        price: PRICE_ID,
-        quantity: 1,
-      },
-    ],
-    mode: 'payment',
-    success_url: `${YOUR_DOMAIN}/success.html`,
-    cancel_url: `${YOUR_DOMAIN}/cancel.html`,
-  });
-  res.redirect(303, session.url);
+  try {
+    const stripesession = await stripe.checkout.sessions.create({
+      line_items: [
+        {
+          price: 'price_1PUdczDidT8L3PDw6wpnXHLf', // Replace with your actual Price ID
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: `${YOUR_DOMAIN}/success.html`,
+      cancel_url: `${YOUR_DOMAIN}/cancel.html`,
+    });
+
+    // Log stripesession details
+    console.log('Checkout stripesession ID:', stripesession.id);
+    console.log('Payment Status:', stripesession.payment_status);
+    console.log('Amount Total:', stripesession.amount_total);
+    console.log('Customer Email:', stripesession.customer_details.email);
+
+    // Redirect to the stripesession URL
+    res.redirect(303, stripesession.url);
+  } catch (error) {
+    console.error('Error creating checkout stripesession:', error);
+    res.status(500).send({ error: error.message });
+  }
 });
 
 // Handle registration with city and state lookup

@@ -613,6 +613,7 @@ function addSelection() {
     if (selectedZipCodesContainer.textContent === 'No zip codes yet') {
         selectedZipCodesContainer.innerHTML = '';
     }
+    console.log(selected, selectedZipCodesContainer, availabeZipCodesContainer);
     selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
