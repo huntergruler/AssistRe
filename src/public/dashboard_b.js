@@ -352,6 +352,9 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Retainer Fee: ${request.retainerFee}<br>
                 Retainer Fee will be Credited: ${request.retainerCredited}<br>
                 Expiration Compensation: ${request.expirationCompTimeFrame}<br>
+                Expiration Compensation Amount: ${request.expirationCompAmount}<br>
+                Offer Description: ${request.offerDesc}<br>
+                Offer Timestamp: ${request.offerTimestamp}<br>
                 </div>`;
 
                 div.className = "form-row container-right";
