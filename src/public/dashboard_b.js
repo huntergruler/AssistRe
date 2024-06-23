@@ -592,13 +592,13 @@ function populateAgentInfo(agentid) {
                 const div = document.createElement("div");
                 div.innerHTML = `<div class="flex-fill offersummary">
                 <u>Agent Contact Information</u><br>
-                Agent Name: <b>${item.agentName}</b><br>
-                Agent Phone: <b>${item.agentPhone}</b><br>
-                Agent Email: <b>${item.agentEmail}</b><br>
-                Agent Address: <b>${item.agentAddress}</b><br>
-                Agent City: <b>${item.agentCity}</b><br>
-                Agent State: <b>${item.agentState}</b><br>
-                Agent Zip Code: <b>${item.agentZip}</b><br>
+                Name: <b>${item.fullName}</b><br>
+                Phone: <b>${item.phone}</b><br>
+                Email: <b>${item.email}</b><br>
+                Address: <b>${item.address}</b><br>
+                License: <b>${item.licenseNumber} - ${item.licenseState}</b><br>
+                Languages Spoken: <b>${item.languages}</b><br>
+                Agent Bio: <b>${item.bio}</b><br>
                 </div>`;
                 div.className = "form-row container-right";
                 agentInfo.appendChild(div);

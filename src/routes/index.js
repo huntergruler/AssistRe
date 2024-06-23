@@ -1592,4 +1592,23 @@ router.get('/getBuyerTypes', (req, res) => {
   });
 });
 
+function getAgentInfo(){
+  const agentid = req.session.agentid;
+  const query = `select concat(a.firstname,' ',a.lastname) agentname, concat(a.address,' ',a.city,', ',a.state,' ',a.zip) address, a.bio, a.email, 
+                        a.languages, a.phonenumber, a.state, a.zip, al.licenseNumber, al.licenseState, al.licenseExpirationDate
+                   from Agents a
+                        join AgentLicenses al on a.userid = al.userid
+                  where a.userid = ?`;
+  db.query(query, [agentid], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results.length > 0) {
+      res.json({ results });
+    } else {
+      res.status(404).json({ error: 'No agent found' });
+    }
+  });
+}
+
 module.exports = router;
