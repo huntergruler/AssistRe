@@ -604,7 +604,7 @@ function populateAgentInfo(agentid) {
                 <div class="row col-md-7 agentcontactdata"> <b>${item.cityStateZip}</b><br></div>
                 <div class="row col-md-3 agentcontactlabel">License: </div>
                 <div class="row col-md-7 agentcontactdata"> <b>${item.licenseNumber} - ${item.licenseState}</b><br></div>
-                <div class="row col-md-3 agentcontactlabel">Languages Spoken: </div>
+                <div class="row col-md-3 agentcontactlabel">Languages: </div>
                 <div  class="row col-md-7 agentcontactdata"> <b>${item.languages}</b><br></div>
                 <div class="row col-md-10" style="justify-content-center">Agent Biography: </div>
                 <div  class="row col-md-10 agentcontactdata"> <b>${item.bio}</b><br></div>
