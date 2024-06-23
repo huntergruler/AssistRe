@@ -268,7 +268,7 @@ function getOffers(datatype, element) {
                                             banIcon.classList.toggle('far', !isDecline);
                                             banIcon.classList.toggle('decline', isDecline);
                                             if (isDecline) {
-                                                setStatus(request.agentid, 'Decline');
+                                                setStatus(request.agentid, 'Declined');
                                                 getOfferCounts();
                                             } else {
                                                 setStatus(request.agentid, 'Read');
