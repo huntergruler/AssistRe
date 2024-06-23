@@ -615,7 +615,6 @@ function addSelection() {
         selectedZipCodesContainer.innerHTML = '';
     }
     console.log(selected, selectedZipCodesContainer, availabeZipCodesContainer);
-    alert('selected');
     selected.forEach(node => {
         node.classList.remove("selected");
         const div = document.createElement("div");
@@ -624,6 +623,7 @@ function addSelection() {
         div.onclick = function () {
             this.classList.toggle("selected");
         };
+        alert(div.textContent);
         selectedZipCodesContainer.appendChild(div);
         node.remove();
         //document.getElementById('saveChanges').disabled = false;
