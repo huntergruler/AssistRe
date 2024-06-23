@@ -606,6 +606,7 @@ document.getElementById('zipSelect').addEventListener('keydown', function (event
 });
 
 function addSelection() {
+    console.log('addSelection');
     const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const selected = document.querySelectorAll(".zipCodeOption.selected");
@@ -614,18 +615,18 @@ function addSelection() {
         selectedZipCodesContainer.innerHTML = '';
     }
     console.log(selected, selectedZipCodesContainer, availabeZipCodesContainer);
-    selected.forEach(node => {
-        node.classList.remove("selected");
-        const div = document.createElement("div");
-        div.textContent = node.textContent;
-        div.className = "zipCodeSelected";
-        div.onclick = function () {
-            this.classList.toggle("selected");
-        };
-        selectedZipCodesContainer.appendChild(div);
-        node.remove();
-        //document.getElementById('saveChanges').disabled = false;
-    });
+    // selected.forEach(node => {
+    //     node.classList.remove("selected");
+    //     const div = document.createElement("div");
+    //     div.textContent = node.textContent;
+    //     div.className = "zipCodeSelected";
+    //     div.onclick = function () {
+    //         this.classList.toggle("selected");
+    //     };
+    //     selectedZipCodesContainer.appendChild(div);
+    //     node.remove();
+    //     //document.getElementById('saveChanges').disabled = false;
+    // });
 };
 
 function removeSelection() {
