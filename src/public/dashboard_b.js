@@ -343,12 +343,16 @@ function offerDetail(agentid, buyeragentmatchid) {
             data.forEach(request => {
                 const div = document.createElement("div");
                 div.innerHTML += `<div class="flex-fill offersummary">
-                Agent: ${request.dispIdentifier} - ${request.agentname}<br>
-                License Info: ${request.licenseNumber} - ${request.licenseState}<br>
-                Agent Contact: ${request.email} - ${request.phonenumber}<br>
-                ${request.levelOfService} - ${request.compensationType}<br>
-                Compensation ${request.compensationAmount}<br>
-                Agreement Length: ${request.lengthOfService}<br></div>`;
+                <u>Full Offer Detail</u><br>
+                Offer Type: ${request.offerType}<br>
+                Level of Service: ${request.levelOfService}<br>
+                Compensation Type: ${request.compensationType}<br>
+                Compensation Amount: ${request.compensationAmount}<br>
+                Agreement Length: ${request.lengthOfService}<br>
+                Retainer Fee: ${request.retainerFee}<br>
+                Retainer Fee will be Credited: ${request.retainerCredited}<br>
+                Expiration Compensation: ${request.expirationCompTimeFrame}<br>
+                </div>`;
 
                 div.className = "form-row container-right";
                 div.id = "agentid" + request.agentid;
