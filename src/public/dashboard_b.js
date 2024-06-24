@@ -361,7 +361,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                 const div = document.createElement("div");
                 div.className = "form-row container-right";
                 div.id = "agentid" + request.agentid;
-                div.innerHTML = `<div class="flex-fill offersummary">
+                var innerHTMLtext = `<div class="flex-fill offersummary">
                 <u>Agent ${request.dispIdentifier} Full Offer Details</u><br>
                 Offer Type: <b>${request.offerType}</b><br>
                 Level of Service: <b>${request.levelOfService}</b><br>
@@ -375,27 +375,28 @@ function offerDetail(agentid, buyeragentmatchid) {
                 <u>Offer Description</u><br>
                 ${request.offerDesc}<br>
                 Offer Date: ${request.offerTimestamp}<br>`;
-                console.log(div.innerHTML);
+                console.log(innerHTMLtext);
                 if (request.agentInfoRequested == 0) {
-                    div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
+                    innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
                                                onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">
                                        Request Agent Contact Info
                                        </button>
                                        `;
                 } else if (request.agentInfoRequested == 1) {
-                    div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
+                    innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: grey" >
                                        Agent Contact Info Requested
                                        </button>
                                        `;
                 } else if (request.agentInfoRequested == 2) {
-                    div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
+                    innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent Contact Info
                                         </button>
                                         `;
                 }
-                console.log(div.innerHTML);
+                console.log(innerHTMLtext);
+                div.innerHTML = innerHTMLtext;
 
                 // onclick="populateAgentInfo(${request.agentid});">
                 // Request Agent Contact Info
