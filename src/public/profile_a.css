@@ -405,4 +405,5 @@ body {
 #officeAddress,
 #officePhone {
     text-align: start;
+    overflow: auto;
 }
