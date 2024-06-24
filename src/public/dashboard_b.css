@@ -447,7 +447,7 @@ body {
     cursor: pointer;
     background-color: white;
     border: 1px solid black;
-    border-radius: 10px 0 0 8px;
+    border-radius: 0px 10px 10px 0px;
 }
 
 .form-row.container-left {
