@@ -373,7 +373,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                 <u>Offer Description</u><br>
                 ${request.offerDesc}<br>
                 Offer Date: ${request.offerTimestamp}<br>
-                </div>
+           
                 <div class="form-row" style="border: none">`
                 if (request.agentInfoRequested == 0) {
                     div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
