@@ -35,100 +35,98 @@
 </header>
 
 <body id="dashboardBody">
-  <div class="background-container">
-      <div class="margin-top-100"></div>
-      <div id="dashboardContainer" style="text-align: center;">
-        <h2>Buyer Dashboard for <%= buyer.firstName %>
-          <%= buyer.lastName %>
-        </h2>
-        <div class="form-row col-md-12 d-flex justify-content-left">
-          <div class="form-group col-md">
-            <input type="hidden" id="agentid" name="agentid">
-            <input type="hidden" id="buyeragentmatchid" name="buyeragentmatchid">
-            <input type="hidden" id="datatype" name="datatype">
-            <div class="property-group" style="margin-top: 50px;">
-              <div class="partial-info" id="propertyContainer">
-                <h4 class="text-center">Your Search Criteria</h4>
-              </div>
-              <div class="more-info" id="more-info1" style="display: none;">
-                <div class="searchInfoDisplay" id="searchInfoDisplay">
-                  <!-- JavaScript will populate this container -->
-                </div>
-                <div class="form-row justify-content-center">
-                  <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#propertyModal">
-                    Modify Property Info
-                  </button>
-                </div>
-              </div>
-              <button id="toggle1" class="toggle-button moreless-button">
-                <i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>
+  <div class="background-container"></div>
+  <div class="margin-top-100"></div>
+  <div id="dashboardContainer" style="text-align: center;">
+    <h2>Buyer Dashboard for <%= buyer.firstName %>
+      <%= buyer.lastName %>
+    </h2>
+    <div class="form-row col-md-12 d-flex justify-content-left">
+      <div class="form-group col-md">
+        <input type="hidden" id="agentid" name="agentid">
+        <input type="hidden" id="buyeragentmatchid" name="buyeragentmatchid">
+        <input type="hidden" id="datatype" name="datatype">
+        <div class="property-group" style="margin-top: 50px;">
+          <div class="partial-info" id="propertyContainer">
+            <h4 class="text-center">Your Search Criteria</h4>
+          </div>
+          <div class="more-info" id="more-info1" style="display: none;">
+            <div class="searchInfoDisplay" id="searchInfoDisplay">
+              <!-- JavaScript will populate this container -->
+            </div>
+            <div class="form-row justify-content-center">
+              <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#propertyModal">
+                Modify Property Info
               </button>
             </div>
-            <div class="form-row">
-              <div class="userZip-container">
-                <div class="partial-info" id="zipContainer">
-                  <h4>Your Zip Codes</h4>
-                </div>
-                <div class="more-info" id="more-info2" style="display: none;">
-                  <div id="displayZipCodes" class="justify-content-center">
-                    <!-- JavaScript will populate this container -->
-                  </div>
-                  <div class="form-row justify-content-center">
-                    <button type="button" id="modify-button" class="modify-button" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
-                      Modify Zip Codes
-                    </button>
-                  </div>
-                </div>
-                <button id="toggle2" class="toggle-button moreless-button">
-                  <i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>
+          </div>
+          <button id="toggle1" class="toggle-button moreless-button">
+            <i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        <div class="form-row">
+          <div class="userZip-container">
+            <div class="partial-info" id="zipContainer">
+              <h4>Your Zip Codes</h4>
+            </div>
+            <div class="more-info" id="more-info2" style="display: none;">
+              <div id="displayZipCodes" class="justify-content-center">
+                <!-- JavaScript will populate this container -->
+              </div>
+              <div class="form-row justify-content-center">
+                <button type="button" id="modify-button" class="modify-button" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
+                  Modify Zip Codes
                 </button>
               </div>
             </div>
+            <button id="toggle2" class="toggle-button moreless-button">
+              <i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>
+            </button>
           </div>
-          <div class="offer-group col-md-8">
-            <!-- <div class="form-row" style="margin-top: 40px;">
+        </div>
+      </div>
+      <div class="offer-group col-md-8">
+        <!-- <div class="form-row" style="margin-top: 40px;">
           <h3 class="col-md-6">Your Offers</h3>
         </div> -->
-            <div class="offerFilter row col-md-12" id="filtercontainer">
-              <label for="offerFilter" class="col-md-5 col-form-label"><span>
-                  <h4>Your Offers</h4>
-                </span></label>
-              <select id="offerFilter" class="form-select-sm col-md-5" onchange="getOffers(this.value, this)">
-                <option id="allavailablefilter" value="AllAvailable">All Available Offers</option>
-                <option id="newfilter" value="New">Unread Offers</option>
-                <option id="favoritefilter" value="Favorite">Favorite Offers</option>
-                <option id="readfilter" value="Read">Read Offers</option>
-                <option id="declinedfilter" value="Declined">Declined</option>
-              </select>
-            </div>
+        <div class="offerFilter row col-md-12" id="filtercontainer">
+          <label for="offerFilter" class="col-md-5 col-form-label"><span>
+              <h4>Your Offers</h4>
+            </span></label>
+          <select id="offerFilter" class="form-select-sm col-md-5" onchange="getOffers(this.value, this)">
+            <option id="allavailablefilter" value="AllAvailable">All Available Offers</option>
+            <option id="newfilter" value="New">Unread Offers</option>
+            <option id="favoritefilter" value="Favorite">Favorite Offers</option>
+            <option id="readfilter" value="Read">Read Offers</option>
+            <option id="declinedfilter" value="Declined">Declined</option>
+          </select>
+        </div>
 
-            <div id="getOffers" class="tabcontent col-md-12">
-              <div class="row offerlist">
-                <div id="offers" class="offers col-md-4">
+        <div id="getOffers" class="tabcontent col-md-12">
+          <div class="row offerlist">
+            <div id="offers" class="offers col-md-4">
+              <!-- JavaScript will populate this container -->
+            </div>
+            <div id="offerDetailContainer" class="container-right col-md-5">
+              <div id="offerDetail">
+                <!-- JavaScript will populate this container -->
+              </div>
+              <div class="form-row container-right" style="border:none">
+                <div id="detailButtons">
                   <!-- JavaScript will populate this container -->
-                </div>
-                <div id="offerDetailContainer" class="container-right col-md-5">
-                  <div id="offerDetail">
-                    <!-- JavaScript will populate this container -->
-                  </div>
-                  <div class="form-row container-right" style="border:none">
-                    <div id="detailButtons">
-                      <!-- JavaScript will populate this container -->
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div id="messageModal" class="modal" style="display: none;">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p id="modalMessage">Some text in the Modal..</p>
-          <button class="modal-close-btn" id="modalCloseButton">Close</button>
-        </div>
-      </div>
+    </div>
+  </div>
+  <div id="messageModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="modalMessage">Some text in the Modal..</p>
+      <button class="modal-close-btn" id="modalCloseButton">Close</button>
     </div>
   </div>
   <%- include('property_modal') %>
