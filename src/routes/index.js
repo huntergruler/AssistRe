@@ -1613,7 +1613,7 @@ router.get('/requestagentinfo', (req, res) => {
       }
       var emailMesage = `The buyer has requested your information. Accept or Decline`;
       console.log('Agent Email:', agentEmail[0].email, emailMesage);
-      sendEmail(agentEmail[0].email, '', 'Buyer Information Request', emailMesage);
+      sendEmail(agentEmail[0].email, 'Buyer Information Request', emailMesage);
 
       res.json({ agentEmail: agentEmail[0].email });
 
