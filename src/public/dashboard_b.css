@@ -539,6 +539,11 @@ body {
     cursor: pointer;
 }
 
+.offers.selected {
+    background-color: #007BFF;
+    color: white;
+}
+
 .card {
     position: relative;
     cursor: pointer;
