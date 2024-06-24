@@ -13,12 +13,13 @@ body {
     max-width: auto;
     position: relative;
 }
+
 .background-container {
     background-image: url("images/titlebackground3.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 0;
-    opacity: 0.5; /* Change this value to adjust opacity */
+    opacity: 0.5; /* Adjust this value to change the opacity of the background image */
     position: absolute;
     top: 0;
     left: 0;
