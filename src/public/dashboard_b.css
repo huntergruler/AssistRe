@@ -431,7 +431,7 @@ body {
 
 }
 
-.form-row.container-right {
+.agentcontact-container{
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
@@ -446,6 +446,8 @@ body {
     text-align: center;
     cursor: pointer;
     background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .form-row.container-left {
