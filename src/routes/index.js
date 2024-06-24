@@ -707,9 +707,9 @@ router.get('/profile_a', (req, res) => {
           db.query(query, [userid], (err, bioresults) => {
             if (err) throw err;
             let hasBio = bioresults.length > 0;
-            res.render('profile_a', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, agentid: req.session.agentid, lastname: req.session.lastname, bioInfo: bioresults, hasBio: hasBio});
+            res.render('profile_a', { licenses: licenseresults, offices: officeresults, transactions: transactionresults, hasLicenses: hasLicenses, hasTransactions: hasTransactions, hasOffices: hasOffices, user: req.session.user, firstname: req.session.firstname, agentid: req.session.agentid, lastname: req.session.lastname, bioInfo: bioresults, hasBio: hasBio });
           });
-          
+
         });
       });
     });
@@ -1536,7 +1536,6 @@ router.get('/verify-email', (req, res) => {
   }
 });
 
-
 // Function to send a verification email
 function sendVerificationEmail(req, email, token, userType) {
   const mailTransporter = nodemailer.createTransport({
@@ -1596,7 +1595,7 @@ router.get('/getBuyerTypes', (req, res) => {
 
 router.get('/requestagentinfo', (req, res) => {
   const agentid = req.query.agentid;
-  const buyerid = req.session.userid;
+  const buyerid = req.session.buyerid;
   const buyeragentmatchid = req.query.buyeragentmatchid;
   const query = `update AgentBuyerMatch
                     set agentInfoRequested = 1
@@ -1607,7 +1606,16 @@ router.get('/requestagentinfo', (req, res) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
-    res.json({ success: true });
+    db.query(`SELECT email, concat(firstname,' ',lastname) fullname FROM Agents WHERE userid = ?`, [agentid], (error, agentEmail) => {
+      if (error) {
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      var emailMesage = `The buyer has requested your information. Accept or Decline`;
+      sendEmail(req, agentEmail[0].email, '', 'Buyer Information Request', emailMesage);
+
+      res.json({ agentEmail: agentEmail[0].email });
+
+    });
   });
 });
 
@@ -1633,5 +1641,33 @@ router.get('/getagentinfo', (req, res) => {
     }
   });
 });
+
+// Function to send a verification email
+function sendEmail(email, subject, message) {
+  const mailTransporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
+    }
+  });
+  const mailDetails = {
+    from: process.env.SMTP_FROM,
+    to: email,
+    subject: subject,
+    html: message
+  };
+
+  mailTransporter.sendMail(mailDetails, (error, info) => {
+    if (error) {
+      console.log('Error sending email:', error);
+    } else {
+      console.log('Email sent to:',mailDetails.to, info.response);
+    }
+  });
+}
+
+
 
 module.exports = router;
