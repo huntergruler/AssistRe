@@ -425,8 +425,18 @@
                             <h3>Current Transaction(s)</h3>
                         </div>
                     </div>
-                    <div class="row">
-                        <table >
+                    <% if (hasLicenses) { %>
+                        <% licenses.forEach(function(license) { %>
+                            <div class="row">
+                                <h4><%= license.licenseState %> - <%= license.licenseNumber %> - <%= license.licenseExpirationDate %></h4>
+                            </div>
+                        <% }); %>
+                        <% } else { %>
+                            <div class="row">
+                                <h4>No Licenses Found</h4>
+                            </div>
+                        <% } %>
+                        <table id="licensesTable">
                             <thead>
                                 <tr>
                                     <th>License State</th>
