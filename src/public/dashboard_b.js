@@ -330,7 +330,7 @@ function selectOffer(agentid, buyeragentmatchid, element) {
         row.classList.remove('selected');
     });
 
-    element.classList.add('selected');
+    offerid.classList.add('selected');
     offerDetail(agentid, buyeragentmatchid);
     if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
