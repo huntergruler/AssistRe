@@ -539,9 +539,9 @@ body {
 }
 .address-icon {
     position: absolute;
-    right: 263px;
+    right: 63px;
     color: rgb(53, 51, 51);
-    font-size: 15px;
+    font-size: 25px;
     cursor: pointer;
 }
 
