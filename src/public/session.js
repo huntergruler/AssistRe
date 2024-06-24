@@ -2,9 +2,11 @@
 const sessionTimeoutDuration = 30 * 60 * 1000; // 30 minutes
 
 let sessionTimer;
+let sessionStartTime;
 
 // Start the session timer
 function startSessionTimer() {
+    sessionStartTime = new Date(); // Capture the start time
     sessionTimer = setTimeout(sessionTimeout, sessionTimeoutDuration);
 }
 
@@ -16,9 +18,12 @@ function resetSessionTimer() {
 
 // Handle session timeout
 function sessionTimeout() {
-    // Redirect the user to the login page
-    alertmsg = sessionTimer+"Session timeout. Please login";
-    alert(alertmsg);
+    const currentTime = new Date();
+    const elapsedTime = currentTime - sessionStartTime; // Time elapsed in milliseconds
+    const elapsedSeconds = Math.floor(elapsedTime / 1000); // Convert to seconds
+
+    const alertMsg = `${elapsedSeconds} seconds have passed. Session timeout. Please login.`;
+    alert(alertMsg);
     window.location.href = '/';
 }
 
