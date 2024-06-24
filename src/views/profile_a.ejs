@@ -436,7 +436,7 @@
                             <h4> - </h4>
                         </div>
                         <div class="col-md-3">
-                            <h4>License Number</h4>
+                            <h4>License #</h4>
                         </div>
                         <div class="col-md-1">
                             <h4> - </h4>
@@ -448,8 +448,20 @@
                     <% if (hasLicenses) { %>
                         <% licenses.forEach(function(license) { %>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <h4><%= license.licenseState %> - <%= license.licenseNumber %> - <%= license.licenseExpirationDate %></h4>
+                                <div class="col-md-3">
+                                    <h4><%= license.licenseState %></h4>
+                                </div>
+                                <div class="col-md-1">
+                                    <h4> - </h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4><%= license.licenseNumber %></h4>
+                                </div>
+                                <div class="col-md-1">
+                                    <h4> - </h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4><%= license.licenseExpirationDate %></h4>
                                 </div>
                             </div>
                         <% }); %>
