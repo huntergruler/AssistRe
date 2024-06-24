@@ -398,7 +398,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                 // onclick="populateAgentInfo(${request.agentid});">
                 // Request Agent Contact Info
 
-                div.className = "form-row offers container-right";
+                div.className = "form-row offers col-md-12";
                 div.id = "agentid" + request.agentid;
                 offerDetail.appendChild(div);
 
