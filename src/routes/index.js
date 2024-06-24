@@ -240,7 +240,8 @@ router.get('/getOffers', (req, res) => {
                            ao.retainerFee, if(ao.retainerCredited,'Yes','No') retainerCredited, ao.lengthOfService, 
                            ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, 
                            DATE_FORMAT(ao.entryTimestamp, '%m/%d/%Y') offerTimestamp, bam.buyerStatus, 
-                           concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentid) dispIdentifier
+                           concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentid) dispIdentifier,
+                           agentInfoRequested
                      from AgentOffers ao
                           join Agents a on a.userid = ao.agentid
                           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentid = a.userid
