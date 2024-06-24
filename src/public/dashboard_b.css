@@ -21,7 +21,7 @@ body {
     background-image: url("images/titlebackground3.jpg");
     background-size: cover;
     background-position: center;
-    filter: brightness(50%) contrast(70%) blur(2px); /* Adjust filter values as needed */
+    opacity: 0.5; /* Change this value to adjust opacity */
 }
 
 .agentinfo-container{
