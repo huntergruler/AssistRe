@@ -1597,7 +1597,6 @@ router.get('/requestagentinfo', (req, res) => {
   const agentid = req.query.agentid;
   const buyerid = req.session.buyerid;
   const buyeragentmatchid = req.query.buyeragentmatchid;
-  console.log('Agent ID:', agentid, 'Buyer ID:', buyerid, 'Buyer Agent Match ID:', buyeragentmatchid);
   const query = `update AgentBuyerMatch
                     set agentInfoRequested = 1
                   where agentid = ?
@@ -1612,7 +1611,6 @@ router.get('/requestagentinfo', (req, res) => {
         return res.status(500).json({ error: 'Internal server error' });
       }
       var emailMesage = `The buyer has requested your information. Accept or Decline`;
-      console.log('Agent Email:', agentEmail[0].email, emailMesage);
       sendEmail(agentEmail[0].email, 'Buyer Information Request', emailMesage);
 
       res.json({ agentEmail: agentEmail[0].email });
@@ -1646,7 +1644,6 @@ router.get('/getagentinfo', (req, res) => {
 
 // Function to send a verification email
 function sendEmail(email, subject, message) {
-  console.log('Email:', email, subject, message);
   const mailTransporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
@@ -1670,7 +1667,5 @@ function sendEmail(email, subject, message) {
     }
   });
 }
-
-
 
 module.exports = router;
