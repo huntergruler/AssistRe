@@ -11,12 +11,15 @@ body {
     font-size: 14px;
     margin: 50px 50px;
     max-width: auto;
+    opacity: 0.95; /* Change this value to adjust opacity */
+    z-index: -1; /* Ensure the background stays behind the content */
+}
+.background-container{
     background-image: url("images/titlebackground3.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 0;
-    opacity: 0.95; /* Change this value to adjust opacity */
-    z-index: -1; /* Ensure the background stays behind the content */
+
 }
 
 .agentinfo-container{
