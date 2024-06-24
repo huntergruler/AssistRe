@@ -585,7 +585,6 @@ function savePropertyChanges(event) {
 function populateAgentInfo(agentid) {
     const agentInfo = document.getElementById('agentInfo');
     agentInfo.innerHTML = '';
-    console.log('Agentid', agentid);
     fetch(`/getagentinfo?agentid=${encodeURIComponent(agentid)}`)
         .then(response => response.json())
         .then(data => {
@@ -621,23 +620,23 @@ function populateAgentInfo(agentid) {
                 addressIcon.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation(); // Prevent the click event from bubbling up to the card
-                    downloadContactCard(item); 
+                    downloadContactCard(item);
                 });
-            });                  
+            });
         })
         .catch(error => console.error('Error getting agent data:', error));
 }
 
 function downloadContactCard(item) {
-    console.log('Item', item);
     const vCard = `BEGIN:VCARD
 VERSION:3.0
 FN:${item.fullName}
 TEL;TYPE=WORK,VOICE:${item.phoneNumber}
-ADR;TYPE=WORK:;;${item.address};${item.cityStateZip}
 EMAIL:${item.email}
 NOTE:License: ${item.licenseNumber} - ${item.licenseState}
 END:VCARD`;
+
+// ADR;TYPE=WORK:;;${item.address};${item.cityStateZip}  // Address line - Not sure we want to include this
 
     const blob = new Blob([vCard], { type: 'text/vcard' });
     const link = document.createElement('a');
@@ -650,8 +649,8 @@ END:VCARD`;
 
     // Clean up and remove the link
     document.body.removeChild(link);
-    
-    
+
+
     // const url = window.URL.createObjectURL(blob);
     // const a = document.createElement('a');
     // a.download = `${item.fullName}.vcf`;

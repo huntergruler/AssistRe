@@ -1600,6 +1600,7 @@ router.get('/getagentinfo', (req, res) => {
                         a.languages, a.phoneNumber, al.licenseNumber, al.licenseState, al.licenseExpirationDate
                    from Agents a
                         join AgentLicenses al on a.userid = al.userid
+                        join AgentOffices ao on a.userid = ao.userid
                   where a.userid = ?`;
   db.query(query, [agentid], (error, results) => {
     if (error) {
