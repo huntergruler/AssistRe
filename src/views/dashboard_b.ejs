@@ -35,6 +35,7 @@
 </header>
 
 <body id="dashboardBody">
+    <div class="background-container">
   <div class="margin-top-100"></div>
   <div id="dashboardContainer" style="text-align: center;">
     <h2>Buyer Dashboard for <%= buyer.firstName %>
@@ -128,6 +129,7 @@
       <button class="modal-close-btn" id="modalCloseButton">Close</button>
     </div>
   </div>
+  </div>    
   <%- include('property_modal') %>
   <%- include('zipcode_modal') %>
   <%- include('agentinfo_modal') %>
