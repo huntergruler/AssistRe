@@ -409,7 +409,24 @@
             <div class="user-container">
                 <h3 class="text-center">License Info</h3>
                 <div class="license-group">
-
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Current License(s)</h3>
+                        </div>
+                    </div>
+                    <% if (hasLicenses) { %>
+                        <% licenses.forEach(function(license) { %>
+                            <h4> Working on a transaction</h4>
+                            <div class="row">
+                                <h4><%= license.licenseState %> - <%= license.licenseNumber %> - <%= license.licenseExpirationDate %></h4>
+                            </div>
+                        <% }); %>
+                        <% } else { %>
+                            <div class="row">
+                                <h4>No Licenses Found</h4>
+                            </div>
+                        <% } %>
+                    </div>
                 </div>
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#licenseModal"
                     onclick="populateUserZipCodes();">
@@ -420,24 +437,7 @@
             <div class="user-container">
                 <h3 class="text-center">Transaction Info</h3>
                 <div class="transaction-group">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>Current Transaction(s)</h3>
-                        </div>
-                    </div>
-                    <% if (hasLicenses) { %>
-                        <% licenses.forEach(function(license) { %>
-                            <h4> Working on a transaction</h4>
-                            <!-- <div class="row">
-                                <h4><%= license.licenseState %> - <%= license.licenseNumber %> - <%= license.licenseExpirationDate %></h4>
-                            </div> -->
-                        <% }); %>
-                        <% } else { %>
-                            <div class="row">
-                                <h4>No Licenses Found</h4>
-                            </div>
-                        <% } %>
-                    </div>
+                    
                 </div>
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#transactionModal"
                     onclick="populateUserZipCodes();">
