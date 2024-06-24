@@ -664,7 +664,7 @@ function populateAgentInfo(agentid) {
                 <a href="#" class="address-icon" id="addressicon" data-item-id="1" title="Click to download contact card">
                 <i class="fas fa-address-card"></i></a>
                 `;
-                div.className = "agentcontact-container";
+                div.className = "form-row agentcontact-container";
                 agentInfo.appendChild(div);
 
                 // Add event listener to the address icon
