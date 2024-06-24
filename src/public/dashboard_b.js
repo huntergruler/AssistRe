@@ -585,7 +585,7 @@ function savePropertyChanges(event) {
 function populateAgentInfo(agentid) {
     const agentInfo = document.getElementById('agentInfo');
     agentInfo.innerHTML = '';
-    console.log('Agentid',agentid);
+    console.log('Agentid', agentid);
     fetch(`/getagentinfo?agentid=${encodeURIComponent(agentid)}`)
         .then(response => response.json())
         .then(data => {
@@ -615,9 +615,47 @@ function populateAgentInfo(agentid) {
                 `;
                 div.className = "form-row container-right";
                 agentInfo.appendChild(div);
-            });
+
+                // Add event listener to the address icon
+                const addressIcon = div.querySelector('.address-icon');
+                addressIcon.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation(); // Prevent the click event from bubbling up to the card
+                    downloadContactCard(item); 
+                });
+            });                  
         })
-        .catch(error => console.error('Error checking user:', error));
+        .catch(error => console.error('Error getting agent data:', error));
+}
+
+function downloadContactCard(item) {
+    const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:${item.fullName}
+TEL;TYPE=WORK,VOICE:${item.phoneNumber}
+ADR;TYPE=WORK:;;${item.address};${item.cityStateZip}
+EMAIL:${item.email}
+NOTE:License: ${item.licenseNumber} - ${item.licenseState}
+END:VCARD`;
+
+    const blob = new Blob([vCard], { type: 'text/vcard' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${fullName.replace(/ /g, '_')}.vcf`;
+
+    // Append link to the body and trigger the download
+    document.body.appendChild(link);
+    link.click();
+
+    // Clean up and remove the link
+    document.body.removeChild(link);
+    
+    
+    // const url = window.URL.createObjectURL(blob);
+    // const a = document.createElement('a');
+    // a.download = `${item.fullName}.vcf`;
+    // a.click();
+    // window.URL.revokeObjectURL(url);
 }
 
 function getBuyerTypes() {
