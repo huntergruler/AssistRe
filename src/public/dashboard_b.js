@@ -642,7 +642,7 @@ END:VCARD`;
     const blob = new Blob([vCard], { type: 'text/vcard' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `${fullName.replace(/ /g, '_')}.vcf`;
+    link.download = `${item.fullName.replace(/ /g, '_')}.vcf`;
 
     // Append link to the body and trigger the download
     document.body.appendChild(link);
