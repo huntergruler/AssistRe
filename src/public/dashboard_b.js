@@ -210,7 +210,21 @@ function getOffers(datatype, element) {
                     <i class="far fa-heart"></i></a>
                     <a href="#" class="decline-icon" id="declineicon" data-item-id="2" title="Click to decline this offer">
                     <i class="far fa-ban"></i></a>
-                    ${request.offerText}<br></div>`;
+                    ${request.offerText}<br>`
+                    if (request.agentInfoRequested == 1) {
+                        div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
+                                        style="background-color: grey" >
+                                       Agent Contact Info Requested
+                                       </button>
+                                       </div>`;
+                    } else if (request.agentInfoRequested == 2) {
+                        div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
+                        data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
+                         View Agent Contact Info
+                                        </button>
+                                        </div>`;
+                    }
+                    // </div>`;
                     div.className = "form-row offers col-md-12";
                     div.id = "agentid" + request.agentid;
                     if (request.buyerStatus == "New") {
@@ -358,22 +372,20 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Offer Date: ${request.offerTimestamp}<br>
                 </div>
                 <div class="form-row" style="border: none">`
-                if(request.agentInfoRequested == 0) {
+                if (request.agentInfoRequested == 0) {
                     div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
                                                onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">
                                        Request Agent Contact Info
                                        </button>
                                        </div>`;
-                } else if(request.agentInfoRequested == 1)
-                    {
+                } else if (request.agentInfoRequested == 1) {
                     div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: grey" >
                                        Agent Contact Info Requested
                                        </button>
                                        </div>`;
-                } else if(request.agentInfoRequested == 2)
-                    {
-                        div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
+                } else if (request.agentInfoRequested == 2) {
+                    div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent Contact Info
                                         </button>
@@ -421,7 +433,7 @@ function offerDetail(agentid, buyeragentmatchid) {
         .catch(error => console.error('Error checking user:', error));
 }
 
-function requestAgentInfo(agentid,buyeragentmatchid) {
+function requestAgentInfo(agentid, buyeragentmatchid) {
     fetch(`/requestagentinfo?agentid=${encodeURIComponent(agentid)},&buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)}`)
         .then(response => response.json())
         .then(data => {
