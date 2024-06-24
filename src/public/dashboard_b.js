@@ -375,6 +375,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                 <u>Offer Description</u><br>
                 ${request.offerDesc}<br>
                 Offer Date: ${request.offerTimestamp}<br>`;
+                console.log(div.innerHTML);
                 if (request.agentInfoRequested == 0) {
                     div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
                                                onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">

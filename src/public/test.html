@@ -1,73 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Favorite Items</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-  <style>
-    .card {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .favorite-icon {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      color: red;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .favorite {
-      color: red;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <a href="#" class="favorite-icon" data-item-id="1">
-            <i class="far fa-heart"></i>
-          </a>
-          <img src="https://via.placeholder.com/150" class="card-img-top" alt="Item 1">
-          <h5 class="card-title">Item 1</h5>
-          <p class="card-text">Description of item 1.</p>
-        </div>
-      </div>
-      <!-- Repeat for other grid items -->
-    </div>
-  </div>
-
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <!-- Bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      // Handle the click on the favorite icon
-      $('.favorite-icon').on('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation(); // Prevent the click event from bubbling up to the card
-        var $icon = $(this).find('i');
-        $icon.toggleClass('far fa-heart fas fa-heart favorite');
-      });
-
-      // Handle the click on the card
-      $('.card').on('click', function() {
-        // Your card click handling code here
-        alert('Card clicked!');
-      });
-    });
-  </script>
-</body>
-
-</html>
+<div class="flex-fill offersummary">
+  <u>Agent JG23 Full Offer Details</u><br>
+  Offer Type: <b>Non-Exclusive</b><br>
+  Level of Service: <b>Limited Service</b><br>
+  Compensation Type: <b>Hourly Rate</b><br>
+  Compensation Amount: <b>$1000.00 per Hour</b><br>
+  Agreement Length: <b>3 Months</b><br>
+  Retainer Fee: <b>$250</b><br>
+  Retainer Fee will be Credited: <b>Yes</b><br>
+  Expiration Compensation: <b>20 Days</b><br>
+  Expiration Compensation Amount: <b>500</b><br>
+  <u>Offer Description</u><br>
+  Best Agent EVER!<br>
+  Offer Date: 06/21/2024<br>
+</div><button type="button" id="agentinfo-button" class="agentinfo-button" onclick="requestAgentInfo(23,21);">
+  Request Agent Contact Info
+</button>
