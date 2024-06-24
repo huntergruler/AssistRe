@@ -361,7 +361,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                 const div = document.createElement("div");
                 div.className = "form-row";
                 div.id = "agentid" + request.agentid;
-                var innerHTMLtext = `<div form-row col-md-12><div class="flex-fill offersummary agentcontact-container">
+                var innerHTMLtext = `<div class="form-row col-md-12 agentcontact-container"><div class="flex-fill offersummary ">
                 <u>Agent ${request.dispIdentifier} Full Offer Details</u><br>
                 Offer Type: <b>${request.offerType}</b><br>
                 Level of Service: <b>${request.levelOfService}</b><br>
