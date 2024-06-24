@@ -359,7 +359,7 @@ function offerDetail(agentid, buyeragentmatchid) {
         .then(data => {
             data.forEach(request => {
                 const div = document.createElement("div");
-                div.className = "form-row container-right";
+                div.className = "form-row .agentcontact-container";
                 div.id = "agentid" + request.agentid;
                 var innerHTMLtext = `<div class="flex-fill offersummary">
                 <u>Agent ${request.dispIdentifier} Full Offer Details</u><br>
@@ -375,7 +375,6 @@ function offerDetail(agentid, buyeragentmatchid) {
                 <u>Offer Description</u><br>
                 ${request.offerDesc}<br>
                 Offer Date: ${request.offerTimestamp}<br>`;
-                console.log(innerHTMLtext);
                 if (request.agentInfoRequested == 0) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
                                                onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">
@@ -395,7 +394,6 @@ function offerDetail(agentid, buyeragentmatchid) {
                                         </button>
                                         `;
                 }
-                console.log(innerHTMLtext);
                 div.innerHTML = innerHTMLtext;
 
                 // onclick="populateAgentInfo(${request.agentid});">
