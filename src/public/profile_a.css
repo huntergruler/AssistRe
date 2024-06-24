@@ -393,6 +393,10 @@ body {
     margin-bottom: 5px;
 }
 
-#officeLabel {
+#officeNameLabel {
     text-align: end;
+}
+
+#officeName {
+    text-align: start;
 }
