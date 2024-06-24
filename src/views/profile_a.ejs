@@ -398,13 +398,19 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <h4>Address: <%= offices[1].address %>, <%= offices[1].city %>, <%= offices[1].state %> <%= offices[1].zip %></h4>
+                        <div class="col-md-4" id="officeAddressLabel">
+                            <h4>Address: </h4>
+                        </div>
+                        <div class="col-md-8" id="officeAddress">
+                            <h4><%= offices[1].address %>, <%= offices[1].city %>, <%= offices[1].state %> <%= offices[1].zip %></h4>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <h4>Phone: <%= offices[1].phoneNumber %></h4>
+                        <div class="col-md-4" id="officePhoneLabel">
+                            <h4>Phone: </h4>
+                        </div>
+                        <div class="col-md-12" id="officePhone">
+                            <h4><%= offices[1].phoneNumber %></h4>
                         </div>
                     </div>
                 </div>

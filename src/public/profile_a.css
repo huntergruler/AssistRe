@@ -394,11 +394,15 @@ body {
 }
 
 #officeNameLabel,
-#officeLicenseLabel {
+#officeLicenseLabel,
+#officeAddressLabel,
+#officePhoneLabel {
     text-align: end;
 }
 
 #officeName,
-#officeLicense {
+#officeLicense,
+#officeAddress,
+#officePhone {
     text-align: start;
 }
