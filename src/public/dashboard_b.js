@@ -610,12 +610,9 @@ function populateAgentInfo(agentid) {
                 <div class="row col-md-10" style="justify-content-center"><i>Agent Biography</i></div>
                 <div  class="row col-md-10" style="border:1px solid black"> ${item.bio}<br></div>
                 </div>
-                <div class="icon-container">
-                <i class="fas fa-address-card"></i> <!-- Contact Card Icon -->
-                </div>
-    <div class="icon-container">
-        <i class="fas fa-user"></i> <!-- User Icon -->
-    </div>            `;
+                <a href="#" class="address-icon" id="addressicon" data-item-id="1" title="Click to download contact card">
+                <i class="fas fa-address-card"></i></a>
+                `;
                 div.className = "form-row container-right";
                 agentInfo.appendChild(div);
             });
