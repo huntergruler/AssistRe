@@ -444,6 +444,8 @@ body {
     width: auto;
     justify-content: center;
     text-align: center;
+    align-content: center;
+    align-items: center;
     cursor: pointer;
     background-color: white;
     border: 1px solid black;
