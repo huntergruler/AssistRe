@@ -423,6 +423,11 @@ body {
     border: 1px solid black;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
+    justify-content: center;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
 
 }
 
