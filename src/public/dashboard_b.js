@@ -612,7 +612,10 @@ function populateAgentInfo(agentid) {
                 </div>
                 <div class="icon-container">
                 <i class="fas fa-address-card"></i> <!-- Contact Card Icon -->
-            </div>`;
+                </div>
+    <div class="icon-container">
+        <i class="fas fa-user"></i> <!-- User Icon -->
+    </div>            `;
                 div.className = "form-row container-right";
                 agentInfo.appendChild(div);
             });
