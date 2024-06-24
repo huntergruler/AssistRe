@@ -11,6 +11,7 @@ body {
     font-size: 14px;
     /* Base font size */
     /* background-color: #666; */
+    background-image: url("images/titlebackground3.jpg");
     margin: 50px 50px;
     max-width: auto;
 }
