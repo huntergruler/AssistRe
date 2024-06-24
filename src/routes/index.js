@@ -1610,7 +1610,36 @@ router.get('/requestagentinfo', (req, res) => {
       if (error) {
         return res.status(500).json({ error: 'Internal server error' });
       }
-      var emailMesage = `The buyer has requested your information. Accept or Decline`;
+      var emailMesage = `<!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    .button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        margin: 10px;
+                        font-size: 16px;
+                        color: white;
+                        text-align: center;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .confirm {
+                        background-color: #28a745;
+                    }
+                    .decline {
+                        background-color: #dc3545;
+                    }
+                </style>
+            </head>
+            <body>
+                <p>Dear User,</p>
+                <p>Please confirm or decline your action by clicking one of the buttons below:</p>
+                <a href="https://yourwebsite.com/confirm?token=yourVerificationToken" class="button confirm">Confirm</a>
+                <a href="https://yourwebsite.com/decline?token=yourVerificationToken" class="button decline">Decline</a>
+                <p>Thank you!</p>
+            </body>
+            </html>`;
       sendEmail(agentEmail[0].email, 'Buyer Information Request', emailMesage);
 
       res.json({ agentEmail: agentEmail[0].email });
