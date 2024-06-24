@@ -363,6 +363,27 @@ function offerDetail(agentid, buyeragentmatchid) {
                 </button>
                 </div>`;
 
+                if(request.agentInfoRequested == 0) {
+                    div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
+                                               onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">
+                                       Request Agent Contact Info
+                                       </button>
+                                       </div>`
+                } else if(request.agentInfoRequested == 1)
+                    {
+                    div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled" >
+                                       Agent Contact Info Requested
+                                       </button>
+                                       </div>`
+                } else if(request.agentInfoRequested == 2)
+                    {
+                        div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
+                        data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
+                         View Agent Contact Info
+                                        </button>
+                                        </div>`
+                }
+
                 // onclick="populateAgentInfo(${request.agentid});">
                 // Request Agent Contact Info
 
