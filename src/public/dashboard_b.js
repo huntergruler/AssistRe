@@ -629,6 +629,7 @@ function populateAgentInfo(agentid) {
 }
 
 function downloadContactCard(item) {
+    console.log('Item', item);
     const vCard = `BEGIN:VCARD
 VERSION:3.0
 FN:${item.fullName}
