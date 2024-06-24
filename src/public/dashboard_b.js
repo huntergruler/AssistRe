@@ -368,9 +368,9 @@ function offerDetail(agentid, buyeragentmatchid) {
                 offerDetail.appendChild(div);
 
 
-                detailCont.style.border = '1px solid black';
-                detailCont.style.borderBottomLeftRadius = '5px';
-                detailCont.style.borderBottomRightRadius = '5px';
+                // detailCont.style.border = '1px solid black';
+                // detailCont.style.borderBottomLeftRadius = 'px';
+                // detailCont.style.borderBottomRightRadius = '5px';
 
                 // // Create a container div to hold the buttons
                 // const buttonContainer = document.createElement("div");
