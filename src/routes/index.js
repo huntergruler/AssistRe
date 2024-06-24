@@ -1592,6 +1592,23 @@ router.get('/getBuyerTypes', (req, res) => {
   });
 });
 
+router.get('/requestagentinfo', (req, res) => {
+  const agentid = req.query.agentid;
+  const buyerid = req.session.userid;
+  const buyeragentmatchid = req.query.buyeragentmatchid;
+  const query = `update AgentBuyerMatch
+                    set agentInfoRequested = 1
+                  where agentid = ?
+                    and buyerid = ?
+                    and buyeragentmatchid = ?`;
+  db.query(query, [agentid, buyerid, buyeragentmatchid], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    res.json({ success: true });
+  });
+});
+
 router.get('/getagentinfo', (req, res) => {
   const agentid = req.query.agentid;
   console.log('Agent ID:', agentid);

@@ -358,10 +358,13 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Offer Date: ${request.offerTimestamp}<br>
                 </div>
                 <div class="form-row" style="border: none">
-                <button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal" data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
-                  Agent Contact Info
+                <button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal" data-target="#agentInfoModal" onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">
+                  Request Agent Contact Info
                 </button>
                 </div>`;
+
+                // onclick="populateAgentInfo(${request.agentid});">
+                // Request Agent Contact Info
 
                 div.className = "form-row container-right";
                 div.id = "agentid" + request.agentid;
@@ -399,6 +402,19 @@ function offerDetail(agentid, buyeragentmatchid) {
             });
         })
         .catch(error => console.error('Error checking user:', error));
+}
+
+function requestAgentInfo(agentid,buyeragentmatchid) {
+    fetch(`/requestagentinfo?agentid=${encodeURIComponent(agentid)},&buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error fetching agent info:', data.error);
+                return;
+            }
+            alert('Request for agent contact info has been sent. You should be contacted shortly.');
+        })
+        .catch(error => console.error('Error fetching agent info:', error));
 }
 
 function getOfferCounts() {
@@ -636,7 +652,7 @@ EMAIL:${item.email}
 NOTE:License: ${item.licenseNumber} - ${item.licenseState}
 END:VCARD`;
 
-// ADR;TYPE=WORK:;;${item.address};${item.cityStateZip}  // Address line - Not sure we want to include this
+    // ADR;TYPE=WORK:;;${item.address};${item.cityStateZip}  // Address line - Not sure we want to include this
 
     const blob = new Blob([vCard], { type: 'text/vcard' });
     const link = document.createElement('a');
