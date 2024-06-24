@@ -318,6 +318,7 @@ function selectOffer(agentid, buyeragentmatchid, element) {
     const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
     const selectFields = document.querySelectorAll('#offerFormContainer select');
     const offerButton = document.getElementById('offerButton');
+    const offerid = document.getElementById("agentid" + agentid);
     // const offerForm = document.getElementById('offerForm');
     // offerForm.style.display = 'none';
     const datatype = document.getElementById('datatype').value;
