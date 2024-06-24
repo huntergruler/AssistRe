@@ -215,14 +215,12 @@ function getOffers(datatype, element) {
                         div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: grey" >
                                        Agent Contact Info Requested
-                                       </button>
-                                       </div>`;
+                                       </button>`;
                     } else if (request.agentInfoRequested == 2) {
                         div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent Contact Info
-                                        </button>
-                                        </div>`;
+                                        </button>`;
                     }
                     // </div>`;
                     div.className = "form-row offers col-md-12";
