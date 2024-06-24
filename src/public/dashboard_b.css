@@ -15,7 +15,6 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 0;
-    filter: brightness(50%) contrast(70%) blur(2px); 
     opacity: 0.95; /* Change this value to adjust opacity */
     z-index: -1; /* Ensure the background stays behind the content */
 }
