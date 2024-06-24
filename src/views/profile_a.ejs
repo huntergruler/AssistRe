@@ -442,6 +442,53 @@
             <div class="user-container">
                 <h3 class="text-center">Transaction Info</h3>
                 <div class="transaction-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Current Transaction(s)</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="transactionTable">
+                                <thead>
+                                    <tr>
+                                        <th>Transaction Date</th>
+                                        <th>Transaction Amount</th>
+                                        <th>Transaction Property Type</th>
+                                        <th>Transaction Level Of Service</th>
+                                        <th>Transaction Compensation Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (hasTransactions) { %>
+                                        <% transactions.forEach(function(transaction) { %>
+                                            <tr id="transaction-<%= transaction.agenttransactionid %>">
+                                                <td>
+                                                    <%= transaction.transactionDate %>
+                                                </td>
+                                                <td>
+                                                    <%= transaction.transactionAmount %>
+                                                </td>
+                                                <td>
+                                                    <%= transaction.PropertyType %>
+                                                </td>
+                                                <td>
+                                                    <%= transaction.LevelOfService %>
+                                                </td>
+                                                <td>
+                                                    <%= transaction.CompensationType %>
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+                                                <% } else { %>
+                                                    <tr id="noTransactionRow">
+                                                        <td colspan="5">No transactions found.</td>
+                                                    </tr>
+                                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     
                 </div>
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#transactionModal"
