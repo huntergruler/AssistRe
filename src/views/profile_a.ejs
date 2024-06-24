@@ -414,7 +414,7 @@
                             <h3>Current License(s)</h3>
                         </div>
                     </div>
-                    <% if (hasLicenses) { %>
+                    <% if (!hasLicenses) { %>
                         <% licenses.forEach(function(license) { %>
                             <div class="row">
                                 <h4><%= license.licenseState %> - <%= license.licenseNumber %> - <%= license.licenseExpirationDate %></h4>
