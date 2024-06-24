@@ -372,25 +372,25 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Expiration Compensation Amount: <b>${request.expirationCompensation}</b><br>
                 <u>Offer Description</u><br>
                 ${request.offerDesc}<br>
-                Offer Date: ${request.offerTimestamp}<br>`
+                Offer Date: ${request.offerTimestamp}<br>`;
                 if (request.agentInfoRequested == 0) {
                     div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
                                                onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">
                                        Request Agent Contact Info
                                        </button>
-                                       </div>`;
+                                       `;
                 } else if (request.agentInfoRequested == 1) {
                     div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: grey" >
                                        Agent Contact Info Requested
                                        </button>
-                                       </div>`;
+                                       `;
                 } else if (request.agentInfoRequested == 2) {
                     div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent Contact Info
                                         </button>
-                                        </div>`;
+                                        `;
                 }
 
                 // onclick="populateAgentInfo(${request.agentid});">
