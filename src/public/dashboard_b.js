@@ -359,7 +359,9 @@ function offerDetail(agentid, buyeragentmatchid) {
         .then(data => {
             data.forEach(request => {
                 const div = document.createElement("div");
-                div.innerHTML += `<div class="flex-fill offersummary">
+                div.className = "form-row container-right";
+                div.id = "agentid" + request.agentid;
+                div.innerHTML = `<div class="flex-fill offersummary">
                 <u>Agent ${request.dispIdentifier} Full Offer Details</u><br>
                 Offer Type: <b>${request.offerType}</b><br>
                 Level of Service: <b>${request.levelOfService}</b><br>
@@ -392,12 +394,11 @@ function offerDetail(agentid, buyeragentmatchid) {
                                         </button>
                                         `;
                 }
+                console.log(div.innerHTML);
 
                 // onclick="populateAgentInfo(${request.agentid});">
                 // Request Agent Contact Info
 
-                div.className = "form-row container-right";
-                div.id = "agentid" + request.agentid;
                 offerDetail.appendChild(div);
 
 
