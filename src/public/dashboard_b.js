@@ -204,7 +204,7 @@ function getOffers(datatype, element) {
                         div.innerHTML = ``
                     }
                     div.innerHTML += `
-                    <div class="flex-fill offersummary card">
+                    <div class="flex-fill offersummary">
                     <div class="newDot col-md">&#x2022;</div>
                     <a href="#" class="favorite-icon" id="favicon" data-item-id="1" title="Click to favorite this offer">
                     <i class="far fa-heart"></i></a>
