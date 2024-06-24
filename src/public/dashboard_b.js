@@ -432,6 +432,7 @@ function offerDetail(agentid, buyeragentmatchid) {
 }
 
 function requestAgentInfo(agentid, buyeragentmatchid) {
+    const agentinfobutton = document.getElementById('agentinfo-button');
     fetch(`/requestagentinfo?agentid=${encodeURIComponent(agentid)},&buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)}`)
         .then(response => response.json())
         .then(data => {
@@ -439,7 +440,10 @@ function requestAgentInfo(agentid, buyeragentmatchid) {
                 console.error('Error fetching agent info:', data.error);
                 return;
             }
-            alert('Request for agent contact info has been sent. You should be contacted shortly.');
+            agentinfobutton.textContent = 'Agent Contact Info Requested';
+            agentinfobutton.style.backgroundColor = 'grey';
+            agentinfobutton.classList.add('disabled');
+            agentinfobutton.onclick = null;
         })
         .catch(error => console.error('Error fetching agent info:', error));
 }
