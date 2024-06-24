@@ -366,7 +366,8 @@ function offerDetail(agentid, buyeragentmatchid) {
                                        </div>`;
                 } else if(request.agentInfoRequested == 1)
                     {
-                    div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled" >
+                    div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
+                                        style="background-color: grey" >
                                        Agent Contact Info Requested
                                        </button>
                                        </div>`;
