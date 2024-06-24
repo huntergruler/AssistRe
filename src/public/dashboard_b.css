@@ -459,7 +459,7 @@ body {
     padding-right: 0px;
     height: fit-content;
     border: 1px solid black;
-    border-radius: 8px 0 0 8px;
+    border-radius: 10px 0 0 8px;
     justify-content: center;
     text-align: center;
     cursor: pointer;
