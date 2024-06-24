@@ -205,8 +205,9 @@ router.get('/getOffers', (req, res) => {
 
     if (!agentid) {
       var query = `select ofb.buyeragentmatchid, ofb.agentid, ofb.agentofferid, ofb.buyerStatus, 
-                          ofb.buyerid, ofb.buyerrequestid, ofb.offerText
-                                              from OffersForBuyers ofb
+                          ofb.buyerid, ofb.buyerrequestid, ofb.offerText,
+                          agentInfoRequested
+                     from OffersForBuyers ofb
                     where buyerid =  ?
                       and case when ? = 'AllAvailable'
                                then filterstatus
