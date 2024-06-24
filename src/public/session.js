@@ -20,9 +20,9 @@ function resetSessionTimer() {
 function sessionTimeout() {
     const currentTime = new Date();
     const elapsedTime = currentTime - sessionStartTime; // Time elapsed in milliseconds
-    const elapsedSeconds = Math.floor(elapsedTime / 1000); // Convert to seconds
+    const elapsedMinutes = Math.floor(elapsedTime / 1000)/60; // Convert to seconds
 
-    const alertMsg = `${elapsedSeconds} seconds have passed. Session timeout. Please login.`;
+    const alertMsg = `No activity for ${elapsedMinutes} minutes. Session timed out. Please login.`;
     alert(alertMsg);
     window.location.href = '/';
 }
