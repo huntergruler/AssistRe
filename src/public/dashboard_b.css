@@ -15,7 +15,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 0;
-    opacity: 0.8; /* Change this value to adjust opacity */
+    opacity: 0.9; /* Change this value to adjust opacity */
     z-index: -1; /* Ensure the background stays behind the content */
 }
 
@@ -172,8 +172,7 @@ body {
     border-top: 1px solid black;
 }
 
-.userZip-container,
-.propertyContainer {
+.userZip-container {
     background-color: white;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     margin-top: 0px;
@@ -295,7 +294,6 @@ body {
     border: 1px solid black;
 }
 
-.profile-group,
 .property-group {
     margin: 0px 0px;
     padding-left: 0px;
@@ -310,6 +308,7 @@ body {
     text-align: center;
     border: 1px solid black;
     border-radius: 8px;
+    background-color: white;
 }
 
 .property-group {
