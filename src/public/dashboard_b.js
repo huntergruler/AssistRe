@@ -659,7 +659,7 @@ function populateAgentInfo(agentid) {
                 <div  class="row col-md-7 agentcontactdata"> <b>${item.languages}</b></div>
                 <div class="row col-md-10 agentcontactlabel"></div>
                 <div class="row col-md-10" style="justify-content-center"><i>Agent Biography</i></div>
-                <div  class="row col-md-10" style="border:1px solid black"> ${item.bio}<br></div>
+                <div  class="row col-md-10" style="border:1px solid black; margin-bottom: 2px"> ${item.bio}<br></div>
                 </div>
                 <a href="#" class="address-icon" id="addressicon" data-item-id="1" title="Click to download contact card">
                 <i class="fas fa-address-card"></i></a>
