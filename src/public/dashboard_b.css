@@ -15,7 +15,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 0;
-    opacity: 0.5; /* Change this value to adjust opacity */
+    opacity: 0.2; /* Change this value to adjust opacity */
     z-index: -1; /* Ensure the background stays behind the content */
 }
 
