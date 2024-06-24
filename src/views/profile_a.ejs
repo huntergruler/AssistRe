@@ -437,36 +437,6 @@
                                 <h4>No Licenses Found</h4>
                             </div>
                         <% } %>
-                        <table id="licensesTable">
-                            <thead>
-                                <tr>
-                                    <th>License State</th>
-                                    <th>License Number</th>
-                                    <th>Expiration Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <% if (hasLicenses) { %>
-                                <% licenses.forEach(function(license) { %>
-                                    <tr id="license-<%= license.agentlicenseid %>">
-                                        <td>
-                                            <%= license.licenseState %>
-                                        </td>
-                                        <td>
-                                            <%= license.licenseNumber %>
-                                        </td>
-                                        <td>
-                                            <%= license.licenseExpirationDate %>
-                                        </td>
-                                    </tr>
-                                    <% }); %>
-                                        <% } else { %>
-                                            <tr id="noLicenseRow">
-                                                <td colspan="3">No licenses found.</td>
-                                            </tr>
-                                            <% } %>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#transactionModal"
