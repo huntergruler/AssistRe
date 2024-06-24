@@ -357,31 +357,26 @@ function offerDetail(agentid, buyeragentmatchid) {
                 ${request.offerDesc}<br>
                 Offer Date: ${request.offerTimestamp}<br>
                 </div>
-                <div class="form-row" style="border: none">
-                <button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal" data-target="#agentInfoModal" onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">
-                  Request Agent Contact Info
-                </button>
-                </div>`;
-
+                <div class="form-row" style="border: none">`
                 if(request.agentInfoRequested == 0) {
                     div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
                                                onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">
                                        Request Agent Contact Info
                                        </button>
-                                       </div>`
+                                       </div>`;
                 } else if(request.agentInfoRequested == 1)
                     {
                     div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled" >
                                        Agent Contact Info Requested
                                        </button>
-                                       </div>`
+                                       </div>`;
                 } else if(request.agentInfoRequested == 2)
                     {
                         div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent Contact Info
                                         </button>
-                                        </div>`
+                                        </div>`;
                 }
 
                 // onclick="populateAgentInfo(${request.agentid});">
