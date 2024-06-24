@@ -331,6 +331,7 @@ function selectOffer(agentid, buyeragentmatchid, element) {
     });
 
     offerid.classList.add('selected');
+    element.style.backgroundColor = 'transparent';
     offerDetail(agentid, buyeragentmatchid);
     if (datatype == "New") {
         const detailButtons = document.getElementById('detailButtons');
