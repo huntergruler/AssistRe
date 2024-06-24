@@ -494,10 +494,10 @@ body {
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0%;
+    padding-bottom: 0px;
     /* width: 300px; */
     height: fit-content;
     /* justify-content: center;
