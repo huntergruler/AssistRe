@@ -340,7 +340,6 @@ body {
 }
 
 .offersummary {
-    opacity: var(--dialog-opacity);
     margin: 0px 0px;
     padding-left: 3px;
     padding-right: 3px;
@@ -436,6 +435,8 @@ body {
 }
 
 .agentcontact-container {
+    opacity: var(--dialog-opacity);
+    background-color: var(--dialog-color);
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
@@ -453,7 +454,6 @@ body {
     align-items: center;
 
     cursor: pointer;
-    background-color: var(--dialog-color);
     border: 1px solid black;
     border-radius: 0px 10px 10px 0px;
 }
