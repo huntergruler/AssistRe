@@ -1754,9 +1754,10 @@ router.get('/sendbuyerinfo', (req, res) => {
     }
     console.log('getBuyerInfo:', buyerid);
     getBuyerInfo(buyerid)
-      .then((buyerInfoResults) => {
-        if (buyerInfoResults.length > 0) {
-          const buyerInfo = buyerInfoResults[0];
+      .then((results) => {
+        if (results.length > 0) {
+          const buyerInfo = results[0];
+          console.log('Buyer Info:', buyerInfo);
 
           // Generate vCard
           const vCard = vCardsJS();
