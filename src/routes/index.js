@@ -1745,7 +1745,6 @@ router.get('/sendbuyerinfo', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
     agentEmail = results[0].email;
-  });
   console.log('updateQuery:', updateQuery, 'Agent ID:', agentid, 'Buyer ID:', buyerid, 'Buyer Agent Match ID:', buyeragentmatchid);
   db.query(updateQuery, [agentid, buyerid, buyeragentmatchid], (error, results) => {
     if (error) {
@@ -1784,6 +1783,7 @@ router.get('/sendbuyerinfo', (req, res) => {
         console.error('Error fetching buyer info:', err);
         res.status(500).json({ error: 'Internal server error' });
       });
+    });
   });
 });
 
