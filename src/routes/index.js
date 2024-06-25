@@ -1623,7 +1623,7 @@ router.get('/requestagentinfo', (req, res) => {
   const verificationtoken = crypto.randomBytes(16).toString('hex');
 
   var query = 'update Agents set verificationtoken = ? where userid = ?';
-  db.query(query, [verificationtoken, buyerid], (error, results) => {
+  db.query(query, [verificationtoken, agentid], (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
     }
