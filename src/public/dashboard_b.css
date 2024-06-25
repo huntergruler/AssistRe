@@ -355,10 +355,6 @@ body {
     line-height: 1.5;
     background-color: var(--dialog-color);
     border-radius: 8px;
-    /* Flexbox properties */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .offersummary {
