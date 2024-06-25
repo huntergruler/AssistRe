@@ -1610,7 +1610,7 @@ router.get('/confirmcontact', (req, res) => {
         if (error) {
           return res.status(500).json({ error: 'Internal server error' });
         }
-        res.redirect('/', { message: 'Contact information confirmed' });
+        res.render('/', { message: 'Contact information confirmed' });
       });
     } else {
       res.status(404).json({ error: 'Invalid token' });
