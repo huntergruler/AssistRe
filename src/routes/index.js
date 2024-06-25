@@ -1728,6 +1728,7 @@ router.get('/sendbuyerinfo', (req, res) => {
   const agentid = req.query.agentid;
   const buyerid = req.query.buyerid;
   const buyeragentmatchid = req.query.buyeragentmatchid;
+  const agentEmail = '';
   const updateQuery = `
     UPDATE AgentBuyerMatch
     SET buyerSent = 1,
@@ -1743,9 +1744,7 @@ router.get('/sendbuyerinfo', (req, res) => {
       console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
-    console.log('agent query Results:', results);
-    var agentEmail = results[0].email;
-    console.log('Agent Email:', agentEmail);
+    agentEmail = results[0].email;
   });
   console.log('updateQuery:', updateQuery, 'Agent ID:', agentid, 'Buyer ID:', buyerid, 'Buyer Agent Match ID:', buyeragentmatchid);
   db.query(updateQuery, [agentid, buyerid, buyeragentmatchid], (error, results) => {
