@@ -221,8 +221,7 @@ function getOffers(datatype, element) {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>
-                        <button type="button" id="sendbuyerinfo-button" class="agentinfo-button" data-toggle="modal"
-                        data-target="#agentInfoModal" onclick="sendBuyerInfo(${request.agentid});">
+                        <button type="button" id="sendbuyerinfo-button" class="buyerinfo-button" onclick="sendBuyerInfo(${request.buyerid});">
                          Send Agent Your Info</button>`;
                     } else if (request.agentInfoRequested == 3) {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
@@ -402,8 +401,8 @@ function offerDetail(agentid, buyeragentmatchid) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>
-                        <button type="button" id="sendbuyerinfo-button" class="agentinfo-button" data-toggle="modal"  style="margin-left: 5px"
-                        data-target="#agentInfoModal" onclick="sendBuyerInfo(${request.agentid});">
+                        <button type="button" id="sendbuyerinfo-button" class="buyerinfo-button" style="margin-left: 5px"
+                        onclick="sendBuyerInfo(${request.agentid});">
                          Send Agent Your Info</button>`;
                 } else if (request.agentInfoRequested == 3) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
@@ -466,6 +465,23 @@ function requestAgentInfo(agentid, buyeragentmatchid) {
             agentinfobutton.style.backgroundColor = 'grey';
             agentinfobutton.classList.add('disabled');
             agentinfobutton.onclick = null;
+        })
+        .catch(error => console.error('Error fetching agent info:', error));
+}
+
+function sendBuyerInfo(buyerid, buyeragentmatchid) {
+    const buyerinfobutton = document.getElementById('buyerinfo-button');
+    fetch(`/sendbuyerinfo?buyerid=${encodeURIComponent(buyerid)},&buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error fetching agent info:', data.error);
+                return;
+            }
+            buyerinfobutton.textContent = 'Contact Info Sent';
+            buyerinfobutton.style.backgroundColor = 'grey';
+            buyerinfobutton.classList.add('disabled');
+            buyerinfobutton.onclick = null;
         })
         .catch(error => console.error('Error fetching agent info:', error));
 }
@@ -1110,6 +1126,7 @@ function populateCityZipCodes() {
             .catch(error => console.error('Error checking user:', error));
     }
 };
+
 document.getElementById('zipSelect').addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         console.log('Enter key pressed');

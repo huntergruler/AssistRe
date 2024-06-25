@@ -1653,8 +1653,76 @@ router.get('/requestagentinfo', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
   });
+  query = `UPDATE AgentBuyerMatch
+              SET buyerRequested = 1,
+                  buyerRequestedTimestamp = now(),
+                  agentReply = '',
+                  agentReplyTimestamp = '0000-00-00 00:00:00',
+            WHERE agentid = ?
+              AND buyerid = ?
+              AND buyeragentmatchid = ?`;
+  db.query(query, [agentid, buyerid, buyeragentmatchid], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    db.query(`SELECT email, concat(firstname,' ',lastname) fullname 
+                FROM Agents 
+               WHERE userid = ?`, [agentid], (error, agentEmail) => {
+      if (error) {
+        return res.status(500).json({ error: 'Internal server error' });
+      }
+      var emailMesage = `<!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    .button {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        margin: 10px;
+                        font-size: 16px;
+                        color: white;
+                        text-align: center;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+                    .confirm {
+                        background-color: #28a745;
+                    }
+                    .decline {
+                        background-color: #dc3545;
+                    }
+                </style>
+            </head>
+            <body>
+                <p>Dear User,</p>
+                <p>Please confirm or decline your action by clicking one of the buttons below:</p>
+                <a href="http://${req.headers.host}/confirmcontact?token=${verificationtoken}&agent=${agentid}" class="button confirm">Confirm</a>
+                <a href="http://${req.headers.host}/declinecontact?token=${verificationtoken}&agent=${agentid}" class="button decline">Decline</a>
+                <p>Thank you!</p>
+            </body>
+            </html>`;
+      sendEmail(agentEmail[0].email, 'Buyer Contact Information Request', emailMesage);
+
+      res.json({ agentEmail: agentEmail[0].email });
+
+    });
+  });
+});
+
+router.get('/sendbuyerinfo', (req, res) => {
+  const agentid = req.query.agentid;
+  const buyerid = req.session.buyerid;
+  const buyeragentmatchid = req.query.buyeragentmatchid;
+  const verificationtoken = crypto.randomBytes(16).toString('hex');
+
+  var query = 'update Buyer set verificationtoken = ? where userid = ?';
+  db.query(query, [verificationtoken, buyerid], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  });
   query = `update AgentBuyerMatch
-                    set agentInfoRequested = 1
+                    set buyerInfoSent = 1
                   where agentid = ?
                     and buyerid = ?
                     and buyeragentmatchid = ?`;
