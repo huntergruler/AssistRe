@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="index.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>Welcome</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="index.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>Welcome</title>
 </head>
 
 <header>
-    <div class="row row-cols-2">
-        <div id="title" class="align-items-center">
-            <!-- <h1 class="mt-2"><a href="/">SeekingAgents</a></h1> -->
-            <div class="logo-container"></div>
-        </div>
-        <nav id="navlinks" class="justify-content-end text-center">
-            <p><a href="/login_a">Agent Login</a></p>
-            <p>|</p>
-            <p><a href="/login_b">Buyer Login</a></p>
-            <p>|</p>
-            <p><a href="/register">Register</a></p>
-        </nav>
+  <div class="row row-cols-2">
+    <div id="title" class="align-items-center">
+      <!-- <h1 class="mt-2"><a href="/">SeekingAgents</a></h1> -->
+      <div class="logo-container"></div>
     </div>
+    <nav id="navlinks" class="justify-content-end text-center">
+      <p><a href="/login_a">Agent Login</a></p>
+      <p>|</p>
+      <p><a href="/login_b">Buyer Login</a></p>
+      <p>|</p>
+      <p><a href="/register">Register</a></p>
+    </nav>
+  </div>
 </header>
 
 <body>
-    <div style="margin-top: 100px;text-align: center;">
+  <div style="margin-top: 100px;text-align: center;">
     <h1>Welcome to SeekingAgents</h1>
     <div class="alert alert-warning" id="message">
-        <%= message %>
+      <%= message %>
     </div>
-</div>
-<%- include('property_modal') %>
-<%- include('zipcode_modal') %>
-<%- include('agentinfo_modal') %>
-<script src="/dashboard_b.js"></script>
-<script src="/session.js"></script>
-<script src="https://js.stripe.com/v3/"></script>
+  </div>
+  <%- include('message_modal') %>
 </body>
 
-</html></html>
+</html>
