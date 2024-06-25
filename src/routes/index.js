@@ -51,7 +51,7 @@ const transporter = nodemailer.createTransport({
 // Landing page route
 router.get('/', (req, res) => {
   const message = req.body.message;
-//  message = "Welcome to the Real Estate Agent/Buyer Matching Service";
+  //  message = "Welcome to the Real Estate Agent/Buyer Matching Service";
   res.render('index', { message: message });
 });
 
@@ -119,6 +119,7 @@ router.post('/register', (req, res) => {
     const zipQuery = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
     db.query(zipQuery, [zipCode], (error, results) => {
       if (error) {
+        console.log('Error:', error);
         return res.status(500).send('Error accessing the database');
       }
       if (results.length === 0) {
@@ -343,15 +344,6 @@ router.get('/getRequests', (req, res) => {
     }
   }
 });
-
-// router.get('/declineRequest', (req, res) => {
-//   const buyerid = req.query.buyerid;
-//   const updateQuery = 'update AgentBuyerMatch set agentStatus = "Declined" WHERE agentid = ? and buyerid = ?';
-//   db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {
-//     if (err) throw err;
-//     res.json({ success: true });
-//   });
-// });
 
 router.post('/setStatus', (req, res) => {
   if (!req.session.user) {
@@ -794,32 +786,6 @@ router.get('/removeOffer', (req, res) => {
   });
 });
 
-// router.get('/declineRequest', (req, res) => {
-//   const buyerid = req.query.buyerid;
-//   const updateQuery = 'update AgentBuyerMatch set agentStatus = "Declined" WHERE agentid = ? and buyerid = ?';
-//   db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {
-//     if (err) throw err;
-//     res.json({ success: true });
-//   });
-// });
-
-
-// Login route
-// router.get('/login', (req, res) => {
-//   const message = req.session.message;
-
-//   // Destroy the session or clear the cookie
-//   if (req.session.killsession) {
-//     req.session.destroy((err) => {
-//       if (err) {
-//         return console.error('Failed to destroy the session on logout', err);
-//         res.clearCookie('connect.sid'); // If you're using session cookies, clear them
-//       }
-//     });
-//   }
-//   res.render('login', { query: req.query, message: message });
-// });
-
 // Login route
 router.get('/login_a', (req, res) => {
   const message = req.session.message;
@@ -878,6 +844,7 @@ router.post('/login', [
     res.setHeader('Content-Type', 'application/json');
     db.query(userQuery, [email], (error, results) => {
       if (error) {
+        console.log('Error:', error);
         return res.render(htmlpage, { message: 'Error during database query' });
       }
       else if (results.length === 0) {
@@ -920,6 +887,7 @@ router.post('/login', [
             }
             db.query(updateQuery, [email], (error, results) => {
               if (error) {
+                console.log('Error:', error);
                 return res.render(htmlpage, { message: 'Error during database update' });
               }
             });
@@ -944,6 +912,7 @@ router.get('/get-city-state', (req, res) => {
   const query = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
   db.query(query, [zipCode], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
@@ -966,6 +935,7 @@ router.get('/check-user', (req, res) => {
     const query = 'SELECT count(*) cnt FROM Agents WHERE email = ?';
     db.query(query, [email], (error, results) => {
       if (error) {
+        console.log('Error:', error);
         return res.status(500).json({ error: 'Internal server error' });
       }
       if (results[0].cnt > 0) {
@@ -981,6 +951,7 @@ router.get('/check-user', (req, res) => {
     const query = 'SELECT count(*) cnt FROM Buyers WHERE email = ?';
     db.query(query, [email], (error, results) => {
       if (error) {
+        console.log('Error:', error);
         return res.status(500).json({ error: 'Internal server error' });
       }
       if (results[0].cnt > 0) {
@@ -1000,6 +971,7 @@ router.get('/check-license', (req, res) => {
   const query = 'SELECT count(*) cnt FROM ZipCodes WHERE state = ?';
   db.query(query, [licenseState], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results[0].cnt == 0) {
@@ -1009,6 +981,7 @@ router.get('/check-license', (req, res) => {
       const query = 'SELECT count(*) cnt FROM AgentLicenses WHERE userid = ? and licenseState = ?';
       db.query(query, [userid, licenseState], (error, results) => {
         if (error) {
+          console.log('Error:', error);
           return res.status(500).json({ error: 'Internal server error' });
         }
         if (results[0].cnt > 0) {
@@ -1031,6 +1004,7 @@ router.get('/get-cities', (req, res) => {
     //    console.log('Results:', results);
 
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
@@ -1049,6 +1023,7 @@ router.get('/get-counties', (req, res) => {
     //    console.log('Results:', results);
 
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
@@ -1065,6 +1040,7 @@ router.get('/get-states', (req, res) => {
   const query = 'SELECT distinct state, stateName FROM ZipCodes where stateName is not null order by stateName';
   db.query(query, (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
@@ -1080,6 +1056,7 @@ router.get('/get-levelofservice', (req, res) => {
   const query = 'SELECT levelOfService, levelofserviceid FROM LevelsOfService order by levelofserviceid';
   db.query(query, (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
@@ -1094,6 +1071,7 @@ router.get('/get-offertypes', (req, res) => {
   const query = 'SELECT offerType, offertypeid FROM OfferTypes order by offertypeid';
   db.query(query, (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
@@ -1108,6 +1086,7 @@ router.get('/get-compensationtypes', (req, res) => {
   const query = 'SELECT compensationType, compensationtypeid FROM CompensationTypes order by compensationtypeid';
   db.query(query, (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
@@ -1131,6 +1110,7 @@ router.get('/check-zipcode', (req, res) => {
   }
   db.query(query, [zipCode, userid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     else if (results[0].cnt > 0) {
@@ -1139,6 +1119,7 @@ router.get('/check-zipcode', (req, res) => {
       const query = 'SELECT count(*) cnt FROM ZipCodes where zipCode = ?';
       db.query(query, [zipCode], (error, results) => {
         if (error) {
+          console.log('Error:', error);
           return res.status(500).json({ error: 'Internal server error' });
         }
         if (results[0].cnt > 0) {
@@ -1182,6 +1163,7 @@ router.get('/get-zipcodes', (req, res) => {
     //    console.log('Results:', results);
 
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
@@ -1223,6 +1205,7 @@ router.get('/get-countyzipcodes', (req, res) => {
     //    console.log('Results:', results);
 
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
@@ -1246,6 +1229,7 @@ router.post('/process-zip-codes', (req, res) => {
   }
   db.query(query, [userid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
   });
@@ -1260,6 +1244,7 @@ router.post('/process-zip-codes', (req, res) => {
     const values = zipCodes.map(zipCode => [userid, zipCode]);
     db.query(insertQuery, [values], (error, results) => {
       if (error) {
+        console.log('Error:', error);
         return res.status(500).json({ error: 'Internal server error' });
       }
       res.json({ success: true });
@@ -1314,6 +1299,7 @@ router.get('/get-agentzipcodes', (req, res) => {
   }
   db.query(query, [userid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
@@ -1339,6 +1325,7 @@ router.get('/get-userzipcodes', (req, res) => {
   }
   db.query(query, [userid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     } else if (results.length === 0) {
       res.json(nozips);
@@ -1404,6 +1391,7 @@ router.post('/reset', (req, res) => {
     }
     db.query(updateQuery, [hashedPassword, email, token], (error, results) => {
       if (error) {
+        console.log('Error:', error);
         return res.status(500).send('Error accessing the database');
       }
       // Redirect to login with a password changed message
@@ -1510,6 +1498,7 @@ router.get('/reset-password', (req, res) => {
   const date = new Date(Date.now())
   db.query(query, [token, date], (error, results) => {
     if (error || results.length === 0) {
+      console.log('Error:', error);
       //      res.status(400).send('Invalid or expired token');
       res.cookie('data', 'Bad Token', { maxAge: 900000, httpOnly: true });
       res.redirect('/sendreset')
@@ -1577,6 +1566,7 @@ router.get('/getBuyerTypes', (req, res) => {
   const buyerid = req.session.userid;
   db.query(query, (error, buyerTypes) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (buyerTypes.length > 0) {
@@ -1601,15 +1591,24 @@ router.get('/confirmcontact', (req, res) => {
   const token = req.query.token;
   const agentid = req.query.agent;
   const buyerid = req.session.buyerid;
-  const query = 'SELECT email, userid FROM Agents WHERE verificationtoken = ? and userid = ?';
+  const query = `SELECT email, userid 
+                   FROM Agents 
+                  WHERE verificationtoken = ? 
+                    AND userid = ?`;
   db.query(query, [token, agentid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
-      const query = `update AgentBuyerMatch set agentInfoRequested = 2 where agentid = ? and buyerid = ?`;
+      const query = `UPDATE AgentBuyerMatch 
+                        SET agentReply = 'C',
+                            agentReplyTimestamp = now()
+                      WHERE agentid = ? 
+                        AND buyerid = ?`;
       db.query(query, [agentid, buyerid], (error, results) => {
         if (error) {
+          console.log('Error:', error);
           return res.status(500).json({ error: 'Internal server error' });
         }
         res.render('index', { message: 'Contact information confirmed' });
@@ -1624,15 +1623,24 @@ router.get('/declinecontact', (req, res) => {
   const token = req.query.token;
   const agentid = req.query.agent;
   const buyerid = req.session.buyerid;
-  const query = 'SELECT email, userid FROM Agents WHERE verificationtoken = ? and userid = ?';
+  const query = `SELECT email, userid 
+                   FROM Agents 
+                  WHERE verificationtoken = ? 
+                    AND userid = ?`;
   db.query(query, [token, agentid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
-      const query = `update AgentBuyerMatch set agentInfoRequested = 3 where agentid = ? and buyerid = ?`;
+      const query = `UPDATE AgentBuyerMatch 
+                        SET agentReply = 'D',
+                            agentReplyTimestamp = now()
+                      WHERE agentid = ? 
+                        AND buyerid = ?`;
       db.query(query, [agentid, buyerid], (error, results) => {
         if (error) {
+          console.log('Error:', error);
           return res.status(500).json({ error: 'Internal server error' });
         }
         res.render('index', { message: 'Contact information declined' });
@@ -1652,6 +1660,7 @@ router.get('/requestagentinfo', (req, res) => {
   var query = 'update Agents set verificationtoken = ? where userid = ?';
   db.query(query, [verificationtoken, agentid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
   });
@@ -1666,12 +1675,14 @@ router.get('/requestagentinfo', (req, res) => {
               AND buyeragentmatchid = ?`;
   db.query(query, [agentid, buyerid, buyeragentmatchid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     db.query(`SELECT email, concat(firstname,' ',lastname) fullname 
                 FROM Agents 
                WHERE userid = ?`, [agentid], (error, agentEmail) => {
       if (error) {
+        console.log('Error:', error);
         return res.status(500).json({ error: 'Internal server error' });
       }
       var emailMesage = `<!DOCTYPE html>
@@ -1721,20 +1732,24 @@ router.get('/sendbuyerinfo', (req, res) => {
   var query = 'update Buyer set verificationtoken = ? where userid = ?';
   db.query(query, [verificationtoken, buyerid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
   });
   query = `update AgentBuyerMatch
-                    set buyerInfoSent = 1
+                    set buyerSent = 1,
+                        buyerSentTimestamp = now()
                   where agentid = ?
                     and buyerid = ?
                     and buyeragentmatchid = ?`;
   db.query(query, [agentid, buyerid, buyeragentmatchid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     db.query(`SELECT email, concat(firstname,' ',lastname) fullname FROM Agents WHERE userid = ?`, [agentid], (error, agentEmail) => {
       if (error) {
+        console.log('Error:', error);
         return res.status(500).json({ error: 'Internal server error' });
       }
       var emailMesage = `<!DOCTYPE html>
@@ -1787,6 +1802,7 @@ router.get('/getagentinfo', (req, res) => {
                   where a.userid = ?`;
   db.query(query, [agentid], (error, results) => {
     if (error) {
+      console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
     console.log('Results:', results);
