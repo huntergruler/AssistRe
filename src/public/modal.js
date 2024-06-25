@@ -3,20 +3,34 @@
             document.getElementById('messageModal').style.display = 'flex';
         };
 
-        // Close the modal when the header close button is clicked
-        document.getElementById('modal-close').onclick = function() {
-            document.getElementById('messageModal').style.display = 'none';
-        };
+        var modal = document.getElementById("messageModal");
 
-        // Close the modal when the footer close button is clicked
-        document.getElementById('modal-close-footer').onclick = function() {
-            document.getElementById('messageModal').style.display = 'none';
-        };
-
-        // Close the modal when clicking outside the modal content
-        window.onclick = function(event) {
-            const modalOverlay = document.getElementById('messageModal');
-            if (event.target === modalOverlay) {
-                modalOverlay.style.display = 'none';
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // Get the close button inside the modal
+        var closeModalButton = document.getElementById("modalCloseButton");
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        
+        // When the user clicks the close button inside the modal, close the modal
+        closeModalButton.onclick = function () {
+            modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
-        };
+        }
+        
+        // Function to show the modal with a message
+        function showModal(message) {
+            document.getElementById('modalMessage').textContent = message;
+            modal.style.display = "flex";
+        }
+        
