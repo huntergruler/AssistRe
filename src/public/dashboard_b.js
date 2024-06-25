@@ -204,7 +204,6 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "New") {
                         div.innerHTML = ``
                     }
-                    console.log('HERE');
                     innerHTMLtext += `
                     <div class="flex-fill offersummary">
                     <div class="newDot col-md">&#x2022;</div>
@@ -226,11 +225,10 @@ function getOffers(datatype, element) {
                     } else if (request.agentInfoRequested == 3) {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                         style="background-color: red" >
-                       Agent Declined Info Requested
+                       Agent Contact Request Declined
                        </button>
                        `;
                     }
-                    console.log(innerHTMLtext);
                     div.innerHTML = innerHTMLtext;
                     div.className = "form-row offers col-md-12";
                     div.id = "agentid" + request.agentid;
@@ -405,7 +403,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                 } else if (request.agentInfoRequested == 3) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: red" >
-                                       Agent Declined Info Requested
+                                        Agent Contact Request Declined
                                        </button>
                                        `;
                 }
