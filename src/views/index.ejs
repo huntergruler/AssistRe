@@ -41,7 +41,9 @@
     <%- include('message_modal') %>
     <% } %>
   </div>
-  <script src="modal.js"></script>
+  <% if (message) { %>
+    <script src="modal.js"></script>
+    <% } %>
 </body>
 
 </html>
