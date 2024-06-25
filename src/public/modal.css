@@ -9,6 +9,14 @@
     background-color: transparent;
 }
 
+.modal-content {
+    font-size: 14px;
+    background-color: var(--dialog-color);
+    padding: 0%;
+    width: auto;
+    height: auto;
+}
+
 .modal {
     position: relative;
     background: #fff;
