@@ -229,6 +229,7 @@ function getOffers(datatype, element) {
                        </button>
                        `;
                     }
+                    innerHTMLtext += `</div>`;
                     console.log(innerHTMLtext);
                     div.innerHTML = innerHTMLtext;
                     div.className = "form-row offers col-md-12";
