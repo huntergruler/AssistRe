@@ -470,7 +470,7 @@ function requestAgentInfo(agentid, buyeragentmatchid) {
 
 function sendBuyerInfo(buyerid, agentid) {
     const buyerinfobutton = document.getElementById('buyerinfo-button');
-    fetch(`/sendbuyerinfo?buyerid=${encodeURIComponent(buyerid)},&buyeragentmatchid=${encodeURIComponent(agentid)}`)
+    fetch(`/sendbuyerinfo?buyerid=${encodeURIComponent(buyerid)},&agentid=${encodeURIComponent(agentid)}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
