@@ -520,6 +520,30 @@ body {
     color: white;
 }
 
+.agentcontact-container {
+    opacity: var(--dialog-opacity);
+    background-color: var(--dialog-color);
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 1px;
+    padding-left: 2px;
+    padding-right: 0px;
+    height: fit-content;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 0px 10px 10px 0px;
+}
+
 .container-left {
     opacity: var(--dialog-opacity);
     margin-left: 0px;
