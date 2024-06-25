@@ -1671,7 +1671,7 @@ router.get('/requestagentinfo', (req, res) => {
                 <p>Thank you!</p>
             </body>
             </html>`;
-      sendEmail(agentEmail[0].email, 'Buyer Contact Information Request', emailMesage, verificationtoken);
+      sendEmail(agentEmail[0].email, 'Buyer Contact Information Request', emailMesage);
 
       res.json({ agentEmail: agentEmail[0].email });
 
@@ -1703,9 +1703,8 @@ router.get('/getagentinfo', (req, res) => {
 });
 
 // Function to send a verification email
-function sendEmail(email, subject, message, verificationtoken) {
-  const buyerid = req.session.buyerid;
-  const agentid = req.session.agentid;
+function sendEmail(email, subject, message) {
+  console.log('Sending email to:', email);
   const mailTransporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
