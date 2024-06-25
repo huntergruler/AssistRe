@@ -208,7 +208,8 @@ router.get('/getOffers', (req, res) => {
     if (!agentid) {
       var query = `select ofb.buyeragentmatchid, ofb.agentid, ofb.agentofferid, ofb.buyerStatus, 
                           ofb.buyerid, ofb.buyerrequestid, ofb.offerText,
-                          agentInfoRequested
+                          buyerRequested, buyerRequestedTimestamp, agentReply, agentReplyTimestamp,
+                          buyerSent, buyerSentTimestamp
                      from OffersForBuyers ofb
                     where buyerid =  ?
                       and case when ? = 'AllAvailable'
@@ -244,7 +245,8 @@ router.get('/getOffers', (req, res) => {
                            ao.expirationCompensation, ao.expirationCompTimeFrame, ao.offerDesc, 
                            DATE_FORMAT(ao.entryTimestamp, '%m/%d/%Y') offerTimestamp, bam.buyerStatus, 
                            concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentid) dispIdentifier,
-                           agentInfoRequested
+                           buyerRequested, buyerRequestedTimestamp, agentReply, agentReplyTimestamp,
+                           buyerSent, buyerSentTimestamp
                      from AgentOffers ao
                           join Agents a on a.userid = ao.agentid
                           join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentid = a.userid
