@@ -222,7 +222,7 @@ function getOffers(datatype, element) {
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>
                         <button type="button" id="sendbuyerinfo-button" class="buyerinfo-button" onclick="sendBuyerInfo(${request.buyerid});">
-                         Send Agent Your Info</button>`;
+                         Send Your Info to Agent</button>`;
                     } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                         style="background-color: red" >
@@ -402,7 +402,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                          View Agent's Info</button>
                         <button type="button" id="buyerinfo-button" class="buyerinfo-button" style="margin-left: 5px"
                         onclick="sendBuyerInfo(${request.agentid});">
-                         Send Agent Your Info</button>`;
+                         Send Your Info to Agent</button>`;
                 } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: red" >
