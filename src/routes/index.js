@@ -1655,6 +1655,7 @@ router.get('/requestagentinfo', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
   });
+  console.log('Agent ID:', agentid, 'Buyer ID:', buyerid, 'Buyer Agent Match ID:', buyeragentmatchid, 'Verification Token:', verificationtoken);
   query = `UPDATE AgentBuyerMatch
               SET buyerRequested = 1,
                   buyerRequestedTimestamp = now(),
