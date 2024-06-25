@@ -231,7 +231,6 @@ function getOffers(datatype, element) {
                        `;
                     }
                     innerHTMLtext += `</div>`;
-                    console.log(innerHTMLtext);
                     div.innerHTML = innerHTMLtext;
                     div.className = "form-row offers col-md-12";
                     div.id = "agentid" + request.agentid;
