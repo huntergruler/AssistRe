@@ -1608,7 +1608,7 @@ router.get('/confirmcontact', (req, res) => {
         if (error) {
           return res.status(500).json({ error: 'Internal server error' });
         }
-        res.json({ succes: true});
+        res.json({ succes: true });
       });
     } else {
       res.status(404).json({ error: 'Invalid token' });
@@ -1628,7 +1628,7 @@ router.get('/requestagentinfo', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
   });
-  const query = `update AgentBuyerMatch
+  query = `update AgentBuyerMatch
                     set agentInfoRequested = 1
                   where agentid = ?
                     and buyerid = ?
