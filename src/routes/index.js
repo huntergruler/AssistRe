@@ -1845,6 +1845,7 @@ function getBuyerInfo(buyerid) {
         console.log('Error:', error);
         reject(error);
       }
+      console.log('Results:', results);
       resolve(results);
     });
   });
