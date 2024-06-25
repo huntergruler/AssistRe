@@ -1738,7 +1738,6 @@ router.get('/sendbuyerinfo', (req, res) => {
   var agentquery = `SELECT email 
                       FROM Agents 
                      WHERE userid = ?`;
-  console.log('Agent Query:', agentquery);
   db.query(agentquery, [agentid], (error, results) => {
     if (error) {
       console.log('Error:', error);
@@ -1746,6 +1745,7 @@ router.get('/sendbuyerinfo', (req, res) => {
     }
     console.log('agent query Results:', results);
     var agentEmail = results[0].email;
+    console.log('Agent Email:', agentEmail);
   });
   console.log('updateQuery:', updateQuery, 'Agent ID:', agentid, 'Buyer ID:', buyerid, 'Buyer Agent Match ID:', buyeragentmatchid);
   db.query(updateQuery, [agentid, buyerid, buyeragentmatchid], (error, results) => {
@@ -1758,7 +1758,7 @@ router.get('/sendbuyerinfo', (req, res) => {
       .then((results) => {
         if (results.length > 0) {
           const buyerInfo = results[0];
-          console.log('Buyer Info:', buyerInfo);
+          console.log('Buyer Info2:', buyerInfo);
 
           // Generate vCard
           const vCard = vCardsJS();
