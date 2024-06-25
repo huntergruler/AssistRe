@@ -345,6 +345,7 @@ body {
     padding-right: 3px;
     padding-top: 0px;
     padding-bottom: 1px;
+    display: flex;
     /* width: 350px; */
     max-height: fit-content;
     align-content: center;
