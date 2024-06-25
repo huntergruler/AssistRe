@@ -1633,7 +1633,7 @@ router.get('/declinecontact', (req, res) => {
         if (error) {
           return res.status(500).json({ error: 'Internal server error' });
         }
-        res.redirect('/');
+        res.render('index', { message: 'Contact information declined' });
       });
     } else {
       res.status(404).json({ error: 'Invalid token' });
