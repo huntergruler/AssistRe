@@ -340,6 +340,7 @@ body {
 }
 
 .offersummary {
+    opacity: var(--dialog-opacity);
     margin: 0px 0px;
     padding-left: 3px;
     padding-right: 3px;
