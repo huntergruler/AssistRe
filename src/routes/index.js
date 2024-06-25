@@ -1608,7 +1608,30 @@ router.get('/confirmcontact', (req, res) => {
         if (error) {
           return res.status(500).json({ error: 'Internal server error' });
         }
-        res.json({ succes: true });
+        res.redirect('/');
+      });
+    } else {
+      res.status(404).json({ error: 'Invalid token' });
+    }
+  });
+});
+
+router.get('/declinecontact', (req, res) => {
+  const token = req.query.token;
+  const agentid = req.query.agent;
+  const buyerid = req.session.buyerid;
+  const query = 'SELECT email, userid FROM Agents WHERE verificationtoken = ? and userid = ?';
+  db.query(query, [token, agentid], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results.length > 0) {
+      const query = `update AgentBuyerMatch set agentInfoRequested = 3 where agentid = ? and buyerid = ?`;
+      db.query(query, [agentid, buyerid], (error, results) => {
+        if (error) {
+          return res.status(500).json({ error: 'Internal server error' });
+        }
+        res.redirect('/');
       });
     } else {
       res.status(404).json({ error: 'Invalid token' });

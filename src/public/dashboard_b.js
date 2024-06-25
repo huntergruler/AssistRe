@@ -338,7 +338,7 @@ function selectOffer(agentid, buyeragentmatchid, element) {
         detailButtons.style.display = 'block';
         inputFields.forEach(input => input.removeAttribute('readonly'));
         selectFields.forEach(select => select.removeAttribute('disabled'));
-        
+
         setStatus(agentid, 'Read');
     }
 }
@@ -393,6 +393,12 @@ function offerDetail(agentid, buyeragentmatchid) {
                          View Agent Contact Info
                                         </button>
                                         `;
+                } else if (request.agentInfoRequested == 3) {
+                    innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
+                                        style="background-color: red" >
+                                       Agent Declined Info Requested
+                                       </button>
+                                       `;
                 }
                 div.innerHTML = innerHTMLtext;
 
