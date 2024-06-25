@@ -1,3 +1,9 @@
+:root {
+  --background-color: rgba(19, 50, 109);
+  --diaglog-color: #f0f2f5;
+  --text-color: white;
+}
+
 * {
   margin: 0;
   padding: 0;
