@@ -339,6 +339,24 @@ body {
     max-height: 490px;
 }
 
+.offerdetail {
+    margin: 0px 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 0px;
+    padding-bottom: 1px;
+    /* width: 350px; */
+    max-height: fit-content;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    line-height: 1.5;
+    background-color: var(--dialog-color);
+    border-radius: 8px;
+}
+
 .offersummary {
     margin: 0px 0px;
     padding-left: 3px;
@@ -358,6 +376,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
 
 .row {
     display: flex;
