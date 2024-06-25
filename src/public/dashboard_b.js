@@ -198,8 +198,8 @@ function getOffers(datatype, element) {
                 offers.appendChild(div);
             }
             else {
-                var innerHTMLtext = '';
                 data.forEach(request => {
+                    var innerHTMLtext = '';
                     const div = document.createElement("div");
                     if (request.buyerStatus == "New") {
                         div.innerHTML = ``
