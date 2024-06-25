@@ -403,7 +403,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                         <button type="button" id="sendbuyerinfo-button" class="buyerinfo-button" style="margin-left: 5px"
                         onclick="sendBuyerInfo(${request.agentid});">
                          Send Agent Your Info</button>`;
-                } else if (request.buyerRequested == 1 && request.agentInfoRequested == 'D') {
+                } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: red" >
                                         Agent Contact Request Declined
