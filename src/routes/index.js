@@ -50,7 +50,8 @@ const transporter = nodemailer.createTransport({
 
 // Landing page route
 router.get('/', (req, res) => {
-  message = "Welcome to the Real Estate Agent/Buyer Matching Service";
+  const message = req.body.message;
+//  message = "Welcome to the Real Estate Agent/Buyer Matching Service";
   res.render('index', { message: message });
 });
 
@@ -1609,7 +1610,7 @@ router.get('/confirmcontact', (req, res) => {
         if (error) {
           return res.status(500).json({ error: 'Internal server error' });
         }
-        res.redirect('/');
+        res.redirect('/', { message: 'Contact information confirmed' });
       });
     } else {
       res.status(404).json({ error: 'Invalid token' });
