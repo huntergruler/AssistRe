@@ -324,7 +324,7 @@ body {
     text-align: center;
     border: 1px solid black;
     border-radius: 8px;
-    background-color: --var(--dialog-color);
+    background-color: var(--dialog-color);
 }
 
 .property-group {
