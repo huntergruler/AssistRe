@@ -2,8 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: auto;
+    min-height: 100px;
+    min-width: 100px;
+    width: fit-content;
+    height: fit-content;
 }
 /* Modal background overlay */
 .modal-overlay {
