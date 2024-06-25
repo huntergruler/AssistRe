@@ -1622,7 +1622,7 @@ router.get('/requestagentinfo', (req, res) => {
   const buyeragentmatchid = req.query.buyeragentmatchid;
   const verificationtoken = crypto.randomBytes(16).toString('hex');
 
-  var query = 'update Buyers set verificationtoken = ? where userid = ?';
+  var query = 'update Agents set verificationtoken = ? where userid = ?';
   db.query(query, [verificationtoken, buyerid], (error, results) => {
     if (error) {
       return res.status(500).json({ error: 'Internal server error' });
