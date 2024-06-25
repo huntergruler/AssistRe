@@ -33,9 +33,13 @@
 
 <body>
   <div style="margin-top: 100px;text-align: center;"></div>
-  <div style="text-align: center";><h1>Welcome to SeekingAgents</h1></div>
+  <div style="text-align: center" ;>
+    <h1>Welcome to SeekingAgents</h1>
+  </div>
   <div class="container">
-  <%- include('message_modal') %>
+    <% if (message) { %>
+    <%- include('message_modal') %>
+    <% } %>
   </div>
   <script src="modal.js"></script>
 </body>
