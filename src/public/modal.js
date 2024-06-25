@@ -1,3 +1,8 @@
+// Modal functions
+$(document).ready(function () {
+    $('#messageModal').modal('show');
+});
+
 // Show the modal on page load
 window.onload = function () {
     document.getElementById('modal-overlay').style.display = 'flex';
