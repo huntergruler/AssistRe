@@ -1593,10 +1593,41 @@ router.get('/getBuyerTypes', (req, res) => {
   });
 });
 
+router.get('/confirmcontact', (req, res) => {
+  const token = req.query.token;
+  const agentid = req.query.agent;
+  const buyerid = req.session.buyerid;
+  const query = 'SELECT email, userid FROM Agents WHERE verificationtoken = ? and userid = ?';
+  db.query(query, [token, agentid], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+    if (results.length > 0) {
+      const query = `update AgentBuyerMatch set agentInfoRequested = 2 where agentid = ? and buyerid = ?`;
+      db.query(query, [agentid, buyerid], (error, results) => {
+        if (error) {
+          return res.status(500).json({ error: 'Internal server error' });
+        }
+        res.json({ succes: true});
+      });
+    } else {
+      res.status(404).json({ error: 'Invalid token' });
+    }
+  });
+});
+
 router.get('/requestagentinfo', (req, res) => {
   const agentid = req.query.agentid;
   const buyerid = req.session.buyerid;
   const buyeragentmatchid = req.query.buyeragentmatchid;
+  const verificationtoken = crypto.randomBytes(16).toString('hex');
+
+  var query = 'update Buyers set verificationtoken = ? where userid = ?';
+  db.query(query, [verificationtoken, buyerid], (error, results) => {
+    if (error) {
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  });
   const query = `update AgentBuyerMatch
                     set agentInfoRequested = 1
                   where agentid = ?
@@ -1635,12 +1666,12 @@ router.get('/requestagentinfo', (req, res) => {
             <body>
                 <p>Dear User,</p>
                 <p>Please confirm or decline your action by clicking one of the buttons below:</p>
-                <a href="https://yourwebsite.com/confirm?token=yourVerificationToken" class="button confirm">Confirm</a>
-                <a href="https://yourwebsite.com/decline?token=yourVerificationToken" class="button decline">Decline</a>
+                <a href="http://${req.headers.host}/confirmcontact?token=${verificationtoken}&agent=${agentid}" class="button confirm">Confirm</a>
+                <a href="http://${req.headers.host}/declinecontact?token=${verificationtoken}&agent=${agentid}" class="button decline">Decline</a>
                 <p>Thank you!</p>
             </body>
             </html>`;
-      sendEmail(agentEmail[0].email, 'Buyer Information Request', emailMesage);
+      sendEmail(agentEmail[0].email, 'Buyer Contact Information Request', emailMesage, verificationtoken);
 
       res.json({ agentEmail: agentEmail[0].email });
 
@@ -1672,7 +1703,9 @@ router.get('/getagentinfo', (req, res) => {
 });
 
 // Function to send a verification email
-function sendEmail(email, subject, message) {
+function sendEmail(email, subject, message, verificationtoken) {
+  const buyerid = req.session.buyerid;
+  const agentid = req.session.agentid;
   const mailTransporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
@@ -1692,7 +1725,7 @@ function sendEmail(email, subject, message) {
     if (error) {
       console.log('Error sending email:', error);
     } else {
-      console.log('Email sent to:',mailDetails.to, info.response);
+      console.log('Email sent to:', mailDetails.to, info.response);
     }
   });
 }
