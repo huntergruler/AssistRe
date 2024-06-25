@@ -50,7 +50,8 @@ const transporter = nodemailer.createTransport({
 
 // Landing page route
 router.get('/', (req, res) => {
-  res.render('index');
+  message = "Welcome to the Real Estate Agent/Buyer Matching Service";
+  res.render('index', { message: req.session.message });
 });
 
 // Landing page route
