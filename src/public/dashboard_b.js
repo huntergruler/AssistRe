@@ -204,6 +204,7 @@ function getOffers(datatype, element) {
                     if (request.buyerStatus == "New") {
                         div.innerHTML = ``
                     }
+                    console.log('HERE');
                     innerHTMLtext += `
                     <div class="flex-fill offersummary">
                     <div class="newDot col-md">&#x2022;</div>
