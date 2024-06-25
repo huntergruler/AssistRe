@@ -1738,6 +1738,7 @@ router.get('/sendbuyerinfo', (req, res) => {
   var agentquery = `SELECT email 
                       FROM Agents 
                      WHERE userid = ?`;
+  console.log('Agent Query:', agentquery);
   db.query(agentquery, [agentid], (error, results) => {
     if (error) {
       console.log('Error:', error);
@@ -1745,12 +1746,13 @@ router.get('/sendbuyerinfo', (req, res) => {
     }
     var agentEmail = results[0].email;
   });
+  console.log('updateQuery:', updateQuery, 'Agent ID:', agentid, 'Buyer ID:', buyerid, 'Buyer Agent Match ID:', buyeragentmatchid);
   db.query(updateQuery, [agentid, buyerid, buyeragentmatchid], (error, results) => {
     if (error) {
       console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
-
+    console.log('getBuyerInfo:', buyerid);
     getBuyerInfo(buyerid)
       .then((buyerInfoResults) => {
         if (buyerInfoResults.length > 0) {
