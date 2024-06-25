@@ -383,7 +383,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Expiration Compensation Amount: <b>${request.expirationCompensation}</b><br>
                 <u>Offer Description</u><br>
                 ${request.offerDesc}<br>
-                Offer Date: ${request.offerTimestamp}<br>`;
+                Offer Date: ${request.offerTimestamp}<br></div>`;
                 if (request.agentInfoRequested == 0) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
                                                onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">
