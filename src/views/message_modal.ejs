@@ -1,7 +1,14 @@
-<div id="messageModal" class="modal" style="display: none;">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p id="modalMessage"><%= message %></p>
-      <button class="modal-close-btn" id="modalCloseButton">Close</button>
+  <div class="modal-overlay" id="messageModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2>Welcome</h2>
+            <button class="modal-close" id="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p id="modalMessage"><%= message %></p>
+        </div>
+        <div class="modal-footer">
+            <button class="button button-close" id="modal-close-footer">Close</button>
+        </div>
     </div>
-  </div>
+</div>

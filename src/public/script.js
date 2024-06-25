@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     })
                     .catch(error => {
-//                        console.error('Error:', error);
-//                        document.getElementById('message').style.display = 'block';
+                        //                        console.error('Error:', error);
+                        //                        document.getElementById('message').style.display = 'block';
                         document.getElementById('message').innerText = 'An error occurred. Please try again.';
                         document.getElementById('message').style.color = 'red';
                     });
@@ -90,5 +90,24 @@ document.querySelectorAll('input[name="userType"]').forEach(radio => {
         });
     });
 });
+
+// Modal functions
+$(document).ready(function () {
+    $('#messageModal').modal('show');
+});
+
+// Show the modal on page load
+window.onload = function () {
+    document.getElementById('modal-overlay').style.display = 'flex';
+};
+
+// Close the modal
+document.getElementById('modal-close').onclick = function () {
+    document.getElementById('modal-overlay').style.display = 'none';
+};
+
+document.getElementById('modal-close-footer').onclick = function () {
+    document.getElementById('modal-overlay').style.display = 'none';
+};
 
 
