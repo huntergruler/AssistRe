@@ -1726,7 +1726,7 @@ router.get('/requestagentinfo', (req, res) => {
 
 router.get('/sendbuyerinfo', (req, res) => {
   const agentid = req.query.agentid;
-  const buyerid = req.session.buyerid;
+  const buyerid = req.query.buyerid;
   const buyeragentmatchid = req.query.buyeragentmatchid;
   const updateQuery = `
     UPDATE AgentBuyerMatch

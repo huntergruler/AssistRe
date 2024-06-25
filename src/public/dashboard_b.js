@@ -221,7 +221,7 @@ function getOffers(datatype, element) {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>
-                        <button type="button" id="sendbuyerinfo-button" class="buyerinfo-button" onclick="sendBuyerInfo(${request.buyerid},${request.agentid});">
+                        <button type="button" id="sendbuyerinfo-button" class="buyerinfo-button" onclick="sendBuyerInfo(${request.buyerid},${request.agentid},${request.buyeragentmatchid});">
                          Send Your Info to Agent</button>`;
                     } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
@@ -401,7 +401,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>
                         <button type="button" id="buyerinfo-button" class="buyerinfo-button" style="margin-left: 5px"
-                        onclick="sendBuyerInfo(${request.buyerid},${request.agentid});">
+                        onclick="sendBuyerInfo(${request.buyerid},${request.agentid},${request.buyeragentmatchid});">
                          Send Your Info to Agent</button>`;
                 } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
@@ -468,9 +468,9 @@ function requestAgentInfo(agentid, buyeragentmatchid) {
         .catch(error => console.error('Error fetching agent info:', error));
 }
 
-function sendBuyerInfo(buyerid, agentid) {
+function sendBuyerInfo(buyerid, agentid, buyeragentmatchid) {
     const buyerinfobutton = document.getElementById('buyerinfo-button');
-    fetch(`/sendbuyerinfo?buyerid=${encodeURIComponent(buyerid)},&agentid=${encodeURIComponent(agentid)}`)
+    fetch(`/sendbuyerinfo?buyerid=${encodeURIComponent(buyerid)},&agentid=${encodeURIComponent(agentid)},&buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)}`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
