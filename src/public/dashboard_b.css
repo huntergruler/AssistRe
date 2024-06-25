@@ -857,7 +857,8 @@ body {
     color: white;
 }
 
-.agentinfo-button {
+.agentinfo-button,
+.buyerinfo-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -872,7 +873,8 @@ body {
 }
 
 
-#agentinfo-button {
+#agentinfo-button,
+#buyerinfo-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -886,7 +888,8 @@ body {
     /* transition: background-color 0.3s ease; */
 }
 
-#agentinfo-button:hover {
+#agentinfo-button:hover,
+#buyerinfo-button:hover {
     background-color: grey;
     color: white;
 }

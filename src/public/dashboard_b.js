@@ -400,7 +400,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>
-                        <button type="button" id="sendbuyerinfo-button" class="buyerinfo-button" style="margin-left: 5px"
+                        <button type="button" id="buyerinfo-button" class="buyerinfo-button" style="margin-left: 5px"
                         onclick="sendBuyerInfo(${request.agentid});">
                          Send Agent Your Info</button>`;
                 } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
