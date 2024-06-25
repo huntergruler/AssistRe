@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 //const session = require('express-session');
 const app = express();
+const vCardsJS = require('vcards-js');
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const router = express.Router();
@@ -1727,73 +1728,66 @@ router.get('/sendbuyerinfo', (req, res) => {
   const agentid = req.query.agentid;
   const buyerid = req.session.buyerid;
   const buyeragentmatchid = req.query.buyeragentmatchid;
-  const verificationtoken = crypto.randomBytes(16).toString('hex');
-
-  var query = 'update Buyer set verificationtoken = ? where userid = ?';
-  db.query(query, [verificationtoken, buyerid], (error, results) => {
+  const updateQuery = `
+    UPDATE AgentBuyerMatch
+    SET buyerSent = 1,
+        buyerSentTimestamp = NOW()
+    WHERE agentid = ?
+      AND buyerid = ?
+      AND buyeragentmatchid = ?`;
+  var agentquery = `SELECT email 
+                      FROM Agents 
+                     WHERE userid = ?`;
+  db.query(agentquery, [agentid], (error, results) => {
     if (error) {
       console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
+    var agentEmail = results[0].email;
   });
-  query = `update AgentBuyerMatch
-                    set buyerSent = 1,
-                        buyerSentTimestamp = now()
-                  where agentid = ?
-                    and buyerid = ?
-                    and buyeragentmatchid = ?`;
-  db.query(query, [agentid, buyerid, buyeragentmatchid], (error, results) => {
+  db.query(updateQuery, [agentid, buyerid, buyeragentmatchid], (error, results) => {
     if (error) {
       console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
-    db.query(`SELECT email, concat(firstname,' ',lastname) fullname FROM Agents WHERE userid = ?`, [agentid], (error, agentEmail) => {
-      if (error) {
-        console.log('Error:', error);
-        return res.status(500).json({ error: 'Internal server error' });
-      }
-      var emailMesage = `<!DOCTYPE html>
-            <html>
-            <head>
-                <style>
-                    .button {
-                        display: inline-block;
-                        padding: 10px 20px;
-                        margin: 10px;
-                        font-size: 16px;
-                        color: white;
-                        text-align: center;
-                        text-decoration: none;
-                        border-radius: 5px;
-                    }
-                    .confirm {
-                        background-color: #28a745;
-                    }
-                    .decline {
-                        background-color: #dc3545;
-                    }
-                </style>
-            </head>
-            <body>
-                <p>Dear User,</p>
-                <p>Please confirm or decline your action by clicking one of the buttons below:</p>
-                <a href="http://${req.headers.host}/confirmcontact?token=${verificationtoken}&agent=${agentid}" class="button confirm">Confirm</a>
-                <a href="http://${req.headers.host}/declinecontact?token=${verificationtoken}&agent=${agentid}" class="button decline">Decline</a>
-                <p>Thank you!</p>
-            </body>
-            </html>`;
-      sendEmail(agentEmail[0].email, 'Buyer Contact Information Request', emailMesage);
 
-      res.json({ agentEmail: agentEmail[0].email });
+    getBuyerInfo(buyerid)
+      .then((buyerInfoResults) => {
+        if (buyerInfoResults.length > 0) {
+          const buyerInfo = buyerInfoResults[0];
 
-    });
+          // Generate vCard
+          const vCard = vCardsJS();
+          vCard.firstName = buyerInfo.firstName;
+          vCard.lastName = buyerInfo.lastName;
+          vCard.Email = buyerInfo.email;
+          vCard.Phone = buyerInfo.phoneNumber;
+
+          // Save vCard to file
+          const vCardFileName = `${buyerInfo.fullName}.vcf`;
+          const vCardFilePath = `${vCardFileName}`; // Adjust the path as needed
+          vCard.saveToFile(vCardFilePath);
+
+          // Send email with vCard attachment
+          const emailMessage = `Please find ${buyerInfo.fullName}'s contact information attached.`;
+          sendEmail(agentEmail, `Buyer Contact Information - ${buyerInfo.fullName}`, emailMessage, vCardFilePath);
+
+          res.json({ agentEmail: agentEmail });
+        } else {
+          res.status(404).json({ error: 'No buyer found' });
+        }
+      })
+      .catch((err) => {
+        console.error('Error fetching buyer info:', err);
+        res.status(500).json({ error: 'Internal server error' });
+      });
   });
 });
 
 router.get('/getagentinfo', (req, res) => {
   const agentid = req.query.agentid;
   console.log('Agent ID:', agentid);
-  const query = `select concat(a.firstName,' ',a.lastName) fullName, a.address, 
+  const query = `select a.firstName, a.lastName, concat(a.firstName,' ',a.lastName) fullName, a.address, 
                         concat(a.city,', ',a.state,' ',a.zip) cityStateZip, a.bio, a.email, 
                         a.languages, a.phoneNumber, al.licenseNumber, al.licenseState, al.licenseExpirationDate
                    from Agents a
@@ -1813,6 +1807,46 @@ router.get('/getagentinfo', (req, res) => {
     }
   });
 });
+
+router.get('/getbuyerinfo', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access the Settings page';
+    //    console.log('Redirecting to:', redirectto);
+    res.redirect('/');
+  }
+  else {
+    const buyerid = req.session.buyerid;
+    getBuyerInfo(buyerid)
+      .then((results) => {
+        if (results.length > 0) {
+          res.json({ results });
+        } else {
+          res.status(404).json({ error: 'No buyer found' });
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching buyer info:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      });
+  }
+});
+
+function getBuyerInfo(buyerid) {
+  return new Promise((resolve, reject) => {
+    const query = `SELECT concat(firstName,' ',lastName) fullName, address, 
+                          concat(city,', ',state,' ',zip) cityStateZip, email, 
+                          phoneNumber
+                     FROM Buyers
+                    WHERE userid = ?`;
+    db.query(query, [buyerid], (error, results) => {
+      if (error) {
+        console.log('Error:', error);
+        reject(error);
+      }
+      resolve(results);
+    });
+  });
+}
 
 // Function to send a verification email
 function sendEmail(email, subject, message) {
