@@ -329,6 +329,7 @@ body {
     text-align: center;
     border: 1px solid black;
     border-radius: 8px;
+    opacity: 0.8;
     background-color: var(--dialog-color);
 }
 
