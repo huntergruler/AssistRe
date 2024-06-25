@@ -198,12 +198,13 @@ function getOffers(datatype, element) {
                 offers.appendChild(div);
             }
             else {
+                var innerHTMLtext = '';
                 data.forEach(request => {
                     const div = document.createElement("div");
                     if (request.buyerStatus == "New") {
                         div.innerHTML = ``
                     }
-                    div.innerHTML += `
+                    innerHTMLtext += `
                     <div class="flex-fill offersummary">
                     <div class="newDot col-md">&#x2022;</div>
                     <a href="#" class="favorite-icon" id="favicon" data-item-id="1" title="Click to favorite this offer">
@@ -212,17 +213,23 @@ function getOffers(datatype, element) {
                     <i class="far fa-ban"></i></a>
                     ${request.offerText}<br>`
                     if (request.agentInfoRequested == 1) {
-                        div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
+                        innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: grey" >
                                        Agent Contact Info Requested
                                        </button>`;
                     } else if (request.agentInfoRequested == 2) {
-                        div.innerHTML += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
+                        innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent Contact Info
                                         </button>`;
+                    } else if (request.agentInfoRequested == 3) {
+                        innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
+                        style="background-color: red" >
+                       Agent Declined Info Requested
+                       </button>
+                       `;
                     }
-                    // </div>`;
+                    div.innerHTML = innerHTMLtext;
                     div.className = "form-row offers col-md-12";
                     div.id = "agentid" + request.agentid;
                     if (request.buyerStatus == "New") {
