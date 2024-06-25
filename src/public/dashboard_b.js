@@ -381,8 +381,8 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Retainer Fee will be Credited: <b>${request.retainerCredited}</b><br>
                 Expiration Compensation: <b>${request.expirationCompTimeFrame}</b><br>
                 Expiration Compensation Amount: <b>${request.expirationCompensation}</b><br>
-                <u>Offer Description</u><br>
-                ${request.offerDesc}<br>
+                <i>Offer Description</i><br>
+                <div  class="row col-md-10" style="border:1px solid black; border-radius:5px; margin-bottom: 2px"> ${request.offerDesc}<br></div>
                 Offer Date: ${request.offerTimestamp}<br></div>`;
                 if (request.agentInfoRequested == 0) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
