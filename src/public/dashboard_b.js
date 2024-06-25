@@ -220,7 +220,7 @@ function getOffers(datatype, element) {
                     } else if (request.agentInfoRequested == 2) {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
-                         View Agent Contact Info
+                         View Agent Info
                                         </button>`;
                     } else if (request.agentInfoRequested == 3) {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
@@ -399,7 +399,11 @@ function offerDetail(agentid, buyeragentmatchid) {
                 } else if (request.agentInfoRequested == 2) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
-                         View Agent Contact Info
+                         View Agent Info
+                                        </button>
+<button type="button" id="sendbuyerinfo-button" class="agentinfo-button" data-toggle="modal"
+                        data-target="#agentInfoModal" onclick="sendBuyerInfo(${request.agentid});">
+                         Send Agent Your Info
                                         </button>
                                         `;
                 } else if (request.agentInfoRequested == 3) {
