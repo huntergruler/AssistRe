@@ -382,7 +382,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                 Expiration Compensation: <b>${request.expirationCompTimeFrame}</b><br>
                 Expiration Compensation Amount: <b>${request.expirationCompensation}</b><br>
                 <i>Offer Description</i><br>
-                <div  class="row col-md-10" style="border:1px solid black; border-radius:5px; margin-bottom: 2px"> ${request.offerDesc}<br></div>
+                <div  class="row col-md-12" style="border:1px solid black; border-radius:5px; margin-bottom: 2px"> ${request.offerDesc}<br></div>
                 Offer Date: ${request.offerTimestamp}<br></div>`;
                 if (request.agentInfoRequested == 0) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
