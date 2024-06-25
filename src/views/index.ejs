@@ -32,11 +32,16 @@
 <body>
   <div style="margin-top: 100px;text-align: center;">
     <h1>Welcome to SeekingAgents</h1>
-    <div class="message" id="message">
+    <div class="message" id="message" style="margin-top: 10px;">
       <%= message %>
     </div>
   </div>
   <%- include('message_modal') %>
+  <script>
+    $(document).ready(function() {
+      $('#messageModal').modal('show');
+    });
+  </script>
 </body>
 
 </html>
