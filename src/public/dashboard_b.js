@@ -212,18 +212,18 @@ function getOffers(datatype, element) {
                     <a href="#" class="decline-icon" id="declineicon" data-item-id="2" title="Click to decline this offer">
                     <i class="far fa-ban"></i></a>
                     ${request.offerText}<br>`
-                    if (request.agentInfoRequested == 1) {
+                    if (request.buyerRequested == 1 && request.agentReply == '') {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: grey" >
                                        Agent Contact Info Requested
                                        </button>`;
-                    } else if (request.agentInfoRequested == 2) {
+                    } else if (request.buyerRequested == 1 && request.agentReply == 'C') {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>
                         <button type="button" id="sendbuyerinfo-button" class="buyerinfo-button" onclick="sendBuyerInfo(${request.buyerid});">
                          Send Agent Your Info</button>`;
-                    } else if (request.agentInfoRequested == 3) {
+                    } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                         style="background-color: red" >
                        Agent Contact Request Declined
@@ -385,26 +385,26 @@ function offerDetail(agentid, buyeragentmatchid) {
                 <i>Offer Description</i><br>
                 <div  class="row col-md-12" style="border:1px solid black; border-radius:5px; margin-bottom: 2px"> ${request.offerDesc}<br></div>
                 Offer Date: ${request.offerTimestamp}<br></div>`;
-                if (request.agentInfoRequested == 0) {
+                if (request.buyerRequested == 0) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" 
                                                onclick="requestAgentInfo(${request.agentid},${buyeragentmatchid});">
                                        Request Agent Contact Info
                                        </button>
                                        `;
-                } else if (request.agentInfoRequested == 1) {
+                } else if (request.buyerRequested == 1 && request.agentReply == '') {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: grey" >
                                        Agent Contact Info Requested
                                        </button>
                                        `;
-                } else if (request.agentInfoRequested == 2) {
+                } else if (request.buyerRequested == 1 && request.agentReply == 'C') {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>
                         <button type="button" id="sendbuyerinfo-button" class="buyerinfo-button" style="margin-left: 5px"
                         onclick="sendBuyerInfo(${request.agentid});">
                          Send Agent Your Info</button>`;
-                } else if (request.agentInfoRequested == 3) {
+                } else if (request.buyerRequested == 1 && request.agentInfoRequested == 'D') {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: red" >
                                         Agent Contact Request Declined
