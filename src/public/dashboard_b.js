@@ -402,7 +402,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>
-                        <button type="button" id="sendbuyerinfo-button" class="agentinfo-button" data-toggle="modal"
+                        <button type="button" id="sendbuyerinfo-button" class="agentinfo-button" data-toggle="modal"  style="margin-left: 5px"
                         data-target="#agentInfoModal" onclick="sendBuyerInfo(${request.agentid});">
                          Send Agent Your Info</button>`;
                 } else if (request.agentInfoRequested == 3) {
