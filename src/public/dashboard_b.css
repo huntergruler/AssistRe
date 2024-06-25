@@ -71,7 +71,7 @@ body {
 }
 
 .container {
-    opacity: 0.8;
+    opacity: var(--dialog-opacity);
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 0px;
@@ -329,7 +329,7 @@ body {
     text-align: center;
     border: 1px solid black;
     border-radius: 8px;
-    opacity: 0.5;
+    opacity: var(--dialog-opacity);
     background-color: var(--dialog-color);
 }
 
@@ -496,7 +496,7 @@ body {
 }
 
 .container-left {
-    opacity: 0.8;
+    opacity: var(--dialog-opacity);
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 0px;

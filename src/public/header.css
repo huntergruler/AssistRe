@@ -2,6 +2,7 @@
   --background-color: rgba(19, 50, 109);
   --dialog-color: #f0f2f5;
   --text-color: white;
+  --dialog-opacity: 0.8;
 }
 
 * {
