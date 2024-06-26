@@ -227,11 +227,7 @@
 }
 
 .zipCode-group {
-    /* margin-bottom: 5px;
-    margin-top: 5px;
-    margin-left: 13px;
-    margin-right: 1px; */
-    margin: 0px 0px;
+    margin: 5px 0px;
     padding-left: 0px;
     padding-right: 0px;
     width: auto;
