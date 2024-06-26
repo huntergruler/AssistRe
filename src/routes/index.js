@@ -1750,6 +1750,7 @@ router.get('/sendbuyerinfo', async (req, res) => {
 
     // Fetch buyer info
     const buyerInfoResults = await getBuyerInfo(buyerid);
+    console.log('Buyer Info:', buyerInfoResults);
     if (buyerInfoResults.length === 0) {
       return res.status(404).json({ error: 'No buyer found' });
     }
