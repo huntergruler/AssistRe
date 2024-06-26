@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 const cookierParser = require('cookie-parser');
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs').promises;
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
@@ -1738,16 +1738,6 @@ router.get('/sendbuyerinfo', async (req, res) => {
     }
     const agentEmail = agentResults[0].email;
 
-    // Update AgentBuyerMatch
-    const updateQuery = `
-      UPDATE AgentBuyerMatch
-      SET buyerSent = 1,
-          buyerSentTimestamp = NOW()
-      WHERE agentid = ?
-        AND buyerid = ?
-        AND buyeragentmatchid = ?`;
-    await dbQuery(updateQuery, [agentid, buyerid, buyeragentmatchid]);
-
     // Fetch buyer info
     const buyerInfoResults = await getBuyerInfo(buyerid);
     if (buyerInfoResults.length === 0) {
@@ -1757,10 +1747,10 @@ router.get('/sendbuyerinfo', async (req, res) => {
 
     // Generate vCard
     const vCard = vCardsJS();
-    vCard.firstName = buyerInfo.firstName; 
-    vCard.lastName = buyerInfo.lastName; 
+    vCard.firstName = buyerInfo.firstName;
+    vCard.lastName = buyerInfo.lastName;
     vCard.workEmail = buyerInfo.email;
-    vCard.workPhone = buyerInfo.phoneNumber; 
+    vCard.workPhone = buyerInfo.phoneNumber;
     vCard.workAddress.label = 'Work Address';
     vCard.workAddress.street = buyerInfo.address;
     vCard.workAddress.city = buyerInfo.city;
@@ -1777,13 +1767,18 @@ router.get('/sendbuyerinfo', async (req, res) => {
     await sendEmail(agentEmail, `Buyer Contact Information - ${buyerInfo.fullName}`, emailMessage, vCardFilePath);
 
     // Delete the VCF file after sending the email
-    // fs.unlink(vCardFilePath, (err) => {
-    //   if (err) {
-    //     console.error('Error deleting the VCF file:', err);
-    //   } else {
-    //     console.log('VCF file deleted successfully');
-    //   }
-    // });
+    await fs.unlink(vCardFilePath);
+    console.log('VCF file deleted successfully');
+
+    // Update AgentBuyerMatch after the email is sent and the file is deleted
+    const updateQuery = `
+      UPDATE AgentBuyerMatch
+      SET buyerSent = 1,
+          buyerSentTimestamp = NOW()
+      WHERE agentid = ?
+        AND buyerid = ?
+        AND buyeragentmatchid = ?`;
+    await dbQuery(updateQuery, [agentid, buyerid, buyeragentmatchid]);
 
     res.json({ agentEmail: agentEmail });
   } catch (error) {
@@ -1822,7 +1817,6 @@ router.get('/getagentinfo', (req, res) => {
       console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
-    console.log('Results:', results);
     if (results.length > 0) {
       res.json({ results });
     } else {
@@ -1867,7 +1861,6 @@ function getBuyerInfo(buyerid) {
         console.log('Error:', error);
         reject(error);
       }
-      console.log('Results:', results);
       resolve(results);
     });
   });
