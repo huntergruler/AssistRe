@@ -33,9 +33,6 @@
 
 }
 
-#displayZipCodes::-webkit-scrollbar {
-    width: 5px;
-}
 #displayZipCodes {
     overflow: auto;
     width: auto;
@@ -47,7 +44,6 @@
     font-size: 12px;
     border-top: 1px solid black;
 }
-
 
 .modify-button {
     display: flex;
