@@ -1750,7 +1750,6 @@ router.get('/sendbuyerinfo', async (req, res) => {
 
     // Fetch buyer info
     const buyerInfoResults = await getBuyerInfo(buyerid);
-    console.log('Buyer Info:', buyerInfoResults);
     if (buyerInfoResults.length === 0) {
       return res.status(404).json({ error: 'No buyer found' });
     }
@@ -1770,6 +1769,7 @@ router.get('/sendbuyerinfo', async (req, res) => {
     vCard.workAddress.countryRegion = 'USA'; // Adjust as needed
 
     // Save vCard to file
+    console.log('buyerInfo.fullName:', buyerInfo.fullName);
     const vCardFileName = `${buyerInfo.fullName}.vcf`;
     const vCardFilePath = `./vcards/${vCardFileName}`; // Adjust the path as needed
     vCard.saveToFile(vCardFilePath);
