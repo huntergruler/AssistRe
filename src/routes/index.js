@@ -1866,7 +1866,7 @@ function getBuyerInfo(buyerid) {
 }
 
 // Function to send a verification email
-function sendEmail(email, subject, message) {
+function sendEmail(email, subject, message, attachmentPath) {
   console.log('Sending email to:', email);
   const mailTransporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -1876,11 +1876,17 @@ function sendEmail(email, subject, message) {
       pass: process.env.SMTP_PASS
     }
   });
+
   const mailDetails = {
     from: process.env.SMTP_FROM,
     to: email,
     subject: subject,
-    html: message
+    html: message,
+    attachments: [
+      {
+        path: attachmentPath
+      }
+    ]
   };
 
   mailTransporter.sendMail(mailDetails, (error, info) => {
