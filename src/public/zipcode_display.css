@@ -41,6 +41,19 @@
     cursor: pointer;
     text-align: center;
 }
+#displayZipCodes::-webkit-scrollbar {
+    width: 5px;
+}
+#displayZipCodes {
+    overflow: auto;
+    width: 280px;
+    max-height: 150px;
+    min-height: 100px;
+    text-align: center;
+    align-items: center;
+    margin-left: 5px;
+    border-top: 1px solid black;
+}
 
 .modify-button {
     display: flex;
