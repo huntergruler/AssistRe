@@ -402,10 +402,18 @@ function offerDetail(agentid, buyeragentmatchid) {
                 } else if (request.buyerRequested == 1 && request.agentReply == 'C') {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
-                         View Agent's Info</button>
-                        <button type="button" id="buyerinfo-button2" class="buyerinfo-button" style="margin-left: 5px"
-                        onclick="sendBuyerInfo(${request.buyerid},${request.agentid},${request.buyeragentmatchid});">
-                         Send Your Info to Agent</button>`;
+                         View Agent's Info</button>`
+                         if (request.buyerSent == 0){
+                                innerHTMLtext += `<button type="button" id="buyerinfo-button2" class="buyerinfo-button" style="margin-left: 5px"
+                                onclick="sendBuyerInfo(${request.buyerid},${request.agentid},${request.buyeragentmatchid});">
+                                Send Your Info to Agent</button>`;
+                            }
+                            else if (request.buyerSent == 1){
+                                innerHTMLtext += `<button type="button" id="buyerinfo-button" class="buyerinfo-button disabled"
+                                style="background-color: grey" >
+                                Contact Info Sent
+                                </button>`;
+                            }
                 } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
                     innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
                                         style="background-color: red" >
@@ -414,6 +422,11 @@ function offerDetail(agentid, buyeragentmatchid) {
                                        `;
                 }
                 div.innerHTML = innerHTMLtext;
+
+            buyerinfobutton2.textContent = 'Contact Info Sent';
+            buyerinfobutton2.style.backgroundColor = 'grey';
+            buyerinfobutton2.classList.add('disabled');
+            buyerinfobutton2.onclick = null;
 
                 // onclick="populateAgentInfo(${request.agentid});">
                 // Request Agent Contact Info
@@ -473,7 +486,6 @@ function requestAgentInfo(agentid, buyeragentmatchid) {
 
 function sendBuyerInfo(buyerid, agentid, buyeragentmatchid) {
     const buyerinfobutton = document.getElementById('buyerinfo-button');
-    const buyerinfobutton2 = document.getElementById('buyerinfo-button2');
     fetch(`/sendbuyerinfo?buyerid=${encodeURIComponent(buyerid)},&agentid=${encodeURIComponent(agentid)},&buyeragentmatchid=${encodeURIComponent(buyeragentmatchid)}`)
         .then(response => response.json())
         .then(data => {
@@ -485,10 +497,6 @@ function sendBuyerInfo(buyerid, agentid, buyeragentmatchid) {
             buyerinfobutton.style.backgroundColor = 'grey';
             buyerinfobutton.classList.add('disabled');
             buyerinfobutton.onclick = null;
-            buyerinfobutton2.textContent = 'Contact Info Sent';
-            buyerinfobutton2.style.backgroundColor = 'grey';
-            buyerinfobutton2.classList.add('disabled');
-            buyerinfobutton2.onclick = null;
         })
         .catch(error => console.error('Error fetching agent info:', error));
 }
