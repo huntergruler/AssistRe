@@ -41,6 +41,9 @@ nav ul {
     text-align: center; 
     padding: 100px 20px; 
     background: var(--pale-yellow); 
+    /* background-image: url(./images/hero\ image.jpg); */
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 #hero h2 { 
