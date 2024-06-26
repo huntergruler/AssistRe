@@ -41,8 +41,8 @@
       <%= lastname %>
     </h2>
   </div>
-  <%- include('zipcode_display') %>
   <div class="d-flex justify-content-center">
+    <%- include('zipcode_display') %>
     <div class="row tab col-md-10" id="tabcontainer">
       <button id="tabNew" class="tablinks col-md btn-sm" onclick="getRequests('New', this)">Open Requests</button>
       <button id="tabOffered" class="tablinks col-md btn-sm" onclick="getRequests('Offered', this)">Offered</button>
