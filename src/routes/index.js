@@ -1758,10 +1758,10 @@ router.get('/sendbuyerinfo', async (req, res) => {
 
     // Generate vCard
     const vCard = vCardsJS();
-    vCard.firstName = buyerInfo.firstName;
-    vCard.lastName = buyerInfo.lastName;
-    vCard.email = buyerInfo.email;
-    vCard.phoneNumber = buyerInfo.phoneNumber;
+    vCard.firstName = buyerInfo.firstname; // Correct property name
+    vCard.lastName = buyerInfo.lastname; // Correct property name
+    vCard.workEmail = buyerInfo.email;
+    vCard.workPhone = buyerInfo.phoneNumber; // Correct property name
     vCard.workAddress.label = 'Work Address';
     vCard.workAddress.street = buyerInfo.address;
     vCard.workAddress.city = buyerInfo.city;
