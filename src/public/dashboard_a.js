@@ -14,29 +14,29 @@ document.addEventListener('DOMContentLoaded', function () {
             agentid = sessionData.agentid;
             paymentSuccessful = sessionData.paymentSuccessful;
 
-            // const toggle1 = document.getElementById('toggle1');
-            // const toggle2 = document.getElementById('toggle2');
-            // const moreInfo1 = document.getElementById('more-info1');
-            // const moreInfo2 = document.getElementById('more-info2');
+            const toggle1 = document.getElementById('toggle1');
+            const toggle2 = document.getElementById('toggle2');
+            const moreInfo1 = document.getElementById('more-info1');
+            const moreInfo2 = document.getElementById('more-info2');
 
-            // toggle1.addEventListener('click', function () {
-            //     if (moreInfo1.style.display === 'none') {
-            //         moreInfo1.style.display = 'block';
-            //         toggle1.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
-            //     } else {
-            //         moreInfo1.style.display = 'none';
-            //         toggle1.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
-            //     }
-            // });
-            // toggle2.addEventListener('click', function () {
-            //     if (moreInfo2.style.display === 'none') {
-            //         moreInfo2.style.display = 'block';
-            //         toggle2.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
-            //     } else {
-            //         moreInfo2.style.display = 'none';
-            //         toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
-            //     }
-            // });
+            toggle1.addEventListener('click', function () {
+                if (moreInfo1.style.display === 'none') {
+                    moreInfo1.style.display = 'block';
+                    toggle1.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
+                } else {
+                    moreInfo1.style.display = 'none';
+                    toggle1.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
+                }
+            });
+            toggle2.addEventListener('click', function () {
+                if (moreInfo2.style.display === 'none') {
+                    moreInfo2.style.display = 'block';
+                    toggle2.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
+                } else {
+                    moreInfo2.style.display = 'none';
+                    toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
+                }
+            });
 
             populateLevelOfService();
             populateOfferTypes();
