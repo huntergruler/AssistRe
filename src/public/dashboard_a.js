@@ -1,27 +1,73 @@
-// const { dot } = require("node:test/reporters");
-// Initialize the state based on the prequalified value
-document.addEventListener('DOMContentLoaded', function () {
-    populateLevelOfService();
-    populateOfferTypes();
-    populateCompensationTypes();
-    populateDisplayZipCodes();
-    getRequestCounts();
-    // getRequests()
-    const offerForm = document.getElementById('offerForm');
-    offerForm.style.display = 'none';
-    document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
+// create global variables to store session values
+let userid = null;
+let buyerid = null;
+let agentid = null;
+let paymentSuccessful = null;
 
-    // Disable all input fields and select elements
-    const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
-    const selectFields = document.querySelectorAll('#offerFormContainer select');
-    inputFields.forEach(input => input.setAttribute('readonly', 'true'));
-    selectFields.forEach(select => select.setAttribute('disabled', 'true'));
+// DOMContentLoaded event listener
+document.addEventListener('DOMContentLoaded', function () {
+    fetch('/session-data')
+        .then(response => response.json())
+        .then(sessionData => {
+            userid = sessionData.userid;
+            buyerid = sessionData.buyerid;
+            agentid = sessionData.agentid;
+            paymentSuccessful = sessionData.paymentSuccessful;
+
+            // const toggle1 = document.getElementById('toggle1');
+            // const toggle2 = document.getElementById('toggle2');
+            // const moreInfo1 = document.getElementById('more-info1');
+            // const moreInfo2 = document.getElementById('more-info2');
+
+            // toggle1.addEventListener('click', function () {
+            //     if (moreInfo1.style.display === 'none') {
+            //         moreInfo1.style.display = 'block';
+            //         toggle1.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
+            //     } else {
+            //         moreInfo1.style.display = 'none';
+            //         toggle1.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
+            //     }
+            // });
+            // toggle2.addEventListener('click', function () {
+            //     if (moreInfo2.style.display === 'none') {
+            //         moreInfo2.style.display = 'block';
+            //         toggle2.innerHTML = '<i class="fas fa-chevron-up"></i>&nbsp;Hide&nbsp;<i class="fas fa-chevron-up"></i>';
+            //     } else {
+            //         moreInfo2.style.display = 'none';
+            //         toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
+            //     }
+            // });
+
+            populateLevelOfService();
+            populateOfferTypes();
+            populateCompensationTypes();
+            populateDisplayZipCodes();
+            getRequestCounts();
+            // getRequests()
+            const offerForm = document.getElementById('offerForm');
+            offerForm.style.display = 'none';
+            document.querySelector('#requestDetail').innerHTML = '<c><br><strong> <--- Select a buyer request to view details </strong><br><br></c>';
+
+            // Disable all input fields and select elements
+            const inputFields = document.querySelectorAll('#offerFormContainer input, #offerFormContainer textarea');
+            const selectFields = document.querySelectorAll('#offerFormContainer select');
+            inputFields.forEach(input => input.setAttribute('readonly', 'true'));
+            selectFields.forEach(select => select.setAttribute('disabled', 'true'));
+
+            // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
+            // var time_zone = Date().time_zone;
+            // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
+            // FROM your_table_name;
+        })
+        .catch(error => console.error('Error fetching session data:', error));
 
     // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
     // var time_zone = Date().time_zone;
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
     // FROM your_table_name;
 });
+
+// const { dot } = require("node:test/reporters");
 
 //  ZIP CODE LOGIC STARTS HERE
 function populateDisplayZipCodes() {
