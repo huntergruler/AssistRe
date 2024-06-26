@@ -1665,7 +1665,6 @@ router.get('/requestagentinfo', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
   });
-  console.log('Agent ID:', agentid, 'Buyer ID:', buyerid, 'Buyer Agent Match ID:', buyeragentmatchid, 'Verification Token:', verificationtoken);
   query = `UPDATE AgentBuyerMatch
               SET buyerRequested = 1,
                   buyerRequestedTimestamp = now(),
@@ -1754,14 +1753,13 @@ router.get('/sendbuyerinfo', async (req, res) => {
       return res.status(404).json({ error: 'No buyer found' });
     }
     const buyerInfo = buyerInfoResults[0];
-    console.log('Buyer Info:', buyerInfo);
 
     // Generate vCard
     const vCard = vCardsJS();
-    vCard.firstName = buyerInfo.firstname; // Correct property name
-    vCard.lastName = buyerInfo.lastname; // Correct property name
+    vCard.firstName = buyerInfo.firstName; 
+    vCard.lastName = buyerInfo.lastName; 
     vCard.workEmail = buyerInfo.email;
-    vCard.workPhone = buyerInfo.phoneNumber; // Correct property name
+    vCard.workPhone = buyerInfo.phoneNumber; 
     vCard.workAddress.label = 'Work Address';
     vCard.workAddress.street = buyerInfo.address;
     vCard.workAddress.city = buyerInfo.city;
@@ -1770,12 +1768,21 @@ router.get('/sendbuyerinfo', async (req, res) => {
 
     // Save vCard to file
     const vCardFileName = `${sanitizeFilename(buyerInfo.fullName)}.vcf`;
-    const vCardFilePath = path.join(__dirname, '../vcards', vCardFileName); // Adjust the path as needed
+    const vCardFilePath = path.join(__dirname, '../temp', vCardFileName); // Adjust the path as needed
     vCard.saveToFile(vCardFilePath);
 
     // Send email with vCard attachment
     const emailMessage = `Please find ${buyerInfo.fullName}'s contact information attached.`;
     await sendEmail(agentEmail, `Buyer Contact Information - ${buyerInfo.fullName}`, emailMessage, vCardFilePath);
+
+    // Delete the VCF file after sending the email
+    fs.unlink(vCardFilePath, (err) => {
+      if (err) {
+        console.error('Error deleting the VCF file:', err);
+      } else {
+        console.log('VCF file deleted successfully');
+      }
+    });
 
     res.json({ agentEmail: agentEmail });
   } catch (error) {
@@ -1849,7 +1856,7 @@ router.get('/getbuyerinfo', (req, res) => {
 function getBuyerInfo(buyerid) {
   return new Promise((resolve, reject) => {
     const query = `SELECT concat(firstName,' ',lastName) fullName, 
-                          firstname, lastname, address, 
+                          firstName, lastName, address, 
                           city, state, zip, email, 
                           phoneNumber
                      FROM Buyers
