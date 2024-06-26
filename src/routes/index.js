@@ -10,6 +10,7 @@ const nodemailer = require('nodemailer');
 const cookierParser = require('cookie-parser');
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
