@@ -1777,13 +1777,13 @@ router.get('/sendbuyerinfo', async (req, res) => {
     await sendEmail(agentEmail, `Buyer Contact Information - ${buyerInfo.fullName}`, emailMessage, vCardFilePath);
 
     // Delete the VCF file after sending the email
-    fs.unlink(vCardFilePath, (err) => {
-      if (err) {
-        console.error('Error deleting the VCF file:', err);
-      } else {
-        console.log('VCF file deleted successfully');
-      }
-    });
+    // fs.unlink(vCardFilePath, (err) => {
+    //   if (err) {
+    //     console.error('Error deleting the VCF file:', err);
+    //   } else {
+    //     console.log('VCF file deleted successfully');
+    //   }
+    // });
 
     res.json({ agentEmail: agentEmail });
   } catch (error) {
