@@ -46,7 +46,7 @@
 } */
 #displayZipCodes {
     overflow: auto;
-    width: auto;
+    width: 200px;
     max-height: 150px;
     min-height: 100px;
     text-align: center;
