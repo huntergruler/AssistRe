@@ -33,11 +33,9 @@
 
 }
 
-/* .displayZipCodes {
-} */
-/* #displayZipCodes::-webkit-scrollbar {
+#displayZipCodes::-webkit-scrollbar {
     width: 5px;
-} */
+}
 #displayZipCodes {
     overflow: auto;
     width: auto;
