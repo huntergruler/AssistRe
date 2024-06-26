@@ -68,7 +68,23 @@ section {
 }
 
 footer { 
-    background: #f8f8f8; 
+    background: var(--dark-green); 
     padding: 20px; 
     text-align: center; 
+    color: var(--pale-yellow)
+}
+
+#footer-nav li {
+    list-style: none;
+}
+
+#footer-nav li a {
+    color: var(--pale-yellow);
+}
+
+
+
+#socials a {
+    color: var(--pale-yellow);
+    font-size: 30px;
 }
