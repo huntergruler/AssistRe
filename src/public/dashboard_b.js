@@ -221,7 +221,7 @@ function getOffers(datatype, element) {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>
-                        <button type="button" id="sendbuyerinfo-button" class="buyerinfo-button" onclick="sendBuyerInfo(${request.buyerid},${request.agentid},${request.buyeragentmatchid});">
+                        <button type="button" id="buyerinfo-button" class="buyerinfo-button" onclick="sendBuyerInfo(${request.buyerid},${request.agentid},${request.buyeragentmatchid});">
                          Send Your Info to Agent</button>`;
                     } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
                         innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
