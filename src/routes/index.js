@@ -1800,7 +1800,7 @@ function dbQuery(query, params) {
 router.get('/getagentinfo', (req, res) => {
   const agentid = req.query.agentid;
   console.log('Agent ID:', agentid);
-  const query = `select a.firstName, a.lastName, concat(a.firstName,' ',a.lastName) fullName, a.address, 
+  const query = `select a.firstName, a.lastName, concat(a.firstName,a.lastName) fullName, a.address, 
                         concat(a.city,', ',a.state,' ',a.zip) cityStateZip, a.bio, a.email, 
                         a.languages, a.phoneNumber, al.licenseNumber, al.licenseState, al.licenseExpirationDate
                    from Agents a
