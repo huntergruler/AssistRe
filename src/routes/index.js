@@ -1754,6 +1754,7 @@ router.get('/sendbuyerinfo', async (req, res) => {
       return res.status(404).json({ error: 'No buyer found' });
     }
     const buyerInfo = buyerInfoResults[0];
+    console.log('Buyer Info:', buyerInfo);
 
     // Generate vCard
     const vCard = vCardsJS();
@@ -1766,12 +1767,10 @@ router.get('/sendbuyerinfo', async (req, res) => {
     vCard.workAddress.city = buyerInfo.city;
     vCard.workAddress.stateProvince = buyerInfo.state;
     vCard.workAddress.postalCode = buyerInfo.zip;
-    vCard.workAddress.countryRegion = 'USA'; // Adjust as needed
 
     // Save vCard to file
     const vCardFileName = `${sanitizeFilename(buyerInfo.fullName)}.vcf`;
     const vCardFilePath = path.join(__dirname, '../vcards', vCardFileName); // Adjust the path as needed
-    console.log('vCardFilePath:', vCardFilePath);
     vCard.saveToFile(vCardFilePath);
 
     // Send email with vCard attachment
