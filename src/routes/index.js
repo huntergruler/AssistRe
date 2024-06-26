@@ -1848,8 +1848,9 @@ router.get('/getbuyerinfo', (req, res) => {
 
 function getBuyerInfo(buyerid) {
   return new Promise((resolve, reject) => {
-    const query = `SELECT concat(firstName,' ',lastName) fullName, address, 
-                          concat(city,', ',state,' ',zip) cityStateZip, email, 
+    const query = `SELECT concat(firstName,' ',lastName) fullName, 
+                          firstname, lastname, address, 
+                          city, state, zip, email, 
                           phoneNumber
                      FROM Buyers
                     WHERE userid = ?`;
