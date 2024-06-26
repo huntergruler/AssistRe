@@ -103,44 +103,177 @@
     color: white;
 }
 
-/* Modal header */
-/* .modal-header {
-    display: flex;
-    justify-content: space-between;
+/*  ZIP CODE CSS */
+.zipCodeContainer {
+    opacity: var(--dialog-opacity);
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 100%;
+
+    justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #e5e5e5;
-    padding-bottom: 10px;
-} */
+}
 
-/* Modal body */
-/* .modal-body {
-    margin: 20px 0;
-} */
-
-/* Modal footer */
-/* .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    border-top: 1px solid #e5e5e5;
-    padding-top: 10px;
-} */
-
-/* .modal-close {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
+.zipCodeSelected {
+    padding: 1px;
+    /* border: 1px solid #ddd; */
+    margin-bottom: 1px;
     cursor: pointer;
 }
 
-.button {
-    padding: 10px 20px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button-close {
-    background-color: #dc3545;
+.zipCodeSelected.selected {
+    background-color: #007BFF;
     color: white;
-} */
+}
+
+.zipCodeOption,
+.userZipCodes,
+.displayZipCodes {
+    padding: 0px;
+    /* border: 1px solid #ddd; */
+    margin-bottom: 0px;
+    margin-top: 0px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.zipCodeOption.selected,
+.userZipCodes.selected {
+    background-color: #007BFF;
+    color: white;
+}
+
+#selectedZipCodesContainer,
+#availabeZipCodesContainer {
+    overflow: auto;
+    width: 100px;
+    max-height: 160px;
+    min-height: 160px;
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#displayZipCodes {
+    overflow: auto;
+    width: 280px;
+    max-height: 150px;
+    min-height: 100px;
+    text-align: center;
+    align-items: center;
+    margin-left: 5px;
+    border-top: 1px solid black;
+}
+
+.userZip-container {
+    background-color: var(--dialog-color);
+    opacity: var(--dialog-opacity);
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid black;
+    align-items: center;
+    text-align: center;
+}
+
+#ownedZipCodes {
+    max-height: 225px;
+    overflow: auto;
+}
+
+#zipCodeButton {
+    height: 32px;
+    background-color: rgba(19, 50, 109);
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: 20px;
+    cursor: pointer;
+    width: 50px;
+    margin-top: 5px;
+}
+
+.zipAction {
+    margin: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: auto;
+    text-align: center;
+    display: flex;
+    /* flex-direction: column; Stack items vertically */
+    align-items: center;
+    /* Center items horizontally */
+    justify-content: center;
+    /* Center items vertically */
+    align-content: center;
+}
+
+.zipCode-group {
+    /* margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 13px;
+    margin-right: 1px; */
+    margin: 0px 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: auto;
+    align-items: center;
+    /* Center items horizontally */
+    justify-content: center;
+    /* Center items vertically */
+    align-content: center;
+    text-align: center;
+    justify-items: center;
+}
+
+.county-group,
+.zipstate-group,
+.zipselect-group {
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-right: 1px;
+    padding-left: 2px;
+    width: auto;
+    max-height: fit-content;
+    border: 1px solid black;
+    border-radius: 8px;
+    /* Less space between elements */
+    align-content: center;
+    align-items: center;
+    text-align: right;
+}
+
+.zips {
+    margin-left: 80px;
+    margin-right: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 5;
+    width: 400px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+/* ZIP CSS end */
