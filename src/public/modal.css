@@ -9,16 +9,7 @@
     background-color: transparent;
 }
 
-/* .modal {
-    position: relative;
-    background: #fff;
-    border-radius: 5px;
-    max-width: 500px;
-    padding: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-} */
-
-/* The Modal CSS */
+/* The Modal CSS START */
 .modal {
     display: none;
     position: fixed;
@@ -102,6 +93,7 @@
     background-color: grey;
     color: white;
 }
+/*  MODAL CSS END */
 
 /*  ZIP CODE CSS */
 .zipCodeContainer {

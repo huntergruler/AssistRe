@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
             populateLevelOfService();
             populateOfferTypes();
             populateCompensationTypes();
+            populateStates();
             populateDisplayZipCodes();
             getRequestCounts();
             // getRequests()
