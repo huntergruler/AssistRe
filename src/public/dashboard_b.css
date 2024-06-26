@@ -736,6 +736,12 @@ body {
     align-items: center;
 }
 
+#dashboardBody {
+    position: relative;
+    z-index: 1;
+    /* Ensure the content stays above the background */
+}
+
 /* Modal content */
 .modal-content {
     font-size: 14px;

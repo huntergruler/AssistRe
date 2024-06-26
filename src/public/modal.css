@@ -92,6 +92,12 @@
     /* transition: background-color 0.3s ease; */
 }
 
+#dashboardBody {
+    position: relative;
+    z-index: 1;
+    /* Ensure the content stays above the background */
+}
+
 #modify-button:hover {
     background-color: grey;
     color: white;
