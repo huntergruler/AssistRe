@@ -15,31 +15,32 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="dashboard_a.css">
 </head>
-<header>
-  <div class="row row-cols-2">
-    <div id="title" class="align-items-center">
-      <!-- <h1 class="mt-2"><a href="/">SeekingAgents</a></h1> -->
-      <div class="logo-container"></div>
-    </div>
-    <nav id="navlinks" class="justify-content-end text-center">
-      <p id="navname">
-        <%= firstname %>
-        <%= lastname %>
-      </p>
-      <p>|</p>
-      <p><a href="/profile_a">Profile</a></p>
-      <p>|</p>
-      <p><a href="/settings_a">Settings</a></p>
-      <p>|</p>
-      <p><a href="/logout">Logout</a></p>
-    </nav>
-  </div>
-
-</header>
 
 <body id="dashboardBody">
-  <div class="margin-top-100"></div>
+  <header>
+    <div class="row row-cols-2">
+      <div id="title" class="align-items-center">
+        <!-- <h1 class="mt-2"><a href="/">SeekingAgents</a></h1> -->
+        <div class="logo-container"></div>
+      </div>
+      <nav id="navlinks" class="justify-content-end text-center">
+        <p id="navname">
+          <%= firstname %>
+          <%= lastname %>
+        </p>
+        <p>|</p>
+        <p><a href="/profile_a">Profile</a></p>
+        <p>|</p>
+        <p><a href="/settings_a">Settings</a></p>
+        <p>|</p>
+        <p><a href="/logout">Logout</a></p>
+      </nav>
+    </div>
+
+  </header>
+  <div class="background-container"></div>
   <div id="dashboardContainer" style="text-align: center;">
+    <div class="margin-top-100"></div>
     <h2>Agent Dashboard for <%= firstname %>
       <%= lastname %>
     </h2>
