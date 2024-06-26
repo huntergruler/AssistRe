@@ -307,7 +307,10 @@ function getOffers(datatype, element) {
 
                     // Add event listener to the card
                     const card = div.querySelector('.offersummary');
-                    card.addEventListener('click', function () {
+                    card.addEventListener('click', function (event) {
+                        if (event.target.tagName === 'BUTTON') {
+                            return; // Do nothing if a button is clicked
+                        }
                         // Your card click handling code here
                         if (paymentSuccessful) {
                             selectOffer(request.agentid, request.buyeragentmatchid, this);
