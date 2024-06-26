@@ -10,7 +10,7 @@
 }
 
 /* The Modal CSS START */
-.modal {
+/* .modal {
     display: none;
     position: fixed;
     left: 0;
@@ -22,7 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 /* Modal content */
 .modal-content {
