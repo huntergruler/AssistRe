@@ -1,41 +1,10 @@
 // const { dot } = require("node:test/reporters");
-
-var modal = document.getElementById("myModal");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// Get the close button inside the modal
-var closeModalButton = document.getElementById("modalCloseButton");
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-}
-
-// When the user clicks the close button inside the modal, close the modal
-closeModalButton.onclick = function () {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-// Function to show the modal with a message
-function showModal(message) {
-    document.getElementById('modalMessage').textContent = message;
-    modal.style.display = "flex";
-}
-
 // Initialize the state based on the prequalified value
 document.addEventListener('DOMContentLoaded', function () {
     populateLevelOfService();
     populateOfferTypes();
     populateCompensationTypes();
+    populateDisplayZipCodes();
     getRequestCounts();
     // getRequests()
     const offerForm = document.getElementById('offerForm');
@@ -53,6 +22,83 @@ document.addEventListener('DOMContentLoaded', function () {
     // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
     // FROM your_table_name;
 });
+
+//  ZIP CODE LOGIC STARTS HERE
+function populateDisplayZipCodes() {
+    const displayZipCodes = document.getElementById("displayZipCodes");
+    let htmlCodes = '';
+    displayZipCodes.innerHTML = '';
+    fetch(`/get-userzipcodes`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.results) {
+                const div = document.createElement("div");
+                div.className = "userZipCodes justify-content-center";
+                div.textContent = 'Currently no zip codes yet';
+                displayZipCodes.appendChild(div);
+                htmlCodes += `<p>Currently no zip codes selected</p>`;
+                displayZipCodes.innerHTML = htmlCodes;
+            }
+            else {
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.textContent = code.zipCode;
+                    div.className = "userZipCodes align-items-center";
+                    if (displayZipCodes) {
+                        displayZipCodes.appendChild(div);
+                    }
+                    htmlCodes += `${code.zipCode} - ${code.city}, ${code.state}<br>`;
+                });
+            }
+            if (displayZipCodes) {
+                displayZipCodes.innerHTML = htmlCodes;
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+};
+
+function populateUserZipCodes() {
+    populateLevelOfService();
+    const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
+    const userZipCodes = document.getElementById("userZipCodes");
+    const stateSelect = document.getElementById("stateSelect");
+    const citySelect = document.getElementById("citySelect");
+    const countySelect = document.getElementById("countySelect");
+    const availabeZipCodesContainer = document.getElementById("availabeZipCodesContainer");
+    let htmlCodes = '';
+    selectedZipCodesContainer.innerHTML = '';
+    availabeZipCodesContainer.innerHTML = '';
+    citySelect.innerHTML = '';
+    countySelect.innerHTML = '';
+    stateSelect.selectedIndex = 0;
+    fetch(`/get-userzipcodes`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.results) {
+                const div = document.createElement("div");
+                div.className = "userZipCodes justify-content-center";
+                div.textContent = 'No zip codes yet';
+                if (selectedZipCodesContainer) {
+                    selectedZipCodesContainer.appendChild(div);
+                }
+            }
+            else {
+                data.results.forEach(code => {
+                    const div = document.createElement("div");
+                    div.className = "userZipCodes align-items-center";
+                    div.textContent = code.zipCode;
+                    div.onclick = function () {
+                        this.classList.toggle("selected");
+                    };
+                    if (selectedZipCodesContainer) {
+                        selectedZipCodesContainer.appendChild(div);
+                    }
+                });
+            }
+        })
+        .catch(error => console.error('Error checking user:', error));
+};
+// ZIP CODE LOGIC ENDS HERE
 
 let selectedBuyerId = null;
 function getRequests(datatype, element) {
