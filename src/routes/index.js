@@ -172,19 +172,19 @@ router.get('/getOfferCounts', (req, res) => {
     const userid = req.session.userid;
     const userType = req.session.userType;
     const buyerid = req.session.buyerid;
-    var query = `select os.offerStatus buyerStatus, concat('(',count(bam.buyerid),')') cnt
-                   from OfferStatuses os 
-                        left outer join AgentBuyerMatch bam on (bam.buyerStatus = os.offerStatus and 
+    var query = `SELECT os.offerStatus buyerStatus, concat('(',count(bam.buyerid),')') cnt
+                   FROM OfferStatuses os 
+                        LEFT OUTER JOIN AgentBuyerMatch bam on (bam.buyerStatus = os.offerStatus AND 
                                                                 bam.buyerid = ?)
-                  where os.userType = 'Buyer'
-                  group by 1
+                  WHERE os.userType = 'Buyer'
+                  GROUP BY 1
                  union
-                 select 'AllAvailable', concat('(',count(bam.buyerid),')') cnt
-                   from OfferStatuses os 
-                        left outer join AgentBuyerMatch bam on (bam.buyerStatus = os.offerStatus and 
+                 SELECT 'AllAvailable', concat('(',count(bam.buyerid),')') cnt
+                   FROM OfferStatuses os 
+                        LEFT OUTER JOIN AgentBuyerMatch bam on (bam.buyerStatus = os.offerStatus AND 
                                                                 bam.buyerid = ?)
-                  where os.userType = 'Buyer'
-                    and os.offerStatus not in ('Declined');`;
+                  WHERE os.userType = 'Buyer'
+                    AND os.offerStatus not in ('Declined');`;
     db.query(query, [buyerid, buyerid], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);
@@ -209,13 +209,13 @@ router.get('/getOffers', (req, res) => {
     const buyerid = req.session.userid;
 
     if (!agentid) {
-      var query = `select ofb.buyeragentmatchid, ofb.agentid, ofb.agentofferid, ofb.buyerStatus, 
+      var query = `SELECT ofb.buyeragentmatchid, ofb.agentid, ofb.agentofferid, ofb.buyerStatus, 
                           ofb.buyerid, ofb.buyerrequestid, ofb.offerText,
                           buyerRequested, buyerRequestedTimestamp, agentReply, agentReplyTimestamp,
                           buyerSent, buyerSentTimestamp
-                     from OffersForBuyers ofb
-                    where buyerid =  ?
-                      and case when ? = 'AllAvailable'
+                     FROM OffersForBuyers ofb
+                    WHERE buyerid =  ?
+                      AND case when ? = 'AllAvailable'
                                then filterstatus
                                else buyerstatus
                            end = ?
@@ -230,7 +230,7 @@ router.get('/getOffers', (req, res) => {
       });
     }
     else {
-      var query = `select concat(a.firstname,' ',a.lastname) agentname, 
+      var query = `SELECT concat(a.firstname,' ',a.lastname) agentname, 
                           concat(a.address,' ',a.city,', ',a.state,' ',a.zip) address, 
                           a.bio, a.email, a.languages, a.phonenumber, a.state, a.zip,
                           al.licenseNumber, al.licenseState, al.licenseExpirationDate,
@@ -250,16 +250,16 @@ router.get('/getOffers', (req, res) => {
                            concat(substr(a.firstname,1,1), substr(a.lastname,1,1), ao.agentid) dispIdentifier,
                            buyerRequested, buyerRequestedTimestamp, agentReply, agentReplyTimestamp,
                            buyerSent, buyerSentTimestamp
-                     from AgentOffers ao
-                          join Agents a on a.userid = ao.agentid
-                          join AgentBuyerMatch bam on bam.buyerid = ao.buyerid and bam.agentid = a.userid
-                          join LevelsOfService los on los.levelofserviceid = ao.levelofserviceid
-                          join CompensationTypes ct on ct.compensationtypeid = ao.compensationtypeid
-                          join OfferTypes ot on ot.offertypeid = ao.offertypeid
-                          join AgentLicenses al on al.userid = a.userid
-                    where bam.buyeragentmatchid = ?
-                      and ao.agentid = ?
-                    order by bam.buyerStatus, ao.entrytimestamp desc;`;
+                     FROM AgentOffers ao
+                          JOIN Agents a on a.userid = ao.agentid
+                          JOIN AgentBuyerMatch bam on bam.buyerid = ao.buyerid AND bam.agentid = a.userid
+                          JOIN LevelsOfService los on los.levelofserviceid = ao.levelofserviceid
+                          JOIN CompensationTypes ct on ct.compensationtypeid = ao.compensationtypeid
+                          JOIN OfferTypes ot on ot.offertypeid = ao.offertypeid
+                          JOIN AgentLicenses al on al.userid = a.userid
+                    WHERE bam.buyeragentmatchid = ?
+                      AND ao.agentid = ?
+                    ORDER BY bam.buyerStatus, ao.entrytimestamp desc;`;
       db.query(query, [buyeragentmatchid, agentid], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
@@ -281,14 +281,14 @@ router.get('/getRequestCounts', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    var query = `select case when os.offerStatus in ('New','Read')
+    var query = `SELECT case when os.offerStatus in ('New','Read')
                               then 'New'
                               else os.offerStatus
                         end agentStatus, concat('(',count(bam.agentid),')') cnt
-                   from OfferStatuses os 
-                        left outer join AgentBuyerMatch bam on bam.agentStatus = os.offerStatus and bam.agentid = ?
-                  where os.userType = 'Agent'
-                  group by 1`;
+                   FROM OfferStatuses os 
+                        LEFT OUTER JOIN AgentBuyerMatch bam on bam.agentStatus = os.offerStatus AND bam.agentid = ?
+                  WHERE os.userType = 'Agent'
+                  GROUP BY 1`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);
@@ -311,12 +311,12 @@ router.get('/getRequests', (req, res) => {
     const buyerid = req.query.buyerid;
     const userid = req.session.userid;
     if (!buyerid) {
-      var query = `select bam.agentid, bam.buyerid, bam.buyerrequestid, bam.buyeragentmatchid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyeragentmatchid) dispIdentifier
-                     from AgentBuyerMatch bam
-                          join Buyers b on b.userid = bam.buyerid
-                    where bam.agentid = ?
-                      and if(bam.agentStatus = 'Read','New', bam.agentStatus) = ?
-                      order by bam.agentStatus, bam.entrytimestamp desc`;
+      var query = `SELECT bam.agentid, bam.buyerid, bam.buyerrequestid, bam.buyeragentmatchid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyeragentmatchid) dispIdentifier
+                     FROM AgentBuyerMatch bam
+                          JOIN Buyers b on b.userid = bam.buyerid
+                    WHERE bam.agentid = ?
+                      AND if(bam.agentStatus = 'Read','New', bam.agentStatus) = ?
+                      ORDER BY bam.agentStatus, bam.entrytimestamp desc`;
       db.query(query, [userid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
@@ -326,13 +326,13 @@ router.get('/getRequests', (req, res) => {
       });
     }
     else {
-      var query = `select bam.agentid, bam.buyerid,  bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyeragentmatchid) dispIdentifier
-                     from AgentBuyerMatch bam
-                          join Buyers b on b.userid = bam.buyerid
-                    where bam.agentid = ?
-                      and bam.buyerid = ?
-                      and if(bam.agentStatus = 'Read','New', bam.agentStatus) = ?
-                      order by bam.agentStatus, bam.entrytimestamp desc`;
+      var query = `SELECT bam.agentid, bam.buyerid,  bam.buyerrequestid, bam.bathrooms_min, bam.bedrooms_min, bam.buyerType, bam.preferredLanguages, bam.prequalified, format(bam.price_min,0) price_min, format(bam.price_max,0) price_max, bam.propertyType, bam.squareFootage_min, bam.squareFootage_max, bam.timeFrame, DATE_FORMAT(bam.entrytimestamp, '%m/%d/%Y %r') entrytimestamp, bam.zipCodes, bam.agentStatus, concat(substr(b.firstname,1,1), substr(b.lastname,1,1), bam.buyeragentmatchid) dispIdentifier
+                     FROM AgentBuyerMatch bam
+                          JOIN Buyers b on b.userid = bam.buyerid
+                    WHERE bam.agentid = ?
+                      AND bam.buyerid = ?
+                      AND if(bam.agentStatus = 'Read','New', bam.agentStatus) = ?
+                    ORDER BY bam.agentStatus, bam.entrytimestamp desc`;
       db.query(query, [userid, buyerid, datatype], (error, results) => {
         if (error) {
           console.error('Error fetching buyer profile:', error);
@@ -358,12 +358,12 @@ router.post('/setStatus', (req, res) => {
     if (userType === 'Buyer') {
       var buyerid = req.session.userid;
       var agentid = req.body.agentid;
-      updateQuery = 'update AgentBuyerMatch set buyerStatus = ? where agentid = ? and buyerid = ?';
+      updateQuery = 'UPDATE AgentBuyerMatch set buyerStatus = ? WHERE agentid = ? AND buyerid = ?';
     }
     else {
       var agentid = req.session.userid;
       var buyerid = req.body.buyerid;
-      updateQuery = 'update AgentBuyerMatch set agentStatus = ? where agentid = ? and buyerid = ?';
+      updateQuery = 'UPDATE AgentBuyerMatch set agentStatus = ? WHERE agentid = ? AND buyerid = ?';
     }
     db.query(updateQuery, [status, agentid, buyerid], (error, result) => {
       if (error) {
@@ -388,11 +388,11 @@ router.post('/setPaymentStatus', (req, res) => {
       var buyerid = req.body.buyerid;
       params = [paymentSuccessful, buyerid];
       console.log('Buyerid:', buyerid);
-      var updateQuery = 'update Buyers set paymentSuccessful = ? where userid = ?';
+      var updateQuery = 'UPDATE Buyers set paymentSuccessful = ? WHERE userid = ?';
     } else {
       var agentid = req.body.agentid;
       params = [paymentSuccessful, agentid];
-      var updateQuery = 'update Agents set paymentSuccessful = ? where userid = ?';
+      var updateQuery = 'UPDATE Agents set paymentSuccessful = ? WHERE userid = ?';
     }
     db.query(updateQuery, params, (error, result) => {
       if (error) {
@@ -427,8 +427,8 @@ router.post('/saveoffer', (req, res) => {
                             expirationCompTimeFrame = ?, 
                             offerDesc = ?, 
                             offerStatus = ? 
-                      where agentid = ? 
-                        and buyerid = ?`;
+                      WHERE agentid = ? 
+                        AND buyerid = ?`;
     } else {
       insertQuery = `INSERT INTO AgentOffers (offertypeid, compensationtypeid, levelofServiceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc, offerStatus, agentid, buyerid, buyerrequestid) 
                      values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
@@ -497,7 +497,7 @@ router.get('/get-offerdetails', (req, res) => {
     const buyerid = req.query.buyerid;
     const query = `SELECT offertypeid, compensationtypeid, levelofserviceid, compensationAmount, retainerFee, retainerCredited, lengthOfService, expirationCompensation, expirationCompTimeFrame, offerDesc 
                      FROM AgentOffers 
-                    WHERE agentid = ? and buyerid = ?`;
+                    WHERE agentid = ? AND buyerid = ?`;
     db.query(query, [userid, buyerid], (error, results) => {
       if (error) {
         console.error('Error fetching offer defaults:', error);
@@ -519,15 +519,15 @@ router.get('/profile_b', (req, res) => {
   }
   else {
     const userid = req.session.userid;
-    const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
+    const query = `SELECT b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
                           ifnull(brd.bathrooms_min,0) bathrooms_min, ifnull(brd.bathrooms_max,0) bathrooms_max, ifnull(brd.bedrooms_min,0) bedrooms_min, ifnull(brd.bedrooms_max,0) bedrooms_max, getBuyerTypesByIds(brd.buyerType) buyerType, ifnull(brd.preferredLanguages,'') preferredLanguages, brd.prequalified, ifnull(brd.price_min,0) price_min, 
                           ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, ifnull(trim(replace(timeframe,substring_index(timeFrame,' ',-1),'')),'') timeFrame, brd.prequalifiedFile, los.levelOfService levelOfServiceDisp, los.levelofserviceid,
                           ifnull(brd.prequalifiedAmount,0) prequalifiedAmount, brd.buyerrequestid, brd.buyerType buyerTypeDisp, if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified') prequalifiedDisp,
                           substring_index(timeFrame,' ',-1) timeframeUnit
-                     from Buyers b
-                          left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
-                          join LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
-                    where b.userid = ?`;
+                     FROM Buyers b
+                          LEFT OUTER JOIN BuyerRequestDetails brd on (b.userid = brd.userid)
+                          JOIN LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
+                    WHERE b.userid = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);
@@ -551,7 +551,7 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
   else {
     const userid = req.session.userid;
     const buyerrequestid = req.session.buyerrequestid;
-    const query = `select concat('<div class="buyertype-container">',
+    const query = `SELECT concat('<div class="buyertype-container">',
                           '<u>Buyer Type</u><br>', getBuyerTypesByIds(brd.buyerType),'</div>',
                           'Property Type: ',propertyType,'<br>',
                           'Service Level: ',levelOfService,'<br>',
@@ -562,10 +562,10 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
                           'Timeframe: ',timeFrame,'<br>',           
                           if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified'),'<br>',
                           'Preferred Languages: ',preferredLanguages,'<br>') searchInfoDisplay, buyerrequestid
-                     from Buyers b
-                          left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
-                          join LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
-                    where b.userid = ?`;
+                     FROM Buyers b
+                          LEFT OUTER JOIN BuyerRequestDetails brd on (b.userid = brd.userid)
+                          JOIN LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
+                    WHERE b.userid = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching offer defaults:', error);
@@ -591,15 +591,15 @@ router.get('/dashboard_b', (req, res) => {
   else {
     const userid = req.session.userid;
     req.session.buyerrequestid = 0;
-    const query = `select b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
+    const query = `SELECT b.userid, b.firstName, b.lastName, b.address, b.city, b.state, b.userid, b.zip, b.email, b.phoneNumber, 
                           ifnull(brd.bathrooms_min,0) bathrooms_min, ifnull(brd.bathrooms_max,0) bathrooms_max, ifnull(brd.bedrooms_min,0) bedrooms_min, ifnull(brd.bedrooms_max,0) bedrooms_max, getBuyerTypesByIds(brd.buyerType) buyerType, ifnull(brd.preferredLanguages,'') preferredLanguages, brd.prequalified, ifnull(brd.price_min,0) price_min, 
                           ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, ifnull(trim(replace(timeframe,substring_index(timeFrame,' ',-1),'')),'') timeFrame, brd.prequalifiedFile, los.levelOfService levelOfServiceDisp, los.levelofserviceid,
                           ifnull(brd.prequalifiedAmount,0) prequalifiedAmount, brd.buyerrequestid, brd.buyerType buyerTypeDisp, if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified') prequalifiedDisp,
                           substring_index(timeFrame,' ',-1) timeframeUnit
-                     from Buyers b
-                          left outer join BuyerRequestDetails brd on (b.userid = brd.userid)
-                          join LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
-                    where b.userid = ?`;
+                     FROM Buyers b
+                          LEFT OUTER JOIN BuyerRequestDetails brd on (b.userid = brd.userid)
+                          JOIN LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
+                    WHERE b.userid = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
         console.error('Error fetching buyer profile:', error);
@@ -623,7 +623,9 @@ router.post('/profile_b', (req, res) => {
   else {
     const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
 
-    const query = 'UPDATE Buyers SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, phoneNumber = ? WHERE userid = ?';
+    const query = `UPDATE Buyers 
+                      SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, phoneNumber = ? 
+                    WHERE userid = ?`;
     db.query(query, [firstName, lastName, address, city, state, zip, phoneNumber, userid], (error, results) => {
       if (error) {
         console.error('Error updating buyer profile:', error);
@@ -660,7 +662,9 @@ router.post('/savePropertyChanges', (req, res) => {
         squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
         prequalifiedAmount, userid];
     } else {
-      query = 'UPDATE BuyerRequestDetails SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelofserviceid = ?, prequalifiedAmount = ? WHERE buyerrequestid = ?';
+      query = `UPDATE BuyerRequestDetails 
+                  SET bathrooms_min = ?, bathrooms_max = ?, bedrooms_min = ?, bedrooms_max = ?, buyerType = ?, preferredLanguages = ?, prequalified = ?, price_min = ?, price_max = ?, propertyType = ?, squareFootage_min = ?, squareFootage_max = ?, timeFrame = ?, levelofserviceid = ?, prequalifiedAmount = ? 
+                WHERE buyerrequestid = ?`;
       queryParams = [bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType,
         preferredLanguages, prequalified, price_min, price_max, propertyType,
         squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
@@ -691,17 +695,19 @@ router.get('/profile_a', (req, res) => {
     db.query(query, [userid], (err, licenseresults) => {
       if (err) throw err;
       let hasLicenses = licenseresults.length > 0;
-      const query = 'SELECT * FROM AgentOffices a where userid = ?';
+      const query = 'SELECT * FROM AgentOffices a WHERE userid = ?';
       db.query(query, [userid], (err, officeresults) => {
         if (err) throw err;
         let hasOffices = officeresults.length > 0;
         const query = `SELECT agenttransactionid, transactionDate, transactionAmount, propertytype, levelofservice, compensationtype
-                             FROM AgentTransactionHistory_v h 
-                            WHERE userid = ?`;
+                         FROM AgentTransactionHistory_v h 
+                        WHERE userid = ?`;
         db.query(query, [userid], (err, transactionresults) => {
           if (err) throw err;
           let hasTransactions = transactionresults.length > 0;
-          const query = 'SELECT bio, languages FROM Agents WHERE userid = ?';
+          const query = `SELECT bio, languages 
+                           FROM Agents 
+                          WHERE userid = ?`;
           db.query(query, [userid], (err, bioresults) => {
             if (err) throw err;
             let hasBio = bioresults.length > 0;
@@ -723,7 +729,9 @@ router.post('/profile_a', (req, res) => {
   else {
     const { firstName, lastName, bio, languages, agentid } = req.body;
 
-    const query = 'UPDATE Agents SET firstName = ?, lastName = ?, bio = ?, languages = ? WHERE userid = ?';
+    const query = `UPDATE Agents 
+                      SET firstName = ?, lastName = ?, bio = ?, languages = ? 
+                    WHERE userid = ?`;
     db.query(query, [firstName, lastName, bio, languages, agentid], (error, results) => {
       if (error) {
         console.error('Error updating agent profile:', error);
@@ -739,18 +747,18 @@ router.post('/profile_a', (req, res) => {
 router.get('/api/profile_a', (req, res) => {
   userid = req.session.userid;
   const query = `SELECT a.agentlicenseid, date_format(a.licenseExpirationDate,"%m/%d/%Y") licenseExpirationDate, a.licenseNumber, a.licenseState, a.userid 
-                     FROM AgentLicenses a 
-                    WHERE userid = ?`;
+                   FROM AgentLicenses a 
+                  WHERE userid = ?`;
   db.query(query, [userid], (err, licenseresults) => {
     if (err) throw err;
     let hasLicenses = licenseresults.length > 0;
-    const query = 'SELECT * FROM AgentOffices a where userid = ?';
+    const query = 'SELECT * FROM AgentOffices a WHERE userid = ?';
     db.query(query, [userid], (err, officeresults) => {
       if (err) throw err;
       let hasOffices = officeresults.length > 0;
       const query = `SELECT agenttransactionid, transactionDate, transactionAmount, propertytype, levelofservice, compensationtype
-                             FROM AgentTransactionHistory_v h 
-                            WHERE userid = ?`;
+                       FROM AgentTransactionHistory_v h 
+                      WHERE userid = ?`;
       db.query(query, [userid], (err, transactionresults) => {
         if (err) throw err;
         let hasTransactions = transactionresults.length > 0;
@@ -781,7 +789,7 @@ router.delete('/api/licenses/:id', (req, res) => {
 
 router.get('/removeOffer', (req, res) => {
   const buyerid = req.query.buyerid;
-  const updateQuery = 'delete from AgentOffers WHERE agentid = ? and buyerid = ?';
+  const updateQuery = 'DELETE FROM AgentOffers WHERE agentid = ? AND buyerid = ?';
   db.query(updateQuery, [req.session.userid, buyerid], (err, result) => {
     if (err) throw err;
     res.json({ success: true });
@@ -859,7 +867,7 @@ router.post('/login', [
         // Send response when email is not verified
         res.json({
           success: false,
-          message: "Verify your email address and then try to login again."
+          message: "Verify your email address AND then try to login again."
         });
       } else {
         const { userid, firstname, lastname, emailverified, paymentSuccessful } = results[0];
@@ -882,10 +890,10 @@ router.post('/login', [
             console.log('User logged in:', email, userType, req.session.paymentSuccessful);
             if (userType === 'Agent') {
               req.session.agentid = userid;
-              var updateQuery = 'update Agents set lastlogin = now() WHERE email = ?';
+              var updateQuery = 'UPDATE Agents set lastlogin = now() WHERE email = ?';
             } else if (userType === 'Buyer') {
               req.session.buyerid = userid;
-              var updateQuery = 'update Buyers set lastlogin = now() WHERE email = ?';
+              var updateQuery = 'UPDATE Buyers set lastlogin = now() WHERE email = ?';
             }
             db.query(updateQuery, [email], (error, results) => {
               if (error) {
@@ -980,7 +988,7 @@ router.get('/check-license', (req, res) => {
       // Is not a valid state
       res.json({ stateResult: 'Invalid' });
     } else {
-      const query = 'SELECT count(*) cnt FROM AgentLicenses WHERE userid = ? and licenseState = ?';
+      const query = 'SELECT count(*) cnt FROM AgentLicenses WHERE userid = ? AND licenseState = ?';
       db.query(query, [userid, licenseState], (error, results) => {
         if (error) {
           console.log('Error:', error);
@@ -1001,7 +1009,7 @@ router.get('/check-license', (req, res) => {
 // Route to get city and state by zip code
 router.get('/get-cities', (req, res) => {
   const stateSelect = req.query.stateSelect;
-  const query = 'SELECT distinct city FROM ZipCodes WHERE state = ? order by city';
+  const query = 'SELECT distinct city FROM ZipCodes WHERE state = ? ORDER BY city';
   db.query(query, [stateSelect], (error, results) => {
     //    console.log('Results:', results);
 
@@ -1020,7 +1028,7 @@ router.get('/get-cities', (req, res) => {
 // Route to get city and state by zip code
 router.get('/get-counties', (req, res) => {
   const stateSelect = req.query.stateSelect;
-  const query = 'SELECT distinct county FROM ZipCodes WHERE state = ? order by county';
+  const query = 'SELECT distinct county FROM ZipCodes WHERE state = ? ORDER BY county';
   db.query(query, [stateSelect], (error, results) => {
     //    console.log('Results:', results);
 
@@ -1039,7 +1047,7 @@ router.get('/get-counties', (req, res) => {
 // Route to get states
 router.get('/get-states', (req, res) => {
   const stateSelect = req.query.stateSelect;
-  const query = 'SELECT distinct state, stateName FROM ZipCodes where stateName is not null order by stateName';
+  const query = 'SELECT distinct state, stateName FROM ZipCodes WHERE stateName is not null ORDER BY stateName';
   db.query(query, (error, results) => {
     if (error) {
       console.log('Error:', error);
@@ -1055,7 +1063,7 @@ router.get('/get-states', (req, res) => {
 
 // Route to get states
 router.get('/get-levelofservice', (req, res) => {
-  const query = 'SELECT levelOfService, levelofserviceid FROM LevelsOfService order by levelofserviceid';
+  const query = 'SELECT levelOfService, levelofserviceid FROM LevelsOfService ORDER BY levelofserviceid';
   db.query(query, (error, results) => {
     if (error) {
       console.log('Error:', error);
@@ -1070,7 +1078,7 @@ router.get('/get-levelofservice', (req, res) => {
 });
 
 router.get('/get-offertypes', (req, res) => {
-  const query = 'SELECT offerType, offertypeid FROM OfferTypes order by offertypeid';
+  const query = 'SELECT offerType, offertypeid FROM OfferTypes ORDER BY offertypeid';
   db.query(query, (error, results) => {
     if (error) {
       console.log('Error:', error);
@@ -1085,7 +1093,7 @@ router.get('/get-offertypes', (req, res) => {
 });
 
 router.get('/get-compensationtypes', (req, res) => {
-  const query = 'SELECT compensationType, compensationtypeid FROM CompensationTypes order by compensationtypeid';
+  const query = 'SELECT compensationType, compensationtypeid FROM CompensationTypes ORDER BY compensationtypeid';
   db.query(query, (error, results) => {
     if (error) {
       console.log('Error:', error);
@@ -1105,10 +1113,10 @@ router.get('/check-zipcode', (req, res) => {
   const userType = req.session.userType;
   const userid = req.session.userid;
   if (userType === 'Agent') {
-    var query = 'SELECT count(*) cnt FROM AgentZipCodes where zipCode = ? and userid = ?';
+    var query = 'SELECT count(*) cnt FROM AgentZipCodes WHERE zipCode = ? AND userid = ?';
   }
   else if (userType === 'Buyer') {
-    var query = 'SELECT count(*) cnt FROM BuyerZipCodes where zipCode = ? and userid = ?';
+    var query = 'SELECT count(*) cnt FROM BuyerZipCodes WHERE zipCode = ? AND userid = ?';
   }
   db.query(query, [zipCode, userid], (error, results) => {
     if (error) {
@@ -1118,7 +1126,7 @@ router.get('/check-zipcode', (req, res) => {
     else if (results[0].cnt > 0) {
       res.json({ zipCodeResult: 'Selected' });
     } else {
-      const query = 'SELECT count(*) cnt FROM ZipCodes where zipCode = ?';
+      const query = 'SELECT count(*) cnt FROM ZipCodes WHERE zipCode = ?';
       db.query(query, [zipCode], (error, results) => {
         if (error) {
           console.log('Error:', error);
@@ -1144,21 +1152,21 @@ router.get('/get-zipcodes', (req, res) => {
   if (userType === 'Agent') {
     var query = `SELECT zipCode 
                    FROM ZipCodes z 
-                  WHERE state = ? and city = ?
-                    and not exists(select 1 
-                                     from AgentZipCodes u 
-                                    where userid = ? 
-                                      and u.zipCode = z.zipCode) 
-                  order by zipCode`;
+                  WHERE state = ? AND city = ?
+                    AND not exists(SELECT 1 
+                                     FROM AgentZipCodes u 
+                                    WHERE userid = ? 
+                                      AND u.zipCode = z.zipCode) 
+                  ORDER BY zipCode`;
   } else if (userType === 'Buyer') {
     var query = `SELECT zipCode
     FROM ZipCodes z 
-    WHERE state = ? and city = ?
-      and not exists(select 1 
-                       from BuyerZipCodes u 
-                      where userid = ? 
-                        and u.zipCode = z.zipCode) 
-    order by zipCode`;
+    WHERE state = ? AND city = ?
+      AND not exists(SELECT 1 
+                       FROM BuyerZipCodes u 
+                      WHERE userid = ? 
+                        AND u.zipCode = z.zipCode) 
+    ORDER BY zipCode`;
   }
 
   db.query(query, [stateSelect, citySelect, userid], (error, results) => {
@@ -1186,21 +1194,21 @@ router.get('/get-countyzipcodes', (req, res) => {
   if (userType === 'Agent') {
     var query = `SELECT zipCode 
                    FROM ZipCodes z 
-                  WHERE state = ? and county = ?
-                    and not exists(select 1 
-                                     from AgentZipCodes u 
-                                    where userid = ? 
-                                      and u.zipCode = z.zipCode) 
-                  order by zipCode`;
+                  WHERE state = ? AND county = ?
+                    AND not exists(SELECT 1 
+                                     FROM AgentZipCodes u 
+                                    WHERE userid = ? 
+                                      AND u.zipCode = z.zipCode) 
+                  ORDER BY zipCode`;
   } else if (userType === 'Buyer') {
     var query = `SELECT zipCode
     FROM ZipCodes z 
-    WHERE state = ? and county = ?
-      and not exists(select 1 
-                       from BuyerZipCodes u 
-                      where userid = ? 
-                        and u.zipCode = z.zipCode) 
-    order by zipCode`;
+    WHERE state = ? AND county = ?
+      AND not exists(SELECT 1 
+                       FROM BuyerZipCodes u 
+                      WHERE userid = ? 
+                        AND u.zipCode = z.zipCode) 
+    ORDER BY zipCode`;
   }
 
   db.query(query, [stateSelect, countySelect, userid], (error, results) => {
@@ -1261,7 +1269,8 @@ router.post('/api/offices', (req, res) => {
   const userid = req.session.userid;
   const { officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState } = req.body;
 
-  const insertQuery = 'INSERT INTO AgentOffices (officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState, userid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  const insertQuery = `INSERT INTO AgentOffices (officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState, userid) 
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
   db.query(insertQuery, [officeName, address, city, state, zip, phoneNumber, officeLicenseNumber, officeLicenseState, userid], (err, result) => {
     if (err) throw err;
     agentofficeid = result.insertId;
@@ -1295,9 +1304,17 @@ router.get('/get-agentzipcodes', (req, res) => {
   userid = req.session.userid;
   userType = req.session.userType;
   if (userType === 'Agent') {
-    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
+    var query = `SELECT u.zipCode, z.city, z.state, z.stateName 
+                   FROM AgentZipCodes u, ZipCodes z
+                  WHERE u.zipCode = z.zipCode 
+                    AND u.userid = ? 
+                  ORDER BY z.state, z.city, z.zipCode`;
   } else if (userType === 'Buyer') {
-    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM BuyerZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.state, z.city, z.zipCode';
+    var query = `SELECT u.zipCode, z.city, z.state, z.stateName 
+                   FROM BuyerZipCodes u, ZipCodes z 
+                  WHERE u.zipCode = z.zipCode 
+                    AND u.userid = ? 
+                  ORDER BY z.state, z.city, z.zipCode`;
   }
   db.query(query, [userid], (error, results) => {
     if (error) {
@@ -1321,9 +1338,17 @@ router.get('/get-userzipcodes', (req, res) => {
       zipCode: 'No Zip Codes Selected'
     }];
   if (userType === 'Agent') {
-    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM AgentZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
+    var query = `SELECT u.zipCode, z.city, z.state, z.stateName 
+                   FROM AgentZipCodes u, ZipCodes z 
+                  WHERE u.zipCode = z.zipCode 
+                    AND u.userid = ? 
+                  ORDER BY z.zipCode`;
   } else if (userType === 'Buyer') {
-    var query = 'SELECT u.zipCode, z.city, z.state, z.stateName FROM BuyerZipCodes u, ZipCodes z WHERE u.zipCode = z.zipCode and u.userid = ? order by z.zipCode';
+    var query = `SELECT u.zipCode, z.city, z.state, z.stateName 
+                   FROM BuyerZipCodes u, ZipCodes z 
+                  WHERE u.zipCode = z.zipCode 
+                    AND u.userid = ? 
+                  ORDER BY z.zipCode`;
   }
   db.query(query, [userid], (error, results) => {
     if (error) {
@@ -1564,7 +1589,7 @@ function sendVerificationEmail(req, email, token, userType) {
 }
 
 router.get('/getBuyerTypes', (req, res) => {
-  const query = 'SELECT buyertypeid, buyerType FROM BuyerTypes order by buyertypeid';
+  const query = 'SELECT buyertypeid, buyerType FROM BuyerTypes ORDER BY buyertypeid';
   const buyerid = req.session.userid;
   db.query(query, (error, buyerTypes) => {
     if (error) {
@@ -1659,7 +1684,7 @@ router.get('/requestagentinfo', (req, res) => {
   const buyeragentmatchid = req.query.buyeragentmatchid;
   const verificationtoken = crypto.randomBytes(16).toString('hex');
 
-  var query = 'update Agents set verificationtoken = ? where userid = ?';
+  var query = 'UPDATE Agents set verificationtoken = ? WHERE userid = ?';
   db.query(query, [verificationtoken, agentid], (error, results) => {
     if (error) {
       console.log('Error:', error);
@@ -1769,11 +1794,11 @@ router.get('/sendbuyerinfo', async (req, res) => {
     // Update AgentBuyerMatch after the email is sent and the file is deleted
     const updateQuery = `
       UPDATE AgentBuyerMatch
-      SET buyerSent = 1,
-          buyerSentTimestamp = NOW()
-      WHERE agentid = ?
-        AND buyerid = ?
-        AND buyeragentmatchid = ?`;
+         SET buyerSent = 1,
+             buyerSentTimestamp = NOW()
+       WHERE agentid = ?
+         AND buyerid = ?
+         AND buyeragentmatchid = ?`;
     await dbQuery(updateQuery, [agentid, buyerid, buyeragentmatchid]);
 
     res.json({ agentEmail: agentEmail });
@@ -1801,13 +1826,13 @@ function sanitizeFilename(name) {
 router.get('/getagentinfo', (req, res) => {
   const agentid = req.query.agentid;
   console.log('Agent ID:', agentid);
-  const query = `select a.firstName, a.lastName, concat(a.firstName,a.lastName) fullName, a.address, 
+  const query = `SELECT a.firstName, a.lastName, concat(a.firstName,a.lastName) fullName, a.address, 
                         concat(a.city,', ',a.state,' ',a.zip) cityStateZip, a.bio, a.email, 
                         a.languages, a.phoneNumber, al.licenseNumber, al.licenseState, al.licenseExpirationDate
-                   from Agents a
-                        join AgentLicenses al on a.userid = al.userid
-                        join AgentOffices ao on a.userid = ao.userid
-                  where a.userid = ?`;
+                   FROM Agents a
+                        JOIN AgentLicenses al on a.userid = al.userid
+                        JOIN AgentOffices ao on a.userid = ao.userid
+                  WHERE a.userid = ?`;
   db.query(query, [agentid], (error, results) => {
     if (error) {
       console.log('Error:', error);
