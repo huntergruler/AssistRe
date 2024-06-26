@@ -41,12 +41,12 @@
     cursor: pointer;
     text-align: center;
 }
-#displayZipCodes::-webkit-scrollbar {
+/* #displayZipCodes::-webkit-scrollbar {
     width: 5px;
-}
+} */
 #displayZipCodes {
     overflow: auto;
-    width: 280px;
+    width: auto;
     max-height: 150px;
     min-height: 100px;
     text-align: center;
