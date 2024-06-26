@@ -1747,10 +1747,10 @@ router.get('/sendbuyerinfo', async (req, res) => {
 
     // Generate vCard
     const vCard = vCardsJS();
-    vCard.firstName = buyerInfo.firstName;
-    vCard.lastName = buyerInfo.lastName;
+    vCard.firstName = buyerInfo.firstName; 
+    vCard.lastName = buyerInfo.lastName; 
     vCard.workEmail = buyerInfo.email;
-    vCard.workPhone = buyerInfo.phoneNumber;
+    vCard.workPhone = buyerInfo.phoneNumber; 
     vCard.workAddress.label = 'Work Address';
     vCard.workAddress.street = buyerInfo.address;
     vCard.workAddress.city = buyerInfo.city;
@@ -1760,7 +1760,13 @@ router.get('/sendbuyerinfo', async (req, res) => {
     // Save vCard to file
     const vCardFileName = `${sanitizeFilename(buyerInfo.fullName)}.vcf`;
     const vCardFilePath = path.join(__dirname, '../temp', vCardFileName); // Adjust the path as needed
-    vCard.saveToFile(vCardFilePath);
+
+    await new Promise((resolve, reject) => {
+      vCard.saveToFile(vCardFilePath, (err) => {
+        if (err) reject(err);
+        else resolve();
+      });
+    });
 
     // Send email with vCard attachment
     const emailMessage = `Please find ${buyerInfo.fullName}'s contact information attached.`;
