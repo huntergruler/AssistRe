@@ -1769,8 +1769,8 @@ router.get('/sendbuyerinfo', async (req, res) => {
     vCard.workAddress.countryRegion = 'USA'; // Adjust as needed
 
     // Save vCard to file
-    const vCardFileName = `${buyerInfo.fullName}.vcf`;
-    const vCardFilePath = `./vcards/${vCardFileName}`; // Adjust the path as needed
+    const vCardFileName = `${sanitizeFilename(buyerInfo.fullName)}.vcf`;
+    const vCardFilePath = path.join(__dirname, 'vcards', vCardFileName); // Adjust the path as needed
     console.log('vCardFilePath:', vCardFilePath);
     vCard.saveToFile(vCardFilePath);
 
@@ -1795,6 +1795,9 @@ function dbQuery(query, params) {
       resolve(results);
     });
   });
+}
+function sanitizeFilename(name) {
+  return name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
 }
 
 router.get('/getagentinfo', (req, res) => {
