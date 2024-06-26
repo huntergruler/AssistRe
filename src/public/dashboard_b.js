@@ -409,7 +409,7 @@ function offerDetail(agentid, buyeragentmatchid) {
                                 Send Your Info to Agent</button>`;
                             }
                             else if (request.buyerSent == 1){
-                                innerHTMLtext += `<button type="button" id="buyerinfo-button" class="buyerinfo-button disabled"
+                                innerHTMLtext += `<button type="button" id="buyerinfo-button2" class="buyerinfo-button disabled"
                                 style="background-color: grey" >
                                 Contact Info Sent
                                 </button>`;
@@ -422,12 +422,6 @@ function offerDetail(agentid, buyeragentmatchid) {
                                        `;
                 }
                 div.innerHTML = innerHTMLtext;
-
-            buyerinfobutton2.textContent = 'Contact Info Sent';
-            buyerinfobutton2.style.backgroundColor = 'grey';
-            buyerinfobutton2.classList.add('disabled');
-            buyerinfobutton2.onclick = null;
-
                 // onclick="populateAgentInfo(${request.agentid});">
                 // Request Agent Contact Info
 
