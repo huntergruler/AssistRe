@@ -1769,9 +1769,9 @@ router.get('/sendbuyerinfo', async (req, res) => {
     vCard.workAddress.countryRegion = 'USA'; // Adjust as needed
 
     // Save vCard to file
-    console.log('buyerInfo.fullName:', buyerInfo.fullName);
     const vCardFileName = `${buyerInfo.fullName}.vcf`;
     const vCardFilePath = `./vcards/${vCardFileName}`; // Adjust the path as needed
+    console.log('vCardFilePath:', vCardFilePath);
     vCard.saveToFile(vCardFilePath);
 
     // Send email with vCard attachment
