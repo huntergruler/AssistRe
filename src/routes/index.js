@@ -1724,68 +1724,77 @@ router.get('/requestagentinfo', (req, res) => {
   });
 });
 
-router.get('/sendbuyerinfo', (req, res) => {
-  const agentid = req.query.agentid;
-  const buyerid = req.query.buyerid;
-  const buyeragentmatchid = req.query.buyeragentmatchid;
-  const agentEmail = '';
-  const updateQuery = `
-    UPDATE AgentBuyerMatch
-    SET buyerSent = 1,
-        buyerSentTimestamp = NOW()
-    WHERE agentid = ?
-      AND buyerid = ?
-      AND buyeragentmatchid = ?`;
-  var agentquery = `SELECT email 
-                      FROM Agents 
-                     WHERE userid = ?`;
-  db.query(agentquery, [agentid], (error, results) => {
-    if (error) {
-      console.log('Error:', error);
-      return res.status(500).json({ error: 'Internal server error' });
+router.get('/sendbuyerinfo', async (req, res) => {
+  try {
+    const agentid = req.query.agentid;
+    const buyerid = req.query.buyerid;
+    const buyeragentmatchid = req.query.buyeragentmatchid;
+
+    // Fetch agent email
+    const agentQuery = 'SELECT email FROM Agents WHERE userid = ?';
+    const agentResults = await dbQuery(agentQuery, [agentid]);
+    if (agentResults.length === 0) {
+      return res.status(404).json({ error: 'Agent not found' });
     }
-    agentEmail = results[0].email;
-  console.log('updateQuery:', updateQuery, 'Agent ID:', agentid, 'Buyer ID:', buyerid, 'Buyer Agent Match ID:', buyeragentmatchid);
-  db.query(updateQuery, [agentid, buyerid, buyeragentmatchid], (error, results) => {
-    if (error) {
-      console.log('Error:', error);
-      return res.status(500).json({ error: 'Internal server error' });
+    const agentEmail = agentResults[0].email;
+
+    // Update AgentBuyerMatch
+    const updateQuery = `
+      UPDATE AgentBuyerMatch
+      SET buyerSent = 1,
+          buyerSentTimestamp = NOW()
+      WHERE agentid = ?
+        AND buyerid = ?
+        AND buyeragentmatchid = ?`;
+    await dbQuery(updateQuery, [agentid, buyerid, buyeragentmatchid]);
+
+    // Fetch buyer info
+    const buyerInfoResults = await getBuyerInfo(buyerid);
+    if (buyerInfoResults.length === 0) {
+      return res.status(404).json({ error: 'No buyer found' });
     }
-    console.log('getBuyerInfo:', buyerid);
-    getBuyerInfo(buyerid)
-      .then((results) => {
-        if (results.length > 0) {
-          const buyerInfo = results[0];
-          console.log('Buyer Info2:', buyerInfo);
+    const buyerInfo = buyerInfoResults[0];
 
-          // Generate vCard
-          const vCard = vCardsJS();
-          vCard.firstName = buyerInfo.firstName;
-          vCard.lastName = buyerInfo.lastName;
-          vCard.Email = buyerInfo.email;
-          vCard.Phone = buyerInfo.phoneNumber;
+    // Generate vCard
+    const vCard = vCardsJS();
+    vCard.firstName = buyerInfo.firstName;
+    vCard.lastName = buyerInfo.lastName;
+    vCard.email = buyerInfo.email;
+    vCard.phoneNumber = buyerInfo.phoneNumber;
+    vCard.workAddress.label = 'Work Address';
+    vCard.workAddress.street = buyerInfo.address;
+    vCard.workAddress.city = buyerInfo.city;
+    vCard.workAddress.stateProvince = buyerInfo.state;
+    vCard.workAddress.postalCode = buyerInfo.zip;
+    vCard.workAddress.countryRegion = 'USA'; // Adjust as needed
 
-          // Save vCard to file
-          const vCardFileName = `${buyerInfo.fullName}.vcf`;
-          const vCardFilePath = `${vCardFileName}`; // Adjust the path as needed
-          vCard.saveToFile(vCardFilePath);
+    // Save vCard to file
+    const vCardFileName = `${buyerInfo.fullName}.vcf`;
+    const vCardFilePath = `./vcards/${vCardFileName}`; // Adjust the path as needed
+    vCard.saveToFile(vCardFilePath);
 
-          // Send email with vCard attachment
-          const emailMessage = `Please find ${buyerInfo.fullName}'s contact information attached.`;
-          sendEmail(agentEmail, `Buyer Contact Information - ${buyerInfo.fullName}`, emailMessage, vCardFilePath);
+    // Send email with vCard attachment
+    const emailMessage = `Please find ${buyerInfo.fullName}'s contact information attached.`;
+    await sendEmail(agentEmail, `Buyer Contact Information - ${buyerInfo.fullName}`, emailMessage, vCardFilePath);
 
-          res.json({ agentEmail: agentEmail });
-        } else {
-          res.status(404).json({ error: 'No buyer found' });
-        }
-      })
-      .catch((err) => {
-        console.error('Error fetching buyer info:', err);
-        res.status(500).json({ error: 'Internal server error' });
-      });
+    res.json({ agentEmail: agentEmail });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Helper function to promisify db.query
+function dbQuery(query, params) {
+  return new Promise((resolve, reject) => {
+    db.query(query, params, (error, results) => {
+      if (error) {
+        return reject(error);
+      }
+      resolve(results);
     });
   });
-});
+}
 
 router.get('/getagentinfo', (req, res) => {
   const agentid = req.query.agentid;
