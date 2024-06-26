@@ -356,7 +356,7 @@ form button:hover {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color: var(--dialog-color);
     margin: 15% auto;
     /* 15% from the top and centered */
     padding: 20px;

@@ -86,14 +86,6 @@ body {
     display: none;
 }
 
-body {
-    font-size: 14px;
-    /* Base font size */
-    /* background-color: #666; */
-    margin: 50px 50px;
-    max-width: auto;
-}
-
 .form-row.container-right {
     margin-top: 0px;
     margin-bottom: 0px;
