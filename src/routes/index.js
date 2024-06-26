@@ -1770,7 +1770,7 @@ router.get('/sendbuyerinfo', async (req, res) => {
 
     // Save vCard to file
     const vCardFileName = `${sanitizeFilename(buyerInfo.fullName)}.vcf`;
-    const vCardFilePath = path.join(__dirname, 'vcards', vCardFileName); // Adjust the path as needed
+    const vCardFilePath = path.join(__dirname, '../vcards', vCardFileName); // Adjust the path as needed
     console.log('vCardFilePath:', vCardFilePath);
     vCard.saveToFile(vCardFilePath);
 
