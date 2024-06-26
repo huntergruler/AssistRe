@@ -62,10 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error fetching session data:', error));
 
-    // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
-    // var time_zone = Date().time_zone;
-    // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
-    // FROM your_table_name;
 });
 
 // const { dot } = require("node:test/reporters");
