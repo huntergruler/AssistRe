@@ -209,6 +209,20 @@
     margin-top: 5px;
 }
 
+.zipCode-group {
+    margin: 0px 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: auto;
+    align-items: center;
+    /* Center items horizontally */
+    justify-content: center;
+    /* Center items vertically */
+    align-content: center;
+    text-align: center;
+    justify-items: center;
+}
+
 .zipAction {
     margin: 0px;
     padding-left: 0px;
@@ -224,20 +238,6 @@
     justify-content: center;
     /* Center items vertically */
     align-content: center;
-}
-
-.zipCode-group {
-    margin: 0px 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    width: auto;
-    align-items: center;
-    /* Center items horizontally */
-    justify-content: center;
-    /* Center items vertically */
-    align-content: center;
-    text-align: center;
-    justify-items: center;
 }
 
 .county-group,
