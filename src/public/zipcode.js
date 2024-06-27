@@ -15,6 +15,7 @@ function populateUserZipCodes() {
     if (userType = 'Agent') {
         stateSelect.value = userState;
         stateSelect.disabled = true;
+        populateCitiesCounties();
     }
     else {
         stateSelect.selectedIndex = 0;
