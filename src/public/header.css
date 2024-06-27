@@ -24,9 +24,7 @@
 }
 
 
-header {
-  /* background-color: rgba(0,72,138); */
-  /* background-color: rgba(19, 50, 109) */
+/* header {
   background-color: #00488A;
   width: 100%;
   color: white;
@@ -41,7 +39,7 @@ header {
   z-index: 1000;
   height: 80px;
   align-items: center;
-}
+} */
 
 .header img {
   height: 8px;
