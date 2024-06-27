@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-row displaytext">
                   <label for="state" class="col-md-3 view-mode-r">State</label>
-                  <div class="col-md-3 view-mode-l" ><%= buyer.state %></div>
+                  <div class="col-md-3 view-mode-l"><%= buyer.state %></div>
                 </div>
                 <div class="form-row">
                   <label for="zip" class="col-md-3 col-form-label">Zip</label>
@@ -43,13 +43,13 @@
                   <input type="text" class="form-control-sm col-md-4" placeholder="Phone Number" id="phoneNumber" name="phoneNumber" value="<%= buyer.phoneNumber %>" required>
                 </div>
                 <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
+                <div class="form-row button-row">
+                  <div class="modal-footer">
+                    <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="savePersonalChanges()">Save</button>
+                    <button type="button" id="modify-button" class="modify-button" data-dismiss="modal">Cancel</button>
+                  </div>
+                </div>
               </form>
-            </div>
-            <div class="form-row button-row">
-              <div class="modal-footer">
-                <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="savePersonalChanges()">Save</button>
-                <button type="button" id="modify-button" class="modify-button" data-dismiss="modal">Cancel</button>
-              </div>
             </div>
           </div>
         </div>
