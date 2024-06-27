@@ -12,15 +12,18 @@
 .form-check-inline {
     display: inline-flex;
     align-items: center;
-    margin-right: 10px; /* Adjust spacing between each checkbox-label pair */
-    margin-bottom: 10px; /* Adjust spacing between rows when wrapping */
-    white-space: nowrap; /* Prevents wrapping of checkbox-label pairs */
-  }
+    margin-right: 10px;
+    /* Adjust spacing between each checkbox-label pair */
+    margin-bottom: 10px;
+    /* Adjust spacing between rows when wrapping */
+    white-space: nowrap;
+    /* Prevents wrapping of checkbox-label pairs */
+}
 
-  .form-check-input {
+.form-check-input {
     margin-right: 0.5rem;
-  }
-  
+}
+
 /* .modal {
     position: relative;
     background: #fff;
@@ -53,8 +56,9 @@
     width: auto;
     height: auto;
 }
-.modal-dialog{
-width: fit-content;    
+
+.modal-dialog {
+    width: fit-content;
 }
 
 
@@ -117,6 +121,7 @@ width: fit-content;
     background-color: grey;
     color: white;
 }
+
 /*  MODAL CSS END */
 
 /*  ZIP CODE CSS */
