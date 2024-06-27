@@ -47,37 +47,32 @@
                 <div class="form-row" style="align-items: center;">
                   <label for="buyerLevelOfService" class="col-md-4 col-form-label">Agent Service Level</label>
                   <select id="buyerLevelOfService" class="form-select-sm col-md-6" placeholder="Level Of Service"></select>
-                  <input type="hidden" id="levelofserviceid" name="levelofserviceid" value="<%= buyer.levelofserviceid %>">
+                  <input type="hidden" id="levelofserviceid" name="levelofserviceid">
                 </div>
                 <div class="form-row" style="align-items: center;">
                   <label for="timeFrame" class="col-md-4 col-form-label">Buying Time Frame</label>
                   <input type="text" class="form-control-sm col-md-2" placeholder="Enter Time Frame" id="timeFrame" name="timeFrame" value="<%= buyer.timeFrame %>" required>
                   <select id="timeframeUnit" class="col-md-2" style="margin-left: 3px;" placeholder="Time Unit">
-                    <option value="Days" <%= buyer.timeframeUnit === 'Days' ? 'selected' : '' %>>Days</option>
-                    <option value="Weeks" <%= buyer.timeframeUnit === 'Weeks' ? 'selected' : '' %>>Weeks</option>
-                    <option value="Months" <%= buyer.timeframeUnit === 'Months' ? 'selected' : '' %>>Months</option>
+                    <option value="Days">Days</option>
+                    <option value="Weeks">Weeks</option>
+                    <option value="Months">Months</option>
                   </select>
                 </div>
                 <div class="form-row">
                   <label for="prequalifiedY" id="prequalified" class="col-md-4 col-form-label">Prequalified</label>
                   <div class="col-md-3">
-                    <% if ( buyer.prequalified=='Yes' ) { %>
-                    <input type="radio" id="prequalifiedY" value="Yes" name="prequalified" required checked> Yes
-                    <input type="radio" id="prequalifiedN" value="No" name="prequalified" required> No
-                    <% } else { %>
                     <input type="radio" id="prequalifiedY" value="Yes" name="prequalified" required> Yes
-                    <input type="radio" id="prequalifiedN" value="No" name="prequalified" required checked> No
-                    <% } %>
+                    <input type="radio" id="prequalifiedN" value="No" name="prequalified" required> No
                   </div>
                   <div class="col-md-3"></div>
                 </div>
                 <div class="form-row">
                   <label for="prequalifiedAmount" class="col-md-4 col-form-label">Prequalified $</label>
-                  <input type="text" class="form-control-sm col-md-5" placeholder="Enter Prequalified Amount" id="prequalifiedAmount" name="prequalifiedAmount" value="<%= buyer.prequalifiedAmount%>">
+                  <input type="text" class="form-control-sm col-md-5" placeholder="Enter Prequalified Amount" id="prequalifiedAmount" name="prequalifiedAmount">
                 </div>
                 <div class="form-row">
                   <label for="preferredLanguages" class="col-md-4 col-form-label">Preferred Language</label>
-                  <input type="text" class="form-control-sm col-md-6" placeholder="Preferred Language" id="preferredLanguages" name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required>
+                  <input type="text" class="form-control-sm col-md-6" placeholder="Preferred Language" id="preferredLanguages" name="preferredLanguages" required>
                 </div>
                 <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
                 <div class="form-row button-row">
