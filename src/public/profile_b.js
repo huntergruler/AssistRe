@@ -119,27 +119,39 @@ function lookupCityState() {
     }
 }
 
-// Initialize the state based on the prequalified value
+let userid = null;
+let agentid = null;
+let buyerid = null;
+let paymentSuccessful = null;
+
+// DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', function () {
-    populateDisplayZipCodes();
-    populateLevelOfService();
-    populateSearchInfoDisplay();
-    getBuyerTypes();
-    populateStates();
-    // var levelOfService = document.getElementById('levelOfService').value;
-    $('#myModal').on('hide.bs.modal', function (e) {
-        if (zipChanges === 1) {
-            handleUnsavedChanges(e);
-        }
-    });
-    // var prequalified = document.getElementById('prequalified').value;
-    // if (prequalified === 'Y') {
-    //     document.getElementById('prequalifiedY').checked = true;
-    //     toggleFileUpload(true);
-    // } else {
-    //     document.getElementById('prequalifiedN').checked = true;
-    //     toggleFileUpload(false);
-    // }
+    fetch('/session-data')
+        .then(response => response.json())
+        .then(sessionData => {
+            userid = sessionData.userid;
+            agentid = sessionData.agentid;
+            buyerid = sessionData.buyerid;
+            paymentSuccessful = sessionData.paymentSuccessful;
+
+            populateDisplayZipCodes();
+            populateLevelOfService();
+            populateSearchInfoDisplay();
+            getBuyerTypes();
+            populateStates();
+            // var levelOfService = document.getElementById('levelOfService').value;
+            $('#myModal').on('hide.bs.modal', function (e) {
+                if (zipChanges === 1) {
+                    handleUnsavedChanges(e);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching session data:', error));
+
+    // var time_zone_offset = new Date().getTimezoneOffset(); // in minutes
+    // var time_zone = Date().time_zone;
+    // SELECT DATE_FORMAT(CONVERT_TZ(your_timestamp_column, '+00:00', @user_time_zone), '%m/%d/%Y %h:%i:%s %p') AS formatted_timestamp
+    // FROM your_table_name;
 });
 
 function savePersonalChanges() {
@@ -248,6 +260,35 @@ function savePropertyChanges(event) {
             console.error('Error:', error);
         });
 };
+
+function populatePersonalInfo() {
+    const firstName = document.getElementById('firstName');
+    const lastName = document.getElementById('lastName');
+    const address = document.getElementById('address');
+    const cityState = document.getElementById('cityState');
+    const zip = document.getElementById('zip');
+    const phoneNumber = document.getElementById('phoneNumber');
+
+    
+    fetch(`/populatePersonalInfo`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error fetching search info:', data.error);
+                return;
+            }
+            data.results.forEach(item => {
+                firstName.value = item.firstName;
+                lastName.value = item.lastName;
+                address.value = item.address;
+                cityState.textContent = item.cityState;
+                zip.value = item.zip;
+                phoneNumber.value = item.phoneNumber;
+
+            });
+        })
+
+}
 
 function populateSearchInfoDisplay() {
     const populateSearchInfoDisplay = document.getElementById('searchInfoDisplay');

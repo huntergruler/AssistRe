@@ -543,6 +543,32 @@ router.get('/profile_b', (req, res) => {
 });
 
 // Route to get the buyer's profile
+router.get('/populatePersonalInfo', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+    const query = `SELECT b.userid, b.firstName, b.lastName, b.address, b.city, b.state, 
+                          concat(b.city,', ',b.state) cityState, b.userid, b.zip, b.email, b.phoneNumber
+                     FROM Buyers b
+                    WHERE b.userid = ?`;
+    db.query(query, [userid], (error, results) => {
+      if (error) {
+        console.error('Error fetching buyer profile:', error);
+        return res.status(500).send('Server error');
+      }
+      if (results.length === 0) {
+        return res.status(404).send('User not found');
+      }
+      res.json({ results });
+    });
+  }
+});
+
+
+// Route to get the buyer's profile
 router.get('/populateSearchInfoDisplay', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
