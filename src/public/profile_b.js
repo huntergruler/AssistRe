@@ -313,7 +313,6 @@ function populateSearchDetails() {
                 return;
             }
             data.results.forEach(item => {
-                console.log(item.levelofserviceid);
                 propertyType.value = item.propertyType;
                 bedrooms_min.value = item.bedrooms_min;
                 bathrooms_min.value = item.bathrooms_min;
