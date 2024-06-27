@@ -922,6 +922,9 @@ router.post('/login', [
 // Route to get city and state by zip code
 router.get('/get-city-state', (req, res) => {
   const zipCode = req.query.zipCode;
+  var city = '';
+  var state = '';
+  var cityState = '';
   if (!zipCode) {
     return res.status(400).json({ error: 'Zip code is required' });
   }
