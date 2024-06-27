@@ -21,17 +21,17 @@
 
 .view-mode-l {
     text-align: left;
-    height: 20px;
+    margin: 0px;
 }
 
 .view-mode-r {
     text-align: right;
-    height: 20px;
+    margin: 0px;
 }
 
 .view-mode-c {
     text-align: center;
-    height: 20px;
+    margin: 0px;
 }
 
 .form-control-sm {
