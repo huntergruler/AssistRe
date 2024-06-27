@@ -933,12 +933,12 @@ router.get('/get-city-state', (req, res) => {
       console.log('Error:', error);
       return res.status(500).json({ error: 'Internal server error' });
     }
-    if (results.length === 0) {
+    if (results.length > 0) {
+      const { city, state, cityState } = results[0];
+    } else {
       city = '';
       state = '';
       cityState = '';
-    } else {
-      const { city, state, cityState } = results[0];
     }
     res.json({ city, state, cityState });
   });
