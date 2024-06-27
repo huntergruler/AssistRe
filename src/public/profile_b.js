@@ -319,7 +319,15 @@ function populateSearchDetails() {
                 price_min.value = item.price_min;
                 price_max.value = item.price_max;
                 timeFrame.value = item.timeFrame;
-                timeFrameUnit.value = item.timeFrameUnit;
+                if (item.timeFrameUnit === 'days') {
+                    timeFrameUnit.value = 'days';
+                }
+                else if (item.timeFrameUnit === 'weeks') {
+                    timeFrameUnit.value = 'weeks';
+                }
+                else if (item.timeFrameUnit === 'months') {
+                    timeFrameUnit.value = 'months';
+                }
                 if (item.prequalified === 'Yes') {
                     prequalifiedY.checked = true;
                 }
