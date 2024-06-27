@@ -80,6 +80,11 @@ body {
     text-align: center;
     border-top: 1px solid black;
 }
+
+.profile-group{
+    line-height: 1.5;
+}
+
 .office-group,
 .license-group,
 .transaction-group {

@@ -303,6 +303,10 @@ body {
     border-radius: 8px;
 }
 
+.profile-group{
+    line-height: 1.5;
+}
+
 .property-group {
     height: fit-content;
     max-height: 490px;
