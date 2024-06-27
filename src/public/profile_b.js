@@ -320,14 +320,14 @@ function populateSearchDetails() {
                 price_max.value = item.price_max;
                 timeFrame.value = item.timeFrame;
                 console.log(timeframeUnit.value, 'db', item.timeframeUnit)
-                if (item.timeframeUnit === 'days') {
-                    timeframeUnit.value = 'days';
+                if (item.timeframeUnit === 'Days') {
+                    timeframeUnit.value = 'Days';
                 }
-                else if (item.timeframeUnit === 'weeks') {
-                    timeframeUnit.value = 'weeks';
+                else if (item.timeframeUnit === 'Weeks') {
+                    timeframeUnit.value = 'Weeks';
                 }
-                else if (item.timeframeUnit === 'months') {
-                    timeframeUnit.value = 'months';
+                else if (item.timeframeUnit === 'Months') {
+                    timeframeUnit.value = 'Months';
                 }
                 if (item.prequalified === 'Yes') {
                     prequalifiedY.checked = true;
