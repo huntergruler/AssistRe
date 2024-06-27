@@ -926,6 +926,7 @@ router.get('/get-city-state', (req, res) => {
     return res.status(400).json({ error: 'Zip code is required' });
   }
 
+  console.log('Zip code:', zipCode);
   const query = `SELECT city, state, concat(city,', ',state) cityState
                    FROM ZipCodes 
                   WHERE zipCode = ?`;
