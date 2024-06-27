@@ -38,7 +38,7 @@
     font-size: 14px;
     background-color: var(--dialog-color);
     padding: 0%;
-    width: auto;
+    width: fit-content;
     height: auto;
 }
 .modal-dialog{
