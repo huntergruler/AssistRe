@@ -324,9 +324,25 @@ function getBuyerTypes() {
             }
             );
 
-            if (buyerTypesData) {
-                buyerTypesData.includes(item.buyertypeid);
-                console.log('buyerTypesData:', buyerTypesData);
-            }
-    })
+            //     // Create a checkbox element
+            //     const checkbox = document.createElement('input');
+            //     checkbox.type = 'checkbox';
+            //     checkbox.name = 'buyerType';
+            //     checkbox.value = item.buyertypeid;
+            //     checkbox.id = item.buyertypeid;
+            //     // Check the checkbox if the buyer type is in the buyerTypesData array
+            //     if (buyerTypesData) {
+            //         checkbox.checked = buyerTypesData.includes(item.buyertypeid);
+            //     }
+            //     // Create a label element
+            //     const label = document.createElement('label');
+            //     label.htmlFor = item.buyertypeid;
+            //     label.className = 'checkbox-label';
+            //     label.innerHTML = '&nbsp;' + item.buyerType + '&nbsp;';
+
+            //     // Append the checkbox and label to the div
+            //     buyerTypeCheckbox.appendChild(checkbox);
+            //     buyerTypeCheckbox.appendChild(label);
+            // });
+        })
 }
