@@ -15,9 +15,6 @@
     <nav class="container-fluid navbar navbar-expand-lg m-0 text-align-center d-flex">
       <div class="row container-fluid d-flex justify-content-end">
         <img class="col-3 img-fluid" src="./images/Seeking Agents Logo (175 x 60 px).svg" alt="Seeking Agents Logo">
-        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button> -->
         <div class="col-8 collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item invisible">
@@ -39,14 +36,37 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid">
-      <section id="hero" class="row">
-        <h2>Connecting Buyers with the Perfect Agents</h2>
-        <p>Find the right agent to help you buy your dream home. Submit your request and receive competitive offers from agents who specialize in your desired areas.</p>
-        <button type="button" class="btn btn-primary w-50 mx-auto ">Get Started</button>
-      </section>
 
+    <div class="container-fluid" id="hero">
+      <div class="row d-flex">
+        <div class="col">
+          <div id="hero-info">
+            <h2>Connecting Buyers with the Perfect Agents</h2>
+            <p>Find the right agent to help you buy your dream home. Submit your request and receive competitive offers from agents who specialize in your desired areas.</p>
+          </div>
+          <div id="form-input">
+            <p>Don't miss out on the launch of Seeking Agents. Enter your email address to be notified when we go live, and let us know if you're a buyer or an agent.</p>
+            <form class="w-50 mx-auto">
+              <div class="mb-3">
+                <!-- <label for="inputEmail" class="form-label">Email address</label> -->
+                <input type="email" class="form-control mb-2" id="inputEmail" aria-describedby="emailHelp" placeholder="Your Email Address"required>
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                <div class="d-flex">
+                  <select class="form-select me-2" aria-label="Default select example">
+                    <option disabled selected>Select your role</option>
+                    <option value="buyer">I am a Buyer</option>
+                    <option value="agent">I am an Agent</option>
+                  </select>
+                  <input type="text" class="form-control" placeholder="Your ZIP Code">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Notify Me</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+
   <div class="container-fluid" id="middle-section">
     <div class="row">
       <section id="how-it-works" class="col-7 d-flex flex-column justify-content-center m-4">
@@ -67,7 +87,7 @@
       <div class="col-4 d-flex flex-column m-4 justify-content-around" id="buyers-agents">
         <section id="for-buyers" class="px-0">
           <h2>For Buyers</h2>
-          <p>Take the stress out of finding the right real estate agent. With SeekingAgents, you can connect with agents who understand your needs and specialize in the areas you're interested in. Compare offers and choose the best agent to help you find your dream home.</p>
+          <p>Take the stress out of finding the right real estate agent. With Seeking Agents, you can connect with agents who understand your needs and specialize in the areas you're interested in. Compare offers and choose the best agent to help you find your dream home.</p>
         </section>
       
         <section id="for-agents" class="px-0">
@@ -78,22 +98,9 @@
     </div>
   </div>
 
-  <section id="signup">
-    <h2>Stay Informed</h2>
-    <p>Don't miss out on the launch of SeekingAgents. Enter your email address to be notified when we go live, and let us know if you're a buyer or an agent.</p>
-    <form>
-      <input type="email" placeholder="Your Email Address" required>
-      <select required>
-        <option value="" disabled selected>Select your role</option>
-        <option value="buyer">I am a Buyer</option>
-        <option value="agent">I am an Agent</option>
-      </select>
-      <button type="submit">Notify Me</button>
-    </form>
-  </section>
 
   <footer>
-    <ul class="d-flex gap-4 justify-content-center m-0 pb-2 ps-0" id="footer-nav">
+    <ul class="d-flex gap-4 justify-content-center m-0 pb-2 ps-0 invisible" id="footer-nav">
       <li><a href="#home">Home</a></li>
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#for-buyers">For Buyers</a></li>
@@ -116,7 +123,7 @@
     </div>
     <div class="d-flex gap-4 justify-content-center">
       <p>info@seekingagents.com</p>
-      <p>123-456-7890</p>
+      <p>+1-833-SEEK-AGT (733-5248)</p>
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
