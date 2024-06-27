@@ -133,9 +133,9 @@ document.addEventListener('DOMContentLoaded', function () {
             paymentSuccessful = sessionData.paymentSuccessful;
 
             populateDisplayZipCodes();
-            populateLevelOfService();
             populateSearchInfoDisplay();
-            getBuyerTypes();
+            // getBuyerTypes();
+            // populateLevelOfService();
             populateStates();
             // var levelOfService = document.getElementById('levelOfService').value;
             $('#myModal').on('hide.bs.modal', function (e) {
@@ -259,7 +259,7 @@ function savePropertyChanges(event) {
         });
 };
 
-function populatePersonalInfo() {
+function populateBuyerInfo() {
     const firstName = document.getElementById('firstName');
     const lastName = document.getElementById('lastName');
     const address = document.getElementById('address');
@@ -268,7 +268,7 @@ function populatePersonalInfo() {
     const phoneNumber = document.getElementById('phoneNumber');
 
     
-    fetch(`/populatePersonalInfo`)
+    fetch(`/populateBuyerInfo`)
         .then(response => response.json())
         .then(data => {
             if (data.error) {
@@ -286,6 +286,51 @@ function populatePersonalInfo() {
             });
         })
 
+}
+
+function populateSearchDetails() {
+    const propertyType = document.getElementById('propertyType');
+    const bedrooms_min = document.getElementById('bedrooms_min');
+    const bathrooms_min = document.getElementById('bathrooms_min');
+    const squareFootage_min = document.getElementById('squareFootage_min');
+    const squareFootage_max = document.getElementById('squareFootage_max');
+    const price_min = document.getElementById('price_min');
+    const price_max = document.getElementById('price_max');
+    const timeFrame = document.getElementById('timeFrame');
+    const prequalifiedY = document.getElementById('prequalifiedY');
+    const prequalifiedN = document.getElementById('prequalifiedN');
+    const prequalifiedAmount = document.getElementById('prequalifiedAmount');
+    const preferredLanguages = document.getElementById('preferredLanguages');
+    
+    fetch(`/populateSearchDetails`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error('Error fetching search info:', data.error);
+                return;
+            }
+            data.results.forEach(item => {
+                propertyType.value = item.propertyType;
+                bedrooms_min.value = item.bedrooms_min;
+                bathrooms_min.value = item.bathrooms_min;
+                squareFootage_min.value = item.squareFootage_min;
+                squareFootage_max.value = item.squareFootage_max;
+                price_min.value = item.price_min;
+                price_max.value = item.price_max;
+                timeFrame.value = item.timeFrame;
+                timeFrameUnit.value = item.timeFrameUnit;
+                if (item.prequalified === 'Yes') {
+                    prequalifiedY.checked = true;
+                }
+                else {
+                    prequalifiedN.checked = true;
+                }
+                prequalifiedAmount.value = item.prequalifiedAmount;
+                preferredLanguages.value = item.preferredLanguages;
+            });
+        })
+    getBuyerTypes();
+    populateLevelOfService();
 }
 
 function populateSearchInfoDisplay() {

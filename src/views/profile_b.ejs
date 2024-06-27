@@ -54,7 +54,7 @@
             <br>
           </div>
           <div class="form-row button-row">
-            <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#personalModal" onclick="populatePersonalInfo()">
+            <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#personalModal" onclick="populateBuyerInfo()">
               Modify Personal Info
             </button>
           </div>
@@ -76,13 +76,13 @@
     </div>
     <div class="form-group col-md-5">
       <div class="userZip-container">
-        <h3 class="text-center">Property Info</h3>
+        <h3 class="text-center">Search Details</h3>
         <div class="property-group">
           <div class="searchInfoDisplay" id="searchInfoDisplay">
             <!-- JavaScript will populate this container -->
           </div>
           <div class="form-row button-row">
-            <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#propertyModal">
+            <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#propertyModal" onclick="populateSearchDetails()">
               Modify Property Info
             </button>
           </div>

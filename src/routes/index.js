@@ -543,7 +543,7 @@ router.get('/profile_b', (req, res) => {
 });
 
 // Route to get the buyer's profile
-router.get('/populatePersonalInfo', (req, res) => {
+router.get('/populateBuyerInfo', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
@@ -566,6 +566,43 @@ router.get('/populatePersonalInfo', (req, res) => {
     });
   }
 });
+
+router.get('/populateSearchDetails', (req, res) => {
+  if (!req.session.user) {
+    req.session.message = 'Please login to access your Profile';
+    res.redirect('/');
+  }
+  else {
+    const userid = req.session.userid;
+    const query = `SELECT b.userid, 
+                          ifnull(brd.bathrooms_min,0) bathrooms_min, ifnull(brd.bathrooms_max,0) bathrooms_max, 
+                          ifnull(brd.bedrooms_min,0) bedrooms_min, ifnull(brd.bedrooms_max,0) bedrooms_max, 
+                          getBuyerTypesByIds(brd.buyerType) buyerType, ifnull(brd.preferredLanguages,'') preferredLanguages, 
+                          brd.prequalified, ifnull(brd.price_min,0) price_min, 
+                          ifnull(brd.price_max,0) price_max, ifnull(brd.propertyType,'') propertyType, 
+                          ifnull(brd.squareFootage_min,0) squareFootage_min, ifnull(brd.squareFootage_max,0) squareFootage_max, 
+                          ifnull(trim(replace(timeframe,substring_index(timeFrame,' ',-1),'')),'') timeFrame, brd.prequalifiedFile, 
+                          los.levelOfService levelOfServiceDisp, los.levelofserviceid,
+                          ifnull(brd.prequalifiedAmount,0) prequalifiedAmount, brd.buyerrequestid, brd.buyerType buyerTypeDisp, 
+                          if(brd.prequalified = 'Yes',concat('Prequalified for ',CONCAT('$', FORMAT(brd.prequalifiedAmount, 0))),'Not Prequalified') prequalifiedDisp,
+                          substring_index(timeFrame,' ',-1) timeframeUnit
+                     FROM Buyers b
+                          LEFT OUTER JOIN BuyerRequestDetails brd on (b.userid = brd.userid)
+                          JOIN LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
+                    WHERE b.userid = ?`;
+    db.query(query, [userid], (error, results) => {
+      if (error) {
+        console.error('Error fetching buyer profile:', error);
+        return res.status(500).send('Server error');
+      }
+      if (results.length === 0) {
+        return res.status(404).send('User not found');
+      }
+      res.json({ results });
+    });
+  }
+});
+
 
 
 // Route to get the buyer's profile
