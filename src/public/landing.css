@@ -65,9 +65,15 @@ nav ul {
     cursor: pointer; 
 }
 
-section { 
-    padding: 60px 20px; 
-    text-align: center; 
+#middle-section {
+    background-color: var(--pale-yellow);
+}
+
+#how-it-works, #buyers-agents {
+    background-color: var(--dark-green);
+    color: var(--light-green);
+    border-radius: 20px;
+    padding: 40px 20px;
 }
 
 footer { 
