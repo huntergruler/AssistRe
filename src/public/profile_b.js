@@ -297,6 +297,7 @@ function populateSearchDetails() {
     const price_min = document.getElementById('price_min');
     const price_max = document.getElementById('price_max');
     const timeFrame = document.getElementById('timeFrame');
+    const timeFrameUnit = document.getElementById('timeframeUnit');
     const prequalifiedY = document.getElementById('prequalifiedY');
     const prequalifiedN = document.getElementById('prequalifiedN');
     const prequalifiedAmount = document.getElementById('prequalifiedAmount');
