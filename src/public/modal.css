@@ -41,6 +41,9 @@
     width: auto;
     height: auto;
 }
+.modal-dialog{
+width: fit-content;    
+}
 
 
 /* The Close Button */
