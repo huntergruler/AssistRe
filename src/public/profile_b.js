@@ -308,11 +308,6 @@ function getBuyerTypes() {
                 buyerTypesData = buyerTypeItem.buyerType;
             })
             data.buyerTypes.forEach(item => {
-                // Create a label element
-                const label = document.createElement('label');
-                label.htmlFor = item.buyertypeid;
-                label.innerHTML = '&nbsp;' + item.buyerType + '&nbsp;';
-
                 // Create a checkbox element
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
@@ -323,6 +318,11 @@ function getBuyerTypes() {
                 if (buyerTypesData) {
                     checkbox.checked = buyerTypesData.includes(item.buyertypeid);
                 }
+                // Create a label element
+                const label = document.createElement('label');
+                label.htmlFor = item.buyertypeid;
+                label.innerHTML = '&nbsp;' + item.buyerType + '&nbsp;';
+
                 // Append the checkbox and label to the div
                 buyerTypeCheckbox.appendChild(label);
                 buyerTypeCheckbox.appendChild(checkbox);
