@@ -615,7 +615,7 @@ router.get('/dashboard_b', (req, res) => {
 });
 
 // Route to update the buyer's profile
-router.post('/profile_b', (req, res) => {
+router.post('/savePersonalChanges', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');
@@ -623,10 +623,17 @@ router.post('/profile_b', (req, res) => {
   else {
     const { firstName, lastName, address, city, state, zip, phoneNumber, userid } = req.body;
 
-    const query = `UPDATE Buyers 
-                      SET firstName = ?, lastName = ?, address = ?, city = ?, state = ?, zip = ?, phoneNumber = ? 
-                    WHERE userid = ?`;
-    db.query(query, [firstName, lastName, address, city, state, zip, phoneNumber, userid], (error, results) => {
+    const query = `UPDATE Buyers, ZipCodes z 
+                      SET b.firstName = ?, 
+                          b.lastName = ?, 
+                          b.address = ?, 
+                          b.city = ?, 
+                          b.state = ?, 
+                          b.phoneNumber = ?, 
+                          b.zip = z.zipCode
+                    WHERE z.zipCode = ?
+                      AND b.userid = ?`;
+    db.query(query, [firstName, lastName, address, city, state, phoneNumber, zip, userid], (error, results) => {
       if (error) {
         console.error('Error updating buyer profile:', error);
         return res.status(500).send('Server error');
@@ -919,7 +926,9 @@ router.get('/get-city-state', (req, res) => {
     return res.status(400).json({ error: 'Zip code is required' });
   }
 
-  const query = 'SELECT city, state FROM ZipCodes WHERE zipCode = ?';
+  const query = `SELECT city, state, concat(city,', ',state) cityState
+                   FROM ZipCodes 
+                  WHERE zipCode = ?`;
   db.query(query, [zipCode], (error, results) => {
     if (error) {
       console.log('Error:', error);

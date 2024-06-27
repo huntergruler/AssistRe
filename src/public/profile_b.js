@@ -106,11 +106,14 @@ function lookupCityState() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
                 if (response.city && response.state) {
-                    document.getElementById('cityState').textContent = '';
+                    document.getElementById('cityState').textContent = response.cityState;
                     document.getElementById('city').textContent = response.city;
                     document.getElementById('state').textContent = response.state;
                 } else {
                     document.getElementById('cityState').textContent = 'Zip Code not found';
+                    document.getElementById('city').textContent = '';
+                    document.getElementById('state').textContent = '';
+                    document.getElementById('zip').focus();
                 }
             }
         };
@@ -145,8 +148,6 @@ function savePersonalChanges() {
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
     const address = document.getElementById('address').value;
-    const city = document.getElementById('city').value;
-    const state = document.getElementById('state').value;
     const zip = document.getElementById('zip').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     const userid = document.getElementById('userid').value;
@@ -154,14 +155,12 @@ function savePersonalChanges() {
         firstName: firstName,
         lastName: lastName,
         address: address,
-        city: city,
-        state: state,
         zip: zip,
         phoneNumber: phoneNumber,
         userid: userid
     };
     // Send the data to the server using fetch
-    fetch('/profile_b', {
+    fetch('/savePersonalChanges', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
