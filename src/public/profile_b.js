@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
             populateDisplayZipCodes();
             populateSearchInfoDisplay();
             // getBuyerTypes();
-            // populateLevelOfService();
+            populateLevelOfService();
             populateStates();
             // var levelOfService = document.getElementById('levelOfService').value;
             $('#myModal').on('hide.bs.modal', function (e) {
@@ -305,7 +305,6 @@ function populateSearchDetails() {
     const buyerLevelOfService = document.getElementById('buyerLevelOfService');
 
     getBuyerTypes();
-    populateLevelOfService();
 
     fetch(`/populateSearchDetails`)
         .then(response => response.json())
