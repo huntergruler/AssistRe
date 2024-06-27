@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="header.css">
   <link rel="stylesheet" href="profile_b.css">
+  <link rel="stylesheet" href="standardstyles.css">
   <link rel="stylesheet" href="modal.css">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -51,7 +52,7 @@
             <br>
             <%= buyer.phoneNumber %>
           </div>
-          <div class="form-row justify-content-center">
+          <div class="form-row button-row">
             <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#personalModal">
               Modify Personal Info
             </button>
@@ -64,7 +65,7 @@
           <div id="displayZipCodes" class="justify-content-center">
             <!-- JavaScript will populate this container -->
           </div>
-          <div class="form-row justify-content-center">
+          <div class="form-row button-row">
             <button type="button" id="modify-button" class="modify-button" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
               Modify Zip Codes
             </button>
@@ -79,7 +80,7 @@
           <div class="searchInfoDisplay" id="searchInfoDisplay">
             <!-- JavaScript will populate this container -->
           </div>
-          <div class="form-row justify-content-center">
+          <div class="form-row button-row">
             <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#propertyModal">
               Modify Property Info
             </button>
@@ -177,7 +178,7 @@
                   <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
                 </form>
               </div>
-              <div form-row justify-content-center>
+              <div class="form-row button-row">
                 <div class="modal-footer">
                   <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="savePropertyChanges()">Save</button>
                   <button type="button" id="modify-button" class="modify-button" data-dismiss="modal">Cancel</button>
@@ -235,7 +236,7 @@
                   <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
                 </form>
               </div>
-              <div form-row justify-content-center>
+              <div class="form-row button-row">
                 <div class="modal-footer">
                   <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="savePersonalChanges()">Save</button>
                   <button type="button" id="modify-button" class="modify-button" data-dismiss="modal">Cancel</button>
