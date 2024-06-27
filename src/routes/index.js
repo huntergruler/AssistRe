@@ -612,8 +612,6 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
     res.redirect('/');
   }
   else {
-    const userid = req.session.userid;
-    const buyerrequestid = req.session.buyerrequestid;
     const query = `SELECT concat('<div class="buyertype-container">',
                           '<u>Buyer Type</u><br>', getBuyerTypesByIds(brd.buyerType),'</div>',
                           'Property Type: ',propertyType,'<br>',
@@ -629,7 +627,7 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
                           LEFT OUTER JOIN BuyerRequestDetails brd on (b.userid = brd.userid)
                           JOIN LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
                     WHERE b.userid = ?`;
-    db.query(query, [userid], (error, results) => {
+    db.query(query, [req.session.userid], (error, results) => {
       if (error) {
         console.error('Error fetching offer defaults:', error);
         return res.status(500).json({ error: 'Internal server error' });
@@ -637,9 +635,9 @@ router.get('/populateSearchInfoDisplay', (req, res) => {
       if (results.length === 0) {
         return res.status(404).send('No Defaults');
       }
-      if (buyerrequestid != 0 && buyerrequestid != results[0].buyerrequestid) {
-        req.session.buyerrequestid = results[0].buyerrequestid;
-      }
+      // if (buyerrequestid != 0 && buyerrequestid != results[0].buyerrequestid) {
+      //   req.session.buyerrequestid = results[0].buyerrequestid;
+      // }
       res.json({ results });
     });
   }
@@ -715,6 +713,7 @@ router.post('/saveSearchChanges', (req, res) => {
   }
   else {
     const buyerrequestid = req.session.buyerrequestid;
+    console.log('BuyerRequestID:', buyerrequestid);
     const { bathrooms_min, bathrooms_max, bedrooms_min, bedrooms_max, buyerType,
       preferredLanguages, prequalified, price_min, price_max, propertyType,
       squareFootage_min, squareFootage_max, timeFrame, levelofserviceid,
