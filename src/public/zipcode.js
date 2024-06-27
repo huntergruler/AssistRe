@@ -13,7 +13,7 @@ function populateUserZipCodes() {
     citySelect.innerHTML = '';
     countySelect.innerHTML = '';
     if (userType = 'Agent') {
-        stateSelect.selectedIndex = userState;
+        stateSelect.value = userState;
     }
     else {
         stateSelect.selectedIndex = 0;
