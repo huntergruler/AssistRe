@@ -318,7 +318,7 @@ function getBuyerTypes() {
                 }
                 buyerTypeCheckbox.innerHTML += `
                 <div class="form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="buyerType" value="${item.buyertypeid}" id="${item.buyertypeid}">
+                    <input class="form-check-input" type="checkbox" checked name="buyerType" value="${item.buyertypeid}" id="${item.buyertypeid}">
                     <label class="form-check-label" for="${item.buyertypeid}">${item.buyerType}</label>
                     </div>`;
             }
