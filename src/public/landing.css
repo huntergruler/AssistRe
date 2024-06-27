@@ -39,11 +39,12 @@ nav ul {
 
 #hero { 
     text-align: center; 
-    padding: 100px 20px; 
+    padding: 50px 20px; 
     background: var(--pale-yellow); 
     /* background-image: url(./images/hero\ image.jpg); */
     background-size: contain;
     background-repeat: no-repeat;
+    color: var(--dark-green)
 }
 
 #hero h2 { 
@@ -65,9 +66,20 @@ nav ul {
     cursor: pointer; 
 }
 
-section { 
-    padding: 60px 20px; 
-    text-align: center; 
+#middle-section {
+    background-color: var(--pale-yellow);
+}
+
+#how-it-works, #buyers-agents {
+    background-color: var(--dark-green);
+    color: var(--light-green);
+    border-radius: 20px;
+    padding: 40px 20px;
+}
+
+#how-it-works h2, #for-buyers h2, #for-agents h2 {
+    padding-bottom: 10px;
+    text-decoration: underline;
 }
 
 footer { 
