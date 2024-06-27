@@ -22,11 +22,19 @@
       <div class="logo-container"></div>
     </div>
     <nav id="navlinks" class="col-md-10 justify-content-end text-center">
-      <p><a href="/login_a">Agent Login</a></p>
-      <p>|</p>
-      <p><a href="/login_b">Buyer Login</a></p>
-      <p>|</p>
-      <p><a href="/register">Register</a></p>
+      <div class="row col-md-12">
+        <div class="col-md-4">
+          <p><a href="/login_a">Agent Login</a></p>
+        </div>
+        <div class="col-md-4">
+          <p>|</p>
+          <p><a href="/login_b">Buyer Login</a></p>
+          <p>|</p>
+        </div>
+        <div class="col-md-4">
+          <p><a href="/register">Register</a></p>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -42,8 +50,8 @@
     <% } %>
   </div>
   <% if (message) { %>
-    <script src="modal.js"></script>
-    <% } %>
+  <script src="modal.js"></script>
+  <% } %>
 </body>
 
 </html>
