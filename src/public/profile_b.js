@@ -319,6 +319,7 @@ function populateSearchDetails() {
                 price_min.value = item.price_min;
                 price_max.value = item.price_max;
                 timeFrame.value = item.timeFrame;
+                console.log(timeFrameUnit.value, 'db', item.timeFrameUnit)
                 if (item.timeFrameUnit === 'days') {
                     timeFrameUnit.value = 'days';
                 }
