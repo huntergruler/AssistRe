@@ -620,7 +620,7 @@ body {
 
 .decline-icon {
     position: absolute;
-    right: 263px;
+    right: 246px;
     color: rgb(53, 51, 51);
     font-size: 15px;
     cursor: pointer;
@@ -718,7 +718,7 @@ body {
     background-color: #ccc;
 }
 
-/* The Modal CSS */
+/* The Modal CSS
 .modal {
     display: none;
     position: fixed;
@@ -731,7 +731,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 #dashboardBody {
     position: relative;
