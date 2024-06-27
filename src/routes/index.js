@@ -939,7 +939,8 @@ router.post('/login', [
           message: "Verify your email address AND then try to login again."
         });
       } else {
-        const { userid, firstname, lastname, emailverified, paymentSuccessful, state } = results[0];
+        const { userid, firstname, lastname, paymentSuccessful, state } = results[0];
+        console.log('state:', state); // Debug
         bcrypt.compare(password, results[0].password, (err, isMatch) => {
           if (!isMatch || err) {
             res.json({
@@ -953,9 +954,11 @@ router.post('/login', [
             req.session.firstname = firstname;
             req.session.lastname = lastname;
             req.session.userType = userType;
+            console.log('state:', state); // Debug
             req.session.userState = state;
-            req.session.agentid = 0;
-            req.session.buyerid = 0;
+            console.log('req.session.userState:', req.session.userState); // Debug
+            req.session.agentid = 0; // Initialize agentid
+            req.session.buyerid = 0; // Initialize buyerid
             req.session.paymentSuccessful = paymentSuccessful;
             console.log('User logged in:', email, userType, req.session.paymentSuccessful);
             if (userType === 'Agent') {
