@@ -218,22 +218,22 @@ function getOffers(datatype, element) {
                                        Agent Contact Info Requested
                                        </button>`;
                     } else if (request.buyerRequested == 1 && request.agentReply == 'C') {
-                        innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
+                        innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button button-row" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>`
                         if (request.buyerSent == 0) {
-                            innerHTMLtext += `<button type="button" id="buyerinfo-button" class="buyerinfo-button" style="margin-left: 5px"
+                            innerHTMLtext += `<button type="button" id="buyerinfo-button" class="buyerinfo-button button-row" style="margin-left: 5px"
                             onclick="sendBuyerInfo(${request.buyerid},${request.agentid},${request.buyeragentmatchid});">
                             Send Your Info to Agent</button>`;
                         }
                         else if (request.buyerSent == 1) {
-                            innerHTMLtext += `<button type="button" id="buyerinfo-button" class="buyerinfo-button disabled"
+                            innerHTMLtext += `<button type="button" id="buyerinfo-button" class="buyerinfo-button  button-row disabled"
                             style="background-color: grey" >
                             Contact Info Sent
                             </button>`;
                         }
                     } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
-                        innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
+                        innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled  button-row"
                         style="background-color: red" >
                        Agent Contact Request Declined
                        </button>
@@ -405,28 +405,28 @@ function offerDetail(agentid, buyeragentmatchid) {
                                        </button>
                                        `;
                 } else if (request.buyerRequested == 1 && request.agentReply == '') {
-                    innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
+                    innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled button-row"
                                         style="background-color: grey" >
                                        Agent Contact Info Requested
                                        </button>
                                        `;
                 } else if (request.buyerRequested == 1 && request.agentReply == 'C') {
-                    innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button" data-toggle="modal"
+                    innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button button-row" data-toggle="modal"
                         data-target="#agentInfoModal" onclick="populateAgentInfo(${request.agentid});">
                          View Agent's Info</button>`
                     if (request.buyerSent == 0) {
-                        innerHTMLtext += `<button type="button" id="buyerinfo-button2" class="buyerinfo-button" style="margin-left: 5px"
+                        innerHTMLtext += `<button type="button" id="buyerinfo-button2" class="buyerinfo-button button-row" style="margin-left: 5px"
                                 onclick="sendBuyerInfo(${request.buyerid},${request.agentid},${request.buyeragentmatchid});">
                                 Send Your Info to Agent</button>`;
                     }
                     else if (request.buyerSent == 1) {
-                        innerHTMLtext += `<button type="button" id="buyerinfo-button2" class="buyerinfo-button disabled"
+                        innerHTMLtext += `<button type="button" id="buyerinfo-button2" class="buyerinfo-button disabled button-row"
                                 style="background-color: grey" >
                                 Contact Info Sent
                                 </button>`;
                     }
                 } else if (request.buyerRequested == 1 && request.agentReply == 'D') {
-                    innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled"
+                    innerHTMLtext += `<button type="button" id="agentinfo-button" class="agentinfo-button disabled button-row"
                                         style="background-color: red" >
                                         Agent Contact Request Declined
                                        </button>
