@@ -101,7 +101,7 @@ function lookupCityState() {
     if (zipCode) {
         // Create a new XMLHttpRequest object
         let xhr = new XMLHttpRequest();
-        console.log('xhr', xhr);
+        console.log('zipcode', zipCode);
         xhr.open('GET', '/get-city-state?zipCode=' + zipCode, true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
