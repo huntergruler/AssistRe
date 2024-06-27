@@ -9,16 +9,29 @@
     margin-left: 1px;
     margin-right: 1px;
 }
-.label-above{
+
+.label-above {
     margin: 0px;
     justify-content: center;
 }
 
-.displaytext{
+.displaytext {
     height: 20px;
 }
 
-.form-control-sm{
+.view-mode-l {
+    text-align: left;
+}
+
+.view-mode-r {
+    text-align: right;
+}
+
+.view-mode-c {
+    text-align: center;
+}
+
+.form-control-sm {
     padding: 2px;
     height: 20px;
     border-left: 2px solid black;
@@ -28,7 +41,7 @@
 
 }
 
-.col-form-label{
+.col-form-label {
     padding-top: 0px;
     padding-bottom: 0px;
 }
