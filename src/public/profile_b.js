@@ -107,12 +107,8 @@ function lookupCityState() {
                 let response = JSON.parse(xhr.responseText);
                 if (response.city && response.state) {
                     document.getElementById('cityState').textContent = response.cityState;
-                    document.getElementById('city').textContent = response.city;
-                    document.getElementById('state').textContent = response.state;
                 } else {
                     document.getElementById('cityState').textContent = 'Zip Code not found';
-                    document.getElementById('city').textContent = '';
-                    document.getElementById('state').textContent = '';
                     document.getElementById('zip').focus();
                 }
             }
