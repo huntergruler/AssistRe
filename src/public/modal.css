@@ -9,6 +9,18 @@
     background-color: transparent;
 }
 
+.form-check-inline {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px; /* Adjust spacing between each checkbox-label pair */
+    margin-bottom: 10px; /* Adjust spacing between rows when wrapping */
+    white-space: nowrap; /* Prevents wrapping of checkbox-label pairs */
+  }
+
+  .form-check-input {
+    margin-right: 0.5rem;
+  }
+  
 /* .modal {
     position: relative;
     background: #fff;
