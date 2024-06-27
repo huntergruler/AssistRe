@@ -1,5 +1,5 @@
 function populateUserZipCodes() {
-    populateLevelOfService();
+    // populateLevelOfService();
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const userZipCodes = document.getElementById("userZipCodes");
     const stateSelect = document.getElementById("stateSelect");
@@ -11,7 +11,13 @@ function populateUserZipCodes() {
     availabeZipCodesContainer.innerHTML = '';
     citySelect.innerHTML = '';
     countySelect.innerHTML = '';
-    stateSelect.selectedIndex = 0;
+    if (userType = 'Agent') {
+        stateSelect.selectedIndex = userState;
+    }
+    else {
+        stateSelect.selectedIndex = 0;
+    }
+
     fetch(`/get-userzipcodes`)
         .then(response => response.json())
         .then(data => {

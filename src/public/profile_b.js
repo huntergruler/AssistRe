@@ -121,6 +121,8 @@ let userid = null;
 let agentid = null;
 let buyerid = null;
 let paymentSuccessful = null;
+let userState = null;
+let userType = null;
 
 // DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', function () {
@@ -131,6 +133,8 @@ document.addEventListener('DOMContentLoaded', function () {
             agentid = sessionData.agentid;
             buyerid = sessionData.buyerid;
             paymentSuccessful = sessionData.paymentSuccessful;
+            userState = sessionData.userState;
+            userType = sessionData.userType;
 
             populateDisplayZipCodes();
             populateSearchInfoDisplay();

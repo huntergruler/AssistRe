@@ -914,10 +914,10 @@ router.post('/login', [
     }
     const { email, password, userType } = req.body;
     if (userType === 'Agent') {
-      var userQuery = 'SELECT password, userid, firstname, lastname, emailverified, paymentSuccessful FROM Agents WHERE email = ?';
+      var userQuery = 'SELECT password, userid, firstname, lastname, emailverified, paymentSuccessful, state FROM Agents WHERE email = ?';
       var htmlpage = 'login_a';
     } else if (userType === 'Buyer') {
-      var userQuery = 'SELECT password, userid, firstname, lastname, emailverified, paymentSuccessful FROM Buyers WHERE email = ?';
+      var userQuery = 'SELECT password, userid, firstname, lastname, emailverified, paymentSuccessful, state FROM Buyers WHERE email = ?';
       var htmlpage = 'login_b';
     }
     res.setHeader('Content-Type', 'application/json');
@@ -939,7 +939,7 @@ router.post('/login', [
           message: "Verify your email address AND then try to login again."
         });
       } else {
-        const { userid, firstname, lastname, emailverified, paymentSuccessful } = results[0];
+        const { userid, firstname, lastname, emailverified, paymentSuccessful, state } = results[0];
         bcrypt.compare(password, results[0].password, (err, isMatch) => {
           if (!isMatch || err) {
             res.json({
@@ -953,6 +953,7 @@ router.post('/login', [
             req.session.firstname = firstname;
             req.session.lastname = lastname;
             req.session.userType = userType;
+            req.session.userState = state;
             req.session.agentid = 0;
             req.session.buyerid = 0;
             req.session.paymentSuccessful = paymentSuccessful;
