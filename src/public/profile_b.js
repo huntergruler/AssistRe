@@ -321,6 +321,7 @@ function getBuyerTypes() {
                 // Create a label element
                 const label = document.createElement('label');
                 label.htmlFor = item.buyertypeid;
+                label.className = 'checkbox-label';
                 label.innerHTML = '&nbsp;' + item.buyerType + '&nbsp;';
 
                 // Append the checkbox and label to the div
