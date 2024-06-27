@@ -363,7 +363,6 @@ function populateSearchInfoDisplay() {
 
 function populateLevelOfService() {
     const buyerLevelOfService = document.getElementById('buyerLevelOfService');
-    const levelofservicevalue = document.getElementById('levelofserviceid').value;
 
     if (!levelofservicevalue) {
         const defaultOption = document.createElement('option');
@@ -380,7 +379,6 @@ function populateLevelOfService() {
                 let option = document.createElement('option');
                 option.value = item.levelofserviceid;
                 option.textContent = item.levelOfService;
-                option.selected = item.levelofserviceid == levelofservicevalue;
                 buyerLevelOfService.appendChild(option);
             });
         })
