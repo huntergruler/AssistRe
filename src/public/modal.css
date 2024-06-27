@@ -12,12 +12,9 @@
 .form-check-inline {
     display: inline-flex;
     align-items: center;
-    margin-right: 10px;
-    /* Adjust spacing between each checkbox-label pair */
-    margin-bottom: 10px;
-    /* Adjust spacing between rows when wrapping */
+    margin-right: 5px;
+    /* margin-bottom: 10px; */
     white-space: nowrap;
-    /* Prevents wrapping of checkbox-label pairs */
 }
 
 .form-check-input {
