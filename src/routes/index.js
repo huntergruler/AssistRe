@@ -922,9 +922,6 @@ router.post('/login', [
 // Route to get city and state by zip code
 router.get('/get-city-state', (req, res) => {
   const zipCode = req.query.zipCode;
-  var city = '';
-  var state = '';
-  var cityState = '';
   if (!zipCode) {
     return res.status(400).json({ error: 'Zip code is required' });
   }
@@ -937,11 +934,9 @@ router.get('/get-city-state', (req, res) => {
       return res.status(500).json({ error: 'Internal server error' });
     }
     if (results.length > 0) {
-      const { city, state, cityState } = results[0];
+      var { city, state, cityState } = results[0];
     } else {
-      city = '';
-      state = '';
-      cityState = '';
+      var { city, state, cityState } = { city: '', state: '', cityState: '' };
     }
     res.json({ city, state, cityState });
   });
