@@ -9,6 +9,10 @@
     margin-left: 1px;
     margin-right: 1px;
 }
+.label-above{
+    margin: 0px;
+    justify-content: center;
+}
 
 .form-control-sm{
     padding: 2px;
