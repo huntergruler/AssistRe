@@ -10,6 +10,12 @@
     margin-right: 1px;
 }
 
+.checkbox-label{
+    margin-right: 3px;
+    margin-bottom: 0px;
+    padding: 0px;
+
+}
 .label-above {
     margin: 0px;
     justify-content: center;
