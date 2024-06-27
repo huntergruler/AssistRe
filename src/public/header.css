@@ -24,7 +24,7 @@
 }
 
 
-/* header {
+header {
   background-color: #00488A;
   width: 100%;
   color: white;
@@ -39,7 +39,7 @@
   z-index: 1000;
   height: 80px;
   align-items: center;
-} */
+}
 
 .header img {
   height: 8px;
