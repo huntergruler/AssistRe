@@ -64,7 +64,7 @@ router.get('/zipcodetest', (req, res) => {
 
 // Route to get the user's session data
 router.get('/session-data', (req, res) => {
-  res.json({ user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname, userType: req.session.userType, buyerid: req.session.buyerid, agentid: req.session.agentid, paymentSuccessful: req.session.paymentSuccessful });
+  res.json({ user: req.session.user, firstname: req.session.firstname, userid: req.session.userid, lastname: req.session.lastname, userType: req.session.userType, buyerid: req.session.buyerid, agentid: req.session.agentid, paymentSuccessful: req.session.paymentSuccessful, userState: req.session.userState });
 });
 
 // Register route

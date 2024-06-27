@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
             paymentSuccessful = sessionData.paymentSuccessful;
             userState = sessionData.userState;
             userType = sessionData.userType;
-
+            
             populateDisplayZipCodes();
             populateSearchInfoDisplay();
             populateLevelOfService();
