@@ -80,15 +80,14 @@
                   <input type="text" class="form-control-sm col-md-6" placeholder="Preferred Language" id="preferredLanguages" name="preferredLanguages" value="<%= buyer.preferredLanguages %>" required>
                 </div>
                 <input type="hidden" id="userid" name="userid" value="<%= buyer.userid %>">
-                <!-- Buttons inside the form -->
-              </form>
-              <div class="form-row button-row">
-                <div class="col-md-12 text-right">
-                  <button type="button" id="modify-button" class="btn btn-primary" data-dismiss="modal" onclick="savePropertyChanges(event)">Save</button>
-                  <button type="button" id="modify-button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <div class="form-row button-row">
+                  <div class="modal-footer">
+                    <button type="button" id="modify-button" class="modify-button" data-dismiss="modal" onclick="savePersonalChanges()">Save</button>
+                    <button type="button" id="modify-button" class="modify-button" data-dismiss="modal">Cancel</button>
+                  </div>
                 </div>
-              </div>
-          </div> <!-- Close form-container div here -->
+              </form>
+            </div>
           </div>
         </div>
       </div>
