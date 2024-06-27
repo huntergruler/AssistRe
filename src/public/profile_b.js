@@ -304,6 +304,9 @@ function populateSearchDetails() {
     const preferredLanguages = document.getElementById('preferredLanguages');
     const buyerLevelOfService = document.getElementById('buyerLevelOfService');
 
+    getBuyerTypes();
+    populateLevelOfService();
+
     fetch(`/populateSearchDetails`)
         .then(response => response.json())
         .then(data => {
@@ -341,8 +344,6 @@ function populateSearchDetails() {
                 preferredLanguages.value = item.preferredLanguages;
             });
         })
-    getBuyerTypes();
-    populateLevelOfService();
 }
 
 function populateSearchInfoDisplay() {
@@ -367,7 +368,7 @@ function populateLevelOfService() {
     const defaultOption = document.createElement('option');
     buyerLevelOfService.innerHTML = '';
     defaultOption.textContent = 'Select a Level of Service';
-    defaultOption.value = '';
+    defaultOption.value = '0';
     buyerLevelOfService.appendChild(defaultOption);
 
     fetch(`/get-levelofservice`)
