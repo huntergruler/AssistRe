@@ -297,7 +297,7 @@ function populateSearchDetails() {
     const price_min = document.getElementById('price_min');
     const price_max = document.getElementById('price_max');
     const timeFrame = document.getElementById('timeFrame');
-    const timeFrameUnit = document.getElementById('timeframeUnit');
+    const timeframeUnit = document.getElementById('timeframeUnit');
     const prequalifiedY = document.getElementById('prequalifiedY');
     const prequalifiedN = document.getElementById('prequalifiedN');
     const prequalifiedAmount = document.getElementById('prequalifiedAmount');
@@ -319,15 +319,15 @@ function populateSearchDetails() {
                 price_min.value = item.price_min;
                 price_max.value = item.price_max;
                 timeFrame.value = item.timeFrame;
-                console.log(timeFrameUnit.value, 'db', item.timeFrameUnit)
-                if (item.timeFrameUnit === 'days') {
-                    timeFrameUnit.value = 'days';
+                console.log(timeframeUnit.value, 'db', item.timeframeUnit)
+                if (item.timeframeUnit === 'days') {
+                    timeframeUnit.value = 'days';
                 }
-                else if (item.timeFrameUnit === 'weeks') {
-                    timeFrameUnit.value = 'weeks';
+                else if (item.timeframeUnit === 'weeks') {
+                    timeframeUnit.value = 'weeks';
                 }
-                else if (item.timeFrameUnit === 'months') {
-                    timeFrameUnit.value = 'months';
+                else if (item.timeframeUnit === 'months') {
+                    timeframeUnit.value = 'months';
                 }
                 if (item.prequalified === 'Yes') {
                     prequalifiedY.checked = true;
