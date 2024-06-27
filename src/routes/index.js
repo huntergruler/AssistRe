@@ -708,7 +708,7 @@ router.post('/savePersonalChanges', (req, res) => {
 });
 
 // Route to update the buyer's profile
-router.post('/savePropertyChanges', (req, res) => {
+router.post('/saveSearchChanges', (req, res) => {
   if (!req.session.user) {
     req.session.message = 'Please login to access your Profile';
     res.redirect('/');

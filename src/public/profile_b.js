@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             populateDisplayZipCodes();
             populateSearchInfoDisplay();
-            // getBuyerTypes();
             populateLevelOfService();
             populateStates();
             // var levelOfService = document.getElementById('levelOfService').value;
@@ -189,7 +188,7 @@ function savePersonalChanges() {
         });
 };
 
-function savePropertyChanges(event) {
+function saveSearchChanges(event) {
     event.preventDefault()
     const propertyType = document.getElementById('propertyType').value;
     const bedrooms_min = document.getElementById('bedrooms_min').value;
@@ -238,7 +237,7 @@ function savePropertyChanges(event) {
     };
 
     // Send the data to the server using fetch
-    fetch('/savePropertyChanges', {
+    fetch('/saveSearchChanges', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
