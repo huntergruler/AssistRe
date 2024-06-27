@@ -302,6 +302,7 @@ function populateSearchDetails() {
     const prequalifiedN = document.getElementById('prequalifiedN');
     const prequalifiedAmount = document.getElementById('prequalifiedAmount');
     const preferredLanguages = document.getElementById('preferredLanguages');
+    const buyerLevelOfService = document.getElementById('buyerLevelOfService');
     
     fetch(`/populateSearchDetails`)
         .then(response => response.json())
@@ -319,7 +320,7 @@ function populateSearchDetails() {
                 price_min.value = item.price_min;
                 price_max.value = item.price_max;
                 timeFrame.value = item.timeFrame;
-                console.log(timeframeUnit.value, 'db', item.timeframeUnit)
+                buyerLevelOfService.value = item.levelofserviceid;
                 if (item.timeframeUnit === 'Days') {
                     timeframeUnit.value = 'Days';
                 }
