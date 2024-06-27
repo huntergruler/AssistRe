@@ -314,9 +314,9 @@ function getBuyerTypes() {
                         checked = 'checked';
                         console.log('checked', checked, item.buyertypeid);
                     }
-                }
-                else {
-                    checked = null;
+                    else {
+                        checked = null;
+                    }
                 }
                 buyerTypeCheckbox.innerHTML += `
                 <div class="form-check-inline">
