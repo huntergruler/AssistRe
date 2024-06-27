@@ -312,6 +312,7 @@ function getBuyerTypes() {
                 if (buyerTypesData) {
                     buyerTypesData.includes(item.buyertypeid);
                     checked = 'checked';
+                    console.log('checked',checked);
                 }
                 else {
                     checked = null;
