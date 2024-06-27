@@ -311,7 +311,10 @@ function getBuyerTypes() {
             data.buyerTypes.forEach(item => {
                 if (buyerTypesData) {
                     buyerTypesData.includes(item.buyertypeid);
-                    console.log('buyerTypesData:', buyerTypesData);
+                    checked = 'checked';
+                }
+                else {
+                    checked = '';
                 }
                 buyerTypeCheckbox.innerHTML += `
                 <div class="form-check-inline">
