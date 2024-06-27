@@ -23,7 +23,9 @@
   /* background-repeat: no-repeat; */
 }
 
-
+.navbar{
+  background-color: var(--background-color);
+}
 /* header {
   background-color: #00488A;
   width: 100%;
