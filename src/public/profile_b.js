@@ -324,8 +324,8 @@ function getBuyerTypes() {
                 label.innerHTML = '&nbsp;' + item.buyerType + '&nbsp;';
 
                 // Append the checkbox and label to the div
-                buyerTypeCheckbox.appendChild(label);
                 buyerTypeCheckbox.appendChild(checkbox);
+                buyerTypeCheckbox.appendChild(label);
             });
         })
 }
