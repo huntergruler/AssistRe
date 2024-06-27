@@ -267,7 +267,7 @@ function populateBuyerInfo() {
     const zip = document.getElementById('zip');
     const phoneNumber = document.getElementById('phoneNumber');
 
-    
+
     fetch(`/populateBuyerInfo`)
         .then(response => response.json())
         .then(data => {
@@ -303,7 +303,7 @@ function populateSearchDetails() {
     const prequalifiedAmount = document.getElementById('prequalifiedAmount');
     const preferredLanguages = document.getElementById('preferredLanguages');
     const buyerLevelOfService = document.getElementById('buyerLevelOfService');
-    
+
     fetch(`/populateSearchDetails`)
         .then(response => response.json())
         .then(data => {
@@ -364,13 +364,11 @@ function populateSearchInfoDisplay() {
 function populateLevelOfService() {
     const buyerLevelOfService = document.getElementById('buyerLevelOfService');
 
-    if (!levelofservicevalue) {
-        const defaultOption = document.createElement('option');
-        buyerLevelOfService.innerHTML = '';
-        defaultOption.textContent = 'Select a Level of Service';
-        defaultOption.value = '';
-        buyerLevelOfService.appendChild(defaultOption);
-    }
+    const defaultOption = document.createElement('option');
+    buyerLevelOfService.innerHTML = '';
+    defaultOption.textContent = 'Select a Level of Service';
+    defaultOption.value = '';
+    buyerLevelOfService.appendChild(defaultOption);
 
     fetch(`/get-levelofservice`)
         .then(response => response.json())
