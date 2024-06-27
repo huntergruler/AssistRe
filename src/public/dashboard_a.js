@@ -3,6 +3,8 @@ let userid = null;
 let buyerid = null;
 let agentid = null;
 let paymentSuccessful = null;
+let userState = null;
+let userType = null;
 
 // DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', function () {
@@ -13,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
             buyerid = sessionData.buyerid;
             agentid = sessionData.agentid;
             paymentSuccessful = sessionData.paymentSuccessful;
+            userState = sessionData.userState;
+            userType = sessionData.userType;
 
             // const toggle1 = document.getElementById('toggle1');
             // const moreInfo1 = document.getElementById('more-info1');
