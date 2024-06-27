@@ -1,5 +1,6 @@
 function populateUserZipCodes() {
     // populateLevelOfService();
+    console.log('Populating user zip codes', userType);
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const userZipCodes = document.getElementById("userZipCodes");
     const stateSelect = document.getElementById("stateSelect");
