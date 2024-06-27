@@ -1,9 +1,7 @@
 body {
-    margin-top: 0px;
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
     font-size: 14px;
-    margin: 100px 50px;
 }
 body::before {
     content: "";
