@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
             agentid = sessionData.agentid;
             paymentSuccessful = sessionData.paymentSuccessful;
             userState = sessionData.userState;
-            console.log('User State:', userState);
+            console.log('sessionData:', sessionData);
             userType = sessionData.userType;
 
             // const toggle1 = document.getElementById('toggle1');
