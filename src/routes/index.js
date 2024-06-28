@@ -878,7 +878,14 @@ router.get('/login_a', (req, res) => {
       }
     });
   }
-  res.render('login_a', { query: req.query, message: message });
+  res.render('login', {
+    navLink: '/login_a',
+    navText: 'Agent Login2',
+    heading: 'Agent Login2',
+    userType: 'Agent',
+    message: '' // Add any message you want to pass
+  });
+    // res.render('login_a', { query: req.query, message: message });
 });
 
 // Login route
