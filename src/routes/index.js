@@ -881,7 +881,7 @@ router.get('/login_a', (req, res) => {
   res.render('login', {
     navLink: '/login_b',
     navText: 'Buyer Login',
-    heading: 'Agent Login',
+    heading: 'Agent Login2',
     userType: 'Agent',
     message: '' // Add any message you want to pass
   });
@@ -902,8 +902,8 @@ router.get('/login_b', (req, res) => {
     });
   }
   res.render('login', {
-    navLink: '/login_b',
-    navText: 'Buyer Login2',
+    navLink: '/login_a',
+    navText: 'Agent Login',
     heading: 'Buyer Login2',
     userType: 'Buyer',
     message: '' // Add any message you want to pass
