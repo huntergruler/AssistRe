@@ -15,11 +15,11 @@
     /* Ensure the background stays behind the content */
 }
 
-#dashboardBody {
+/* #dashboardBody {
     position: relative;
     z-index: 1;
     height: 100%;
-}
+} */
 
 .agentinfo-container {
     margin-top: 0px;
