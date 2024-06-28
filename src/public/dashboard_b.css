@@ -1,18 +1,3 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-size: 14px;
-    margin: 50px 50px;
-    max-width: auto;
-    position: relative;
-    min-height: 100%;
-}
-
 .background-container {
     background-image: url("images/titlebackground3.jpg");
     background-size: cover;

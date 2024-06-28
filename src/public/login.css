@@ -5,10 +5,12 @@ body {
     font-size: 14px;
     margin: 100px 50px;
 }
+
 body::before {
     content: "";
     position: absolute;
-    top: 75px; /* Start 100px down */
+    top: 75px;
+    /* Start 100px down */
     left: 0;
     right: 0;
     bottom: 0;
@@ -16,8 +18,10 @@ body::before {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 0;
-    opacity: 0.5; /* Change this value to adjust opacity */
-    z-index: -1; /* Ensure the background stays behind the content */
+    opacity: 0.5;
+    /* Change this value to adjust opacity */
+    z-index: -1;
+    /* Ensure the background stays behind the content */
 }
 
 .margin-top-100 {
@@ -82,4 +86,3 @@ body::before {
     color: #ccc;
     cursor: not-allowed;
 }
-
