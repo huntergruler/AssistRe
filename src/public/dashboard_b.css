@@ -18,7 +18,8 @@
 #dashboardBody {
     position: relative;
     z-index: 1;
-    /* Ensure the content stays above the background */
+    height: 100%;
+
 }
 
 .agentinfo-container {
