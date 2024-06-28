@@ -12,35 +12,34 @@
   <link rel="stylesheet" href="standardstyles.css">
   <link rel="stylesheet" href="modal.css">
 </head>
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">
-      <div class="logo-container"></div>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" style="color: white" href="/profile_b">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: white" href="/settings_b">Settings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="color: white" href="/logout">Logout</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
 
-<body id="dashboardBody">
-  <div id="dashboardContainer" style="text-align: center;">
-    <h2>Buyer Dashboard for <%= buyer.firstName %>
-      <%= buyer.lastName %>
-    </h2>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">
+        <div class="logo-container"></div>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" style="color: white" href="/profile_b">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: white" href="/settings_b">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: white" href="/logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div id="dashboardContainer">
+    <h2>Buyer Dashboard for <%= buyer.firstName %> <%= buyer.lastName %></h2>
     <div class="form-row col-md-12 d-flex justify-content-left">
       <div class="form-group col-md">
         <input type="hidden" id="agentid" name="agentid">
@@ -86,13 +85,10 @@
         </div>
       </div>
       <div class="offer-group col-md-8">
-        <!-- <div class="form-row" style="margin-top: 40px;">
-          <h3 class="col-md-6">Your Offers</h3>
-        </div> -->
         <div class="offerFilter row col-md-12" id="filtercontainer">
-          <label for="offerFilter" class="col-md-5 col-form-label"><span>
-              <h4>Your Offers</h4>
-            </span></label>
+          <label for="offerFilter" class="col-md-5 col-form-label">
+            <h4>Your Offers</h4>
+          </label>
           <select id="offerFilter" class="form-select-sm col-md-5" onchange="getOffers(this.value, this)">
             <option id="allavailablefilter" value="AllAvailable">All Available Offers</option>
             <option id="newfilter" value="New">Unread Offers</option>
@@ -101,7 +97,6 @@
             <option id="declinedfilter" value="Declined">Declined</option>
           </select>
         </div>
-
         <div id="getOffers" class="tabcontent col-md-12">
           <div class="row offerlist">
             <div id="offers" class="offers col-md-4">
