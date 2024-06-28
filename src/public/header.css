@@ -27,9 +27,6 @@
   background-color: var(--background-color);
 }
 
-.navbar-nav {
-color: white;}
-
 .navbar-toggler {
   border-color: rgba(245, 241, 241, 0.957); /* Optional: Change border color of the toggler button */
 }
