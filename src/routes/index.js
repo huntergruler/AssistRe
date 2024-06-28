@@ -879,9 +879,9 @@ router.get('/login_a', (req, res) => {
     });
   }
   res.render('login', {
-    navLink: '/login_a',
-    navText: 'Agent Login2',
-    heading: 'Agent Login2',
+    navLink: '/login_b',
+    navText: 'Buyer Login',
+    heading: 'Agent Login',
     userType: 'Agent',
     message: '' // Add any message you want to pass
   });
@@ -901,7 +901,14 @@ router.get('/login_b', (req, res) => {
       }
     });
   }
-  res.render('login_b', { query: req.query, message: message });
+  res.render('login', {
+    navLink: '/login_b',
+    navText: 'Buyer Login2',
+    heading: 'Buyer Login2',
+    userType: 'Buyer',
+    message: '' // Add any message you want to pass
+  });
+//  res.render('login_b', { query: req.query, message: message });
 });
 
 // Logout route
