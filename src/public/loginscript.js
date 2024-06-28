@@ -7,28 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var resetContainer = document.getElementById('resetContainer');
     var registerContainer = document.getElementById('registerContainer');
     const params = new URLSearchParams(window.location.search);
-    /*            if (resetContainer) {    // Access the parent element by its ID
-                    document.body.addEventListener('submit', function(event) {
-                        event.preventDefault(); // Prevent default form submission
-                        if (event.target.id === 'resetForm') {
-                        }
-                        const password = document.getElementById('password').value.trim();
-                        const confirm_password = document.getElementById('confirm_password').value.trim();
-                        const email = document.getElementById('email').value.trim();
-                        const token = document.getElementById('token').value.trim();
-                    
-                        fetch('/reset', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ password: password, confirm_password: confirm_password, email: email, token: token})
-                        })
-    
-                        })};
-                        */
-    // if (document.getElementById('message').innerText == '')
-    //     document.getElementById('message').style.display = 'none';
     if (loginContainer) {    // Access the parent element by its ID
         document.body.addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent default form submission
