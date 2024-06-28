@@ -28,7 +28,7 @@
 }
 
 .navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.1); /* Optional: Change border color of the toggler button */
+  border-color: white; /* Optional: Change border color of the toggler button */
 }
 
 .navbar-toggler-icon {
