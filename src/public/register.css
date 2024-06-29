@@ -33,6 +33,22 @@
     cursor: not-allowed;
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+    padding-right: 0px;
+    align-items: center;
+    align-self: start;
+    justify-content: center;
+}
+
 .form-row {
     margin-top: 0px;
     margin-bottom: 0px;
