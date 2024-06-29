@@ -35,57 +35,63 @@
     </div>
   </nav>
 </header>
-<body>
+
+<body id="dashboardBody">
   <!-- <div class="background-container"></div> -->
-  <div class="form-row d-flex justify-content-center">
-    <div class="form-group col-md-12 d-flex flex-column">
-      <div class="form-row">
+  <div id="dashboardContainer" style="text-align: center;">
+    <h2>Buyer Dashboard for <%= buyer.firstName %>
+      <%= buyer.lastName %>
+    </h2>
+    <div class="form-row d-flex justify-content-center">
+      <div class="form-group col-md-12 d-flex flex-column">
+        <div class="form-row">
+          <div class="userZip-container">
+            <h3 class="text-center">Personal Info</h3>
+            <div class="profile-group" style="border: none;">
+              <%= buyer.firstName %>
+              <%= buyer.lastName %>
+              <br>
+              <%= buyer.address %>
+              <br>
+              <%= buyer.city %>, <%= buyer.state %>
+              <%= buyer.zip %>
+              <br>
+              <%= buyer.phoneNumber %>
+              <br>
+            </div>
+            <div class="form-row button-row">
+              <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#personalModal" onclick="populateBuyerInfo()">
+                Modify Personal Info
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="userZip-container" style="margin-top: 8px;">
+            <h3>Your Zip Codes</h3>
+            <div id="displayZipCodes" class="justify-content-center">
+              <!-- JavaScript will populate this container -->
+            </div>
+            <div class="form-row button-row">
+              <button type="button" id="modify-button" class="modify-button" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
+                Modify Zip Codes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-5">
         <div class="userZip-container">
-          <h3 class="text-center">Personal Info</h3>
-          <div class="profile-group" style="border: none;">
-            <%= buyer.firstName %>
-            <%= buyer.lastName %>
-            <br>
-            <%= buyer.address %>
-            <br>
-            <%= buyer.city %>, <%= buyer.state %>
-            <%= buyer.zip %>
-            <br>
-            <%= buyer.phoneNumber %>
-            <br>
-          </div>
-          <div class="form-row button-row">
-            <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#personalModal" onclick="populateBuyerInfo()">
-              Modify Personal Info
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="userZip-container" style="margin-top: 8px;">
-          <h3>Your Zip Codes</h3>
-          <div id="displayZipCodes" class="justify-content-center">
-            <!-- JavaScript will populate this container -->
-          </div>
-          <div class="form-row button-row">
-            <button type="button" id="modify-button" class="modify-button" data-toggle="modal" data-target="#zipCodeModal" onclick="populateUserZipCodes();">
-              Modify Zip Codes
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group col-md-5">
-      <div class="userZip-container">
-        <h3 class="text-center">Search Details</h3>
-        <div class="property-group">
-          <div class="searchInfoDisplay" id="searchInfoDisplay">
-            <!-- JavaScript will populate this container -->
-          </div>
-          <div class="form-row button-row">
-            <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#searchDetailModal" onclick="populateSearchDetails()">
-              Modify Property Info
-            </button>
+          <h3 class="text-center">Search Details</h3>
+          <div class="property-group">
+            <div class="searchInfoDisplay" id="searchInfoDisplay">
+              <!-- JavaScript will populate this container -->
+            </div>
+            <div class="form-row button-row">
+              <button id="modify-button" class="modify-button" type="button" data-toggle="modal" data-target="#searchDetailModal" onclick="populateSearchDetails()">
+                Modify Property Info
+              </button>
+            </div>
           </div>
         </div>
       </div>

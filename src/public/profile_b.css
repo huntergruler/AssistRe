@@ -1,3 +1,16 @@
+#dashboardContainer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: black;
+}
+
+#dashboardBody {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+}
+
 .form-group {
     margin-top: 0px;
     margin-bottom: 0px;
