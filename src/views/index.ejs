@@ -38,14 +38,16 @@
 </header>
 
 <body id="loginBody">
-  <div style="margin-top: 100px;text-align: center;"></div>
-  <div style="text-align: center" ;>
-    <h1>Welcome to SeekingAgents</h1>
-  </div>
-  <div class="container">
-    <% if (message) { %>
-    <%- include('message_modal') %>
-    <% } %>
+  <div id="loginContainer">
+    <div style="margin-top: 100px;text-align: center;"></div>
+    <div style="text-align: center" ;>
+      <h1>Welcome to SeekingAgents</h1>
+    </div>
+    <div class="container">
+      <% if (message) { %>
+      <%- include('message_modal') %>
+      <% } %>
+    </div>
   </div>
   <% if (message) { %>
   <script src="modal.js"></script>

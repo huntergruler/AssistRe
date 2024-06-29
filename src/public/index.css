@@ -1,3 +1,16 @@
+#loginContainer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: black; /* Ensure text is visible on background */
+}
+
+#loginBody {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+}
+
 .form-container {
     max-width: 600px;
     margin: auto;
