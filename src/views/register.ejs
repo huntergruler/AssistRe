@@ -50,11 +50,11 @@
             </div>
           </div>
         </div>
-        <div class="form-row ">
+        <!-- <div class="form-row ">
           <div class="col-md-4"></div>
           <label class="col-md-4 label-above" style="font-size: 14px;">First</label>
           <label class="col-md-3 label-above" style="font-size: 14px;">Last</label>
-        </div>
+        </div> -->
         <div class="form-row ">
           <label for="firstName" class="col-md-5 col-form-label">Name</label>
           <input type="text" class="form-control-sm col-md-3" placeholder="First Name" id="firstName" name="firstName" required disabled>
@@ -64,7 +64,6 @@
           <label for="address" class="col-md-5 col-form-label">Address</label>
           <input type="text" class="form-control-sm col-md-7" id="address" name="address" placeholder="Address" disabled>
         </div>
-        <!-- <span id="address"></span> -->
         <div class="form-row displaytext">
           <label for="city" class="col-md-5 view-mode-r">City, State</label>
           <div class="col-md-4 view-mode-l" id="cityState"></div>
@@ -72,7 +71,7 @@
 
         <div class="form-row ">
           <label for="zipCode" class="col-md-5 col-form-label">Zip Code</label>
-          <input type="text" class="form-control-sm col-md-3" id="zipCode" name="zipCode" placeholder="Zip Code" maxlength="5" onmouseleave="lookupCityState()" onblur="lookupCityState()" disabled>
+          <input type="text" class="form-control-sm col-md-2" id="zipCode" name="zipCode" placeholder="Zip Code" maxlength="5" onmouseleave="lookupCityState()" onblur="lookupCityState()" disabled>
         </div>
 
 
@@ -82,7 +81,7 @@
         </div>
         <div class="form-row ">
           <label for="email" class="col-md-5 col-form-label">Email</label>
-          <input type="email" class="form-control-sm col-md-5" id="email" name="email" placeholder="Email" disabled onblur="checkEmail()">
+          <input type="email" class="form-control-sm col-md-6" id="email" name="email" placeholder="Email" disabled onblur="checkEmail()">
           <span id="userStatus"></span>
         </div>
         <div class="form-row ">
