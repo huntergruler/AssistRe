@@ -21,6 +21,7 @@ function populateUserZipCodes() {
         stateSelect.selectedIndex = 0;
         stateSelect.disabled = false;
         stateSelect.value = 'Select a State';
+        stateSelect.textContent = 'Select a State';
     }
 
     fetch(`/get-userzipcodes`)
