@@ -97,7 +97,7 @@
     /* Less space between elements */
 }
 
-.form-group .col-form-label {
+.col-form-label {
     padding: 0;
     text-align: right;
 }
