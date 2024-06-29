@@ -52,13 +52,17 @@
           </div>
           <div class="form-group row justify-content-center">
             <div id="regForm" class="form-group row justify-content-center">
-              <div class="col-md-3"></div>
-              <label class="col-md-3 label-above">First</label>
-              <label class="col-md-2 label-above">Last</label>
-              <div class="col-md-2"></div>
-              <label for="firstName" class="col-md-4 col-form-label">Name</label>
-              <input type="text" class="col-md-3 form-control-sm" id="firstName" name="firstName" placeholder="First" required disabled>
-              <input type="text" class="col-md-4 form-control-sm" id="lastName" name="lastName" placeholder="Last" disabled>
+                <div class="form-row ">
+                    <label class="col-md-4 label-above" style="font-size: 14px;">First</label>
+                    <label class="col-md-3 label-above" style="font-size: 14px;">Last</label>
+                  </div>
+              <div class="form-row ">
+                <label for="firstName" class="col-md-3 col-form-label justify-content-right">Name</label>
+                <input type="text" class="form-control-sm col-md-3" placeholder="First Name" id="firstName" name="firstName" required disabled>
+                <input type="text" class="form-control-sm col-md-4" placeholder="Last Name" id="lastName" name="lastName" required disabled>
+              </div>
+
+
               <label for="address" class="col-md-3 col-form-label">Address</label>
               <div class="col-md-7">
                 <input type="text" class="form-control-sm" id="address" name="address" placeholder="Address" disabled>
