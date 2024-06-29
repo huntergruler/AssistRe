@@ -9,6 +9,20 @@
     background-color: transparent;
 }
 
+.modal-form-group {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    /* max-width: fit-content; */
+    /* justify-items: center;
+    text-align: center; */
+}
+
 .form-check-inline {
     display: inline-flex;
     align-items: center;
