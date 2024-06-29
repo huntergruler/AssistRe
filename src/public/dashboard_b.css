@@ -423,7 +423,7 @@
     justify-items: center;
     align-items: center;
     align-content: center;
-    width: 380px;
+    width: 350px;
 
 }
 
@@ -567,6 +567,7 @@
     padding: 0;
     position: relative;
     cursor: pointer;
+    width: 350px;
 }
 
 .offers.selected {
