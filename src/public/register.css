@@ -1,26 +1,14 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    background-color: #f0f2f5;
-    margin: 100px 50px;
+#registerContainer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: black; /* Ensure text is visible on background */
 }
-body::before {
-    content: "";
-    position: absolute;
-    top: 75px; /* Start 100px down */
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("images/titlebackground3.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center 0;
-    opacity: 0.5; /* Change this value to adjust opacity */
-    z-index: -1; /* Ensure the background stays behind the content */
-}
-.margin-top-100 {
-    margin-top: 100px;
+
+#registerBody {
+    position: relative;
+    z-index: 1;
+    height: 100%;
 }
 
 #regForm div{
