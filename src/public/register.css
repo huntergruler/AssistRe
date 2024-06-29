@@ -89,6 +89,7 @@
     opacity: 0.8;
     width: 350px;
     min-width: 300px;
+    min-height: 270px;
 }
 .form-row{
     padding-left: 0px;
