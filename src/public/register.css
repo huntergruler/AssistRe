@@ -88,7 +88,10 @@
     border-radius: 10px;
     opacity: 0.8;
 }
-
+.form-row{
+    padding-left: 0px;
+    padding-right: 5px;
+}
 .form-group {
     margin-bottom: 5px;
     margin-top: 5px;
