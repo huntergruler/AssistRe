@@ -831,6 +831,7 @@
     padding-right: 0px;
     font-size: 20px;
     max-width: 50%;
+    min-width: 165px;
     justify-content: start;
     /* text-align: center; */
 }
