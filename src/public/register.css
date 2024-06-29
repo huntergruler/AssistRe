@@ -3,6 +3,7 @@
     z-index: 1;
     text-align: center;
     color: black;
+    padding: 5px 10px;
     /* Ensure text is visible on background */
 }
 
