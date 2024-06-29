@@ -301,6 +301,7 @@
     border-radius: 8px;
     opacity: var(--dialog-opacity);
     background-color: var(--dialog-color);
+    color: black;
 }
 
 .property-group {
