@@ -33,6 +33,22 @@
     cursor: not-allowed;
 }
 
+.form-row {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    height: fit-content;
+    /* border: 1px solid black;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px; */
+
+}
+
 .form-container {
     max-width: 550px;
     margin: auto;
