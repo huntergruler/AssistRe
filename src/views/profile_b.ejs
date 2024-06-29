@@ -11,28 +11,30 @@
   <link rel="stylesheet" href="profile_b.css">
   <link rel="stylesheet" href="standardstyles.css">
   <link rel="stylesheet" href="modal.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-
 <header>
-  <div class="row row-cols-2">
-    <div id="title" class="align-items-center">
-      <!-- <h1 class="mt-2"><a href="/">SeekingAgents</a></h1> -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">
       <div class="logo-container"></div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" style="color: white" href="/dashboard_b">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white" href="/settings_b">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white" href="/logout">Logout</a>
+        </li>
+      </ul>
     </div>
-    <nav id="navlinks" class="justify-content-end text-center">
-      <p><a href="/dashboard_b">Dashboard</a></p>
-      <p>|</p>
-      <p><a href="/settings_b">Settings</a></p>
-      <p>|</p>
-      <p><a href="/logout">Logout</a></p>
-    </nav>
-  </div>
-
+  </nav>
 </header>
-
 <body>
   <div class="margin-top-100"></div>
   <div class="background-container"></div>
@@ -93,7 +95,9 @@
   <%- include('zipcode_modal') %>
   <%- include('personal_modal') %>
   <%- include('searchDetail_modal') %>
-  <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="/profile_b.js"></script>
   <script src="/zipcode.js"></script>
   <script src="/session.js"></script>
