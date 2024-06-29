@@ -39,7 +39,7 @@
     <div class="form-container">
       <h3 class="text-center">User Registration</h3>
       <form id="registerContainer" class="col-md-12" action="/register" method="post">
-        <div class="form-group row justify-content-center">
+        <div class="form-row justify-content-center">
           <label for="userType" class="col-md-3 col-form-label">User Type</label>
           <div class="col-md-7">
             <div class="radio-group">
@@ -48,60 +48,58 @@
               <label class="radio-label"><input type="radio" name="userType" value="Agent" required>
                 Agent</label>
             </div>
-
           </div>
-          <div class="form-group row justify-content-center">
-            <div id="regForm" class="form-group row justify-content-center">
-                <div class="form-row ">
-                    <label class="col-md-4 label-above" style="font-size: 14px;">First</label>
-                    <label class="col-md-3 label-above" style="font-size: 14px;">Last</label>
-                  </div>
-              <div class="form-row ">
-                <label for="firstName" class="col-md-3 col-form-label justify-content-right">Name</label>
-                <input type="text" class="form-control-sm col-md-3" placeholder="First Name" id="firstName" name="firstName" required disabled>
-                <input type="text" class="form-control-sm col-md-4" placeholder="Last Name" id="lastName" name="lastName" required disabled>
-              </div>
+        </div>
+        <div class="form-row ">
+          <label class="col-md-4 label-above" style="font-size: 14px;">First</label>
+          <label class="col-md-3 label-above" style="font-size: 14px;">Last</label>
+        </div>
+        <div class="form-row ">
+          <label for="firstName" class="col-md-3 col-form-label justify-content-right">Name</label>
+          <input type="text" class="form-control-sm col-md-3" placeholder="First Name" id="firstName" name="firstName" required disabled>
+          <input type="text" class="form-control-sm col-md-4" placeholder="Last Name" id="lastName" name="lastName" required disabled>
+        </div>
 
 
-              <label for="address" class="col-md-3 col-form-label">Address</label>
-              <div class="col-md-7">
-                <input type="text" class="form-control-sm" id="address" name="address" placeholder="Address" disabled>
-              </div>
-              <span id="address"></span>
-              <label for="zipCode" class="col-md-3 col-form-label">Zip Code</label>
-              <div class="col-md-3">
-                <input type="text" class="form-control-sm" id="zipCode" name="zipCode" placeholder="Zip Code" maxlength="5" onmouseleave="lookupCityState()" onblur="lookupCityState()" disabled>
-              </div>
-              <div class="col-md-4"></div>
-              <div class="col-md-4"></div>
-              <div id="cityState" class="col-md-4"></div>
-              <div class="col-md-4"></div>
+        <label for="address" class="col-md-3 col-form-label">Address</label>
+        <div class="col-md-7">
+          <input type="text" class="form-control-sm" id="address" name="address" placeholder="Address" disabled>
+        </div>
+        <span id="address"></span>
+        <label for="zipCode" class="col-md-3 col-form-label">Zip Code</label>
+        <div class="col-md-3">
+          <input type="text" class="form-control-sm" id="zipCode" name="zipCode" placeholder="Zip Code" maxlength="5" onmouseleave="lookupCityState()" onblur="lookupCityState()" disabled>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div id="cityState" class="col-md-4"></div>
+        <div class="col-md-4"></div>
 
-              <label for="phoneNumber" class="col-md-3 col-form-label">Phone Number</label>
-              <div class="col-md-4">
-                <input type="text" class="form-control-sm" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" disabled>
-              </div>
-              <div class="col-md-3"></div>
-              <label for="email" class="col-md-3 col-form-label">Email</label>
-              <div class="col-md-5">
-                <input type="email" class="form-control-sm" id="email" name="email" placeholder="Email" disabled onblur="checkEmail()">
-                <span id="userStatus"></span>
-              </div>
-              <div class="col-md-2"></div>
-              <label for="password" class="col-md-3 col-form-label">Password</label>
-              <div class="col-md-5">
-                <input type="password" class="form-control-sm" id="password" name="password" placeholder="Password" disabled>
-              </div>
-              <div class="col-md-2"></div>
-              <label for="confirm_password" class="col-md-3 col-form-label">Confirm Password</label>
-              <div class="col-md-5">
-                <input type="password" class="form-control-sm" id="confirm_password" name="confirm_password" placeholder="Confirmation Password" required disabled>
-                <p id="error_message" style="display: none; color: red"></p>
-              </div>
-              <div class="col-md-2"></div>
-              <div class="text-center">
-                <button id="submit_button" type="submit" disabled>Register</button>
-              </div>
+        <label for="phoneNumber" class="col-md-3 col-form-label">Phone Number</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control-sm" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" disabled>
+        </div>
+        <div class="col-md-3"></div>
+        <label for="email" class="col-md-3 col-form-label">Email</label>
+        <div class="col-md-5">
+          <input type="email" class="form-control-sm" id="email" name="email" placeholder="Email" disabled onblur="checkEmail()">
+          <span id="userStatus"></span>
+        </div>
+        <div class="col-md-2"></div>
+        <label for="password" class="col-md-3 col-form-label">Password</label>
+        <div class="col-md-5">
+          <input type="password" class="form-control-sm" id="password" name="password" placeholder="Password" disabled>
+        </div>
+        <div class="col-md-2"></div>
+        <label for="confirm_password" class="col-md-3 col-form-label">Confirm Password</label>
+        <div class="col-md-5">
+          <input type="password" class="form-control-sm" id="confirm_password" name="confirm_password" placeholder="Confirmation Password" required disabled>
+          <p id="error_message" style="display: none; color: red"></p>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="text-center">
+          <button id="submit_button" type="submit" disabled>Register</button>
+        </div>
       </form>
     </div>
   </div>
