@@ -1,6 +1,5 @@
 function populateUserZipCodes() {
     // populateLevelOfService();
-    console.log('Populating user zip codes', userType, userState);
     const selectedZipCodesContainer = document.getElementById("selectedZipCodesContainer");
     const userZipCodes = document.getElementById("userZipCodes");
     const stateSelect = document.getElementById("stateSelect");
@@ -12,7 +11,8 @@ function populateUserZipCodes() {
     availabeZipCodesContainer.innerHTML = '';
     citySelect.innerHTML = '';
     countySelect.innerHTML = '';
-    if (userType = 'Agent') {
+    console.log('Populating user zip codes', userType, userState);
+    if (userType === 'Agent') {
         stateSelect.value = userState;
         stateSelect.disabled = true;
         populateCitiesCounties();
