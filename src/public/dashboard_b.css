@@ -3,7 +3,7 @@
     position: relative;
     z-index: 1;
     text-align: center;
-    color: white; /* Ensure text is visible on background */
+    color: black; /* Ensure text is visible on background */
 }
 
 #dashboardBody {
