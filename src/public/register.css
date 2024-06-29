@@ -78,9 +78,8 @@
     margin: auto;
     margin-bottom: 1px;
     margin-top: 1px;
-    /* border: 1px solid #ccc; */
     font-size: 5;
-    /* Less space between elements */
+    max-height: 270px;
 }
 
 .container {
@@ -89,7 +88,7 @@
     opacity: 0.8;
     width: 350px;
     min-width: 300px;
-    max-height: 270px;
+    /* max-height: 270px; */
 }
 .form-row{
     padding-left: 0px;
