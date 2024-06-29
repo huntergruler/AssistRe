@@ -100,7 +100,11 @@ function showModal(message) {
 
 // create global variables to store session values
 let userid = null;
+let agentid = null;
+let buyerid = null;
 let paymentSuccessful = null;
+let userState = null;
+let userType = null;
 
 // DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', function () {
@@ -108,7 +112,11 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(sessionData => {
             userid = sessionData.userid;
+            agentid = sessionData.agentid;
+            buyerid = sessionData.buyerid;
             paymentSuccessful = sessionData.paymentSuccessful;
+            userState = sessionData.userState;
+            userType = sessionData.userType;
 
             const toggle1 = document.getElementById('toggle1');
             const toggle2 = document.getElementById('toggle2');
