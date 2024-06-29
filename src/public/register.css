@@ -2,7 +2,8 @@
     position: relative;
     z-index: 1;
     text-align: center;
-    color: black; /* Ensure text is visible on background */
+    color: black;
+    /* Ensure text is visible on background */
 }
 
 #registerBody {
@@ -11,11 +12,11 @@
     height: 100%;
 }
 
-#regForm div{
+#regForm div {
     margin: 2px 0;
 }
 
-#submit_button{
+#submit_button {
     background-color: rgba(19, 50, 109);
     padding: 5px 10px;
     border-radius: 5px;
@@ -24,11 +25,11 @@
     cursor: pointer;
 }
 
-#submit_button:hover{
+#submit_button:hover {
     opacity: 0.8;
 }
 
-#submit_button:disabled{
+#submit_button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
@@ -48,6 +49,12 @@
     align-self: start;
     justify-content: center;
 }
+
+.form-group .col-form-label {
+    padding: 0;
+    text-align: right;
+}
+
 
 .form-row {
     margin-top: 0px;
@@ -122,5 +129,3 @@
     color: #ccc;
     cursor: not-allowed;
 }
-
-
