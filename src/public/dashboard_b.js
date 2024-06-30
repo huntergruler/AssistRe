@@ -141,13 +141,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     toggle2.innerHTML = '<i class="fas fa-chevron-down"></i>&nbsp;Show&nbsp;<i class="fas fa-chevron-down"></i>';
                 }
             });
-
+            console.log('populateSearchInfoDisplay');
             populateSearchInfoDisplay();
+            console.log('getOfferCounts');
             getOfferCounts();
+            console.log('getOffers');
             getOffers('AllAvailable', null);
+            console.log('getBuyerTypes');
             getBuyerTypes();
+            console.log('populateStates');
             populateStates();
+            console.log('populateDisplayZipCodes');
             populateDisplayZipCodes();
+            console.log('populateLevelOfService');
             populateLevelOfService();
 
             // const offerForm = document.getElementById('offerForm');
