@@ -660,7 +660,7 @@ router.get('/dashboard_b', (req, res) => {
                           substring_index(timeFrame,' ',-1) timeframeUnit
                      FROM Buyers b
                           LEFT OUTER JOIN BuyerRequestDetails brd on (b.userid = brd.userid)
-                          JOIN LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
+                          LEFT OUTER JOIN LevelsOfService los on los.levelofserviceid = brd.levelofserviceid
                     WHERE b.userid = ?`;
     db.query(query, [userid], (error, results) => {
       if (error) {
