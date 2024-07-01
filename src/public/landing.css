@@ -70,7 +70,7 @@ nav ul {
     background-color: var(--pale-yellow);
 }
 
-#how-it-works, #buyers-agents {
+#how-it-works, #for-buyers, #for-agents {
     background-color: var(--dark-green);
     color: var(--light-green);
     border-radius: 20px;
