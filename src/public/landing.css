@@ -16,6 +16,10 @@ header {
     padding: 20px; 
 }
 
+#logo {
+    min-width: 200px;
+}
+
 .navbar {
     background-color: var(--light-green); 
 }
@@ -35,6 +39,11 @@ nav ul {
     color: var(--pale-yellow); 
     text-decoration: underline var(--dark-green);
     text-decoration-thickness: 3px;
+}
+
+#navbar-toggler {
+    color: var(--dark-green);
+    border: none;
 }
 
 #hero { 
@@ -70,7 +79,7 @@ nav ul {
     background-color: var(--pale-yellow);
 }
 
-#how-it-works, #buyers-agents {
+#how-it-works, #for-buyers, #for-agents {
     background-color: var(--dark-green);
     color: var(--light-green);
     border-radius: 20px;
